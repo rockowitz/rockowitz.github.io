@@ -1,1 +1,493 @@
-Hello There ho ho
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="ddctool utility for reading and changing monitor settings">
+  <meta name="author" content="Sanford Rockowitz">
+  
+  <title>ddctool Documentation</title>
+  
+
+  <link rel="shortcut icon" href="./img/favicon.ico">
+
+  
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="./css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="./css/theme_extra.css" type="text/css" />
+  <link rel="stylesheet" href="./css/highlight.css">
+
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "None";
+    var mkdocs_page_input_path = "index.md";
+    var mkdocs_page_url = "/";
+  </script>
+  
+  <script src="./js/jquery-2.1.1.min.js"></script>
+  <script src="./js/modernizr-2.8.3.min.js"></script>
+  <script type="text/javascript" src="./js/highlight.pack.js"></script>
+  <script src="./js/theme.js"></script> 
+
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+      <div class="wy-side-nav-search">
+        <a href="original_index/" class="icon icon-home"> ddctool Documentation</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="./search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+        <ul class="current">
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="original_index/">Default Index Page</a>
+        
+    </li>
+<li>
+          
+            <li>
+    <li class="toctree-l1 current">
+        <a class="current" href=".">Overview</a>
+        
+            <ul>
+            
+                <li class="toctree-l3"><a href="#ddctool">ddctool</a></li>
+                
+                    <li><a class="toctree-l4" href="#providing-feedback">Providing Feedback</a></li>
+                
+                    <li><a class="toctree-l4" href="#background">Background</a></li>
+                
+                    <li><a class="toctree-l4" href="#ddctool-commands">ddctool Commands</a></li>
+                
+                    <li><a class="toctree-l4" href="#instrumentation-and-tuning">Instrumentation and Tuning</a></li>
+                
+                    <li><a class="toctree-l4" href="#building-and-running-ddctool">Building and Running ddctool</a></li>
+                
+                    <li><a class="toctree-l4" href="#amd-fglrx-driver">AMD fglrx Driver</a></li>
+                
+                    <li><a class="toctree-l4" href="#comparison-with-ddccontrol">Comparison with ddccontrol</a></li>
+                
+                    <li><a class="toctree-l4" href="#to-do">To Do</a></li>
+                
+                    <li><a class="toctree-l4" href="#author">Author</a></li>
+                
+            
+            </ul>
+        
+    </li>
+<li>
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="download/">Downloads</a>
+        
+    </li>
+<li>
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="tuning/">Instrumentation and Tuning</a>
+        
+    </li>
+<li>
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="adl/">AMD fglrx Driver</a>
+        
+    </li>
+<li>
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="feedback/">Feedback Needed</a>
+        
+    </li>
+<li>
+          
+        </ul>
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="original_index/">ddctool Documentation</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="original_index/">Docs</a> &raquo;</li>
+    
+      
+    
+    <li>Overview</li>
+    <li class="wy-breadcrumbs-aside">
+      
+        
+          <a href="https://github.com/rockowitz/ddctool" class="icon icon-github"> Edit on GitHub</a>
+        
+      
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h1 id="ddctool">ddctool</h1>
+<p>ddctool is a program for querying and changing monitor settings, such as 
+brightness and color levels.   </p>
+<p>ddctool uses DDC/CI to communicate with monitors implementing MCCS 
+(Monitor Control Command Set) over I2C.  Normally, the video driver for the
+monitor exposes the I2C channel as devices named /dev/i2c-n.  </p>
+<p>A particular use case for ddctool is as part of color profile management. Monitor
+calibration is relative to the monitor color settings currently in effect, 
+e.g. red gain.  ddctool allows color related settings to be saved at the time 
+a monitor is calibrated, and then restored when the calibration is applied.</p>
+<h2 id="providing-feedback"><a href="feedback/">Providing Feedback</a></h2>
+<h2 id="background">Background</h2>
+<p>Monitor settings are referred to as Virtual Control Panel (VCP) features.
+Features are numbered from 0..255, and are specified using the hex
+representation, e.g. 1A for blue level.   </p>
+<p>MCCS designates features as being one of three types:</p>
+<ul>
+<li>Continuous (C): Able to take any value up to some maximum</li>
+<li>Non-continuous (NC): Able to take only a designated set of values</li>
+<li>Table (T): Used for "raw" data such as a video LUT</li>
+</ul>
+<p>This clean distinction has broken down as the MCCS specification has 
+evolved.   Some features have changed category.  ddctool distinguishes
+between "simple" NC fields for which there is a simple list of possible values,
+and "complex" NC fields, where an algorithm must be applied to 
+interpret the bytes of a feature query.  This is a ddctool distinction and 
+not part of the MCCS specification.</p>
+<p>Most features are both readable and writable (RW).  Some, such as 
+VCP Version (DF), are read-only (RO), while others, such as Restore
+Factory Defaults (02) are write-only.</p>
+<h2 id="ddctool-commands">ddctool Commands</h2>
+<table>
+<thead>
+<tr>
+<th>Command</th>
+<th>Function</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>detect</td>
+<td>report monitors detected</td>
+</tr>
+<tr>
+<td>capabilities</td>
+<td>report a monitor's capabilities string</td>
+</tr>
+<tr>
+<td>vcpinfo</td>
+<td>list VCP features codes that ddctool knows how to interpret</td>
+</tr>
+<tr>
+<td>getvcp feature-code-or-group</td>
+<td>report a single VCP feature value, or a group of values</td>
+</tr>
+<tr>
+<td>setvcp feature-code new-value</td>
+<td>set a single VCP feature value</td>
+</tr>
+<tr>
+<td>dumpvcp filename</td>
+<td>save color related VCP feature values in a file</td>
+</tr>
+<tr>
+<td>loadvcp filename</td>
+<td>set color related VCP feature values from a file</td>
+</tr>
+<tr>
+<td>environment</td>
+<td>explore the ddctool installation environment</td>
+</tr>
+<tr>
+<td>interrogate</td>
+<td>collect maximal information for problem diagnosis</td>
+</tr>
+</tbody>
+</table>
+<p>There is an extensive set of options for tailoring ddctool operation. 
+Some are described in this documentation.   For a full list, use the --help option or 
+see the man page:</p>
+<pre><code>ddctool --help
+man 1 ddctool
+</code></pre>
+
+<h3 id="monitor-selection">Monitor Selection</h3>
+<p>If more than one monitor is attached, the desired monitor can be specified 
+using any of the following options:</p>
+<pre><code>--display &lt;display number&gt;
+--bus &lt;i2c bus number&gt;
+--adl &lt;iAdapterNumber&gt;.&lt;iDisplayNumber&gt;
+--edid &lt;256 character hex string&gt;
+--model &lt;model name&gt; and --sn &lt;serial number&gt;
+</code></pre>
+
+<p>Notes:</p>
+<ul>
+<li>Monitors under control of AMD's proprietary driver (fglrx) are selected by
+  adapter number and display number. These numbers are specified on the --adl 
+  option separated by a period, e.g. "--adlno 1.0"</li>
+<li>If model and serial number are used to identify the monitor, both options 
+  must be specified.</li>
+</ul>
+<p>To see a list of all attached monitors and their associated identifiers:</p>
+<pre><code>ddctool detect
+</code></pre>
+
+<h2 id="instrumentation-and-tuning"><a href="tuning/">Instrumentation and Tuning</a></h2>
+<h2 id="building-and-running-ddctool">Building and Running ddctool</h2>
+<p>Because of the variation among distributions, only general guidelines can be 
+given for some ddctool prerequisites.</p>
+<h3 id="packages">Packages</h3>
+<p>ddctool requires the following packages for both building and execution:</p>
+<ul>
+<li>i2c-tools</li>
+<li>glib-2.0  (Problem: glib-2.0 can be packaged with different names.)</li>
+</ul>
+<p>At least on Ubuntu, the i2c.h header file is found in a separate package. <br />
+If the following package exists, it is required to build ddctool.</p>
+<ul>
+<li>libi2c-dev </li>
+</ul>
+<h3 id="notes-on-building-from-tarball">Notes on building from tarball</h3>
+<p><strong>ddctool</strong> can be built from its tarball in the usual way.  Unpack the tar file, change to its directory, and issue the commands: </p>
+<pre><code># ./configure
+# make
+# sudo make install
+</code></pre>
+
+<p>Note that additional steps are required to build <strong>ddctool</strong> with <em>ADL</em> support.
+See below.</p>
+<p>Other distribution formats, including <em>rpm</em>  <em>dev</em> files are not yet available.  </p>
+<h3 id="notes-on-building-from-git">Notes on building from git</h3>
+<ul>
+<li>Building <strong>ddctool</strong> from git requires that the <em>autotools</em> related packages be installed.<br />
+The exact packages vary from distribution to distribution.   On Ubuntu, these include:
+  -- autoconf
+  -- automake
+  -- autotools-dev
+  -- libtool
+  -- m4
+  -- pkg-config</li>
+</ul>
+<p>To configure the build, change to the main <strong>ddctool</strong> directory and execute the file: </p>
+<pre><code>autogen.sh
+</code></pre>
+
+<p>Or issue the individual commands: </p>
+<pre><code># aclocal
+# autoconf
+# automake
+# ./configure
+</code></pre>
+
+<p>Then to build and install <strong>ddctool</strong>: </p>
+<pre><code># make
+# sudo make install
+</code></pre>
+
+<p>Common issues:
+- Building with support for the AMD proprietary video driver (fglrx) requires that <em>configure</em> be executed using 
+the <em>-with-adl-headers</em> argument.  See below.
+- If you see a message "required file './ltmain.sh.' not found", run <em>libtoolize</em>
+  (See https://www.gnu.org/software/automake/manual/html_node/Error-required-file-ltmain_002esh-not-found.html)
+- May get the following warning when running automake</p>
+<pre><code>src/Makefile.am:38: warning: compiling 'cmdline/cmd_parser_aux.c' in subdir requires 'AM_PROG_CC_C_O' in 'configure.ac'
+</code></pre>
+
+<p>This is an autotools versioning issue.  It appears that this warning can be ignored.
+- (need notes on other warnings that can be ignored) </p>
+<h3 id="devi2c-permissions">/dev/i2c permissions</h3>
+<p>Except when using AMD's proprietary driver (see below) ddctool requires 
+write access to /dev/i2c-*.  </p>
+<p>Some versions of i2c-tools create group i2c, and make that the group for 
+/dev/i2c-* devices. In that case all that is necessary is to add your user
+name to group i2c: </p>
+<pre><code># sudo usermod your-user-name -G i2c
+</code></pre>
+
+<p>For testing, it may be simpler to give everyone permission to write to 
+/dev/i2c-* for the current boot:</p>
+<pre><code>#  sudo chmod a+rw /dev/i2c-*
+</code></pre>
+
+<p>If needed, a udev rule for giving group i2c rw permission on the /i2c-dev-* devices 
+can be found in distribution file data/etc/udev/rules.d/45-i2c-tools.rules. <br />
+You can copy this file to /etc/udev/rules.c. </p>
+<p>The following section from the udev documentation 
+(<a href="https://www.kernel.org/pub/linux/utils/kernel/hotplug/udev/udev.html">https://www.kernel.org/pub/linux/utils/kernel/hotplug/udev/udev.html</a>) 
+may be helpful:</p>
+<blockquote>
+<p>The udev rules are read from the files located in the system rules directory 
+/usr/lib/udev/rules.d, the volatile runtime directory /run/udev/rules.d and 
+the local administration directory /etc/udev/rules.d. All rules files are 
+collectively sorted and processed in lexical order, regardless of the directories 
+in which they live. However, files with identical file names replace each other. 
+Files in /etc have the highest priority, files in /run take precedence over files 
+with the same name in /lib. This can be used to override a system-supplied rules 
+file with a local file if needed; a symlink in /etc with the same name as a rules 
+file in /lib, pointing to /dev/null, disables the rules file entirely.</p>
+</blockquote>
+<h3 id="kernel-modules">Kernel Modules</h3>
+<p>If using an open source driver, kernel module i2c-dev must be loaded.<br />
+Add the line "i2c_dev" to /etc/modules or a file containing the single line:</p>
+<pre><code>i2c_dev
+</code></pre>
+
+<p>to directory /etc/modules-load.d</p>
+<p>(TODO: Do instructions need to take into account SysV init vs systemd?)</p>
+<p>From the freedesktop.org systemd doc: </p>
+<blockquote>
+<p>systemd-modules-load.service(8) reads files from the [following]directories
+which contain kernel modules to load during boot in a static list. </p>
+<p>/etc/modules-load.d/<em>.conf
+/run/modules-load.d/</em>.conf
+/usr.lib.modules-load.d/*.conf</p>
+<p>Each configuration file is named in the style of /etc/modules-load.d/program.conf. 
+Note that it is usually a better idea to rely on the automatic module loading 
+by PCI IDs, USB IDs, DMI IDs or similar triggers encoded in the kernel modules 
+themselves instead of static configuration like this. In fact, most modern 
+kernel modules are prepared for automatic loading already.</p>
+</blockquote>
+<h2 id="amd-fglrx-driver"><a href="adl/">AMD fglrx Driver </a></h2>
+<h3 id="special-nvidia-driver-settings">Special Nvidia driver settings</h3>
+<p>When using Nvidia's proprietary driver, I2C communication fails on some cards.
+It worked on several older Nvidia cards I have, but failed with my newer 
+GTX660Ti. (Specfically, I2C reads of 1 or 2 bytes succeeded, but reads of 3 
+or more bytes failed.)  Others have reported similar problems. Adding the 
+following to the "Device" section for the Nvidia driver resolved the problem:</p>
+<pre><code> Option     &quot;RegistryDwords&quot;  &quot;RMUseSwI2c=0x01; RMI2cSpeed=100&quot;
+</code></pre>
+
+<p>A file for making this change is 90-nvidia_i2c.conf located in distribution 
+ directory data/etc/X11/xorg.conf.d  </p>
+<pre><code>Section &quot;Device&quot;
+   Driver &quot;nvidia&quot;
+   Identifier &quot;Dev0&quot;
+   Option     &quot;RegistryDwords&quot;  &quot;RMUseSwI2c=0x01; RMI2cSpeed=100&quot;
+   # solves problem of i2c errors with nvidia driver
+   # per https://devtalk.nvidia.com/default/topic/572292/-solved-does-gddccontrol-work-for-anyone-here-nvidia-i2c-monitor-display-ddc/#4309293
+EndSection
+</code></pre>
+
+<p>Copy this file to /etc/X11/xorg.conf.d  </p>
+<p>Note: This file works if there is no /etc/X11/xorg.conf file.  If you do have an 
+xorg.conf file the Identifier field will likely require modification.</p>
+<h3 id="virtual-machines">Virtual Machines</h3>
+<p>ddctool can be built in a virtual machine.  However, loading i2_dev does 
+not create /dev/i2c-* devices, either on VirtualBox or VMware.  It's not 
+clear whether this is because of lack of underlying emulation or if it's 
+a configuration issue.</p>
+<h3 id="installation-diagnostics">Installation Diagnostics</h3>
+<p>If ddctool is successfully built but execution fails, command <code>ddctool environment</code> 
+probes the I2C environment and may provide clues as to the problem.</p>
+<h2 id="comparison-with-ddccontrol">Comparison with ddccontrol</h2>
+<p>The program ddccontrol appears to no longer be maintained.  It has a fragility 
+reflecting the environment at the time it was written.  In particular:</p>
+<ul>
+<li>ddcctontrol, at least some of the time, uses its own I2C driver code.<br />
+ddctool, on the other hand, relies exclusively on the the i2c-dev userspace 
+interface to i2c. (And also, ADL for fglrx).   This should make it less fragile.</li>
+<li>ddccontrol uses a monitor attribute database to interpret VCP code.<br />
+With MCCS 2.0 and greater, VCP feature code definitions are largely standardized.<br />
+ddctool uses the MCCS specification to interpret VCP feature values.  It makes
+no attempt to interpret values for feature codes designated as manufacturer 
+specific (E0..FF). </li>
+</ul>
+<h2 id="to-do">To Do</h2>
+<p>This is a preliminary release.  There's an extensive TODO list</p>
+<ul>
+<li>installation without local build:
+-- downloadable tarball
+-- Ubuntu ppa, Fedora Copr, OpenSUSE build service</li>
+<li>cross-compile 32 bit executables on 64 bit systems</li>
+<li>write VCP Table type fields</li>
+<li>document the format of .VCP files (i.e. files read by <code>ddctool loadvcp</code>)</li>
+<li>UI</li>
+<li>package as library for use by other C programs, probably with gobject introsepection
+-- Python API</li>
+</ul>
+<h2 id="author">Author</h2>
+<p>Sanford Rockowitz  <a href="&#109;&#97;&#105;&#108;&#116;&#111;&#58;&#114;&#111;&#99;&#107;&#111;&#119;&#105;&#116;&#122;&#64;&#109;&#105;&#110;&#115;&#111;&#102;&#116;&#46;&#99;&#111;&#109;">&#114;&#111;&#99;&#107;&#111;&#119;&#105;&#116;&#122;&#64;&#109;&#105;&#110;&#115;&#111;&#102;&#116;&#46;&#99;&#111;&#109;</a></p>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="download/" class="btn btn-neutral float-right" title="Downloads">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="original_index/" class="btn btn-neutral" title="Default Index Page"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+	  
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+<div class="rst-versions" role="note" style="cursor: pointer">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+          <a href="https://github.com/rockowitz/ddctool" class="icon icon-github" style="float: left; color: #fcfcfc"> GitHub</a>
+      
+      
+        <span><a href="original_index/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+        <span style="margin-left: 15px"><a href="download/" style="color: #fcfcfc">Next &raquo;</a></span>
+      
+    </span>
+</div>
+
+</body>
+</html>
+
+<!--
+MkDocs version : 0.15.3
+Build Date UTC : 2016-03-05 23:14:10.177931
+-->
