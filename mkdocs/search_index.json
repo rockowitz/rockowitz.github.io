@@ -122,7 +122,7 @@
         }, 
         {
             "location": "/download/", 
-            "text": "openSUSE Build Service\n\n\nPackages for openSUSE, Fedora, and Debian are available for download from the \n\nopenSUSE build service\n\n\nUbuntu PPA\n\n\nFor \nUbuntu Wily\n\n\ndeb http://ppa.launchpad.net/rockowitz/ddctool/ubuntu wily main \ndeb-src http://ppa.launchpad.net/rockowitz/ddctool/ubuntu wily main \n\n\n\n\n\nTarball\n\n\nTarball\n\n\nOn Dropbox", 
+            "text": "openSUSE Build Service\n\n\nPackages for openSUSE, Fedora, and Debian are available for download from the \n\nopenSUSE build service\n\n\nUbuntu PPA\n\n\nFor \nUbuntu Wily\n\n\ndeb http://ppa.launchpad.net/rockowitz/ddctool/ubuntu wily main \ndeb-src http://ppa.launchpad.net/rockowitz/ddctool/ubuntu wily main \n\n\n\n\n\nTarball\n\n\n\n\n\nTarlocal", 
             "title": "Downloads"
         }, 
         {
@@ -137,7 +137,7 @@
         }, 
         {
             "location": "/download/#tarball", 
-            "text": "Tarball  On Dropbox", 
+            "text": "Tarlocal", 
             "title": "Tarball"
         }, 
         {
