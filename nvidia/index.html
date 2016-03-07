@@ -8,7 +8,7 @@
   
   <meta name="author" content="Sanford Rockowitz">
   
-  <title>Instrumentation and Tuning - ddctool Documentation</title>
+  <title>Special Nvidia Driver Settings - ddctool Documentation</title>
   
 
   <link rel="shortcut icon" href="../img/favicon.ico">
@@ -23,9 +23,9 @@
   
   <script>
     // Current page data
-    var mkdocs_page_name = "Instrumentation and Tuning";
-    var mkdocs_page_input_path = "tuning.md";
-    var mkdocs_page_url = "/tuning/";
+    var mkdocs_page_name = "Special Nvidia Driver Settings";
+    var mkdocs_page_input_path = "nvidia.md";
+    var mkdocs_page_url = "/nvidia/";
   </script>
   
   <script src="../js/jquery-2.1.1.min.js"></script>
@@ -69,15 +69,8 @@
 <li>
           
             <li>
-    <li class="toctree-l1 current">
-        <a class="current" href="./">Instrumentation and Tuning</a>
-        
-            <ul>
-            
-                <li class="toctree-l3"><a href="#instrumentation-and-tuning">Instrumentation and Tuning</a></li>
-                
-            
-            </ul>
+    <li class="toctree-l1 ">
+        <a class="" href="../tuning/">Instrumentation and Tuning</a>
         
     </li>
 <li>
@@ -104,8 +97,15 @@
 <li>
           
             <li>
-    <li class="toctree-l1 ">
-        <a class="" href="../nvidia/">Special Nvidia Driver Settings</a>
+    <li class="toctree-l1 current">
+        <a class="current" href="./">Special Nvidia Driver Settings</a>
+        
+            <ul>
+            
+                <li class="toctree-l3"><a href="#special-nvidia-driver-settings">Special Nvidia driver settings</a></li>
+                
+            
+            </ul>
         
     </li>
 <li>
@@ -167,7 +167,7 @@
     
       
     
-    <li>Instrumentation and Tuning</li>
+    <li>Special Nvidia Driver Settings</li>
     <li class="wy-breadcrumbs-aside">
       
         
@@ -181,64 +181,29 @@
           <div role="main">
             <div class="section">
               
-                <h3 id="instrumentation-and-tuning">Instrumentation and Tuning</h3>
-<p>I2C is an inherently unreliable protocol, requiring retry management.  90% of
-ddctool's elapsed time is spent in timeouts mandated by the DDC specification.  <br />
-ddctool has extensive facilities for reporting protocol errors, retry counts, 
-and peformance statistics, and some ability to tweak execution parameters from
-the command line.</p>
-<p>The relevant options are:</p>
-<table>
-<thead>
-<tr>
-<th>Option</th>
-<th>Function</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>--stats</td>
-<td>report execution statistics</td>
-</tr>
-<tr>
-<td>--ddc</td>
-<td>report DDC protocol errors</td>
-</tr>
-<tr>
-<td>--maxtries()</td>
-<td>sets maximum tries</td>
-</tr>
-</tbody>
-</table>
-<p>There are 3 kinds of exchanges in which retry is possible: </p>
-<ul>
-<li>write-only exchange.  Bytes are written with no subsequent read.<br />
-  Used only to set a VCP feature value.  </li>
-<li>write-read exchange.  A write to the monitor, followed by a read.<br />
-  Most DDC protocol exchanges are of this form.</li>
-<li>multi-part exchange.  This is a "meta" exchange, consisting multiple 
-  write-read exchanges. Used to query monitor capabilities, and for 
-  querying and setting Table type VCP features. </li>
-</ul>
-<p>By default, the maximum number of tries for each exchange is:</p>
-<ul>
-<li>write-only exchange:    4</li>
-<li>write-read exchange:   10</li>
-<li>multi-part exchange:    8</li>
-</ul>
-<p>Option --maxtries allows you to play with the maximum try count.  Its argument
-onsists of 3 comma-separated values.  The following example sets the maximum 
-try counts to 3 for write-only exchanges, 6 for write-read exchanges, and 9 
-for multi-part exchanges.</p>
-<pre><code>--maxtries(3,6,9) 
+                <h2 id="special-nvidia-driver-settings">Special Nvidia driver settings</h2>
+<p>When using Nvidia's proprietary driver, I2C communication fails on some cards.
+It worked on several older Nvidia cards I have, but failed with my newer 
+GTX660Ti. (Specfically, I2C reads of 1 or 2 bytes succeeded, but reads of 3 
+or more bytes failed.)  Others have reported similar problems. Adding the 
+following to the "Device" section for the Nvidia driver resolved the problem:</p>
+<pre><code> Option     &quot;RegistryDwords&quot;  &quot;RMUseSwI2c=0x01; RMI2cSpeed=100&quot;
 </code></pre>
 
-<p>A blank value leaves the corresponding try count unchanged.   The following 
-example changes only the maximum write-read try count:</p>
-<pre><code>--maxtries(,7,) 
+<p>A file for making this change is 90-nvidia_i2c.conf located in distribution 
+ directory data/etc/X11/xorg.conf.d  </p>
+<pre><code>Section &quot;Device&quot;
+   Driver &quot;nvidia&quot;
+   Identifier &quot;Dev0&quot;
+   Option     &quot;RegistryDwords&quot;  &quot;RMUseSwI2c=0x01; RMI2cSpeed=100&quot;
+   # solves problem of i2c errors with nvidia driver
+   # per https://devtalk.nvidia.com/default/topic/572292/-solved-does-gddccontrol-work-for-anyone-here-nvidia-i2c-monitor-display-ddc/#4309293
+EndSection
 </code></pre>
 
-<p>The maximum maximum value is 15.</p>
+<p>Copy this file to /etc/X11/xorg.conf.d  </p>
+<p>Note: This file works if there is no /etc/X11/xorg.conf file.  If you do have an 
+xorg.conf file the Identifier field will likely require modification.</p>
               
             </div>
           </div>
@@ -246,10 +211,10 @@ example changes only the maximum write-read try count:</p>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../building/" class="btn btn-neutral float-right" title="Building From Source">Next <span class="icon icon-circle-arrow-right"></span></a>
+        <a href="../adl/" class="btn btn-neutral float-right" title="AMD fglrx Driver">Next <span class="icon icon-circle-arrow-right"></span></a>
       
       
-        <a href="../mccs_background/" class="btn btn-neutral" title="MCCS Terminology"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../kernel_module/" class="btn btn-neutral" title="Kernel Moudle Configuration"><span class="icon icon-circle-arrow-left"></span> Previous</a>
       
     </div>
   
@@ -277,10 +242,10 @@ example changes only the maximum write-read try count:</p>
           <a href="https://github.com/rockowitz/ddctool" class="icon icon-github" style="float: left; color: #fcfcfc"> GitHub</a>
       
       
-        <span><a href="../mccs_background/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+        <span><a href="../kernel_module/" style="color: #fcfcfc;">&laquo; Previous</a></span>
       
       
-        <span style="margin-left: 15px"><a href="../building/" style="color: #fcfcfc">Next &raquo;</a></span>
+        <span style="margin-left: 15px"><a href="../adl/" style="color: #fcfcfc">Next &raquo;</a></span>
       
     </span>
 </div>

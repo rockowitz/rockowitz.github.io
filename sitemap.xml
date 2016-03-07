@@ -3,24 +3,16 @@
 
     
     <url>
-     <loc>None/original_index/</loc>
-     <lastmod>2016-03-06</lastmod>
-     <changefreq>daily</changefreq>
-    </url>
-    
-
-    
-    <url>
      <loc>None/</loc>
-     <lastmod>2016-03-06</lastmod>
+     <lastmod>2016-03-07</lastmod>
      <changefreq>daily</changefreq>
     </url>
     
 
     
     <url>
-     <loc>None/download/</loc>
-     <lastmod>2016-03-06</lastmod>
+     <loc>None/mccs_background/</loc>
+     <lastmod>2016-03-07</lastmod>
      <changefreq>daily</changefreq>
     </url>
     
@@ -28,7 +20,39 @@
     
     <url>
      <loc>None/tuning/</loc>
-     <lastmod>2016-03-06</lastmod>
+     <lastmod>2016-03-07</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+    
+
+    
+    <url>
+     <loc>None/building/</loc>
+     <lastmod>2016-03-07</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+    
+
+    
+    <url>
+     <loc>None/i2c_permissions/</loc>
+     <lastmod>2016-03-07</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+    
+
+    
+    <url>
+     <loc>None/kernel_module/</loc>
+     <lastmod>2016-03-07</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+    
+
+    
+    <url>
+     <loc>None/nvidia/</loc>
+     <lastmod>2016-03-07</lastmod>
      <changefreq>daily</changefreq>
     </url>
     
@@ -36,7 +60,15 @@
     
     <url>
      <loc>None/adl/</loc>
-     <lastmod>2016-03-06</lastmod>
+     <lastmod>2016-03-07</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+    
+
+    
+    <url>
+     <loc>None/ddccontrol/</loc>
+     <lastmod>2016-03-07</lastmod>
      <changefreq>daily</changefreq>
     </url>
     
@@ -44,7 +76,23 @@
     
     <url>
      <loc>None/feedback/</loc>
-     <lastmod>2016-03-06</lastmod>
+     <lastmod>2016-03-07</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+    
+
+    
+    <url>
+     <loc>None/bibliography/</loc>
+     <lastmod>2016-03-07</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+    
+
+    
+    <url>
+     <loc>None/original_index/</loc>
+     <lastmod>2016-03-07</lastmod>
      <changefreq>daily</changefreq>
     </url>
     
