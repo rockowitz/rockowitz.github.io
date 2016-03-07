@@ -159,26 +159,6 @@
             "location": "/bibliography/#reference-documents", 
             "text": "VESA Monitor Control Command Set (MCCS) Standard Version 1, September 11, 1998  VESA Monitor Control Command Set (MCCS) Standard Version 2, October 17, 2003  VESA Display Data Channel Command Interface (DDC/CI) Standard Version 1.1, October 29, 2004  VESA Monitor Control Command Set (MCCS) Standard Version 2.1, May 28, 2005   VESA Monitor Control Command Set (MCCS) Standard Version 3, July 27, 2006  VESA Monitor Control Command Set (MCCS) Update Document for MCCS Standard Version 3, March 20, 2007  VESA Monitor Control Command Set (MCCS) Standard Version 2.2, January 19, 2009  VESA Monitor Control Command Set (MCCS) Standard Version 2.2a, July 13, 2011", 
             "title": "Reference Documents"
-        }, 
-        {
-            "location": "/original_index/", 
-            "text": "Welcome to MkDocs\n\n\nFor full documentation visit \nmkdocs.org\n.\n\n\nCommands\n\n\n\n\nmkdocs new [dir-name]\n - Create a new project.\n\n\nmkdocs serve\n - Start the live-reloading docs server.\n\n\nmkdocs build\n - Build the documentation site.\n\n\nmkdocs help\n - Print this help message.\n\n\n\n\nProject layout\n\n\nmkdocs.yml    # The configuration file.\ndocs/\n    index.md  # The documentation homepage.\n    ...       # Other markdown pages, images and other files.", 
-            "title": "Original Index Page"
-        }, 
-        {
-            "location": "/original_index/#welcome-to-mkdocs", 
-            "text": "For full documentation visit  mkdocs.org .", 
-            "title": "Welcome to MkDocs"
-        }, 
-        {
-            "location": "/original_index/#commands", 
-            "text": "mkdocs new [dir-name]  - Create a new project.  mkdocs serve  - Start the live-reloading docs server.  mkdocs build  - Build the documentation site.  mkdocs help  - Print this help message.", 
-            "title": "Commands"
-        }, 
-        {
-            "location": "/original_index/#project-layout", 
-            "text": "mkdocs.yml    # The configuration file.\ndocs/\n    index.md  # The documentation homepage.\n    ...       # Other markdown pages, images and other files.", 
-            "title": "Project layout"
         }
     ]
 }
