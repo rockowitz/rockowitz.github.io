@@ -3,10 +3,7 @@
 <!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="ddctool utility for reading and changing monitor settings">
-  <meta name="author" content="Sanford Rockowitz">
   
   <title>ddctool Documentation</title>
   
@@ -24,8 +21,6 @@
   <script>
     // Current page data
     var mkdocs_page_name = "None";
-    var mkdocs_page_input_path = "index.md";
-    var mkdocs_page_url = "/";
   </script>
   
   <script src="./js/jquery-2.1.1.min.js"></script>
@@ -288,11 +283,12 @@ puts this package in the Universe repository.  For OBS policy reasons, Universe 
 However, the Debian builds do seem to work for Ubuntu, and are an alternative to the Ubuntu PPA.</p>
 <p>For other distributions, or if using AMD's proprietary fglrx driver, ddctool must be <a href="building/">built from source</a>.</p>
 <h2 id="ddctool-configuration"><strong>ddctool</strong> Configuration</h2>
-<p><strong>ddctool</strong> users require write permission to /dev/i2c-* devices.   <a href="i2c_permissions/">Details</a></p>
-<p>If using an open source video driver, kernel module i2c-dev must be loaded.  <a href="kernel_module/">Details</a></p>
+<p><strong>ddctool</strong> users require write permission to /dev/i2c-* devices.  See <a href="i2c_permissions/">/dev/i2c Permissions</a></p>
+<p>If using an open source video driver, kernel module i2c-dev must be loaded.  See <a href="kernel_module/">Kernel Module Configuration</a></p>
+<p>If using Nvidia's proprietary video driver, special settings may be necessary.  See <a href="nvidia/">Special Nvidia Driver Settings</a></p>
 <h2 id="installation-diagnostics">Installation Diagnostics</h2>
-<p>If ddctool successfully installs but execution fails, command <code>ddctool environment</code> 
-probes the I2C environment and may provide clues as to the problem.</p>
+<p>If ddctool installs successfully but execution fails, command <code>ddctool environment</code> 
+will probe the I2C environment and may provide clues as to the problem.</p>
 <h2 id="additional-topics">Additional Topics</h2>
 <ul>
 <li>
@@ -303,12 +299,6 @@ probes the I2C environment and may provide clues as to the problem.</p>
 </li>
 <li>
 <p><a href="building/">Building From Source</a></p>
-</li>
-<li>
-<p><a href="kernel_module/">Kernel Module Configuration</a></p>
-</li>
-<li>
-<p><a href="nvidia/">Special Nvidia Driver Settings</a></p>
 </li>
 <li>
 <p><a href="adl/">AMD fglrx Driver</a></p>
@@ -330,7 +320,7 @@ probes the I2C environment and may provide clues as to the problem.</p>
 </li>
 </ul>
 <h2 id="author">Author</h2>
-<p>Sanford Rockowitz  <a href="&#109;&#97;&#105;&#108;&#116;&#111;&#58;&#114;&#111;&#99;&#107;&#111;&#119;&#105;&#116;&#122;&#64;&#109;&#105;&#110;&#115;&#111;&#102;&#116;&#46;&#99;&#111;&#109;">&#114;&#111;&#99;&#107;&#111;&#119;&#105;&#116;&#122;&#64;&#109;&#105;&#110;&#115;&#111;&#102;&#116;&#46;&#99;&#111;&#109;</a></p>
+<p>Sanford Rockowitz  <a href="./&#109;&#97;&#105;&#108;&#116;&#111;&#58;&#114;&#111;&#99;&#107;&#111;&#119;&#105;&#116;&#122;&#64;&#109;&#105;&#110;&#115;&#111;&#102;&#116;&#46;&#99;&#111;&#109;">&#114;&#111;&#99;&#107;&#111;&#119;&#105;&#116;&#122;&#64;&#109;&#105;&#110;&#115;&#111;&#102;&#116;&#46;&#99;&#111;&#109;</a></p>
               
             </div>
           </div>
@@ -338,7 +328,7 @@ probes the I2C environment and may provide clues as to the problem.</p>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="mccs_background/" class="btn btn-neutral float-right" title="MCCS Terminology">Next <span class="icon icon-circle-arrow-right"></span></a>
+        <a href="mccs_background/" class="btn btn-neutral float-right" title="MCCS Terminology"/>Next <span class="icon icon-circle-arrow-right"></span></a>
       
       
     </div>
@@ -364,7 +354,7 @@ probes the I2C environment and may provide clues as to the problem.</p>
 <div class="rst-versions" role="note" style="cursor: pointer">
     <span class="rst-current-version" data-toggle="rst-current-version">
       
-          <a href="https://github.com/rockowitz/ddctool" class="icon icon-github" style="float: left; color: #fcfcfc"> GitHub</a>
+          <a class="icon icon-github" style="float: left; color: #fcfcfc"> GitHub</a>
       
       
       
@@ -377,6 +367,6 @@ probes the I2C environment and may provide clues as to the problem.</p>
 </html>
 
 <!--
-MkDocs version : 0.15.3
-Build Date UTC : 2016-03-07 14:01:13.894540
+MkDocs version : 0.14.0
+Build Date UTC : 2016-03-09 15:13:25.196038
 -->
