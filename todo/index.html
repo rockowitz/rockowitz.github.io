@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Kernel Module Configuration - ddctool Documentation</title>
+  <title>Future Tasks - ddctool Documentation</title>
   
 
   <link rel="shortcut icon" href="../img/favicon.ico">
@@ -20,7 +20,7 @@
   
   <script>
     // Current page data
-    var mkdocs_page_name = "Kernel Module Configuration";
+    var mkdocs_page_name = "Future Tasks";
   </script>
   
   <script src="../js/jquery-2.1.1.min.js"></script>
@@ -92,15 +92,8 @@
 <li>
           
             <li>
-    <li class="toctree-l1 current">
-        <a class="current" href="./">Kernel Module Configuration</a>
-        
-            <ul>
-            
-                <li class="toctree-l3"><a href="#kernel-module-configuration">Kernel Module Configuration</a></li>
-                
-            
-            </ul>
+    <li class="toctree-l1 ">
+        <a class="" href="../kernel_module/">Kernel Module Configuration</a>
         
     </li>
 <li>
@@ -134,8 +127,15 @@
 <li>
           
             <li>
-    <li class="toctree-l1 ">
-        <a class="" href="../todo/">Future Tasks</a>
+    <li class="toctree-l1 current">
+        <a class="current" href="./">Future Tasks</a>
+        
+            <ul>
+            
+                <li class="toctree-l3"><a href="#to-do-list">To Do List</a></li>
+                
+            
+            </ul>
         
     </li>
 <li>
@@ -176,7 +176,7 @@
     
       
     
-    <li>Kernel Module Configuration</li>
+    <li>Future Tasks</li>
     <li class="wy-breadcrumbs-aside">
       
         
@@ -190,30 +190,18 @@
           <div role="main">
             <div class="section">
               
-                <h2 id="kernel-module-configuration">Kernel Module Configuration</h2>
-<p>If using an open source video driver, kernel module i2c-dev must be loaded.<br />
-Add the line "i2c_dev" to /etc/modules or a file containing the single line:</p>
-<pre><code>i2c_dev
-</code></pre>
-
-<p>to directory /etc/modules-load.d</p>
-<!--
-(TODO: Do instructions need to take into account SysV init vs systemd?)
--->
-
-<p>From the freedesktop.org systemd doc: </p>
-<blockquote>
-<p>systemd-modules-load.service(8) reads files from the [following]directories
-which contain kernel modules to load during boot in a static list. </p>
-<p>/etc/modules-load.d/<em>.conf
-/run/modules-load.d/</em>.conf
-/usr.lib.modules-load.d/*.conf</p>
-<p>Each configuration file is named in the style of /etc/modules-load.d/program.conf. 
-Note that it is usually a better idea to rely on the automatic module loading 
-by PCI IDs, USB IDs, DMI IDs or similar triggers encoded in the kernel modules 
-themselves instead of static configuration like this. In fact, most modern 
-kernel modules are prepared for automatic loading already.</p>
-</blockquote>
+                <h2 id="to-do-list">To Do List</h2>
+<p>This is a preliminary release.  There's an extensive TODO list</p>
+<ul>
+<li>cross-compile 32 bit executables on 64 bit systems</li>
+<li>write VCP Table type fields</li>
+<li>document the format of .VCP files (i.e. files read by <code>ddctool loadvcp</code>)</li>
+<li>UI</li>
+<li>package as library for use by other C programs, probably with gobject introsepection
+-- Python API</li>
+<li>support laptop monitors (MCCS over MDDI (Mobile Display Digital Interface))</li>
+<li>support monitors that implement MCCS over USB</li>
+</ul>
               
             </div>
           </div>
@@ -221,10 +209,10 @@ kernel modules are prepared for automatic loading already.</p>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../nvidia/" class="btn btn-neutral float-right" title="Special Nvidia Driver Settings"/>Next <span class="icon icon-circle-arrow-right"></span></a>
+        <a href="../feedback/" class="btn btn-neutral float-right" title="Feedback"/>Next <span class="icon icon-circle-arrow-right"></span></a>
       
       
-        <a href="../i2c_permissions/" class="btn btn-neutral" title="/dev/i2c Permissions"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../ddccontrol/" class="btn btn-neutral" title="Comparison with ddccontrol"><span class="icon icon-circle-arrow-left"></span> Previous</a>
       
     </div>
   
@@ -252,10 +240,10 @@ kernel modules are prepared for automatic loading already.</p>
           <a class="icon icon-github" style="float: left; color: #fcfcfc"> GitHub</a>
       
       
-        <span><a href="../i2c_permissions/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+        <span><a href="../ddccontrol/" style="color: #fcfcfc;">&laquo; Previous</a></span>
       
       
-        <span style="margin-left: 15px"><a href="../nvidia/" style="color: #fcfcfc">Next &raquo;</a></span>
+        <span style="margin-left: 15px"><a href="../feedback/" style="color: #fcfcfc">Next &raquo;</a></span>
       
     </span>
 </div>

@@ -65,6 +65,13 @@
           
             <li>
     <li class="toctree-l1 ">
+        <a class="" href="../cmdargs/">Command Arguments</a>
+        
+    </li>
+<li>
+          
+            <li>
+    <li class="toctree-l1 ">
         <a class="" href="../tuning/">Instrumentation and Tuning</a>
         
     </li>
@@ -93,7 +100,7 @@
           
             <li>
     <li class="toctree-l1 ">
-        <a class="" href="../kernel_module/">Kernel Moudle Configuration</a>
+        <a class="" href="../kernel_module/">Kernel Module Configuration</a>
         
     </li>
 <li>
@@ -114,7 +121,21 @@
           
             <li>
     <li class="toctree-l1 ">
+        <a class="" href="../virtual_machines/">Virtual Machines</a>
+        
+    </li>
+<li>
+          
+            <li>
+    <li class="toctree-l1 ">
         <a class="" href="../ddccontrol/">Comparison with ddccontrol</a>
+        
+    </li>
+<li>
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="../todo/">Future Tasks</a>
         
     </li>
 <li>
@@ -172,8 +193,8 @@
                 <h2 id="devi2c-permissions">/dev/i2c permissions</h2>
 <p>Except when using AMD's proprietary driver (see <a href="../adl/">here</a>) ddctool requires 
 write access to /dev/i2c-*.  </p>
-<p>Some versions of i2c-tools create group i2c, and make that the group for 
-/dev/i2c-* devices. In that case all that is necessary is to add your user
+<p>Some packages of i2c-tools create group i2c, and assign that the group to
+/dev/i2c-* devices using a udev rule. In that case all that is necessary is to add your user
 name to group i2c: </p>
 <pre><code># sudo usermod your-user-name -G i2c
 </code></pre>
@@ -183,9 +204,12 @@ name to group i2c: </p>
 <pre><code>#  sudo chmod a+rw /dev/i2c-*
 </code></pre>
 
-<p>If needed, a udev rule for giving group i2c rw permission on the /i2c-dev-* devices 
-can be found in distribution file data/etc/udev/rules.d/45-i2c-tools.rules. <br />
-You can copy this file to /etc/udev/rules.c. </p>
+<p>If needed, a udev rule for giving group i2c RW permission on the /i2c-dev-* devices 
+can be found in distributed file <strong>45-i2c-tools.rules</strong>.  It can be copied to 
+/etc/udef/rules.d, but do check that this rule does not conflict with others in that directory.</p>
+<pre><code># sudo cp /usr/share/ddctool/data/etc/udev/rules.d/45-i2c-tools.rules /etc/udev/rules.d
+</code></pre>
+
 <p>The following section from the udev documentation 
 (<a href="https://www.kernel.org/pub/linux/utils/kernel/hotplug/udev/udev.html">https://www.kernel.org/pub/linux/utils/kernel/hotplug/udev/udev.html</a>) 
 may be helpful:</p>
@@ -207,7 +231,7 @@ file in /lib, pointing to /dev/null, disables the rules file entirely.</p>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../kernel_module/" class="btn btn-neutral float-right" title="Kernel Moudle Configuration"/>Next <span class="icon icon-circle-arrow-right"></span></a>
+        <a href="../kernel_module/" class="btn btn-neutral float-right" title="Kernel Module Configuration"/>Next <span class="icon icon-circle-arrow-right"></span></a>
       
       
         <a href="../building/" class="btn btn-neutral" title="Building From Source"><span class="icon icon-circle-arrow-left"></span> Previous</a>

@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Kernel Module Configuration - ddctool Documentation</title>
+  <title>Command Arguments - ddctool Documentation</title>
   
 
   <link rel="shortcut icon" href="../img/favicon.ico">
@@ -20,7 +20,7 @@
   
   <script>
     // Current page data
-    var mkdocs_page_name = "Kernel Module Configuration";
+    var mkdocs_page_name = "Command Arguments";
   </script>
   
   <script src="../js/jquery-2.1.1.min.js"></script>
@@ -64,8 +64,15 @@
 <li>
           
             <li>
-    <li class="toctree-l1 ">
-        <a class="" href="../cmdargs/">Command Arguments</a>
+    <li class="toctree-l1 current">
+        <a class="current" href="./">Command Arguments</a>
+        
+            <ul>
+            
+                <li class="toctree-l3"><a href="#command-arguments">Command Arguments</a></li>
+                
+            
+            </ul>
         
     </li>
 <li>
@@ -92,15 +99,8 @@
 <li>
           
             <li>
-    <li class="toctree-l1 current">
-        <a class="current" href="./">Kernel Module Configuration</a>
-        
-            <ul>
-            
-                <li class="toctree-l3"><a href="#kernel-module-configuration">Kernel Module Configuration</a></li>
-                
-            
-            </ul>
+    <li class="toctree-l1 ">
+        <a class="" href="../kernel_module/">Kernel Module Configuration</a>
         
     </li>
 <li>
@@ -176,7 +176,7 @@
     
       
     
-    <li>Kernel Module Configuration</li>
+    <li>Command Arguments</li>
     <li class="wy-breadcrumbs-aside">
       
         
@@ -190,30 +190,47 @@
           <div role="main">
             <div class="section">
               
-                <h2 id="kernel-module-configuration">Kernel Module Configuration</h2>
-<p>If using an open source video driver, kernel module i2c-dev must be loaded.<br />
-Add the line "i2c_dev" to /etc/modules or a file containing the single line:</p>
-<pre><code>i2c_dev
+                <h2 id="command-arguments">Command Arguments</h2>
+<p>The <strong><em>feature-code</em></strong> argument to <strong>vcpinfo</strong>, <strong>getvcp</strong>, and <strong>setvcp</strong> is a hexadecimal feature number, 
+with or without a leading "0x", e.g.</p>
+<pre><code># ddctool getvcp 10
+# ddctool vcpinfo 0x10
 </code></pre>
 
-<p>to directory /etc/modules-load.d</p>
-<!--
-(TODO: Do instructions need to take into account SysV init vs systemd?)
--->
+<p>The <strong>feature-group</strong> argument to <strong>vcpinfo</strong> and <strong>getvcp</strong> is a named collection of features.<br />
+The most useful are: </p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>KNOWN</td>
+<td>all feature codes known to <strong>ddctool</strong></td>
+</tr>
+<tr>
+<td>SCAN</td>
+<td>scan all feature codes 0x00..0xff</td>
+</tr>
+<tr>
+<td>COLOR</td>
+<td>color related features (saved by dumpvcp)</td>
+</tr>
+</tbody>
+</table>
+<p>For example: </p>
+<pre><code># ddctool getvcp known
+</code></pre>
 
-<p>From the freedesktop.org systemd doc: </p>
-<blockquote>
-<p>systemd-modules-load.service(8) reads files from the [following]directories
-which contain kernel modules to load during boot in a static list. </p>
-<p>/etc/modules-load.d/<em>.conf
-/run/modules-load.d/</em>.conf
-/usr.lib.modules-load.d/*.conf</p>
-<p>Each configuration file is named in the style of /etc/modules-load.d/program.conf. 
-Note that it is usually a better idea to rely on the automatic module loading 
-by PCI IDs, USB IDs, DMI IDs or similar triggers encoded in the kernel modules 
-themselves instead of static configuration like this. In fact, most modern 
-kernel modules are prepared for automatic loading already.</p>
-</blockquote>
+<p>For a complete list of feature groups, use the <strong>--help</strong> option. </p>
+<p>The <strong>new-value</strong> argument to <strong>setvcp</strong> is a decimal number in the range 0..255, or a single 
+byte hex value.  For example:</p>
+<pre><code># ddctool setvcp 10 50
+# ddctool setvcp 10 0x32
+</code></pre>
               
             </div>
           </div>
@@ -221,10 +238,10 @@ kernel modules are prepared for automatic loading already.</p>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../nvidia/" class="btn btn-neutral float-right" title="Special Nvidia Driver Settings"/>Next <span class="icon icon-circle-arrow-right"></span></a>
+        <a href="../tuning/" class="btn btn-neutral float-right" title="Instrumentation and Tuning"/>Next <span class="icon icon-circle-arrow-right"></span></a>
       
       
-        <a href="../i2c_permissions/" class="btn btn-neutral" title="/dev/i2c Permissions"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../mccs_background/" class="btn btn-neutral" title="MCCS Terminology"><span class="icon icon-circle-arrow-left"></span> Previous</a>
       
     </div>
   
@@ -252,10 +269,10 @@ kernel modules are prepared for automatic loading already.</p>
           <a class="icon icon-github" style="float: left; color: #fcfcfc"> GitHub</a>
       
       
-        <span><a href="../i2c_permissions/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+        <span><a href="../mccs_background/" style="color: #fcfcfc;">&laquo; Previous</a></span>
       
       
-        <span style="margin-left: 15px"><a href="../nvidia/" style="color: #fcfcfc">Next &raquo;</a></span>
+        <span style="margin-left: 15px"><a href="../tuning/" style="color: #fcfcfc">Next &raquo;</a></span>
       
     </span>
 </div>

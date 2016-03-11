@@ -64,12 +64,25 @@
 <li>
           
             <li>
+    <li class="toctree-l1 ">
+        <a class="" href="../cmdargs/">Command Arguments</a>
+        
+    </li>
+<li>
+          
+            <li>
     <li class="toctree-l1 current">
         <a class="current" href="./">Instrumentation and Tuning</a>
         
             <ul>
             
                 <li class="toctree-l3"><a href="#instrumentation-and-tuning">Instrumentation and Tuning</a></li>
+                
+                    <li><a class="toctree-l4" href="#option-ddc">Option --ddc</a></li>
+                
+                    <li><a class="toctree-l4" href="#option-stats">Option --stats</a></li>
+                
+                    <li><a class="toctree-l4" href="#option-maxtries">Option --maxtries</a></li>
                 
             
             </ul>
@@ -93,7 +106,7 @@
           
             <li>
     <li class="toctree-l1 ">
-        <a class="" href="../kernel_module/">Kernel Moudle Configuration</a>
+        <a class="" href="../kernel_module/">Kernel Module Configuration</a>
         
     </li>
 <li>
@@ -114,7 +127,21 @@
           
             <li>
     <li class="toctree-l1 ">
+        <a class="" href="../virtual_machines/">Virtual Machines</a>
+        
+    </li>
+<li>
+          
+            <li>
+    <li class="toctree-l1 ">
         <a class="" href="../ddccontrol/">Comparison with ddccontrol</a>
+        
+    </li>
+<li>
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="../todo/">Future Tasks</a>
         
     </li>
 <li>
@@ -170,9 +197,9 @@
             <div class="section">
               
                 <h2 id="instrumentation-and-tuning">Instrumentation and Tuning</h2>
-<p>I2C is an inherently unreliable protocol, requiring retry management.  90% of
-ddctool's elapsed time is spent in timeouts mandated by the DDC specification.  <br />
-ddctool has extensive facilities for reporting protocol errors, retry counts, 
+<p>I2C is an inherently unreliable protocol, requiring retry management.  Furthermore, 90% of
+ddctool's elapsed time is spent in timeouts mandated by the DDC specification.    </p>
+<p>ddctool has extensive facilities for reporting protocol errors, retry counts, 
 and peformance statistics, and some ability to tweak execution parameters from
 the command line.</p>
 <p>The relevant options are:</p>
@@ -198,6 +225,38 @@ the command line.</p>
 </tr>
 </tbody>
 </table>
+<h3 id="option-ddc">Option --ddc</h3>
+<p>If option <strong>--ddc</strong> is specified, <strong>ddctool</strong> reports protocol errors that it detects.  These may reflect I2C bus errors, or deviations by monitors from the MCCS specfication.  Most I2C errors cause a retry.  Some monitors are very clean.  Others, like the Dell P2411h, are very dirty. </p>
+<h3 id="option-stats">Option --stats</h3>
+<p>Option <strong>--stats</strong> causes <strong>ddctool</strong> to report execution statistics.  It takes the following optional arguments: </p>
+<table>
+<thead>
+<tr>
+<th>--stats Argument</th>
+<th>Action</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>errors</td>
+<td>Report I2C/DDC error counts</td>
+</tr>
+<tr>
+<td>tries</td>
+<td>Report retry statistics</td>
+</tr>
+<tr>
+<td>calls</td>
+<td>Report system call counts and time</td>
+</tr>
+<tr>
+<td>all</td>
+<td>Report all statistics</td>
+</tr>
+</tbody>
+</table>
+<p>If <strong>--stats all</strong> is specified, or no argument is given, then all statistics are output. </p>
+<h3 id="option-maxtries">Option --maxtries</h3>
 <p>There are 3 kinds of exchanges in which retry is possible: </p>
 <ul>
 <li>write-only exchange.  Bytes are written with no subsequent read.<br />
@@ -214,7 +273,7 @@ the command line.</p>
 <li>write-read exchange:   10</li>
 <li>multi-part exchange:    8</li>
 </ul>
-<p>Option --maxtries allows you to play with the maximum try count.  Its argument
+<p>Option <strong>--maxtries</strong> allows you to play with the maximum try count.  Its argument
 onsists of 3 comma-separated values.  The following example sets the maximum 
 try counts to 3 for write-only exchanges, 6 for write-read exchanges, and 9 
 for multi-part exchanges.</p>
@@ -237,7 +296,7 @@ example changes only the maximum write-read try count:</p>
         <a href="../building/" class="btn btn-neutral float-right" title="Building From Source"/>Next <span class="icon icon-circle-arrow-right"></span></a>
       
       
-        <a href="../mccs_background/" class="btn btn-neutral" title="MCCS Terminology"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../cmdargs/" class="btn btn-neutral" title="Command Arguments"><span class="icon icon-circle-arrow-left"></span> Previous</a>
       
     </div>
   
@@ -265,7 +324,7 @@ example changes only the maximum write-read try count:</p>
           <a class="icon icon-github" style="float: left; color: #fcfcfc"> GitHub</a>
       
       
-        <span><a href="../mccs_background/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+        <span><a href="../cmdargs/" style="color: #fcfcfc;">&laquo; Previous</a></span>
       
       
         <span style="margin-left: 15px"><a href="../building/" style="color: #fcfcfc">Next &raquo;</a></span>
