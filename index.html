@@ -3,7 +3,10 @@
 <!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
 <head>
   <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="ddctool utility for reading and changing monitor settings">
+  <meta name="author" content="Sanford Rockowitz">
   
   <title>ddctool Documentation</title>
   
@@ -21,6 +24,8 @@
   <script>
     // Current page data
     var mkdocs_page_name = "None";
+    var mkdocs_page_input_path = "index.md";
+    var mkdocs_page_url = "/";
   </script>
   
   <script src="./js/jquery-2.1.1.min.js"></script>
@@ -85,6 +90,41 @@
             <li>
     <li class="toctree-l1 ">
         <a class="" href="cmdargs/">Command Arguments</a>
+        
+    </li>
+<li>
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="cmd_output/">Command Output Examples</a>
+        
+    </li>
+<li>
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="vcpinfo_output/">ddctool vcpinfo example</a>
+        
+    </li>
+<li>
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="detect_verbose_output/">ddctool detect example</a>
+        
+    </li>
+<li>
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="cap_u3011_verbose_output/">ddctool capabilities example</a>
+        
+    </li>
+<li>
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="getvcp_known_u3011_output/">ddctool getvcp example</a>
         
     </li>
 <li>
@@ -203,22 +243,24 @@
             <div class="section">
               
                 <h1 id="ddctool">ddctool</h1>
-<p>ddctool is a Linux program for querying and changing monitor settings, such as 
+<p><strong>ddctool</strong> is a Linux program for querying and changing monitor settings, such as 
 brightness and color levels.   </p>
-<p>ddctool uses DDC/CI (Display Data Channel Command Interface) to communicate with monitors implementing MCCS 
+<p><strong>ddctool</strong> uses DDC/CI (Display Data Channel Command Interface) to communicate with monitors implementing MCCS 
 (Monitor Control Command Set) over I2C.  Normally, the video driver for the
 monitor exposes the I2C channel as devices named /dev/i2c-n.  </p>
-<p>A particular use case for ddctool is as part of color profile management. Monitor
+<p>A particular use case for <strong>ddctool</strong> is as part of color profile management. Monitor
 calibration is relative to the monitor color settings currently in effect, 
 e.g. red gain.  ddctool allows color related settings to be saved at the time 
 a monitor is calibrated, and then restored when the calibration is applied.</p>
-<p>ddctool does not support monitors (such as Apple displays) that implement MCCS using a USB connection, 
+<p><strong>ddctool</strong> does not support monitors (such as Apple displays) that implement MCCS using a USB connection, 
 nor does it support laptop displays.  </p>
 <h2 id="command-overview">Command Overview</h2>
+<p><strong>ddctool</strong> is a command line program.  (A GUI user interface is on the TODO list.)  <strong>ddctool</strong> implements 
+the following subcommands:</p>
 <table>
 <thead>
 <tr>
-<th>Command</th>
+<th>Subcommand</th>
 <th>Function</th>
 </tr>
 </thead>
@@ -291,6 +333,13 @@ using any of the following options:</p>
 <pre><code>ddctool detect
 </code></pre>
 
+<h3 id="examples">Examples</h3>
+<ul>
+<li><a href="vcpinfo_output/">ddctool vcpinfo</a></li>
+<li><a href="detect_verbose_output/">ddctool detect</a></li>
+<li><a href="cap_u3011_verbose_output/">ddctool capabilities</a></li>
+<li><a href="getvcp_known_u3011_output/">ddctool getvcp</a></li>
+</ul>
 <h2 id="installing-ddctool-from-prebuilt-packages">Installing ddctool From Prebuilt Packages</h2>
 <p>Packages for recent openSUSE, Fedora, and Debian releases are available for download from the 
 <a href="http://software.opensuse.org/download.html?project=home%3Arockowitz&amp;package=ddctool">openSUSE build service</a></p>
@@ -342,7 +391,7 @@ will probe the I2C environment and may provide clues as to the problem.</p>
 </li>
 </ul>
 <h2 id="author">Author</h2>
-<p>Sanford Rockowitz  <a href="./&#109;&#97;&#105;&#108;&#116;&#111;&#58;&#114;&#111;&#99;&#107;&#111;&#119;&#105;&#116;&#122;&#64;&#109;&#105;&#110;&#115;&#111;&#102;&#116;&#46;&#99;&#111;&#109;">&#114;&#111;&#99;&#107;&#111;&#119;&#105;&#116;&#122;&#64;&#109;&#105;&#110;&#115;&#111;&#102;&#116;&#46;&#99;&#111;&#109;</a></p>
+<p>Sanford Rockowitz  <a href="&#109;&#97;&#105;&#108;&#116;&#111;&#58;&#114;&#111;&#99;&#107;&#111;&#119;&#105;&#116;&#122;&#64;&#109;&#105;&#110;&#115;&#111;&#102;&#116;&#46;&#99;&#111;&#109;">&#114;&#111;&#99;&#107;&#111;&#119;&#105;&#116;&#122;&#64;&#109;&#105;&#110;&#115;&#111;&#102;&#116;&#46;&#99;&#111;&#109;</a></p>
               
             </div>
           </div>
@@ -350,7 +399,7 @@ will probe the I2C environment and may provide clues as to the problem.</p>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="mccs_background/" class="btn btn-neutral float-right" title="MCCS Terminology"/>Next <span class="icon icon-circle-arrow-right"></span></a>
+        <a href="mccs_background/" class="btn btn-neutral float-right" title="MCCS Terminology">Next <span class="icon icon-circle-arrow-right"></span></a>
       
       
     </div>
@@ -376,7 +425,7 @@ will probe the I2C environment and may provide clues as to the problem.</p>
 <div class="rst-versions" role="note" style="cursor: pointer">
     <span class="rst-current-version" data-toggle="rst-current-version">
       
-          <a class="icon icon-github" style="float: left; color: #fcfcfc"> GitHub</a>
+          <a href="https://github.com/rockowitz/ddctool" class="icon icon-github" style="float: left; color: #fcfcfc"> GitHub</a>
       
       
       
@@ -389,6 +438,6 @@ will probe the I2C environment and may provide clues as to the problem.</p>
 </html>
 
 <!--
-MkDocs version : 0.14.0
-Build Date UTC : 2016-03-11 16:50:56.429179
+MkDocs version : 0.15.3
+Build Date UTC : 2016-03-17 20:55:15.877341
 -->

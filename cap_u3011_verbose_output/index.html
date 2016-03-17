@@ -8,7 +8,7 @@
   
   <meta name="author" content="Sanford Rockowitz">
   
-  <title>AMD fglrx Driver - ddctool Documentation</title>
+  <title>ddctool capabilities example - ddctool Documentation</title>
   
 
   <link rel="shortcut icon" href="../img/favicon.ico">
@@ -23,9 +23,9 @@
   
   <script>
     // Current page data
-    var mkdocs_page_name = "AMD fglrx Driver";
-    var mkdocs_page_input_path = "adl.md";
-    var mkdocs_page_url = "/adl/";
+    var mkdocs_page_name = "ddctool capabilities example";
+    var mkdocs_page_input_path = "cap_u3011_verbose_output.md";
+    var mkdocs_page_url = "/cap_u3011_verbose_output/";
   </script>
   
   <script src="../js/jquery-2.1.1.min.js"></script>
@@ -97,8 +97,12 @@
 <li>
           
             <li>
-    <li class="toctree-l1 ">
-        <a class="" href="../cap_u3011_verbose_output/">ddctool capabilities example</a>
+    <li class="toctree-l1 current">
+        <a class="current" href="./">ddctool capabilities example</a>
+        
+            <ul>
+            
+            </ul>
         
     </li>
 <li>
@@ -146,15 +150,8 @@
 <li>
           
             <li>
-    <li class="toctree-l1 current">
-        <a class="current" href="./">AMD fglrx Driver</a>
-        
-            <ul>
-            
-                <li class="toctree-l3"><a href="#building-with-adl-support">Building with ADL support</a></li>
-                
-            
-            </ul>
+    <li class="toctree-l1 ">
+        <a class="" href="../adl/">AMD fglrx Driver</a>
         
     </li>
 <li>
@@ -216,7 +213,7 @@
     
       
     
-    <li>AMD fglrx Driver</li>
+    <li>ddctool capabilities example</li>
     <li class="wy-breadcrumbs-aside">
       
         
@@ -230,33 +227,77 @@
           <div role="main">
             <div class="section">
               
-                <h2 id="building-with-adl-support">Building with ADL support</h2>
-<p>Special consideration is required if using AMD's proprietary driver (fglrx).
-This driver does not expose /dev/i2c-* devices.  Instead, the driver provides
-I2C communication with the montior through its API, known as the AMD Device Library (ADL).</p>
-<p>The ADL license does not allow its header files to be redistributed with the ddctool source. <br />
-Consequently, extra steps are required to build a copy of ddctool that supports fglrx monitors: </p>
-<ul>
-<li>Download the ADL SDK from <a href="http://developer.amd.com/tools-and-sdks/graphics-development/display-library-adl-sdk/">here</a>.</li>
-<li>Extract the following files (they will be found in various subdirectories).<br />
-  Copy them to some directory on your system: </li>
-</ul>
-<pre><code> adl_defines.h
- adl_sdk.h
- adl_structures.h
- mccs.h
-</code></pre>
+                <p>Below is the result of executing the <strong>ddctool capabilities</strong> command for a Dell U3011 monitor that <strong>ddctool</strong> has identified as display number 4.</p>
+<pre><code># ddctool capabilities --display 4 --verbose
 
-<ul>
-<li>When building ddctool from either the git source or tarball, execute configure as follows</li>
-</ul>
-<pre><code># ./configure --with-adl-headers=DIR
-</code></pre>
+Output level:               Verbose
+Reporting DDC data errors:  false
+Trace groups active:        none
 
-<p>where DIR is the name of the directory where you saved the ADL header files.</p>
-<p>Note: The license for the AMD Device Library (ADL) SDK library does allow for 
-incorporating its components in distributed executables.  In the future, binaries 
-distributed from this site will be built with ADL support. That is not currently the case.</p>
+Unparsed capabilities string: (prot(monitor)type(lcd)model(U3011)cmds(01 02 03 07 0C E3 F3)vcp(02 04 05 06 08 10 12 14(01 05 08 0B 0C) 16 18 1A 52 60(01 03 04 0C 0F 11 12) AC AE B2 B6 C6 C8 C9 D6(01 04 05) DC(00 02 03 04 05) DF FD)mccs_ver(2.1)mswhql(1))
+MCCS version: 2.1
+Commands:
+  Command: 01 (VCP Request)
+  Command: 02 (VCP Response)
+  Command: 03 (VCP Set)
+  Command: 07 (Timing Request)
+  Command: 0c (Save Settings)
+  Command: e3 (Capabilities Reply)
+  Command: f3 (Capabilities Request)
+VCP Features:
+  Feature: 02 (New control value)
+  Feature: 04 (Restore factory defaults)
+  Feature: 05 (Restore factory brightness/contrast defaults)
+  Feature: 06 (Restore factory geometry defaults)
+  Feature: 08 (Restore color defaults)
+  Feature: 10 (Brightness)
+  Feature: 12 (Contrast)
+  Feature: 14 (Select color preset)
+    Values (unparsed): 01 05 08 0B 0C
+    Values (  parsed):
+       01: sRGB
+       05: 6500 K
+       08: 9300 K
+       0b: User 1
+       0c: User 2
+  Feature: 16 (Video gain: Red)
+  Feature: 18 (Video gain: Green)
+  Feature: 1A (Video gain: Blue)
+  Feature: 52 (Active control)
+  Feature: 60 (Input Source)
+    Values (unparsed): 01 03 04 0C 0F 11 12
+    Values (  parsed):
+       01: VGA-1
+       03: DVI-1
+       04: DVI-2
+       0c: Component video (YPrPb/YCrCb) 1
+       0f: DisplayPort-1
+       11: HDMI-1
+       12: HDMI-2
+  Feature: AC (Horizontal frequency)
+  Feature: AE (Vertical frequency)
+  Feature: B2 (Flat panel sub-pixel layout)
+  Feature: B6 (Display technology type)
+  Feature: C6 (Application enable key)
+  Feature: C8 (Display controller type)
+  Feature: C9 (Display firmware level)
+  Feature: D6 (Power mode)
+    Values (unparsed): 01 04 05
+    Values (  parsed):
+       01: DPM: On,  DPMS: Off
+       04: DPM: Off, DPMS: Off
+       05: Write only value to turn off display
+  Feature: DC (Display Mode)
+    Values (unparsed): 00 02 03 04 05
+    Values (  parsed):
+       00: Standard/Default mode
+       02: Mixed
+       03: Movie
+       04: User defined
+       05: Games
+  Feature: DF (VCP Version)
+  Feature: FD (manufacturer specific feature)
+</code></pre>
               
             </div>
           </div>
@@ -264,10 +305,10 @@ distributed from this site will be built with ADL support. That is not currently
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../virtual_machines/" class="btn btn-neutral float-right" title="Virtual Machines">Next <span class="icon icon-circle-arrow-right"></span></a>
+        <a href="../getvcp_known_u3011_output/" class="btn btn-neutral float-right" title="ddctool getvcp example">Next <span class="icon icon-circle-arrow-right"></span></a>
       
       
-        <a href="../nvidia/" class="btn btn-neutral" title="Special Nvidia Driver Settings"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../detect_verbose_output/" class="btn btn-neutral" title="ddctool detect example"><span class="icon icon-circle-arrow-left"></span> Previous</a>
       
     </div>
   
@@ -295,10 +336,10 @@ distributed from this site will be built with ADL support. That is not currently
           <a href="https://github.com/rockowitz/ddctool" class="icon icon-github" style="float: left; color: #fcfcfc"> GitHub</a>
       
       
-        <span><a href="../nvidia/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+        <span><a href="../detect_verbose_output/" style="color: #fcfcfc;">&laquo; Previous</a></span>
       
       
-        <span style="margin-left: 15px"><a href="../virtual_machines/" style="color: #fcfcfc">Next &raquo;</a></span>
+        <span style="margin-left: 15px"><a href="../getvcp_known_u3011_output/" style="color: #fcfcfc">Next &raquo;</a></span>
       
     </span>
 </div>

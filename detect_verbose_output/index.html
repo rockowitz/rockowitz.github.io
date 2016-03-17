@@ -8,7 +8,7 @@
   
   <meta name="author" content="Sanford Rockowitz">
   
-  <title>AMD fglrx Driver - ddctool Documentation</title>
+  <title>ddctool detect example - ddctool Documentation</title>
   
 
   <link rel="shortcut icon" href="../img/favicon.ico">
@@ -23,9 +23,9 @@
   
   <script>
     // Current page data
-    var mkdocs_page_name = "AMD fglrx Driver";
-    var mkdocs_page_input_path = "adl.md";
-    var mkdocs_page_url = "/adl/";
+    var mkdocs_page_name = "ddctool detect example";
+    var mkdocs_page_input_path = "detect_verbose_output.md";
+    var mkdocs_page_url = "/detect_verbose_output/";
   </script>
   
   <script src="../js/jquery-2.1.1.min.js"></script>
@@ -90,8 +90,12 @@
 <li>
           
             <li>
-    <li class="toctree-l1 ">
-        <a class="" href="../detect_verbose_output/">ddctool detect example</a>
+    <li class="toctree-l1 current">
+        <a class="current" href="./">ddctool detect example</a>
+        
+            <ul>
+            
+            </ul>
         
     </li>
 <li>
@@ -146,15 +150,8 @@
 <li>
           
             <li>
-    <li class="toctree-l1 current">
-        <a class="current" href="./">AMD fglrx Driver</a>
-        
-            <ul>
-            
-                <li class="toctree-l3"><a href="#building-with-adl-support">Building with ADL support</a></li>
-                
-            
-            </ul>
+    <li class="toctree-l1 ">
+        <a class="" href="../adl/">AMD fglrx Driver</a>
         
     </li>
 <li>
@@ -216,7 +213,7 @@
     
       
     
-    <li>AMD fglrx Driver</li>
+    <li>ddctool detect example</li>
     <li class="wy-breadcrumbs-aside">
       
         
@@ -230,33 +227,106 @@
           <div role="main">
             <div class="section">
               
-                <h2 id="building-with-adl-support">Building with ADL support</h2>
-<p>Special consideration is required if using AMD's proprietary driver (fglrx).
-This driver does not expose /dev/i2c-* devices.  Instead, the driver provides
-I2C communication with the montior through its API, known as the AMD Device Library (ADL).</p>
-<p>The ADL license does not allow its header files to be redistributed with the ddctool source. <br />
-Consequently, extra steps are required to build a copy of ddctool that supports fglrx monitors: </p>
-<ul>
-<li>Download the ADL SDK from <a href="http://developer.amd.com/tools-and-sdks/graphics-development/display-library-adl-sdk/">here</a>.</li>
-<li>Extract the following files (they will be found in various subdirectories).<br />
-  Copy them to some directory on your system: </li>
-</ul>
-<pre><code> adl_defines.h
- adl_sdk.h
- adl_structures.h
- mccs.h
-</code></pre>
+                <p>The following example shows the output of <strong>ddctool detect</strong> command on a system with 4 monitors attached.</p>
+<pre><code># ddctool detect --verbose
 
-<ul>
-<li>When building ddctool from either the git source or tarball, execute configure as follows</li>
-</ul>
-<pre><code># ./configure --with-adl-headers=DIR
-</code></pre>
+Output level:               Verbose
+Reporting DDC data errors:  false
+Trace groups active:        none
 
-<p>where DIR is the name of the directory where you saved the ADL header files.</p>
-<p>Note: The license for the AMD Device Library (ADL) SDK library does allow for 
-incorporating its components in distributed executables.  In the future, binaries 
-distributed from this site will be built with ADL support. That is not currently the case.</p>
+Display 1
+   Bus:                 /dev/i2c-0
+   Supports DDC:        true
+   EDID synopsis:
+      Mfg id:           DEL
+      Model:            DELL P2411H
+      Serial number:    F8NDP11G119U
+      Manufacture year: 2011
+      EDID version:     1.3
+      EDID hex dump:
+        +0          +4          +8          +c            0   4   8   c   
++0000   00 ff ff ff ff ff ff 00 10 ac 6e a0 55 39 31 31   ..........n.U911
++0010   04 15 01 03 80 35 1e 78 ea bb 04 a1 59 55 9e 28   .....5.x....YU.(
++0020   0d 50 54 a5 4b 00 71 4f 81 80 d1 c0 01 01 01 01   .PT.K.qO........
++0030   01 01 01 01 01 01 02 3a 80 18 71 38 2d 40 58 2c   .......:..q8-@X,
++0040   45 00 13 2b 21 00 00 1e 00 00 00 ff 00 46 38 4e   E..+!........F8N
++0050   44 50 31 31 47 31 31 39 55 0a 00 00 00 fc 00 44   DP11G119U......D
++0060   45 4c 4c 20 50 32 34 31 31 48 0a 20 00 00 00 fd   ELL P2411H. ....
++0070   00 38 4c 1e 53 11 00 0a 20 20 20 20 20 20 00 63   .8L.S...      .c
+   VCP version:         2.1
+   Controller mfg:      Mstar
+   Firmware version:    1.1
+
+Display 2
+   Bus:                 /dev/i2c-3
+   Supports DDC:        true
+   EDID synopsis:
+      Mfg id:           ACI
+      Model:            VE247
+      Serial number:    AALMQS027787
+      Manufacture year: 2010
+      EDID version:     1.3
+      EDID hex dump:
+        +0          +4          +8          +c            0   4   8   c   
++0000   00 ff ff ff ff ff ff 00 04 69 93 24 01 01 01 01   .........i.$....
++0010   2c 14 01 03 80 35 1e 78 ea 2c c5 a4 56 50 a1 28   ,....5.x.,..VP.(
++0020   0f 50 54 bf ef 00 71 4f 81 80 81 40 95 00 a9 40   .PT...qO...@...@
++0030   b3 00 d1 c0 01 01 02 3a 80 18 71 38 2d 40 58 2c   .......:..q8-@X,
++0040   45 00 13 2b 21 00 00 1e 00 00 00 fd 00 32 4c 1e   E..+!........2L.
++0050   53 11 00 0a 20 20 20 20 20 20 00 00 00 fc 00 56   S...      .....V
++0060   45 32 34 37 0a 20 20 20 20 20 20 20 00 00 00 ff   E247.       ....
++0070   00 41 41 4c 4d 51 53 30 32 37 37 38 37 0a 00 9e   .AALMQS027787...
+   VCP version:         2.0
+   Controller mfg:      RealTek
+   Firmware version:    2.0
+
+Display 3
+   Bus:                 /dev/i2c-5
+   Supports DDC:        true
+   EDID synopsis:
+      Mfg id:           ACR
+      Model:            Acer X243W
+      Serial number:    LAG040064310
+      Manufacture year: 2007
+      EDID version:     1.3
+      EDID hex dump:
+        +0          +4          +8          +c            0   4   8   c   
++0000   00 ff ff ff ff ff ff 00 04 72 00 00 cf 12 60 74   .........r....`t
++0010   2e 11 01 03 80 34 20 78 2a ef 95 a3 54 4c 9b 26   .....4 x*...TL.&amp;
++0020   0f 50 54 a5 4b 00 81 80 81 00 81 0f 95 00 95 0f   .PT.K...........
++0030   a9 40 b3 00 01 01 28 3c 80 a0 70 b0 23 40 30 20   .@....(&lt;..p.#@0 
++0040   36 00 06 44 21 00 00 1a 00 00 00 fd 00 38 4c 1e   6..D!........8L.
++0050   52 11 00 0a 20 20 20 20 20 20 00 00 00 fc 00 41   R...      .....A
++0060   63 65 72 20 58 32 34 33 57 0a 20 20 00 00 00 ff   cer X243W.  ....
++0070   00 4c 41 47 30 34 30 30 36 34 33 31 30 0a 00 68   .LAG040064310..h
+   VCP version:         2.1
+   Controller mfg:      Mstar
+   Firmware version:    0.3
+
+Display 4
+   Bus:                 /dev/i2c-6
+   Supports DDC:        true
+   EDID synopsis:
+      Mfg id:           DEL
+      Model:            DELL U3011
+      Serial number:    PH5NY2CIANXL
+      Manufacture year: 2012
+      EDID version:     1.4
+      EDID hex dump:
+        +0          +4          +8          +c            0   4   8   c   
++0000   00 ff ff ff ff ff ff 00 10 ac 65 40 4c 58 4e 41   ..........e@LXNA
++0010   33 16 01 04 b5 40 28 78 3a 8d 85 ad 4f 35 b1 25   3....@(x:...O5.%
++0020   0e 50 54 a5 4b 00 71 4f 81 00 81 80 a9 40 d1 00   .PT.K.qO.....@..
++0030   d1 40 01 01 01 01 e2 68 00 a0 a0 40 2e 60 30 20   .@.....h...@.`0 
++0040   36 00 81 91 21 00 00 1a 00 00 00 ff 00 50 48 35   6...!........PH5
++0050   4e 59 32 43 49 41 4e 58 4c 0a 00 00 00 fc 00 44   NY2CIANXL......D
++0060   45 4c 4c 20 55 33 30 31 31 0a 20 20 00 00 00 fd   ELL U3011.  ....
++0070   00 31 56 1d 71 1c 00 0a 20 20 20 20 20 20 01 56   .1V.q...      .V
+   VCP version:         2.1
+   Controller mfg:      Mstar
+   Firmware version:    1.5
+
+</code></pre>
               
             </div>
           </div>
@@ -264,10 +334,10 @@ distributed from this site will be built with ADL support. That is not currently
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../virtual_machines/" class="btn btn-neutral float-right" title="Virtual Machines">Next <span class="icon icon-circle-arrow-right"></span></a>
+        <a href="../cap_u3011_verbose_output/" class="btn btn-neutral float-right" title="ddctool capabilities example">Next <span class="icon icon-circle-arrow-right"></span></a>
       
       
-        <a href="../nvidia/" class="btn btn-neutral" title="Special Nvidia Driver Settings"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../vcpinfo_output/" class="btn btn-neutral" title="ddctool vcpinfo example"><span class="icon icon-circle-arrow-left"></span> Previous</a>
       
     </div>
   
@@ -295,10 +365,10 @@ distributed from this site will be built with ADL support. That is not currently
           <a href="https://github.com/rockowitz/ddctool" class="icon icon-github" style="float: left; color: #fcfcfc"> GitHub</a>
       
       
-        <span><a href="../nvidia/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+        <span><a href="../vcpinfo_output/" style="color: #fcfcfc;">&laquo; Previous</a></span>
       
       
-        <span style="margin-left: 15px"><a href="../virtual_machines/" style="color: #fcfcfc">Next &raquo;</a></span>
+        <span style="margin-left: 15px"><a href="../cap_u3011_verbose_output/" style="color: #fcfcfc">Next &raquo;</a></span>
       
     </span>
 </div>

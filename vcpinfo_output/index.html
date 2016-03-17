@@ -1,0 +1,1241 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <meta name="author" content="Sanford Rockowitz">
+  
+  <title>ddctool vcpinfo example - ddctool Documentation</title>
+  
+
+  <link rel="shortcut icon" href="../img/favicon.ico">
+
+  
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="../css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../css/theme_extra.css" type="text/css" />
+  <link rel="stylesheet" href="../css/highlight.css">
+
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "ddctool vcpinfo example";
+    var mkdocs_page_input_path = "vcpinfo_output.md";
+    var mkdocs_page_url = "/vcpinfo_output/";
+  </script>
+  
+  <script src="../js/jquery-2.1.1.min.js"></script>
+  <script src="../js/modernizr-2.8.3.min.js"></script>
+  <script type="text/javascript" src="../js/highlight.pack.js"></script>
+  <script src="../js/theme.js"></script> 
+
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+      <div class="wy-side-nav-search">
+        <a href=".." class="icon icon-home"> ddctool Documentation</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+        <ul class="current">
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="..">Overview</a>
+        
+    </li>
+<li>
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="../mccs_background/">MCCS Terminology</a>
+        
+    </li>
+<li>
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="../cmdargs/">Command Arguments</a>
+        
+    </li>
+<li>
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="../cmd_output/">Command Output Examples</a>
+        
+    </li>
+<li>
+          
+            <li>
+    <li class="toctree-l1 current">
+        <a class="current" href="./">ddctool vcpinfo example</a>
+        
+            <ul>
+            
+            </ul>
+        
+    </li>
+<li>
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="../detect_verbose_output/">ddctool detect example</a>
+        
+    </li>
+<li>
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="../cap_u3011_verbose_output/">ddctool capabilities example</a>
+        
+    </li>
+<li>
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="../getvcp_known_u3011_output/">ddctool getvcp example</a>
+        
+    </li>
+<li>
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="../tuning/">Instrumentation and Tuning</a>
+        
+    </li>
+<li>
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="../building/">Building From Source</a>
+        
+    </li>
+<li>
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="../i2c_permissions/">/dev/i2c Permissions</a>
+        
+    </li>
+<li>
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="../kernel_module/">Kernel Module Configuration</a>
+        
+    </li>
+<li>
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="../nvidia/">Special Nvidia Driver Settings</a>
+        
+    </li>
+<li>
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="../adl/">AMD fglrx Driver</a>
+        
+    </li>
+<li>
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="../virtual_machines/">Virtual Machines</a>
+        
+    </li>
+<li>
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="../ddccontrol/">Comparison with ddccontrol</a>
+        
+    </li>
+<li>
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="../todo/">Future Tasks</a>
+        
+    </li>
+<li>
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="../feedback/">Feedback</a>
+        
+    </li>
+<li>
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="../bibliography/">References</a>
+        
+    </li>
+<li>
+          
+        </ul>
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="..">ddctool Documentation</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="..">Docs</a> &raquo;</li>
+    
+      
+    
+    <li>ddctool vcpinfo example</li>
+    <li class="wy-breadcrumbs-aside">
+      
+        
+          <a href="https://github.com/rockowitz/ddctool" class="icon icon-github"> Edit on GitHub</a>
+        
+      
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <p>The following example reports <strong>ddctool</strong>'s internal table of VCP Feature definitions.</p>
+<pre><code># ddctool vcpinfo
+
+VCP code 01: Degauss
+   Causes a CRT to perform a degauss cycle
+   MCCS versions: 2.0, 2.1, 3.0, 2.2
+   MCCS specification groups: Miscellaneous
+   ddctool feature subsets: CRT
+   Attributes: Write Only, Non-Continuous (write-only)
+VCP code 02: New control value
+   Indicates that a display user control (other than power) has been used to change and save (or autosave) a new value.
+   MCCS versions: 2.0, 2.1, 3.0, 2.2
+   MCCS specification groups: Miscellaneous
+   ddctool feature subsets: 
+   Attributes: Read Write, Non-Continuous (complex)
+VCP code 03: Soft controls
+   Allows display controls to be used as soft keys
+   MCCS versions: 2.0, 2.1, 3.0, 2.2
+   MCCS specification groups: Miscellaneous
+   ddctool feature subsets: 
+   Attributes: Read Write, Non-Continuous (simple)
+VCP code 04: Restore factory defaults
+   Restore all factor presets including brightness/contrast, geometry, color, and TV defaults.
+   MCCS versions: 2.0, 2.1, 3.0, 2.2
+   MCCS specification groups: Preset
+   ddctool feature subsets: COLOR
+   Attributes: Write Only, Non-Continuous (write-only)
+VCP code 05: Restore factory brightness/contrast defaults
+   Restore factory defaults for brightness and contrast
+   MCCS versions: 2.0, 2.1, 3.0, 2.2
+   MCCS specification groups: Preset
+   ddctool feature subsets: COLOR
+   Attributes: Write Only, Non-Continuous (write-only)
+VCP code 06: Restore factory geometry defaults
+   Restore factory defaults for geometry adjustments
+   MCCS versions: 2.0, 2.1, 3.0, 2.2
+   MCCS specification groups: Preset
+   ddctool feature subsets: 
+   Attributes: Write Only, Non-Continuous (write-only)
+VCP code 08: Restore color defaults
+   Restore factory defaults for color settings.
+   MCCS versions: 2.0, 2.1, 3.0, 2.2
+   MCCS specification groups: Preset
+   ddctool feature subsets: COLOR
+   Attributes: Write Only, Non-Continuous (write-only)
+VCP code 0A: Restore factory TV defaults
+   Restore factory defaults for TV functions.
+   MCCS versions: 2.0, 2.1, 3.0, 2.2
+   MCCS specification groups: Preset
+   ddctool feature subsets: TV
+   Attributes: Write Only, Non-Continuous (write-only)
+VCP code 0B: Color temperature increment
+   Color temperature increment used by feature 0Ch Color Temperature Request
+   MCCS versions: 2.0, 2.1, 3.0, 2.2
+   MCCS specification groups: Image
+   ddctool feature subsets: COLOR
+   Attributes: Read Only, Non-Continuous (complex)
+VCP code 0C: Color temperature request
+   Specifies a color temperature (degrees Kelvin)
+   MCCS versions: 2.0, 2.1, 3.0, 2.2
+   MCCS specification groups: Image
+   ddctool feature subsets: COLOR
+   Attributes: Read Write, Continuous (complex)
+VCP code 0E: Clock
+   Increase/decrease the sampling clock frequency.
+   MCCS versions: 2.0, 2.1, 3.0, 2.2
+   MCCS specification groups: Image
+   ddctool feature subsets: 
+   Attributes: Read Write, Continuous (standard)
+VCP code 10: Brightness
+   Increase/decrease the brightness of the image.
+   MCCS versions: 2.0, 2.1, 3.0, 2.2
+   MCCS specification groups: Image
+   ddctool feature subsets: PROFILE, COLOR
+   Attributes: Read Write, Continuous (standard)
+VCP code 11: Flesh tone enhancement
+   Select contrast enhancement algorithm respecting flesh tone region
+   MCCS versions: 2.1, 3.0, 2.2
+   MCCS specification groups: Image
+   ddctool feature subsets: COLOR
+   Attributes: Read Write, Non-Continuous (complex)
+VCP code 12: Contrast
+   Increase/decrease the contrast of the image.
+   MCCS versions: 2.0, 2.1, 3.0, 2.2
+   MCCS specification groups: Image
+   ddctool feature subsets: PROFILE, COLOR
+   Attributes: Read Write, Continuous (standard)
+VCP code 13: Backlight control
+   Increase/decrease the specified backlight control value
+   MCCS versions: 2.1, 3.0
+   MCCS specification groups: Image
+   ddctool feature subsets: PROFILE, COLOR
+   Attributes (v2.1): Read Write, Continuous (complex)
+   Attributes (v3.0): Read Write, Continuous (complex)
+   Attributes (v2.2): Deprecated
+VCP code 14: Select color preset
+   Select a specified color temperature
+   MCCS versions: 2.0, 2.1, 3.0, 2.2
+   MCCS specification groups: Image
+   ddctool feature subsets: PROFILE, COLOR
+   Attributes (v2.0): Read Write, Non-Continuous (simple)
+   Attributes (v2.1): Read Write, Non-Continuous (simple)
+   Attributes (v3.0): Read Write, Non-Continuous (complex)
+   Attributes (v2.2): Read Write, Non-Continuous (complex)
+VCP code 16: Video gain: Red
+   Increase/decrease the luminesence of red pixels
+   MCCS versions: 2.0, 2.1, 3.0, 2.2
+   MCCS specification groups: Image
+   ddctool feature subsets: PROFILE, COLOR
+   Attributes: Read Write, Continuous (standard)
+VCP code 17: User color vision compensation
+   Increase/decrease the degree of compensation
+   MCCS versions: 2.1, 3.0, 2.2
+   MCCS specification groups: Image
+   ddctool feature subsets: COLOR
+   Attributes: Read Write, Continuous (standard)
+VCP code 18: Video gain: Green
+   Increase/decrease the luminesence of green pixels
+   MCCS versions: 2.0, 2.1, 3.0, 2.2
+   MCCS specification groups: Image
+   ddctool feature subsets: PROFILE, COLOR
+   Attributes: Read Write, Continuous (standard)
+VCP code 1A: Video gain: Blue
+   Increase/decrease the luminesence of blue pixels
+   MCCS versions: 2.0, 2.1, 3.0, 2.2
+   MCCS specification groups: Image
+   ddctool feature subsets: PROFILE, COLOR
+   Attributes: Read Write, Continuous (standard)
+VCP code 1C: Focus
+   Increase/decrease the focus of the image
+   MCCS versions: 2.0, 2.1, 3.0, 2.2
+   MCCS specification groups: Image
+   ddctool feature subsets: 
+   Attributes: Read Write, Continuous (standard)
+VCP code 1E: Auto setup
+   Perform autosetup function (H/V position, clock, clock phase, A/D converter, etc.
+   MCCS versions: 2.0, 2.1, 3.0, 2.2
+   MCCS specification groups: Image
+   ddctool feature subsets: 
+   Attributes: Read Write, Non-Continuous (simple)
+VCP code 1F: Auto color setup
+   Perform color autosetup function (R/G/B gain and offset, A/D setup, etc. 
+   MCCS versions: 2.1, 3.0, 2.2
+   MCCS specification groups: Image
+   ddctool feature subsets: COLOR
+   Attributes: Read Write, Non-Continuous (simple)
+VCP code 20: Horizontal Position (Phase)
+   Increasing (decreasing) this value moves the image toward the right (left) of the display.
+   MCCS versions: 2.0, 2.1, 3.0, 2.2
+   MCCS specification groups: Geometry
+   ddctool feature subsets: CRT
+   Attributes: Read Write, Continuous (standard)
+VCP code 22: Horizontal Size
+   Increase/decrease the width of the image.
+   MCCS versions: 2.0, 2.1, 3.0, 2.2
+   MCCS specification groups: Geometry
+   ddctool feature subsets: CRT
+   Attributes: Read Write, Continuous (standard)
+VCP code 24: Horizontal Pincushion
+   Increasing (decreasing) this value causes the right and left sides of the image to become more (less) convex.
+   MCCS versions: 2.0, 2.1, 3.0, 2.2
+   MCCS specification groups: Geometry
+   ddctool feature subsets: CRT
+   Attributes: Read Write, Continuous (standard)
+VCP code 26: Horizontal Pincushion Balance
+   Increasing (decreasing) this value moves the center section of the image toward the right (left) side of the display.
+   MCCS versions: 2.0, 2.1, 3.0, 2.2
+   MCCS specification groups: Geometry
+   ddctool feature subsets: CRT
+   Attributes: Read Write, Continuous (standard)
+VCP code 28: Horizontal Convergence R/B
+   Increasing (decreasing) this value shifts the red pixels to the right (left) and the blue pixels left (right) across the image with respect to the green pixels.
+   MCCS versions: 2.0, 2.1, 3.0, 2.2
+   MCCS specification groups: Geometry
+   ddctool feature subsets: CRT
+   Attributes: Read Write, Continuous (standard)
+VCP code 29: Horizontal Convergence M/G
+   Increasing (decreasing) this value shifts the magenta pixels to the right (left) and the green pixels left (right) across the image with respect to the magenta (sic) pixels.
+   MCCS versions: 2.1, 3.0, 2.2
+   MCCS specification groups: Geometry
+   ddctool feature subsets: CRT
+   Attributes: Read Write, Continuous (standard)
+VCP code 2A: Horizontal Linearity
+   Increase/decrease the density of pixels in the image center.
+   MCCS versions: 2.0, 2.1, 3.0, 2.2
+   MCCS specification groups: Geometry
+   ddctool feature subsets: CRT
+   Attributes: Read Write, Continuous (standard)
+VCP code 2C: Horizontal Linearity Balance
+   Increasing (decreasing) this value shifts the density of pixels from the left (right) side to the right (left) side of the image.
+   MCCS versions: 2.0, 2.1, 3.0, 2.2
+   MCCS specification groups: Geometry
+   ddctool feature subsets: CRT
+   Attributes: Read Write, Continuous (standard)
+VCP code 2E: Gray scale expansion
+   Gray Scale Expansion
+   MCCS versions: 2.1, 3.0, 2.2
+   MCCS specification groups: Image
+   ddctool feature subsets: COLOR
+   Attributes: Read Write, Non-Continuous (complex)
+VCP code 30: Vertical Position (Phase)
+   Increasing (decreasing) this value moves the image toward the top (bottom) edge of the display.
+   MCCS versions: 2.0, 2.1, 3.0, 2.2
+   MCCS specification groups: Geometry
+   ddctool feature subsets: CRT
+   Attributes: Read Write, Continuous (standard)
+VCP code 32: Vertical Size
+   Increase/decreasing the height of the image.
+   MCCS versions: 2.0, 2.1, 3.0, 2.2
+   MCCS specification groups: Geometry
+   ddctool feature subsets: CRT
+   Attributes: Read Write, Continuous (standard)
+VCP code 34: Vertical Pincushion
+   Increasing (decreasing) this value will cause the top and bottom edges of the image to become more (less) convex.
+   MCCS versions: 2.0, 2.1, 3.0, 2.2
+   MCCS specification groups: Geometry
+   ddctool feature subsets: CRT
+   Attributes: Read Write, Continuous (standard)
+VCP code 36: Vertical Pincushion Balance
+   Increasing (decreasing) this value will move the center section of the image toward the top (bottom) edge of the display.
+   MCCS versions: 2.0, 2.1, 3.0, 2.2
+   MCCS specification groups: Geometry
+   ddctool feature subsets: CRT
+   Attributes: Read Write, Continuous (standard)
+VCP code 38: Vertical Convergence R/B
+   Increasing (decreasing) this value shifts the red pixels up (down) across the image and the blue pixels down (up) across the image with respect to the green pixels.
+   MCCS versions: 2.0, 2.1, 3.0, 2.2
+   MCCS specification groups: Geometry
+   ddctool feature subsets: CRT
+   Attributes: Read Write, Continuous (standard)
+VCP code 39: Vertical Convergence M/G
+   Increasing (decreasing) this value shifts the magenta pixels up (down) across the image and the green pixels down (up) across the image with respect to the magenta (sic) pixels.
+   MCCS versions: 2.1, 3.0, 2.2
+   MCCS specification groups: Geometry
+   ddctool feature subsets: CRT
+   Attributes: Read Write, Continuous (standard)
+VCP code 3A: Vertical Linearity
+   Increase/decease the density of scan lines in the image center.
+   MCCS versions: 2.0, 2.1, 3.0, 2.2
+   MCCS specification groups: Geometry
+   ddctool feature subsets: CRT
+   Attributes: Read Write, Continuous (standard)
+VCP code 3C: Vertical Linearity Balance
+   Increase/decrease the density of scan lines in the image center.
+   MCCS versions: 2.0, 2.1, 3.0, 2.2
+   MCCS specification groups: Geometry
+   ddctool feature subsets: CRT
+   Attributes: Read Write, Continuous (standard)
+VCP code 3E: Clock phase
+   Increase/decrease the sampling clock phase shift
+   MCCS versions: 2.0, 2.1, 3.0, 2.2
+   MCCS specification groups: Image, Miscellaneous
+   ddctool feature subsets: 
+   Attributes: Read Write, Continuous (standard)
+VCP code 40: Horizontal Parallelogram
+   Increasing (decreasing) this value shifts the top section of the image to the right (left) with respect to the bottom section of the image.
+   MCCS versions: 2.0, 2.1, 3.0, 2.2
+   MCCS specification groups: Geometry
+   ddctool feature subsets: CRT
+   Attributes: Read Write, Continuous (standard)
+VCP code 41: Vertical Parallelogram
+   Increasing (decreasing) this value shifts the top section of the image to the right (left) with respect to the bottom section of the image. (sic)
+   MCCS versions: 2.1, 3.0, 2.2
+   MCCS specification groups: Geometry
+   ddctool feature subsets: CRT
+   Attributes: Read Write, Continuous (standard)
+VCP code 42: Horizontal Keystone
+   Increasing (decreasing) this value will increase (decrease) the ratio between the horizontal size at the top of the image and the horizontal size at the bottom of the image.
+   MCCS versions: 2.0, 2.1, 3.0, 2.2
+   MCCS specification groups: Geometry
+   ddctool feature subsets: CRT
+   Attributes: Read Write, Continuous (standard)
+VCP code 43: Vertical Keystone
+   Increasing (decreasing) this value will increase (decrease) the ratio between the vertical size at the left of the image and the vertical size at the right of the image.
+   MCCS versions: 2.0, 2.1, 3.0, 2.2
+   MCCS specification groups: Geometry
+   ddctool feature subsets: CRT
+   Attributes: Read Write, Continuous (standard)
+VCP code 44: Rotation
+   Increasing (decreasing) this value rotates the image (counter) clockwise around the center point of the screen.
+   MCCS versions: 2.0, 2.1, 3.0, 2.2
+   MCCS specification groups: Geometry
+   ddctool feature subsets: CRT
+   Attributes: Read Write, Continuous (standard)
+VCP code 46: Top Corner Flare
+   Increase/decrease the distance between the left and right sides at the top of the image.
+   MCCS versions: 2.0, 2.1, 3.0, 2.2
+   MCCS specification groups: Geometry
+   ddctool feature subsets: CRT
+   Attributes: Read Write, Continuous (standard)
+VCP code 48: Top Corner Hook
+   Increasing (decreasing) this value moves the top of the image to the right (left).
+   MCCS versions: 2.0, 2.1, 3.0, 2.2
+   MCCS specification groups: Geometry
+   ddctool feature subsets: CRT
+   Attributes: Read Write, Continuous (standard)
+VCP code 4A: Bottom Corner Flare
+   Increase/decrease the distance between the left and right sides at the bottom of the image.
+   MCCS versions: 2.0, 2.1, 3.0, 2.2
+   MCCS specification groups: Geometry
+   ddctool feature subsets: CRT
+   Attributes: Read Write, Continuous (standard)
+VCP code 4C: Bottom Corner Hook
+   Increasing (decreasing) this value moves the bottom end of the image to the right (left).
+   MCCS versions: 2.0, 2.1, 3.0, 2.2
+   MCCS specification groups: Geometry
+   ddctool feature subsets: CRT
+   Attributes: Read Write, Continuous (standard)
+VCP code 52: Active control
+   Read id of one feature that has changed, 0x00 indicates no more
+   MCCS versions: 2.0, 2.1, 3.0, 2.2
+   MCCS specification groups: Miscellaneous
+   ddctool feature subsets: 
+   Attributes: Read Only, Non-Continuous (complex)
+VCP code 54: Performance Preservation
+   Controls features aimed at preserving display performance
+   MCCS versions: 2.1, 3.0, 2.2
+   MCCS specification groups: Miscellaneous
+   ddctool feature subsets: 
+   Attributes: Read Write, Non-Continuous (complex)
+VCP code 56: Horizontal Moire
+   Increase/decrease horizontal moire cancellation.
+   MCCS versions: 2.0, 2.1, 3.0, 2.2
+   MCCS specification groups: Image
+   ddctool feature subsets: 
+   Attributes: Read Write, Continuous (standard)
+VCP code 58: Vertical Moire
+   Increase/decrease vertical moire cancellation.
+   MCCS versions: 2.0, 2.1, 3.0, 2.2
+   MCCS specification groups: Image
+   ddctool feature subsets: 
+   Attributes: Read Write, Continuous (standard)
+VCP code 59: 6 axis saturation: Red
+   Increase/decrease red saturation
+   MCCS versions: 2.1, 3.0, 2.2
+   MCCS specification groups: Image
+   ddctool feature subsets: COLOR
+   Attributes: Read Write, Continuous (standard)
+VCP code 5A: 6 axis saturation: Yellow
+   Increase/decrease yellow saturation
+   MCCS versions: 2.1, 3.0, 2.2
+   MCCS specification groups: Image
+   ddctool feature subsets: COLOR
+   Attributes: Read Write, Continuous (standard)
+VCP code 5B: 6 axis saturation: Green
+   Increase/decrease green saturation
+   MCCS versions: 2.1, 3.0, 2.2
+   MCCS specification groups: Image
+   ddctool feature subsets: COLOR
+   Attributes: Read Write, Continuous (standard)
+VCP code 5C: 6 axis saturation: Cyan
+   Increase/decrease cyan saturation
+   MCCS versions: 2.1, 3.0, 2.2
+   MCCS specification groups: Image
+   ddctool feature subsets: COLOR
+   Attributes: Read Write, Continuous (standard)
+VCP code 5D: 6 axis saturation: Blue
+   Increase/decrease blue saturation
+   MCCS versions: 2.1, 3.0, 2.2
+   MCCS specification groups: Image
+   ddctool feature subsets: COLOR
+   Attributes: Read Write, Continuous (standard)
+VCP code 5E: 6 axis saturation: Magenta
+   Increase/decrease magenta saturation
+   MCCS versions: 2.1, 3.0, 2.2
+   MCCS specification groups: Image
+   ddctool feature subsets: COLOR
+   Attributes: Read Write, Continuous (standard)
+VCP code 60: Input Source
+   Selects active video source
+   MCCS versions: 2.0, 2.1, 3.0, 2.2
+   MCCS specification groups: Miscellaneous
+   ddctool feature subsets: 
+   Attributes (v2.0): Read Write, Non-Continuous (simple)
+   Attributes (v2.1): Read Write, Non-Continuous (simple)
+   Attributes (v3.0): Read Write, Table
+   Attributes (v2.2): Read Write, Non-Continuous (simple)
+VCP code 62: Audio speaker volume
+   Adjusts speaker volume
+   MCCS versions: 2.0, 2.1, 3.0, 2.2
+   MCCS specification groups: Audio
+   ddctool feature subsets: AUDIO
+   Attributes (v2.0): Read Write, Continuous (standard)
+   Attributes (v2.1): Read Write, Continuous (standard)
+   Attributes (v3.0): Read Write, Continuous (complex)
+   Attributes (v2.2): Read Write, Continuous (standard)
+VCP code 63: Speaker Select
+   Selects a group of speakers
+   MCCS versions: 2.1, 3.0, 2.2
+   MCCS specification groups: Audio
+   ddctool feature subsets: AUDIO
+   Attributes: Read Write, Non-Continuous (simple)
+VCP code 64: Audio: Microphone Volume
+   Increase/decrease microphone gain
+   MCCS versions: 2.0, 2.1, 3.0, 2.2
+   MCCS specification groups: Audio
+   ddctool feature subsets: AUDIO
+   Attributes: Read Write, Continuous (standard)
+VCP code 66: Ambient light sensor
+   Enable/Disable ambient light sensor
+   MCCS versions: 2.1, 3.0, 2.2
+   MCCS specification groups: Miscellaneous
+   ddctool feature subsets: 
+   Attributes: Read Write, Non-Continuous (simple)
+VCP code 6B: Backlight Level: White
+   Increase/decrease the white backlight level
+   MCCS versions: 2.2
+   MCCS specification groups: Image
+   ddctool feature subsets: PROFILE, COLOR
+   Attributes: Read Write, Continuous (standard)
+VCP code 6C: Video black level: Red
+   Increase/decrease the black level of red pixels
+   MCCS versions: 2.0, 2.1, 3.0, 2.2
+   MCCS specification groups: Image
+   ddctool feature subsets: PROFILE, COLOR
+   Attributes: Read Write, Continuous (standard)
+VCP code 6D: Backlight Level: Red
+   Increase/decrease the red backlight level
+   MCCS versions: 2.2
+   MCCS specification groups: Image
+   ddctool feature subsets: PROFILE, COLOR
+   Attributes: Read Write, Continuous (standard)
+VCP code 6E: Video black level: Green
+   Increase/decrease the black level of green pixels
+   MCCS versions: 2.0, 2.1, 3.0, 2.2
+   MCCS specification groups: Image
+   ddctool feature subsets: PROFILE, COLOR
+   Attributes: Read Write, Continuous (standard)
+VCP code 6F: Backlight Level: Green
+   Increase/decrease the green backlight level
+   MCCS versions: 2.2
+   MCCS specification groups: Image
+   ddctool feature subsets: PROFILE, COLOR
+   Attributes: Read Write, Continuous (standard)
+VCP code 70: Video black level: Blue
+   Increase/decrease the black level of blue pixels
+   MCCS versions: 2.0, 2.1, 3.0, 2.2
+   MCCS specification groups: Image
+   ddctool feature subsets: PROFILE, COLOR
+   Attributes: Read Write, Continuous (standard)
+VCP code 71: Backlight Level: Blue
+   Increase/decrease the blue backlight level
+   MCCS versions: 2.2
+   MCCS specification groups: Image
+   ddctool feature subsets: PROFILE, COLOR
+   Attributes: Read Write, Continuous (standard)
+VCP code 72: Gamma
+   Select relative or absolute gamma
+   MCCS versions: 2.1, 3.0, 2.2
+   MCCS specification groups: Image
+   ddctool feature subsets: COLOR
+   Attributes: Read Write, Non-Continuous (complex)
+VCP code 73: LUT Size
+   Provides the size (number of entries and number of bits/entry) for the Red, Green, and Blue LUT in the display.
+   MCCS versions: 2.0, 2.1, 3.0, 2.2
+   MCCS specification groups: Image, Miscellaneous
+   ddctool feature subsets: LUT
+   Attributes: Read Only, Table
+VCP code 74: Single point LUT operation
+   Writes a single point within the display's LUT, reads a single point from the LUT
+   MCCS versions: 2.0, 2.1, 3.0, 2.2
+   MCCS specification groups: Image, Miscellaneous
+   ddctool feature subsets: LUT
+   Attributes: Read Write, Table
+VCP code 75: Block LUT operation
+   Load (read) multiple values into (from) the display's LUT
+   MCCS versions: 2.0, 2.1, 3.0, 2.2
+   MCCS specification groups: Image, Miscellaneous
+   ddctool feature subsets: LUT
+   Attributes: Read Write, Table
+VCP code 76: Remote Procedure Call
+   Initiates a routine resident in the display
+   MCCS versions: 2.0, 2.1, 3.0, 2.2
+   MCCS specification groups: Miscellaneous
+   ddctool feature subsets: LUT
+   Attributes: Write Only, Table
+VCP code 78: Display Identification Operation
+   Causes a selected 128 byte block of Display Identification Data (EDID or Display ID) to be read
+   MCCS versions: 2.1, 3.0, 2.2
+   MCCS specification groups: Miscellaneous
+   ddctool feature subsets: 
+   Attributes (v2.1): Read Only, Table
+   Attributes (v3.0): Read Only, Table
+   Attributes (v2.2): Read Only, Table
+VCP code 7A: Adjust Focal Plane
+   Increase/decrease the distance to the focal plane of the image
+   MCCS versions: 2.0, 2.1
+   MCCS specification groups: Image
+   ddctool feature subsets: 
+   Attributes (v2.0): Read Write, Continuous (standard)
+   Attributes (v2.1): Read Write, Continuous (standard)
+   Attributes (v3.0): Deprecated
+   Attributes (v2.2): Deprecated
+VCP code 7C: Adjust Zoom
+   Increase/decrease the distance to the zoom function of the projection lens (optics)
+   MCCS versions: 2.0, 2.1, 3.0, 2.2
+   MCCS specification groups: Image
+   ddctool feature subsets: 
+   Attributes: Read Write, Continuous (standard)
+VCP code 7E: Trapezoid
+   Increase/decrease the trapezoid distortion in the image
+   MCCS versions: 2.0, 2.1
+   MCCS specification groups: Geometry
+   ddctool feature subsets: CRT
+   Attributes (v2.0): Read Write, Continuous (standard)
+   Attributes (v2.1): Read Write, Continuous (standard)
+   Attributes (v3.0): Deprecated
+   Attributes (v2.2): Deprecated
+VCP code 80: Keystone
+   Increase/decrease the keystone distortion in the image.
+   MCCS versions: 2.0
+   MCCS specification groups: Geometry
+   ddctool feature subsets: CRT
+   Attributes (v2.0): Read Write, Continuous (standard)
+   Attributes (v2.1): Deprecated
+   Attributes (v3.0): Deprecated
+   Attributes (v2.2): Deprecated
+VCP code 82: Horizontal Mirror (Flip)
+   Flip picture horizontally
+   MCCS versions: 2.0, 2.1, 3.0, 2.2
+   MCCS specification groups: Image, Geometry
+   ddctool feature subsets: 
+   Attributes (v2.0): Write Only, Non-Continuous (write-only)
+   Attributes (v2.1): Read Write, Non-Continuous (simple)
+   Attributes (v3.0): Read Write, Non-Continuous (simple)
+   Attributes (v2.2): Read Write, Non-Continuous (simple)
+VCP code 84: Vertical Mirror (Flip)
+   Flip picture vertically
+   MCCS versions: 2.0, 2.1, 3.0, 2.2
+   MCCS specification groups: Image, Geometry
+   ddctool feature subsets: 
+   Attributes (v2.0): Write Only, Non-Continuous (write-only)
+   Attributes (v2.1): Read Write, Non-Continuous (simple)
+   Attributes (v3.0): Read Write, Non-Continuous (simple)
+   Attributes (v2.2): Read Write, Non-Continuous (simple)
+VCP code 86: Display Scaling
+   Control the scaling (input vs output) of the display
+   MCCS versions: 2.0, 2.1, 3.0, 2.2
+   MCCS specification groups: Image
+   ddctool feature subsets: 
+   Attributes: Read Write, Non-Continuous (simple)
+VCP code 87: Sharpness
+   Selects one of a range of algorithms. Increasing (decreasing) the value must increase (decrease) the edge sharpness of image features.
+   MCCS versions: 2.0, 2.1, 3.0, 2.2
+   MCCS specification groups: Image
+   ddctool feature subsets: 
+   Attributes (v2.0): Read Write, Non-Continuous (simple)
+   Attributes (v2.1): Read Write, Continuous (standard)
+   Attributes (v3.0): Read Write, Continuous (standard)
+   Attributes (v2.2): Read Write, Continuous (standard)
+VCP code 88: Velocity Scan Modulation
+   Increase (decrease) the velocity modulation of the horizontal scan as a function of the change in luminescence level
+   MCCS versions: 2.0, 2.1, 3.0, 2.2
+   MCCS specification groups: Image, Miscellaneous
+   ddctool feature subsets: CRT
+   Attributes: Read Write, Continuous (standard)
+VCP code 8A: Color Saturation
+   Increase/decrease the amplitude of the color difference components of the video signal
+   MCCS versions: 2.0, 2.1, 3.0, 2.2
+   MCCS specification groups: Image
+   ddctool feature subsets: COLOR, TV
+   Attributes: Read Write, Continuous (standard)
+VCP code 8B: TV Channel Up/Down
+   Increment (1) or decrement (2) television channel
+   MCCS versions: 2.0, 2.1, 3.0, 2.2
+   MCCS specification groups: Miscellaneous
+   ddctool feature subsets: TV
+   Attributes: Write Only, Non-Continuous (write-only)
+VCP code 8C: TV Sharpness
+   Increase/decrease the amplitude of the high frequency components  of the video signal
+   MCCS versions: 2.0, 2.1, 3.0, 2.2
+   MCCS specification groups: Image, Miscellaneous
+   ddctool feature subsets: TV
+   Attributes: Read Write, Continuous (standard)
+VCP code 8D: Audio mute/Screen blank
+   Mute/unmute audio, and (v2.2) screen blank
+   MCCS versions: 2.0, 2.1, 3.0, 2.2
+   MCCS specification groups: Miscellaneous
+   ddctool feature subsets: TV, AUDIO
+   Attributes (v2.0): Read Write, Non-Continuous (simple)
+   Attributes (v2.1): Read Write, Non-Continuous (simple)
+   Attributes (v3.0): Read Write, Non-Continuous (simple)
+   Attributes (v2.2): Read Write, Non-Continuous (complex)
+VCP code 8E: TV Contrast
+   Increase/decrease the ratio between blacks and whites in the image
+   MCCS versions: 2.0, 2.1, 3.0, 2.2
+   MCCS specification groups: Miscellaneous
+   ddctool feature subsets: TV
+   Attributes: Read Write, Continuous (standard)
+VCP code 8F: Audio Treble
+   Emphasize/de-emphasize high frequency audio
+   MCCS versions: 2.0, 2.1, 3.0, 2.2
+   MCCS specification groups: Audio
+   ddctool feature subsets: AUDIO
+   Attributes (v2.0): Read Write, Continuous (standard)
+   Attributes (v2.1): Read Write, Continuous (standard)
+   Attributes (v3.0): Read Write, Non-Continuous (complex)
+   Attributes (v2.2): Read Write, Non-Continuous (complex)
+VCP code 90: Hue
+   Increase/decrease the wavelength of the color component of the video signal. AKA tint.  Applies to currently active interface
+   MCCS versions: 2.0, 2.1, 3.0, 2.2
+   MCCS specification groups: Miscellaneous
+   ddctool feature subsets: COLOR, TV
+   Attributes: Read Write, Continuous (standard)
+VCP code 91: Audio Bass
+   Emphasize/de-emphasize low frequency audio
+   MCCS versions: 2.0, 2.1, 3.0, 2.2
+   MCCS specification groups: Audio
+   ddctool feature subsets: AUDIO
+   Attributes (v2.0): Read Write, Continuous (standard)
+   Attributes (v2.1): Read Write, Continuous (standard)
+   Attributes (v3.0): Read Write, Non-Continuous (complex)
+   Attributes (v2.2): Read Write, Non-Continuous (complex)
+VCP code 92: TV Black level/Luminesence
+   Increase/decrease the black level of the video
+   MCCS versions: 2.0, 2.1, 3.0, 2.2
+   MCCS specification groups: Miscellaneous
+   ddctool feature subsets: TV
+   Attributes: Read Write, Continuous (standard)
+VCP code 93: Audio Balance L/R
+   Controls left/right audio balance
+   MCCS versions: 2.0, 2.1, 3.0, 2.2
+   MCCS specification groups: Audio
+   ddctool feature subsets: AUDIO
+   Attributes (v2.0): Read Write, Continuous (standard)
+   Attributes (v2.1): Read Write, Continuous (standard)
+   Attributes (v3.0): Read Write, Non-Continuous (complex)
+   Attributes (v2.2): Read Write, Non-Continuous (complex)
+VCP code 94: Audio Processor Mode
+   Select audio mode
+   MCCS versions: 2.0, 2.1, 3.0, 2.2
+   MCCS specification groups: Audio
+   ddctool feature subsets: TV, AUDIO
+   Attributes: Read Write, Non-Continuous (simple)
+VCP code 95: Window Position(TL_X)
+   Top left X pixel of an area of the image
+   MCCS versions: 2.0, 2.1, 3.0, 2.2
+   MCCS specification groups: Geometry, Window
+   ddctool feature subsets: WINDOW
+   Attributes: Read Write, Continuous (standard)
+VCP code 96: Window Position(TL_Y)
+   Top left Y pixel of an area of the image
+   MCCS versions: 2.0, 2.1, 3.0, 2.2
+   MCCS specification groups: Geometry, Window
+   ddctool feature subsets: WINDOW
+   Attributes: Read Write, Continuous (standard)
+VCP code 97: Window Position(BR_X)
+   Bottom right X pixel of an area of the image
+   MCCS versions: 2.0, 2.1, 3.0, 2.2
+   MCCS specification groups: Geometry, Window
+   ddctool feature subsets: WINDOW
+   Attributes: Read Write, Continuous (standard)
+VCP code 98: Window Position(BR_Y)
+   Bottom right Y pixel of an area of the image
+   MCCS versions: 2.0, 2.1, 3.0, 2.2
+   MCCS specification groups: Geometry, Window
+   ddctool feature subsets: WINDOW
+   Attributes: Read Write, Continuous (standard)
+VCP code 99: Window control on/off
+   Enables the brightness and color within a window to be different from the desktop.
+   MCCS versions: 2.0, 2.1, 2.2
+   MCCS specification groups: Window
+   ddctool feature subsets: WINDOW
+   Attributes (v2.0): Read Write, Non-Continuous (simple)
+   Attributes (v2.1): Read Write, Non-Continuous (simple)
+   Attributes (v3.0): Deprecated
+   Attributes (v2.2): Read Write, Non-Continuous (simple)
+VCP code 9A: Window background
+   Changes the contrast ratio between the area of the window and the rest of the desktop
+   MCCS versions: 2.0, 2.1, 3.0, 2.2
+   MCCS specification groups: Image, Window
+   ddctool feature subsets: WINDOW
+   Attributes: Read Write, Continuous (standard)
+VCP code 9B: 6 axis hue control: Red
+   Decrease shifts toward magenta, increase shifts toward yellow
+   MCCS versions: 2.0, 2.1, 3.0, 2.2
+   MCCS specification groups: Image, Window
+   ddctool feature subsets: COLOR
+   Attributes: Read Write, Continuous (standard)
+VCP code 9C: 6 axis hue control: Yellow
+   Decrease shifts toward green, increase shifts toward red
+   MCCS versions: 2.0, 2.1, 3.0, 2.2
+   MCCS specification groups: Image, Window
+   ddctool feature subsets: COLOR
+   Attributes: Read Write, Continuous (standard)
+VCP code 9D: 6 axis hue control: Green
+   Decrease shifts toward yellow, increase shifts toward cyan
+   MCCS versions: 2.0, 2.1, 3.0, 2.2
+   MCCS specification groups: Image, Window
+   ddctool feature subsets: COLOR
+   Attributes: Read Write, Continuous (standard)
+VCP code 9E: 6 axis hue control: Cyan
+   Decrease shifts toward green, increase shifts toward blue
+   MCCS versions: 2.0, 2.1, 3.0, 2.2
+   MCCS specification groups: Image, Window
+   ddctool feature subsets: COLOR
+   Attributes: Read Write, Continuous (standard)
+VCP code 9F: 6 axis hue control: Blue
+   Decrease shifts toward cyan, increase shifts toward magenta
+   MCCS versions: 2.0, 2.1, 3.0, 2.2
+   MCCS specification groups: Image, Window
+   ddctool feature subsets: COLOR
+   Attributes: Read Write, Continuous (standard)
+VCP code A0: 6 axis hue control: Magenta
+   Decrease shifts toward blue, 127 no effect, increase shifts toward red
+   MCCS versions: 2.0, 2.1, 3.0, 2.2
+   MCCS specification groups: Image, Window
+   ddctool feature subsets: COLOR
+   Attributes: Read Write, Continuous (standard)
+VCP code A2: Auto setup on/off
+   Turn on/off an auto setup function
+   MCCS versions: 2.0, 2.1, 3.0, 2.2
+   MCCS specification groups: Image
+   ddctool feature subsets: 
+   Attributes: Write Only, Non-Continuous (write-only)
+VCP code A4: Window mask control
+   Turn selected window operation on/off, window mask
+   MCCS versions: 2.0, 2.1, 3.0, 2.2
+   MCCS specification groups: Image
+   ddctool feature subsets: WINDOW
+   Attributes (v2.0): Read Write, Non-Continuous (complex)
+   Attributes (v2.1): Read Write, Non-Continuous (complex)
+   Attributes (v3.0): Read Write, Table
+   Attributes (v2.2): Read Write, Table
+VCP code A5: Change the selected window
+   Change selected window (as defined by 95h..98h)
+   MCCS versions: 2.0, 2.1, 3.0, 2.2
+   MCCS specification groups: Image, Window
+   ddctool feature subsets: WINDOW
+   Attributes: Read Write, Non-Continuous (simple)
+VCP code AA: Screen Orientation
+   Indicates screen orientation
+   MCCS versions: 2.0, 2.1, 3.0, 2.2
+   MCCS specification groups: Image, Geometry
+   ddctool feature subsets: 
+   Attributes: Read Only, Non-Continuous (simple)
+VCP code AC: Horizontal frequency
+   Horizontal sync signal frequency as determined by the display
+   MCCS versions: 2.0, 2.1, 3.0, 2.2
+   MCCS specification groups: Miscellaneous
+   ddctool feature subsets: 
+   Attributes: Read Only, Continuous (complex)
+VCP code AE: Vertical frequency
+   Vertical sync signal frequency as determined by the display, in .01 hz
+   MCCS versions: 2.0, 2.1, 3.0, 2.2
+   MCCS specification groups: Miscellaneous
+   ddctool feature subsets: 
+   Attributes: Read Only, Continuous (complex)
+VCP code B0: Settings
+   Store/restore the user saved values for the current mode.
+   MCCS versions: 2.0, 2.1, 3.0, 2.2
+   MCCS specification groups: Preset
+   ddctool feature subsets: 
+   Attributes: Write Only, Non-Continuous (write-only)
+VCP code B2: Flat panel sub-pixel layout
+   LCD sub-pixel structure
+   MCCS versions: 2.0, 2.1, 3.0, 2.2
+   MCCS specification groups: Miscellaneous
+   ddctool feature subsets: 
+   Attributes: Read Only, Non-Continuous (simple)
+VCP code B4: Source Timing Mode
+   Indicates timing mode being sent by host
+   MCCS versions: 2.1, 3.0, 2.2
+   MCCS specification groups: Control
+   ddctool feature subsets: 
+   Attributes (v2.1): Read Write, Non-Continuous (complex)
+   Attributes (v3.0): Read Write, Table
+   Attributes (v2.2): Read Write, Table
+VCP code B6: Display technology type
+   Indicates the base technology type
+   MCCS versions: 2.0, 2.1, 3.0, 2.2
+   MCCS specification groups: Miscellaneous
+   ddctool feature subsets: 
+   Attributes: Read Only, Non-Continuous (simple)
+VCP code B7: Monitor status
+   Video mode and status of a DPVL capable monitor
+   MCCS versions: 2.0, 2.1, 3.0, 2.2
+   MCCS specification groups: DPVL
+   ddctool feature subsets: DPVL
+   Attributes: Read Only, Non-Continuous (complex)
+VCP code B8: Packet count
+   Counter for DPVL packets received
+   MCCS versions: 2.0, 2.1, 3.0, 2.2
+   MCCS specification groups: DPVL
+   ddctool feature subsets: DPVL
+   Attributes: Read Write, Continuous (complex)
+VCP code B9: Monitor X origin
+   X origin of the monitor in the vertical screen
+   MCCS versions: 2.0, 2.1, 3.0, 2.2
+   MCCS specification groups: DPVL
+   ddctool feature subsets: DPVL
+   Attributes: Read Write, Continuous (complex)
+VCP code BA: Monitor Y origin
+   Y origin of the monitor in the vertical screen
+   MCCS versions: 2.0, 2.1, 3.0, 2.2
+   MCCS specification groups: DPVL
+   ddctool feature subsets: DPVL
+   Attributes: Read Write, Continuous (complex)
+VCP code BB: Header error count
+   Error counter for the DPVL header
+   MCCS versions: 2.0, 2.1, 3.0, 2.2
+   MCCS specification groups: DPVL
+   ddctool feature subsets: DPVL
+   Attributes: Read Write, Continuous (complex)
+VCP code BC: Body CRC error count
+   CRC error counter for the DPVL body
+   MCCS versions: 2.0, 2.1, 3.0, 2.2
+   MCCS specification groups: DPVL
+   ddctool feature subsets: DPVL
+   Attributes: Read Write, Continuous (complex)
+VCP code BD: Client ID
+   Assigned identification number for the monitor
+   MCCS versions: 2.0, 2.1, 3.0, 2.2
+   MCCS specification groups: DPVL
+   ddctool feature subsets: DPVL
+   Attributes: Read Write, Continuous (complex)
+VCP code BE: Link control
+   Indicates status of the DVI link
+   MCCS versions: 2.0, 2.1, 3.0, 2.2
+   MCCS specification groups: DPVL
+   ddctool feature subsets: DPVL
+   Attributes: Read Write, Non-Continuous (complex)
+VCP code C0: Display usage time
+   Active power on time in hours
+   MCCS versions: 2.0, 2.1, 3.0, 2.2
+   MCCS specification groups: Miscellaneous
+   ddctool feature subsets: 
+   Attributes: Read Only, Continuous (complex)
+VCP code C2: Display descriptor length
+   Length in bytes of non-volatile storage in the display available for writing a display descriptor, max 256
+   MCCS versions: 2.0, 2.1, 3.0, 2.2
+   MCCS specification groups: Miscellaneous
+   ddctool feature subsets: 
+   Attributes: Read Only, Continuous (standard)
+VCP code C3: Transmit display descriptor
+   Reads (writes) a display descriptor from (to) non-volatile storage in the display.
+   MCCS versions: 2.0, 2.1, 3.0, 2.2
+   MCCS specification groups: Miscellaneous
+   ddctool feature subsets: 
+   Attributes: Read Write, Table
+VCP code C4: Enable display of 'display descriptor'
+   If enabled, the display descriptor shall be displayed when no video is being received.
+   MCCS versions: 2.0, 2.1, 3.0, 2.2
+   MCCS specification groups: Miscellaneous
+   ddctool feature subsets: 
+   Attributes: Read Write, Non-Continuous (complex)
+VCP code C6: Application enable key
+   A 2 byte value used to allow an application to only operate with known products.
+   MCCS versions: 2.0, 2.1, 3.0, 2.2
+   MCCS specification groups: Miscellaneous
+   ddctool feature subsets: 
+   Attributes: Read Only, Non-Continuous (complex)
+VCP code C8: Display controller type
+   Mfg id of controller and 2 byte manufacturer-specific controller type
+   MCCS versions: 2.0, 2.1, 3.0, 2.2
+   MCCS specification groups: Control, Miscellaneous
+   ddctool feature subsets: 
+   Attributes: Read Write, Non-Continuous (complex)
+VCP code C9: Display firmware level
+   2 byte firmware level
+   MCCS versions: 2.0, 2.1, 3.0, 2.2
+   MCCS specification groups: Control, Miscellaneous
+   ddctool feature subsets: 
+   Attributes: Read Only, Non-Continuous (complex)
+VCP code CA: OSD/Button Control
+   Sets and indicates the current operational state of OSD (and buttons in v2.2)
+   MCCS versions: 2.0, 2.1, 3.0, 2.2
+   MCCS specification groups: Control, Miscellaneous
+   ddctool feature subsets: 
+   Attributes (v2.0): Read Write, Non-Continuous (simple)
+   Attributes (v2.1): Read Write, Non-Continuous (simple)
+   Attributes (v3.0): Read Write, Non-Continuous (simple)
+   Attributes (v2.2): Read Write, Non-Continuous (complex)
+VCP code CC: OSD Language
+   On Screen Display languge
+   MCCS versions: 2.0, 2.1, 3.0, 2.2
+   MCCS specification groups: Control, Miscellaneous
+   ddctool feature subsets: 
+   Attributes: Read Write, Non-Continuous (simple)
+VCP code CD: Status Indicators
+   Control up to 16 LED (or similar) indicators to indicate system status
+   MCCS versions: 2.1, 3.0, 2.2
+   MCCS specification groups: Miscellaneous
+   ddctool feature subsets: 
+   Attributes: Read Write, Non-Continuous (complex)
+VCP code CE: Auxiliary display size
+   Rows and characters/row of auxiliary display
+   MCCS versions: 2.0, 2.1, 3.0, 2.2
+   MCCS specification groups: Miscellaneous
+   ddctool feature subsets: 
+   Attributes: Read Only, Non-Continuous (complex)
+VCP code CF: Auxiliary display data
+   Sets contents of auxiliary display device
+   MCCS versions: 2.0, 2.1, 3.0, 2.2
+   MCCS specification groups: Miscellaneous
+   ddctool feature subsets: 
+   Attributes: Write Only, Table
+VCP code D0: Output select
+   Selects the active output
+   MCCS versions: 2.0, 2.1, 3.0, 2.2
+   MCCS specification groups: Miscellaneous
+   ddctool feature subsets: 
+   Attributes (v2.0): Read Write, Non-Continuous (simple)
+   Attributes (v2.1): Read Write, Non-Continuous (simple)
+   Attributes (v3.0): Read Write, Table
+   Attributes (v2.2): Read Write, Non-Continuous (simple)
+VCP code D2: Asset Tag
+   Read an Asset Tag to/from the display
+   MCCS versions: 2.1, 3.0, 2.2
+   MCCS specification groups: Miscellaneous
+   ddctool feature subsets: 
+   Attributes: Read Write, Table
+VCP code D4: Stereo video mode
+   Stereo video mode
+   MCCS versions: 2.0, 2.1, 3.0, 2.2
+   MCCS specification groups: Image, Miscellaneous
+   ddctool feature subsets: 
+   Attributes: Read Write, Non-Continuous (complex)
+VCP code D6: Power mode
+   DPM and DPMS status
+   MCCS versions: 2.0, 2.1, 3.0, 2.2
+   MCCS specification groups: Control, Miscellaneous
+   ddctool feature subsets: 
+   Attributes: Read Write, Non-Continuous (simple)
+VCP code D7: Auxiliary power output
+   Controls an auxiliary power output from a display to a host device
+   MCCS versions: 2.0, 2.1, 3.0, 2.2
+   MCCS specification groups: Miscellaneous
+   ddctool feature subsets: 
+   Attributes: Read Write, Non-Continuous (simple)
+VCP code DA: Scan mode
+   Controls scan characteristics (aka format)
+   MCCS versions: 2.0, 2.1, 3.0, 2.2
+   MCCS specification groups: Image, Geometry
+   ddctool feature subsets: CRT
+   Attributes: Read Write, Non-Continuous (simple)
+VCP code DB: Image Mode
+   Controls aspects of the displayed image (TV applications)
+   MCCS versions: 2.1, 3.0, 2.2
+   MCCS specification groups: Control
+   ddctool feature subsets: TV
+   Attributes: Read Write, Non-Continuous (simple)
+VCP code DC: Display Mode
+   Type of application used on display
+   MCCS versions: 2.0, 2.1, 3.0, 2.2
+   MCCS specification groups: Image
+   ddctool feature subsets: 
+   Attributes: Read Write, Non-Continuous (simple)
+VCP code DE: Scratch Pad
+   Operation mode (2.0) or scratch pad (3.0/2.2)
+   MCCS versions: 2.0, 2.1, 3.0, 2.2
+   MCCS specification groups: Miscellaneous
+   ddctool feature subsets: 
+   Attributes (v2.0): Write Only, Non-Continuous (write-only)
+   Attributes (v2.1): Read Write, Non-Continuous (complex)
+   Attributes (v3.0): Read Write, Non-Continuous (complex)
+   Attributes (v2.2): Read Write, Non-Continuous (complex)
+VCP code DF: VCP Version
+   MCCS version
+   MCCS versions: 2.0, 2.1, 3.0, 2.2
+   MCCS specification groups: Miscellaneous
+   ddctool feature subsets: 
+   Attributes: Read Only, Non-Continuous (complex)
+</code></pre>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../detect_verbose_output/" class="btn btn-neutral float-right" title="ddctool detect example">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="../cmd_output/" class="btn btn-neutral" title="Command Output Examples"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+	  
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+<div class="rst-versions" role="note" style="cursor: pointer">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+          <a href="https://github.com/rockowitz/ddctool" class="icon icon-github" style="float: left; color: #fcfcfc"> GitHub</a>
+      
+      
+        <span><a href="../cmd_output/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+        <span style="margin-left: 15px"><a href="../detect_verbose_output/" style="color: #fcfcfc">Next &raquo;</a></span>
+      
+    </span>
+</div>
+
+</body>
+</html>
