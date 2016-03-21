@@ -277,18 +277,18 @@ The exact packages vary from distribution to distribution.   On Ubuntu, these in
 </li>
 </ul>
 <p>To configure the build, change to the main <strong>ddctool</strong> directory and execute the file: </p>
-<pre><code>autogen.sh
+<pre><code># ./autogen.sh
 </code></pre>
 
 <p>Or issue the individual commands: </p>
 <pre><code># aclocal
 # autoconf
 # automake
-# ./configure
 </code></pre>
 
-<p>Then to build and install <strong>ddctool</strong>: </p>
-<pre><code># make
+<p>Then to configure, build, and install <strong>ddctool</strong>: </p>
+<pre><code># ./configure
+# make
 # sudo make install
 </code></pre>
 

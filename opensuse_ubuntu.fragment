@@ -1,0 +1,4 @@
+
+Note to the curious:  There are no Ubuntu OBS packages because building ddctool requires package libi2c-dev.  Ubuntu 
+puts this package in the Universe repository.  For OBS policy reasons, Universe is not availble in Ubuntu builds.
+However, the Debian builds do seem to work for Ubuntu, and are an alternative to the Ubuntu PPA.

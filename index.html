@@ -341,17 +341,14 @@ using any of the following options:</p>
 <li><a href="getvcp_known_u3011_output/">ddctool getvcp</a></li>
 </ul>
 <h2 id="installing-ddctool-from-prebuilt-packages">Installing ddctool From Prebuilt Packages</h2>
-<p>Packages for recent openSUSE, Fedora, and Debian releases are available for download from the 
+<p>Packages for recent openSUSE, Fedora, Debian, and Ubuntu releases are available for download from the 
 <a href="http://software.opensuse.org/download.html?project=home%3Arockowitz&amp;package=ddctool">openSUSE build service</a></p>
 <p>For Ubuntu Wily, there's a <a href="https://launchpad.net/~rockowitz/+archive/ubuntu/ddctool">PPA</a>.
-To use it:</p>
+To use it, add the following lines to /etc/apt/sources.list:</p>
 <pre><code>deb http://ppa.launchpad.net/rockowitz/ddctool/ubuntu wily main 
 deb-src http://ppa.launchpad.net/rockowitz/ddctool/ubuntu wily main 
 </code></pre>
 
-<p>Note to the curious:  There are no Ubuntu OBS packages because building ddctool requires package libi2c-dev.  Ubuntu 
-puts this package in the Universe repository.  For OBS policy reasons, Universe is not availble in Ubuntu builds.
-However, the Debian builds do seem to work for Ubuntu, and are an alternative to the Ubuntu PPA.</p>
 <p>For other distributions, or if using AMD's proprietary fglrx driver, ddctool must be <a href="building/">built from source</a>.</p>
 <h2 id="ddctool-configuration"><strong>ddctool</strong> Configuration</h2>
 <p><strong>ddctool</strong> users require write permission to /dev/i2c-* devices.  See <a href="i2c_permissions/">/dev/i2c Permissions</a></p>
@@ -439,5 +436,5 @@ will probe the I2C environment and may provide clues as to the problem.</p>
 
 <!--
 MkDocs version : 0.15.3
-Build Date UTC : 2016-03-20 21:22:07.262459
+Build Date UTC : 2016-03-21 15:32:34.908334
 -->
