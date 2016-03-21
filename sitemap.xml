@@ -34,35 +34,31 @@
     
 
     
+        
     <url>
      <loc>None/vcpinfo_output/</loc>
      <lastmod>2016-03-21</lastmod>
      <changefreq>daily</changefreq>
     </url>
-    
-
-    
+        
     <url>
      <loc>None/detect_verbose_output/</loc>
      <lastmod>2016-03-21</lastmod>
      <changefreq>daily</changefreq>
     </url>
-    
-
-    
+        
     <url>
      <loc>None/cap_u3011_verbose_output/</loc>
      <lastmod>2016-03-21</lastmod>
      <changefreq>daily</changefreq>
     </url>
-    
-
-    
+        
     <url>
      <loc>None/getvcp_known_u3011_output/</loc>
      <lastmod>2016-03-21</lastmod>
      <changefreq>daily</changefreq>
     </url>
+        
     
 
     
