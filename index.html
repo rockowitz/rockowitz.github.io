@@ -261,7 +261,9 @@ calibration is relative to the monitor color settings currently in effect,
 e.g. red gain.  ddctool allows color related settings to be saved at the time 
 a monitor is calibrated, and then restored when the calibration is applied.</p>
 <p><strong>ddctool</strong> does not support monitors (such as Apple displays) that implement MCCS using a USB connection, 
-nor does it support laptop displays.  </p>
+nor does it support laptop displays.  Nvidia's proprietary video driver may require special configuration.  See 
+<a href="nvidia/">Special Nvidia Driver Settings</a>.  Operation with AMD's proprietary video driver fglrx requires a 
+specially built version of <strong>ddctool</strong>.  See <a href="adl/">Building with ADL Support</a>.</p>
 <h2 id="command-overview">Command Overview</h2>
 <p><strong>ddctool</strong> is a command line program.  (A GUI user interface is planned.)  <strong>ddctool</strong> implements 
 the following subcommands:</p>
@@ -444,5 +446,5 @@ will probe the I2C environment and may provide clues as to the problem.</p>
 
 <!--
 MkDocs version : 0.15.3
-Build Date UTC : 2016-03-22 15:00:11.005003
+Build Date UTC : 2016-03-22 15:22:52.848036
 -->
