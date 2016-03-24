@@ -8,7 +8,7 @@
   
   <meta name="author" content="Sanford Rockowitz">
   
-  <title>Building From Source - ddctool Documentation</title>
+  <title>Color Management - ddctool Documentation</title>
   
 
   <link rel="shortcut icon" href="../img/favicon.ico">
@@ -23,9 +23,9 @@
   
   <script>
     // Current page data
-    var mkdocs_page_name = "Building From Source";
-    var mkdocs_page_input_path = "building.md";
-    var mkdocs_page_url = "/building/";
+    var mkdocs_page_name = "Color Management";
+    var mkdocs_page_input_path = "colormgt.md";
+    var mkdocs_page_url = "/colormgt/";
   </script>
   
   <script src="../js/jquery-2.1.1.min.js"></script>
@@ -119,8 +119,19 @@
 <li>
           
             <li>
-    <li class="toctree-l1 ">
-        <a class="" href="../colormgt/">Color Management</a>
+    <li class="toctree-l1 current">
+        <a class="current" href="./">Color Management</a>
+        
+            <ul>
+            
+                <li class="toctree-l3"><a href="#color-management">Color Management</a></li>
+                
+                    <li><a class="toctree-l4" href="#color-management-workflow">Color Management Workflow</a></li>
+                
+                    <li><a class="toctree-l4" href="#monitor-lookup-tables">Monitor Lookup Tables</a></li>
+                
+            
+            </ul>
         
     </li>
 <li>
@@ -133,21 +144,8 @@
 <li>
           
             <li>
-    <li class="toctree-l1 current">
-        <a class="current" href="./">Building From Source</a>
-        
-            <ul>
-            
-                <li class="toctree-l3"><a href="#building-from-source">Building From Source</a></li>
-                
-                    <li><a class="toctree-l4" href="#required-packages">Required Packages</a></li>
-                
-                    <li><a class="toctree-l4" href="#building-from-tarball">Building from tarball</a></li>
-                
-                    <li><a class="toctree-l4" href="#building-from-git">Building from git</a></li>
-                
-            
-            </ul>
+    <li class="toctree-l1 ">
+        <a class="" href="../building/">Building From Source</a>
         
     </li>
 <li>
@@ -237,7 +235,7 @@
     
       
     
-    <li>Building From Source</li>
+    <li>Color Management</li>
     <li class="wy-breadcrumbs-aside">
       
         
@@ -251,75 +249,53 @@
           <div role="main">
             <div class="section">
               
-                <h2 id="building-from-source">Building From Source</h2>
-<h3 id="required-packages">Required Packages</h3>
-<p>Because of the variation among distributions, only general guidelines can be 
-given for <strong>ddctool</strong>'s package prerequisites.  The following packages are required 
-for both building and execution:</p>
+                <h2 id="color-management">Color Management</h2>
+<p>A primary use for <strong>ddctool</strong> is as part of color profile management.  A monitor calibration is meaningful only if the color settings on the monitor are the same as when the calibration was performed. </p>
+<p>Normally, monitor settings are changed by pressing buttons on the monitor bezel.  Depending on the monitor, the process ranges from annoying to excruciating.  <strong>ddctool</strong> allows this process to be automated.</p>
+<p>Command <strong>ddctool dumpvcp</strong> saves the current color related monitor settings in a file, and <strong>ddctool loadvcp</strong> restores them from a file. </p>
+<p>If implemented by the monitor, the VCP feature codes in feature group <strong>PROFILE</strong> are saved by <strong>dumpvcp</strong> and restored by <strong>loadvcp</strong>. 
+These are:</p>
 <ul>
-<li>i2c-tools</li>
-<li>glib-2.0  (Problem: glib-2.0 can be packaged with different names.)</li>
+<li>10: Brightness</li>
+<li>12: Contrast</li>
+<li>13: Backlight control</li>
+<li>14: Video gain: Red</li>
+<li>16: Video gain: Green</li>
+<li>18: Video gain: Blue</li>
+<li>6B: Backlight level: White</li>
+<li>6C: Video black level: Red</li>
+<li>6D: Backlight Level: Red</li>
+<li>6E: Video black level: Green</li>
+<li>6F: Backlight level: Green</li>
+<li>70: Video black level: Blue</li>
+<li>71: Backlight Level: Blue</li>
 </ul>
-<p>At least on Ubuntu, the i2c.h header file is found in a separate package. <br />
-If the following package exists, it is required to build ddctool.</p>
-<ul>
-<li>libi2c-dev </li>
-</ul>
-<h3 id="building-from-tarball">Building from tarball</h3>
-<p><strong>ddctool</strong> can be built from its <a href="../ddctool-0.3.1.tar.gz">tarball</a> in the usual way.
-Unpack the tar file, change to its directory, and issue the commands: </p>
-<pre><code># ./configure
-# make
-# sudo make install
+<p>To see the list of feature codes saved and restored, you can also issue the command: </p>
+<pre><code>ddctool vcpinfo profile --terse
 </code></pre>
 
-<p>Note that additional steps are required to build <strong>ddctool</strong> with <em>ADL</em> support.
-See <a href="../adl/">ADL support</a>.</p>
-<h3 id="building-from-git">Building from git</h3>
-<p>The git repository for <strong>ddctool</strong> is <a href="http://www.github.com/rockowitz/ddctool">here</a></p>
+<h3 id="color-management-workflow">Color Management Workflow</h3>
+<p>To discuss: </p>
 <ul>
 <li>
-<p>Building <strong>ddctool</strong> from git requires that the <em>autotools</em> related packages be installed.<br />
-The exact packages vary from distribution to distribution.   On Ubuntu, these include:</p>
-<ul>
-<li>autoconf  </li>
-<li>automake  </li>
-<li>autotools-dev  </li>
-<li>libtool  </li>
-<li>m4  </li>
-<li>pkg-config</li>
-</ul>
+<p>Save profile related VCP values in a custom tag in monitor profile file instead of a separate file</p>
+</li>
+<li>
+<p>Having a GUI for ddctool would make monitor color adjustment much easier.   Such as GUI could be shown along size the <strong>dispcal</strong> color balance screen shown at the start of calibration.</p>
+</li>
+<li>
+<p>API access to dump/load features for simpler integration with other programs.</p>
 </li>
 </ul>
-<p>To configure the build, change to the main <strong>ddctool</strong> directory and execute the file: </p>
-<pre><code># ./autogen.sh
-</code></pre>
-
-<p>Or issue the individual commands: </p>
-<pre><code># aclocal
-# autoconf
-# automake
-</code></pre>
-
-<p>Then to configure, build, and install <strong>ddctool</strong>: </p>
-<pre><code># ./configure
-# make
-# sudo make install
-</code></pre>
-
-<p>Common issues:</p>
+<h3 id="monitor-lookup-tables">Monitor Lookup Tables</h3>
+<p>Typically, monitor calibration creates a color lookup table that is loaded into the video card.  Advanced monitors, such as the HP Dreamcolor LP2480zx, NEC PA241, Eizos, and even a few "prosumer" models such as the recent Dell U2413 have an internal lookup table.   Typically, these monitors have a software development kit with an API for accessing the LUT, and typically thse SDKs support Linux either poorly or not at all.  However, the internal lookup table can also be accessed using the following VCP feature codes: </p>
 <ul>
-<li>Building with support for the AMD proprietary video driver (fglrx) requires that <em>configure</em> be executed using 
-the <em>-with-adl-headers</em> argument.  See <a href="../adl/">ADL support</a>.  </li>
-<li>If you see a message "required file './ltmain.sh.' not found", run <em>libtoolize</em>
-  (See https://www.gnu.org/software/automake/manual/html_node/Error-required-file-ltmain_002esh-not-found.html)  </li>
-<li>May get the following warning when running automake</li>
+<li>73: LUT size</li>
+<li>74: Single point LUT operation</li>
+<li>75: Block LUT operation</li>
+<li>76: Remote procedure call</li>
 </ul>
-<pre><code>src/Makefile.am:38: warning: compiling 'cmdline/cmd_parser_aux.c' in subdir requires 'AM_PROG_CC_C_O' in 'configure.ac'
-</code></pre>
-
-<p>This is an autotools versioning issue.  It appears that this warning can be ignored.<br />
-- (need notes on other warnings that can be ignored) </p>
+<p>These are what MCCS categorizes as "Table" type features.   Reading and writing table type features is implemented in <strong>ddctool</strong>, but has not yet been tested for lack of a monitor to test with.</p>
               
             </div>
           </div>
@@ -327,10 +303,10 @@ the <em>-with-adl-headers</em> argument.  See <a href="../adl/">ADL support</a>.
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../i2c_permissions/" class="btn btn-neutral float-right" title="/dev/i2c Permissions">Next <span class="icon icon-circle-arrow-right"></span></a>
+        <a href="../tuning/" class="btn btn-neutral float-right" title="Instrumentation and Tuning">Next <span class="icon icon-circle-arrow-right"></span></a>
       
       
-        <a href="../tuning/" class="btn btn-neutral" title="Instrumentation and Tuning"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../getvcp_known_u3011_output/" class="btn btn-neutral" title="ddctool getvcp example"><span class="icon icon-circle-arrow-left"></span> Previous</a>
       
     </div>
   
@@ -358,10 +334,10 @@ the <em>-with-adl-headers</em> argument.  See <a href="../adl/">ADL support</a>.
           <a href="https://github.com/rockowitz/ddctool" class="icon icon-github" style="float: left; color: #fcfcfc"> GitHub</a>
       
       
-        <span><a href="../tuning/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+        <span><a href="../getvcp_known_u3011_output/" style="color: #fcfcfc;">&laquo; Previous</a></span>
       
       
-        <span style="margin-left: 15px"><a href="../i2c_permissions/" style="color: #fcfcfc">Next &raquo;</a></span>
+        <span style="margin-left: 15px"><a href="../tuning/" style="color: #fcfcfc">Next &raquo;</a></span>
       
     </span>
 </div>
