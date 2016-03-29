@@ -368,6 +368,7 @@ deb-src http://ppa.launchpad.net/rockowitz/ddctool/ubuntu wily main
 
 <p>For other distributions, or if using AMD's proprietary fglrx driver, ddctool must be <a href="building/">built from source</a>.</p>
 <h2 id="ddctool-configuration"><strong>ddctool</strong> Configuration</h2>
+<p>DDC/CI communication must be enabled on the monitor.  This setting can only be changed using the monitor's on screen display.</p>
 <p><strong>ddctool</strong> users require write permission to /dev/i2c-* devices.  See <a href="i2c_permissions/">/dev/i2c Permissions</a></p>
 <p>If using an open source video driver, kernel module i2c-dev must be loaded.  See <a href="kernel_module/">Kernel Module Configuration</a></p>
 <p>If using Nvidia's proprietary video driver, special settings may be necessary.  See <a href="nvidia/">Special Nvidia Driver Settings</a></p>
@@ -453,5 +454,5 @@ will probe the I2C environment and may provide clues as to the problem.</p>
 
 <!--
 MkDocs version : 0.15.3
-Build Date UTC : 2016-03-24 12:50:56.621463
+Build Date UTC : 2016-03-29 17:25:45.928689
 -->
