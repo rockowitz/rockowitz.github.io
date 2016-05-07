@@ -8,7 +8,7 @@
   
   <meta name="author" content="Sanford Rockowitz">
   
-  <title>Monitor Control Command Set - ddctool Documentation</title>
+  <title>USB Connected Monitors - ddctool Documentation</title>
   
 
   <link rel="shortcut icon" href="../img/favicon.ico">
@@ -23,9 +23,9 @@
   
   <script>
     // Current page data
-    var mkdocs_page_name = "Monitor Control Command Set";
-    var mkdocs_page_input_path = "mccs_background.md";
-    var mkdocs_page_url = "/mccs_background/";
+    var mkdocs_page_name = "USB Connected Monitors";
+    var mkdocs_page_input_path = "usb.md";
+    var mkdocs_page_url = "/usb/";
   </script>
   
   <script src="../js/jquery-2.1.1.min.js"></script>
@@ -62,19 +62,8 @@
 <li>
           
             <li>
-    <li class="toctree-l1 current">
-        <a class="current" href="./">Monitor Control Command Set</a>
-        
-            <ul>
-            
-                <li class="toctree-l3"><a href="#monitor-control-command-set">Monitor Control Command Set</a></li>
-                
-                    <li><a class="toctree-l4" href="#mccs-terminology">MCCS Terminology</a></li>
-                
-                    <li><a class="toctree-l4" href="#mccs-versions">MCCS Versions</a></li>
-                
-            
-            </ul>
+    <li class="toctree-l1 ">
+        <a class="" href="../mccs_background/">Monitor Control Command Set</a>
         
     </li>
 <li>
@@ -151,8 +140,19 @@
 <li>
           
             <li>
-    <li class="toctree-l1 ">
-        <a class="" href="../usb/">USB Connected Monitors</a>
+    <li class="toctree-l1 current">
+        <a class="current" href="./">USB Connected Monitors</a>
+        
+            <ul>
+            
+                <li class="toctree-l3"><a href="#usb-connected-monitors">USB Connected Monitors</a></li>
+                
+                    <li><a class="toctree-l4" href="#command-ddctool-chkusbmon">Command ddctool chkusbmon</a></li>
+                
+                    <li><a class="toctree-l4" href="#comman-option-usb">Comman option --usb</a></li>
+                
+            
+            </ul>
         
     </li>
 <li>
@@ -256,7 +256,7 @@
     
       
     
-    <li>Monitor Control Command Set</li>
+    <li>USB Connected Monitors</li>
     <li class="wy-breadcrumbs-aside">
       
         
@@ -270,54 +270,42 @@
           <div role="main">
             <div class="section">
               
-                <h2 id="monitor-control-command-set">Monitor Control Command Set</h2>
-<h3 id="mccs-terminology">MCCS Terminology</h3>
-<p>Monitor settings are referred to as Virtual Control Panel (VCP) features.
-Features are numbered from 0..255, and are specified using the hex
-representation, e.g. 1A for blue level.   </p>
-<p>MCCS designates features as being one of three types:</p>
-<ul>
-<li>Continuous (C): Able to take any value up to some maximum</li>
-<li>Non-continuous (NC): Able to take only a designated set of values</li>
-<li>Table (T): Used for "raw" data such as a video LUT</li>
-</ul>
-<p>This clean distinction has broken down as the MCCS specification has 
-evolved.   Some features have changed category.  ddctool distinguishes
-between "simple" NC fields, which are encoded using only a single byte (in field SL) and for which there is a simple list of possible values,
-and "complex" NC fields, where an algorithm must be applied to 
-interpret the bytes of a feature query.  This is a ddctool distinction and 
-not part of the MCCS specification.</p>
-<p>Most features are both readable and writable (RW).  Some, such as 
-VCP Version (DF), are read-only (RO), while others, such as Restore
-Factory Defaults (02) are write-only.</p>
-<h3 id="mccs-versions">MCCS Versions</h3>
-<ul>
-<li>Version 1, September 1998</li>
-</ul>
-<p>Initial version. </p>
-<ul>
-<li>Version 2.0, October 1998</li>
-</ul>
-<p>Introduced required features Display Controller Type (C8), Display Firmware Level (C9) and VCP Version (DF).</p>
-<ul>
-<li>
-<p>Version 2.1, May 2005   </p>
-</li>
-<li>
-<p>Version 3.0, July 2006 </p>
-</li>
-</ul>
-<p>Not upward compatible with Version 2.1.  Appears not to have achieved industry acceptance.  I have not seen
-any monitors implementing MCCS 3.0. </p>
-<ul>
-<li>Version 2.2, July 2009 </li>
-</ul>
-<p>A revision to Version 2.1, incorporating most of the new features from Version 3.0 in a manner upwardly compatible with 2.1. </p>
-<p>Note that because Version 2.2 was issued after Version 3.0, when <strong>ddctool</strong> reports MCCS versions it orders them 1.0, 2.0, 2.1, 3.0, 2.2. </p>
-<ul>
-<li>Version 2.2a, July 2011 </li>
-</ul>
-<p>Minor revision to Version 2.2. </p>
+                <h2 id="usb-connected-monitors">USB Connected Monitors</h2>
+<p><strong>ddctool</strong> has initial support for monitors that implement the Monitor Control Command Set (MCCS) over USB.
+The support is considered initial in that it has only been tested with an Apple Cinema display.</p>
+<p>Note that some monitors use USB to communicate, but do not follow the specification for MCCS over USB. 
+For example, the HP Dreamcolor 2480zx uses a proprietary, undocumented protocol. </p>
+<p>Limitations: <br />
+- The MCCS over USB specification has no method for querying a capabilities string.  The <strong>ddctool capabilities</strong> 
+command synthesizes a response based on the feature codes it detects. <br />
+- Table type features are completely unsupported.<br />
+- Apple Thunderbolt displays might work, but are not supported.  Thunderbolt integrates video, USB, and ethernet into a single cable, and 
+appears to require a Thunderbolt capable capable computer, as I can find no adapters that split out all the signals.
+Other than actual Macs, these are uncommon.</p>
+<p>On the other hand, MCCS over USB has advantages:<br />
+- Unlike I2C, the protocol is inherently reliable.  No retry logic is needed.<br />
+- Unlike I2C, USB communication does not require waits between system calls.  It is therefore faster. </p>
+<p>Thanks to Ojdrej Zary, whose <a href="https://github.com/ondrej-zary/usbmonctl">usbmonctl</a> was used as the basis for USB support in <strong>ddctool</strong>.</p>
+<h3 id="command-ddctool-chkusbmon">Command <strong>ddctool chkusbmon</strong></h3>
+<p>Command <strong>ddctool chkusbmon</strong> helps to detect USB HID compliant monitors.  It is intended for use in udev rules.</p>
+<pre><code>ddctool chkusbmon ***hiddev device name***
+</code></pre>
+
+<p>e.g. </p>
+<pre><code>ddctool chkusbmon /dev/usb/hiddev3 
+</code></pre>
+
+<p>Returns 0 if a device represents a USB attached monitor, non-zero if not.  See <a href="../i2c_permissions/">Device Permissions</a></p>
+<h3 id="comman-option-usb">Comman option --usb</h3>
+<p>USB connected monitors can be specified by their USB bus number and device number. </p>
+<p>For example: </p>
+<pre><code>ddctool --usb 3.5 ...
+</code></pre>
+
+<p>selects the monitor at USB bus number 3, device number 5.  </p>
+<p>To see a list of all USB devices: </p>
+<pre><code>lsusb
+</code></pre>
               
             </div>
           </div>
@@ -325,10 +313,10 @@ any monitors implementing MCCS 3.0. </p>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../cmdargs/" class="btn btn-neutral float-right" title="Command Arguments">Next <span class="icon icon-circle-arrow-right"></span></a>
+        <a href="../building/" class="btn btn-neutral float-right" title="Building From Source">Next <span class="icon icon-circle-arrow-right"></span></a>
       
       
-        <a href=".." class="btn btn-neutral" title="Overview"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../table_features/" class="btn btn-neutral" title="Table Type Features"><span class="icon icon-circle-arrow-left"></span> Previous</a>
       
     </div>
   
@@ -356,10 +344,10 @@ any monitors implementing MCCS 3.0. </p>
           <a href="https://github.com/rockowitz/ddctool" class="icon icon-github" style="float: left; color: #fcfcfc"> GitHub</a>
       
       
-        <span><a href=".." style="color: #fcfcfc;">&laquo; Previous</a></span>
+        <span><a href="../table_features/" style="color: #fcfcfc;">&laquo; Previous</a></span>
       
       
-        <span style="margin-left: 15px"><a href="../cmdargs/" style="color: #fcfcfc">Next &raquo;</a></span>
+        <span style="margin-left: 15px"><a href="../building/" style="color: #fcfcfc">Next &raquo;</a></span>
       
     </span>
 </div>

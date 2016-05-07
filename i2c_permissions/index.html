@@ -8,7 +8,7 @@
   
   <meta name="author" content="Sanford Rockowitz">
   
-  <title>/dev/i2c Permissions - ddctool Documentation</title>
+  <title>Device Permissions - ddctool Documentation</title>
   
 
   <link rel="shortcut icon" href="../img/favicon.ico">
@@ -23,7 +23,7 @@
   
   <script>
     // Current page data
-    var mkdocs_page_name = "/dev/i2c Permissions";
+    var mkdocs_page_name = "Device Permissions";
     var mkdocs_page_input_path = "i2c_permissions.md";
     var mkdocs_page_url = "/i2c_permissions/";
   </script>
@@ -63,7 +63,7 @@
           
             <li>
     <li class="toctree-l1 ">
-        <a class="" href="../mccs_background/">MCCS Terminology</a>
+        <a class="" href="../mccs_background/">Monitor Control Command Set</a>
         
     </li>
 <li>
@@ -134,6 +134,20 @@
           
             <li>
     <li class="toctree-l1 ">
+        <a class="" href="../table_features/">Table Type Features</a>
+        
+    </li>
+<li>
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="../usb/">USB Connected Monitors</a>
+        
+    </li>
+<li>
+          
+            <li>
+    <li class="toctree-l1 ">
         <a class="" href="../building/">Building From Source</a>
         
     </li>
@@ -141,11 +155,11 @@
           
             <li>
     <li class="toctree-l1 current">
-        <a class="current" href="./">/dev/i2c Permissions</a>
+        <a class="current" href="./">Device Permissions</a>
         
             <ul>
             
-                <li class="toctree-l3"><a href="#devi2c-permissions">/dev/i2c permissions</a></li>
+                <li class="toctree-l3"><a href="#device-permissions">Device Permissions</a></li>
                 
             
             </ul>
@@ -184,6 +198,13 @@
             <li>
     <li class="toctree-l1 ">
         <a class="" href="../ddccontrol/">Comparison with ddccontrol</a>
+        
+    </li>
+<li>
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="../monitor_notes/">Notes on specific monitors</a>
         
     </li>
 <li>
@@ -231,7 +252,7 @@
     
       
     
-    <li>/dev/i2c Permissions</li>
+    <li>Device Permissions</li>
     <li class="wy-breadcrumbs-aside">
       
         
@@ -245,10 +266,10 @@
           <div role="main">
             <div class="section">
               
-                <h2 id="devi2c-permissions">/dev/i2c permissions</h2>
+                <h2 id="device-permissions">Device Permissions</h2>
 <p>Except when using AMD's proprietary driver (see <a href="../adl/">here</a>) ddctool requires 
 write access to /dev/i2c-*.  </p>
-<p>Some packages of i2c-tools create group i2c, and assign that the group to
+<p>On some distributions, package i2c-tools creates group i2c, and assigns that the group to
 /dev/i2c-* devices using a udev rule. In that case all that is necessary is to add your user
 name to group i2c: </p>
 <pre><code># sudo usermod your-user-name -G i2c
@@ -260,11 +281,41 @@ name to group i2c: </p>
 </code></pre>
 
 <p>If needed, a udev rule for giving group i2c RW permission on the /i2c-dev-* devices 
-can be found in distributed file <strong>45-i2c-tools.rules</strong>.  It can be copied to 
+can be found in distributed file <strong>45-ddctools-i2c.rules</strong>.  It can be copied to 
 /etc/udef/rules.d, but do check that this rule does not conflict with others in that directory.</p>
-<pre><code># sudo cp /usr/share/ddctool/data/etc/udev/rules.d/45-i2c-tools.rules /etc/udev/rules.d
+<pre><code># sudo cp /usr/share/ddctool/data/etc/udev/rules.d/45-ddctools-i2c.rules /etc/udev/rules.d
 </code></pre>
 
+<p>If using a monitor that transmits MCCS over USB, ddctool requires read/write access to device
+/dev/usb/hiddev<strong>N</strong>, where <strong>N</strong> is the number for the device representing the monitor's USB connection.</p>
+<p>ddctool has to be careful when accessing the /dev/usb/hiddev* devices, as some of these 
+can represent USB attached input devices such as keyboards or mice. </p>
+<p>Distributed file <strong>45-ddctool-usb.rules</strong> shows a couple ways to give ddctool the required 
+access.  This file can be copied to /etc/udev/rules.d.  All but one of the command lines in 
+that file should commented out. </p>
+<p>The following rule gives group <strong>video</strong> access to the USB port of an Apple Cinema Display by specifying its 
+USB device user id (aka uid) and product id (aka pid):</p>
+<pre><code>SUBSYSTEM==&quot;usbmisc&quot;, ATTRS{idVendor}==&quot;05ac&quot;, ATTRS{idProduct}==&quot;9223&quot;,  MODE=&quot;0666&quot; 
+</code></pre>
+
+<p>This line would of course have to edited for your monitor.  One way to find its uid/pid is the 
+<strong>lsusb</strong> command. </p>
+<p>An alternative way to set proper device permissions is to call <strong>ddctool</strong> from the udev rule 
+to test whether a device is a HID compliant monitor: </p>
+<pre><code>SUBSYSTEM==&quot;usbmisc&quot;,  KERNEL==&quot;hiddev*&quot;, PROGRAM=&quot;/usr/local/bin/ddctool chkusbmon $env{DEVNAME} -v&quot;, MODE=&quot;0660&quot;, GROUP=&quot;video&quot;
+</code></pre>
+
+<p>Note that the path to the ddctool executable will have be edited to the location where ddctool installed on your system. </p>
+<p>The -v option produces informational messages.  These are lost when the rule is normally executed by
+udev, but can be helpful when rules are tested using the "udevadm test" command. </p>
+<p>Distribution
+file <strong>45-ddctools-usb.rules</strong> contains sample udev rules to set permissions for USB connector monitors. 
+It can be copied to 
+/etc/udev/rules.d, but do check that this rule does not conflict with others in that directory.</p>
+<pre><code># sudo cp /usr/share/ddctool/data/etc/udev/rules.d/45-ddctools-usb.rules /etc/udev/rules.d
+</code></pre>
+
+<p>Bear in mind when looking at the variety of udev rules is that there are often several valid ways to identify a device.</p>
 <p>The following section from the udev documentation 
 (<a href="https://www.kernel.org/pub/linux/utils/kernel/hotplug/udev/udev.html">https://www.kernel.org/pub/linux/utils/kernel/hotplug/udev/udev.html</a>) 
 may be helpful:</p>

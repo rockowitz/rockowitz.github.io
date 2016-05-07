@@ -63,7 +63,7 @@
           
             <li>
     <li class="toctree-l1 ">
-        <a class="" href="../mccs_background/">MCCS Terminology</a>
+        <a class="" href="../mccs_background/">Monitor Control Command Set</a>
         
     </li>
 <li>
@@ -133,14 +133,26 @@
 <li>
           
             <li>
+    <li class="toctree-l1 ">
+        <a class="" href="../table_features/">Table Type Features</a>
+        
+    </li>
+<li>
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="../usb/">USB Connected Monitors</a>
+        
+    </li>
+<li>
+          
+            <li>
     <li class="toctree-l1 current">
         <a class="current" href="./">Building From Source</a>
         
             <ul>
             
                 <li class="toctree-l3"><a href="#building-from-source">Building From Source</a></li>
-                
-                    <li><a class="toctree-l4" href="#required-packages">Required Packages</a></li>
                 
                     <li><a class="toctree-l4" href="#building-from-tarball">Building from tarball</a></li>
                 
@@ -154,7 +166,7 @@
           
             <li>
     <li class="toctree-l1 ">
-        <a class="" href="../i2c_permissions/">/dev/i2c Permissions</a>
+        <a class="" href="../i2c_permissions/">Device Permissions</a>
         
     </li>
 <li>
@@ -190,6 +202,13 @@
             <li>
     <li class="toctree-l1 ">
         <a class="" href="../ddccontrol/">Comparison with ddccontrol</a>
+        
+    </li>
+<li>
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="../monitor_notes/">Notes on specific monitors</a>
         
     </li>
 <li>
@@ -252,21 +271,8 @@
             <div class="section">
               
                 <h2 id="building-from-source">Building From Source</h2>
-<h3 id="required-packages">Required Packages</h3>
-<p>Because of the variation among distributions, only general guidelines can be 
-given for <strong>ddctool</strong>'s package prerequisites.  The following packages are required 
-for both building and execution:</p>
-<ul>
-<li>i2c-tools</li>
-<li>glib-2.0  (Problem: glib-2.0 can be packaged with different names.)</li>
-</ul>
-<p>At least on Ubuntu, the i2c.h header file is found in a separate package. <br />
-If the following package exists, it is required to build ddctool.</p>
-<ul>
-<li>libi2c-dev </li>
-</ul>
 <h3 id="building-from-tarball">Building from tarball</h3>
-<p><strong>ddctool</strong> can be built from its <a href="../ddctool-0.3.2.tar.gz">tarball</a> in the usual way.
+<p><strong>ddctool</strong> can be built from its <a href="../ddctool-0.4.0.tar.gz">tarball</a> in the usual way.
 Unpack the tar file, change to its directory, and issue the commands: </p>
 <pre><code># ./configure
 # make
@@ -327,10 +333,10 @@ the <em>-with-adl-headers</em> argument.  See <a href="../adl/">ADL support</a>.
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../i2c_permissions/" class="btn btn-neutral float-right" title="/dev/i2c Permissions">Next <span class="icon icon-circle-arrow-right"></span></a>
+        <a href="../i2c_permissions/" class="btn btn-neutral float-right" title="Device Permissions">Next <span class="icon icon-circle-arrow-right"></span></a>
       
       
-        <a href="../tuning/" class="btn btn-neutral" title="Instrumentation and Tuning"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../usb/" class="btn btn-neutral" title="USB Connected Monitors"><span class="icon icon-circle-arrow-left"></span> Previous</a>
       
     </div>
   
@@ -358,7 +364,7 @@ the <em>-with-adl-headers</em> argument.  See <a href="../adl/">ADL support</a>.
           <a href="https://github.com/rockowitz/ddctool" class="icon icon-github" style="float: left; color: #fcfcfc"> GitHub</a>
       
       
-        <span><a href="../tuning/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+        <span><a href="../usb/" style="color: #fcfcfc;">&laquo; Previous</a></span>
       
       
         <span style="margin-left: 15px"><a href="../i2c_permissions/" style="color: #fcfcfc">Next &raquo;</a></span>

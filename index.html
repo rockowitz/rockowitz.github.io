@@ -82,7 +82,7 @@
           
             <li>
     <li class="toctree-l1 ">
-        <a class="" href="mccs_background/">MCCS Terminology</a>
+        <a class="" href="mccs_background/">Monitor Control Command Set</a>
         
     </li>
 <li>
@@ -153,6 +153,20 @@
           
             <li>
     <li class="toctree-l1 ">
+        <a class="" href="table_features/">Table Type Features</a>
+        
+    </li>
+<li>
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="usb/">USB Connected Monitors</a>
+        
+    </li>
+<li>
+          
+            <li>
+    <li class="toctree-l1 ">
         <a class="" href="building/">Building From Source</a>
         
     </li>
@@ -160,7 +174,7 @@
           
             <li>
     <li class="toctree-l1 ">
-        <a class="" href="i2c_permissions/">/dev/i2c Permissions</a>
+        <a class="" href="i2c_permissions/">Device Permissions</a>
         
     </li>
 <li>
@@ -196,6 +210,13 @@
             <li>
     <li class="toctree-l1 ">
         <a class="" href="ddccontrol/">Comparison with ddccontrol</a>
+        
+    </li>
+<li>
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="monitor_notes/">Notes on specific monitors</a>
         
     </li>
 <li>
@@ -260,17 +281,20 @@
                 <h1 id="ddctool">ddctool</h1>
 <p><strong>ddctool</strong> is a Linux program for querying and changing monitor settings, such as 
 brightness and color levels.   </p>
-<p><strong>ddctool</strong> uses DDC/CI (Display Data Channel Command Interface) to communicate with monitors implementing MCCS 
+<p><strong>ddctool</strong> primarily uses DDC/CI (Display Data Channel Command Interface) to communicate with monitors implementing MCCS 
 (Monitor Control Command Set) over I2C.  Normally, the video driver for the
-monitor exposes the I2C channel as devices named /dev/i2c-n.  </p>
+monitor exposes the I2C channel as devices named /dev/i2c-n.  Alternatively, there is initial support for monitors (such as Apple displays) that implement MCCS using a USB connection.  See <a href="usb/">USB Connected Monitors</a>. </p>
 <p>A particular use case for <strong>ddctool</strong> is as part of color profile management. Monitor
 calibration is relative to the monitor color settings currently in effect, 
 e.g. red gain.  ddctool allows color related settings to be saved at the time 
 a monitor is calibrated, and then restored when the calibration is applied.</p>
-<p><strong>ddctool</strong> does not support monitors (such as Apple displays) that implement MCCS using a USB connection, 
-nor does it support laptop displays.  Nvidia's proprietary video driver may require special configuration.  See 
-<a href="nvidia/">Special Nvidia Driver Settings</a>.  Operation with AMD's proprietary video driver fglrx requires a 
-specially built version of <strong>ddctool</strong>.  See <a href="adl/">Building with ADL Support</a>.</p>
+<p>Restrictions:<br />
+-<strong>ddctool</strong> does not support laptop displays, which are controlled using a special API, not I2C. <br />
+- Nvidia's proprietary video driver may require special configuration.  See 
+<a href="nvidia/">Special Nvidia Driver Settings</a>. <br />
+- Operation with AMD's proprietary video driver fglrx requires a 
+specially built version of <strong>ddctool</strong>.  See <a href="adl/">Building with ADL Support</a>.<br />
+- Reading and writing <strong><em>Table</em></strong> type features is implemented but untested.  See <a href="table_features/">Table Features</a>  </p>
 <h2 id="command-overview">Command Overview</h2>
 <p><strong>ddctool</strong> is a command line program.  (A GUI user interface is planned.)  <strong>ddctool</strong> implements 
 the following subcommands:</p>
@@ -318,6 +342,10 @@ the following subcommands:</p>
 <td>interrogate</td>
 <td>collect maximal information for problem diagnosis</td>
 </tr>
+<tr>
+<td>chkusbmon  /dev/hiddevN</td>
+<td>used by udev rules to test if a USB device represents a monitor</td>
+</tr>
 </tbody>
 </table>
 <p>There is an extensive set of options for tailoring ddctool operation. 
@@ -334,6 +362,7 @@ using any of the following options:</p>
 <pre><code>--display &lt;display number&gt;
 --bus &lt;i2c bus number&gt;
 --adl &lt;iAdapterNumber&gt;.&lt;iDisplayNumber&gt;
+--usb &lt;usb bus number&gt;.&lt;usb device number&gt;
 --edid &lt;256 character hex string&gt;
 --model &lt;model name&gt; and --sn &lt;serial number&gt;
 </code></pre>
@@ -378,7 +407,7 @@ will probe the I2C environment and may provide clues as to the problem.</p>
 <h2 id="additional-topics">Additional Topics</h2>
 <ul>
 <li>
-<p><a href="mccs_background/">MCCS Terminology</a></p>
+<p><a href="mccs_background/">Monitor Control Command Set</a></p>
 </li>
 <li>
 <p><a href="tuning/">Instrumentation and Tuning</a></p>
@@ -414,7 +443,7 @@ will probe the I2C environment and may provide clues as to the problem.</p>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="mccs_background/" class="btn btn-neutral float-right" title="MCCS Terminology">Next <span class="icon icon-circle-arrow-right"></span></a>
+        <a href="mccs_background/" class="btn btn-neutral float-right" title="Monitor Control Command Set">Next <span class="icon icon-circle-arrow-right"></span></a>
       
       
     </div>
@@ -454,5 +483,5 @@ will probe the I2C environment and may provide clues as to the problem.</p>
 
 <!--
 MkDocs version : 0.15.3
-Build Date UTC : 2016-03-31 02:35:58.275139
+Build Date UTC : 2016-05-07 16:04:33.837608
 -->

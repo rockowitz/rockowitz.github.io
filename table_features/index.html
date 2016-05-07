@@ -8,7 +8,7 @@
   
   <meta name="author" content="Sanford Rockowitz">
   
-  <title>Monitor Control Command Set - ddctool Documentation</title>
+  <title>Table Type Features - ddctool Documentation</title>
   
 
   <link rel="shortcut icon" href="../img/favicon.ico">
@@ -23,9 +23,9 @@
   
   <script>
     // Current page data
-    var mkdocs_page_name = "Monitor Control Command Set";
-    var mkdocs_page_input_path = "mccs_background.md";
-    var mkdocs_page_url = "/mccs_background/";
+    var mkdocs_page_name = "Table Type Features";
+    var mkdocs_page_input_path = "table_features.md";
+    var mkdocs_page_url = "/table_features/";
   </script>
   
   <script src="../js/jquery-2.1.1.min.js"></script>
@@ -62,19 +62,8 @@
 <li>
           
             <li>
-    <li class="toctree-l1 current">
-        <a class="current" href="./">Monitor Control Command Set</a>
-        
-            <ul>
-            
-                <li class="toctree-l3"><a href="#monitor-control-command-set">Monitor Control Command Set</a></li>
-                
-                    <li><a class="toctree-l4" href="#mccs-terminology">MCCS Terminology</a></li>
-                
-                    <li><a class="toctree-l4" href="#mccs-versions">MCCS Versions</a></li>
-                
-            
-            </ul>
+    <li class="toctree-l1 ">
+        <a class="" href="../mccs_background/">Monitor Control Command Set</a>
         
     </li>
 <li>
@@ -144,8 +133,15 @@
 <li>
           
             <li>
-    <li class="toctree-l1 ">
-        <a class="" href="../table_features/">Table Type Features</a>
+    <li class="toctree-l1 current">
+        <a class="current" href="./">Table Type Features</a>
+        
+            <ul>
+            
+                <li class="toctree-l3"><a href="#table-features">Table Features</a></li>
+                
+            
+            </ul>
         
     </li>
 <li>
@@ -256,7 +252,7 @@
     
       
     
-    <li>Monitor Control Command Set</li>
+    <li>Table Type Features</li>
     <li class="wy-breadcrumbs-aside">
       
         
@@ -270,54 +266,53 @@
           <div role="main">
             <div class="section">
               
-                <h2 id="monitor-control-command-set">Monitor Control Command Set</h2>
-<h3 id="mccs-terminology">MCCS Terminology</h3>
-<p>Monitor settings are referred to as Virtual Control Panel (VCP) features.
-Features are numbered from 0..255, and are specified using the hex
-representation, e.g. 1A for blue level.   </p>
-<p>MCCS designates features as being one of three types:</p>
-<ul>
-<li>Continuous (C): Able to take any value up to some maximum</li>
-<li>Non-continuous (NC): Able to take only a designated set of values</li>
-<li>Table (T): Used for "raw" data such as a video LUT</li>
-</ul>
-<p>This clean distinction has broken down as the MCCS specification has 
-evolved.   Some features have changed category.  ddctool distinguishes
-between "simple" NC fields, which are encoded using only a single byte (in field SL) and for which there is a simple list of possible values,
-and "complex" NC fields, where an algorithm must be applied to 
-interpret the bytes of a feature query.  This is a ddctool distinction and 
-not part of the MCCS specification.</p>
-<p>Most features are both readable and writable (RW).  Some, such as 
-VCP Version (DF), are read-only (RO), while others, such as Restore
-Factory Defaults (02) are write-only.</p>
-<h3 id="mccs-versions">MCCS Versions</h3>
-<ul>
-<li>Version 1, September 1998</li>
-</ul>
-<p>Initial version. </p>
-<ul>
-<li>Version 2.0, October 1998</li>
-</ul>
-<p>Introduced required features Display Controller Type (C8), Display Firmware Level (C9) and VCP Version (DF).</p>
-<ul>
-<li>
-<p>Version 2.1, May 2005   </p>
-</li>
-<li>
-<p>Version 3.0, July 2006 </p>
-</li>
-</ul>
-<p>Not upward compatible with Version 2.1.  Appears not to have achieved industry acceptance.  I have not seen
-any monitors implementing MCCS 3.0. </p>
-<ul>
-<li>Version 2.2, July 2009 </li>
-</ul>
-<p>A revision to Version 2.1, incorporating most of the new features from Version 3.0 in a manner upwardly compatible with 2.1. </p>
-<p>Note that because Version 2.2 was issued after Version 3.0, when <strong>ddctool</strong> reports MCCS versions it orders them 1.0, 2.0, 2.1, 3.0, 2.2. </p>
-<ul>
-<li>Version 2.2a, July 2011 </li>
-</ul>
-<p>Minor revision to Version 2.2. </p>
+                <h2 id="table-features">Table Features</h2>
+<p>Some VCP features are designated as type Table (T), as opposed to Continuous (C) or Non-Continuous (NC).
+Read and write requests for table features transmit blocks of data.
+In particular, LUT related features are of type Table. </p>
+<p><strong>ddctool</strong> exposes table feature values as uninterpreted hex strings,
+e.g. </p>
+<pre><code>ddctool setvcp 60 01020304F1F2FEFF
+</code></pre>
+
+<p>Table features support is currently implemented over DDC/CI, but has never been tested with an actual monitor. </p>
+<p>To see the list of Table features, issue the command: </p>
+<pre><code>ddctool vcpinfo table
+</code></pre>
+
+<p>Note, however, that feature selection in vcpinfo is not properly version sensitive.  This need to change, as 
+whether a feature is of type Table can vary with MCCS version</p>
+<table>
+<thead>
+<tr>
+<th align="right">Code</th>
+<th>Feature</th>
+<th>Version Detail</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="right">60</td>
+<td>Select Active Video Source</td>
+<td>Type NC in Versions 2.0 through 2.2</td>
+</tr>
+<tr>
+<td align="right">a4</td>
+<td>Control Selected Window Operation</td>
+<td>Type NC in MCCS 2.0, T in 3.0, 2.2</td>
+</tr>
+<tr>
+<td align="right">b4</td>
+<td>Host time mode</td>
+<td>Type NC in MCCS 2.0, 2.1, T in 3.0, 2.2</td>
+</tr>
+<tr>
+<td align="right">d0</td>
+<td>Select Active Output</td>
+<td>Type T in MCCS 3.0, NC otherwise</td>
+</tr>
+</tbody>
+</table>
               
             </div>
           </div>
@@ -325,10 +320,10 @@ any monitors implementing MCCS 3.0. </p>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../cmdargs/" class="btn btn-neutral float-right" title="Command Arguments">Next <span class="icon icon-circle-arrow-right"></span></a>
+        <a href="../usb/" class="btn btn-neutral float-right" title="USB Connected Monitors">Next <span class="icon icon-circle-arrow-right"></span></a>
       
       
-        <a href=".." class="btn btn-neutral" title="Overview"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../tuning/" class="btn btn-neutral" title="Instrumentation and Tuning"><span class="icon icon-circle-arrow-left"></span> Previous</a>
       
     </div>
   
@@ -356,10 +351,10 @@ any monitors implementing MCCS 3.0. </p>
           <a href="https://github.com/rockowitz/ddctool" class="icon icon-github" style="float: left; color: #fcfcfc"> GitHub</a>
       
       
-        <span><a href=".." style="color: #fcfcfc;">&laquo; Previous</a></span>
+        <span><a href="../tuning/" style="color: #fcfcfc;">&laquo; Previous</a></span>
       
       
-        <span style="margin-left: 15px"><a href="../cmdargs/" style="color: #fcfcfc">Next &raquo;</a></span>
+        <span style="margin-left: 15px"><a href="../usb/" style="color: #fcfcfc">Next &raquo;</a></span>
       
     </span>
 </div>
