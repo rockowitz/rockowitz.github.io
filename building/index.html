@@ -156,6 +156,10 @@
                 
                     <li><a class="toctree-l4" href="#building-from-tarball">Building from tarball</a></li>
                 
+                    <li><a class="toctree-l4" href="#configure-options">configure options</a></li>
+                
+                    <li><a class="toctree-l4" href="#required-packages">Required packages</a></li>
+                
                     <li><a class="toctree-l4" href="#building-from-git">Building from git</a></li>
                 
             
@@ -201,6 +205,13 @@
           
             <li>
     <li class="toctree-l1 ">
+        <a class="" href="../raspberry/">Raspberry Pi</a>
+        
+    </li>
+<li>
+          
+            <li>
+    <li class="toctree-l1 ">
         <a class="" href="../ddccontrol/">Comparison with ddccontrol</a>
         
     </li>
@@ -209,6 +220,20 @@
             <li>
     <li class="toctree-l1 ">
         <a class="" href="../monitor_notes/">Notes on specific monitors</a>
+        
+    </li>
+<li>
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="../faq/">Frequently Asked Questions</a>
+        
+    </li>
+<li>
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="../release_notes/">Release Notes</a>
         
     </li>
 <li>
@@ -230,6 +255,13 @@
             <li>
     <li class="toctree-l1 ">
         <a class="" href="../bibliography/">References</a>
+        
+    </li>
+<li>
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="../acknowledgements/">Acknowlegements</a>
         
     </li>
 <li>
@@ -272,7 +304,7 @@
               
                 <h2 id="building-from-source">Building From Source</h2>
 <h3 id="building-from-tarball">Building from tarball</h3>
-<p><strong>ddctool</strong> can be built from its <a href="../ddctool-0.4.0.tar.gz">tarball</a> in the usual way.
+<p><strong>ddctool</strong> can be built from its <a href="../ddctool-0.4.3.tar.gz">tarball</a> in the usual way.
 Unpack the tar file, change to its directory, and issue the commands: </p>
 <pre><code># ./configure
 # make
@@ -281,6 +313,51 @@ Unpack the tar file, change to its directory, and issue the commands: </p>
 
 <p>Note that additional steps are required to build <strong>ddctool</strong> with <em>ADL</em> support.
 See <a href="../adl/">ADL support</a>.</p>
+<h3 id="configure-options"><strong>configure</strong> options</h3>
+<p>The <strong>configure</strong> script has several custom options.  Some reflect features under development.
+The currently supported options are:</p>
+<table>
+<thead>
+<tr>
+<th>Option</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>--with-adl <directory></td>
+<td>Build with support for ADL connected monitors. See below</td>
+</tr>
+<tr>
+<td>--disable-usb</td>
+<td>Do not build with support for USB connected monitors.  Reduces size and package requirements</td>
+</tr>
+</tbody>
+</table>
+<h3 id="required-packages">Required packages</h3>
+<p>Because of the variation among distributions, only general guidelines can be 
+given for some ddctool prerequisites.</p>
+<p>ddctool requires the following packages for both building and execution:</p>
+<ul>
+<li>i2c-tools</li>
+<li>glib-2.0  (Problem: glib-2.0 can be packaged with different names.)</li>
+</ul>
+<p>On most platforms, development related files (e.g. headers files) are in separate packages having a 
+"-dev" or similar suffix in their names.   ddctool needs development packages for:</p>
+<ul>
+<li>hidapi</li>
+<li>lsusb</li>
+<li>hidraw</li>
+<li>udev</li>
+</ul>
+<p>At least on Ubuntu, the i2c.h header file is found in a separate package. <br />
+If the following package exists, it is required to build ddctool.</p>
+<ul>
+<li>libi2c-dev </li>
+</ul>
+<p>Error messages in this regard from autoconf can be misleading.  If autoconf complains that a package 
+is not found but it seems to be installed, it's likely that the associated development package 
+(with a suffix like "-dev") needs to be installed.</p>
 <h3 id="building-from-git">Building from git</h3>
 <p>The git repository for <strong>ddctool</strong> is <a href="http://www.github.com/rockowitz/ddctool">here</a></p>
 <ul>

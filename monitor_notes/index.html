@@ -190,6 +190,13 @@
           
             <li>
     <li class="toctree-l1 ">
+        <a class="" href="../raspberry/">Raspberry Pi</a>
+        
+    </li>
+<li>
+          
+            <li>
+    <li class="toctree-l1 ">
         <a class="" href="../ddccontrol/">Comparison with ddccontrol</a>
         
     </li>
@@ -211,9 +218,15 @@
                 
                     <li><a class="toctree-l4" href="#dell-u3011">Dell U3011</a></li>
                 
+                    <li><a class="toctree-l4" href="#eizo-coloredge-cg19">Eizo Coloredge CG19</a></li>
+                
                     <li><a class="toctree-l4" href="#hp-lp2480zx">HP LP2480zx</a></li>
                 
                     <li><a class="toctree-l4" href="#hp-zr2740w">HP ZR2740w</a></li>
+                
+                    <li><a class="toctree-l4" href="#nec-lcd3090wqxi">NEC LCD3090WQXi</a></li>
+                
+                    <li><a class="toctree-l4" href="#nec-pa241">NEC PA241</a></li>
                 
                     <li><a class="toctree-l4" href="#samsung-syncmaster-213t">Samsung Syncmaster 213T</a></li>
                 
@@ -227,6 +240,20 @@
                 
             
             </ul>
+        
+    </li>
+<li>
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="../faq/">Frequently Asked Questions</a>
+        
+    </li>
+<li>
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="../release_notes/">Release Notes</a>
         
     </li>
 <li>
@@ -248,6 +275,13 @@
             <li>
     <li class="toctree-l1 ">
         <a class="" href="../bibliography/">References</a>
+        
+    </li>
+<li>
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="../acknowledgements/">Acknowlegements</a>
         
     </li>
 <li>
@@ -298,6 +332,7 @@ Controller Model:          unspecified  <br />
 Firmware version:          unspecified  </p>
 <p>I2C interface has more VCP features than USB interface. </p>
 <p>USB interface does not report VCP version (feature DF).</p>
+<p>Able to read EDID over USB. </p>
 <h3 id="asus-ve247">Asus VE247</h3>
 <p>VCP version:  2.0 <br />
 Controller Manufacturer:   RealTek<br />
@@ -321,6 +356,16 @@ Firmware version: 1.5   </p>
 <p>If a value is set using SETVCP, the new value takes effect and appears in the on-screen display.   However, GETVCP sometimes still retieves the old value, not the new one.</p>
 <p>Reports VCP code 0B (color temperature increment) as 1 degree Kelvin, which makes the GETVCP response to VCP code 0C (color temperature
 request) nonsensical.</p>
+<h3 id="eizo-coloredge-cg19">Eizo Coloredge CG19</h3>
+<p>VCP version:  unreported <br />
+Controller manufacturer and model: unreported (VCP feature code C8 unsupported) <br />
+Firmware version: unreported (VCP feature code C9 unsupported)   </p>
+<p>Reports EDID at I2C bus address 0x50.  Does not support DDC over I2C (bus address 0x37). </p>
+<p>Implements MCCS over USB, and appears to conform to the USB Monitor Control Class Specification.  However, it appears that the more
+sophisticated monitor features such as LUT loading use manufacturer specific USB HID reports. </p>
+<p>Unable to read EDID over USB, even though the HID Report for EDID can be located.</p>
+<p>To set color related VCP feature values, Custom Color mode must be selected.   If set to sRGB or Calibrated, the SETVCP command
+will appear to succeed, but will have no effect.  (In sRGB mode, Brightness can be set, in Calibrated mode it cannot.)</p>
 <h3 id="hp-lp2480zx">HP LP2480zx</h3>
 <p>VCP version:   2.1 <br />
 Controller manufacturer:  Genesis <br />
@@ -330,10 +375,26 @@ Firmware version:      0.139</p>
 standard VCP feature codes.</p>
 <p>Implements MCCS over USB as well as I2C.   However, the USB implementation appears to be non-standard.  It does not conform to the USB Monitor Control Class Specification. </p>
 <p>Sensible reponses to VCP codes 0B and 0C. </p>
+<p>Capabilities string does not match actual capabilities observed.  For example, capaibilites does not include VCP feature code 0x10, brightness, which is recognized by getvcp and setvcp.</p>
 <h3 id="hp-zr2740w">HP ZR2740w</h3>
 <p>VCP version:  2.2  </p>
 <p>Implements only a few VCP codes. </p>
 <p>VCP feature codes 0B and 0C unsupported.</p>
+<h3 id="nec-lcd3090wqxi">NEC LCD3090WQXi</h3>
+<p>VCP Version 2.0<br />
+Controller manufacturer and model: unreported (VCP feature code C8 unsupported)<br />
+Firmware version: unreported (VCP feature code C9 unsupported)   </p>
+<h3 id="nec-pa241">NEC PA241</h3>
+<p>VCP Version 2.0<br />
+Controller manufacturer and model: unreported (VCP feature code C8 unsupported)<br />
+Firmware version: unreported (VCP feature code C9 unsupported)   </p>
+<p>Implements both I2C and USB interfaces.  </p>
+<p>Makes heavy use of manufacturer specific VCP feature codes.  Also, ddctool capabilities --verbose reports numerous manufacturer
+specific DDC commands, the USB makes heavy use of manufacturer specific usage codes.</p>
+<p>Monitor must be set to ??? to allow changes. </p>
+<p>VCP code 0x0c (Color Temperature Request) returns 0, which is nonsensical. </p>
+<p>Does not use the usual VCP codes (.e.g. 0x16/Red Gain) for color control.
+Instead uses the 6 axis color control features 0x8c..0xa0.</p>
 <h3 id="samsung-syncmaster-213t">Samsung Syncmaster 213T</h3>
 <p>Does not support DDC.</p>
 <h3 id="samsung-syncmaster-730b">Samsung Syncmaster 730B</h3>
@@ -357,7 +418,7 @@ Firmware version:  0.6 </p>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../todo/" class="btn btn-neutral float-right" title="Future Tasks">Next <span class="icon icon-circle-arrow-right"></span></a>
+        <a href="../faq/" class="btn btn-neutral float-right" title="Frequently Asked Questions">Next <span class="icon icon-circle-arrow-right"></span></a>
       
       
         <a href="../ddccontrol/" class="btn btn-neutral" title="Comparison with ddccontrol"><span class="icon icon-circle-arrow-left"></span> Previous</a>
@@ -391,7 +452,7 @@ Firmware version:  0.6 </p>
         <span><a href="../ddccontrol/" style="color: #fcfcfc;">&laquo; Previous</a></span>
       
       
-        <span style="margin-left: 15px"><a href="../todo/" style="color: #fcfcfc">Next &raquo;</a></span>
+        <span style="margin-left: 15px"><a href="../faq/" style="color: #fcfcfc">Next &raquo;</a></span>
       
     </span>
 </div>
