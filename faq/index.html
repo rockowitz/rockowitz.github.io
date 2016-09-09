@@ -219,6 +219,8 @@
                 
                     <li><a class="toctree-l4" href="#the-capabilities-command-reports-the-mccs-aka-vcp-version-but-elsewhere-ddctool-says-the-version-is-unknown">The capabilities command reports the MCCS (aka VCP) version, but elsewhere ddctool says the version is unknown.</a></li>
                 
+                    <li><a class="toctree-l4" href="#configure-complains-that-a-required-package-does-not-exist-but-it-is-installed-on-my-system">configure complains that a required package does not exist, but it is installed on my system.</a></li>
+                
             
             </ul>
         
@@ -297,7 +299,7 @@
             <div class="section">
               
                 <h2 id="frequently-asked-questions">Frequently Asked Questions</h2>
-<h3 id="the-capabilities-command-reports-the-mccs-aka-vcp-version-but-elsewhere-ddctool-says-the-version-is-unknown">The capabilities command reports the MCCS (aka VCP) version, but elsewhere ddctool says the version is unknown.</h3>
+<h3 id="the-capabilities-command-reports-the-mccs-aka-vcp-version-but-elsewhere-ddctool-says-the-version-is-unknown">The <strong><em>capabilities</em></strong> command reports the MCCS (aka VCP) version, but elsewhere ddctool says the version is unknown.</h3>
 <p>Command <strong><em>ddctool capabilities</em></strong> reports the response to the DDC API capabilities request.  However, <strong>ddctool</strong> regards this 
 output as purely informational.   It does not use the capabilities API call when formulating commands and 
 interpeting responses.  This is for multiple reasons:</p>
@@ -318,6 +320,10 @@ way to know for sure if a monitor implememts a VCP feature code is to try. </p>
 </li>
 </ul>
 <p><strong>ddctool</strong> relies on VCP feature code xDF to determine the VCP version.  (For USB connected monitors, it queries HID usage x00800004.)  It is possible that feature code xDF is unspported, even though the capabilities response specifies a version.</p>
+<h3 id="configure-complains-that-a-required-package-does-not-exist-but-it-is-installed-on-my-system"><strong><em>configure</em></strong> complains that a required package does not exist, but it is installed on my system.</h3>
+<p>Error messages from pkg-config (which is called by configure) can be misleading.  If configure complains that a
+package is not found but it seems to be installed, it's likely that what's missing is the associated development package 
+(with a suffix like "-dev").</p>
               
             </div>
           </div>
