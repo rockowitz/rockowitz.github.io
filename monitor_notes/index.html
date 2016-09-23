@@ -216,6 +216,8 @@
                 
                     <li><a class="toctree-l4" href="#dell-p2411">Dell P2411</a></li>
                 
+                    <li><a class="toctree-l4" href="#dell-ultrasharpm-1905fp">Dell Ultrasharpm 1905FP</a></li>
+                
                     <li><a class="toctree-l4" href="#dell-u3011">Dell U3011</a></li>
                 
                     <li><a class="toctree-l4" href="#eizo-coloredge-cg19">Eizo Coloredge CG19</a></li>
@@ -348,6 +350,8 @@ Firmware version:       1.1</p>
 <p>Lots of I2C errors.  Heavily dependant on retries.  The CAPABILITIES command sometimes fails, even with maximum retries.  </p>
 <p>Reports VCP code 0B (color temperature increment) as 1 degree Kelvin, which makes the GETVCP response to VCP code 0C (color temperature
 request) nonsensical.</p>
+<h3 id="dell-ultrasharpm-1905fp">Dell Ultrasharpm 1905FP</h3>
+<p>Does not support DDC.</p>
 <h3 id="dell-u3011">Dell U3011</h3>
 <p>VCP version: 2.1 <br />
 Controller manufacturer:  Mstar <br />
@@ -361,7 +365,7 @@ request) nonsensical.</p>
 Controller manufacturer and model: unreported (VCP feature code C8 unsupported) <br />
 Firmware version: unreported (VCP feature code C9 unsupported)   </p>
 <p>Reports EDID at I2C bus address 0x50.  Does not support DDC over I2C (bus address 0x37). </p>
-<p>Implements MCCS over USB, and appears to conform to the USB Monitor Control Class Specification.  However, it appears that the more
+<p>Does implement MCCS over USB, and appears to conform to the USB Monitor Control Class Specification.  However, it appears that the more
 sophisticated monitor features such as LUT loading use manufacturer specific USB HID reports. </p>
 <p>Unable to read EDID over USB, even though the HID Report for EDID can be located.</p>
 <p>To set color related VCP feature values, Custom Color mode must be selected.   If set to sRGB or Calibrated, the SETVCP command
@@ -404,6 +408,9 @@ Firmware version:  Unknown (VCP feature code C9 unsupported)  </p>
 <p>The capabilities string spcifies the values for non-continuous features in decimal rather than hexadecimal</p>
 <p>VCP feature codes 0B and 0C unsupported.</p>
 <h3 id="gateway-diamondtron">Gateway Diamondtron</h3>
+<p>VCP version:  Unspecified, implies 1.0
+Controller manufacturer and model:   Unknown (VCP feature code C8 unsupported)   <br />
+Firmware version:  Unknown (VCP feature code C9 unsupported)  </p>
 <h3 id="acer-x243w">Acer X243W</h3>
 <h3 id="mikes-monitor">Mike's monitor</h3>
 <p>VCP version:  2.1 <br />

@@ -295,12 +295,13 @@
             <div class="section">
               
                 <h2 id="comparison-with-ddccontrol">Comparison with ddccontrol</h2>
-<p>The program <strong>ddccontrol</strong> appears to be unmaintained, and has been dropped from distributions.  It has a fragility 
-which I guess reflects the services availble at the time it was written.  In particular:</p>
+<p>The program <strong>ddccontrol</strong> appears to be unmaintained, and has been dropped from distributions.  It is brittle 
+in ways that I surmise reflect the services availble at the time it was written.  In particular:  </p>
 <ul>
-<li><strong>ddcctontrol</strong>, at least some of the time, uses its own I2C driver code.  <strong>ddctool</strong>, 
+<li><strong>ddcctontrol</strong>, as it is normally built (based on <strong><em>configure</em></strong> options that control conditional compilation), programs the I2C devcies directly at the PCI level.  It has dedicated code for each of several video card interfaces (e.g. nvidia, sis, intel740, intell 810).
+<strong>ddctool</strong>, 
 on the other hand, relies exclusively on the the <strong>i2c-dev</strong> userspace 
-interface to I2C, and has no driver code of its own.  This should make it less fragile.</li>
+interface to I2C.  This should make it less fragile to video card variations.</li>
 <li><strong>ddccontrol</strong> uses a monitor attribute database to interpret VCP feature codes.  With MCCS 
 2.0 and greater, VCP feature code definitions are largely standardized.  <strong>ddctool</strong> uses the 
 MCCS specification to interpret VCP feature values, and considerable
