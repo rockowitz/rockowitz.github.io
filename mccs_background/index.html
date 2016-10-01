@@ -8,7 +8,7 @@
   
   <meta name="author" content="Sanford Rockowitz">
   
-  <title>Monitor Control Command Set - ddctool Documentation</title>
+  <title>Monitor Control Command Set - ddcutil Documentation</title>
   
 
   <link rel="shortcut icon" href="../img/favicon.ico">
@@ -43,7 +43,7 @@
     
     <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
       <div class="wy-side-nav-search">
-        <a href=".." class="icon icon-home"> ddctool Documentation</a>
+        <a href=".." class="icon icon-home"> ddcutil Documentation</a>
         <div role="search">
   <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
     <input type="text" name="q" placeholder="Search docs" />
@@ -100,28 +100,28 @@
         
             
     <li class="toctree-l1 ">
-        <a class="" href="../vcpinfo_output/">ddctool vcpinfo example</a>
+        <a class="" href="../vcpinfo_output/">ddcutil vcpinfo example</a>
         
     </li>
 
         
             
     <li class="toctree-l1 ">
-        <a class="" href="../detect_verbose_output/">ddctool detect example</a>
+        <a class="" href="../detect_verbose_output/">ddcutil detect example</a>
         
     </li>
 
         
             
     <li class="toctree-l1 ">
-        <a class="" href="../cap_u3011_verbose_output/">ddctool capabilities example</a>
+        <a class="" href="../cap_u3011_verbose_output/">ddcutil capabilities example</a>
         
     </li>
 
         
             
     <li class="toctree-l1 ">
-        <a class="" href="../getvcp_known_u3011_output/">ddctool getvcp example</a>
+        <a class="" href="../getvcp_known_u3011_output/">ddcutil getvcp example</a>
         
     </li>
 
@@ -272,7 +272,7 @@
       
       <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
         <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-        <a href="..">ddctool Documentation</a>
+        <a href="..">ddcutil Documentation</a>
       </nav>
 
       
@@ -288,7 +288,7 @@
     <li class="wy-breadcrumbs-aside">
       
         
-          <a href="https://github.com/rockowitz/ddctool" class="icon icon-github"> Edit on GitHub</a>
+          <a href="https://github.com/rockowitz/ddcutil" class="icon icon-github"> Edit on GitHub</a>
         
       
     </li>
@@ -310,10 +310,10 @@ representation, e.g. 1A for blue level.   </p>
 <li>Table (T): Used for "raw" data such as a video LUT</li>
 </ul>
 <p>This clean distinction has broken down as the MCCS specification has 
-evolved.   Some features have changed category.  ddctool distinguishes
+evolved.   Some features have changed category.  ddcutil distinguishes
 between "simple" NC fields, which are encoded using only a single byte (in field SL) and for which there is a simple list of possible values,
 and "complex" NC fields, where an algorithm must be applied to 
-interpret the bytes of a feature query.  This is a ddctool distinction and 
+interpret the bytes of a feature query.  This is a ddcutil distinction and 
 not part of the MCCS specification.</p>
 <p>Most features are both readable and writable (RW).  Some, such as 
 VCP Version (DF), are read-only (RO), while others, such as Restore
@@ -341,7 +341,7 @@ any monitors implementing MCCS 3.0. </p>
 <li>Version 2.2, July 2009 </li>
 </ul>
 <p>A revision to Version 2.1, incorporating most of the new features from Version 3.0 in a manner upwardly compatible with 2.1. </p>
-<p>Note that because Version 2.2 was issued after Version 3.0, when <strong>ddctool</strong> reports MCCS versions it orders them 1.0, 2.0, 2.1, 3.0, 2.2. </p>
+<p>Note that because Version 2.2 was issued after Version 3.0, when <strong>ddcutil</strong> reports MCCS versions it orders them 1.0, 2.0, 2.1, 3.0, 2.2. </p>
 <ul>
 <li>Version 2.2a, July 2011 </li>
 </ul>
@@ -381,7 +381,7 @@ any monitors implementing MCCS 3.0. </p>
 <div class="rst-versions" role="note" style="cursor: pointer">
     <span class="rst-current-version" data-toggle="rst-current-version">
       
-          <a href="https://github.com/rockowitz/ddctool" class="icon icon-github" style="float: left; color: #fcfcfc"> GitHub</a>
+          <a href="https://github.com/rockowitz/ddcutil" class="icon icon-github" style="float: left; color: #fcfcfc"> GitHub</a>
       
       
         <span><a href=".." style="color: #fcfcfc;">&laquo; Previous</a></span>

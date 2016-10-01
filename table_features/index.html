@@ -8,7 +8,7 @@
   
   <meta name="author" content="Sanford Rockowitz">
   
-  <title>Table Type Features - ddctool Documentation</title>
+  <title>Table Type Features - ddcutil Documentation</title>
   
 
   <link rel="shortcut icon" href="../img/favicon.ico">
@@ -43,7 +43,7 @@
     
     <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
       <div class="wy-side-nav-search">
-        <a href=".." class="icon icon-home"> ddctool Documentation</a>
+        <a href=".." class="icon icon-home"> ddcutil Documentation</a>
         <div role="search">
   <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
     <input type="text" name="q" placeholder="Search docs" />
@@ -89,28 +89,28 @@
         
             
     <li class="toctree-l1 ">
-        <a class="" href="../vcpinfo_output/">ddctool vcpinfo example</a>
+        <a class="" href="../vcpinfo_output/">ddcutil vcpinfo example</a>
         
     </li>
 
         
             
     <li class="toctree-l1 ">
-        <a class="" href="../detect_verbose_output/">ddctool detect example</a>
+        <a class="" href="../detect_verbose_output/">ddcutil detect example</a>
         
     </li>
 
         
             
     <li class="toctree-l1 ">
-        <a class="" href="../cap_u3011_verbose_output/">ddctool capabilities example</a>
+        <a class="" href="../cap_u3011_verbose_output/">ddcutil capabilities example</a>
         
     </li>
 
         
             
     <li class="toctree-l1 ">
-        <a class="" href="../getvcp_known_u3011_output/">ddctool getvcp example</a>
+        <a class="" href="../getvcp_known_u3011_output/">ddcutil getvcp example</a>
         
     </li>
 
@@ -268,7 +268,7 @@
       
       <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
         <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-        <a href="..">ddctool Documentation</a>
+        <a href="..">ddcutil Documentation</a>
       </nav>
 
       
@@ -284,7 +284,7 @@
     <li class="wy-breadcrumbs-aside">
       
         
-          <a href="https://github.com/rockowitz/ddctool" class="icon icon-github"> Edit on GitHub</a>
+          <a href="https://github.com/rockowitz/ddcutil" class="icon icon-github"> Edit on GitHub</a>
         
       
     </li>
@@ -298,14 +298,14 @@
 <p>Some VCP features are designated as type Table (T), as opposed to Continuous (C) or Non-Continuous (NC).
 Read and write requests for table features transmit blocks of data.
 In particular, LUT related features are of type Table. </p>
-<p><strong>ddctool</strong> exposes table feature values as uninterpreted hex strings,
+<p><strong>ddcutil</strong> exposes table feature values as uninterpreted hex strings,
 e.g. </p>
-<pre><code>ddctool setvcp 60 01020304F1F2FEFF
+<pre><code>ddcutil setvcp 60 01020304F1F2FEFF
 </code></pre>
 
 <p>Table features support is currently implemented over DDC/CI, but has never been tested with an actual monitor. </p>
 <p>To see the list of Table features, issue the command: </p>
-<pre><code>ddctool vcpinfo table
+<pre><code>ddcutil vcpinfo table
 </code></pre>
 
 <p>Note, however, that feature selection in vcpinfo is not properly version sensitive.  This need to change, as 
@@ -376,7 +376,7 @@ whether a feature is of type Table can vary with MCCS version</p>
 <div class="rst-versions" role="note" style="cursor: pointer">
     <span class="rst-current-version" data-toggle="rst-current-version">
       
-          <a href="https://github.com/rockowitz/ddctool" class="icon icon-github" style="float: left; color: #fcfcfc"> GitHub</a>
+          <a href="https://github.com/rockowitz/ddcutil" class="icon icon-github" style="float: left; color: #fcfcfc"> GitHub</a>
       
       
         <span><a href="../tuning/" style="color: #fcfcfc;">&laquo; Previous</a></span>

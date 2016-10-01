@@ -8,7 +8,7 @@
   
   <meta name="author" content="Sanford Rockowitz">
   
-  <title>Command Arguments - ddctool Documentation</title>
+  <title>Command Arguments - ddcutil Documentation</title>
   
 
   <link rel="shortcut icon" href="../img/favicon.ico">
@@ -43,7 +43,7 @@
     
     <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
       <div class="wy-side-nav-search">
-        <a href=".." class="icon icon-home"> ddctool Documentation</a>
+        <a href=".." class="icon icon-home"> ddcutil Documentation</a>
         <div role="search">
   <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
     <input type="text" name="q" placeholder="Search docs" />
@@ -96,28 +96,28 @@
         
             
     <li class="toctree-l1 ">
-        <a class="" href="../vcpinfo_output/">ddctool vcpinfo example</a>
+        <a class="" href="../vcpinfo_output/">ddcutil vcpinfo example</a>
         
     </li>
 
         
             
     <li class="toctree-l1 ">
-        <a class="" href="../detect_verbose_output/">ddctool detect example</a>
+        <a class="" href="../detect_verbose_output/">ddcutil detect example</a>
         
     </li>
 
         
             
     <li class="toctree-l1 ">
-        <a class="" href="../cap_u3011_verbose_output/">ddctool capabilities example</a>
+        <a class="" href="../cap_u3011_verbose_output/">ddcutil capabilities example</a>
         
     </li>
 
         
             
     <li class="toctree-l1 ">
-        <a class="" href="../getvcp_known_u3011_output/">ddctool getvcp example</a>
+        <a class="" href="../getvcp_known_u3011_output/">ddcutil getvcp example</a>
         
     </li>
 
@@ -268,7 +268,7 @@
       
       <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
         <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-        <a href="..">ddctool Documentation</a>
+        <a href="..">ddcutil Documentation</a>
       </nav>
 
       
@@ -284,7 +284,7 @@
     <li class="wy-breadcrumbs-aside">
       
         
-          <a href="https://github.com/rockowitz/ddctool" class="icon icon-github"> Edit on GitHub</a>
+          <a href="https://github.com/rockowitz/ddcutil" class="icon icon-github"> Edit on GitHub</a>
         
       
     </li>
@@ -297,8 +297,8 @@
                 <h2 id="command-arguments">Command Arguments</h2>
 <p>The <strong><em>feature-code</em></strong> argument to <strong>vcpinfo</strong>, <strong>getvcp</strong>, and <strong>setvcp</strong> is a hexadecimal feature number, 
 with or without a leading "0x", e.g.</p>
-<pre><code># ddctool getvcp 10
-# ddctool vcpinfo 0x10
+<pre><code># ddcutil getvcp 10
+# ddcutil vcpinfo 0x10
 </code></pre>
 
 <p>The <strong>feature-group</strong> argument to <strong>vcpinfo</strong> and <strong>getvcp</strong> is a named collection of features.<br />
@@ -313,7 +313,7 @@ The most useful are: </p>
 <tbody>
 <tr>
 <td>KNOWN</td>
-<td>all feature codes known to <strong>ddctool</strong></td>
+<td>all feature codes known to <strong>ddcutil</strong></td>
 </tr>
 <tr>
 <td>SCAN</td>
@@ -326,14 +326,14 @@ The most useful are: </p>
 </tbody>
 </table>
 <p>For example: </p>
-<pre><code># ddctool getvcp known
+<pre><code># ddcutil getvcp known
 </code></pre>
 
 <p>For a complete list of feature groups, use the <strong>--help</strong> option. </p>
 <p>The <strong>new-value</strong> argument to <strong>setvcp</strong> is a decimal number in the range 0..255, or a single 
 byte hex value.  For example:</p>
-<pre><code># ddctool setvcp 10 50
-# ddctool setvcp 10 0x32
+<pre><code># ddcutil setvcp 10 50
+# ddcutil setvcp 10 0x32
 </code></pre>
               
             </div>
@@ -370,7 +370,7 @@ byte hex value.  For example:</p>
 <div class="rst-versions" role="note" style="cursor: pointer">
     <span class="rst-current-version" data-toggle="rst-current-version">
       
-          <a href="https://github.com/rockowitz/ddctool" class="icon icon-github" style="float: left; color: #fcfcfc"> GitHub</a>
+          <a href="https://github.com/rockowitz/ddcutil" class="icon icon-github" style="float: left; color: #fcfcfc"> GitHub</a>
       
       
         <span><a href="../mccs_background/" style="color: #fcfcfc;">&laquo; Previous</a></span>

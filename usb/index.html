@@ -8,7 +8,7 @@
   
   <meta name="author" content="Sanford Rockowitz">
   
-  <title>USB Connected Monitors - ddctool Documentation</title>
+  <title>USB Connected Monitors - ddcutil Documentation</title>
   
 
   <link rel="shortcut icon" href="../img/favicon.ico">
@@ -43,7 +43,7 @@
     
     <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
       <div class="wy-side-nav-search">
-        <a href=".." class="icon icon-home"> ddctool Documentation</a>
+        <a href=".." class="icon icon-home"> ddcutil Documentation</a>
         <div role="search">
   <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
     <input type="text" name="q" placeholder="Search docs" />
@@ -89,28 +89,28 @@
         
             
     <li class="toctree-l1 ">
-        <a class="" href="../vcpinfo_output/">ddctool vcpinfo example</a>
+        <a class="" href="../vcpinfo_output/">ddcutil vcpinfo example</a>
         
     </li>
 
         
             
     <li class="toctree-l1 ">
-        <a class="" href="../detect_verbose_output/">ddctool detect example</a>
+        <a class="" href="../detect_verbose_output/">ddcutil detect example</a>
         
     </li>
 
         
             
     <li class="toctree-l1 ">
-        <a class="" href="../cap_u3011_verbose_output/">ddctool capabilities example</a>
+        <a class="" href="../cap_u3011_verbose_output/">ddcutil capabilities example</a>
         
     </li>
 
         
             
     <li class="toctree-l1 ">
-        <a class="" href="../getvcp_known_u3011_output/">ddctool getvcp example</a>
+        <a class="" href="../getvcp_known_u3011_output/">ddcutil getvcp example</a>
         
     </li>
 
@@ -147,7 +147,7 @@
             
                 <li class="toctree-l3"><a href="#usb-connected-monitors">USB Connected Monitors</a></li>
                 
-                    <li><a class="toctree-l4" href="#command-ddctool-chkusbmon">Command ddctool chkusbmon</a></li>
+                    <li><a class="toctree-l4" href="#command-ddcutil-chkusbmon">Command ddcutil chkusbmon</a></li>
                 
                     <li><a class="toctree-l4" href="#command-option-usb">Command option --usb</a></li>
                 
@@ -272,7 +272,7 @@
       
       <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
         <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-        <a href="..">ddctool Documentation</a>
+        <a href="..">ddcutil Documentation</a>
       </nav>
 
       
@@ -288,7 +288,7 @@
     <li class="wy-breadcrumbs-aside">
       
         
-          <a href="https://github.com/rockowitz/ddctool" class="icon icon-github"> Edit on GitHub</a>
+          <a href="https://github.com/rockowitz/ddcutil" class="icon icon-github"> Edit on GitHub</a>
         
       
     </li>
@@ -299,12 +299,12 @@
             <div class="section">
               
                 <h2 id="usb-connected-monitors">USB Connected Monitors</h2>
-<p><strong>ddctool</strong> has initial support for monitors that implement the Monitor Control Command Set (MCCS) over USB.
+<p><strong>ddcutil</strong> has initial support for monitors that implement the Monitor Control Command Set (MCCS) over USB.
 The support is considered initial in that it has only been tested with only a few models of USB connected monitors.</p>
 <p>Note that some monitors use USB to communicate, but do not follow the specification for MCCS over USB. 
 For example, the HP Dreamcolor 2480zx uses a proprietary, undocumented protocol. </p>
 <p>Limitations: <br />
-- The MCCS over USB specification has no method for querying a capabilities string.  The <strong>ddctool capabilities</strong> 
+- The MCCS over USB specification has no method for querying a capabilities string.  The <strong>ddcutil capabilities</strong> 
 command synthesizes a response based on the feature codes it detects. <br />
 - Table type features are completely unsupported.<br />
 - Apple Thunderbolt displays might work, but are not supported.  Thunderbolt integrates video, USB, and ethernet into a single cable, and 
@@ -313,21 +313,21 @@ Other than actual Macs, these are uncommon.</p>
 <p>On the other hand, MCCS over USB has advantages:<br />
 - Unlike I2C, the protocol is inherently reliable.  No retry logic is needed.<br />
 - Unlike I2C, USB communication does not require waits between system calls.  It is therefore faster. </p>
-<p>Thanks to Ojdrej Zary, whose <a href="https://github.com/ondrej-zary/usbmonctl">usbmonctl</a> was used as the basis for USB support in <strong>ddctool</strong>.</p>
-<h3 id="command-ddctool-chkusbmon">Command <strong>ddctool chkusbmon</strong></h3>
-<p>Command <strong>ddctool chkusbmon</strong> helps to detect USB HID compliant monitors.  It is intended for use in udev rules.</p>
-<pre><code>ddctool chkusbmon ***hiddev device name***
+<p>Thanks to Ojdrej Zary, whose <a href="https://github.com/ondrej-zary/usbmonctl">usbmonctl</a> was used as the basis for USB support in <strong>ddcutil</strong>.</p>
+<h3 id="command-ddcutil-chkusbmon">Command <strong>ddcutil chkusbmon</strong></h3>
+<p>Command <strong>ddcutil chkusbmon</strong> helps to detect USB HID compliant monitors.  It is intended for use in udev rules.</p>
+<pre><code>ddcutil chkusbmon ***hiddev device name***
 </code></pre>
 
 <p>e.g. </p>
-<pre><code>ddctool chkusbmon /dev/usb/hiddev3 
+<pre><code>ddcutil chkusbmon /dev/usb/hiddev3 
 </code></pre>
 
 <p>Returns 0 if a device represents a USB attached monitor, non-zero if not.  See <a href="../i2c_permissions/">Device Permissions</a></p>
 <h3 id="command-option-usb">Command option --usb</h3>
 <p>USB connected monitors can be specified by their USB bus number and device number.  The numbers are separated by either a period or colon.</p>
 <p>For example: </p>
-<pre><code>ddctool --usb 3.5 ...
+<pre><code>ddcutil --usb 3.5 ...
 </code></pre>
 
 <p>selects the monitor at USB bus number 3, device number 5.  </p>
@@ -369,7 +369,7 @@ Other than actual Macs, these are uncommon.</p>
 <div class="rst-versions" role="note" style="cursor: pointer">
     <span class="rst-current-version" data-toggle="rst-current-version">
       
-          <a href="https://github.com/rockowitz/ddctool" class="icon icon-github" style="float: left; color: #fcfcfc"> GitHub</a>
+          <a href="https://github.com/rockowitz/ddcutil" class="icon icon-github" style="float: left; color: #fcfcfc"> GitHub</a>
       
       
         <span><a href="../table_features/" style="color: #fcfcfc;">&laquo; Previous</a></span>

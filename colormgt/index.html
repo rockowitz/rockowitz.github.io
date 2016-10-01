@@ -8,7 +8,7 @@
   
   <meta name="author" content="Sanford Rockowitz">
   
-  <title>Color Management - ddctool Documentation</title>
+  <title>Color Management - ddcutil Documentation</title>
   
 
   <link rel="shortcut icon" href="../img/favicon.ico">
@@ -43,7 +43,7 @@
     
     <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
       <div class="wy-side-nav-search">
-        <a href=".." class="icon icon-home"> ddctool Documentation</a>
+        <a href=".." class="icon icon-home"> ddcutil Documentation</a>
         <div role="search">
   <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
     <input type="text" name="q" placeholder="Search docs" />
@@ -89,28 +89,28 @@
         
             
     <li class="toctree-l1 ">
-        <a class="" href="../vcpinfo_output/">ddctool vcpinfo example</a>
+        <a class="" href="../vcpinfo_output/">ddcutil vcpinfo example</a>
         
     </li>
 
         
             
     <li class="toctree-l1 ">
-        <a class="" href="../detect_verbose_output/">ddctool detect example</a>
+        <a class="" href="../detect_verbose_output/">ddcutil detect example</a>
         
     </li>
 
         
             
     <li class="toctree-l1 ">
-        <a class="" href="../cap_u3011_verbose_output/">ddctool capabilities example</a>
+        <a class="" href="../cap_u3011_verbose_output/">ddcutil capabilities example</a>
         
     </li>
 
         
             
     <li class="toctree-l1 ">
-        <a class="" href="../getvcp_known_u3011_output/">ddctool getvcp example</a>
+        <a class="" href="../getvcp_known_u3011_output/">ddcutil getvcp example</a>
         
     </li>
 
@@ -272,7 +272,7 @@
       
       <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
         <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-        <a href="..">ddctool Documentation</a>
+        <a href="..">ddcutil Documentation</a>
       </nav>
 
       
@@ -288,7 +288,7 @@
     <li class="wy-breadcrumbs-aside">
       
         
-          <a href="https://github.com/rockowitz/ddctool" class="icon icon-github"> Edit on GitHub</a>
+          <a href="https://github.com/rockowitz/ddcutil" class="icon icon-github"> Edit on GitHub</a>
         
       
     </li>
@@ -299,9 +299,9 @@
             <div class="section">
               
                 <h2 id="color-management">Color Management</h2>
-<p>A primary use for <strong>ddctool</strong> is as part of color profile management.  A monitor calibration is meaningful only if the color settings on the monitor are the same as when the calibration was performed. </p>
-<p>Normally, monitor settings are changed by pressing buttons on the monitor bezel.  Depending on the monitor, the process ranges from annoying to excruciating.  <strong>ddctool</strong> allows this process to be automated.</p>
-<p>Command <strong>ddctool dumpvcp</strong> saves the current color related monitor settings in a file, and <strong>ddctool loadvcp</strong> restores them from a file. </p>
+<p>A primary use for <strong>ddcutil</strong> is as part of color profile management.  A monitor calibration is meaningful only if the color settings on the monitor are the same as when the calibration was performed. </p>
+<p>Normally, monitor settings are changed by pressing buttons on the monitor bezel.  Depending on the monitor, the process ranges from annoying to excruciating.  <strong>ddcutil</strong> allows this process to be automated.</p>
+<p>Command <strong>ddcutil dumpvcp</strong> saves the current color related monitor settings in a file, and <strong>ddcutil loadvcp</strong> restores them from a file. </p>
 <p>If implemented by the monitor, the VCP feature codes in feature group <strong>PROFILE</strong> are saved by <strong>dumpvcp</strong> and restored by <strong>loadvcp</strong>. 
 These are:</p>
 <ul>
@@ -320,7 +320,7 @@ These are:</p>
 <li>71: Backlight Level: Blue</li>
 </ul>
 <p>To see the list of feature codes saved and restored, you can also issue the command: </p>
-<pre><code>ddctool vcpinfo profile --terse
+<pre><code>ddcutil vcpinfo profile --terse
 </code></pre>
 
 <h3 id="color-management-workflow">Color Management Workflow</h3>
@@ -330,7 +330,7 @@ These are:</p>
 <p>Save profile related VCP values in a custom tag in monitor profile file instead of a separate file</p>
 </li>
 <li>
-<p>Having a GUI for ddctool would make monitor color adjustment much easier.   Such as GUI could be shown along size the <strong>dispcal</strong> color balance screen shown at the start of calibration.</p>
+<p>Having a GUI for ddcutil would make monitor color adjustment much easier.   Such as GUI could be shown along size the <strong>dispcal</strong> color balance screen shown at the start of calibration.</p>
 </li>
 <li>
 <p>API access to dump/load features for simpler integration with other programs.</p>
@@ -344,7 +344,7 @@ These are:</p>
 <li>75: Block LUT operation</li>
 <li>76: Remote procedure call</li>
 </ul>
-<p>These are what MCCS categorizes as "Table" type features.   Reading and writing table type features is implemented in <strong>ddctool</strong>, but has not yet been tested for lack of a monitor to test with.</p>
+<p>These are what MCCS categorizes as "Table" type features.   Reading and writing table type features is implemented in <strong>ddcutil</strong>, but has not yet been tested for lack of a monitor to test with.</p>
               
             </div>
           </div>
@@ -355,7 +355,7 @@ These are:</p>
         <a href="../tuning/" class="btn btn-neutral float-right" title="Instrumentation and Tuning">Next <span class="icon icon-circle-arrow-right"></span></a>
       
       
-        <a href="../getvcp_known_u3011_output/" class="btn btn-neutral" title="ddctool getvcp example"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../getvcp_known_u3011_output/" class="btn btn-neutral" title="ddcutil getvcp example"><span class="icon icon-circle-arrow-left"></span> Previous</a>
       
     </div>
   
@@ -380,7 +380,7 @@ These are:</p>
 <div class="rst-versions" role="note" style="cursor: pointer">
     <span class="rst-current-version" data-toggle="rst-current-version">
       
-          <a href="https://github.com/rockowitz/ddctool" class="icon icon-github" style="float: left; color: #fcfcfc"> GitHub</a>
+          <a href="https://github.com/rockowitz/ddcutil" class="icon icon-github" style="float: left; color: #fcfcfc"> GitHub</a>
       
       
         <span><a href="../getvcp_known_u3011_output/" style="color: #fcfcfc;">&laquo; Previous</a></span>

@@ -5,10 +5,10 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="ddctool utility for reading and changing monitor settings">
+  <meta name="description" content="ddcutil utility for reading and changing monitor settings">
   <meta name="author" content="Sanford Rockowitz">
   
-  <title>ddctool Documentation</title>
+  <title>ddcutil Documentation</title>
   
 
   <link rel="shortcut icon" href="./img/favicon.ico">
@@ -43,7 +43,7 @@
     
     <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
       <div class="wy-side-nav-search">
-        <a href="." class="icon icon-home"> ddctool Documentation</a>
+        <a href="." class="icon icon-home"> ddcutil Documentation</a>
         <div role="search">
   <form id ="rtd-search-form" class="wy-form" action="./search.html" method="get">
     <input type="text" name="q" placeholder="Search docs" />
@@ -60,13 +60,17 @@
         
             <ul>
             
-                <li class="toctree-l3"><a href="#ddctool">ddctool</a></li>
+                <li class="toctree-l3"><a href="#ddcutil">ddcutil</a></li>
+                
+                    <li><a class="toctree-l4" href="#name-change">Name Change</a></li>
+                
+                    <li><a class="toctree-l4" href="#introduction">Introduction</a></li>
                 
                     <li><a class="toctree-l4" href="#command-overview">Command Overview</a></li>
                 
-                    <li><a class="toctree-l4" href="#installing-ddctool-from-prebuilt-packages">Installing ddctool From Prebuilt Packages</a></li>
+                    <li><a class="toctree-l4" href="#installing-ddcutil-from-prebuilt-packages">Installing ddcutil From Prebuilt Packages</a></li>
                 
-                    <li><a class="toctree-l4" href="#ddctool-configuration">ddctool Configuration</a></li>
+                    <li><a class="toctree-l4" href="#ddcutil-configuration">ddcutil Configuration</a></li>
                 
                     <li><a class="toctree-l4" href="#installation-diagnostics">Installation Diagnostics</a></li>
                 
@@ -108,28 +112,28 @@
         
             
     <li class="toctree-l1 ">
-        <a class="" href="vcpinfo_output/">ddctool vcpinfo example</a>
+        <a class="" href="vcpinfo_output/">ddcutil vcpinfo example</a>
         
     </li>
 
         
             
     <li class="toctree-l1 ">
-        <a class="" href="detect_verbose_output/">ddctool detect example</a>
+        <a class="" href="detect_verbose_output/">ddcutil detect example</a>
         
     </li>
 
         
             
     <li class="toctree-l1 ">
-        <a class="" href="cap_u3011_verbose_output/">ddctool capabilities example</a>
+        <a class="" href="cap_u3011_verbose_output/">ddcutil capabilities example</a>
         
     </li>
 
         
             
     <li class="toctree-l1 ">
-        <a class="" href="getvcp_known_u3011_output/">ddctool getvcp example</a>
+        <a class="" href="getvcp_known_u3011_output/">ddcutil getvcp example</a>
         
     </li>
 
@@ -280,7 +284,7 @@
       
       <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
         <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-        <a href=".">ddctool Documentation</a>
+        <a href=".">ddcutil Documentation</a>
       </nav>
 
       
@@ -296,7 +300,7 @@
     <li class="wy-breadcrumbs-aside">
       
         
-          <a href="https://github.com/rockowitz/ddctool" class="icon icon-github"> Edit on GitHub</a>
+          <a href="https://github.com/rockowitz/ddcutil" class="icon icon-github"> Edit on GitHub</a>
         
       
     </li>
@@ -306,25 +310,61 @@
           <div role="main">
             <div class="section">
               
-                <h1 id="ddctool">ddctool</h1>
-<p><strong>ddctool</strong> is a Linux program for querying and changing monitor settings, such as 
+                <h1 id="ddcutil">ddcutil</h1>
+<h2 id="name-change">Name Change</h2>
+<p>As of release 0.6, the name of this program is changing from <strong>ddctool</strong> to <strong>ddcutil</strong> 
+to avoid confusion with a commerical datacenter program also named <strong>ddctool.</strong></p>
+<p>The following are affected:</p>
+<table>
+<thead>
+<tr>
+<th>Object</th>
+<th>Old name</th>
+<th>New Name</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Repository URL</td>
+<td>https://github.com/rockowitz/ddctool.git</td>
+<td>https://github.com/rockowitz/ddcutil.git</td>
+</tr>
+<tr>
+<td>Web site URL</td>
+<td>http://www.ddctool.com</td>
+<td>http://www.ddcutil.com</td>
+</tr>
+<tr>
+<td>Primary executable</td>
+<td>ddctool</td>
+<td>ddcutil</td>
+</tr>
+<tr>
+<td>Shared library</td>
+<td>libddctool.so</td>
+<td>libddcutil.so</td>
+</tr>
+</tbody>
+</table>
+<h2 id="introduction">Introduction</h2>
+<p><strong>ddcutil</strong> is a Linux program for querying and changing monitor settings, such as 
 brightness and color levels.   </p>
-<p><strong>ddctool</strong> primarily uses DDC/CI (Display Data Channel Command Interface) to communicate with monitors implementing MCCS 
+<p><strong>ddcutil</strong> primarily uses DDC/CI (Display Data Channel Command Interface) to communicate with monitors implementing MCCS 
 (Monitor Control Command Set) over I2C.  Normally, the video driver for the
 monitor exposes the I2C channel as devices named /dev/i2c-n.  Alternatively, there is initial support for monitors (such as Apple displays) that implement MCCS using a USB connection.  See <a href="usb/">USB Connected Monitors</a>. </p>
-<p>A particular use case for <strong>ddctool</strong> is as part of color profile management. Monitor
+<p>A particular use case for <strong>ddcutil</strong> is as part of color profile management. Monitor
 calibration is relative to the monitor color settings currently in effect, 
-e.g. red gain.  ddctool allows color related settings to be saved at the time 
+e.g. red gain.  ddcutil allows color related settings to be saved at the time 
 a monitor is calibrated, and then restored when the calibration is applied.</p>
 <p>Restrictions:<br />
--<strong>ddctool</strong> does not support laptop displays, which are controlled using a special API, not I2C. <br />
+-<strong>ddcutil</strong> does not support laptop displays, which are controlled using a special API, not I2C. <br />
 - Nvidia's proprietary video driver may require special configuration.  See 
 <a href="nvidia/">Special Nvidia Driver Settings</a>. <br />
 - Operation with AMD's proprietary video driver fglrx requires a 
-specially built version of <strong>ddctool</strong>.  See <a href="adl/">Building with ADL Support</a>.<br />
+specially built version of <strong>ddcutil</strong>.  See <a href="adl/">Building with ADL Support</a>.<br />
 - Reading and writing <strong><em>Table</em></strong> type features is implemented but untested.  See <a href="table_features/">Table Features</a>  </p>
 <h2 id="command-overview">Command Overview</h2>
-<p><strong>ddctool</strong> is a command line program.  (A GUI user interface is planned.)  <strong>ddctool</strong> implements 
+<p><strong>ddcutil</strong> is a command line program.  (A GUI user interface is planned.)  <strong>ddcutil</strong> implements 
 the following subcommands:</p>
 <table>
 <thead>
@@ -344,7 +384,7 @@ the following subcommands:</p>
 </tr>
 <tr>
 <td>vcpinfo (feature-code-or-group)</td>
-<td>list VCP features codes that ddctool knows how to interpret</td>
+<td>list VCP features codes that ddcutil knows how to interpret</td>
 </tr>
 <tr>
 <td>getvcp feature-code-or-group</td>
@@ -364,7 +404,7 @@ the following subcommands:</p>
 </tr>
 <tr>
 <td>environment</td>
-<td>explore the ddctool installation environment</td>
+<td>explore the ddcutil installation environment</td>
 </tr>
 <tr>
 <td>interrogate</td>
@@ -376,12 +416,12 @@ the following subcommands:</p>
 </tr>
 </tbody>
 </table>
-<p>There is an extensive set of options for tailoring ddctool operation. 
+<p>There is an extensive set of options for tailoring ddcutil operation. 
 Some are described in this documentation.   For a full list of options and detailed documentation for each command, 
 use the <strong>--help</strong> option or 
 see the man page:</p>
-<pre><code>ddctool --help
-man 1 ddctool
+<pre><code>ddcutil --help
+man 1 ddcutil
 </code></pre>
 
 <h3 id="monitor-selection">Monitor Selection</h3>
@@ -402,33 +442,33 @@ using any of the following options:</p>
 - If model and serial number are used to identify the monitor, both options 
   must be specified.</p>
 <p>To see a list of all attached monitors and their associated identifiers:</p>
-<pre><code>ddctool detect
+<pre><code>ddcutil detect
 </code></pre>
 
 <h3 id="examples">Examples</h3>
 <ul>
-<li><a href="vcpinfo_output/">ddctool vcpinfo</a></li>
-<li><a href="detect_verbose_output/">ddctool detect</a></li>
-<li><a href="cap_u3011_verbose_output/">ddctool capabilities</a></li>
-<li><a href="getvcp_known_u3011_output/">ddctool getvcp</a></li>
+<li><a href="vcpinfo_output/">ddcutil vcpinfo</a></li>
+<li><a href="detect_verbose_output/">ddcutil detect</a></li>
+<li><a href="cap_u3011_verbose_output/">ddcutil capabilities</a></li>
+<li><a href="getvcp_known_u3011_output/">ddcutil getvcp</a></li>
 </ul>
-<h2 id="installing-ddctool-from-prebuilt-packages">Installing ddctool From Prebuilt Packages</h2>
+<h2 id="installing-ddcutil-from-prebuilt-packages">Installing ddcutil From Prebuilt Packages</h2>
 <p>Packages for recent openSUSE, Fedora, Debian, and Ubuntu releases are available for download from the 
-<a href="http://software.opensuse.org/download.html?project=home%3Arockowitz&amp;package=ddctool">openSUSE build service</a></p>
-<p>For Ubuntu Wily, there's a <a href="https://launchpad.net/~rockowitz/+archive/ubuntu/ddctool">PPA</a>.
+<a href="http://software.opensuse.org/download.html?project=home%3Arockowitz&amp;package=ddcutil">openSUSE build service</a></p>
+<p>For Ubuntu Wily, there's a <a href="https://launchpad.net/~rockowitz/+archive/ubuntu/ddcutil">PPA</a>.
 To use it, add the following lines to /etc/apt/sources.list:</p>
-<pre><code>deb http://ppa.launchpad.net/rockowitz/ddctool/ubuntu wily main 
-deb-src http://ppa.launchpad.net/rockowitz/ddctool/ubuntu wily main 
+<pre><code>deb http://ppa.launchpad.net/rockowitz/ddcutil/ubuntu wily main 
+deb-src http://ppa.launchpad.net/rockowitz/ddcutil/ubuntu wily main 
 </code></pre>
 
-<p>For other distributions, or if using AMD's proprietary fglrx driver, ddctool must be <a href="building/">built from source</a>.</p>
-<h2 id="ddctool-configuration"><strong>ddctool</strong> Configuration</h2>
+<p>For other distributions, or if using AMD's proprietary fglrx driver, ddcutil must be <a href="building/">built from source</a>.</p>
+<h2 id="ddcutil-configuration"><strong>ddcutil</strong> Configuration</h2>
 <p>DDC/CI communication must be enabled on the monitor.  This setting can only be changed using the monitor's on screen display.</p>
-<p><strong>ddctool</strong> users require write permission to /dev/i2c-* devices.  See <a href="i2c_permissions/">/dev/i2c Permissions</a></p>
+<p><strong>ddcutil</strong> users require write permission to /dev/i2c-* devices.  See <a href="i2c_permissions/">/dev/i2c Permissions</a></p>
 <p>If using an open source video driver, kernel module i2c-dev must be loaded.  See <a href="kernel_module/">Kernel Module Configuration</a></p>
 <p>If using Nvidia's proprietary video driver, special settings may be necessary.  See <a href="nvidia/">Special Nvidia Driver Settings</a></p>
 <h2 id="installation-diagnostics">Installation Diagnostics</h2>
-<p>If ddctool installs successfully but execution fails, command <code>ddctool environment</code> 
+<p>If ddcutil installs successfully but execution fails, command <code>ddcutil environment</code> 
 will probe the I2C environment and may provide clues as to the problem.</p>
 <h2 id="additional-topics">Additional Topics</h2>
 <ul>
@@ -498,7 +538,7 @@ will probe the I2C environment and may provide clues as to the problem.</p>
 <div class="rst-versions" role="note" style="cursor: pointer">
     <span class="rst-current-version" data-toggle="rst-current-version">
       
-          <a href="https://github.com/rockowitz/ddctool" class="icon icon-github" style="float: left; color: #fcfcfc"> GitHub</a>
+          <a href="https://github.com/rockowitz/ddcutil" class="icon icon-github" style="float: left; color: #fcfcfc"> GitHub</a>
       
       
       
@@ -512,5 +552,5 @@ will probe the I2C environment and may provide clues as to the problem.</p>
 
 <!--
 MkDocs version : 0.15.3
-Build Date UTC : 2016-09-24 17:13:33.999555
+Build Date UTC : 2016-10-01 07:17:26.114874
 -->

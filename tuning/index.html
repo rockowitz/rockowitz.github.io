@@ -8,7 +8,7 @@
   
   <meta name="author" content="Sanford Rockowitz">
   
-  <title>Instrumentation and Tuning - ddctool Documentation</title>
+  <title>Instrumentation and Tuning - ddcutil Documentation</title>
   
 
   <link rel="shortcut icon" href="../img/favicon.ico">
@@ -43,7 +43,7 @@
     
     <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
       <div class="wy-side-nav-search">
-        <a href=".." class="icon icon-home"> ddctool Documentation</a>
+        <a href=".." class="icon icon-home"> ddcutil Documentation</a>
         <div role="search">
   <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
     <input type="text" name="q" placeholder="Search docs" />
@@ -89,28 +89,28 @@
         
             
     <li class="toctree-l1 ">
-        <a class="" href="../vcpinfo_output/">ddctool vcpinfo example</a>
+        <a class="" href="../vcpinfo_output/">ddcutil vcpinfo example</a>
         
     </li>
 
         
             
     <li class="toctree-l1 ">
-        <a class="" href="../detect_verbose_output/">ddctool detect example</a>
+        <a class="" href="../detect_verbose_output/">ddcutil detect example</a>
         
     </li>
 
         
             
     <li class="toctree-l1 ">
-        <a class="" href="../cap_u3011_verbose_output/">ddctool capabilities example</a>
+        <a class="" href="../cap_u3011_verbose_output/">ddcutil capabilities example</a>
         
     </li>
 
         
             
     <li class="toctree-l1 ">
-        <a class="" href="../getvcp_known_u3011_output/">ddctool getvcp example</a>
+        <a class="" href="../getvcp_known_u3011_output/">ddcutil getvcp example</a>
         
     </li>
 
@@ -274,7 +274,7 @@
       
       <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
         <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-        <a href="..">ddctool Documentation</a>
+        <a href="..">ddcutil Documentation</a>
       </nav>
 
       
@@ -290,7 +290,7 @@
     <li class="wy-breadcrumbs-aside">
       
         
-          <a href="https://github.com/rockowitz/ddctool" class="icon icon-github"> Edit on GitHub</a>
+          <a href="https://github.com/rockowitz/ddcutil" class="icon icon-github"> Edit on GitHub</a>
         
       
     </li>
@@ -302,8 +302,8 @@
               
                 <h2 id="instrumentation-and-tuning">Instrumentation and Tuning</h2>
 <p>I2C is an inherently unreliable protocol, requiring retry management.  Furthermore, 90% of
-ddctool's elapsed time is spent in timeouts mandated by the DDC specification.    </p>
-<p>ddctool has extensive facilities for reporting protocol errors, retry counts, 
+ddcutil's elapsed time is spent in timeouts mandated by the DDC specification.    </p>
+<p>ddcutil has extensive facilities for reporting protocol errors, retry counts, 
 and peformance statistics, and some ability to tweak execution parameters from
 the command line.</p>
 <p>The relevant options are:</p>
@@ -330,9 +330,9 @@ the command line.</p>
 </tbody>
 </table>
 <h3 id="option-ddc">Option --ddc</h3>
-<p>If option <strong>--ddc</strong> is specified, <strong>ddctool</strong> reports protocol errors that it detects.  These may reflect I2C bus errors, or deviations by monitors from the MCCS specfication.  Most I2C errors cause a retry.  Some monitors are very clean.  Others, like the Dell P2411h, are very dirty. </p>
+<p>If option <strong>--ddc</strong> is specified, <strong>ddcutil</strong> reports protocol errors that it detects.  These may reflect I2C bus errors, or deviations by monitors from the MCCS specfication.  Most I2C errors cause a retry.  Some monitors are very clean.  Others, like the Dell P2411h, are very dirty. </p>
 <h3 id="option-stats">Option --stats</h3>
-<p>Option <strong>--stats</strong> causes <strong>ddctool</strong> to report execution statistics.  It takes the following optional arguments: </p>
+<p>Option <strong>--stats</strong> causes <strong>ddcutil</strong> to report execution statistics.  It takes the following optional arguments: </p>
 <table>
 <thead>
 <tr>
@@ -425,7 +425,7 @@ example changes only the maximum write-read try count:</p>
 <div class="rst-versions" role="note" style="cursor: pointer">
     <span class="rst-current-version" data-toggle="rst-current-version">
       
-          <a href="https://github.com/rockowitz/ddctool" class="icon icon-github" style="float: left; color: #fcfcfc"> GitHub</a>
+          <a href="https://github.com/rockowitz/ddcutil" class="icon icon-github" style="float: left; color: #fcfcfc"> GitHub</a>
       
       
         <span><a href="../colormgt/" style="color: #fcfcfc;">&laquo; Previous</a></span>

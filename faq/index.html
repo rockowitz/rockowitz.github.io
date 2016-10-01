@@ -8,7 +8,7 @@
   
   <meta name="author" content="Sanford Rockowitz">
   
-  <title>Frequently Asked Questions - ddctool Documentation</title>
+  <title>Frequently Asked Questions - ddcutil Documentation</title>
   
 
   <link rel="shortcut icon" href="../img/favicon.ico">
@@ -43,7 +43,7 @@
     
     <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
       <div class="wy-side-nav-search">
-        <a href=".." class="icon icon-home"> ddctool Documentation</a>
+        <a href=".." class="icon icon-home"> ddcutil Documentation</a>
         <div role="search">
   <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
     <input type="text" name="q" placeholder="Search docs" />
@@ -89,28 +89,28 @@
         
             
     <li class="toctree-l1 ">
-        <a class="" href="../vcpinfo_output/">ddctool vcpinfo example</a>
+        <a class="" href="../vcpinfo_output/">ddcutil vcpinfo example</a>
         
     </li>
 
         
             
     <li class="toctree-l1 ">
-        <a class="" href="../detect_verbose_output/">ddctool detect example</a>
+        <a class="" href="../detect_verbose_output/">ddcutil detect example</a>
         
     </li>
 
         
             
     <li class="toctree-l1 ">
-        <a class="" href="../cap_u3011_verbose_output/">ddctool capabilities example</a>
+        <a class="" href="../cap_u3011_verbose_output/">ddcutil capabilities example</a>
         
     </li>
 
         
             
     <li class="toctree-l1 ">
-        <a class="" href="../getvcp_known_u3011_output/">ddctool getvcp example</a>
+        <a class="" href="../getvcp_known_u3011_output/">ddcutil getvcp example</a>
         
     </li>
 
@@ -217,7 +217,7 @@
             
                 <li class="toctree-l3"><a href="#frequently-asked-questions">Frequently Asked Questions</a></li>
                 
-                    <li><a class="toctree-l4" href="#the-capabilities-command-reports-the-mccs-aka-vcp-version-but-elsewhere-ddctool-says-the-version-is-unknown">The capabilities command reports the MCCS (aka VCP) version, but elsewhere ddctool says the version is unknown.</a></li>
+                    <li><a class="toctree-l4" href="#the-capabilities-command-reports-the-mccs-aka-vcp-version-but-elsewhere-ddcutil-says-the-version-is-unknown">The capabilities command reports the MCCS (aka VCP) version, but elsewhere ddcutil says the version is unknown.</a></li>
                 
                     <li><a class="toctree-l4" href="#configure-complains-that-a-required-package-does-not-exist-but-it-is-installed-on-my-system">configure complains that a required package does not exist, but it is installed on my system.</a></li>
                 
@@ -272,7 +272,7 @@
       
       <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
         <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-        <a href="..">ddctool Documentation</a>
+        <a href="..">ddcutil Documentation</a>
       </nav>
 
       
@@ -288,7 +288,7 @@
     <li class="wy-breadcrumbs-aside">
       
         
-          <a href="https://github.com/rockowitz/ddctool" class="icon icon-github"> Edit on GitHub</a>
+          <a href="https://github.com/rockowitz/ddcutil" class="icon icon-github"> Edit on GitHub</a>
         
       
     </li>
@@ -299,8 +299,8 @@
             <div class="section">
               
                 <h2 id="frequently-asked-questions">Frequently Asked Questions</h2>
-<h3 id="the-capabilities-command-reports-the-mccs-aka-vcp-version-but-elsewhere-ddctool-says-the-version-is-unknown">The <strong><em>capabilities</em></strong> command reports the MCCS (aka VCP) version, but elsewhere ddctool says the version is unknown.</h3>
-<p>Command <strong><em>ddctool capabilities</em></strong> reports the response to the DDC API capabilities request.  However, <strong>ddctool</strong> regards this 
+<h3 id="the-capabilities-command-reports-the-mccs-aka-vcp-version-but-elsewhere-ddcutil-says-the-version-is-unknown">The <strong><em>capabilities</em></strong> command reports the MCCS (aka VCP) version, but elsewhere ddcutil says the version is unknown.</h3>
+<p>Command <strong><em>ddcutil capabilities</em></strong> reports the response to the DDC API capabilities request.  However, <strong>ddcutil</strong> regards this 
 output as purely informational.   It does not use the capabilities API call when formulating commands and 
 interpeting responses.  This is for multiple reasons:</p>
 <ul>
@@ -311,7 +311,7 @@ I2C retries is exceeded.</p>
 </li>
 <li>
 <p>There is no capabilities request defined in the programming interface for USB connected monitors. 
-ddctool simulates a capabilities response by looking at what USB HID reports exist for feature codes. </p>
+ddcutil simulates a capabilities response by looking at what USB HID reports exist for feature codes. </p>
 </li>
 <li>
 <p>The response to the DDC capabilities API request may be incorrect.   For example, the capabilities response from the HP LP2480zx
@@ -319,7 +319,7 @@ monitor does not list VCP feature code x10 (brighness) as supported.  However, f
 way to know for sure if a monitor implememts a VCP feature code is to try. </p>
 </li>
 </ul>
-<p><strong>ddctool</strong> relies on VCP feature code xDF to determine the VCP version.  (For USB connected monitors, it queries HID usage x00800004.)  It is possible that feature code xDF is unspported, even though the capabilities response specifies a version.</p>
+<p><strong>ddcutil</strong> relies on VCP feature code xDF to determine the VCP version.  (For USB connected monitors, it queries HID usage x00800004.)  It is possible that feature code xDF is unspported, even though the capabilities response specifies a version.</p>
 <h3 id="configure-complains-that-a-required-package-does-not-exist-but-it-is-installed-on-my-system"><strong><em>configure</em></strong> complains that a required package does not exist, but it is installed on my system.</h3>
 <p>Error messages from pkg-config (which is called by configure) can be misleading.  If configure complains that a
 package is not found but it seems to be installed, it's likely that what's missing is the associated development package 
@@ -359,7 +359,7 @@ package is not found but it seems to be installed, it's likely that what's missi
 <div class="rst-versions" role="note" style="cursor: pointer">
     <span class="rst-current-version" data-toggle="rst-current-version">
       
-          <a href="https://github.com/rockowitz/ddctool" class="icon icon-github" style="float: left; color: #fcfcfc"> GitHub</a>
+          <a href="https://github.com/rockowitz/ddcutil" class="icon icon-github" style="float: left; color: #fcfcfc"> GitHub</a>
       
       
         <span><a href="../monitor_notes/" style="color: #fcfcfc;">&laquo; Previous</a></span>

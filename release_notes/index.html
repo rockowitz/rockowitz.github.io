@@ -8,7 +8,7 @@
   
   <meta name="author" content="Sanford Rockowitz">
   
-  <title>Release Notes - ddctool Documentation</title>
+  <title>Release Notes - ddcutil Documentation</title>
   
 
   <link rel="shortcut icon" href="../img/favicon.ico">
@@ -43,7 +43,7 @@
     
     <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
       <div class="wy-side-nav-search">
-        <a href=".." class="icon icon-home"> ddctool Documentation</a>
+        <a href=".." class="icon icon-home"> ddcutil Documentation</a>
         <div role="search">
   <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
     <input type="text" name="q" placeholder="Search docs" />
@@ -89,28 +89,28 @@
         
             
     <li class="toctree-l1 ">
-        <a class="" href="../vcpinfo_output/">ddctool vcpinfo example</a>
+        <a class="" href="../vcpinfo_output/">ddcutil vcpinfo example</a>
         
     </li>
 
         
             
     <li class="toctree-l1 ">
-        <a class="" href="../detect_verbose_output/">ddctool detect example</a>
+        <a class="" href="../detect_verbose_output/">ddcutil detect example</a>
         
     </li>
 
         
             
     <li class="toctree-l1 ">
-        <a class="" href="../cap_u3011_verbose_output/">ddctool capabilities example</a>
+        <a class="" href="../cap_u3011_verbose_output/">ddcutil capabilities example</a>
         
     </li>
 
         
             
     <li class="toctree-l1 ">
-        <a class="" href="../getvcp_known_u3011_output/">ddctool getvcp example</a>
+        <a class="" href="../getvcp_known_u3011_output/">ddcutil getvcp example</a>
         
     </li>
 
@@ -274,7 +274,7 @@
       
       <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
         <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-        <a href="..">ddctool Documentation</a>
+        <a href="..">ddcutil Documentation</a>
       </nav>
 
       
@@ -290,7 +290,7 @@
     <li class="wy-breadcrumbs-aside">
       
         
-          <a href="https://github.com/rockowitz/ddctool" class="icon icon-github"> Edit on GitHub</a>
+          <a href="https://github.com/rockowitz/ddcutil" class="icon icon-github"> Edit on GitHub</a>
         
       
     </li>
@@ -317,26 +317,26 @@
 </ul>
 <h3 id="05">0.5</h3>
 <p>09 September 2016</p>
-<p>This is the first formal release of <strong>ddctool</strong></p>
+<p>This is the first formal release of <strong>ddcutil</strong></p>
 <ul>
 <li>Rework USB monitor support based on testing with Eizo Coloredge and NEC PA series<br />
--- Probing of USB connected monitors is greatly extended and refactored from <strong>ddctool environment</strong> into a separate command <strong>ddctool usbenv</strong>.
-Libraries hidraw and libusb are used as well as hiddev.  HID Report Descriptors are parsed.  This probing is included in <strong>ddctool interrogate</strong>. <br />
-  -- <strong>configure</strong> option <strong>--enable-usb/--disable-usb</strong> controls whether ddctool is built
+-- Probing of USB connected monitors is greatly extended and refactored from <strong>ddcutil environment</strong> into a separate command <strong>ddcutil usbenv</strong>.
+Libraries hidraw and libusb are used as well as hiddev.  HID Report Descriptors are parsed.  This probing is included in <strong>ddcutil interrogate</strong>. <br />
+  -- <strong>configure</strong> option <strong>--enable-usb/--disable-usb</strong> controls whether ddcutil is built
   with USB monitor support.  The default is <strong>--enable-usb</strong>.  When building with USB support,
   packages for udev, hidraw, hiddev, and libusb are required.</li>
-<li>Simplify README.md.  Refer to www.ddctool.com for most documentation  </li>
+<li>Simplify README.md.  Refer to www.ddcutil.com for most documentation  </li>
 <li>The assumption that I2C buses are numbered consecutively is removed.  Required for Raspberry Pi. </li>
-<li>Allow a display to be specified on the command <strong>ddctool loadvcp</strong>.
+<li>Allow a display to be specified on the command <strong>ddcutil loadvcp</strong>.
  This addresses the situation where a monitor presents both an I2C and a USB interface.
  Normally, the display is determined using the data stored in the VCP file, and the I2C display interface is
  chosen over the USB interface.
  If a display is specified, then the model and sn from its EDID must match
  those in the VCP data being loaded.  </li>
-<li>Add <strong>ddctool</strong> command option <strong>--timestamp/--ts</strong>.  If specified, trace messages are prefaced with an elapsed timestamp.</li>
-<li>Because of changing package requirements, <strong>ddctool</strong> no longer builds in the openSUSE Build Service (OBS) for older OS versions (openSUSE 13.1, Ubuntu 12.04, 14.04). </li>
-<li><strong>ddctool</strong> currently does not build for any openSUSE version in the openSUSE Build Service due to violation of policy guidelines.  This problem will
-be addressed in a subsequent release. openSUSE users can build ddctool from its tarball.</li>
+<li>Add <strong>ddcutil</strong> command option <strong>--timestamp/--ts</strong>.  If specified, trace messages are prefaced with an elapsed timestamp.</li>
+<li>Because of changing package requirements, <strong>ddcutil</strong> no longer builds in the openSUSE Build Service (OBS) for older OS versions (openSUSE 13.1, Ubuntu 12.04, 14.04). </li>
+<li><strong>ddcutil</strong> currently does not build for any openSUSE version in the openSUSE Build Service due to violation of policy guidelines.  This problem will
+be addressed in a subsequent release. openSUSE users can build ddcutil from its tarball.</li>
 </ul>
               
             </div>
@@ -373,7 +373,7 @@ be addressed in a subsequent release. openSUSE users can build ddctool from its 
 <div class="rst-versions" role="note" style="cursor: pointer">
     <span class="rst-current-version" data-toggle="rst-current-version">
       
-          <a href="https://github.com/rockowitz/ddctool" class="icon icon-github" style="float: left; color: #fcfcfc"> GitHub</a>
+          <a href="https://github.com/rockowitz/ddcutil" class="icon icon-github" style="float: left; color: #fcfcfc"> GitHub</a>
       
       
         <span><a href="../faq/" style="color: #fcfcfc;">&laquo; Previous</a></span>

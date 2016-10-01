@@ -8,7 +8,7 @@
   
   <meta name="author" content="Sanford Rockowitz">
   
-  <title>Device Permissions - ddctool Documentation</title>
+  <title>Device Permissions - ddcutil Documentation</title>
   
 
   <link rel="shortcut icon" href="../img/favicon.ico">
@@ -43,7 +43,7 @@
     
     <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
       <div class="wy-side-nav-search">
-        <a href=".." class="icon icon-home"> ddctool Documentation</a>
+        <a href=".." class="icon icon-home"> ddcutil Documentation</a>
         <div role="search">
   <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
     <input type="text" name="q" placeholder="Search docs" />
@@ -89,28 +89,28 @@
         
             
     <li class="toctree-l1 ">
-        <a class="" href="../vcpinfo_output/">ddctool vcpinfo example</a>
+        <a class="" href="../vcpinfo_output/">ddcutil vcpinfo example</a>
         
     </li>
 
         
             
     <li class="toctree-l1 ">
-        <a class="" href="../detect_verbose_output/">ddctool detect example</a>
+        <a class="" href="../detect_verbose_output/">ddcutil detect example</a>
         
     </li>
 
         
             
     <li class="toctree-l1 ">
-        <a class="" href="../cap_u3011_verbose_output/">ddctool capabilities example</a>
+        <a class="" href="../cap_u3011_verbose_output/">ddcutil capabilities example</a>
         
     </li>
 
         
             
     <li class="toctree-l1 ">
-        <a class="" href="../getvcp_known_u3011_output/">ddctool getvcp example</a>
+        <a class="" href="../getvcp_known_u3011_output/">ddcutil getvcp example</a>
         
     </li>
 
@@ -268,7 +268,7 @@
       
       <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
         <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-        <a href="..">ddctool Documentation</a>
+        <a href="..">ddcutil Documentation</a>
       </nav>
 
       
@@ -284,7 +284,7 @@
     <li class="wy-breadcrumbs-aside">
       
         
-          <a href="https://github.com/rockowitz/ddctool" class="icon icon-github"> Edit on GitHub</a>
+          <a href="https://github.com/rockowitz/ddcutil" class="icon icon-github"> Edit on GitHub</a>
         
       
     </li>
@@ -295,7 +295,7 @@
             <div class="section">
               
                 <h2 id="device-permissions">Device Permissions</h2>
-<p>Except when using AMD's proprietary driver (see <a href="../adl/">here</a>) ddctool requires 
+<p>Except when using AMD's proprietary driver (see <a href="../adl/">here</a>) ddcutil requires 
 write access to /dev/i2c-*.  </p>
 <p>On some distributions, package i2c-tools creates group i2c, and assigns that the group to
 /dev/i2c-* devices using a udev rule. In that case all that is necessary is to add your user
@@ -309,16 +309,16 @@ name to group i2c: </p>
 </code></pre>
 
 <p>If needed, a udev rule for giving group i2c RW permission on the /i2c-dev-* devices 
-can be found in distributed file <strong>45-ddctools-i2c.rules</strong>.  It can be copied to 
+can be found in distributed file <strong>45-ddcutils-i2c.rules</strong>.  It can be copied to 
 /etc/udef/rules.d, but do check that this rule does not conflict with others in that directory.</p>
-<pre><code># sudo cp /usr/share/ddctool/data/etc/udev/rules.d/45-ddctools-i2c.rules /etc/udev/rules.d
+<pre><code># sudo cp /usr/share/ddcutil/data/etc/udev/rules.d/45-ddcutils-i2c.rules /etc/udev/rules.d
 </code></pre>
 
-<p>If using a monitor that transmits MCCS over USB, ddctool requires read/write access to device
+<p>If using a monitor that transmits MCCS over USB, ddcutil requires read/write access to device
 /dev/usb/hiddev<strong>N</strong>, where <strong>N</strong> is the number for the device representing the monitor's USB connection.</p>
-<p>ddctool has to be careful when accessing the /dev/usb/hiddev* devices, as some of these 
+<p>ddcutil has to be careful when accessing the /dev/usb/hiddev* devices, as some of these 
 can represent USB attached input devices such as keyboards or mice. </p>
-<p>Distributed file <strong>45-ddctool-usb.rules</strong> shows a couple ways to give ddctool the required 
+<p>Distributed file <strong>45-ddcutil-usb.rules</strong> shows a couple ways to give ddcutil the required 
 access.  This file can be copied to /etc/udev/rules.d.  All but one of the command lines in 
 that file should commented out. </p>
 <p>The following rule gives group <strong>video</strong> access to the USB port of an Apple Cinema Display by specifying its 
@@ -328,19 +328,19 @@ USB device user id (aka uid) and product id (aka pid):</p>
 
 <p>This line would of course have to edited for your monitor.  One way to find its uid/pid is the 
 <strong>lsusb</strong> command. </p>
-<p>An alternative way to set proper device permissions is to call <strong>ddctool</strong> from the udev rule 
+<p>An alternative way to set proper device permissions is to call <strong>ddcutil</strong> from the udev rule 
 to test whether a device is a HID compliant monitor: </p>
-<pre><code>SUBSYSTEM==&quot;usbmisc&quot;,  KERNEL==&quot;hiddev*&quot;, PROGRAM=&quot;/usr/local/bin/ddctool chkusbmon $env{DEVNAME} -v&quot;, MODE=&quot;0660&quot;, GROUP=&quot;video&quot;
+<pre><code>SUBSYSTEM==&quot;usbmisc&quot;,  KERNEL==&quot;hiddev*&quot;, PROGRAM=&quot;/usr/local/bin/ddcutil chkusbmon $env{DEVNAME} -v&quot;, MODE=&quot;0660&quot;, GROUP=&quot;video&quot;
 </code></pre>
 
-<p>Note that the path to the ddctool executable will have be edited to the location where ddctool installed on your system. </p>
+<p>Note that the path to the ddcutil executable will have be edited to the location where ddcutil installed on your system. </p>
 <p>The -v option produces informational messages.  These are lost when the rule is normally executed by
 udev, but can be helpful when rules are tested using the "udevadm test" command. </p>
 <p>Distribution
-file <strong>45-ddctools-usb.rules</strong> contains sample udev rules to set permissions for USB connector monitors. 
+file <strong>45-ddcutils-usb.rules</strong> contains sample udev rules to set permissions for USB connector monitors. 
 It can be copied to 
 /etc/udev/rules.d, but do check that this rule does not conflict with others in that directory.</p>
-<pre><code># sudo cp /usr/share/ddctool/data/etc/udev/rules.d/45-ddctools-usb.rules /etc/udev/rules.d
+<pre><code># sudo cp /usr/share/ddcutil/data/etc/udev/rules.d/45-ddcutils-usb.rules /etc/udev/rules.d
 </code></pre>
 
 <p>Bear in mind when looking at the variety of udev rules is that there are often several valid ways to identify a device.</p>
@@ -393,7 +393,7 @@ file in /lib, pointing to /dev/null, disables the rules file entirely.</p>
 <div class="rst-versions" role="note" style="cursor: pointer">
     <span class="rst-current-version" data-toggle="rst-current-version">
       
-          <a href="https://github.com/rockowitz/ddctool" class="icon icon-github" style="float: left; color: #fcfcfc"> GitHub</a>
+          <a href="https://github.com/rockowitz/ddcutil" class="icon icon-github" style="float: left; color: #fcfcfc"> GitHub</a>
       
       
         <span><a href="../building/" style="color: #fcfcfc;">&laquo; Previous</a></span>
