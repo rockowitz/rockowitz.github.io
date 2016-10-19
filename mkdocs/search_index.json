@@ -463,7 +463,7 @@
         {
             "location": "/acknowledgements/", 
             "text": "Acknowlegdements\n\n\n\n\nProfessor Nitan Simpat at Rochester Institute of Technology for accesss to Eizo and NEC monitors\n\n\nOndrej Zary, whose usbmonctl provided a starting point for the USB implemention.   usbmonctl was based on acdcontrol by Pavel Guervich, which in turn.. well you get the idea. It's shoulders all the way down.", 
-            "title": "Acknowlegements"
+            "title": "Acknowledgements"
         }, 
         {
             "location": "/acknowledgements/#acknowlegdements", 
