@@ -222,6 +222,8 @@
                 
                     <li><a class="toctree-l4" href="#eizo-coloredge-cg19">Eizo Coloredge CG19</a></li>
                 
+                    <li><a class="toctree-l4" href="#gateway-diamondtron-vx920">Gateway Diamondtron VX920</a></li>
+                
                     <li><a class="toctree-l4" href="#hp-lp2480zx">HP LP2480zx</a></li>
                 
                     <li><a class="toctree-l4" href="#hp-zr2740w">HP ZR2740w</a></li>
@@ -233,8 +235,6 @@
                     <li><a class="toctree-l4" href="#samsung-syncmaster-213t">Samsung Syncmaster 213T</a></li>
                 
                     <li><a class="toctree-l4" href="#samsung-syncmaster-730b">Samsung Syncmaster 730B</a></li>
-                
-                    <li><a class="toctree-l4" href="#gateway-diamondtron">Gateway Diamondtron</a></li>
                 
                     <li><a class="toctree-l4" href="#acer-x243w">Acer X243W</a></li>
                 
@@ -325,7 +325,7 @@
             <div class="section">
               
                 <h2 id="notes-on-specific-monitors">Notes on Specific Monitors</h2>
-<p>The following list describes several monitors that have been tested, and highlights the variability in DDC implementation among monitors.</p>
+<p>The following list describes several monitors that have been tested.  It highlights the variability in DDC implementation among monitors.</p>
 <h3 id="apple-cinema-display-a1082">Apple Cinema Display A1082</h3>
 <p>Has both I2C and USB interfaces. </p>
 <p>VCP Version:  2.0<br />
@@ -370,6 +370,10 @@ sophisticated monitor features such as LUT loading use manufacturer specific USB
 <p>Unable to read EDID over USB, even though the HID Report for EDID can be located.</p>
 <p>To set color related VCP feature values, Custom Color mode must be selected.   If set to sRGB or Calibrated, the SETVCP command
 will appear to succeed, but will have no effect.  (In sRGB mode, Brightness can be set, in Calibrated mode it cannot.)</p>
+<h3 id="gateway-diamondtron-vx920">Gateway Diamondtron VX920</h3>
+<p>VCP version:  Unspecified, implies 1.0
+Controller manufacturer and model:   Unknown (VCP feature code C8 unsupported)   <br />
+Firmware version:  Unknown (VCP feature code C9 unsupported)  </p>
 <h3 id="hp-lp2480zx">HP LP2480zx</h3>
 <p>VCP version:   2.1 <br />
 Controller manufacturer:  Genesis <br />
@@ -407,10 +411,6 @@ Controller manufacturer and model:   Unknown (VCP feature code C8 unsupported)  
 Firmware version:  Unknown (VCP feature code C9 unsupported)  </p>
 <p>The capabilities string spcifies the values for non-continuous features in decimal rather than hexadecimal</p>
 <p>VCP feature codes 0B and 0C unsupported.</p>
-<h3 id="gateway-diamondtron">Gateway Diamondtron</h3>
-<p>VCP version:  Unspecified, implies 1.0
-Controller manufacturer and model:   Unknown (VCP feature code C8 unsupported)   <br />
-Firmware version:  Unknown (VCP feature code C9 unsupported)  </p>
 <h3 id="acer-x243w">Acer X243W</h3>
 <h3 id="mikes-monitor">Mike's monitor</h3>
 <p>VCP version:  2.1 <br />
