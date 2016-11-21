@@ -62,7 +62,7 @@
             
                 <li class="toctree-l3"><a href="#ddcutil">ddcutil</a></li>
                 
-                    <li><a class="toctree-l4" href="#name-change">Name Change</a></li>
+                    <li><a class="toctree-l4" href="#announcements">Announcements</a></li>
                 
                     <li><a class="toctree-l4" href="#introduction">Introduction</a></li>
                 
@@ -311,7 +311,11 @@
             <div class="section">
               
                 <h1 id="ddcutil">ddcutil</h1>
-<h2 id="name-change">Name Change</h2>
+<h2 id="announcements">Announcements</h2>
+<p>21 November 2016</p>
+<p>The most recent release of <strong>ddcutil</strong> is 0.6.1.  This is a maintenance release and need not be installed
+unless you are experiencing problems.  For details, see <a href="release_notes/">Release Notes</a>.</p>
+<p>01 October 2016</p>
 <p>As of release 0.6, the name of this program changed from <strong>ddctool</strong> to <strong>ddcutil</strong> 
 to avoid confusion with a commerical datacenter program also named <strong>ddctool.</strong></p>
 <p>The following are affected:</p>
@@ -351,7 +355,7 @@ to avoid confusion with a commerical datacenter program also named <strong>ddcto
 brightness and color levels.   </p>
 <p><strong>ddcutil</strong> primarily uses DDC/CI (Display Data Channel Command Interface) to communicate with monitors implementing MCCS 
 (Monitor Control Command Set) over I2C.  Normally, the video driver for the
-monitor exposes the I2C channel as devices named /dev/i2c-n.  Alternatively, there is initial support for monitors (such as Apple displays) that implement MCCS using a USB connection.  See <a href="usb/">USB Connected Monitors</a>. </p>
+monitor exposes the I2C channel as devices named /dev/i2c-n.  Alternatively, there is initial support for monitors (such as Eizo ColorEdge displays) that implement MCCS using a USB connection.  See <a href="usb/">USB Connected Monitors</a>. </p>
 <p>A particular use case for <strong>ddcutil</strong> is as part of color profile management. Monitor
 calibration is relative to the monitor color settings currently in effect, 
 e.g. red gain.  ddcutil allows color related settings to be saved at the time 
@@ -552,5 +556,5 @@ can be used to probe the I2C environment and may provide clues as to the problem
 
 <!--
 MkDocs version : 0.15.3
-Build Date UTC : 2016-10-19 13:48:17.039767
+Build Date UTC : 2016-11-21 10:23:49.214527
 -->
