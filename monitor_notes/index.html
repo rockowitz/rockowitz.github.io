@@ -224,6 +224,8 @@
                 
                     <li><a class="toctree-l4" href="#gateway-diamondtron-vx920">Gateway Diamondtron VX920</a></li>
                 
+                    <li><a class="toctree-l4" href="#hanns-g-hi221d">Hanns G Hi221D</a></li>
+                
                     <li><a class="toctree-l4" href="#hp-lp2480zx">HP LP2480zx</a></li>
                 
                     <li><a class="toctree-l4" href="#hp-zr2740w">HP ZR2740w</a></li>
@@ -237,8 +239,6 @@
                     <li><a class="toctree-l4" href="#samsung-syncmaster-730b">Samsung Syncmaster 730B</a></li>
                 
                     <li><a class="toctree-l4" href="#acer-x243w">Acer X243W</a></li>
-                
-                    <li><a class="toctree-l4" href="#mikes-monitor">Mike's monitor</a></li>
                 
             
             </ul>
@@ -374,6 +374,12 @@ will appear to succeed, but will have no effect.  (In sRGB mode, Brightness can 
 <p>VCP version:  Unspecified, implies 1.0
 Controller manufacturer and model:   Unknown (VCP feature code C8 unsupported)   <br />
 Firmware version:  Unknown (VCP feature code C9 unsupported)  </p>
+<h3 id="hanns-g-hi221d">Hanns G Hi221D</h3>
+<p>VCP version:  2.1 <br />
+Controller manufacturer:  Mstar <br />
+Controller model:   mh=0x00, ml=0x92, sh=0x00 <br />
+Firmware version:  0.6 </p>
+<p>All GETVCP requests return a value, whether or not the feature is valid for the monitor.   The monitor never reports a feature as unsupported.</p>
 <h3 id="hp-lp2480zx">HP LP2480zx</h3>
 <p>VCP version:   2.1 <br />
 Controller manufacturer:  Genesis <br />
@@ -398,7 +404,7 @@ Controller manufacturer and model: unreported (VCP feature code C8 unsupported)<
 Firmware version: unreported (VCP feature code C9 unsupported)   </p>
 <p>Implements both I2C and USB interfaces.  </p>
 <p>Makes heavy use of manufacturer specific VCP feature codes.  Also, ddcutil capabilities --verbose reports numerous manufacturer
-specific DDC commands, the USB makes heavy use of manufacturer specific usage codes.</p>
+specific DDC commands  The USB interface also makes heavy use of manufacturer specific usage codes.</p>
 <p>Monitor must be set to ??? to allow changes. </p>
 <p>VCP code 0x0c (Color Temperature Request) returns 0, which is nonsensical. </p>
 <p>Does not use the usual VCP codes (.e.g. 0x16/Red Gain) for color control.
@@ -412,12 +418,6 @@ Firmware version:  Unknown (VCP feature code C9 unsupported)  </p>
 <p>The capabilities string spcifies the values for non-continuous features in decimal rather than hexadecimal</p>
 <p>VCP feature codes 0B and 0C unsupported.</p>
 <h3 id="acer-x243w">Acer X243W</h3>
-<h3 id="mikes-monitor">Mike's monitor</h3>
-<p>VCP version:  2.1 <br />
-Controller manufacturer:  Mstar <br />
-Controller model:   mh=0x00, ml=0x92, sh=0x00 <br />
-Firmware version:  0.6 </p>
-<p>All GETVCP requests return a value, whether or not the feature is valid for the monitor.   The monitor never reports a feature as unsupported.</p>
               
             </div>
           </div>

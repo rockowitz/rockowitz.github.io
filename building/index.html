@@ -330,25 +330,30 @@ The currently supported options are:</p>
 </tr>
 <tr>
 <td>--disable-usb</td>
-<td>Do not build with support for USB connected monitors.  Reduces size and package requirements</td>
+<td>Do not build with support for USB connected monitors.  Reduces size and package requirements. (Default is --enable-usb.)</td>
 </tr>
 </tbody>
 </table>
 <h3 id="required-packages">Required packages</h3>
 <p>Because of the variation among distributions, only general guidelines can be 
-given for some ddcutil prerequisites.</p>
+given for ddcutil prerequisites.  Ultimately, you'll have to try to build ddcutil and see what breaks.</p>
 <p>ddcutil requires the following packages for both building and execution:</p>
 <ul>
 <li>i2c-tools</li>
-<li>glib-2.0  (Problem: glib-2.0 can be packaged with different names.)</li>
+<li>glib-2.0  (Note: glib-2.0 can be packaged with different names, e.g. libglib2.0-0, and may entail installing multiple packages.)</li>
+<li>libgudev  (e.g. libgudev1)</li>
+<li>libusb-1.0 (e.g. libusb-1.0-0) </li>
+<li>libudev (e.g. libudev1)</li>
 </ul>
 <p>On most platforms, development related files (e.g. headers files) are in separate packages having a 
 "-dev" or similar suffix in their names.   ddcutil needs development packages for:</p>
 <ul>
-<li>hidapi</li>
-<li>lsusb</li>
-<li>hidraw</li>
-<li>udev</li>
+<li>glib2.0 (e.g. libglib2.0-0)</li>
+<li>libusb (e.g. libusb-1_0-devel, libusb-1.0-0-dev)</li>
+<li>python (e.g. python-all-dev)</li>
+<li>udev or systemd  (udev may be part of systemd, e.g. libudev-devel, libudev-dev)</li>
+<li>x11 (e.g. libx11-dev)</li>
+<li>xrandr (e.g. libxrandr-dev)</li>
 </ul>
 <p>At least on Ubuntu, the i2c.h header file is found in a separate package. <br />
 If the following package exists, it is required to build ddcutil.</p>
@@ -358,6 +363,11 @@ If the following package exists, it is required to build ddcutil.</p>
 <p>Error messages in this regard from autoconf can be misleading.  If autoconf complains that a package 
 is not found but it seems to be installed, it's likely that the associated development package 
 (with a suffix like "-dev") needs to be installed.</p>
+<p>Building requires that the core build files be installed (e.g. build-essential on Ubuntu) and 
+also the pkg-config system. </p>
+<ul>
+<li>pkg-config</li>
+</ul>
 <h3 id="building-from-git">Building from git</h3>
 <p>The git repository for <strong>ddcutil</strong> is <a href="http://www.github.com/rockowitz/ddcutil">here</a></p>
 <ul>
@@ -370,7 +380,6 @@ The exact packages vary from distribution to distribution.   On Ubuntu, these in
 <li>autotools-dev  </li>
 <li>libtool  </li>
 <li>m4  </li>
-<li>pkg-config</li>
 </ul>
 </li>
 </ul>
