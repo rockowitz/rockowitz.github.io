@@ -216,7 +216,7 @@
                 
                     <li><a class="toctree-l4" href="#dell-p2411">Dell P2411</a></li>
                 
-                    <li><a class="toctree-l4" href="#dell-ultrasharpm-1905fp">Dell Ultrasharpm 1905FP</a></li>
+                    <li><a class="toctree-l4" href="#dell-ultrasharp-1905fp">Dell Ultrasharp 1905FP</a></li>
                 
                     <li><a class="toctree-l4" href="#dell-u3011">Dell U3011</a></li>
                 
@@ -228,7 +228,13 @@
                 
                     <li><a class="toctree-l4" href="#hp-lp2480zx">HP LP2480zx</a></li>
                 
+                    <li><a class="toctree-l4" href="#hp-w2207">HP w2207</a></li>
+                
                     <li><a class="toctree-l4" href="#hp-zr2740w">HP ZR2740w</a></li>
+                
+                    <li><a class="toctree-l4" href="#iilyama-pl2779q">Iilyama PL2779Q</a></li>
+                
+                    <li><a class="toctree-l4" href="#lg-ultrawide">LG Ultrawide</a></li>
                 
                     <li><a class="toctree-l4" href="#nec-lcd3090wqxi">NEC LCD3090WQXi</a></li>
                 
@@ -237,8 +243,6 @@
                     <li><a class="toctree-l4" href="#samsung-syncmaster-213t">Samsung Syncmaster 213T</a></li>
                 
                     <li><a class="toctree-l4" href="#samsung-syncmaster-730b">Samsung Syncmaster 730B</a></li>
-                
-                    <li><a class="toctree-l4" href="#acer-x243w">Acer X243W</a></li>
                 
             
             </ul>
@@ -325,16 +329,18 @@
             <div class="section">
               
                 <h2 id="notes-on-specific-monitors">Notes on Specific Monitors</h2>
-<p>The following list describes several monitors that have been tested.  It highlights the variability in DDC implementation among monitors.</p>
+<p>The following list describes some monitors that have been tested.  It highlights the variability in DDC implementation among monitors.</p>
 <h3 id="apple-cinema-display-a1082">Apple Cinema Display A1082</h3>
 <p>Has both I2C and USB interfaces. </p>
 <p>VCP Version:  2.0<br />
 Controller Manufacturer:   unspecified<br />
 Controller Model:          unspecified  <br />
-Firmware version:          unspecified  </p>
+Firmware version:          unspecified<br />
+Manufacture year:          2005</p>
 <p>I2C interface has more VCP features than USB interface. </p>
 <p>USB interface does not report VCP version (feature DF).</p>
 <p>Able to read EDID over USB. </p>
+<p>Capabilities string does not begin and end with parentheses. </p>
 <h3 id="asus-ve247">Asus VE247</h3>
 <p>VCP version:  2.0 <br />
 Controller Manufacturer:   RealTek<br />
@@ -346,17 +352,20 @@ Firmware version: 2.0   </p>
 <p>VCP version: 2.1 <br />
 Controller Manufacturer: Mstar<br />
 Controller Model: mh=0x00, ml=0x00, sh=0x56 <br />
-Firmware version:       1.1</p>
-<p>Lots of I2C errors.  Heavily dependant on retries.  The CAPABILITIES command sometimes fails, even with maximum retries.  </p>
+Firmware version:       1.1<br />
+Manufacture year:       2011</p>
+<p>Lots of I2C errors.  Heavily dependant on retries.  The CAPABILITIES command sometimes fails, even with maximum retries. 
+More recently, all I2C responses contain errors.</p>
 <p>Reports VCP code 0B (color temperature increment) as 1 degree Kelvin, which makes the GETVCP response to VCP code 0C (color temperature
 request) nonsensical.</p>
-<h3 id="dell-ultrasharpm-1905fp">Dell Ultrasharpm 1905FP</h3>
+<h3 id="dell-ultrasharp-1905fp">Dell Ultrasharp 1905FP</h3>
 <p>Does not support DDC.</p>
 <h3 id="dell-u3011">Dell U3011</h3>
 <p>VCP version: 2.1 <br />
 Controller manufacturer:  Mstar <br />
 Controller Model: mh=0x00, ml=0x94, sh=0x85   <br />
-Firmware version: 1.5   </p>
+Firmware version: 1.5 <br />
+Manufacture year: 2012  </p>
 <p>If a value is set using SETVCP, the new value takes effect and appears in the on-screen display.   However, GETVCP sometimes still retieves the old value, not the new one.</p>
 <p>Reports VCP code 0B (color temperature increment) as 1 degree Kelvin, which makes the GETVCP response to VCP code 0C (color temperature
 request) nonsensical.</p>
@@ -371,29 +380,56 @@ sophisticated monitor features such as LUT loading use manufacturer specific USB
 <p>To set color related VCP feature values, Custom Color mode must be selected.   If set to sRGB or Calibrated, the SETVCP command
 will appear to succeed, but will have no effect.  (In sRGB mode, Brightness can be set, in Calibrated mode it cannot.)</p>
 <h3 id="gateway-diamondtron-vx920">Gateway Diamondtron VX920</h3>
-<p>VCP version:  Unspecified, implies 1.0
+<p>VCP version:  Unspecified, implies 1.0 <br />
 Controller manufacturer and model:   Unknown (VCP feature code C8 unsupported)   <br />
 Firmware version:  Unknown (VCP feature code C9 unsupported)  </p>
 <h3 id="hanns-g-hi221d">Hanns G Hi221D</h3>
 <p>VCP version:  2.1 <br />
 Controller manufacturer:  Mstar <br />
 Controller model:   mh=0x00, ml=0x92, sh=0x00 <br />
-Firmware version:  0.6 </p>
+Firmware version:  0.6  </p>
 <p>All GETVCP requests return a value, whether or not the feature is valid for the monitor.   The monitor never reports a feature as unsupported.</p>
 <h3 id="hp-lp2480zx">HP LP2480zx</h3>
 <p>VCP version:   2.1 <br />
 Controller manufacturer:  Genesis <br />
 Controller Model: mh=0xff, ml=0xff, sh=0x80 <br />
-Firmware version:      0.139</p>
+Firmware version:      0.139<br />
+Manufacture year:      2008  </p>
 <p>Heavily reliant on manufacturer specific VCP codes.  Most color related features, including loading the internal LUT, are not supported using
 standard VCP feature codes.</p>
 <p>Implements MCCS over USB as well as I2C.   However, the USB implementation appears to be non-standard.  It does not conform to the USB Monitor Control Class Specification. </p>
 <p>Sensible reponses to VCP codes 0B and 0C. </p>
 <p>Capabilities string does not match actual capabilities observed.  For example, capaibilites does not include VCP feature code 0x10, brightness, which is recognized by getvcp and setvcp.</p>
+<p>Capabilities string does include cmds() segment listed supported commands, ore model() segment listing model.</p>
+<h3 id="hp-w2207">HP w2207</h3>
+<p>VCP Version:  2.1<br />
+Controller manufacturer:  Mstar<br />
+Firmware Version:          3.5<br />
+Manufacture year:         2007  </p>
+<p>Color temperature increment (feature x0B) and request (feature x0C) result in a color temperature of 13,000 degress Kelvin</p>
+<p>Responds with data to all VCP feature requests, never reports a feature as unsupported </p>
 <h3 id="hp-zr2740w">HP ZR2740w</h3>
 <p>VCP version:  2.2  </p>
 <p>Implements only a few VCP codes. </p>
 <p>VCP feature codes 0B and 0C unsupported.</p>
+<h3 id="iilyama-pl2779q">Iilyama PL2779Q</h3>
+<p>VCP Version:    2.1<br />
+Controller manufacturer:   unknown (feature code xC8 unsupported)<br />
+Firmware version:          unkown  (feature code xC9 unsupported)<br />
+Manufacture year:          2013  </p>
+<p>Color temperature increment (feature x0B) and request (feature x0C) result in a color temperature of 26,100 degress Kelvin</p>
+<p>Does not include command x02 (VCP Response) or xE3 (Capabilities Reply) in its capabilities string, even though these are supported.</p>
+<p>Responds to several VCP feature not listed in capabilities</p>
+<h3 id="lg-ultrawide">LG Ultrawide</h3>
+<p>VCP version:  2.1 <br />
+Controller manufacturer and model:  STK<br />
+Firmware version:  0.1<br />
+Manufacture year:  2014  </p>
+<p>Feature codes are not separated by blanks in the vcp() section of the capabilities string.</p>
+<p>No serial number in the EDID.</p>
+<p>When responding to a Get VCP Feature request, the monitor never sets sets the Result Code field of the VCP Feature Reply to Unsupported VCP Code.
+Instead, it always reports No Error.<br />
+For unsupported VCP codes, all bytes in the response (MH, ML, SH, SL) are set to 0x00.</p>
 <h3 id="nec-lcd3090wqxi">NEC LCD3090WQXi</h3>
 <p>VCP Version 2.0<br />
 Controller manufacturer and model: unreported (VCP feature code C8 unsupported)<br />
@@ -417,7 +453,6 @@ Controller manufacturer and model:   Unknown (VCP feature code C8 unsupported)  
 Firmware version:  Unknown (VCP feature code C9 unsupported)  </p>
 <p>The capabilities string spcifies the values for non-continuous features in decimal rather than hexadecimal</p>
 <p>VCP feature codes 0B and 0C unsupported.</p>
-<h3 id="acer-x243w">Acer X243W</h3>
               
             </div>
           </div>

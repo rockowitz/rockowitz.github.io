@@ -295,10 +295,10 @@
             <div class="section">
               
                 <h2 id="virtual-machines">Virtual Machines</h2>
-<p>ddcutil can be built in a virtual machine.  However, loading i2_dev does 
-not create /dev/i2c-* devices, either on VirtualBox or VMware.  It's not 
-clear whether this is because of lack of underlying emulation or if it's 
-a configuration issue.</p>
+<p>ddcutil can be built in a virtual machine.  However, when using the built-in video drivers, loading i2_dev does 
+not create /dev/i2c-* devices, either on VirtualBox or VMware.   This is as expected, since DDC features affect the physical monitor.</p>
+<p>It's possible that ddcutil would work if using a normal video device driver with PCI passthrough, so that the device driver is 
+actually controlling a real monitor.  This has not been tested.</p>
               
             </div>
           </div>

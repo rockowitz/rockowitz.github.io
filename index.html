@@ -355,7 +355,7 @@ to avoid confusion with a commerical datacenter program also named <strong>ddcto
 brightness and color levels.   </p>
 <p><strong>ddcutil</strong> primarily uses DDC/CI (Display Data Channel Command Interface) to communicate with monitors implementing MCCS 
 (Monitor Control Command Set) over I2C.  Normally, the video driver for the
-monitor exposes the I2C channel as devices named /dev/i2c-n.  Alternatively, there is initial support for monitors (such as Eizo ColorEdge displays) that implement MCCS using a USB connection.  See <a href="usb/">USB Connected Monitors</a>. </p>
+monitor exposes the I2C channel as devices named /dev/i2c-n.  Alternatively, there is support for monitors (such as Eizo ColorEdge displays) that implement MCCS using a USB connection.  See <a href="usb/">USB Connected Monitors</a>. </p>
 <p>A particular use case for <strong>ddcutil</strong> is as part of color profile management. Monitor
 calibration is relative to the monitor color settings currently in effect, 
 e.g. red gain.  ddcutil allows color related settings to be saved at the time 
@@ -375,48 +375,64 @@ the following subcommands:</p>
 <tr>
 <th>Subcommand</th>
 <th>Function</th>
+<th></th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td>detect</td>
 <td>report monitors detected</td>
+<td></td>
 </tr>
 <tr>
 <td>capabilities</td>
 <td>report a monitor's capabilities string</td>
+<td></td>
 </tr>
 <tr>
 <td>vcpinfo (feature-code-or-group)</td>
 <td>list VCP features codes that ddcutil knows how to interpret</td>
+<td></td>
 </tr>
 <tr>
 <td>getvcp feature-code-or-group</td>
 <td>report a single VCP feature value, or a group of values</td>
+<td></td>
 </tr>
 <tr>
 <td>setvcp feature-code new-value</td>
 <td>set a single VCP feature value</td>
+<td></td>
 </tr>
 <tr>
 <td>dumpvcp filename</td>
 <td>save color related VCP feature values to a file</td>
+<td></td>
 </tr>
 <tr>
 <td>loadvcp filename</td>
 <td>restore color related VCP feature values from a file</td>
+<td></td>
 </tr>
 <tr>
 <td>environment</td>
-<td>explore the ddcutil installation environment</td>
+<td>explore the ddcutil installation environment (other than USB)</td>
+<td></td>
+</tr>
+<tr>
+<td>usbenv</td>
+<td>explore USB aspects of the ddcutil installation environment</td>
+<td></td>
 </tr>
 <tr>
 <td>interrogate</td>
 <td>collect maximal information for problem diagnosis</td>
+<td></td>
 </tr>
 <tr>
 <td>chkusbmon  /dev/hiddevN</td>
 <td>used by udev rules to test if a USB device represents a monitor</td>
+<td></td>
 </tr>
 </tbody>
 </table>
@@ -556,5 +572,5 @@ can be used to probe the I2C environment and may provide clues as to the problem
 
 <!--
 MkDocs version : 0.15.3
-Build Date UTC : 2016-12-14 14:36:27.735248
+Build Date UTC : 2016-12-26 12:22:50.261114
 -->
