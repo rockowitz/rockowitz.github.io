@@ -8,7 +8,7 @@
   
   <meta name="author" content="Sanford Rockowitz">
   
-  <title>AMD fglrx Driver - ddcutil Documentation</title>
+  <title>Announcement History - ddcutil Documentation</title>
   
 
   <link rel="shortcut icon" href="../img/favicon.ico">
@@ -23,9 +23,9 @@
   
   <script>
     // Current page data
-    var mkdocs_page_name = "AMD fglrx Driver";
-    var mkdocs_page_input_path = "adl.md";
-    var mkdocs_page_url = "/adl/";
+    var mkdocs_page_name = "Announcement History";
+    var mkdocs_page_input_path = "prior_announcements.md";
+    var mkdocs_page_url = "/prior_announcements/";
   </script>
   
   <script src="../js/jquery-2.1.1.min.js"></script>
@@ -175,15 +175,8 @@
 <li>
           
             <li>
-    <li class="toctree-l1 current">
-        <a class="current" href="./">AMD fglrx Driver</a>
-        
-            <ul>
-            
-                <li class="toctree-l3"><a href="#building-with-adl-support">Building with ADL Support</a></li>
-                
-            
-            </ul>
+    <li class="toctree-l1 ">
+        <a class="" href="../adl/">AMD fglrx Driver</a>
         
     </li>
 <li>
@@ -231,8 +224,15 @@
 <li>
           
             <li>
-    <li class="toctree-l1 ">
-        <a class="" href="../prior_announcements/">Announcement History</a>
+    <li class="toctree-l1 current">
+        <a class="current" href="./">Announcement History</a>
+        
+            <ul>
+            
+                <li class="toctree-l3"><a href="#prior-announcements">Prior Announcements</a></li>
+                
+            
+            </ul>
         
     </li>
 <li>
@@ -294,7 +294,7 @@
     
       
     
-    <li>AMD fglrx Driver</li>
+    <li>Announcement History</li>
     <li class="wy-breadcrumbs-aside">
       
         
@@ -308,33 +308,45 @@
           <div role="main">
             <div class="section">
               
-                <h2 id="building-with-adl-support">Building with ADL Support</h2>
-<p>Special consideration is required if using AMD's proprietary driver (fglrx).
-This driver does not expose /dev/i2c-* devices.  Instead, the driver provides
-I2C communication with the montior through its API, known as the AMD Device Library (ADL).</p>
-<p>The ADL license does not allow its header files to be redistributed with the ddcutil source. <br />
-Consequently, extra steps are required to build a copy of ddcutil that supports fglrx monitors: </p>
-<ul>
-<li>Download the ADL SDK from <a href="http://developer.amd.com/tools-and-sdks/graphics-development/display-library-adl-sdk/">here</a>.</li>
-<li>Extract the following files (they will be found in various subdirectories).<br />
-  Copy them to some directory on your system: </li>
-</ul>
-<pre><code> adl_defines.h
- adl_sdk.h
- adl_structures.h
- mccs.h
-</code></pre>
-
-<ul>
-<li>When building ddcutil from either the git source or tarball, execute configure as follows</li>
-</ul>
-<pre><code># ./configure --with-adl-headers=DIR
-</code></pre>
-
-<p>where DIR is the name of the directory where you saved the ADL header files.</p>
-<p>Note: The license for the AMD Device Library (ADL) SDK library does allow for 
-incorporating its components in distributed executables.  In the future, binaries 
-distributed from this site will be built with ADL support. That is not currently the case.</p>
+                <h2 id="prior-announcements">Prior Announcements</h2>
+<p>21 November 2016</p>
+<p>The most recent release of <strong>ddcutil</strong> is 0.6.1.  This is a maintenance release and need not be installed
+unless you are experiencing problems.  For details, see <a href="../release_notes/">Release Notes</a>.</p>
+<p>01 October 2016</p>
+<p>As of release 0.6, the name of this program changed from <strong>ddctool</strong> to <strong>ddcutil</strong> 
+to avoid confusion with a commerical datacenter program also named <strong>ddctool.</strong></p>
+<p>The following are affected:</p>
+<table>
+<thead>
+<tr>
+<th>Object</th>
+<th>Old name</th>
+<th>New Name</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Repository URL</td>
+<td>https://github.com/rockowitz/ddctool.git</td>
+<td>https://github.com/rockowitz/ddcutil.git</td>
+</tr>
+<tr>
+<td>Web site URL</td>
+<td>http://www.ddctool.com</td>
+<td>http://www.ddcutil.com</td>
+</tr>
+<tr>
+<td>Primary executable</td>
+<td>ddctool</td>
+<td>ddcutil</td>
+</tr>
+<tr>
+<td>Shared library</td>
+<td>libddctool.so</td>
+<td>libddcutil.so</td>
+</tr>
+</tbody>
+</table>
               
             </div>
           </div>
@@ -342,10 +354,10 @@ distributed from this site will be built with ADL support. That is not currently
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../virtual_machines/" class="btn btn-neutral float-right" title="Virtual Machines">Next <span class="icon icon-circle-arrow-right"></span></a>
+        <a href="../release_notes/" class="btn btn-neutral float-right" title="Release Notes">Next <span class="icon icon-circle-arrow-right"></span></a>
       
       
-        <a href="../nvidia/" class="btn btn-neutral" title="Special Nvidia Driver Settings"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../faq/" class="btn btn-neutral" title="Frequently Asked Questions"><span class="icon icon-circle-arrow-left"></span> Previous</a>
       
     </div>
   
@@ -373,10 +385,10 @@ distributed from this site will be built with ADL support. That is not currently
           <a href="https://github.com/rockowitz/ddcutil" class="icon icon-github" style="float: left; color: #fcfcfc"> GitHub</a>
       
       
-        <span><a href="../nvidia/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+        <span><a href="../faq/" style="color: #fcfcfc;">&laquo; Previous</a></span>
       
       
-        <span style="margin-left: 15px"><a href="../virtual_machines/" style="color: #fcfcfc">Next &raquo;</a></span>
+        <span style="margin-left: 15px"><a href="../release_notes/" style="color: #fcfcfc">Next &raquo;</a></span>
       
     </span>
 </div>

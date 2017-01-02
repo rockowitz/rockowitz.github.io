@@ -162,6 +162,8 @@
                 
                     <li><a class="toctree-l4" href="#building-from-git">Building from git</a></li>
                 
+                    <li><a class="toctree-l4" href="#development-configuration-options">Development configuration options.</a></li>
+                
             
             </ul>
         
@@ -226,7 +228,21 @@
           
             <li>
     <li class="toctree-l1 ">
+        <a class="" href="../api_main/">APIs</a>
+        
+    </li>
+<li>
+          
+            <li>
+    <li class="toctree-l1 ">
         <a class="" href="../faq/">Frequently Asked Questions</a>
+        
+    </li>
+<li>
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="../prior_announcements/">Announcement History</a>
         
     </li>
 <li>
@@ -304,7 +320,7 @@
               
                 <h2 id="building-from-source">Building From Source</h2>
 <h3 id="building-from-tarball">Building from tarball</h3>
-<p><strong>ddcutil</strong> can be built from its <a href="../ddcutil-0.6.0.tar.gz">tarball</a> in the usual way.
+<p><strong>ddcutil</strong> can be built from its <a href="../ddcutil-0.7.0.tar.gz">tarball</a> in the usual way.
 Unpack the tar file, change to its directory, and issue the commands: </p>
 <pre><code># ./configure
 # make
@@ -314,8 +330,8 @@ Unpack the tar file, change to its directory, and issue the commands: </p>
 <p>Note that additional steps are required to build <strong>ddcutil</strong> with <em>ADL</em> support.
 See <a href="../adl/">ADL support</a>.</p>
 <h3 id="configure-options"><strong>configure</strong> options</h3>
-<p>The <strong>configure</strong> script has several custom options.  Some reflect features under development.
-The currently supported options are:</p>
+<p>The <strong>configure</strong> script has several custom options.  Some reflect features under development, or tools used for development.
+The publicly supported options are:</p>
 <table>
 <thead>
 <tr>
@@ -329,8 +345,20 @@ The currently supported options are:</p>
 <td>Build with support for ADL connected monitors. See below</td>
 </tr>
 <tr>
-<td>--disable-usb</td>
-<td>Do not build with support for USB connected monitors.  Reduces size and package requirements. (Default is --enable-usb.)</td>
+<td>--enable-usb</td>
+<td>Build with support for USB connected monitors.  Setting --disable-usb reduces size and package requirements. (Default is --enable-usb.)</td>
+</tr>
+<tr>
+<td>--enable-lib</td>
+<td>Build with shared libraries.  Needed for API support.  (Default is --enable-lib.)</td>
+</tr>
+<tr>
+<td>--enable-swig</td>
+<td>Build with Python API.  (Default is --disable-swig.)</td>
+</tr>
+<tr>
+<td>--enable-doxygen</td>
+<td>Build API documentation using Doxygen (if it is installed).  (Default is --disable-doxygen)</td>
 </tr>
 </tbody>
 </table>
@@ -412,6 +440,15 @@ the <em>-with-adl-headers</em> argument.  See <a href="../adl/">ADL support</a>.
 
 <p>This is an autotools versioning issue.  It appears that this warning can be ignored.<br />
 - (need notes on other warnings that can be ignored) </p>
+<h3 id="development-configuration-options">Development configuration options.</h3>
+<p>There are several <strong>configure</strong> options that exist for developing <strong>ddcutil</strong>.  They are listed here for completeness,
+and should be left disabled.</p>
+<ul>
+<li><strong>--enable-callgraph</strong> </li>
+<li><strong>--enable-failisim</strong></li>
+<li><strong>--enable-gobject-api</strong></li>
+<li><strong>--enable-testcases</strong></li>
+</ul>
               
             </div>
           </div>
