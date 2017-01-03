@@ -336,7 +336,7 @@
 </ul>
 <p>For details, see <a href="release_notes/">Release Notes</a>.
 Prior annoucnements can be found <a href="prior_announcements/">here</a>.</p>
-<p><a href="http://software.opensuse.org/download.html?project=home%3Arockowitz&amp;package=ddcutil">openSUSE Build Service</a> packaging for release 0.7.0 is complete.  Owing to Launchpad constraints, the PPA will not be correct until <strong>ddcutil</strong>'s release is incremented, i.e. until release 0.7.1</p>
+<p><a href="http://software.opensuse.org/download.html?project=home%3Arockowitz&amp;package=ddcutil">openSUSE Build Service</a> packaging for the standalone version of release 0.7.0 is complete.  Owing to Launchpad constraints, the PPA will not be correct until <strong>ddcutil</strong>'s release is incremented, i.e. until release 0.7.1</p>
 <h2 id="introduction">Introduction</h2>
 <p><strong>ddcutil</strong> is a Linux program for querying and changing monitor settings, such as 
 brightness and color levels.   </p>
@@ -467,8 +467,7 @@ using any of the following options:</p>
 </ul>
 <h2 id="installing-ddcutil-from-prebuilt-packages">Installing ddcutil From Prebuilt Packages</h2>
 <p>Packages for recent openSUSE, Fedora, Debian, and Ubuntu releases are available for download from the 
-<a href="http://software.opensuse.org/download.html?project=home%3Arockowitz&amp;package=ddcutil">openSUSE build service</a></p>
-<p>NOTE: Owing to Launchpad constraints, the PPA will not be correct until <strong>ddcutil</strong>'s release is incremented, i.e. until release 0.7.1</p>
+<a href="http://software.opensuse.org/download.html?project=home%3Arockowitz&amp;package=ddcutil">openSUSE build service</a>.</p>
 <p>For Ubuntu xenial, there's a <a href="https://launchpad.net/~rockowitz/+archive/ubuntu/ddcutil">PPA</a>.
 To use it, add the following lines to /etc/apt/sources.list:</p>
 <pre><code>deb http://ppa.launchpad.net/rockowitz/ddcutil/ubuntu xenial main 
@@ -476,6 +475,13 @@ deb-src http://ppa.launchpad.net/rockowitz/ddcutil/ubuntu xenial main
 </code></pre>
 
 <p>For other distributions, or if using AMD's proprietary fglrx driver, ddcutil must be <a href="building/">built from source</a>.</p>
+<h3 id="current-issues">Current issues</h3>
+<ul>
+<li>OBS successfully builds the <strong>libccutil</strong> and <strong>libddcutil-devel</strong> packages for the shared library version of <strong>ddcutil</strong>, but 
+only publishes the traditional, stand-alone <strong>ddcutil</strong> packages.  For now, users of the C API will have to build
+from source.  </li>
+<li>Owing to Launchpad constraints, the PPA will not be correct until <strong>ddcutil</strong>'s release is incremented, i.e. until release 0.7.1. </li>
+</ul>
 <h2 id="ddcutil-configuration"><strong>ddcutil</strong> Configuration</h2>
 <p>DDC/CI communication must be enabled on the monitor.  This setting can only be changed using the monitor's on screen display.</p>
 <p><strong>ddcutil</strong> users require write permission to /dev/i2c-* devices.  See <a href="i2c_permissions/">/dev/i2c Permissions</a></p>
@@ -570,5 +576,5 @@ For USB connected monitors, use command <code>ddcutil usbenvironment</code>.</p>
 
 <!--
 MkDocs version : 0.15.3
-Build Date UTC : 2017-01-03 21:17:22.274452
+Build Date UTC : 2017-01-03 21:56:33.955818
 -->
