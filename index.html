@@ -326,7 +326,7 @@
               
                 <h1 id="ddcutil">ddcutil</h1>
 <h2 id="announcements">Announcements</h2>
-<p>02 January 2017</p>
+<p>03 January 2017</p>
 <p>Release 0.7 introduces the following features: </p>
 <ul>
 <li>C and Python APIs.  See <a href="api_main/">API</a>.  By default, <strong>ddcutil</strong> is now built in shared library form.  </li>
@@ -336,7 +336,7 @@
 </ul>
 <p>For details, see <a href="release_notes/">Release Notes</a>.
 Prior annoucnements can be found <a href="prior_announcements/">here</a>.</p>
-<p>Note: OpenSUSE Build Service and Launchpad packaging for release 0.7 is not yet complete.</p>
+<p><a href="http://software.opensuse.org/download.html?project=home%3Arockowitz&amp;package=ddcutil">openSUSE Build Service</a> packaging for release 0.7.0 is complete.  Owing to Launchpad constraints, the PPA will not be correct until <strong>ddcutil</strong>'s release is incremented, i.e. until release 0.7.1</p>
 <h2 id="introduction">Introduction</h2>
 <p><strong>ddcutil</strong> is a Linux program for querying and changing monitor settings, such as 
 brightness and color levels.   </p>
@@ -468,10 +468,11 @@ using any of the following options:</p>
 <h2 id="installing-ddcutil-from-prebuilt-packages">Installing ddcutil From Prebuilt Packages</h2>
 <p>Packages for recent openSUSE, Fedora, Debian, and Ubuntu releases are available for download from the 
 <a href="http://software.opensuse.org/download.html?project=home%3Arockowitz&amp;package=ddcutil">openSUSE build service</a></p>
-<p>For Ubuntu Wily, there's a <a href="https://launchpad.net/~rockowitz/+archive/ubuntu/ddcutil">PPA</a>.
+<p>NOTE: Owing to Launchpad constraints, the PPA will not be correct until <strong>ddcutil</strong>'s release is incremented, i.e. until release 0.7.1</p>
+<p>For Ubuntu xenial, there's a <a href="https://launchpad.net/~rockowitz/+archive/ubuntu/ddcutil">PPA</a>.
 To use it, add the following lines to /etc/apt/sources.list:</p>
-<pre><code>deb http://ppa.launchpad.net/rockowitz/ddcutil/ubuntu wily main 
-deb-src http://ppa.launchpad.net/rockowitz/ddcutil/ubuntu wily main 
+<pre><code>deb http://ppa.launchpad.net/rockowitz/ddcutil/ubuntu xenial main 
+deb-src http://ppa.launchpad.net/rockowitz/ddcutil/ubuntu xenial main 
 </code></pre>
 
 <p>For other distributions, or if using AMD's proprietary fglrx driver, ddcutil must be <a href="building/">built from source</a>.</p>
@@ -569,5 +570,5 @@ For USB connected monitors, use command <code>ddcutil usbenvironment</code>.</p>
 
 <!--
 MkDocs version : 0.15.3
-Build Date UTC : 2017-01-02 22:19:57.902903
+Build Date UTC : 2017-01-03 21:17:22.274452
 -->
