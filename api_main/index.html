@@ -224,6 +224,9 @@
                 <li class="toctree-l3"><a href="#python-api">Python API</a></li>
                 
             
+                <li class="toctree-l3"><a href="#vestigial-gobject-api">Vestigial GObject API</a></li>
+                
+            
             </ul>
         
     </li>
@@ -366,7 +369,7 @@ Note the are numerous options beginning with "--enable-doxygen-" to tailer Doxyg
 <p>Generated files:
 - _ddc_swig.so
 - ddc_swig.py </p>
-<p>Normally installed to ${pkgexecdir}/site-packages   ?? </p>
+<p>Normally installed to ${pkgexecdir}/dist-packages   ?? </p>
 <p>Issue: 
 Depengin $(prefix) value, <strong>make install</strong> will install these files to ... 
 If installed to /usr/local... python will not mormally  see these files.  Directory ... must be added to the Python path. 
@@ -375,8 +378,9 @@ This can be done in one several ways:
 - Modify PYTHONPATH for a single Python invocation.   See generated script src/swig/...
 - Modify PTYHONPATH within a Python script.  See commented out lines in sample script src/swig/test_swig.py </p>
 <p>For a fuller discussion on modifying  PYTHONPATH, see <a href="http://ask.xmodulo.com/change-syspath-pythonpath-python.html">http://ask.xmodulo.com/change-syspath-pythonpath-python.html</a>.</p>
-<p>Note that a vestigial proof of concept for impelmenting scripting language support using <strong>GObject</strong> instrospection remains in 
-subidrectory src/gobject_api, and is subject to removal.  Building this code is controlled by configuration options 
+<h2 id="vestigial-gobject-api">Vestigial GObject API</h2>
+<p>A vestigial proof of concept for impelmenting scripting language support using <strong>GObject</strong> instrospection remains in 
+subidrectory src/gobject_api, pending removal from the source tree.  Building this code is controlled by configuration options 
 <strong>--enable-gobject-api</strong> and <strong>--enable-introspection</strong>.  These options should be left disabled.</p>
               
             </div>
