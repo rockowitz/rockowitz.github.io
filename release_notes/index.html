@@ -324,13 +324,16 @@
 <h3 id="07">0.7</h3>
 <p>31 December 2016</p>
 <ul>
-<li>C and Python APIs.  See <a href="../api_main/">API</a><ul>
-<li>The C API should be fairly stable, though not all features of <strong>ddcutil</strong> are fully exposed.</li>
-<li>The Python API, implemented using SWIG, is a rough proof of concept and subject to major change.</li>
+<li>C API.  See <a href="../api_main/">API</a><ul>
+<li>Should be fairly stable, though not all features of <strong>ddcutil</strong> are fully exposed.</li>
 <li>Reflecting the presence of APIs, the default for the <strong><em>--enable-lib</em></strong> configuration option is now "yes".
-  The following shared object libraries are created: libddcutil.so, _ddc_swig.so</li>
-<li>In addition to the ddcutil RPMs and DPKGs, there are are now corresponding development packages, whose 
-  exact name varies by platform.</li>
+  The following shared object library is created: libddcutil.so</li>
+<li>Additional prebuilt packages: libddcutil0, libddcutil-dev (Debian, Ubuntu) or ddcutil-devel (Fedora, SUSE)</li>
+</ul>
+</li>
+<li>Python API.  See <a href="../api_main/">API</a><ul>
+<li>The Python API, implemented using SWIG, is a rough proof of concept and subject to major change.</li>
+<li>SWIG support is only available by building from source, not from pre-built packages.  Requires <strong><em>--enable-swig</em></strong> configuration option.  </li>
 </ul>
 </li>
 <li>A new command line option <strong><em>--mfg</em></strong>, which allows for monitor selection using the 3 character manufacturer id 
