@@ -139,6 +139,10 @@
                 
                     <li><a class="toctree-l4" href="#option-maxtries">Option --maxtries</a></li>
                 
+                    <li><a class="toctree-l4" href="#option-force-slave-address">Option --force-slave-address</a></li>
+                
+                    <li><a class="toctree-l4" href="#option-force">Option --force</a></li>
+                
             
             </ul>
         
@@ -331,15 +335,23 @@ the command line.</p>
 <tbody>
 <tr>
 <td>--stats</td>
-<td>report execution statistics</td>
+<td>Report execution statistics</td>
 </tr>
 <tr>
 <td>--ddc</td>
-<td>report DDC protocol errors</td>
+<td>Report DDC protocol errors</td>
 </tr>
 <tr>
 <td>--maxtries()</td>
-<td>sets maximum tries</td>
+<td>Set maximum tries</td>
+</tr>
+<tr>
+<td>--force-slave-address</td>
+<td>Force control of I2C slave addresses</td>
+</tr>
+<tr>
+<td>--force</td>
+<td>Relax various internal checks</td>
 </tr>
 </tbody>
 </table>
@@ -404,6 +416,14 @@ example changes only the maximum write-read try count:</p>
 </code></pre>
 
 <p>The maximum maximum value is 15.</p>
+<h3 id="option-force-slave-address">Option --force-slave-address<a name="force_slave"></a></h3>
+<p>Per the DDC specification, <strong>ddcutil</strong> reads the EDID over an I2C bus using slave address x50, and performs DDC communication
+using slave address x37.  Occasionally, communication cannot be established because these addresses are marked as busy.
+This option allows <strong>ddcutil</strong> to take control of those slave
+addresses, potentially impacting the other program.  (Internally, <strong>ddcutil</strong> uses <strong><em>ioctl(I2C_SLAVE_FORCE)</em></strong> instead of
+<strong><em>ioctl(I2C_SLAVE)</em></strong>.)</p>
+<h3 id="option-force"><a name="force">Option --force</a></h3>
+<p>A catchall option that allows <strong>ddcutil</strong> to continue execution despite various failure conditions.   May be fatal.  Subject to change.</p>
               
             </div>
           </div>

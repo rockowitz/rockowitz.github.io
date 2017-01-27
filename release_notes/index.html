@@ -238,6 +238,8 @@
             
                 <li class="toctree-l3"><a href="#release-notes">Release Notes</a></li>
                 
+                    <li><a class="toctree-l4" href="#071">0.7.1</a></li>
+                
                     <li><a class="toctree-l4" href="#070">0.7.0</a></li>
                 
                     <li><a class="toctree-l4" href="#061">0.6.1</a></li>
@@ -321,6 +323,22 @@
             <div class="section">
               
                 <h2 id="release-notes">Release Notes</h2>
+<h3 id="071">0.7.1</h3>
+<p>27 January 2017</p>
+<p>Mantenance release.</p>
+<ul>
+<li>Add option <strong><em>--force-slave-address</em></strong> which causes ddcutil to take control of slave addresses on the 
+I2C bus even if they are in use.  Internally, <strong><em>ioctl(I2C_FORCE_SLAVE)</em></strong> is called instead of <strong><em>ioctl(I2C_SLAVE)</em></strong>.
+This is intended as a possible workaround for situations where monitors on an I2C bus are not detected. See <a href="../tuning/#force_slave">Option --force-slave-address</a></li>
+<li>Option <strong><em>--force</em></strong> disables various checking.  It's use is likely to result in command failure, but may 
+provide useful information as to the source of problems.  See <a href="../tuning/#slave">Option --force</a></li>
+<li>Fix the cause of a segfault when displaying  statistics for option <strong><em>--stats errors</em></strong> or simply <strong><em>--stats</em></strong>, or on 
+the <strong>interrogate</strong> command.</li>
+<li><strong>make install</strong> will not install C header files unless configuration option <strong><em>--enable-lib</em></strong> is set.</li>
+<li>Fix the cause of a Makefile error when trying to strip dependency information from <strong>libddctuil.la</strong> during <strong>make install</strong>.</li>
+<li>Extensive rework of Autotools files for future support of Python 3 as well as Python 2.  This work is incomplete.</li>
+<li>Emit diagnostic messages to aid in debugging certain situations seen only in the field.</li>
+</ul>
 <h3 id="070">0.7.0</h3>
 <p>03 January 2017</p>
 <ul>
@@ -341,7 +359,7 @@
   are specified, the first monitor to match all of the manufacturer/model/serial-numbers that are specified is chosen.</li>
 <li>The monitor feature and capabilities portion of <strong><em>interrogate</em></strong> has been enhanced.  This functionality is also exposed using the 
   new <strong><em>probe</em></strong> command which operates on a single monitor.</li>
-<li>Parsing of the capabilities string is enhanced based to accomodate monitors that do not separate feature codes by blanks.</li>
+<li>Parsing of the capabilities string is enhanced to accomodate monitors that do not separate feature codes by blanks.</li>
 </ul>
 <h3 id="061">0.6.1</h3>
 <p>21 November 2016</p>
