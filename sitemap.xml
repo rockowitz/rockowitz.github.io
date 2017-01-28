@@ -4,7 +4,7 @@
     
     <url>
      <loc>None/</loc>
-     <lastmod>2017-01-27</lastmod>
+     <lastmod>2017-01-28</lastmod>
      <changefreq>daily</changefreq>
     </url>
     
@@ -12,7 +12,7 @@
     
     <url>
      <loc>None/mccs_background/</loc>
-     <lastmod>2017-01-27</lastmod>
+     <lastmod>2017-01-28</lastmod>
      <changefreq>daily</changefreq>
     </url>
     
@@ -20,7 +20,7 @@
     
     <url>
      <loc>None/cmdargs/</loc>
-     <lastmod>2017-01-27</lastmod>
+     <lastmod>2017-01-28</lastmod>
      <changefreq>daily</changefreq>
     </url>
     
@@ -28,7 +28,7 @@
     
     <url>
      <loc>None/cmd_output/</loc>
-     <lastmod>2017-01-27</lastmod>
+     <lastmod>2017-01-28</lastmod>
      <changefreq>daily</changefreq>
     </url>
     
@@ -37,25 +37,25 @@
         
     <url>
      <loc>None/vcpinfo_output/</loc>
-     <lastmod>2017-01-27</lastmod>
+     <lastmod>2017-01-28</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>None/detect_verbose_output/</loc>
-     <lastmod>2017-01-27</lastmod>
+     <lastmod>2017-01-28</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>None/cap_u3011_verbose_output/</loc>
-     <lastmod>2017-01-27</lastmod>
+     <lastmod>2017-01-28</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>None/getvcp_known_u3011_output/</loc>
-     <lastmod>2017-01-27</lastmod>
+     <lastmod>2017-01-28</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
@@ -64,7 +64,7 @@
     
     <url>
      <loc>None/colormgt/</loc>
-     <lastmod>2017-01-27</lastmod>
+     <lastmod>2017-01-28</lastmod>
      <changefreq>daily</changefreq>
     </url>
     
@@ -72,7 +72,7 @@
     
     <url>
      <loc>None/tuning/</loc>
-     <lastmod>2017-01-27</lastmod>
+     <lastmod>2017-01-28</lastmod>
      <changefreq>daily</changefreq>
     </url>
     
@@ -80,7 +80,7 @@
     
     <url>
      <loc>None/table_features/</loc>
-     <lastmod>2017-01-27</lastmod>
+     <lastmod>2017-01-28</lastmod>
      <changefreq>daily</changefreq>
     </url>
     
@@ -88,7 +88,7 @@
     
     <url>
      <loc>None/usb/</loc>
-     <lastmod>2017-01-27</lastmod>
+     <lastmod>2017-01-28</lastmod>
      <changefreq>daily</changefreq>
     </url>
     
@@ -96,7 +96,7 @@
     
     <url>
      <loc>None/building/</loc>
-     <lastmod>2017-01-27</lastmod>
+     <lastmod>2017-01-28</lastmod>
      <changefreq>daily</changefreq>
     </url>
     
@@ -104,7 +104,7 @@
     
     <url>
      <loc>None/i2c_permissions/</loc>
-     <lastmod>2017-01-27</lastmod>
+     <lastmod>2017-01-28</lastmod>
      <changefreq>daily</changefreq>
     </url>
     
@@ -112,7 +112,7 @@
     
     <url>
      <loc>None/kernel_module/</loc>
-     <lastmod>2017-01-27</lastmod>
+     <lastmod>2017-01-28</lastmod>
      <changefreq>daily</changefreq>
     </url>
     
@@ -120,7 +120,7 @@
     
     <url>
      <loc>None/nvidia/</loc>
-     <lastmod>2017-01-27</lastmod>
+     <lastmod>2017-01-28</lastmod>
      <changefreq>daily</changefreq>
     </url>
     
@@ -128,7 +128,7 @@
     
     <url>
      <loc>None/adl/</loc>
-     <lastmod>2017-01-27</lastmod>
+     <lastmod>2017-01-28</lastmod>
      <changefreq>daily</changefreq>
     </url>
     
@@ -136,7 +136,7 @@
     
     <url>
      <loc>None/virtual_machines/</loc>
-     <lastmod>2017-01-27</lastmod>
+     <lastmod>2017-01-28</lastmod>
      <changefreq>daily</changefreq>
     </url>
     
@@ -144,7 +144,7 @@
     
     <url>
      <loc>None/raspberry/</loc>
-     <lastmod>2017-01-27</lastmod>
+     <lastmod>2017-01-28</lastmod>
      <changefreq>daily</changefreq>
     </url>
     
@@ -152,7 +152,7 @@
     
     <url>
      <loc>None/ddccontrol/</loc>
-     <lastmod>2017-01-27</lastmod>
+     <lastmod>2017-01-28</lastmod>
      <changefreq>daily</changefreq>
     </url>
     
@@ -160,7 +160,7 @@
     
     <url>
      <loc>None/monitor_notes/</loc>
-     <lastmod>2017-01-27</lastmod>
+     <lastmod>2017-01-28</lastmod>
      <changefreq>daily</changefreq>
     </url>
     
@@ -168,7 +168,7 @@
     
     <url>
      <loc>None/api_main/</loc>
-     <lastmod>2017-01-27</lastmod>
+     <lastmod>2017-01-28</lastmod>
      <changefreq>daily</changefreq>
     </url>
     
@@ -176,7 +176,7 @@
     
     <url>
      <loc>None/faq/</loc>
-     <lastmod>2017-01-27</lastmod>
+     <lastmod>2017-01-28</lastmod>
      <changefreq>daily</changefreq>
     </url>
     
@@ -184,7 +184,7 @@
     
     <url>
      <loc>None/prior_announcements/</loc>
-     <lastmod>2017-01-27</lastmod>
+     <lastmod>2017-01-28</lastmod>
      <changefreq>daily</changefreq>
     </url>
     
@@ -192,7 +192,7 @@
     
     <url>
      <loc>None/release_notes/</loc>
-     <lastmod>2017-01-27</lastmod>
+     <lastmod>2017-01-28</lastmod>
      <changefreq>daily</changefreq>
     </url>
     
@@ -200,7 +200,7 @@
     
     <url>
      <loc>None/todo/</loc>
-     <lastmod>2017-01-27</lastmod>
+     <lastmod>2017-01-28</lastmod>
      <changefreq>daily</changefreq>
     </url>
     
@@ -208,7 +208,7 @@
     
     <url>
      <loc>None/feedback/</loc>
-     <lastmod>2017-01-27</lastmod>
+     <lastmod>2017-01-28</lastmod>
      <changefreq>daily</changefreq>
     </url>
     
@@ -216,7 +216,7 @@
     
     <url>
      <loc>None/bibliography/</loc>
-     <lastmod>2017-01-27</lastmod>
+     <lastmod>2017-01-28</lastmod>
      <changefreq>daily</changefreq>
     </url>
     
@@ -224,7 +224,7 @@
     
     <url>
      <loc>None/acknowledgements/</loc>
-     <lastmod>2017-01-27</lastmod>
+     <lastmod>2017-01-28</lastmod>
      <changefreq>daily</changefreq>
     </url>
     
