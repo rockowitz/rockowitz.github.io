@@ -314,18 +314,18 @@ write access to /dev/i2c-*.  </p>
 <p>On some distributions, package i2c-tools creates group i2c, and assigns that the group to
 /dev/i2c-* devices using a udev rule. In that case all that is necessary is to add your user
 name to group i2c: </p>
-<pre><code># sudo usermod your-user-name -G i2c
+<pre><code>$ sudo usermod your-user-name -aG i2c
 </code></pre>
 
 <p>For testing, it may be simpler to give everyone permission to write to 
 /dev/i2c-* for the current boot:</p>
-<pre><code>#  sudo chmod a+rw /dev/i2c-*
+<pre><code>$ sudo chmod a+rw /dev/i2c-*
 </code></pre>
 
 <p>If needed, a udev rule for giving group i2c RW permission on the /i2c-dev-* devices 
 can be found in distributed file <strong>45-ddcutils-i2c.rules</strong>.  It can be copied to 
 /etc/udef/rules.d, but do check that this rule does not conflict with others in that directory.</p>
-<pre><code># sudo cp /usr/share/ddcutil/data/etc/udev/rules.d/45-ddcutils-i2c.rules /etc/udev/rules.d
+<pre><code>$ sudo cp /usr/share/ddcutil/data/etc/udev/rules.d/45-ddcutils-i2c.rules /etc/udev/rules.d
 </code></pre>
 
 <p>If using a monitor that transmits MCCS over USB, ddcutil requires read/write access to device
@@ -354,7 +354,7 @@ udev, but can be helpful when rules are tested using the "udevadm test" command.
 file <strong>45-ddcutils-usb.rules</strong> contains sample udev rules to set permissions for USB connector monitors. 
 It can be copied to 
 /etc/udev/rules.d, but do check that this rule does not conflict with others in that directory.</p>
-<pre><code># sudo cp /usr/share/ddcutil/data/etc/udev/rules.d/45-ddcutils-usb.rules /etc/udev/rules.d
+<pre><code>$ sudo cp /usr/share/ddcutil/data/etc/udev/rules.d/45-ddcutils-usb.rules /etc/udev/rules.d
 </code></pre>
 
 <p>Bear in mind when looking at the variety of udev rules is that there are often several valid ways to identify a device.</p>
