@@ -238,6 +238,8 @@
             
                 <li class="toctree-l3"><a href="#release-notes">Release Notes</a></li>
                 
+                    <li><a class="toctree-l4" href="#073">0.7.3</a></li>
+                
                     <li><a class="toctree-l4" href="#072">0.7.2</a></li>
                 
                     <li><a class="toctree-l4" href="#071">0.7.1</a></li>
@@ -325,6 +327,25 @@
             <div class="section">
               
                 <h2 id="release-notes">Release Notes</h2>
+<h3 id="073">0.7.3</h3>
+<p>05 March 2017</p>
+<p>Maintenance release.</p>
+<ul>
+<li>Add additional diagnostic tests to command <strong>ddcutil environment --verbose</strong>*. </li>
+<li>New configure option <strong><em>--enable-drm</em></strong>.   <ul>
+<li>If enabled (the default), command <strong>ddcutil environment --verbose</strong> includes additional tests that use
+DRM services to better analyze disrepancies observed in the field between the EDID read directly from the monitor and that reported by X11.</li>
+<li>Option <strong><em>--enable-drm</em></strong> requires that a recent version (&gt;= 2.4.67) of the development package for libdrm2 (libdrm-dev or libdrm-devel depending on Linux distribution) be
+installed when building <strong>ddcutil</strong>.  If a sufficently recent version is not detected, <strong>configure</strong> issues a warning and reverts to <strong><em>--disable-drm</em></strong>.</li>
+<li>If minimizing executable size is important, set <strong><em>--disable-drm</em></strong>, as DRM services are used only for diagnostics.</li>
+</ul>
+</li>
+<li>Additional information on <strong>ddcutil detect --verbose</strong>.<ul>
+<li>Report and interpret USB vendor id/product id when <strong>detect</strong> cannot open a hiddev device.  This is usually benign, and identifying the device should make this evident.</li>
+<li>Suggest that the user check that DDC/CI is enabled in the monitor's on screen display if I2C bus x37 (DDC) is responsive, but DDC communication fails.</li>
+</ul>
+</li>
+</ul>
 <h3 id="072">0.7.2</h3>
 <p>01 February 2017</p>
 <p>Maintenance release.</p>

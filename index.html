@@ -326,6 +326,18 @@
               
                 <h1 id="ddcutil">ddcutil</h1>
 <h2 id="announcements">Announcements</h2>
+<p>05 March 2017</p>
+<p>Release 0.7.3 is a maintenance release.  There is no need to install it unless you are experiencing problems.</p>
+<p>This release introduces the following features:</p>
+<ul>
+<li>Command <strong>ddcutil detect --verbose</strong> shows additional information.</li>
+<li>Command <strong>ddcutil environment --verbose</strong> implements additional diagnostic tests.</li>
+<li><strong>configure</strong> option <strong><em>--enable-drm</em></strong> controls whether DRM is used to enhance the diagnostics of command <strong>ddcutil environment --verbose</strong>.
+If <strong><em>enable-drm=yes</em></strong>, package libdrm-dev or libdrm-devel (depending on Linux distribution) must be installed to build <strong>ddcutil</strong>.
+Setting <strong><em>--enable-drm=no</em></strong> affects only diagnostic output, not normal execution.</li>
+</ul>
+<p>For a complete list of changes and bug fixes, see <a href="release_notes/">Release Notes</a>.
+Prior annoucnements can be found <a href="prior_announcements/">here</a>.</p>
 <p>01 Febrary 2017</p>
 <p>Release 0.7.2 fixes a critical bug in release 0.7.1 where insufficient privileges on a /dev/i2c-n device causes program termination.
 Additionally there are minor improvements to diagnostic output.  </p>
@@ -436,8 +448,8 @@ the following subcommands:</p>
 Some are described in this documentation.   For a full list of options and detailed documentation for each command, 
 use the <strong>--help</strong> option or 
 see the man page:</p>
-<pre><code>ddcutil --help
-man 1 ddcutil
+<pre><code>$ ddcutil --help
+$ man 1 ddcutil
 </code></pre>
 
 <h3 id="monitor-selection">Monitor Selection</h3>
@@ -459,7 +471,7 @@ using any of the following options:</p>
   The first monitor to satisfy all the specified criteria is selected.
   (This behavior differs from releases prior to 0.7 where model name and serial number had to be specified together.)</p>
 <p>To see a list of all attached monitors and their associated identifiers:</p>
-<pre><code>ddcutil detect
+<pre><code>$ ddcutil detect
 </code></pre>
 
 <h3 id="examples">Examples</h3>
@@ -579,5 +591,5 @@ For USB connected monitors, use command <code>ddcutil usbenvironment</code>.</p>
 
 <!--
 MkDocs version : 0.15.3
-Build Date UTC : 2017-03-02 23:39:18.317759
+Build Date UTC : 2017-03-05 17:42:20.554489
 -->
