@@ -1,0 +1,11 @@
+<map id="base/execution_stats.h" name="base/execution_stats.h">
+<area shape="rect" id="node2" href="$timestamp_8h.html" title="util/timestamp.h" alt="" coords="11,80,124,107"/>
+<area shape="rect" id="node3" href="$displays_8h.html" title="base/displays.h" alt="" coords="148,80,264,107"/>
+<area shape="rect" id="node11" href="$status__code__mgt_8h.html" title="base/status_code_mgt.h" alt="" coords="289,80,457,107"/>
+<area shape="rect" id="node4" href="$coredefs_8h.html" title="util/coredefs.h" alt="" coords="153,304,259,331"/>
+<area shape="rect" id="node5" href="$edid_8h.html" title="util/edid.h" alt="" coords="5,155,84,181"/>
+<area shape="rect" id="node6" href="$core_8h.html" title="base/core.h" alt="" coords="159,229,253,256"/>
+<area shape="rect" id="node8" href="$feature__sets_8h_source.html" title="base/feature_sets.h" alt="" coords="318,155,457,181"/>
+<area shape="rect" id="node10" href="$vcp__version_8h_source.html" title="base/vcp_version.h" alt="" coords="327,229,466,256"/>
+<area shape="rect" id="node7" href="$ddcutil__types_8h.html" title="ddcutil public types " alt="" coords="288,304,436,331"/>
+</map>

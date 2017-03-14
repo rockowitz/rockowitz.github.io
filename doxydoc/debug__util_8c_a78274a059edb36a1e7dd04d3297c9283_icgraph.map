@@ -1,0 +1,7 @@
+<map id="show_backtrace" name="show_backtrace">
+<area shape="rect" id="node2" href="$group__abnormal__termination.html#ga65df730908d37fd22c1e40d4f0dccd5d" title="ddc_abort" alt="" coords="198,80,281,107"/>
+<area shape="rect" id="node6" href="$failsim_8h.html#a7332c0cb224a032af8f33d6ed6a6ccdf" title="fsim_check_failure" alt="" coords="173,131,305,157"/>
+<area shape="rect" id="node3" href="$core_8h.html#a27da8f036d4047a74c55cc8da59503e7" title="is_tracing" alt="" coords="385,29,464,56"/>
+<area shape="rect" id="node4" href="$group__output__redirection.html#gaaeef435133003c66994472c6540114fd" title="terminate_execution\l_on_error" alt="" coords="544,47,687,89"/>
+<area shape="rect" id="node5" href="$group__output__redirection.html#ga3415381481de7ef2617690e261342a64" title="program_logic_error" alt="" coords="353,131,496,157"/>
+</map>

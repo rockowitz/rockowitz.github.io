@@ -1,0 +1,25 @@
+var structParsed__Edid =
+[
+    [ "bx", "structParsed__Edid.html#a782daecc3472e97a2fc10454b982898b", null ],
+    [ "by", "structParsed__Edid.html#abb931c919f4730ad0e2be607a53f88ba", null ],
+    [ "bytes", "structParsed__Edid.html#ae727d5dcfaa3e0af41915899f7a41848", null ],
+    [ "edid_source", "structParsed__Edid.html#a4490fc2565b4afc8d005d2e5339fc6e6", null ],
+    [ "edid_version_major", "structParsed__Edid.html#ad09c08b6dc64b027b19ea965b0c77cf1", null ],
+    [ "edid_version_minor", "structParsed__Edid.html#a744a07b4dcd1e45e5db995ba002ecc76", null ],
+    [ "extension_flag", "structParsed__Edid.html#a37da5112553a277d5913dfa750c280a3", null ],
+    [ "extra_descriptor_string", "structParsed__Edid.html#a5025434a5bec7952d4fe8c6c9fbb4d81", null ],
+    [ "gx", "structParsed__Edid.html#a270641ca82e87d6a48ce0a6c36fc3e44", null ],
+    [ "gy", "structParsed__Edid.html#a6f3d17baf7e3e7e152c9599f1a188790", null ],
+    [ "is_model_year", "structParsed__Edid.html#aabee6a2e61121811073e85bb24fec7a9", null ],
+    [ "marker", "structParsed__Edid.html#a1f98e0b2fc36c55009c3fb0d639f9971", null ],
+    [ "mfg_id", "structParsed__Edid.html#a780011eebf016aafc8af8ace9847be3a", null ],
+    [ "model_hex", "structParsed__Edid.html#ad8537571b6ee94c52f7a021cab88e9f9", null ],
+    [ "model_name", "structParsed__Edid.html#ada36d679b6d3418168ebb6552770a384", null ],
+    [ "rx", "structParsed__Edid.html#a533d7eeda74ce152b3e59904780be97b", null ],
+    [ "ry", "structParsed__Edid.html#a40e2fa9e9efca1aa4c2497cba723f02e", null ],
+    [ "serial_ascii", "structParsed__Edid.html#a4086e7bd5842c5c1edfc25f6fb420471", null ],
+    [ "serial_binary", "structParsed__Edid.html#af8066a25a3e89f977c0de34a4068930b", null ],
+    [ "wx", "structParsed__Edid.html#a74567732f0afd1fa3fbba7259b729279", null ],
+    [ "wy", "structParsed__Edid.html#a9dfee1c4a66d3c396f19de9cb5a4c821", null ],
+    [ "year", "structParsed__Edid.html#aaa2b5f4015de75d09fed1d3fbc46243f", null ]
+];

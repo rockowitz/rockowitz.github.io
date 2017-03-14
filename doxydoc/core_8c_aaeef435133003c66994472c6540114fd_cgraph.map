@@ -1,0 +1,5 @@
+<map id="terminate_execution_on_error" name="terminate_execution_on_error">
+<area shape="rect" id="node2" href="$core_8c.html#a65df730908d37fd22c1e40d4f0dccd5d" title="ddc_abort" alt="" coords="196,56,279,83"/>
+<area shape="rect" id="node3" href="$string__util_8c.html#a19fd4ad73c0ebc9d781fc3e5dafaac6a" title="f0puts" alt="" coords="358,5,415,32"/>
+<area shape="rect" id="node4" href="$debug__util_8c.html#a78274a059edb36a1e7dd04d3297c9283" title="show_backtrace" alt="" coords="327,56,447,83"/>
+</map>

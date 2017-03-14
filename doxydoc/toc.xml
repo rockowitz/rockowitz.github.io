@@ -1,0 +1,1025 @@
+<toc label="ddcutil Internals" topic="index.html">
+  <topic label="util" href="md_util_util.html"/>
+  <topic label="base" href="md_base_base.html"/>
+  <topic label="Todo List" href="todo.html"/>
+  <topic label="Modules" href="modules.html">
+    <topic label="API Display Specification" href="group__api__display__spec.html">
+      <topic label="DDCA_Display_Location" href="structDDCA__Display__Location.html">
+      </topic>
+      <topic label="DDCA_Display_Info" href="structDDCA__Display__Info.html">
+      </topic>
+      <topic label="DDCA_Display_Handle" href="group__api__display__spec.html#ga300105c7425fc3a425fd54525ddfb311"/>
+      <topic label="DDCA_Display_Identifier" href="group__api__display__spec.html#gab0dfce9a7d15625e5e171778dc42ef1d"/>
+      <topic label="DDCA_Display_Ref" href="group__api__display__spec.html#gaa5803e09f7fe279ba9e6b5b14f80067c"/>
+      <topic label="DDCA_IO_Mode" href="group__api__display__spec.html#ga9d34af61d35dfa52cec4631d0d8ab521">
+        <topic label="DDC_IO_DEVI2C" href="group__api__display__spec.html#gga9d34af61d35dfa52cec4631d0d8ab521abd060ad762a21370e69ccbb62fd38aa7"/>
+        <topic label="DDC_IO_ADL" href="group__api__display__spec.html#gga9d34af61d35dfa52cec4631d0d8ab521a27ce9c9170420b842b40c5eb19f47472"/>
+        <topic label="USB_IO" href="group__api__display__spec.html#gga9d34af61d35dfa52cec4631d0d8ab521a57669fb9759b1852fb37a7fe2ed23aa0"/>
+      </topic>
+    </topic>
+    <topic label="Basic Output Redirection" href="group__output__redirection.html">
+      <topic label="init_msg_control" href="group__output__redirection.html#gaa26303af55a402114d18c18beaff07b1"/>
+      <topic label="program_logic_error" href="group__output__redirection.html#ga3415381481de7ef2617690e261342a64"/>
+      <topic label="set_ferr" href="group__output__redirection.html#ga68631e139321cfc34420110412108b97"/>
+      <topic label="set_ferr_to_default" href="group__output__redirection.html#gaf854749f36d1944b9331cfcdfa192fb8"/>
+      <topic label="set_fout" href="group__output__redirection.html#ga072b623b5a66901e846f5d64aa295879"/>
+      <topic label="set_fout_to_default" href="group__output__redirection.html#ga811ec11a872fee863bd9b2e36f967ad4"/>
+      <topic label="terminate_execution_on_error" href="group__output__redirection.html#gaaeef435133003c66994472c6540114fd"/>
+      <topic label="FERR" href="group__output__redirection.html#ga8329f90c6b2bbe8e6456ee9c5bbb5335"/>
+      <topic label="FOUT" href="group__output__redirection.html#gad25825a8b7a4d34391219b7f0bbeb2d1"/>
+    </topic>
+    <topic label="Abnormal Termination" href="group__abnormal__termination.html">
+      <topic label="PROGRAM_LOGIC_ERROR" href="group__abnormal__termination.html#ga56477850134864c5bbc498f1029be080"/>
+      <topic label="TERMINATE_EXECUTION_ON_ERROR" href="group__abnormal__termination.html#gaf61ccf982b0d9d59d93c9fd99fec506c"/>
+      <topic label="ddc_abort" href="group__abnormal__termination.html#ga65df730908d37fd22c1e40d4f0dccd5d"/>
+      <topic label="register_jmp_buf" href="group__abnormal__termination.html#ga0341db1498384ee7e0d816b6441dfbb3"/>
+    </topic>
+    <topic label="Message Level Management" href="group__msglevel.html">
+      <topic label="get_output_level" href="group__msglevel.html#ga2c4352b1d565bb607e1069ccbcedeff4"/>
+      <topic label="output_level_name" href="group__msglevel.html#ga9fc7f386b7a2626ab575cfcd15f6aa0e"/>
+      <topic label="set_output_level" href="group__msglevel.html#ga5f3b76e106ac331bcf321da5068c67a1"/>
+      <topic label="show_output_level" href="group__msglevel.html#gabc8d678eb48c3c7099c63013c6955a97"/>
+    </topic>
+  </topic>
+  <topic label="Data Structures" href="annotated.html">
+    <topic label="Data Structures" href="annotated.html">
+      <topic label="Buffer" href="structBuffer.html">
+        <topic label="buffer_size" href="structBuffer.html#a7c92473e6d5f883c242e3d38ec204807"/>
+        <topic label="bytes" href="structBuffer.html#a3ca1faf335565043d1be5a6a4c992646"/>
+        <topic label="len" href="structBuffer.html#a3b4bb0c04eac8345f7acd611529e6125"/>
+        <topic label="marker" href="structBuffer.html#a632736237089d7fe623ac364a6810f42"/>
+        <topic label="size_increment" href="structBuffer.html#ab1ff32dfc9d08d8c04311d6ee9cbe135"/>
+      </topic>
+      <topic label="DDCA_Cap_Vcp" href="structDDCA__Cap__Vcp.html">
+        <topic label="feature_code" href="structDDCA__Cap__Vcp.html#a412a39dacea71469ad8e6ca0ad309df4"/>
+        <topic label="marker" href="structDDCA__Cap__Vcp.html#a5ec719ee255f7537aad388c737fb3199"/>
+        <topic label="value_ct" href="structDDCA__Cap__Vcp.html#a69369d533f3e1184ee075ba23c28474d"/>
+        <topic label="values" href="structDDCA__Cap__Vcp.html#a356c54137277e5d8868f0fcbf6de90f3"/>
+      </topic>
+      <topic label="DDCA_Capabilities" href="structDDCA__Capabilities.html">
+        <topic label="marker" href="structDDCA__Capabilities.html#a4ec0acc21c78579929d030a8e0289823"/>
+        <topic label="unparsed_string" href="structDDCA__Capabilities.html#afb880c601bcfe99c79bd2483af2e14ef"/>
+        <topic label="vcp_code_ct" href="structDDCA__Capabilities.html#a99420f02741afa51d85357b566a92e2d"/>
+        <topic label="vcp_codes" href="structDDCA__Capabilities.html#a9222da7c09ef9afc86b4141b7977800a"/>
+        <topic label="version_spec" href="structDDCA__Capabilities.html#a41e30a0203b1158391e29ab93dcf6ca4"/>
+      </topic>
+      <topic label="DDCA_Ddcutil_Version_Spec" href="structDDCA__Ddcutil__Version__Spec.html">
+      </topic>
+      <topic label="DDCA_Display_Info" href="structDDCA__Display__Info.html">
+      </topic>
+      <topic label="DDCA_Display_Location" href="structDDCA__Display__Location.html">
+      </topic>
+      <topic label="DDCA_Feature_Value_Entry" href="structDDCA__Feature__Value__Entry.html">
+      </topic>
+      <topic label="DDCA_MCCS_Version_Spec" href="structDDCA__MCCS__Version__Spec.html">
+        <topic label="major" href="structDDCA__MCCS__Version__Spec.html#a8a51c741eb20a95316b8ca28a68b78a8"/>
+      </topic>
+      <topic label="DDCA_Non_Table_Value_Response" href="structDDCA__Non__Table__Value__Response.html">
+        <topic label="c" href="structDDCA__Non__Table__Value__Response.html#a1013f7b05fa930d49b2f1fcf2edd89f4"/>
+        <topic label="cur_val" href="structDDCA__Non__Table__Value__Response.html#afb3c8783bbf3988677624adae36048f7"/>
+        <topic label="max_val" href="structDDCA__Non__Table__Value__Response.html#ac1e1afd7d7ef05606cdaed5befe77417"/>
+        <topic label="mh" href="structDDCA__Non__Table__Value__Response.html#af1ecaa29b705d8b4f44fc3b6365cdde0"/>
+        <topic label="ml" href="structDDCA__Non__Table__Value__Response.html#af2ec4a244b48e063616b32ba39af6770"/>
+        <topic label="nc" href="structDDCA__Non__Table__Value__Response.html#a4f724ecce77de1b1833d0cb94f67ebfe"/>
+        <topic label="sh" href="structDDCA__Non__Table__Value__Response.html#a472e9727d8e5ecc07757a19abc0d6e10"/>
+        <topic label="sl" href="structDDCA__Non__Table__Value__Response.html#ac927cd594485cb80b1f6842053550d77"/>
+      </topic>
+      <topic label="DDCA_Table_Value" href="structDDCA__Table__Value.html">
+        <topic label="bytect" href="structDDCA__Table__Value.html#a6fe05e79fd052425de6befb2f5c9865e"/>
+        <topic label="bytes" href="structDDCA__Table__Value.html#aea4c4c9eabc019c99ad1fb7f6e9a9aa0"/>
+      </topic>
+      <topic label="Display_Handle" href="structDisplay__Handle.html">
+      </topic>
+      <topic label="Parsed_Edid" href="structParsed__Edid.html">
+        <topic label="bx" href="structParsed__Edid.html#a782daecc3472e97a2fc10454b982898b"/>
+        <topic label="by" href="structParsed__Edid.html#abb931c919f4730ad0e2be607a53f88ba"/>
+        <topic label="bytes" href="structParsed__Edid.html#ae727d5dcfaa3e0af41915899f7a41848"/>
+        <topic label="edid_source" href="structParsed__Edid.html#a4490fc2565b4afc8d005d2e5339fc6e6"/>
+        <topic label="edid_version_major" href="structParsed__Edid.html#ad09c08b6dc64b027b19ea965b0c77cf1"/>
+        <topic label="edid_version_minor" href="structParsed__Edid.html#a744a07b4dcd1e45e5db995ba002ecc76"/>
+        <topic label="extension_flag" href="structParsed__Edid.html#a37da5112553a277d5913dfa750c280a3"/>
+        <topic label="extra_descriptor_string" href="structParsed__Edid.html#a5025434a5bec7952d4fe8c6c9fbb4d81"/>
+        <topic label="gx" href="structParsed__Edid.html#a270641ca82e87d6a48ce0a6c36fc3e44"/>
+        <topic label="gy" href="structParsed__Edid.html#a6f3d17baf7e3e7e152c9599f1a188790"/>
+        <topic label="is_model_year" href="structParsed__Edid.html#aabee6a2e61121811073e85bb24fec7a9"/>
+        <topic label="marker" href="structParsed__Edid.html#a1f98e0b2fc36c55009c3fb0d639f9971"/>
+        <topic label="mfg_id" href="structParsed__Edid.html#a780011eebf016aafc8af8ace9847be3a"/>
+        <topic label="model_hex" href="structParsed__Edid.html#ad8537571b6ee94c52f7a021cab88e9f9"/>
+        <topic label="model_name" href="structParsed__Edid.html#ada36d679b6d3418168ebb6552770a384"/>
+        <topic label="rx" href="structParsed__Edid.html#a533d7eeda74ce152b3e59904780be97b"/>
+        <topic label="ry" href="structParsed__Edid.html#a40e2fa9e9efca1aa4c2497cba723f02e"/>
+        <topic label="serial_ascii" href="structParsed__Edid.html#a4086e7bd5842c5c1edfc25f6fb420471"/>
+        <topic label="serial_binary" href="structParsed__Edid.html#af8066a25a3e89f977c0de34a4068930b"/>
+        <topic label="wx" href="structParsed__Edid.html#a74567732f0afd1fa3fbba7259b729279"/>
+        <topic label="wy" href="structParsed__Edid.html#a9dfee1c4a66d3c396f19de9cb5a4c821"/>
+        <topic label="year" href="structParsed__Edid.html#aaa2b5f4015de75d09fed1d3fbc46243f"/>
+      </topic>
+      <topic label="Pci_Usb_Id_Names" href="structPci__Usb__Id__Names.html">
+        <topic label="device_name" href="structPci__Usb__Id__Names.html#a36953550ee3d9bc2c2b4deecf0484603"/>
+        <topic label="subsys_or_interface_name" href="structPci__Usb__Id__Names.html#a6a6057748c4ade4fae6d9177dfa213cf"/>
+        <topic label="vendor_name" href="structPci__Usb__Id__Names.html#a4e52341592921fcc63b958667b784b6a"/>
+      </topic>
+      <topic label="Single_Vcp_Value" href="structSingle__Vcp__Value.html">
+        <topic label="bytect" href="structSingle__Vcp__Value.html#a0adfb74d15baddd5dc3b6bc05b305b25"/>
+        <topic label="bytes" href="structSingle__Vcp__Value.html#a79942929345d6446e7f37bb476de18b3"/>
+        <topic label="c" href="structSingle__Vcp__Value.html#ac6dd653fddb633fb39ee31e7124c9091"/>
+        <topic label="cur_val" href="structSingle__Vcp__Value.html#ab8197a12b498d4ede24dd94dae571489"/>
+        <topic label="max_val" href="structSingle__Vcp__Value.html#a349b7e4c0e34b97cd0cb25b21f83e8ab"/>
+        <topic label="mh" href="structSingle__Vcp__Value.html#a6ab3fa263086d33e19903d79360ddc2a"/>
+        <topic label="ml" href="structSingle__Vcp__Value.html#abf651334adc9b78ceaa74eeafb3deaa4"/>
+        <topic label="nc" href="structSingle__Vcp__Value.html#af992114acc6a485862161349b1db0d38"/>
+        <topic label="opcode" href="structSingle__Vcp__Value.html#a26be92b5bc45fed4163bfe339f337791"/>
+        <topic label="sh" href="structSingle__Vcp__Value.html#aca41b141c9e0327edd0cbb1bd4c6466d"/>
+        <topic label="sl" href="structSingle__Vcp__Value.html#afee54d3f7ef5521951e1d1c0e5bf6471"/>
+        <topic label="t" href="structSingle__Vcp__Value.html#abd1a1557eb4155e59d59c4f82d7a60a4"/>
+      </topic>
+      <topic label="Udev_Device_Summary" href="structUdev__Device__Summary.html">
+        <topic label="devpath" href="structUdev__Device__Summary.html#a33902c0598005b23b989ff0ba10874f9"/>
+        <topic label="marker" href="structUdev__Device__Summary.html#a3b501875d8d0971f63cc3b930165fe8f"/>
+        <topic label="sysattr_name" href="structUdev__Device__Summary.html#a677483765527b89b379cb8fe99da82de"/>
+        <topic label="sysname" href="structUdev__Device__Summary.html#a7b9c052cb3c09f1011bf830ce72881af"/>
+      </topic>
+      <topic label="Udev_Usb_Devinfo" href="structUdev__Usb__Devinfo.html">
+        <topic label="busno" href="structUdev__Usb__Devinfo.html#a974f646c8af26d60e4ca40ec5e2bc198"/>
+        <topic label="devno" href="structUdev__Usb__Devinfo.html#a19c073c734813d16027bee8238b44cfb"/>
+      </topic>
+      <topic label="Usb_Detailed_Device_Summary" href="structUsb__Detailed__Device__Summary.html">
+        <topic label="busnum_s" href="structUsb__Detailed__Device__Summary.html#ac7810ebf7fe369ebcb7665dd7148e410"/>
+        <topic label="devname" href="structUsb__Detailed__Device__Summary.html#adceb9ec4f195526765c9261508c67c60"/>
+        <topic label="devnum_s" href="structUsb__Detailed__Device__Summary.html#af60686eb94f3cd2c3667c20633c7d6e6"/>
+        <topic label="marker" href="structUsb__Detailed__Device__Summary.html#ab2564961fad8730d666f887e8ed7a90a"/>
+        <topic label="product_id" href="structUsb__Detailed__Device__Summary.html#a54488e2ecdf39f9d78dca103e13a9d53"/>
+        <topic label="product_name" href="structUsb__Detailed__Device__Summary.html#aabd71644af6f6c8aa3807da3689d184a"/>
+        <topic label="vendor_id" href="structUsb__Detailed__Device__Summary.html#adbd24f82f521b82960d5a391da46b013"/>
+        <topic label="vendor_name" href="structUsb__Detailed__Device__Summary.html#a4c94a19bdfbc6a2a19857bddae650858"/>
+      </topic>
+      <topic label="Value_Name_Title" href="structValue__Name__Title.html">
+        <topic label="name" href="structValue__Name__Title.html#ac366b28558d99cd507a61ab4357fa859"/>
+        <topic label="title" href="structValue__Name__Title.html#a94fea684b2a2b180ef2be6e1380f12bd"/>
+        <topic label="value" href="structValue__Name__Title.html#a9618c440205f83af7623d6e1141cbc40"/>
+      </topic>
+      <topic label="Version_Feature_Info" href="structVersion__Feature__Info.html">
+        <topic label="desc" href="structVersion__Feature__Info.html#acb695554a98d26eae6567cd6431d07e2"/>
+        <topic label="feature_code" href="structVersion__Feature__Info.html#a498e34ba4aee7537587de4dbbc8a90c5"/>
+        <topic label="feature_name" href="structVersion__Feature__Info.html#a640bde142ee84e9154abee5ea75b72c2"/>
+        <topic label="marker" href="structVersion__Feature__Info.html#a6cad65bb78cd5ca4dac9937b9c84b737"/>
+        <topic label="sl_values" href="structVersion__Feature__Info.html#a11d3035a9dd73be3b8a3bdd5e0330973"/>
+      </topic>
+      <topic label="X11_Edid_Rec" href="structX11__Edid__Rec.html">
+        <topic label="edidbytes" href="structX11__Edid__Rec.html#a852433ce5a66569dd01b52ba4bc15b66"/>
+        <topic label="output_name" href="structX11__Edid__Rec.html#a0374327cc0706a995756c637833ee0ee"/>
+      </topic>
+    </topic>
+    <topic label="Data Structure Index" href="classes.html"/>
+    <topic label="Data Fields" href="functions.html">
+      <topic label="All" href="functions.html"/>
+      <topic label="Variables" href="functions_vars.html"/>
+    </topic>
+  </topic>
+  <topic label="Files">
+    <topic label="File List" href="files.html">
+      <topic label="base" href="dir_e914ee4d4a44400f1fdb170cb4ead18a.html">
+        <topic label="adl_errors.h" href="adl__errors_8h.html">
+        </topic>
+        <topic label="base_init.c" href="base__init_8c.html">
+          <topic label="init_base_services" href="base__init_8c.html#a6483c776997547e7beeccdb451a9f8f1"/>
+        </topic>
+        <topic label="base_init.h" href="base__init_8h.html">
+          <topic label="init_base_services" href="base__init_8h.html#a6483c776997547e7beeccdb451a9f8f1"/>
+        </topic>
+        <topic label="build_info.c" href="build__info_8c_source.html"/>
+        <topic label="build_info.h" href="build__info_8h_source.html"/>
+        <topic label="core.c" href="core_8c.html">
+          <topic label="ddc_abort" href="group__abnormal__termination.html#ga65df730908d37fd22c1e40d4f0dccd5d"/>
+          <topic label="get_output_level" href="group__msglevel.html#ga2c4352b1d565bb607e1069ccbcedeff4"/>
+          <topic label="init_msg_control" href="group__output__redirection.html#gaa26303af55a402114d18c18beaff07b1"/>
+          <topic label="interpret_call_options" href="core_8c.html#ad03ed9b828c111b5d75c12dff1ebf0a3"/>
+          <topic label="is_tracing" href="core_8c.html#a27da8f036d4047a74c55cc8da59503e7"/>
+          <topic label="output_level_name" href="group__msglevel.html#ga9fc7f386b7a2626ab575cfcd15f6aa0e"/>
+          <topic label="program_logic_error" href="group__output__redirection.html#ga3415381481de7ef2617690e261342a64"/>
+          <topic label="register_jmp_buf" href="group__abnormal__termination.html#ga0341db1498384ee7e0d816b6441dfbb3"/>
+          <topic label="set_ferr" href="group__output__redirection.html#ga68631e139321cfc34420110412108b97"/>
+          <topic label="set_ferr_to_default" href="group__output__redirection.html#gaf854749f36d1944b9331cfcdfa192fb8"/>
+          <topic label="set_fout" href="group__output__redirection.html#ga072b623b5a66901e846f5d64aa295879"/>
+          <topic label="set_fout_to_default" href="group__output__redirection.html#ga811ec11a872fee863bd9b2e36f967ad4"/>
+          <topic label="set_output_level" href="group__msglevel.html#ga5f3b76e106ac331bcf321da5068c67a1"/>
+          <topic label="set_trace_levels" href="core_8c.html#a6f0c2b3c71d8fbe87f7ae60459774e36"/>
+          <topic label="show_output_level" href="group__msglevel.html#gabc8d678eb48c3c7099c63013c6955a97"/>
+          <topic label="terminate_execution_on_error" href="group__output__redirection.html#gaaeef435133003c66994472c6540114fd"/>
+          <topic label="trace_class_name_to_value" href="core_8c.html#aa1f21df04b257f397290596ccc95694c"/>
+          <topic label="dbgtrc_show_time" href="core_8c.html#abcd29520a9046f54020357ecff0b48f0"/>
+          <topic label="FERR" href="group__output__redirection.html#ga8329f90c6b2bbe8e6456ee9c5bbb5335"/>
+          <topic label="FOUT" href="group__output__redirection.html#gad25825a8b7a4d34391219b7f0bbeb2d1"/>
+        </topic>
+        <topic label="core.h" href="core_8h.html">
+          <topic label="CALLOPT_ERR_ABORT" href="core_8h.html#a15c6d6d1e8b77416f1235ec079702ae6"/>
+          <topic label="CALLOPT_ERR_MSG" href="core_8h.html#a079ca3b2b231f6180f5f95213940035e"/>
+          <topic label="CALLOPT_FORCE" href="core_8h.html#ac8f5b34d23e8223367f5d079672ee0e2"/>
+          <topic label="CALLOPT_NONE" href="core_8h.html#a08847ca0069a07a424eeedaba84d22a8"/>
+          <topic label="CALLOPT_RDONLY" href="core_8h.html#ae9cee162a10740befd4977bc083306ae"/>
+          <topic label="CALLOPT_WARN_FINDEX" href="core_8h.html#aa6f911dd394ccc68040c8dd68440d931"/>
+          <topic label="PROGRAM_LOGIC_ERROR" href="group__abnormal__termination.html#ga56477850134864c5bbc498f1029be080"/>
+          <topic label="TERMINATE_EXECUTION_ON_ERROR" href="group__abnormal__termination.html#gaf61ccf982b0d9d59d93c9fd99fec506c"/>
+          <topic label="Call_Options" href="core_8h.html#ad270a7b28537393606d2f8f0011fa4bd"/>
+          <topic label="ddc_abort" href="group__abnormal__termination.html#ga65df730908d37fd22c1e40d4f0dccd5d"/>
+          <topic label="get_output_level" href="group__msglevel.html#ga2c4352b1d565bb607e1069ccbcedeff4"/>
+          <topic label="init_msg_control" href="group__output__redirection.html#gaa26303af55a402114d18c18beaff07b1"/>
+          <topic label="interpret_call_options" href="core_8h.html#ad03ed9b828c111b5d75c12dff1ebf0a3"/>
+          <topic label="is_tracing" href="core_8h.html#a27da8f036d4047a74c55cc8da59503e7"/>
+          <topic label="output_level_name" href="group__msglevel.html#ga9fc7f386b7a2626ab575cfcd15f6aa0e"/>
+          <topic label="program_logic_error" href="group__output__redirection.html#ga3415381481de7ef2617690e261342a64"/>
+          <topic label="register_jmp_buf" href="group__abnormal__termination.html#ga0341db1498384ee7e0d816b6441dfbb3"/>
+          <topic label="set_ferr" href="group__output__redirection.html#ga68631e139321cfc34420110412108b97"/>
+          <topic label="set_ferr_to_default" href="group__output__redirection.html#gaf854749f36d1944b9331cfcdfa192fb8"/>
+          <topic label="set_fout" href="group__output__redirection.html#ga072b623b5a66901e846f5d64aa295879"/>
+          <topic label="set_fout_to_default" href="group__output__redirection.html#ga811ec11a872fee863bd9b2e36f967ad4"/>
+          <topic label="set_output_level" href="group__msglevel.html#ga5f3b76e106ac331bcf321da5068c67a1"/>
+          <topic label="set_trace_levels" href="core_8h.html#a6f0c2b3c71d8fbe87f7ae60459774e36"/>
+          <topic label="terminate_execution_on_error" href="group__output__redirection.html#gaaeef435133003c66994472c6540114fd"/>
+          <topic label="trace_class_name_to_value" href="core_8h.html#aa1f21df04b257f397290596ccc95694c"/>
+          <topic label="dbgtrc_show_time" href="core_8h.html#abcd29520a9046f54020357ecff0b48f0"/>
+          <topic label="FERR" href="group__output__redirection.html#ga8329f90c6b2bbe8e6456ee9c5bbb5335"/>
+          <topic label="FOUT" href="group__output__redirection.html#gad25825a8b7a4d34391219b7f0bbeb2d1"/>
+        </topic>
+        <topic label="ddc_errno.c" href="ddc__errno_8c_source.html"/>
+        <topic label="ddc_errno.h" href="ddc__errno_8h_source.html"/>
+        <topic label="ddc_packets.c" href="ddc__packets_8c_source.html"/>
+        <topic label="ddc_packets.h" href="ddc__packets_8h_source.html"/>
+        <topic label="displays.c" href="displays_8c_source.html"/>
+        <topic label="displays.h" href="displays_8h.html">
+          <topic label="Display_Handle" href="structDisplay__Handle.html">
+          </topic>
+        </topic>
+        <topic label="execution_stats.c" href="execution__stats_8c.html">
+          <topic label="call_tuned_sleep" href="execution__stats_8c.html#a476628ee02796f031df6d9203fef45d6"/>
+          <topic label="call_tuned_sleep_adl" href="execution__stats_8c.html#aa8ba505369471fcf260038859c96760b"/>
+          <topic label="call_tuned_sleep_dh" href="execution__stats_8c.html#ab0ddaae3502efd672f6ddde012a10049"/>
+          <topic label="call_tuned_sleep_i2c" href="execution__stats_8c.html#a0d9a6eeab967424af4dc39ada5bb4ea1"/>
+          <topic label="get_sleep_strategy" href="execution__stats_8c.html#ac4b15dfde5cbfeb1339ad6da16f510ce"/>
+          <topic label="init_execution_stats" href="execution__stats_8c.html#ad70249ea86cb0e7e29b91e8d87be0ba9"/>
+          <topic label="io_event_name" href="execution__stats_8c.html#a741da071a1538affa6b4732e9d60d24a"/>
+          <topic label="log_io_call" href="execution__stats_8c.html#ac27920fe7b08edb28d0fd7fac8f33ff5"/>
+          <topic label="log_status_code" href="execution__stats_8c.html#a6358b30c2ffc385112d7b3c967332bfc"/>
+          <topic label="report_io_call_stats" href="execution__stats_8c.html#a4f42d1de3a72f02ece05917e331a45fb"/>
+          <topic label="report_sleep_strategy_stats" href="execution__stats_8c.html#a666fbef7b3822916ae33d30821738c3a"/>
+          <topic label="set_sleep_strategy" href="execution__stats_8c.html#a407da9b3aa20beffe0038d6f69c23697"/>
+          <topic label="show_all_status_counts" href="execution__stats_8c.html#ad48ecb529293ed16823ce069fe459515"/>
+        </topic>
+        <topic label="execution_stats.h" href="execution__stats_8h.html">
+          <topic label="IO_Event_Type" href="execution__stats_8h.html#ab95c78828ec52940fef56180a34f6356">
+          </topic>
+          <topic label="call_tuned_sleep" href="execution__stats_8h.html#a476628ee02796f031df6d9203fef45d6"/>
+          <topic label="call_tuned_sleep_adl" href="execution__stats_8h.html#aa8ba505369471fcf260038859c96760b"/>
+          <topic label="call_tuned_sleep_dh" href="execution__stats_8h.html#ab0ddaae3502efd672f6ddde012a10049"/>
+          <topic label="call_tuned_sleep_i2c" href="execution__stats_8h.html#a0d9a6eeab967424af4dc39ada5bb4ea1"/>
+          <topic label="get_sleep_strategy" href="execution__stats_8h.html#ac4b15dfde5cbfeb1339ad6da16f510ce"/>
+          <topic label="init_execution_stats" href="execution__stats_8h.html#ad70249ea86cb0e7e29b91e8d87be0ba9"/>
+          <topic label="io_event_name" href="execution__stats_8h.html#a741da071a1538affa6b4732e9d60d24a"/>
+          <topic label="log_io_call" href="execution__stats_8h.html#ac27920fe7b08edb28d0fd7fac8f33ff5"/>
+          <topic label="log_status_code" href="execution__stats_8h.html#a78f4593a15c1981f91abc910fc57380f"/>
+          <topic label="report_io_call_stats" href="execution__stats_8h.html#a4f42d1de3a72f02ece05917e331a45fb"/>
+          <topic label="report_sleep_strategy_stats" href="execution__stats_8h.html#a666fbef7b3822916ae33d30821738c3a"/>
+          <topic label="set_sleep_strategy" href="execution__stats_8h.html#a407da9b3aa20beffe0038d6f69c23697"/>
+          <topic label="show_all_status_counts" href="execution__stats_8h.html#ad48ecb529293ed16823ce069fe459515"/>
+        </topic>
+        <topic label="feature_sets.c" href="feature__sets_8c_source.html"/>
+        <topic label="feature_sets.h" href="feature__sets_8h_source.html"/>
+        <topic label="linux_errno.c" href="linux__errno_8c_source.html"/>
+        <topic label="linux_errno.h" href="linux__errno_8h_source.html"/>
+        <topic label="parms.h" href="parms_8h_source.html"/>
+        <topic label="sleep.c" href="sleep_8c_source.html"/>
+        <topic label="sleep.h" href="sleep_8h.html">
+        </topic>
+        <topic label="status_code_mgt.c" href="status__code__mgt_8c.html">
+        </topic>
+        <topic label="status_code_mgt.h" href="status__code__mgt_8h.html">
+        </topic>
+        <topic label="vcp_version.c" href="vcp__version_8c_source.html"/>
+        <topic label="vcp_version.h" href="vcp__version_8h_source.html"/>
+      </topic>
+      <topic label="public" href="dir_f832923ad3cb060bc87ad85e68b8a1c3.html">
+        <topic label="ddcutil_c_api.h" href="ddcutil__c__api_8h.html">
+          <topic label="DDCA_BUILT_WITH_ADL" href="ddcutil__c__api_8h.html#adda99b43b5a239fe942ce27819ab1bea"/>
+          <topic label="DDCA_BUILT_WITH_FAILSIM" href="ddcutil__c__api_8h.html#abe04fc8ee59614aeea4d89626475c9b3"/>
+          <topic label="DDCA_BUILT_WITH_USB" href="ddcutil__c__api_8h.html#a8e744b36de2970385b1f3ea322f31e42"/>
+          <topic label="ddca_built_with_adl" href="ddcutil__c__api_8h.html#af700981a2af5f6bb4c5169ed0aa95130"/>
+          <topic label="ddca_built_with_usb" href="ddcutil__c__api_8h.html#a65014a58c1f1496a0ac437ab4e4ae514"/>
+          <topic label="ddca_close_display" href="ddcutil__c__api_8h.html#a57b0dbbd62e8683ca7b7e7c055e8a536"/>
+          <topic label="ddca_create_adlno_display_identifier" href="ddcutil__c__api_8h.html#a0a38e1514346876b30abd40098b669d9"/>
+          <topic label="ddca_create_busno_display_identifier" href="ddcutil__c__api_8h.html#aedf88950a32b313652aaed18f02b6e8f"/>
+          <topic label="ddca_create_display_ref" href="ddcutil__c__api_8h.html#a6e1c9b6624c35c7fa14dc5d12d3ba1c8"/>
+          <topic label="ddca_create_dispno_display_identifier" href="ddcutil__c__api_8h.html#a7fe9c22ad01da4613b69368f529867a7"/>
+          <topic label="ddca_create_edid_display_identifier" href="ddcutil__c__api_8h.html#a6fb43dee460d4cfe333ff8497ec65290"/>
+          <topic label="ddca_create_mfg_model_sn_display_identifier" href="ddcutil__c__api_8h.html#a924663058bb99403ddb8701dc4c6505f"/>
+          <topic label="ddca_create_usb_display_identifier" href="ddcutil__c__api_8h.html#a6db8e5a22193dcd81d3a743b2436954d"/>
+          <topic label="ddca_ddcutil_version_string" href="ddcutil__c__api_8h.html#ac59ba6b477902b9d2ae001c5550ca946"/>
+          <topic label="ddca_enable_report_ddc_errors" href="ddcutil__c__api_8h.html#a05279f426e86f8775fbd95f9b8fedde2"/>
+          <topic label="ddca_free_display_identifier" href="ddcutil__c__api_8h.html#a8154718ab943be15de5504017571f287"/>
+          <topic label="ddca_free_display_ref" href="ddcutil__c__api_8h.html#ab63f901c5de7b5ffc31df8e517c96b1c"/>
+          <topic label="ddca_free_parsed_capabilities" href="ddcutil__c__api_8h.html#ad0bd39426bd01efc672035f0ac1d1f95"/>
+          <topic label="ddca_get_build_options" href="ddcutil__c__api_8h.html#a70362ddff81c2ff8e04ee86e8c11b48d"/>
+          <topic label="ddca_get_capabilities_string" href="ddcutil__c__api_8h.html#a357d30727e8727db2110a39264c0d226"/>
+          <topic label="ddca_get_displays" href="ddcutil__c__api_8h.html#a6dc5baaaabdc8945985deaff760baa1c"/>
+          <topic label="ddca_get_feature_info_by_vcp_version" href="ddcutil__c__api_8h.html#a07fc23a44c1a62091ffa5c23fe739042"/>
+          <topic label="ddca_get_feature_name" href="ddcutil__c__api_8h.html#a6b3cb6a07afa21509bd7a74e56173e6e"/>
+          <topic label="ddca_get_formatted_vcp_value" href="ddcutil__c__api_8h.html#a6df2027bed0f7c897f39e17c0ac74868"/>
+          <topic label="ddca_get_global_failure_information" href="ddcutil__c__api_8h.html#a093281677093ba8c819beb11cf0655a1"/>
+          <topic label="ddca_get_max_max_tries" href="ddcutil__c__api_8h.html#a890f7d1c55c46359264bcb9c253ce12f"/>
+          <topic label="ddca_get_max_tries" href="ddcutil__c__api_8h.html#a77a1a8b1da2002ceacc9c7f7577a519c"/>
+          <topic label="ddca_get_nontable_vcp_value" href="ddcutil__c__api_8h.html#a382b310fb737ddf95a10e317cd6ca065"/>
+          <topic label="ddca_get_output_level" href="ddcutil__c__api_8h.html#a4d0447adcae5adbe0ec2912497a2bf94"/>
+          <topic label="ddca_get_simple_sl_value_table" href="ddcutil__c__api_8h.html#aae8d93d06fa0e47a9a6e638be8b671d4"/>
+          <topic label="ddca_get_table_vcp_value" href="ddcutil__c__api_8h.html#ac09a14f7729505daceb59f2c1cd99564"/>
+          <topic label="ddca_get_vcp_value" href="ddcutil__c__api_8h.html#acef8850b6f5a5db2af1396dfb9d9ca96"/>
+          <topic label="ddca_is_report_ddc_errors_enabled" href="ddcutil__c__api_8h.html#ac8e528e04d5168e8adc1f7c2637b4766"/>
+          <topic label="ddca_open_display" href="ddcutil__c__api_8h.html#acbecd4e76fce7129d4f5f4fc119c64d7"/>
+          <topic label="ddca_output_level_name" href="ddcutil__c__api_8h.html#a056a8a82841c7cd325c9ee4f66662e4c"/>
+          <topic label="ddca_parse_capabilities_string" href="ddcutil__c__api_8h.html#a11ee3b8bb7fc08c7098777ac105382ef"/>
+          <topic label="ddca_register_jmp_buf" href="ddcutil__c__api_8h.html#ad6ba0b56db9e3529b30f7c7f79896dbe"/>
+          <topic label="ddca_report_active_displays" href="ddcutil__c__api_8h.html#aa28419caff05516909c74fbae4d5d9d3"/>
+          <topic label="ddca_report_display_info" href="ddcutil__c__api_8h.html#a8c374920aae15fa89f464976465a81e3"/>
+          <topic label="ddca_report_display_info_list" href="ddcutil__c__api_8h.html#a6f59442fe6388440382cd5a7a069f6a6"/>
+          <topic label="ddca_report_display_ref" href="ddcutil__c__api_8h.html#a36ea2d5e3e9248f8233ec6205ab083f7"/>
+          <topic label="ddca_report_parsed_capabilities" href="ddcutil__c__api_8h.html#a5328c954d84879842b6527d3b6f61634"/>
+          <topic label="ddca_repr_display_handle" href="ddcutil__c__api_8h.html#a9df8f186db720d6dcd13f8b1b351ce52"/>
+          <topic label="ddca_repr_display_identifier" href="ddcutil__c__api_8h.html#aa3731e5d15d665d58891a551bd32a05a"/>
+          <topic label="ddca_repr_display_ref" href="ddcutil__c__api_8h.html#a19af7d0e88a882a2f5a4debf3798e1a3"/>
+          <topic label="ddca_set_continuous_vcp_value" href="ddcutil__c__api_8h.html#abcb4ad2c1a814e8634215bea790e7724"/>
+          <topic label="ddca_set_ferr" href="ddcutil__c__api_8h.html#ac37e97418e137c4caa3fe7dd05d78ef5"/>
+          <topic label="ddca_set_ferr_to_default" href="ddcutil__c__api_8h.html#adb949d06c69220fc0fb6df96e25f604a"/>
+          <topic label="ddca_set_fout" href="ddcutil__c__api_8h.html#a32eab8efb4a1386be0c12ad9dac1414d"/>
+          <topic label="ddca_set_fout_to_default" href="ddcutil__c__api_8h.html#af7cbc9cd35191ac096e0e01b5d2d6672"/>
+          <topic label="ddca_set_max_tries" href="ddcutil__c__api_8h.html#a422a150038d8edc2915d8005220daf2d"/>
+          <topic label="ddca_set_output_level" href="ddcutil__c__api_8h.html#aaf080c04191c52761e0b4781c06f7e47"/>
+          <topic label="ddca_set_raw_vcp_value" href="ddcutil__c__api_8h.html#ad804226e4d6580eda85e93cfeec6a8e3"/>
+          <topic label="ddca_set_simple_nc_vcp_value" href="ddcutil__c__api_8h.html#afe5d02a963bdc31b741529718db6d4fa"/>
+          <topic label="ddca_status_code_desc" href="ddcutil__c__api_8h.html#aea9ae3e5a08ccb54ecda97daf68140c2"/>
+          <topic label="ddca_status_code_name" href="ddcutil__c__api_8h.html#ab654939e9d0212fdc8761b96c11e0998"/>
+        </topic>
+        <topic label="ddcutil_types.h" href="ddcutil__types_8h.html">
+          <topic label="DDCA_Ddcutil_Version_Spec" href="structDDCA__Ddcutil__Version__Spec.html">
+          </topic>
+          <topic label="DDCA_MCCS_Version_Spec" href="structDDCA__MCCS__Version__Spec.html">
+            <topic label="major" href="structDDCA__MCCS__Version__Spec.html#a8a51c741eb20a95316b8ca28a68b78a8"/>
+          </topic>
+          <topic label="DDCA_Feature_Value_Entry" href="structDDCA__Feature__Value__Entry.html">
+          </topic>
+          <topic label="Version_Feature_Info" href="structVersion__Feature__Info.html">
+            <topic label="desc" href="structVersion__Feature__Info.html#acb695554a98d26eae6567cd6431d07e2"/>
+            <topic label="feature_code" href="structVersion__Feature__Info.html#a498e34ba4aee7537587de4dbbc8a90c5"/>
+            <topic label="feature_name" href="structVersion__Feature__Info.html#a640bde142ee84e9154abee5ea75b72c2"/>
+            <topic label="marker" href="structVersion__Feature__Info.html#a6cad65bb78cd5ca4dac9937b9c84b737"/>
+            <topic label="sl_values" href="structVersion__Feature__Info.html#a11d3035a9dd73be3b8a3bdd5e0330973"/>
+          </topic>
+          <topic label="DDCA_Cap_Vcp" href="structDDCA__Cap__Vcp.html">
+            <topic label="feature_code" href="structDDCA__Cap__Vcp.html#a412a39dacea71469ad8e6ca0ad309df4"/>
+            <topic label="marker" href="structDDCA__Cap__Vcp.html#a5ec719ee255f7537aad388c737fb3199"/>
+            <topic label="value_ct" href="structDDCA__Cap__Vcp.html#a69369d533f3e1184ee075ba23c28474d"/>
+            <topic label="values" href="structDDCA__Cap__Vcp.html#a356c54137277e5d8868f0fcbf6de90f3"/>
+          </topic>
+          <topic label="DDCA_Capabilities" href="structDDCA__Capabilities.html">
+            <topic label="marker" href="structDDCA__Capabilities.html#a4ec0acc21c78579929d030a8e0289823"/>
+            <topic label="unparsed_string" href="structDDCA__Capabilities.html#afb880c601bcfe99c79bd2483af2e14ef"/>
+            <topic label="vcp_code_ct" href="structDDCA__Capabilities.html#a99420f02741afa51d85357b566a92e2d"/>
+            <topic label="vcp_codes" href="structDDCA__Capabilities.html#a9222da7c09ef9afc86b4141b7977800a"/>
+            <topic label="version_spec" href="structDDCA__Capabilities.html#a41e30a0203b1158391e29ab93dcf6ca4"/>
+          </topic>
+          <topic label="DDCA_Non_Table_Value_Response" href="structDDCA__Non__Table__Value__Response.html">
+            <topic label="c" href="structDDCA__Non__Table__Value__Response.html#a1013f7b05fa930d49b2f1fcf2edd89f4"/>
+            <topic label="cur_val" href="structDDCA__Non__Table__Value__Response.html#afb3c8783bbf3988677624adae36048f7"/>
+            <topic label="max_val" href="structDDCA__Non__Table__Value__Response.html#ac1e1afd7d7ef05606cdaed5befe77417"/>
+            <topic label="mh" href="structDDCA__Non__Table__Value__Response.html#af1ecaa29b705d8b4f44fc3b6365cdde0"/>
+            <topic label="ml" href="structDDCA__Non__Table__Value__Response.html#af2ec4a244b48e063616b32ba39af6770"/>
+            <topic label="nc" href="structDDCA__Non__Table__Value__Response.html#a4f724ecce77de1b1833d0cb94f67ebfe"/>
+            <topic label="sh" href="structDDCA__Non__Table__Value__Response.html#a472e9727d8e5ecc07757a19abc0d6e10"/>
+            <topic label="sl" href="structDDCA__Non__Table__Value__Response.html#ac927cd594485cb80b1f6842053550d77"/>
+          </topic>
+          <topic label="DDCA_Table_Value" href="structDDCA__Table__Value.html">
+            <topic label="bytect" href="structDDCA__Table__Value.html#a6fe05e79fd052425de6befb2f5c9865e"/>
+            <topic label="bytes" href="structDDCA__Table__Value.html#aea4c4c9eabc019c99ad1fb7f6e9a9aa0"/>
+          </topic>
+          <topic label="Single_Vcp_Value" href="structSingle__Vcp__Value.html">
+            <topic label="bytect" href="structSingle__Vcp__Value.html#a0adfb74d15baddd5dc3b6bc05b305b25"/>
+            <topic label="bytes" href="structSingle__Vcp__Value.html#a79942929345d6446e7f37bb476de18b3"/>
+            <topic label="c" href="structSingle__Vcp__Value.html#ac6dd653fddb633fb39ee31e7124c9091"/>
+            <topic label="cur_val" href="structSingle__Vcp__Value.html#ab8197a12b498d4ede24dd94dae571489"/>
+            <topic label="max_val" href="structSingle__Vcp__Value.html#a349b7e4c0e34b97cd0cb25b21f83e8ab"/>
+            <topic label="mh" href="structSingle__Vcp__Value.html#a6ab3fa263086d33e19903d79360ddc2a"/>
+            <topic label="ml" href="structSingle__Vcp__Value.html#abf651334adc9b78ceaa74eeafb3deaa4"/>
+            <topic label="nc" href="structSingle__Vcp__Value.html#af992114acc6a485862161349b1db0d38"/>
+            <topic label="opcode" href="structSingle__Vcp__Value.html#a26be92b5bc45fed4163bfe339f337791"/>
+            <topic label="sh" href="structSingle__Vcp__Value.html#aca41b141c9e0327edd0cbb1bd4c6466d"/>
+            <topic label="sl" href="structSingle__Vcp__Value.html#afee54d3f7ef5521951e1d1c0e5bf6471"/>
+            <topic label="t" href="structSingle__Vcp__Value.html#abd1a1557eb4155e59d59c4f82d7a60a4"/>
+          </topic>
+          <topic label="DDCA_COMPLEX_CONT" href="ddcutil__types_8h.html#a436bc42a9e17ef1669d92d36ed4efded"/>
+          <topic label="DDCA_COMPLEX_NC" href="ddcutil__types_8h.html#a5899f56f86f45402bf8fd3c47f1c9182"/>
+          <topic label="DDCA_CONT" href="ddcutil__types_8h.html#a806c4bbf0d1a1a8c9046756c1bbdbcc0"/>
+          <topic label="DDCA_DEPRECATED" href="ddcutil__types_8h.html#add1330a27360f9378349487b80594672"/>
+          <topic label="DDCA_NC" href="ddcutil__types_8h.html#a41a6f54b796ccc87b47a05df53dfe21a"/>
+          <topic label="DDCA_NON_TABLE" href="ddcutil__types_8h.html#ac9925c47c5a2985f028eb465f4039622"/>
+          <topic label="DDCA_READABLE" href="ddcutil__types_8h.html#a5cc38f775712b6c6d0f655fcede1762f"/>
+          <topic label="DDCA_READABLE_TABLE" href="ddcutil__types_8h.html#af4c65b208b5cae6916e7250fadb619a9"/>
+          <topic label="DDCA_RO" href="ddcutil__types_8h.html#a6801bfdd48341d8be8f3933b1a8018de"/>
+          <topic label="DDCA_RW" href="ddcutil__types_8h.html#a9275268ed2b9c886e39b11d8f840917c"/>
+          <topic label="DDCA_SIMPLE_NC" href="ddcutil__types_8h.html#afb1e449aa527505d816bc49fa144856d"/>
+          <topic label="DDCA_STD_CONT" href="ddcutil__types_8h.html#ad92055ebed58c36c674492eb79f7ab46"/>
+          <topic label="DDCA_TABLE" href="ddcutil__types_8h.html#a8c098be4c14280a96dfeb70adaf06e0e"/>
+          <topic label="DDCA_VANY" href="ddcutil__types_8h.html#ad223b806d95f0a4b7e80f1e69adcf925"/>
+          <topic label="DDCA_VUNK" href="ddcutil__types_8h.html#acb7ac54a7a9cc9a9c5caaab3c801662d"/>
+          <topic label="DDCA_WO" href="ddcutil__types_8h.html#aecd231514515383e7c9c3b3e904be12b"/>
+          <topic label="DDCA_WO_TABLE" href="ddcutil__types_8h.html#a56dd71cd8cd452c33a13e123f6cf81cd"/>
+          <topic label="DDCA_WRITABLE" href="ddcutil__types_8h.html#abe0978cc2f0007467b9c265db2a9a602"/>
+          <topic label="DDCA_Display_Handle" href="group__api__display__spec.html#ga300105c7425fc3a425fd54525ddfb311"/>
+          <topic label="DDCA_Display_Identifier" href="group__api__display__spec.html#gab0dfce9a7d15625e5e171778dc42ef1d"/>
+          <topic label="DDCA_Display_Ref" href="group__api__display__spec.html#gaa5803e09f7fe279ba9e6b5b14f80067c"/>
+          <topic label="DDCA_Status" href="ddcutil__types_8h.html#ab8036c9ea09c357ae3ef5ae6119d4e14"/>
+          <topic label="DDCA_Version_Feature_Flags" href="ddcutil__types_8h.html#a4dacf6b0173ff7a5a95b8a3295e31b0f"/>
+          <topic label="VCP_Feature_Code" href="ddcutil__types_8h.html#a031891bb8565d2594949e41fd30d518b"/>
+          <topic label="DDCA_IO_Mode" href="group__api__display__spec.html#ga9d34af61d35dfa52cec4631d0d8ab521">
+            <topic label="DDC_IO_DEVI2C" href="group__api__display__spec.html#gga9d34af61d35dfa52cec4631d0d8ab521abd060ad762a21370e69ccbb62fd38aa7"/>
+            <topic label="DDC_IO_ADL" href="group__api__display__spec.html#gga9d34af61d35dfa52cec4631d0d8ab521a27ce9c9170420b842b40c5eb19f47472"/>
+            <topic label="USB_IO" href="group__api__display__spec.html#gga9d34af61d35dfa52cec4631d0d8ab521a57669fb9759b1852fb37a7fe2ed23aa0"/>
+          </topic>
+          <topic label="DDCA_MCCS_Version_Id" href="ddcutil__types_8h.html#a056e5627338906dbe45cd3d253f6425a">
+            <topic label="DDCA_VNONE" href="ddcutil__types_8h.html#a056e5627338906dbe45cd3d253f6425aaad159695bcd336a73255c6e843dc88fa"/>
+            <topic label="DDCA_V10" href="ddcutil__types_8h.html#a056e5627338906dbe45cd3d253f6425aaada91a42e4fe18f72cd8efb331b42f57"/>
+            <topic label="DDCA_V20" href="ddcutil__types_8h.html#a056e5627338906dbe45cd3d253f6425aa4de6ef9e22a08ada2fb17be198fa6e08"/>
+            <topic label="DDCA_V21" href="ddcutil__types_8h.html#a056e5627338906dbe45cd3d253f6425aa1bcb189cd8baabf95a6b258ec784d24e"/>
+            <topic label="DDCA_V30" href="ddcutil__types_8h.html#a056e5627338906dbe45cd3d253f6425aa3083b2a813226539752e76d0d045fe3d"/>
+            <topic label="DDCA_V22" href="ddcutil__types_8h.html#a056e5627338906dbe45cd3d253f6425aa75bcc5228ae244dca76b6930fc0a6f5d"/>
+          </topic>
+          <topic label="DDCA_Output_Level" href="ddcutil__types_8h.html#ab22c9bb67ded6cb16fb0d922d9b0b1c7">
+            <topic label="OL_TERSE" href="ddcutil__types_8h.html#ab22c9bb67ded6cb16fb0d922d9b0b1c7a2be1d3907f44b49f4e867fcb3e02320a"/>
+            <topic label="OL_NORMAL" href="ddcutil__types_8h.html#ab22c9bb67ded6cb16fb0d922d9b0b1c7ab08a9b31b8f6a28b05ea8b020b5a156f"/>
+            <topic label="OL_VERBOSE" href="ddcutil__types_8h.html#ab22c9bb67ded6cb16fb0d922d9b0b1c7a995d588567bb20e613d626442f56743c"/>
+          </topic>
+          <topic label="DDCA_Retry_Type" href="ddcutil__types_8h.html#a73e5330ae9834ad138fabf64b386511d">
+            <topic label="DDCA_WRITE_ONLY_TRIES" href="ddcutil__types_8h.html#a73e5330ae9834ad138fabf64b386511da6cc5000000c425c689f6f82be9026cca"/>
+            <topic label="DDCA_WRITE_READ_TRIES" href="ddcutil__types_8h.html#a73e5330ae9834ad138fabf64b386511daa3f5afff5e430619b324988c7298b508"/>
+            <topic label="DDCA_MULTI_PART_TRIES" href="ddcutil__types_8h.html#a73e5330ae9834ad138fabf64b386511da5d62027abb9753b038b0dd5f07c3085b"/>
+          </topic>
+          <topic label="DDCA_Timeout_Type" href="ddcutil__types_8h.html#a9d842691b4af915451e65c2396f0603d">
+            <topic label="DDCA_TIMEOUT_STANDARD" href="ddcutil__types_8h.html#a9d842691b4af915451e65c2396f0603da6712c5ce931f9eb778d4616205bb4d7b"/>
+            <topic label="DDCA_TIMEOUT_TABLE_RETRY" href="ddcutil__types_8h.html#a9d842691b4af915451e65c2396f0603da5a24a1d9776434e0355fd84fe05b70a6"/>
+          </topic>
+          <topic label="Vcp_Value_Type" href="ddcutil__types_8h.html#a1ef8afeebfb5a38c217bcc2bf4dde1be">
+          </topic>
+        </topic>
+      </topic>
+      <topic label="util" href="dir_23ec12649285f9fabf3a6b7380226c28.html">
+        <topic label="coredefs.h" href="coredefs_8h.html">
+          <topic label="ARRAY_SIZE" href="coredefs_8h.html#a25f003de16c08a4888b69f619d70f427"/>
+          <topic label="Byte" href="coredefs_8h.html#ae3a497195d617519e5353ea7b417940f"/>
+        </topic>
+        <topic label="data_structures.c" href="data__structures_8c.html">
+          <topic label="bbf_count_set" href="data__structures_8c.html#a74eb09779e8ba96c5685966451a5a6fb"/>
+          <topic label="bbf_create" href="data__structures_8c.html#a7f47099302405d4e589e0a9260dc7042"/>
+          <topic label="bbf_free" href="data__structures_8c.html#aef81efba1361568a0b56005dccd2c771"/>
+          <topic label="bbf_is_set" href="data__structures_8c.html#a7a99b3c9a12c8a12c154012180f354f5"/>
+          <topic label="bbf_repr" href="data__structures_8c.html#a31b8017858d74281b10142077a6cd198"/>
+          <topic label="bbf_set" href="data__structures_8c.html#a216abaff83a24c91ee6ba5465698d6dc"/>
+          <topic label="bbf_store_bytehex_list" href="data__structures_8c.html#a7cb8e1835b963180563de27b0dd7cc6e"/>
+          <topic label="bbf_subtract" href="data__structures_8c.html#a9432dc3d709fd803d36b2c05f77b9002"/>
+          <topic label="bbf_to_buffer" href="data__structures_8c.html#ad8a9c34c5ba87b897ff68af696fe2c32"/>
+          <topic label="bbf_to_string" href="data__structures_8c.html#a08ac11f6f227e6e67dbd7016e4a4e8c4"/>
+          <topic label="buffer_add" href="data__structures_8c.html#a798e656c9b739bd651ebc35b2b1af815"/>
+          <topic label="buffer_append" href="data__structures_8c.html#a5bfc2ff52e8d2a88a7fb24683dadeaa7"/>
+          <topic label="buffer_dump" href="data__structures_8c.html#a0080933f66a37532d3e2a161e5a8fe53"/>
+          <topic label="buffer_dup" href="data__structures_8c.html#aa6f44166e2310500a6bb0daa2a2569ed"/>
+          <topic label="buffer_eq" href="data__structures_8c.html#a9555dae9411e1195803985d2c52f3957"/>
+          <topic label="buffer_extend" href="data__structures_8c.html#a29df1e7d66ba3c44b86c98d52a36168b"/>
+          <topic label="buffer_free" href="data__structures_8c.html#aaf1ae0a6d529b871eb377f3097b67f59"/>
+          <topic label="buffer_length" href="data__structures_8c.html#a77147891a3fee351f1105f1000e2bd5f"/>
+          <topic label="buffer_new" href="data__structures_8c.html#ae4dd15872647546cd2a2cc4c803b6371"/>
+          <topic label="buffer_new_with_value" href="data__structures_8c.html#ab9d1d63b252e85c1f97ef20cd811fd04"/>
+          <topic label="buffer_put" href="data__structures_8c.html#a1e92a2794588c1169aefd8ebbfbffeaf"/>
+          <topic label="buffer_set_byte" href="data__structures_8c.html#a40e036256d5280c9da420da0fc4ef03b"/>
+          <topic label="buffer_set_bytes" href="data__structures_8c.html#a73c3d7d7dd78de0b1473b31a9487dd02"/>
+          <topic label="buffer_set_length" href="data__structures_8c.html#a427950f79437de2a5814a4e0460406d3"/>
+          <topic label="buffer_set_size_increment" href="data__structures_8c.html#acd76d713edeb655a521490ff07bcddc3"/>
+          <topic label="buffer_strcat" href="data__structures_8c.html#a60bd19734e2ef1104d0d776b9bea8743"/>
+          <topic label="bva_append" href="data__structures_8c.html#a2b850fecd25d8253212c5494aababc2d"/>
+          <topic label="bva_bytes" href="data__structures_8c.html#a8d38ce473296778782f50de11f43b1c1"/>
+          <topic label="bva_contains" href="data__structures_8c.html#a7dd797401e391205fc0515aca0a00eaf"/>
+          <topic label="bva_create" href="data__structures_8c.html#ae89ac50f99d2431a4aa9180dec4811c8"/>
+          <topic label="bva_free" href="data__structures_8c.html#a51f3653c1ea7951db3197b3f60d895be"/>
+          <topic label="bva_get" href="data__structures_8c.html#af7fecad046dada36d10899532e3e72df"/>
+          <topic label="bva_length" href="data__structures_8c.html#a8fa645fef0d66dd54a026575213fd72b"/>
+          <topic label="bva_report" href="data__structures_8c.html#aea35880250738e51ff3901c2f4a6a98b"/>
+          <topic label="bva_store_bytehex_list" href="data__structures_8c.html#a8dac43550584ffada601d6a0377d8d91"/>
+          <topic label="store_bytehex_list" href="data__structures_8c.html#a3c57719d981d567e738f49a59dbaa153"/>
+          <topic label="vnt_debug_table" href="data__structures_8c.html#ad8eeb9cfdf9073cad995edbf2b2d316f"/>
+          <topic label="vnt_find_id" href="data__structures_8c.html#aeda3d4f6f2fa00cda525361fd5bb12f6"/>
+          <topic label="vnt_interpret_flags" href="data__structures_8c.html#a18b392b244ca3131c3dde1c089a8782d"/>
+          <topic label="vnt_name" href="data__structures_8c.html#a32f4592dfdc4e8fe9682c91e70afbed9"/>
+          <topic label="vnt_title" href="data__structures_8c.html#a7aa5db041e9065704f77f89da7401a70"/>
+        </topic>
+        <topic label="data_structures.h" href="data__structures_8h.html">
+          <topic label="Buffer" href="structBuffer.html">
+            <topic label="buffer_size" href="structBuffer.html#a7c92473e6d5f883c242e3d38ec204807"/>
+            <topic label="bytes" href="structBuffer.html#a3ca1faf335565043d1be5a6a4c992646"/>
+            <topic label="len" href="structBuffer.html#a3b4bb0c04eac8345f7acd611529e6125"/>
+            <topic label="marker" href="structBuffer.html#a632736237089d7fe623ac364a6810f42"/>
+            <topic label="size_increment" href="structBuffer.html#ab1ff32dfc9d08d8c04311d6ee9cbe135"/>
+          </topic>
+          <topic label="Value_Name_Title" href="structValue__Name__Title.html">
+            <topic label="name" href="structValue__Name__Title.html#ac366b28558d99cd507a61ab4357fa859"/>
+            <topic label="title" href="structValue__Name__Title.html#a94fea684b2a2b180ef2be6e1380f12bd"/>
+            <topic label="value" href="structValue__Name__Title.html#a9618c440205f83af7623d6e1141cbc40"/>
+          </topic>
+          <topic label="VN" href="data__structures_8h.html#a6a54b12bcd1165a9246c700a00728e48"/>
+          <topic label="VN_END" href="data__structures_8h.html#acf23f15866a74354da96c0fc2976e11a"/>
+          <topic label="VNT" href="data__structures_8h.html#af3b64fba328489e00f6769a1ee8d8fff"/>
+          <topic label="VNT_END" href="data__structures_8h.html#afe776a699a69dbf6cff3bf2164f7c2bc"/>
+          <topic label="Byte_Value_Array" href="data__structures_8h.html#a584a9aa5059c9cabb11a695aedbd477d"/>
+          <topic label="bbf_count_set" href="data__structures_8h.html#ac934f9b00ff2b54d5956d03a2469fc06"/>
+          <topic label="bbf_create" href="data__structures_8h.html#a7f47099302405d4e589e0a9260dc7042"/>
+          <topic label="bbf_free" href="data__structures_8h.html#a520f5040daba4c177ada898a564d8a95"/>
+          <topic label="bbf_is_set" href="data__structures_8h.html#a2ba9a4ad67cf02c6689baa1cd1ad35b0"/>
+          <topic label="bbf_repr" href="data__structures_8h.html#a617e9c73ba37a06aeb0e9b7013fb1163"/>
+          <topic label="bbf_set" href="data__structures_8h.html#a55db189f460b1f54cb7febe4b8de45d3"/>
+          <topic label="bbf_store_bytehex_list" href="data__structures_8h.html#a37a3e1dc85c052af4c898e5ac3bb3aff"/>
+          <topic label="bbf_subtract" href="data__structures_8h.html#a9432dc3d709fd803d36b2c05f77b9002"/>
+          <topic label="bbf_to_buffer" href="data__structures_8h.html#a00cdb4e1cd8a7cdda7f62e254b162a17"/>
+          <topic label="bbf_to_string" href="data__structures_8h.html#ab379429c7d554913b284e67e9bb04e2e"/>
+          <topic label="buffer_add" href="data__structures_8h.html#a798e656c9b739bd651ebc35b2b1af815"/>
+          <topic label="buffer_append" href="data__structures_8h.html#a5bfc2ff52e8d2a88a7fb24683dadeaa7"/>
+          <topic label="buffer_dump" href="data__structures_8h.html#a0080933f66a37532d3e2a161e5a8fe53"/>
+          <topic label="buffer_dup" href="data__structures_8h.html#aa6f44166e2310500a6bb0daa2a2569ed"/>
+          <topic label="buffer_eq" href="data__structures_8h.html#a9555dae9411e1195803985d2c52f3957"/>
+          <topic label="buffer_extend" href="data__structures_8h.html#a3d2d82456109922e7b0598d3e2000bf2"/>
+          <topic label="buffer_free" href="data__structures_8h.html#aaf1ae0a6d529b871eb377f3097b67f59"/>
+          <topic label="buffer_length" href="data__structures_8h.html#a77147891a3fee351f1105f1000e2bd5f"/>
+          <topic label="buffer_new" href="data__structures_8h.html#ae4dd15872647546cd2a2cc4c803b6371"/>
+          <topic label="buffer_new_with_value" href="data__structures_8h.html#ab9d1d63b252e85c1f97ef20cd811fd04"/>
+          <topic label="buffer_put" href="data__structures_8h.html#a1e92a2794588c1169aefd8ebbfbffeaf"/>
+          <topic label="buffer_set_byte" href="data__structures_8h.html#a870ac7e99ff77cfc5c5f5b0791f05dcf"/>
+          <topic label="buffer_set_bytes" href="data__structures_8h.html#ad1cb083b01199d1c8976c2627cff7071"/>
+          <topic label="buffer_set_length" href="data__structures_8h.html#a427950f79437de2a5814a4e0460406d3"/>
+          <topic label="buffer_set_size_increment" href="data__structures_8h.html#a41abc276a2bf4850160e86a73285f3d4"/>
+          <topic label="buffer_strcat" href="data__structures_8h.html#a60bd19734e2ef1104d0d776b9bea8743"/>
+          <topic label="bva_append" href="data__structures_8h.html#a2b850fecd25d8253212c5494aababc2d"/>
+          <topic label="bva_bytes" href="data__structures_8h.html#a8d38ce473296778782f50de11f43b1c1"/>
+          <topic label="bva_contains" href="data__structures_8h.html#a7dd797401e391205fc0515aca0a00eaf"/>
+          <topic label="bva_create" href="data__structures_8h.html#ae89ac50f99d2431a4aa9180dec4811c8"/>
+          <topic label="bva_free" href="data__structures_8h.html#a51f3653c1ea7951db3197b3f60d895be"/>
+          <topic label="bva_get" href="data__structures_8h.html#af7fecad046dada36d10899532e3e72df"/>
+          <topic label="bva_length" href="data__structures_8h.html#a8fa645fef0d66dd54a026575213fd72b"/>
+          <topic label="bva_report" href="data__structures_8h.html#ac5b8860889c24beaddbbf65c3b8e916e"/>
+          <topic label="bva_store_bytehex_list" href="data__structures_8h.html#a8dac43550584ffada601d6a0377d8d91"/>
+          <topic label="store_bytehex_list" href="data__structures_8h.html#a3c57719d981d567e738f49a59dbaa153"/>
+          <topic label="vnt_find_id" href="data__structures_8h.html#aeda3d4f6f2fa00cda525361fd5bb12f6"/>
+          <topic label="vnt_interpret_flags" href="data__structures_8h.html#a18b392b244ca3131c3dde1c089a8782d"/>
+          <topic label="vnt_name" href="data__structures_8h.html#a32f4592dfdc4e8fe9682c91e70afbed9"/>
+          <topic label="vnt_title" href="data__structures_8h.html#a7aa5db041e9065704f77f89da7401a70"/>
+        </topic>
+        <topic label="debug_util.c" href="debug__util_8c.html">
+          <topic label="show_backtrace" href="debug__util_8c.html#a78274a059edb36a1e7dd04d3297c9283"/>
+        </topic>
+        <topic label="debug_util.h" href="debug__util_8h.html">
+          <topic label="show_backtrace" href="debug__util_8h.html#a78274a059edb36a1e7dd04d3297c9283"/>
+        </topic>
+        <topic label="device_id_util.c" href="device__id__util_8c.html">
+          <topic label="Device_Id_Type" href="device__id__util_8c.html#a4266ce668801c165f365c25fc78a430b">
+          </topic>
+          <topic label="devid_ensure_initialized" href="device__id__util_8c.html#a8ebdd4cb859121ca833743820a98a466"/>
+          <topic label="devid_get_pci_names" href="device__id__util_8c.html#a85a6b6ac91cf1e02689aeb0a4ed220ab"/>
+          <topic label="devid_get_usb_names" href="device__id__util_8c.html#a2f7a8b9367caa4d13860813b67ab79a8"/>
+          <topic label="devid_hid_descriptor_item_type" href="device__id__util_8c.html#aadf525bef2b022d0c59b04a24639b624"/>
+          <topic label="devid_usage_code_id_name" href="device__id__util_8c.html#ae6f5ae13af77d1e6a46dbb4ccd72dbaf"/>
+          <topic label="devid_usage_code_name_by_extended_id" href="device__id__util_8c.html#a863f4affe8b8f9dbe067ef8060deb114"/>
+          <topic label="devid_usage_code_page_name" href="device__id__util_8c.html#a0c9df7722675858da772ee48725bfb69"/>
+        </topic>
+        <topic label="device_id_util.h" href="device__id__util_8h.html">
+          <topic label="Pci_Usb_Id_Names" href="structPci__Usb__Id__Names.html">
+            <topic label="device_name" href="structPci__Usb__Id__Names.html#a36953550ee3d9bc2c2b4deecf0484603"/>
+            <topic label="subsys_or_interface_name" href="structPci__Usb__Id__Names.html#a6a6057748c4ade4fae6d9177dfa213cf"/>
+            <topic label="vendor_name" href="structPci__Usb__Id__Names.html#a4e52341592921fcc63b958667b784b6a"/>
+          </topic>
+          <topic label="devid_ensure_initialized" href="device__id__util_8h.html#a8ebdd4cb859121ca833743820a98a466"/>
+          <topic label="devid_get_pci_names" href="device__id__util_8h.html#a85a6b6ac91cf1e02689aeb0a4ed220ab"/>
+          <topic label="devid_get_usb_names" href="device__id__util_8h.html#a2f7a8b9367caa4d13860813b67ab79a8"/>
+          <topic label="devid_hid_descriptor_item_type" href="device__id__util_8h.html#aadf525bef2b022d0c59b04a24639b624"/>
+          <topic label="devid_usage_code_id_name" href="device__id__util_8h.html#ae6f5ae13af77d1e6a46dbb4ccd72dbaf"/>
+          <topic label="devid_usage_code_name_by_extended_id" href="device__id__util_8h.html#a863f4affe8b8f9dbe067ef8060deb114"/>
+          <topic label="devid_usage_code_page_name" href="device__id__util_8h.html#a0c9df7722675858da772ee48725bfb69"/>
+        </topic>
+        <topic label="edid.c" href="edid_8c.html">
+          <topic label="create_parsed_edid" href="edid_8c.html#a95568554345c2bb4914009b809db6021"/>
+          <topic label="edid_checksum" href="edid_8c.html#a9b0fb825704a18d0697b4a43427a887a"/>
+          <topic label="free_parsed_edid" href="edid_8c.html#a7a890cdf265382dfc4c213fd71156ee5"/>
+          <topic label="get_edid_mfg_id_in_buffer" href="edid_8c.html#acacc0ae2b861fad99bb2949bd1b6605d"/>
+          <topic label="parse_mfg_id_in_buffer" href="edid_8c.html#a8deaa444736443ae96f39831ac495052"/>
+          <topic label="report_parsed_edid" href="edid_8c.html#a800e7d08fc3d103bd741bbf15c57b8fd"/>
+          <topic label="report_parsed_edid_base" href="edid_8c.html#ad386522b77fc8f2df755bed4a32b0bed"/>
+        </topic>
+        <topic label="edid.h" href="edid_8h.html">
+          <topic label="Parsed_Edid" href="structParsed__Edid.html">
+            <topic label="bx" href="structParsed__Edid.html#a782daecc3472e97a2fc10454b982898b"/>
+            <topic label="by" href="structParsed__Edid.html#abb931c919f4730ad0e2be607a53f88ba"/>
+            <topic label="bytes" href="structParsed__Edid.html#ae727d5dcfaa3e0af41915899f7a41848"/>
+            <topic label="edid_source" href="structParsed__Edid.html#a4490fc2565b4afc8d005d2e5339fc6e6"/>
+            <topic label="edid_version_major" href="structParsed__Edid.html#ad09c08b6dc64b027b19ea965b0c77cf1"/>
+            <topic label="edid_version_minor" href="structParsed__Edid.html#a744a07b4dcd1e45e5db995ba002ecc76"/>
+            <topic label="extension_flag" href="structParsed__Edid.html#a37da5112553a277d5913dfa750c280a3"/>
+            <topic label="extra_descriptor_string" href="structParsed__Edid.html#a5025434a5bec7952d4fe8c6c9fbb4d81"/>
+            <topic label="gx" href="structParsed__Edid.html#a270641ca82e87d6a48ce0a6c36fc3e44"/>
+            <topic label="gy" href="structParsed__Edid.html#a6f3d17baf7e3e7e152c9599f1a188790"/>
+            <topic label="is_model_year" href="structParsed__Edid.html#aabee6a2e61121811073e85bb24fec7a9"/>
+            <topic label="marker" href="structParsed__Edid.html#a1f98e0b2fc36c55009c3fb0d639f9971"/>
+            <topic label="mfg_id" href="structParsed__Edid.html#a780011eebf016aafc8af8ace9847be3a"/>
+            <topic label="model_hex" href="structParsed__Edid.html#ad8537571b6ee94c52f7a021cab88e9f9"/>
+            <topic label="model_name" href="structParsed__Edid.html#ada36d679b6d3418168ebb6552770a384"/>
+            <topic label="rx" href="structParsed__Edid.html#a533d7eeda74ce152b3e59904780be97b"/>
+            <topic label="ry" href="structParsed__Edid.html#a40e2fa9e9efca1aa4c2497cba723f02e"/>
+            <topic label="serial_ascii" href="structParsed__Edid.html#a4086e7bd5842c5c1edfc25f6fb420471"/>
+            <topic label="serial_binary" href="structParsed__Edid.html#af8066a25a3e89f977c0de34a4068930b"/>
+            <topic label="wx" href="structParsed__Edid.html#a74567732f0afd1fa3fbba7259b729279"/>
+            <topic label="wy" href="structParsed__Edid.html#a9dfee1c4a66d3c396f19de9cb5a4c821"/>
+            <topic label="year" href="structParsed__Edid.html#aaa2b5f4015de75d09fed1d3fbc46243f"/>
+          </topic>
+          <topic label="create_parsed_edid" href="edid_8h.html#a95568554345c2bb4914009b809db6021"/>
+          <topic label="edid_checksum" href="edid_8h.html#a9b0fb825704a18d0697b4a43427a887a"/>
+          <topic label="free_parsed_edid" href="edid_8h.html#a7a890cdf265382dfc4c213fd71156ee5"/>
+          <topic label="get_edid_mfg_id_in_buffer" href="edid_8h.html#acacc0ae2b861fad99bb2949bd1b6605d"/>
+          <topic label="parse_mfg_id_in_buffer" href="edid_8h.html#a76267e0abb316e6d763e39d23044da6b"/>
+          <topic label="report_parsed_edid" href="edid_8h.html#a800e7d08fc3d103bd741bbf15c57b8fd"/>
+          <topic label="report_parsed_edid_base" href="edid_8h.html#ad386522b77fc8f2df755bed4a32b0bed"/>
+        </topic>
+        <topic label="failsim.c" href="failsim_8c.html">
+          <topic label="fsim_add_error" href="failsim_8c.html#a2f683090d49d58a869be750cc6957e9c"/>
+          <topic label="fsim_check_failure" href="failsim_8c.html#a7332c0cb224a032af8f33d6ed6a6ccdf"/>
+          <topic label="fsim_clear_errors_for_func" href="failsim_8c.html#a283b7a1dea753eeeeec6f6d2b273f859"/>
+          <topic label="fsim_load_control_file" href="failsim_8c.html#a0956766f1ad629bfade7cb1725c57ebe"/>
+          <topic label="fsim_load_control_from_gptrarray" href="failsim_8c.html#a47679d378ef8cd71ccbdaf2470d37f21"/>
+          <topic label="fsim_report_error_table" href="failsim_8c.html#a01bfaa175f646e99f9b0be7564f5514c"/>
+          <topic label="fsim_reset_callct" href="failsim_8c.html#a249564ba99e8b560be9ef3d757d37f6f"/>
+          <topic label="fsim_set_name_to_number_funcs" href="failsim_8c.html#a0f46c25f6c1e39af27c3e279a84784f8"/>
+        </topic>
+        <topic label="failsim.h" href="failsim_8h.html">
+          <topic label="Fsim_Call_Occ_Type" href="failsim_8h.html#aa9d84d29ff381fcf81cc09f6f916ef7c">
+          </topic>
+          <topic label="fsim_add_error" href="failsim_8h.html#a2f683090d49d58a869be750cc6957e9c"/>
+          <topic label="fsim_check_failure" href="failsim_8h.html#a7332c0cb224a032af8f33d6ed6a6ccdf"/>
+          <topic label="fsim_clear_errors_for_func" href="failsim_8h.html#a283b7a1dea753eeeeec6f6d2b273f859"/>
+          <topic label="fsim_load_control_file" href="failsim_8h.html#a0956766f1ad629bfade7cb1725c57ebe"/>
+          <topic label="fsim_load_control_from_gptrarray" href="failsim_8h.html#a47679d378ef8cd71ccbdaf2470d37f21"/>
+          <topic label="fsim_report_error_table" href="failsim_8h.html#a01bfaa175f646e99f9b0be7564f5514c"/>
+          <topic label="fsim_reset_callct" href="failsim_8h.html#a249564ba99e8b560be9ef3d757d37f6f"/>
+          <topic label="fsim_set_name_to_number_funcs" href="failsim_8h.html#a0f46c25f6c1e39af27c3e279a84784f8"/>
+        </topic>
+        <topic label="file_util.c" href="file__util_8c.html">
+          <topic label="directory_exists" href="file__util_8c.html#a6a722475e08aedd4ec1f86ea718e58b1"/>
+          <topic label="file_get_first_line" href="file__util_8c.html#ab0965a61887b386378095900886cb64b"/>
+          <topic label="file_getlines" href="file__util_8c.html#a6defbcb2fc1ac183ee68218c22e7622b"/>
+          <topic label="filename_for_fd" href="file__util_8c.html#a312fb85cafa5e500259c09404788fe12"/>
+          <topic label="get_filenames_by_filter" href="file__util_8c.html#a0d2f87ac2239c51c505826df7d14fbee"/>
+          <topic label="regular_file_exists" href="file__util_8c.html#a4172a8a9d94361f67047ab2ba072c1da"/>
+        </topic>
+        <topic label="file_util.h" href="file__util_8h.html">
+          <topic label="Dirent_Filter" href="file__util_8h.html#a5c90d8a786409be2ea71be21463e2250"/>
+          <topic label="directory_exists" href="file__util_8h.html#a6a722475e08aedd4ec1f86ea718e58b1"/>
+          <topic label="file_get_first_line" href="file__util_8h.html#ab0965a61887b386378095900886cb64b"/>
+          <topic label="file_getlines" href="file__util_8h.html#a6defbcb2fc1ac183ee68218c22e7622b"/>
+          <topic label="filename_for_fd" href="file__util_8h.html#a312fb85cafa5e500259c09404788fe12"/>
+          <topic label="get_filenames_by_filter" href="file__util_8h.html#a0d2f87ac2239c51c505826df7d14fbee"/>
+          <topic label="regular_file_exists" href="file__util_8h.html#a4172a8a9d94361f67047ab2ba072c1da"/>
+        </topic>
+        <topic label="glib_string_util.c" href="glib__string__util_8c.html">
+          <topic label="join_string_g_ptr_array" href="glib__string__util_8c.html#abfe86a75d0c56d711fbea31e48795860"/>
+        </topic>
+        <topic label="glib_string_util.h" href="glib__string__util_8h.html">
+          <topic label="join_string_g_ptr_array" href="glib__string__util_8h.html#abfe86a75d0c56d711fbea31e48795860"/>
+        </topic>
+        <topic label="glib_util.c" href="glib__util_8c.html">
+          <topic label="g_list_to_g_array" href="glib__util_8c.html#a48d1e91c38eed657ecb94201457a9cb4"/>
+          <topic label="g_ptr_scomp" href="glib__util_8c.html#a02986ed536d5fe30f343c625b6a08256"/>
+        </topic>
+        <topic label="glib_util.h" href="glib__util_8h.html">
+          <topic label="g_list_to_g_array" href="glib__util_8h.html#a48d1e91c38eed657ecb94201457a9cb4"/>
+          <topic label="g_ptr_scomp" href="glib__util_8h.html#a02986ed536d5fe30f343c625b6a08256"/>
+        </topic>
+        <topic label="libdrm_util.c" href="libdrm__util_8c.html">
+          <topic label="connector_status_name" href="libdrm__util_8c.html#a365c2388c1f0b5ab69a827a4ae07fb60"/>
+          <topic label="connector_status_title" href="libdrm__util_8c.html#af6d47af6fa41638405d450f33c62e63f"/>
+          <topic label="connector_type_name" href="libdrm__util_8c.html#a579d919bbbea389f8194f5b728a52ee5"/>
+          <topic label="connector_type_title" href="libdrm__util_8c.html#afe0897b5245707ebe02dabaf9d55fcf3"/>
+          <topic label="encoder_type_title" href="libdrm__util_8c.html#a385a5f2e5794cd858a4e1a956573998d"/>
+          <topic label="report_drm_modeProperty" href="libdrm__util_8c.html#a9da3d41a89fbe6f54ac08de65e7b05b1"/>
+          <topic label="report_drmModePropertyBlob" href="libdrm__util_8c.html#a0a134366851de213e59925f5bc459704"/>
+          <topic label="report_drmModeRes" href="libdrm__util_8c.html#a296f38d851825b841915b5648ad491e4"/>
+          <topic label="report_property_value" href="libdrm__util_8c.html#ae28fbf75d18faf2086044adc421c57fc"/>
+          <topic label="summarize_drm_modeProperty" href="libdrm__util_8c.html#abca082a2d351fad783a62dc81e6817dd"/>
+        </topic>
+        <topic label="libdrm_util.h" href="libdrm__util_8h.html">
+          <topic label="connector_status_name" href="libdrm__util_8h.html#a365c2388c1f0b5ab69a827a4ae07fb60"/>
+          <topic label="connector_status_title" href="libdrm__util_8h.html#af6d47af6fa41638405d450f33c62e63f"/>
+          <topic label="connector_type_name" href="libdrm__util_8h.html#a579d919bbbea389f8194f5b728a52ee5"/>
+          <topic label="connector_type_title" href="libdrm__util_8h.html#afe0897b5245707ebe02dabaf9d55fcf3"/>
+          <topic label="encoder_type_title" href="libdrm__util_8h.html#a385a5f2e5794cd858a4e1a956573998d"/>
+          <topic label="report_drm_modeProperty" href="libdrm__util_8h.html#a9da3d41a89fbe6f54ac08de65e7b05b1"/>
+          <topic label="report_drmModePropertyBlob" href="libdrm__util_8h.html#a0a134366851de213e59925f5bc459704"/>
+          <topic label="report_drmModeRes" href="libdrm__util_8h.html#a296f38d851825b841915b5648ad491e4"/>
+          <topic label="summarize_drm_modeProperty" href="libdrm__util_8h.html#abca082a2d351fad783a62dc81e6817dd"/>
+        </topic>
+        <topic label="multi_level_map.c" href="multi__level__map_8c.html">
+          <topic label="mlm_add_node" href="multi__level__map_8c.html#abbb5583883b09ae58c7c2a3a5c7f5ae3"/>
+          <topic label="mlm_create" href="multi__level__map_8c.html#aa6cfd2845bb6e486df626adab1d056df"/>
+          <topic label="mlm_get_names" href="multi__level__map_8c.html#a84511f1bd3a0bc212ec354d0259c3c1b"/>
+          <topic label="mlm_get_names2" href="multi__level__map_8c.html#a55a03cdfaf58bc329c0db2a9e3d8ade5"/>
+          <topic label="report_mlm_level" href="multi__level__map_8c.html#ae2a1d1e4c133a93b539c7d8c399a3cbd"/>
+          <topic label="report_multi_level_map" href="multi__level__map_8c.html#a85fd8453f66124e2ab2e96e07da4acbe"/>
+        </topic>
+        <topic label="multi_level_map.h" href="multi__level__map_8h.html">
+          <topic label="mlm_add_node" href="multi__level__map_8h.html#a7ba8833ff9ebdcb953cc3c2d6160f8a5"/>
+          <topic label="mlm_create" href="multi__level__map_8h.html#aa6cfd2845bb6e486df626adab1d056df"/>
+          <topic label="mlm_get_names" href="multi__level__map_8h.html#a6dda76559a59f8ed668cb83c6fe5a494"/>
+          <topic label="mlm_get_names2" href="multi__level__map_8h.html#a55a03cdfaf58bc329c0db2a9e3d8ade5"/>
+          <topic label="report_mlm_level" href="multi__level__map_8h.html#ae2a1d1e4c133a93b539c7d8c399a3cbd"/>
+          <topic label="report_multi_level_map" href="multi__level__map_8h.html#a9e40c0f24a7928882b04eecb13eb38f2"/>
+        </topic>
+        <topic label="output_sink.c" href="output__sink_8c.html">
+          <topic label="close_sink" href="output__sink_8c.html#a963babbefd925717e24a21a72029e082"/>
+          <topic label="create_file_sink" href="output__sink_8c.html#a89309084a906dfe81449134f37d2aec7"/>
+          <topic label="create_memory_sink" href="output__sink_8c.html#ae958ace2c3ff4888027cb0336f79c32c"/>
+          <topic label="create_terminal_sink" href="output__sink_8c.html#af360b7122175d9018295b8449a69a9cd"/>
+          <topic label="printf_sink" href="output__sink_8c.html#ab8ce2e57152f0d1138bda699be723819"/>
+          <topic label="read_sink" href="output__sink_8c.html#a0ad23ca353703b72af112f634dd14c74"/>
+        </topic>
+        <topic label="output_sink.h" href="output__sink_8h.html">
+          <topic label="Output_Sink" href="output__sink_8h.html#ac046ac808d3ed3f6e4309b18ff89aa76"/>
+          <topic label="Output_Sink_Type" href="output__sink_8h.html#acaeef2b013a84b4ac1041e380dbb49ee">
+          </topic>
+          <topic label="close_sink" href="output__sink_8h.html#a963babbefd925717e24a21a72029e082"/>
+          <topic label="create_file_sink" href="output__sink_8h.html#a89309084a906dfe81449134f37d2aec7"/>
+          <topic label="create_memory_sink" href="output__sink_8h.html#ae958ace2c3ff4888027cb0336f79c32c"/>
+          <topic label="create_terminal_sink" href="output__sink_8h.html#af360b7122175d9018295b8449a69a9cd"/>
+          <topic label="printf_sink" href="output__sink_8h.html#ab8ce2e57152f0d1138bda699be723819"/>
+          <topic label="read_sink" href="output__sink_8h.html#a0ad23ca353703b72af112f634dd14c74"/>
+        </topic>
+        <topic label="report_util.c" href="report__util_8c.html">
+          <topic label="rpt_2col" href="report__util_8c.html#a477c0e950cb29965c59f8b3350c7130d"/>
+          <topic label="rpt_bool" href="report__util_8c.html#ac38a31c37ca24facf0afd10aefd66d0b"/>
+          <topic label="rpt_bytes_as_hex" href="report__util_8c.html#af2a0616acf74f44d97d7d5ec2ffb6d05"/>
+          <topic label="rpt_change_output_dest" href="report__util_8c.html#af7ee08eaef8fd9151ca098117fbd79b6"/>
+          <topic label="rpt_cur_output_dest" href="report__util_8c.html#a71f4829c653e1d6101dfc1ae09f4796e"/>
+          <topic label="rpt_debug_output_dest" href="report__util_8c.html#a2cb3968208d6ab068b3bc6ab4f71057e"/>
+          <topic label="rpt_g_ptr_array" href="report__util_8c.html#a55d290217f5819f293ade60f00239d7e"/>
+          <topic label="rpt_get_indent" href="report__util_8c.html#ad8736ff7dcecf76ad38a0c26a1cdf5ff"/>
+          <topic label="rpt_hex_dump" href="report__util_8c.html#a5cdea9095d42e1486dd5f4b45e1e2a82"/>
+          <topic label="rpt_ifval2" href="report__util_8c.html#acf8cf2e6b86f758ee44e4657cdd6235b"/>
+          <topic label="rpt_int" href="report__util_8c.html#a105b44822ec124d16c445268308b31d7"/>
+          <topic label="rpt_int_as_hex" href="report__util_8c.html#a7c203b3e0021b91efc49d0d58bc2ca7f"/>
+          <topic label="rpt_mapped_int" href="report__util_8c.html#a7f47a9f54cb2a9e49aa101cd3f84348c"/>
+          <topic label="rpt_multiline" href="report__util_8c.html#a5897c90f803174cf55a778ed87fe68c4"/>
+          <topic label="rpt_nl" href="report__util_8c.html#a7c7aaf851ba8d9da017ed521f0fcb504"/>
+          <topic label="rpt_pop_output_dest" href="report__util_8c.html#a0c4839f4f6cf76b308156d8bb58318c3"/>
+          <topic label="rpt_push_output_dest" href="report__util_8c.html#a00b658d5217d37c06caaa68c5d99f86d"/>
+          <topic label="rpt_reset_output_dest_stack" href="report__util_8c.html#a67c4882cf628ce729aa98d7a2535d842"/>
+          <topic label="rpt_str" href="report__util_8c.html#a271a0ddaafa0b5ff0630f85fa6bf25f4"/>
+          <topic label="rpt_structure_loc" href="report__util_8c.html#af5b53c7ac855765e65c7f485fb2a1193"/>
+          <topic label="rpt_uint8_as_hex" href="report__util_8c.html#ae9cae8fa8b9767c0bcf5fae824fcc488"/>
+          <topic label="rpt_vstring" href="report__util_8c.html#ae58dfa6adb2e9f1dacce17f7b0732f26"/>
+        </topic>
+        <topic label="report_util.h" href="report__util_8h.html">
+          <topic label="Value_To_Name_Function" href="report__util_8h.html#ab2164d803e70e3c781929aa21e5ce9ba"/>
+          <topic label="rpt_2col" href="report__util_8h.html#a477c0e950cb29965c59f8b3350c7130d"/>
+          <topic label="rpt_bool" href="report__util_8h.html#ac38a31c37ca24facf0afd10aefd66d0b"/>
+          <topic label="rpt_bytes_as_hex" href="report__util_8h.html#af2a0616acf74f44d97d7d5ec2ffb6d05"/>
+          <topic label="rpt_change_output_dest" href="report__util_8h.html#af7ee08eaef8fd9151ca098117fbd79b6"/>
+          <topic label="rpt_cur_output_dest" href="report__util_8h.html#a71f4829c653e1d6101dfc1ae09f4796e"/>
+          <topic label="rpt_debug_output_dest" href="report__util_8h.html#a2cb3968208d6ab068b3bc6ab4f71057e"/>
+          <topic label="rpt_g_ptr_array" href="report__util_8h.html#a55d290217f5819f293ade60f00239d7e"/>
+          <topic label="rpt_get_indent" href="report__util_8h.html#ad8736ff7dcecf76ad38a0c26a1cdf5ff"/>
+          <topic label="rpt_hex_dump" href="report__util_8h.html#a5cdea9095d42e1486dd5f4b45e1e2a82"/>
+          <topic label="rpt_ifval2" href="report__util_8h.html#a248f29bed496a324d4898114942b4aa1"/>
+          <topic label="rpt_int" href="report__util_8h.html#a105b44822ec124d16c445268308b31d7"/>
+          <topic label="rpt_int_as_hex" href="report__util_8h.html#a7c203b3e0021b91efc49d0d58bc2ca7f"/>
+          <topic label="rpt_mapped_int" href="report__util_8h.html#a7f47a9f54cb2a9e49aa101cd3f84348c"/>
+          <topic label="rpt_multiline" href="report__util_8h.html#a5897c90f803174cf55a778ed87fe68c4"/>
+          <topic label="rpt_nl" href="report__util_8h.html#a7c7aaf851ba8d9da017ed521f0fcb504"/>
+          <topic label="rpt_pop_output_dest" href="report__util_8h.html#a0c4839f4f6cf76b308156d8bb58318c3"/>
+          <topic label="rpt_push_output_dest" href="report__util_8h.html#a00b658d5217d37c06caaa68c5d99f86d"/>
+          <topic label="rpt_reset_output_dest_stack" href="report__util_8h.html#a67c4882cf628ce729aa98d7a2535d842"/>
+          <topic label="rpt_str" href="report__util_8h.html#a271a0ddaafa0b5ff0630f85fa6bf25f4"/>
+          <topic label="rpt_structure_loc" href="report__util_8h.html#af5b53c7ac855765e65c7f485fb2a1193"/>
+          <topic label="rpt_uint8_as_hex" href="report__util_8h.html#ae9cae8fa8b9767c0bcf5fae824fcc488"/>
+          <topic label="rpt_vstring" href="report__util_8h.html#ae58dfa6adb2e9f1dacce17f7b0732f26"/>
+        </topic>
+        <topic label="string_util.c" href="string__util_8c.html">
+          <topic label="any_one_byte_hex_string_to_byte_in_buf" href="string__util_8c.html#afd7b64a5947ee1f8a374f8d077398256"/>
+          <topic label="bool_repr" href="string__util_8c.html#a1ecb7458987387bfab6da137cdebc4cc"/>
+          <topic label="chars_to_string" href="string__util_8c.html#ad35cd8447d1e754d8bdf648441882f88"/>
+          <topic label="exactly_matches_any" href="string__util_8c.html#acea2ea04853f33e00422963271343a47"/>
+          <topic label="f0printf" href="string__util_8c.html#a40e4b07a0b96c41bd9acace618efa73b"/>
+          <topic label="f0putc" href="string__util_8c.html#aba7425fc645c80c5b11306dba669e260"/>
+          <topic label="f0puts" href="string__util_8c.html#a19fd4ad73c0ebc9d781fc3e5dafaac6a"/>
+          <topic label="fhex_dump" href="string__util_8c.html#ad09661a7569c3e45fca4825cb329137c"/>
+          <topic label="fhex_dump_indented" href="string__util_8c.html#ae90befb63fa82bf7029a37b5dc079bd5"/>
+          <topic label="g_ptr_array_to_ntsa" href="string__util_8c.html#aabd96cb951052d0f67af429b3cbca21c"/>
+          <topic label="hex_dump" href="string__util_8c.html#a5bb940b9beeb4a83bc7ca1b1917e6428"/>
+          <topic label="hexstring" href="string__util_8c.html#a7be9558f1d0d894bf845df9c75ab553b"/>
+          <topic label="hexstring2" href="string__util_8c.html#a7e9a4d945b45561f00582009b7848e9e"/>
+          <topic label="hhc_to_byte_in_buf" href="string__util_8c.html#a75a6e1ac4ecc9282e6fd022c8b6cafc1"/>
+          <topic label="hhs_to_byte_array" href="string__util_8c.html#a3464238519a3062b62eea936adf1dba2"/>
+          <topic label="hhs_to_byte_in_buf" href="string__util_8c.html#afadfb2d68209660a3f060271715be05d"/>
+          <topic label="is_abbrev" href="string__util_8c.html#a826e3e282995992b9490f9f5830b9f60"/>
+          <topic label="lsub" href="string__util_8c.html#a1fefe84792aefebd48790bc68494ca4b"/>
+          <topic label="matches_by_func" href="string__util_8c.html#a3f3bee00f59379a98a52642536670f2c"/>
+          <topic label="ntsa_free" href="string__util_8c.html#a5db6062886ba44024fed481315c41e64"/>
+          <topic label="ntsa_length" href="string__util_8c.html#a30d5da07ffd3470b7a0858166e0871ad"/>
+          <topic label="ntsa_to_g_ptr_array" href="string__util_8c.html#a3255337423d43fac3199c13a7192c39d"/>
+          <topic label="rtrim_in_place" href="string__util_8c.html#a9d77f8f56ba1eb3ef69d986032365270"/>
+          <topic label="sbuf_append" href="string__util_8c.html#a8f7799a9780b77f3d43f5a23a025e4b7"/>
+          <topic label="starts_with_any" href="string__util_8c.html#a55bae76ef18867e2be4a9fcfa82da41d"/>
+          <topic label="str_all_printable" href="string__util_8c.html#a2a3f36d75cc7a82c7a290f77e3577ca1"/>
+          <topic label="str_ends_with" href="string__util_8c.html#a8f6a914dc7b1910470c4b154b2fc1569"/>
+          <topic label="str_starts_with" href="string__util_8c.html#a4dfc4ef4b6b3eefba2c4df04dbe7cde2"/>
+          <topic label="str_to_int" href="string__util_8c.html#a64f1c3fc83049967fa908022ebf4ba11"/>
+          <topic label="strcat_new" href="string__util_8c.html#ab9806dd91d78d942cae48b1b706b6ef1"/>
+          <topic label="strdup_uc" href="string__util_8c.html#a9e0d61766367c3c0fd08662e2034b1d1"/>
+          <topic label="streq" href="string__util_8c.html#a421e5f914841061096ef1977d1501b32"/>
+          <topic label="strjoin" href="string__util_8c.html#ac8bc94318a2f5ac131bfe91dcee400bf"/>
+          <topic label="strsplit" href="string__util_8c.html#a0d0184489aca3b5345de818a5b6bd1c3"/>
+          <topic label="strsplit_maxlength" href="string__util_8c.html#a51d7eb8b100d566bc42cc3efd6f0c082"/>
+          <topic label="strtrim" href="string__util_8c.html#ada65b72acbc6657ea068618852614779"/>
+          <topic label="strtrim_r" href="string__util_8c.html#a532393d96d5bb161b62c13a07a8ad1e7"/>
+          <topic label="strupper" href="string__util_8c.html#a3c80c24db60cfafef09d3aa8899aa816"/>
+          <topic label="substr" href="string__util_8c.html#a3e82df99a98c403f698b3f499eb808c7"/>
+          <topic label="vf0printf" href="string__util_8c.html#ada9e0c00e81b66c3e87a2d8eb623fbb7"/>
+        </topic>
+        <topic label="string_util.h" href="string__util_8h.html">
+          <topic label="any_one_byte_hex_string_to_byte_in_buf" href="string__util_8h.html#afd7b64a5947ee1f8a374f8d077398256"/>
+          <topic label="bool_repr" href="string__util_8h.html#a1ecb7458987387bfab6da137cdebc4cc"/>
+          <topic label="chars_to_string" href="string__util_8h.html#ad35cd8447d1e754d8bdf648441882f88"/>
+          <topic label="exactly_matches_any" href="string__util_8h.html#a933457cf81d0a671b09e3089d0d643a9"/>
+          <topic label="f0printf" href="string__util_8h.html#a40e4b07a0b96c41bd9acace618efa73b"/>
+          <topic label="f0putc" href="string__util_8h.html#aba7425fc645c80c5b11306dba669e260"/>
+          <topic label="f0puts" href="string__util_8h.html#aefc0620a564e60bb59795605d4db2cf5"/>
+          <topic label="fhex_dump" href="string__util_8h.html#a9aa911aed311ed19af7148d1f235e454"/>
+          <topic label="fhex_dump_indented" href="string__util_8h.html#ae90befb63fa82bf7029a37b5dc079bd5"/>
+          <topic label="g_ptr_array_to_ntsa" href="string__util_8h.html#aa1833864efe1426e107e4ff3672f025a"/>
+          <topic label="hex_dump" href="string__util_8h.html#a33e2d73bb666582588322cc497a23408"/>
+          <topic label="hexstring" href="string__util_8h.html#a7d5e8871f7a7c0221960a3a8cc3fe39e"/>
+          <topic label="hexstring2" href="string__util_8h.html#a7e9a4d945b45561f00582009b7848e9e"/>
+          <topic label="hhc_to_byte_in_buf" href="string__util_8h.html#a6f115e8ae925ff52a9795043fb88afc1"/>
+          <topic label="hhs_to_byte_array" href="string__util_8h.html#a3464238519a3062b62eea936adf1dba2"/>
+          <topic label="hhs_to_byte_in_buf" href="string__util_8h.html#afadfb2d68209660a3f060271715be05d"/>
+          <topic label="is_abbrev" href="string__util_8h.html#a826e3e282995992b9490f9f5830b9f60"/>
+          <topic label="lsub" href="string__util_8h.html#a1fefe84792aefebd48790bc68494ca4b"/>
+          <topic label="matches_by_func" href="string__util_8h.html#a7b49d9af2b25b34460e1938e23cfeea5"/>
+          <topic label="ntsa_free" href="string__util_8h.html#a5db6062886ba44024fed481315c41e64"/>
+          <topic label="ntsa_length" href="string__util_8h.html#a30d5da07ffd3470b7a0858166e0871ad"/>
+          <topic label="ntsa_to_g_ptr_array" href="string__util_8h.html#a3255337423d43fac3199c13a7192c39d"/>
+          <topic label="rtrim_in_place" href="string__util_8h.html#a9d77f8f56ba1eb3ef69d986032365270"/>
+          <topic label="sbuf_append" href="string__util_8h.html#a8f7799a9780b77f3d43f5a23a025e4b7"/>
+          <topic label="starts_with_any" href="string__util_8h.html#ad3044d7c1de50ca28260f866759a1cbd"/>
+          <topic label="str_all_printable" href="string__util_8h.html#a2a3f36d75cc7a82c7a290f77e3577ca1"/>
+          <topic label="str_ends_with" href="string__util_8h.html#a9bcfb60552d3439886acc9ae9149a216"/>
+          <topic label="str_starts_with" href="string__util_8h.html#aa3ac5ce76b84babd2e8ef53a59b9716f"/>
+          <topic label="str_to_int" href="string__util_8h.html#a4b355db71e53f08a9f9dc003fdfebe39"/>
+          <topic label="strcat_new" href="string__util_8h.html#ab9806dd91d78d942cae48b1b706b6ef1"/>
+          <topic label="strdup_uc" href="string__util_8h.html#a9e0d61766367c3c0fd08662e2034b1d1"/>
+          <topic label="streq" href="string__util_8h.html#a421e5f914841061096ef1977d1501b32"/>
+          <topic label="strjoin" href="string__util_8h.html#ac8bc94318a2f5ac131bfe91dcee400bf"/>
+          <topic label="strsplit" href="string__util_8h.html#a0d0184489aca3b5345de818a5b6bd1c3"/>
+          <topic label="strsplit_maxlength" href="string__util_8h.html#a51d7eb8b100d566bc42cc3efd6f0c082"/>
+          <topic label="strtrim" href="string__util_8h.html#ada65b72acbc6657ea068618852614779"/>
+          <topic label="strtrim_r" href="string__util_8h.html#a532393d96d5bb161b62c13a07a8ad1e7"/>
+          <topic label="strupper" href="string__util_8h.html#a3c80c24db60cfafef09d3aa8899aa816"/>
+          <topic label="substr" href="string__util_8h.html#a3e82df99a98c403f698b3f499eb808c7"/>
+          <topic label="vf0printf" href="string__util_8h.html#ada9e0c00e81b66c3e87a2d8eb623fbb7"/>
+        </topic>
+        <topic label="subprocess_util.c" href="subprocess__util_8c.html">
+          <topic label="execute_shell_cmd" href="subprocess__util_8c.html#a6813b8db4a5d194e2265b5ed5b7bf2df"/>
+          <topic label="execute_shell_cmd_collect" href="subprocess__util_8c.html#a900726b5c6996b1c6008f375f642cbec"/>
+          <topic label="execute_shell_cmd_rpt" href="subprocess__util_8c.html#a4f505ff76c75586edb55993623ea13e5"/>
+          <topic label="is_command_in_path" href="subprocess__util_8c.html#aa94d57ae2daf75d06b4f38b6a5916155"/>
+        </topic>
+        <topic label="subprocess_util.h" href="subprocess__util_8h.html">
+          <topic label="execute_shell_cmd" href="subprocess__util_8h.html#a6813b8db4a5d194e2265b5ed5b7bf2df"/>
+          <topic label="execute_shell_cmd_collect" href="subprocess__util_8h.html#a900726b5c6996b1c6008f375f642cbec"/>
+          <topic label="execute_shell_cmd_rpt" href="subprocess__util_8h.html#a4f505ff76c75586edb55993623ea13e5"/>
+          <topic label="is_command_in_path" href="subprocess__util_8h.html#aa94d57ae2daf75d06b4f38b6a5916155"/>
+        </topic>
+        <topic label="timestamp.c" href="timestamp_8c.html">
+          <topic label="cur_realtime_nanosec" href="timestamp_8c.html#a58f7d86cfff5a68fd9dce605cf82dcdb"/>
+          <topic label="elapsed_time_nanosec" href="timestamp_8c.html#af417380acb216ffb4dc299d311310110"/>
+          <topic label="formatted_elapsed_time" href="timestamp_8c.html#a8d9202599e15e0e2de8e2d0fe10e6c38"/>
+          <topic label="show_timestamp_history" href="timestamp_8c.html#a9816e35c35b3e6b21a917775377c88ba"/>
+          <topic label="tracking_timestamps" href="timestamp_8c.html#a7facd23f4df85b601d01f30b972d3292"/>
+        </topic>
+        <topic label="timestamp.h" href="timestamp_8h.html">
+          <topic label="cur_realtime_nanosec" href="timestamp_8h.html#a58f7d86cfff5a68fd9dce605cf82dcdb"/>
+          <topic label="formatted_elapsed_time" href="timestamp_8h.html#a8d9202599e15e0e2de8e2d0fe10e6c38"/>
+          <topic label="show_timestamp_history" href="timestamp_8h.html#a9816e35c35b3e6b21a917775377c88ba"/>
+        </topic>
+        <topic label="udev_util.c" href="udev__util_8c.html">
+          <topic label="free_udev_device_summaries" href="udev__util_8c.html#a3e07fb761d58b1cb27229d4330823e64"/>
+          <topic label="free_usb_detailed_device_summary" href="udev__util_8c.html#afe3e8c4b2ef07488e5a4189cdc89abc5"/>
+          <topic label="get_udev_usb_devinfo" href="udev__util_8c.html#a48f4e698be2ae0d9bfc2a944b79b181e"/>
+          <topic label="lookup_udev_usb_device_by_devname" href="udev__util_8c.html#a8138b6d04b60c36c6cf3060e20bf517e"/>
+          <topic label="probe_udev_subsystem" href="udev__util_8c.html#a56c3ddecd5c3638631aad80fb42d84f6"/>
+          <topic label="report_udev_device" href="udev__util_8c.html#a25d919095c7730db7bd16fb6ebd92743"/>
+          <topic label="report_udev_usb_devinfo" href="udev__util_8c.html#a5f59fcfb812079209c317f1b926fb392"/>
+          <topic label="report_usb_detailed_device_summary" href="udev__util_8c.html#a43eb8e5892e0dd389318da9877310d52"/>
+          <topic label="summarize_udev_subsystem_devices" href="udev__util_8c.html#a1b2b2d3d2eae39b45544ac36c176d8b8"/>
+        </topic>
+        <topic label="udev_util.h" href="udev__util_8h.html">
+          <topic label="Udev_Device_Summary" href="structUdev__Device__Summary.html">
+            <topic label="devpath" href="structUdev__Device__Summary.html#a33902c0598005b23b989ff0ba10874f9"/>
+            <topic label="marker" href="structUdev__Device__Summary.html#a3b501875d8d0971f63cc3b930165fe8f"/>
+            <topic label="sysattr_name" href="structUdev__Device__Summary.html#a677483765527b89b379cb8fe99da82de"/>
+            <topic label="sysname" href="structUdev__Device__Summary.html#a7b9c052cb3c09f1011bf830ce72881af"/>
+          </topic>
+          <topic label="Usb_Detailed_Device_Summary" href="structUsb__Detailed__Device__Summary.html">
+            <topic label="busnum_s" href="structUsb__Detailed__Device__Summary.html#ac7810ebf7fe369ebcb7665dd7148e410"/>
+            <topic label="devname" href="structUsb__Detailed__Device__Summary.html#adceb9ec4f195526765c9261508c67c60"/>
+            <topic label="devnum_s" href="structUsb__Detailed__Device__Summary.html#af60686eb94f3cd2c3667c20633c7d6e6"/>
+            <topic label="marker" href="structUsb__Detailed__Device__Summary.html#ab2564961fad8730d666f887e8ed7a90a"/>
+            <topic label="product_id" href="structUsb__Detailed__Device__Summary.html#a54488e2ecdf39f9d78dca103e13a9d53"/>
+            <topic label="product_name" href="structUsb__Detailed__Device__Summary.html#aabd71644af6f6c8aa3807da3689d184a"/>
+            <topic label="vendor_id" href="structUsb__Detailed__Device__Summary.html#adbd24f82f521b82960d5a391da46b013"/>
+            <topic label="vendor_name" href="structUsb__Detailed__Device__Summary.html#a4c94a19bdfbc6a2a19857bddae650858"/>
+          </topic>
+          <topic label="Udev_Usb_Devinfo" href="structUdev__Usb__Devinfo.html">
+            <topic label="busno" href="structUdev__Usb__Devinfo.html#a974f646c8af26d60e4ca40ec5e2bc198"/>
+            <topic label="devno" href="structUdev__Usb__Devinfo.html#a19c073c734813d16027bee8238b44cfb"/>
+          </topic>
+          <topic label="free_udev_device_summaries" href="udev__util_8h.html#a3e07fb761d58b1cb27229d4330823e64"/>
+          <topic label="free_usb_detailed_device_summary" href="udev__util_8h.html#afe3e8c4b2ef07488e5a4189cdc89abc5"/>
+          <topic label="get_udev_usb_devinfo" href="udev__util_8h.html#a48f4e698be2ae0d9bfc2a944b79b181e"/>
+          <topic label="lookup_udev_usb_device_by_devname" href="udev__util_8h.html#a8138b6d04b60c36c6cf3060e20bf517e"/>
+          <topic label="probe_udev_subsystem" href="udev__util_8h.html#a99b7881f22243d06502945cddebbe6ab"/>
+          <topic label="report_udev_device" href="udev__util_8h.html#a25d919095c7730db7bd16fb6ebd92743"/>
+          <topic label="report_udev_usb_devinfo" href="udev__util_8h.html#a5f59fcfb812079209c317f1b926fb392"/>
+          <topic label="report_usb_detailed_device_summary" href="udev__util_8h.html#a43eb8e5892e0dd389318da9877310d52"/>
+          <topic label="summarize_udev_subsystem_devices" href="udev__util_8h.html#a1b2b2d3d2eae39b45544ac36c176d8b8"/>
+        </topic>
+        <topic label="x11_util.c" href="x11__util_8c.html">
+          <topic label="free_x11_edids" href="x11__util_8c.html#a27b6b450704564636438daa493871f84"/>
+          <topic label="get_x11_edids" href="x11__util_8c.html#a237230b15259a8de9872c0bb8f0bab36"/>
+        </topic>
+        <topic label="x11_util.h" href="x11__util_8h.html">
+          <topic label="X11_Edid_Rec" href="structX11__Edid__Rec.html">
+            <topic label="edidbytes" href="structX11__Edid__Rec.html#a852433ce5a66569dd01b52ba4bc15b66"/>
+            <topic label="output_name" href="structX11__Edid__Rec.html#a0374327cc0706a995756c637833ee0ee"/>
+          </topic>
+          <topic label="free_x11_edids" href="x11__util_8h.html#a27b6b450704564636438daa493871f84"/>
+          <topic label="get_x11_edids" href="x11__util_8h.html#a237230b15259a8de9872c0bb8f0bab36"/>
+        </topic>
+      </topic>
+    </topic>
+    <topic label="Globals" href="globals.html">
+      <topic label="All" href="globals.html">
+        <topic label="a" href="globals.html"/>
+        <topic label="b" href="globals_b.html"/>
+        <topic label="c" href="globals_c.html"/>
+        <topic label="d" href="globals_d.html"/>
+        <topic label="e" href="globals_e.html"/>
+        <topic label="f" href="globals_f.html"/>
+        <topic label="g" href="globals_g.html"/>
+        <topic label="h" href="globals_h.html"/>
+        <topic label="i" href="globals_i.html"/>
+        <topic label="j" href="globals_j.html"/>
+        <topic label="l" href="globals_l.html"/>
+        <topic label="m" href="globals_m.html"/>
+        <topic label="n" href="globals_n.html"/>
+        <topic label="o" href="globals_o.html"/>
+        <topic label="p" href="globals_p.html"/>
+        <topic label="r" href="globals_r.html"/>
+        <topic label="s" href="globals_s.html"/>
+        <topic label="t" href="globals_t.html"/>
+        <topic label="u" href="globals_u.html"/>
+        <topic label="v" href="globals_v.html"/>
+      </topic>
+      <topic label="Functions" href="globals_func.html">
+        <topic label="a" href="globals_func.html"/>
+        <topic label="b" href="globals_func_b.html"/>
+        <topic label="c" href="globals_func_c.html"/>
+        <topic label="d" href="globals_func_d.html"/>
+        <topic label="e" href="globals_func_e.html"/>
+        <topic label="f" href="globals_func_f.html"/>
+        <topic label="g" href="globals_func_g.html"/>
+        <topic label="h" href="globals_func_h.html"/>
+        <topic label="i" href="globals_func_i.html"/>
+        <topic label="j" href="globals_func_j.html"/>
+        <topic label="l" href="globals_func_l.html"/>
+        <topic label="m" href="globals_func_m.html"/>
+        <topic label="n" href="globals_func_n.html"/>
+        <topic label="o" href="globals_func_o.html"/>
+        <topic label="p" href="globals_func_p.html"/>
+        <topic label="r" href="globals_func_r.html"/>
+        <topic label="s" href="globals_func_s.html"/>
+        <topic label="t" href="globals_func_t.html"/>
+        <topic label="v" href="globals_func_v.html"/>
+      </topic>
+      <topic label="Variables" href="globals_vars.html"/>
+      <topic label="Typedefs" href="globals_type.html"/>
+      <topic label="Enumerations" href="globals_enum.html"/>
+      <topic label="Enumerator" href="globals_eval.html"/>
+      <topic label="Macros" href="globals_defs.html"/>
+    </topic>
+  </topic>
+</toc>

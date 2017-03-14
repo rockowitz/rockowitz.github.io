@@ -1,0 +1,8 @@
+<map id="elapsed_time_nanosec" name="elapsed_time_nanosec">
+<area shape="rect" id="node2" href="$string__util_8c.html#a1ecb7458987387bfab6da137cdebc4cc" title="bool_repr" alt="" coords="254,5,333,32"/>
+<area shape="rect" id="node3" href="$core_8c.html#a58f7d86cfff5a68fd9dce605cf82dcdb" title="cur_realtime_nanosec" alt="" coords="216,56,371,83"/>
+<area shape="rect" id="node4" href="$core_8c.html#a65df730908d37fd22c1e40d4f0dccd5d" title="ddc_abort" alt="" coords="252,157,335,184"/>
+<area shape="rect" id="node5" href="$string__util_8c.html#a19fd4ad73c0ebc9d781fc3e5dafaac6a" title="f0puts" alt="" coords="450,107,507,133"/>
+<area shape="rect" id="node7" href="$string__util_8c.html#a40e4b07a0b96c41bd9acace618efa73b" title="f0printf" alt="" coords="263,208,323,235"/>
+<area shape="rect" id="node6" href="$debug__util_8c.html#a78274a059edb36a1e7dd04d3297c9283" title="show_backtrace" alt="" coords="419,157,539,184"/>
+</map>

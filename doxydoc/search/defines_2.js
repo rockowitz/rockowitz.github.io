@@ -1,0 +1,24 @@
+var searchData=
+[
+  ['ddca_5fbuilt_5fwith_5fadl',['DDCA_BUILT_WITH_ADL',['../ddcutil__c__api_8h.html#adda99b43b5a239fe942ce27819ab1bea',1,'ddcutil_c_api.h']]],
+  ['ddca_5fbuilt_5fwith_5ffailsim',['DDCA_BUILT_WITH_FAILSIM',['../ddcutil__c__api_8h.html#abe04fc8ee59614aeea4d89626475c9b3',1,'ddcutil_c_api.h']]],
+  ['ddca_5fbuilt_5fwith_5fusb',['DDCA_BUILT_WITH_USB',['../ddcutil__c__api_8h.html#a8e744b36de2970385b1f3ea322f31e42',1,'ddcutil_c_api.h']]],
+  ['ddca_5fcomplex_5fcont',['DDCA_COMPLEX_CONT',['../ddcutil__types_8h.html#a436bc42a9e17ef1669d92d36ed4efded',1,'ddcutil_types.h']]],
+  ['ddca_5fcomplex_5fnc',['DDCA_COMPLEX_NC',['../ddcutil__types_8h.html#a5899f56f86f45402bf8fd3c47f1c9182',1,'ddcutil_types.h']]],
+  ['ddca_5fcont',['DDCA_CONT',['../ddcutil__types_8h.html#a806c4bbf0d1a1a8c9046756c1bbdbcc0',1,'ddcutil_types.h']]],
+  ['ddca_5fdeprecated',['DDCA_DEPRECATED',['../ddcutil__types_8h.html#add1330a27360f9378349487b80594672',1,'ddcutil_types.h']]],
+  ['ddca_5fnc',['DDCA_NC',['../ddcutil__types_8h.html#a41a6f54b796ccc87b47a05df53dfe21a',1,'ddcutil_types.h']]],
+  ['ddca_5fnon_5ftable',['DDCA_NON_TABLE',['../ddcutil__types_8h.html#ac9925c47c5a2985f028eb465f4039622',1,'ddcutil_types.h']]],
+  ['ddca_5freadable',['DDCA_READABLE',['../ddcutil__types_8h.html#a5cc38f775712b6c6d0f655fcede1762f',1,'ddcutil_types.h']]],
+  ['ddca_5freadable_5ftable',['DDCA_READABLE_TABLE',['../ddcutil__types_8h.html#af4c65b208b5cae6916e7250fadb619a9',1,'ddcutil_types.h']]],
+  ['ddca_5fro',['DDCA_RO',['../ddcutil__types_8h.html#a6801bfdd48341d8be8f3933b1a8018de',1,'ddcutil_types.h']]],
+  ['ddca_5frw',['DDCA_RW',['../ddcutil__types_8h.html#a9275268ed2b9c886e39b11d8f840917c',1,'ddcutil_types.h']]],
+  ['ddca_5fsimple_5fnc',['DDCA_SIMPLE_NC',['../ddcutil__types_8h.html#afb1e449aa527505d816bc49fa144856d',1,'ddcutil_types.h']]],
+  ['ddca_5fstd_5fcont',['DDCA_STD_CONT',['../ddcutil__types_8h.html#ad92055ebed58c36c674492eb79f7ab46',1,'ddcutil_types.h']]],
+  ['ddca_5ftable',['DDCA_TABLE',['../ddcutil__types_8h.html#a8c098be4c14280a96dfeb70adaf06e0e',1,'ddcutil_types.h']]],
+  ['ddca_5fvany',['DDCA_VANY',['../ddcutil__types_8h.html#ad223b806d95f0a4b7e80f1e69adcf925',1,'ddcutil_types.h']]],
+  ['ddca_5fvunk',['DDCA_VUNK',['../ddcutil__types_8h.html#acb7ac54a7a9cc9a9c5caaab3c801662d',1,'ddcutil_types.h']]],
+  ['ddca_5fwo',['DDCA_WO',['../ddcutil__types_8h.html#aecd231514515383e7c9c3b3e904be12b',1,'ddcutil_types.h']]],
+  ['ddca_5fwo_5ftable',['DDCA_WO_TABLE',['../ddcutil__types_8h.html#a56dd71cd8cd452c33a13e123f6cf81cd',1,'ddcutil_types.h']]],
+  ['ddca_5fwritable',['DDCA_WRITABLE',['../ddcutil__types_8h.html#abe0978cc2f0007467b9c265db2a9a602',1,'ddcutil_types.h']]]
+];

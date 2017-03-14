@@ -1,0 +1,10 @@
+<map id="sbuf_append" name="sbuf_append">
+<area shape="rect" id="node2" href="$libdrm__util_8h.html#afe0897b5245707ebe02dabaf9d55fcf3" title="connector_type_title" alt="" coords="364,5,504,32"/>
+<area shape="rect" id="node3" href="$libdrm__util_8h.html#a385a5f2e5794cd858a4e1a956573998d" title="encoder_type_title" alt="" coords="164,43,295,69"/>
+<area shape="rect" id="node4" href="$data__structures_8h.html#a212f3752d8c1cc210f8dd8a82be53ca3" title="interpret_named_flags" alt="" coords="152,93,307,120"/>
+<area shape="rect" id="node7" href="$data__structures_8h.html#ae6f4fa5ffcbb0bcf257fa8ce52162233" title="interpret_vnt_flags\l_by_title" alt="" coords="165,145,294,186"/>
+<area shape="rect" id="node8" href="$libdrm__util_8c.html#ae28fbf75d18faf2086044adc421c57fc" title="report_property_value" alt="" coords="154,211,305,237"/>
+<area shape="rect" id="node5" href="$core_8h.html#ad58ccbdf9b55640719ded9d428e1ad6c" title="interpret_call_options_r" alt="" coords="355,93,513,120"/>
+<area shape="rect" id="node6" href="$core_8h.html#ad03ed9b828c111b5d75c12dff1ebf0a3" title="interpret_call_options" alt="" coords="561,93,708,120"/>
+<area shape="rect" id="node9" href="$libdrm__util_8h.html#a296f38d851825b841915b5648ad491e4" title="report_drmModeRes" alt="" coords="361,211,507,237"/>
+</map>

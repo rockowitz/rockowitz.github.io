@@ -1,0 +1,37 @@
+<map id="util/coredefs.h" name="util/coredefs.h">
+<area shape="rect" id="node2" href="$string__util_8h.html" title="util/string_util.h" alt="" coords="1967,155,2074,181"/>
+<area shape="rect" id="node10" href="$report__util_8c.html" title="util/report_util.c" alt="" coords="2102,229,2211,256"/>
+<area shape="rect" id="node22" href="$data__structures_8h.html" title="util/data_structures.h" alt="" coords="729,155,872,181"/>
+<area shape="rect" id="node25" href="$report__util_8h.html" title="util/report_util.h" alt="" coords="1337,155,1446,181"/>
+<area shape="rect" id="node30" href="$edid_8h.html" title="util/edid.h" alt="" coords="896,155,975,181"/>
+<area shape="rect" id="node31" href="$displays_8h.html" title="base/displays.h" alt="" coords="44,229,160,256"/>
+<area shape="rect" id="node33" href="$x11__util_8h.html" title="util/x11_util.h" alt="" coords="2731,80,2830,107"/>
+<area shape="rect" id="node34" href="$core_8h.html" title="base/core.h" alt="" coords="205,155,298,181"/>
+<area shape="rect" id="node35" href="$feature__sets_8h_source.html" title="base/feature_sets.h" alt="" coords="442,155,581,181"/>
+<area shape="rect" id="node36" href="$vcp__version_8h_source.html" title="base/vcp_version.h" alt="" coords="307,80,446,107"/>
+<area shape="rect" id="node3" href="$data__structures_8c.html" title="util/data_structures.c" alt="" coords="801,229,944,256"/>
+<area shape="rect" id="node4" href="$device__id__util_8c.html" title="util/device_id_util.c" alt="" coords="1660,229,1795,256"/>
+<area shape="rect" id="node5" href="$edid_8c.html" title="util/edid.c" alt="" coords="1275,229,1353,256"/>
+<area shape="rect" id="node6" href="$failsim_8c.html" title="util/failsim.c" alt="" coords="1819,229,1910,256"/>
+<area shape="rect" id="node7" href="$file__util_8c.html" title="util/file_util.c" alt="" coords="2735,229,2827,256"/>
+<area shape="rect" id="node8" href="$glib__string__util_8c.html" title="util/glib_string_util.c" alt="" coords="2851,229,2985,256"/>
+<area shape="rect" id="node9" href="$libdrm__util_8c.html" title="util/libdrm_util.c" alt="" coords="968,229,1079,256"/>
+<area shape="rect" id="node11" href="$string__util_8c.html" title="util/string_util.c" alt="" coords="3111,229,3218,256"/>
+<area shape="rect" id="node12" href="$subprocess__util_8c.html" title="util/subprocess_util.c" alt="" coords="1934,229,2078,256"/>
+<area shape="rect" id="node13" href="$udev__util_8c.html" title="util/udev_util.c" alt="" coords="1531,229,1636,256"/>
+<area shape="rect" id="node14" href="$x11__util_8c.html" title="util/x11_util.c" alt="" coords="3242,229,3341,256"/>
+<area shape="rect" id="node15" href="$core_8c.html" title="base/core.c" alt="" coords="683,229,777,256"/>
+<area shape="rect" id="node16" href="$ddc__errno_8c_source.html" title="base/ddc_errno.c" alt="" coords="2236,229,2363,256"/>
+<area shape="rect" id="node17" href="$ddc__packets_8c_source.html" title="base/ddc_packets.c" alt="" coords="1249,379,1392,405"/>
+<area shape="rect" id="node18" href="$displays_8c_source.html" title="base/displays.c" alt="" coords="1015,304,1131,331"/>
+<area shape="rect" id="node19" href="$linux__errno_8c_source.html" title="base/linux_errno.c" alt="" coords="2387,229,2518,256"/>
+<area shape="rect" id="node20" href="$status__code__mgt_8c.html" title="base/status_code_mgt.c" alt="" coords="2542,229,2710,256"/>
+<area shape="rect" id="node21" href="$vcp__version_8c_source.html" title="base/vcp_version.c" alt="" coords="307,229,446,256"/>
+<area shape="rect" id="node23" href="$ddc__packets_8h_source.html" title="base/ddc_packets.h" alt="" coords="575,304,717,331"/>
+<area shape="rect" id="node24" href="$base__init_8c.html" title="base/base_init.c" alt="" coords="412,379,531,405"/>
+<area shape="rect" id="node26" href="$multi__level__map_8c.html" title="util/multi_level_map.c" alt="" coords="1103,229,1251,256"/>
+<area shape="rect" id="node27" href="$execution__stats_8c.html" title="base/execution_stats.c" alt="" coords="896,379,1055,405"/>
+<area shape="rect" id="node28" href="$feature__sets_8c_source.html" title="base/feature_sets.c" alt="" coords="470,229,609,256"/>
+<area shape="rect" id="node29" href="$sleep_8c_source.html" title="base/sleep.c" alt="" coords="185,229,283,256"/>
+<area shape="rect" id="node32" href="$execution__stats_8h.html" title="base/execution_stats.h" alt="" coords="392,304,551,331"/>
+</map>

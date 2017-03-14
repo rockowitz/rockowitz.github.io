@@ -1,0 +1,7 @@
+<map id="report_sleep_strategy_stats" name="report_sleep_strategy_stats">
+<area shape="rect" id="node2" href="$report__util_8c.html#a7c7aaf851ba8d9da017ed521f0fcb504" title="rpt_nl" alt="" coords="219,56,272,83"/>
+<area shape="rect" id="node6" href="$report__util_8c.html#ae58dfa6adb2e9f1dacce17f7b0732f26" title="rpt_vstring" alt="" coords="204,107,287,133"/>
+<area shape="rect" id="node3" href="$string__util_8c.html#a40e4b07a0b96c41bd9acace618efa73b" title="f0printf" alt="" coords="373,5,433,32"/>
+<area shape="rect" id="node4" href="$report__util_8c.html#a71f4829c653e1d6101dfc1ae09f4796e" title="rpt_cur_output_dest" alt="" coords="335,56,471,83"/>
+<area shape="rect" id="node5" href="$report__util_8c.html#ad8736ff7dcecf76ad38a0c26a1cdf5ff" title="rpt_get_indent" alt="" coords="350,107,455,133"/>
+</map>

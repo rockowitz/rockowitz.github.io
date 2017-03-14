@@ -1,0 +1,17 @@
+<map id="base/execution_stats.c" name="base/execution_stats.c">
+<area shape="rect" id="node2" href="$glib__util_8h.html" title="util/glib_util.h" alt="" coords="9,80,105,107"/>
+<area shape="rect" id="node3" href="$report__util_8h.html" title="util/report_util.h" alt="" coords="5,229,115,256"/>
+<area shape="rect" id="node5" href="$sleep_8h.html" title="base/sleep.h" alt="" coords="572,80,671,107"/>
+<area shape="rect" id="node6" href="$parms_8h_source.html" title="base/parms.h" alt="" coords="695,80,798,107"/>
+<area shape="rect" id="node7" href="$ddc__errno_8h_source.html" title="base/ddc_errno.h" alt="" coords="421,80,547,107"/>
+<area shape="rect" id="node9" href="$execution__stats_8h.html" title="base/execution_stats.h" alt="" coords="238,80,397,107"/>
+<area shape="rect" id="node4" href="$coredefs_8h.html" title="coredefs.h" alt="" coords="181,379,267,405"/>
+<area shape="rect" id="node8" href="$status__code__mgt_8h.html" title="base/status_code_mgt.h" alt="" coords="459,155,627,181"/>
+<area shape="rect" id="node10" href="$timestamp_8h.html" title="util/timestamp.h" alt="" coords="321,155,434,181"/>
+<area shape="rect" id="node11" href="$displays_8h.html" title="base/displays.h" alt="" coords="181,155,297,181"/>
+<area shape="rect" id="node12" href="$edid_8h.html" title="util/edid.h" alt="" coords="94,304,173,331"/>
+<area shape="rect" id="node13" href="$core_8h.html" title="base/core.h" alt="" coords="248,304,341,331"/>
+<area shape="rect" id="node15" href="$feature__sets_8h_source.html" title="base/feature_sets.h" alt="" coords="309,229,448,256"/>
+<area shape="rect" id="node17" href="$vcp__version_8h_source.html" title="base/vcp_version.h" alt="" coords="416,304,555,331"/>
+<area shape="rect" id="node14" href="$ddcutil__types_8h.html" title="ddcutil public types " alt="" coords="343,379,491,405"/>
+</map>

@@ -1,0 +1,9 @@
+<map id="bbf_to_buffer" name="bbf_to_buffer">
+<area shape="rect" id="node2" href="$data__structures_8c.html#a74eb09779e8ba96c5685966451a5a6fb" title="bbf_count_set" alt="" coords="149,5,252,32"/>
+<area shape="rect" id="node3" href="$data__structures_8c.html#a7a99b3c9a12c8a12c154012180f354f5" title="bbf_is_set" alt="" coords="160,56,241,83"/>
+<area shape="rect" id="node4" href="$data__structures_8c.html#a216abaff83a24c91ee6ba5465698d6dc" title="bbf_set" alt="" coords="169,107,233,133"/>
+<area shape="rect" id="node5" href="$data__structures_8c.html#a798e656c9b739bd651ebc35b2b1af815" title="buffer_add" alt="" coords="158,157,243,184"/>
+<area shape="rect" id="node6" href="$data__structures_8c.html#ae4dd15872647546cd2a2cc4c803b6371" title="buffer_new" alt="" coords="157,208,244,235"/>
+<area shape="rect" id="node7" href="$data__structures_8c.html#a2b850fecd25d8253212c5494aababc2d" title="bva_append" alt="" coords="153,259,249,285"/>
+<area shape="rect" id="node8" href="$data__structures_8c.html#a7dd797401e391205fc0515aca0a00eaf" title="bva_contains" alt="" coords="150,309,251,336"/>
+</map>

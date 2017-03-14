@@ -1,0 +1,5 @@
+<map id="mlm_add_node" name="mlm_add_node">
+<area shape="rect" id="node2" href="$device__id__util_8c.html#a4377615d07d254e5bd3105912efcd58f" title="get_simple_id_name" alt="" coords="169,13,316,39"/>
+<area shape="rect" id="node4" href="$device__id__util_8c.html#ac11af32a69960bfd201ca37dc104f18f" title="load_device_ids" alt="" coords="181,63,304,90"/>
+<area shape="rect" id="node3" href="$device__id__util_8h.html#aadf525bef2b022d0c59b04a24639b624" title="devid_hid_descriptor\l_item_type" alt="" coords="364,5,511,47"/>
+</map>

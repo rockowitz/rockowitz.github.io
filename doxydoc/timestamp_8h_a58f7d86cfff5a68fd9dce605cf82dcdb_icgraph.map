@@ -1,0 +1,8 @@
+<map id="cur_realtime_nanosec" name="cur_realtime_nanosec">
+<area shape="rect" id="node2" href="$timestamp_8c.html#af417380acb216ffb4dc299d311310110" title="elapsed_time_nanosec" alt="" coords="208,29,371,56"/>
+<area shape="rect" id="node6" href="$execution__stats_8h.html#ad70249ea86cb0e7e29b91e8d87be0ba9" title="init_execution_stats" alt="" coords="220,80,359,107"/>
+<area shape="rect" id="node3" href="$timestamp_8h.html#a8d9202599e15e0e2de8e2d0fe10e6c38" title="formatted_elapsed_time" alt="" coords="419,29,585,56"/>
+<area shape="rect" id="node4" href="$core_8h.html#a27da8f036d4047a74c55cc8da59503e7" title="is_tracing" alt="" coords="633,29,712,56"/>
+<area shape="rect" id="node5" href="$group__output__redirection.html#gaaeef435133003c66994472c6540114fd" title="terminate_execution\l_on_error" alt="" coords="760,22,903,63"/>
+<area shape="rect" id="node7" href="$base__init_8h.html#a6483c776997547e7beeccdb451a9f8f1" title="init_base_services" alt="" coords="435,80,569,107"/>
+</map>
