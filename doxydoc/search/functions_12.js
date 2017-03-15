@@ -1,5 +1,6 @@
 var searchData=
 [
+  ['vcp_5fversion_5fle',['vcp_version_le',['../vcp__version_8c.html#a485b03ada97e57e535989efa835b4335',1,'vcp_version_le(DDCA_MCCS_Version_Spec v1, DDCA_MCCS_Version_Spec v2):&#160;vcp_version.c'],['../vcp__version_8h.html#a4aa08034693d3d0e6a24485871b7f5c7',1,'vcp_version_le(DDCA_MCCS_Version_Spec val, DDCA_MCCS_Version_Spec max):&#160;vcp_version.c']]],
   ['vf0printf',['vf0printf',['../string__util_8c.html#ada9e0c00e81b66c3e87a2d8eb623fbb7',1,'vf0printf(FILE *stream, const char *format, va_list ap):&#160;string_util.c'],['../string__util_8h.html#ada9e0c00e81b66c3e87a2d8eb623fbb7',1,'vf0printf(FILE *stream, const char *format, va_list ap):&#160;string_util.c']]],
   ['vnt_5fdebug_5ftable',['vnt_debug_table',['../data__structures_8c.html#ad8eeb9cfdf9073cad995edbf2b2d316f',1,'data_structures.c']]],
   ['vnt_5ffind_5fid',['vnt_find_id',['../data__structures_8c.html#aeda3d4f6f2fa00cda525361fd5bb12f6',1,'vnt_find_id(Value_Name_Title_Table table, const char *s, bool use_title, bool ignore_case, uint32_t default_id):&#160;data_structures.c'],['../data__structures_8h.html#aeda3d4f6f2fa00cda525361fd5bb12f6',1,'vnt_find_id(Value_Name_Title_Table table, const char *s, bool use_title, bool ignore_case, uint32_t default_id):&#160;data_structures.c']]],

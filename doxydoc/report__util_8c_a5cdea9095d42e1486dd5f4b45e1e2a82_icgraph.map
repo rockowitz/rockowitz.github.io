@@ -2,6 +2,9 @@
 <area shape="rect" id="node2" href="$libdrm__util_8h.html#a0a134366851de213e59925f5bc459704" title="report_drmModePropertyBlob" alt="" coords="159,5,357,32"/>
 <area shape="rect" id="node5" href="$edid_8h.html#ad386522b77fc8f2df755bed4a32b0bed" title="report_parsed_edid_base" alt="" coords="170,56,346,83"/>
 <area shape="rect" id="node3" href="$libdrm__util_8c.html#ae28fbf75d18faf2086044adc421c57fc" title="report_property_value" alt="" coords="405,5,556,32"/>
-<area shape="rect" id="node4" href="$libdrm__util_8h.html#a296f38d851825b841915b5648ad491e4" title="report_drmModeRes" alt="" coords="604,5,749,32"/>
+<area shape="rect" id="node4" href="$libdrm__util_8h.html#a296f38d851825b841915b5648ad491e4" title="report_drmModeRes" alt="" coords="619,5,764,32"/>
 <area shape="rect" id="node6" href="$edid_8h.html#a800e7d08fc3d103bd741bbf15c57b8fd" title="report_parsed_edid" alt="" coords="411,56,550,83"/>
+<area shape="rect" id="node7" href="$adl__intf_8h.html#aa305528d906ae1391826bb297878aa09" title="adl_report_active_display" alt="" coords="604,56,779,83"/>
+<area shape="rect" id="node8" href="$adl__intf_8h.html#ab62145022d4f6d21e00e8a27fbc3c1a0" title="adl_report_active_display\l_by_index" alt="" coords="831,19,1005,61"/>
+<area shape="rect" id="node9" href="$adl__intf_8h.html#a4e6169c9f2dffbbc2490ff976e37c021" title="adl_report_active_displays" alt="" coords="827,85,1009,112"/>
 </map>

@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['udev_5fdevice_5fsummary',['Udev_Device_Summary',['../udev__util_8h.html#ad0d38231a76f315318fcd4cf9723df0c',1,'udev_util.h']]],
-  ['udev_5fusb_5fdevinfo',['Udev_Usb_Devinfo',['../udev__util_8h.html#ae4788660db963c436cc4b53704e8620f',1,'udev_util.h']]]
+  ['value_5fto_5fname_5ffunction',['Value_To_Name_Function',['../report__util_8h.html#ab2164d803e70e3c781929aa21e5ce9ba',1,'report_util.h']]],
+  ['vcp_5ffeature_5fcode',['VCP_Feature_Code',['../ddcutil__types_8h.html#a031891bb8565d2594949e41fd30d518b',1,'ddcutil_types.h']]]
 ];

@@ -1,0 +1,6 @@
+<map id="adlshim_get_video_card_info" name="adlshim_get_video_card_info">
+<area shape="rect" id="node2" href="$adl__intf_8c.html#a90314fae431cd104646abc3b105c6e77" title="adl_get_video_card\l_info_by_adlno" alt="" coords="252,5,395,47"/>
+<area shape="rect" id="node5" href="$status__code__mgt_8c.html#ac449f9595ec628815ee047e9468924f2" title="modulate_rc" alt="" coords="275,71,371,98"/>
+<area shape="rect" id="node3" href="$adl__intf_8c.html#ab493643173405b78a99f280deeb1fde1" title="adl_get_display_by\l_adlno" alt="" coords="443,5,581,47"/>
+<area shape="rect" id="node4" href="$string__util_8c.html#a40e4b07a0b96c41bd9acace618efa73b" title="f0printf" alt="" coords="629,13,689,39"/>
+</map>

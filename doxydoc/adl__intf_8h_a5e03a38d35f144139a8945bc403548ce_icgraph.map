@@ -1,0 +1,8 @@
+<map id="adl_ddc_write_only" name="adl_ddc_write_only">
+<area shape="rect" id="node2" href="$adl__aux__intf_8h.html#ad21323f9f74dbf1acd435e2350dcb114" title="adl_ddc_set_vcp" alt="" coords="213,5,337,32"/>
+<area shape="rect" id="node3" href="$adl__aux__intf_8h.html#aca4a89225c244bd43f0f944373e1771c" title="adl_ddc_write_only\l_with_retry" alt="" coords="206,57,345,98"/>
+<area shape="rect" id="node4" href="$adl__intf_8h.html#ab5d49279913ef99fb81919fd776db9cc" title="adl_ddc_write_read" alt="" coords="205,123,346,149"/>
+<area shape="rect" id="node7" href="$adl__shim_8h.html#afd5d560245e26ce92cf58f55e75ca30a" title="adlshim_ddc_write_only" alt="" coords="192,173,359,200"/>
+<area shape="rect" id="node5" href="$adl__aux__intf_8h.html#a152524dac9132f8eabd0bc8a4fe9f578" title="adl_ddc_write_read\l_with_retry" alt="" coords="407,86,548,127"/>
+<area shape="rect" id="node6" href="$adl__aux__intf_8h.html#af0912e3c74e1052e08137dbc8afc0043" title="adl_ddc_get_vcp" alt="" coords="415,152,540,179"/>
+</map>

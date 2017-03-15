@@ -1,15 +1,18 @@
 <map id="bool_repr" name="bool_repr">
-<area shape="rect" id="node2" href="$device__id__util_8h.html#a8ebdd4cb859121ca833743820a98a466" title="devid_ensure_initialized" alt="" coords="132,140,299,167"/>
-<area shape="rect" id="node9" href="$failsim_8h.html#a0956766f1ad629bfade7cb1725c57ebe" title="fsim_load_control_file" alt="" coords="381,275,531,301"/>
-<area shape="rect" id="node10" href="$failsim_8h.html#a47679d378ef8cd71ccbdaf2470d37f21" title="fsim_load_control_from\l_gptrarray" alt="" coords="135,267,295,309"/>
-<area shape="rect" id="node11" href="$failsim_8h.html#a01bfaa175f646e99f9b0be7564f5514c" title="fsim_report_error_table" alt="" coords="136,333,295,360"/>
-<area shape="rect" id="node12" href="$core_8h.html#a27da8f036d4047a74c55cc8da59503e7" title="is_tracing" alt="" coords="176,408,255,435"/>
-<area shape="rect" id="node14" href="$string__util_8h.html#a4b355db71e53f08a9f9dc003fdfebe39" title="str_to_int" alt="" coords="178,459,253,485"/>
-<area shape="rect" id="node3" href="$device__id__util_8h.html#a85a6b6ac91cf1e02689aeb0a4ed220ab" title="devid_get_pci_names" alt="" coords="379,5,533,32"/>
-<area shape="rect" id="node4" href="$device__id__util_8h.html#a2f7a8b9367caa4d13860813b67ab79a8" title="devid_get_usb_names" alt="" coords="377,56,535,83"/>
-<area shape="rect" id="node5" href="$device__id__util_8h.html#aadf525bef2b022d0c59b04a24639b624" title="devid_hid_descriptor\l_item_type" alt="" coords="383,107,529,149"/>
-<area shape="rect" id="node6" href="$device__id__util_8h.html#ae6f5ae13af77d1e6a46dbb4ccd72dbaf" title="devid_usage_code_id_name" alt="" coords="357,173,555,200"/>
-<area shape="rect" id="node8" href="$device__id__util_8h.html#a0c9df7722675858da772ee48725bfb69" title="devid_usage_code_page_name" alt="" coords="347,224,565,251"/>
-<area shape="rect" id="node7" href="$device__id__util_8h.html#a863f4affe8b8f9dbe067ef8060deb114" title="devid_usage_code_name\l_by_extended_id" alt="" coords="613,166,793,207"/>
-<area shape="rect" id="node13" href="$group__output__redirection.html#gaaeef435133003c66994472c6540114fd" title="terminate_execution\l_on_error" alt="" coords="385,401,527,442"/>
+<area shape="rect" id="node2" href="$device__id__util_8h.html#a8ebdd4cb859121ca833743820a98a466" title="devid_ensure_initialized" alt="" coords="132,177,299,203"/>
+<area shape="rect" id="node12" href="$failsim_8h.html#a0956766f1ad629bfade7cb1725c57ebe" title="fsim_load_control_file" alt="" coords="381,337,531,363"/>
+<area shape="rect" id="node13" href="$failsim_8h.html#a47679d378ef8cd71ccbdaf2470d37f21" title="fsim_load_control_from\l_gptrarray" alt="" coords="135,329,295,371"/>
+<area shape="rect" id="node14" href="$failsim_8h.html#a01bfaa175f646e99f9b0be7564f5514c" title="fsim_report_error_table" alt="" coords="136,395,295,422"/>
+<area shape="rect" id="node15" href="$core_8h.html#a27da8f036d4047a74c55cc8da59503e7" title="is_tracing" alt="" coords="176,470,255,497"/>
+<area shape="rect" id="node17" href="$string__util_8h.html#a4b355db71e53f08a9f9dc003fdfebe39" title="str_to_int" alt="" coords="178,521,253,547"/>
+<area shape="rect" id="node3" href="$adl__intf_8h.html#aa305528d906ae1391826bb297878aa09" title="adl_report_active_display" alt="" coords="616,42,791,69"/>
+<area shape="rect" id="node6" href="$device__id__util_8h.html#a85a6b6ac91cf1e02689aeb0a4ed220ab" title="devid_get_pci_names" alt="" coords="379,67,533,94"/>
+<area shape="rect" id="node7" href="$device__id__util_8h.html#a2f7a8b9367caa4d13860813b67ab79a8" title="devid_get_usb_names" alt="" coords="377,118,535,145"/>
+<area shape="rect" id="node8" href="$device__id__util_8h.html#aadf525bef2b022d0c59b04a24639b624" title="devid_hid_descriptor\l_item_type" alt="" coords="383,169,529,211"/>
+<area shape="rect" id="node9" href="$device__id__util_8h.html#ae6f5ae13af77d1e6a46dbb4ccd72dbaf" title="devid_usage_code_id_name" alt="" coords="357,235,555,262"/>
+<area shape="rect" id="node11" href="$device__id__util_8h.html#a0c9df7722675858da772ee48725bfb69" title="devid_usage_code_page_name" alt="" coords="347,286,565,313"/>
+<area shape="rect" id="node4" href="$adl__intf_8h.html#ab62145022d4f6d21e00e8a27fbc3c1a0" title="adl_report_active_display\l_by_index" alt="" coords="845,5,1020,47"/>
+<area shape="rect" id="node5" href="$adl__intf_8h.html#a4e6169c9f2dffbbc2490ff976e37c021" title="adl_report_active_displays" alt="" coords="841,71,1024,98"/>
+<area shape="rect" id="node10" href="$device__id__util_8h.html#a863f4affe8b8f9dbe067ef8060deb114" title="devid_usage_code_name\l_by_extended_id" alt="" coords="613,228,793,269"/>
+<area shape="rect" id="node16" href="$group__output__redirection.html#gaaeef435133003c66994472c6540114fd" title="terminate_execution\l_on_error" alt="" coords="385,463,527,504"/>
 </map>

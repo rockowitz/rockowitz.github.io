@@ -1,0 +1,9 @@
+<map id="base/vcp_version.c" name="base/vcp_version.c">
+<area shape="rect" id="node2" href="$data__structures_8h.html" title="util/data_structures.h" alt="" coords="137,80,279,107"/>
+<area shape="rect" id="node4" href="$string__util_8h.html" title="util/string_util.h" alt="" coords="5,80,112,107"/>
+<area shape="rect" id="node6" href="$core_8h.html" title="base/core.h" alt="" coords="304,80,397,107"/>
+<area shape="rect" id="node8" href="$vcp__version_8h.html" title="base/vcp_version.h" alt="" coords="421,80,560,107"/>
+<area shape="rect" id="node3" href="$coredefs_8h.html" title="coredefs.h" alt="" coords="165,155,251,181"/>
+<area shape="rect" id="node5" href="$glib__util_8h.html" title="glib_util.h" alt="" coords="21,155,97,181"/>
+<area shape="rect" id="node7" href="$ddcutil__types_8h.html" title="ddcutil public types " alt="" coords="346,155,494,181"/>
+</map>

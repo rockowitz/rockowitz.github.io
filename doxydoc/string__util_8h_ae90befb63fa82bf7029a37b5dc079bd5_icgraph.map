@@ -1,12 +1,16 @@
 <map id="fhex_dump_indented" name="fhex_dump_indented">
-<area shape="rect" id="node2" href="$string__util_8h.html#a9aa911aed311ed19af7148d1f235e454" title="fhex_dump" alt="" coords="209,56,296,83"/>
-<area shape="rect" id="node6" href="$report__util_8h.html#a5cdea9095d42e1486dd5f4b45e1e2a82" title="rpt_hex_dump" alt="" coords="200,107,305,133"/>
-<area shape="rect" id="node3" href="$string__util_8h.html#a33e2d73bb666582588322cc497a23408" title="hex_dump" alt="" coords="411,56,495,83"/>
-<area shape="rect" id="node4" href="$data__structures_8h.html#a0080933f66a37532d3e2a161e5a8fe53" title="buffer_dump" alt="" coords="628,5,723,32"/>
-<area shape="rect" id="node5" href="$x11__util_8h.html#a237230b15259a8de9872c0bb8f0bab36" title="get_x11_edids" alt="" coords="619,56,731,83"/>
-<area shape="rect" id="node7" href="$libdrm__util_8h.html#a0a134366851de213e59925f5bc459704" title="report_drmModePropertyBlob" alt="" coords="353,107,552,133"/>
-<area shape="rect" id="node10" href="$edid_8h.html#ad386522b77fc8f2df755bed4a32b0bed" title="report_parsed_edid_base" alt="" coords="365,157,541,184"/>
-<area shape="rect" id="node8" href="$libdrm__util_8c.html#ae28fbf75d18faf2086044adc421c57fc" title="report_property_value" alt="" coords="600,107,751,133"/>
-<area shape="rect" id="node9" href="$libdrm__util_8h.html#a296f38d851825b841915b5648ad491e4" title="report_drmModeRes" alt="" coords="799,107,944,133"/>
-<area shape="rect" id="node11" href="$edid_8h.html#a800e7d08fc3d103bd741bbf15c57b8fd" title="report_parsed_edid" alt="" coords="606,157,745,184"/>
+<area shape="rect" id="node2" href="$string__util_8h.html#a9aa911aed311ed19af7148d1f235e454" title="fhex_dump" alt="" coords="209,95,296,121"/>
+<area shape="rect" id="node7" href="$report__util_8h.html#a5cdea9095d42e1486dd5f4b45e1e2a82" title="rpt_hex_dump" alt="" coords="200,157,305,184"/>
+<area shape="rect" id="node3" href="$string__util_8h.html#a33e2d73bb666582588322cc497a23408" title="hex_dump" alt="" coords="411,69,495,96"/>
+<area shape="rect" id="node4" href="$adl__aux__intf_8h.html#af0912e3c74e1052e08137dbc8afc0043" title="adl_ddc_get_vcp" alt="" coords="613,5,738,32"/>
+<area shape="rect" id="node5" href="$data__structures_8h.html#a0080933f66a37532d3e2a161e5a8fe53" title="buffer_dump" alt="" coords="628,56,723,83"/>
+<area shape="rect" id="node6" href="$x11__util_8h.html#a237230b15259a8de9872c0bb8f0bab36" title="get_x11_edids" alt="" coords="619,107,731,133"/>
+<area shape="rect" id="node8" href="$libdrm__util_8h.html#a0a134366851de213e59925f5bc459704" title="report_drmModePropertyBlob" alt="" coords="353,157,552,184"/>
+<area shape="rect" id="node11" href="$edid_8h.html#ad386522b77fc8f2df755bed4a32b0bed" title="report_parsed_edid_base" alt="" coords="365,208,541,235"/>
+<area shape="rect" id="node9" href="$libdrm__util_8c.html#ae28fbf75d18faf2086044adc421c57fc" title="report_property_value" alt="" coords="600,157,751,184"/>
+<area shape="rect" id="node10" href="$libdrm__util_8h.html#a296f38d851825b841915b5648ad491e4" title="report_drmModeRes" alt="" coords="813,157,959,184"/>
+<area shape="rect" id="node12" href="$edid_8h.html#a800e7d08fc3d103bd741bbf15c57b8fd" title="report_parsed_edid" alt="" coords="606,208,745,235"/>
+<area shape="rect" id="node13" href="$adl__intf_8h.html#aa305528d906ae1391826bb297878aa09" title="adl_report_active_display" alt="" coords="799,208,973,235"/>
+<area shape="rect" id="node14" href="$adl__intf_8h.html#ab62145022d4f6d21e00e8a27fbc3c1a0" title="adl_report_active_display\l_by_index" alt="" coords="1025,171,1200,213"/>
+<area shape="rect" id="node15" href="$adl__intf_8h.html#a4e6169c9f2dffbbc2490ff976e37c021" title="adl_report_active_displays" alt="" coords="1021,237,1204,264"/>
 </map>

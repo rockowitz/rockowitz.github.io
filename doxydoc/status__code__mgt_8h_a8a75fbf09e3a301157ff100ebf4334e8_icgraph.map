@@ -1,0 +1,7 @@
+<map id="demodulate_rc" name="demodulate_rc">
+<area shape="rect" id="node2" href="$status__code__mgt_8h.html#a1de499b4263b7ab0514947df979bd0e1" title="find_global_status\l_code_info" alt="" coords="328,49,457,90"/>
+<area shape="rect" id="node6" href="$status__code__mgt_8h.html#a88c529a0773ecaa853833caca53fd34a" title="get_modulation" alt="" coords="165,93,280,120"/>
+<area shape="rect" id="node3" href="$execution__stats_8h.html#a78f4593a15c1981f91abc910fc57380f" title="log_status_code" alt="" coords="505,5,627,32"/>
+<area shape="rect" id="node4" href="$status__code__mgt_8h.html#a53f26ef7b3fd5f54ba0e3ff0a370d332" title="gsc_desc" alt="" coords="525,56,607,83"/>
+<area shape="rect" id="node5" href="$status__code__mgt_8h.html#aac44651b3bcfb55c0ed29fc05900d0be" title="gsc_name" alt="" coords="523,107,609,133"/>
+</map>

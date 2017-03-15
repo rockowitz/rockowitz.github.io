@@ -1,0 +1,4 @@
+<map id="get_modulation" name="get_modulation">
+<area shape="rect" id="node2" href="$status__code__mgt_8c.html#abdd7cd8a1ede3207dc5266da455b7ce5" title="demodulate_rc" alt="" coords="168,5,280,32"/>
+<area shape="rect" id="node3" href="$status__code__mgt_8c.html#ac449f9595ec628815ee047e9468924f2" title="modulate_rc" alt="" coords="176,56,272,83"/>
+</map>

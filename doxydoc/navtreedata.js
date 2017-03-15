@@ -30,10 +30,11 @@ var NAVTREE =
 
 var NAVTREEINDEX =
 [
-"adl__errors_8h.html",
-"device__id__util_8h.html#a85a6b6ac91cf1e02689aeb0a4ed220ab",
-"libdrm__util_8h.html#abca082a2d351fad783a62dc81e6817dd",
-"structSingle__Vcp__Value.html#a26be92b5bc45fed4163bfe339f337791"
+"adl__aux__intf_8c.html",
+"ddc__errno_8c.html#a6e80840c6e963faec269c2ede66c32dc",
+"glib__util_8h.html#a02986ed536d5fe30f343c625b6a08256",
+"status__code__mgt_8c.html#af747ec75146fc7a40b9ab0bbc53f04b4",
+"udev__util_8c.html#a8138b6d04b60c36c6cf3060e20bf517e"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

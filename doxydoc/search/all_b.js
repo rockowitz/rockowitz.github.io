@@ -13,6 +13,7 @@ var searchData=
   ['mlm_5fget_5fnames2',['mlm_get_names2',['../multi__level__map_8c.html#a55a03cdfaf58bc329c0db2a9e3d8ade5',1,'mlm_get_names2(Multi_Level_Map *mlm, int levelct, uint *ids):&#160;multi_level_map.c'],['../multi__level__map_8h.html#a55a03cdfaf58bc329c0db2a9e3d8ade5',1,'mlm_get_names2(Multi_Level_Map *mlm, int levelct, uint *ids):&#160;multi_level_map.c']]],
   ['model_5fhex',['model_hex',['../structParsed__Edid.html#ad8537571b6ee94c52f7a021cab88e9f9',1,'Parsed_Edid']]],
   ['model_5fname',['model_name',['../structParsed__Edid.html#ada36d679b6d3418168ebb6552770a384',1,'Parsed_Edid']]],
+  ['modulate_5frc',['modulate_rc',['../status__code__mgt_8c.html#ac449f9595ec628815ee047e9468924f2',1,'modulate_rc(int rc, Retcode_Range_Id range_id):&#160;status_code_mgt.c'],['../status__code__mgt_8h.html#a3f67892739c6b6e16daf146938a1f72e',1,'modulate_rc(int unmodulated_rc, Retcode_Range_Id range_id):&#160;status_code_mgt.c']]],
   ['message_20level_20management',['Message Level Management',['../group__msglevel.html',1,'']]],
   ['multi_5flevel_5fmap_2ec',['multi_level_map.c',['../multi__level__map_8c.html',1,'']]],
   ['multi_5flevel_5fmap_2eh',['multi_level_map.h',['../multi__level__map_8h.html',1,'']]]
