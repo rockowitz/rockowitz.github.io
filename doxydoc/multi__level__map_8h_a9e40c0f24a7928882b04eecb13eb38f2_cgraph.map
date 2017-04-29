@@ -1,7 +1,0 @@
-<map id="report_multi_level_map" name="report_multi_level_map">
-<area shape="rect" id="node2" href="$report__util_8c.html#a105b44822ec124d16c445268308b31d7" title="rpt_int" alt="" coords="212,5,268,32"/>
-<area shape="rect" id="node3" href="$report__util_8c.html#a271a0ddaafa0b5ff0630f85fa6bf25f4" title="rpt_str" alt="" coords="347,56,404,83"/>
-<area shape="rect" id="node5" href="$report__util_8c.html#ae58dfa6adb2e9f1dacce17f7b0732f26" title="rpt_vstring" alt="" coords="509,107,592,133"/>
-<area shape="rect" id="node6" href="$report__util_8c.html#af5b53c7ac855765e65c7f485fb2a1193" title="rpt_structure_loc" alt="" coords="316,157,435,184"/>
-<area shape="rect" id="node4" href="$report__util_8c.html#a71f4829c653e1d6101dfc1ae09f4796e" title="rpt_cur_output_dest" alt="" coords="483,56,619,83"/>
-</map>

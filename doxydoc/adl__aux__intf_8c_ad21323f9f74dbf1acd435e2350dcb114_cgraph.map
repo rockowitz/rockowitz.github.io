@@ -1,5 +1,0 @@
-<map id="adl_ddc_set_vcp" name="adl_ddc_set_vcp">
-<area shape="rect" id="node2" href="$adl__intf_8c.html#a5e03a38d35f144139a8945bc403548ce" title="adl_ddc_write_only" alt="" coords="177,13,316,39"/>
-<area shape="rect" id="node3" href="$adl__intf_8c.html#a6b81695695f4f07c1712892202181411" title="call_ADL_Display_DDCBlock\lAccess_Get" alt="" coords="364,5,563,47"/>
-<area shape="rect" id="node4" href="$string__util_8c.html#a7be9558f1d0d894bf845df9c75ab553b" title="hexstring" alt="" coords="611,13,687,39"/>
-</map>

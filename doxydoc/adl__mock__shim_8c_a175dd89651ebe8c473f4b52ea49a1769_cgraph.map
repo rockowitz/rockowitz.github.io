@@ -1,6 +1,0 @@
-<map id="adlshim_ddc_read_only" name="adlshim_ddc_read_only">
-<area shape="rect" id="node2" href="$adl__intf_8c.html#a071e8c0ef5ffff3af3dbc359d3aef9db" title="adl_ddc_read_only" alt="" coords="220,42,359,69"/>
-<area shape="rect" id="node5" href="$status__code__mgt_8c.html#ac449f9595ec628815ee047e9468924f2" title="modulate_rc" alt="" coords="241,93,337,119"/>
-<area shape="rect" id="node3" href="$adl__intf_8c.html#a6b81695695f4f07c1712892202181411" title="call_ADL_Display_DDCBlock\lAccess_Get" alt="" coords="407,5,605,47"/>
-<area shape="rect" id="node4" href="$string__util_8c.html#a7be9558f1d0d894bf845df9c75ab553b" title="hexstring" alt="" coords="653,42,729,69"/>
-</map>

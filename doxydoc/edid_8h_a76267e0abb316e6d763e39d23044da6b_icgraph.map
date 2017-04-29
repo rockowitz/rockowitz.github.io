@@ -1,6 +1,0 @@
-<map id="parse_mfg_id_in_buffer" name="parse_mfg_id_in_buffer">
-<area shape="rect" id="node2" href="$edid_8h.html#acacc0ae2b861fad99bb2949bd1b6605d" title="get_edid_mfg_id_in\l_buffer" alt="" coords="212,5,351,47"/>
-<area shape="rect" id="node3" href="$edid_8h.html#a95568554345c2bb4914009b809db6021" title="create_parsed_edid" alt="" coords="399,13,541,39"/>
-<area shape="rect" id="node4" href="$adl__intf_8h.html#ac1363634107d136c760d564f75e7ff51" title="adl_is_available" alt="" coords="589,13,709,39"/>
-<area shape="rect" id="node5" href="$adl__shim_8h.html#a2427e37d02a8850db3482def6d51214b" title="adlshim_is_available" alt="" coords="757,13,905,39"/>
-</map>

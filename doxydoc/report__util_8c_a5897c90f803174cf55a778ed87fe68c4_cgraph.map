@@ -1,6 +1,0 @@
-<map id="rpt_multiline" name="rpt_multiline">
-<area shape="rect" id="node2" href="$report__util_8c.html#ab76f22bb48d874d5345a1bc36f5c29f8" title="rpt_title" alt="" coords="144,56,207,83"/>
-<area shape="rect" id="node3" href="$report__util_8c.html#a71f4829c653e1d6101dfc1ae09f4796e" title="rpt_cur_output_dest" alt="" coords="255,5,391,32"/>
-<area shape="rect" id="node4" href="$string__util_8c.html#a40e4b07a0b96c41bd9acace618efa73b" title="f0printf" alt="" coords="293,56,353,83"/>
-<area shape="rect" id="node5" href="$report__util_8c.html#ad8736ff7dcecf76ad38a0c26a1cdf5ff" title="rpt_get_indent" alt="" coords="270,107,375,133"/>
-</map>

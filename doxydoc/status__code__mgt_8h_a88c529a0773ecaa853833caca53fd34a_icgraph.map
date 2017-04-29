@@ -1,6 +1,0 @@
-<map id="get_modulation" name="get_modulation">
-<area shape="rect" id="node2" href="$status__code__mgt_8h.html#a1de499b4263b7ab0514947df979bd0e1" title="find_global_status\l_code_info" alt="" coords="168,49,297,90"/>
-<area shape="rect" id="node3" href="$status__code__mgt_8h.html#a53f26ef7b3fd5f54ba0e3ff0a370d332" title="gsc_desc" alt="" coords="365,5,447,32"/>
-<area shape="rect" id="node4" href="$status__code__mgt_8h.html#aac44651b3bcfb55c0ed29fc05900d0be" title="gsc_name" alt="" coords="363,56,449,83"/>
-<area shape="rect" id="node5" href="$execution__stats_8h.html#a78f4593a15c1981f91abc910fc57380f" title="log_status_code" alt="" coords="345,107,467,133"/>
-</map>

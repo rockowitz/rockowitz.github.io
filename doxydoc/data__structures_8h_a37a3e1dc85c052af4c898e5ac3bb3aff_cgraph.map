@@ -1,5 +1,0 @@
-<map id="bbf_store_bytehex_list" name="bbf_store_bytehex_list">
-<area shape="rect" id="node2" href="$data__structures_8c.html#a3c57719d981d567e738f49a59dbaa153" title="store_bytehex_list" alt="" coords="207,5,336,32"/>
-<area shape="rect" id="node3" href="$string__util_8c.html#a75a6e1ac4ecc9282e6fd022c8b6cafc1" title="hhc_to_byte_in_buf" alt="" coords="384,5,519,32"/>
-<area shape="rect" id="node4" href="$string__util_8c.html#afadfb2d68209660a3f060271715be05d" title="hhs_to_byte_in_buf" alt="" coords="567,5,701,32"/>
-</map>

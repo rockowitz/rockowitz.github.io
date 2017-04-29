@@ -1,9 +1,0 @@
-<map id="util/failsim.c" name="util/failsim.c">
-<area shape="rect" id="node2" href="$debug__util_8h.html" title="debug_util.h" alt="" coords="5,80,99,107"/>
-<area shape="rect" id="node3" href="$file__util_8h.html" title="file_util.h" alt="" coords="123,80,195,107"/>
-<area shape="rect" id="node4" href="$report__util_8h.html" title="report_util.h" alt="" coords="219,80,309,107"/>
-<area shape="rect" id="node6" href="$string__util_8h.html" title="string_util.h" alt="" coords="333,80,419,107"/>
-<area shape="rect" id="node8" href="$failsim_8h.html" title="failsim.h" alt="" coords="443,80,514,107"/>
-<area shape="rect" id="node5" href="$coredefs_8h.html" title="coredefs.h" alt="" coords="224,155,309,181"/>
-<area shape="rect" id="node7" href="$glib__util_8h.html" title="glib_util.h" alt="" coords="338,155,414,181"/>
-</map>

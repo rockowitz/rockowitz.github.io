@@ -1,5 +1,0 @@
-<map id="elapsed_time_nanosec" name="elapsed_time_nanosec">
-<area shape="rect" id="node2" href="$timestamp_8h.html#a8d9202599e15e0e2de8e2d0fe10e6c38" title="formatted_elapsed_time" alt="" coords="216,29,383,56"/>
-<area shape="rect" id="node3" href="$core_8h.html#a27da8f036d4047a74c55cc8da59503e7" title="is_tracing" alt="" coords="431,29,509,56"/>
-<area shape="rect" id="node4" href="$group__output__redirection.html#gaaeef435133003c66994472c6540114fd" title="terminate_execution\l_on_error" alt="" coords="557,22,700,63"/>
-</map>

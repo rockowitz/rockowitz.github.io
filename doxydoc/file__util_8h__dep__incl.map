@@ -1,7 +1,0 @@
-<map id="util/file_util.h" name="util/file_util.h">
-<area shape="rect" id="node2" href="$device__id__util_8c.html" title="util/device_id_util.c" alt="" coords="5,80,140,107"/>
-<area shape="rect" id="node3" href="$failsim_8c.html" title="util/failsim.c" alt="" coords="165,80,255,107"/>
-<area shape="rect" id="node4" href="$file__util_8c.html" title="util/file_util.c" alt="" coords="280,80,372,107"/>
-<area shape="rect" id="node5" href="$report__util_8c.html" title="util/report_util.c" alt="" coords="397,80,506,107"/>
-<area shape="rect" id="node6" href="$core_8c.html" title="base/core.c" alt="" coords="530,80,623,107"/>
-</map>

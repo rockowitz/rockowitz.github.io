@@ -1,9 +1,0 @@
-<map id="rpt_file_contents" name="rpt_file_contents">
-<area shape="rect" id="node2" href="$file__util_8c.html#a6defbcb2fc1ac183ee68218c22e7622b" title="file_getlines" alt="" coords="176,5,269,32"/>
-<area shape="rect" id="node3" href="$report__util_8c.html#ab76f22bb48d874d5345a1bc36f5c29f8" title="rpt_title" alt="" coords="323,81,385,108"/>
-<area shape="rect" id="node7" href="$report__util_8c.html#ae58dfa6adb2e9f1dacce17f7b0732f26" title="rpt_vstring" alt="" coords="181,107,264,133"/>
-<area shape="rect" id="node8" href="$string__util_8c.html#a9d77f8f56ba1eb3ef69d986032365270" title="rtrim_in_place" alt="" coords="171,157,275,184"/>
-<area shape="rect" id="node4" href="$report__util_8c.html#a71f4829c653e1d6101dfc1ae09f4796e" title="rpt_cur_output_dest" alt="" coords="433,31,569,57"/>
-<area shape="rect" id="node5" href="$string__util_8c.html#a40e4b07a0b96c41bd9acace618efa73b" title="f0printf" alt="" coords="471,81,531,108"/>
-<area shape="rect" id="node6" href="$report__util_8c.html#ad8736ff7dcecf76ad38a0c26a1cdf5ff" title="rpt_get_indent" alt="" coords="449,132,554,159"/>
-</map>

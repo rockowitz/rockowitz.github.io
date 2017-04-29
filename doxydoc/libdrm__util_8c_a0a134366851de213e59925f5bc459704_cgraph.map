@@ -1,7 +1,0 @@
-<map id="report_drmModePropertyBlob" name="report_drmModePropertyBlob">
-<area shape="rect" id="node2" href="$report__util_8c.html#a5cdea9095d42e1486dd5f4b45e1e2a82" title="rpt_hex_dump" alt="" coords="252,56,357,83"/>
-<area shape="rect" id="node6" href="$report__util_8c.html#ae58dfa6adb2e9f1dacce17f7b0732f26" title="rpt_vstring" alt="" coords="263,107,346,133"/>
-<area shape="rect" id="node3" href="$string__util_8c.html#ae90befb63fa82bf7029a37b5dc079bd5" title="fhex_dump_indented" alt="" coords="405,5,552,32"/>
-<area shape="rect" id="node4" href="$report__util_8c.html#a71f4829c653e1d6101dfc1ae09f4796e" title="rpt_cur_output_dest" alt="" coords="411,56,547,83"/>
-<area shape="rect" id="node5" href="$report__util_8c.html#ad8736ff7dcecf76ad38a0c26a1cdf5ff" title="rpt_get_indent" alt="" coords="426,107,531,133"/>
-</map>

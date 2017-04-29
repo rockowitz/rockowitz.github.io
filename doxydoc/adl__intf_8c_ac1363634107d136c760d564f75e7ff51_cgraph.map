@@ -1,7 +1,0 @@
-<map id="adl_is_available" name="adl_is_available">
-<area shape="rect" id="node2" href="$edid_8c.html#a95568554345c2bb4914009b809db6021" title="create_parsed_edid" alt="" coords="173,27,316,53"/>
-<area shape="rect" id="node3" href="$string__util_8c.html#a7be9558f1d0d894bf845df9c75ab553b" title="hexstring" alt="" coords="592,5,668,32"/>
-<area shape="rect" id="node4" href="$edid_8c.html#a9b0fb825704a18d0697b4a43427a887a" title="edid_checksum" alt="" coords="375,27,492,53"/>
-<area shape="rect" id="node5" href="$edid_8c.html#acacc0ae2b861fad99bb2949bd1b6605d" title="get_edid_mfg_id_in\l_buffer" alt="" coords="364,78,503,119"/>
-<area shape="rect" id="node6" href="$edid_8c.html#a8deaa444736443ae96f39831ac495052" title="parse_mfg_id_in_buffer" alt="" coords="551,85,709,112"/>
-</map>

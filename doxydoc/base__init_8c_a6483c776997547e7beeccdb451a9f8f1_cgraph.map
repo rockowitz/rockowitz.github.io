@@ -1,6 +1,0 @@
-<map id="init_base_services" name="init_base_services">
-<area shape="rect" id="node2" href="$execution__stats_8c.html#ad70249ea86cb0e7e29b91e8d87be0ba9" title="init_execution_stats" alt="" coords="191,5,329,32"/>
-<area shape="rect" id="node4" href="$group__output__redirection.html#gaa26303af55a402114d18c18beaff07b1" title="init_msg_control" alt="" coords="201,56,319,83"/>
-<area shape="rect" id="node5" href="$status__code__mgt_8c.html#aa85de0271d1c0b60f5ac843b4c67f55a" title="init_status_code_mgt" alt="" coords="187,107,333,133"/>
-<area shape="rect" id="node3" href="$timestamp_8c.html#a58f7d86cfff5a68fd9dce605cf82dcdb" title="cur_realtime_nanosec" alt="" coords="381,5,536,32"/>
-</map>

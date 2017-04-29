@@ -1,8 +1,0 @@
-<map id="load_device_ids" name="load_device_ids">
-<area shape="rect" id="node2" href="$file__util_8c.html#a6defbcb2fc1ac183ee68218c22e7622b" title="file_getlines" alt="" coords="213,5,306,32"/>
-<area shape="rect" id="node3" href="$device__id__util_8c.html#ab2c34c5509ff3e6279c81e62d97ec1c1" title="find_next_segment_start" alt="" coords="176,107,343,133"/>
-<area shape="rect" id="node4" href="$string__util_8c.html#a9d77f8f56ba1eb3ef69d986032365270" title="rtrim_in_place" alt="" coords="391,81,495,108"/>
-<area shape="rect" id="node5" href="$string__util_8c.html#a421e5f914841061096ef1977d1501b32" title="streq" alt="" coords="417,144,469,171"/>
-<area shape="rect" id="node6" href="$multi__level__map_8c.html#abbb5583883b09ae58c7c2a3a5c7f5ae3" title="mlm_add_node" alt="" coords="201,208,317,235"/>
-<area shape="rect" id="node7" href="$multi__level__map_8c.html#aa6cfd2845bb6e486df626adab1d056df" title="mlm_create" alt="" coords="213,259,305,285"/>
-</map>

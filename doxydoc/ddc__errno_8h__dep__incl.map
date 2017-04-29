@@ -1,7 +1,0 @@
-<map id="base/ddc_errno.h" name="base/ddc_errno.h">
-<area shape="rect" id="node2" href="$core_8c.html" title="base/core.c" alt="" coords="5,80,99,107"/>
-<area shape="rect" id="node3" href="$ddc__errno_8c.html" title="base/ddc_errno.c" alt="" coords="123,80,250,107"/>
-<area shape="rect" id="node4" href="$ddc__packets_8c_source.html" title="base/ddc_packets.c" alt="" coords="274,80,417,107"/>
-<area shape="rect" id="node5" href="$execution__stats_8c.html" title="base/execution_stats.c" alt="" coords="441,80,599,107"/>
-<area shape="rect" id="node6" href="$status__code__mgt_8c.html" title="base/status_code_mgt.c" alt="" coords="624,80,792,107"/>
-</map>

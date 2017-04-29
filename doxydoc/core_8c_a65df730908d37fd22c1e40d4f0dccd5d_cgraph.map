@@ -1,6 +1,0 @@
-<map id="ddc_abort" name="ddc_abort">
-<area shape="rect" id="node2" href="$string__util_8c.html#a1ecb7458987387bfab6da137cdebc4cc" title="bool_repr" alt="" coords="157,5,235,32"/>
-<area shape="rect" id="node3" href="$string__util_8c.html#a40e4b07a0b96c41bd9acace618efa73b" title="f0printf" alt="" coords="166,56,226,83"/>
-<area shape="rect" id="node4" href="$string__util_8c.html#a19fd4ad73c0ebc9d781fc3e5dafaac6a" title="f0puts" alt="" coords="167,107,225,133"/>
-<area shape="rect" id="node5" href="$debug__util_8c.html#a78274a059edb36a1e7dd04d3297c9283" title="show_backtrace" alt="" coords="136,157,256,184"/>
-</map>

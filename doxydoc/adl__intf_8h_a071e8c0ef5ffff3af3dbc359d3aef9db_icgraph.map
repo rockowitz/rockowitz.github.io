@@ -1,6 +1,0 @@
-<map id="adl_ddc_read_only" name="adl_ddc_read_only">
-<area shape="rect" id="node2" href="$adl__intf_8h.html#ab5d49279913ef99fb81919fd776db9cc" title="adl_ddc_write_read" alt="" coords="205,42,346,69"/>
-<area shape="rect" id="node5" href="$adl__shim_8h.html#ab19758fb7b631c348fe5e50741ff6fd6" title="adlshim_ddc_read_only" alt="" coords="192,93,359,119"/>
-<area shape="rect" id="node3" href="$adl__aux__intf_8h.html#a152524dac9132f8eabd0bc8a4fe9f578" title="adl_ddc_write_read\l_with_retry" alt="" coords="407,5,548,47"/>
-<area shape="rect" id="node4" href="$adl__aux__intf_8h.html#af0912e3c74e1052e08137dbc8afc0043" title="adl_ddc_get_vcp" alt="" coords="415,71,540,98"/>
-</map>

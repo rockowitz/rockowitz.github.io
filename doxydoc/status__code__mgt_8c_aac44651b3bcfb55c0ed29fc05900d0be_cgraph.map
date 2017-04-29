@@ -1,7 +1,0 @@
-<map id="gsc_name" name="gsc_name">
-<area shape="rect" id="node2" href="$status__code__mgt_8c.html#a5ad7069f8d25a93db2d67712d5bfe8ba" title="find_global_status\l_code_info" alt="" coords="139,61,268,102"/>
-<area shape="rect" id="node3" href="$status__code__mgt_8c.html#abdd7cd8a1ede3207dc5266da455b7ce5" title="demodulate_rc" alt="" coords="528,5,640,32"/>
-<area shape="rect" id="node4" href="$status__code__mgt_8c.html#a88c529a0773ecaa853833caca53fd34a" title="get_modulation" alt="" coords="341,68,455,95"/>
-<area shape="rect" id="node6" href="$status__code__mgt_8c.html#af8da39bb97e9a42ae0175a2190d4d50e" title="report_status_code_info" alt="" coords="316,119,480,145"/>
-<area shape="rect" id="node5" href="$status__code__mgt_8c.html#ac449f9595ec628815ee047e9468924f2" title="modulate_rc" alt="" coords="536,68,632,95"/>
-</map>

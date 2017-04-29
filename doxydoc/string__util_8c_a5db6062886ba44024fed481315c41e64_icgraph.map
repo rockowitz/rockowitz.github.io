@@ -1,6 +1,0 @@
-<map id="ntsa_free" name="ntsa_free">
-<area shape="rect" id="node2" href="$failsim_8h.html#a47679d378ef8cd71ccbdaf2470d37f21" title="fsim_load_control_from\l_gptrarray" alt="" coords="131,5,291,47"/>
-<area shape="rect" id="node4" href="$udev__util_8h.html#a25d919095c7730db7bd16fb6ebd92743" title="report_udev_device" alt="" coords="140,71,281,98"/>
-<area shape="rect" id="node3" href="$failsim_8h.html#a0956766f1ad629bfade7cb1725c57ebe" title="fsim_load_control_file" alt="" coords="345,13,496,39"/>
-<area shape="rect" id="node5" href="$udev__util_8h.html#a99b7881f22243d06502945cddebbe6ab" title="probe_udev_subsystem" alt="" coords="339,71,503,98"/>
-</map>

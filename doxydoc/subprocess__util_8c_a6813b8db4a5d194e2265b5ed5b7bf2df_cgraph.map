@@ -1,6 +1,0 @@
-<map id="execute_shell_cmd" name="execute_shell_cmd">
-<area shape="rect" id="node2" href="$subprocess__util_8c.html#a4f505ff76c75586edb55993623ea13e5" title="execute_shell_cmd_rpt" alt="" coords="192,31,351,57"/>
-<area shape="rect" id="node3" href="$string__util_8c.html#a8f6a914dc7b1910470c4b154b2fc1569" title="str_ends_with" alt="" coords="405,5,507,32"/>
-<area shape="rect" id="node5" href="$string__util_8c.html#a2a3f36d75cc7a82c7a290f77e3577ca1" title="str_all_printable" alt="" coords="399,56,513,83"/>
-<area shape="rect" id="node4" href="$string__util_8c.html#a421e5f914841061096ef1977d1501b32" title="streq" alt="" coords="561,5,613,32"/>
-</map>

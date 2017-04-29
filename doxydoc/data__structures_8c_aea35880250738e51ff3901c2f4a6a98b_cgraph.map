@@ -1,7 +1,0 @@
-<map id="bva_report" name="bva_report">
-<area shape="rect" id="node2" href="$data__structures_8c.html#a2b850fecd25d8253212c5494aababc2d" title="bva_append" alt="" coords="139,5,235,32"/>
-<area shape="rect" id="node3" href="$data__structures_8c.html#ae89ac50f99d2431a4aa9180dec4811c8" title="bva_create" alt="" coords="142,56,231,83"/>
-<area shape="rect" id="node4" href="$data__structures_8c.html#a51f3653c1ea7951db3197b3f60d895be" title="bva_free" alt="" coords="149,107,224,133"/>
-<area shape="rect" id="node5" href="$data__structures_8c.html#af7fecad046dada36d10899532e3e72df" title="bva_get" alt="" coords="151,157,222,184"/>
-<area shape="rect" id="node6" href="$data__structures_8c.html#a8fa645fef0d66dd54a026575213fd72b" title="bva_length" alt="" coords="143,208,230,235"/>
-</map>

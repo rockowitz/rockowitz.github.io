@@ -1,5 +1,0 @@
-<map id="execute_shell_cmd_rpt" name="execute_shell_cmd_rpt">
-<area shape="rect" id="node2" href="$string__util_8c.html#a2a3f36d75cc7a82c7a290f77e3577ca1" title="str_all_printable" alt="" coords="212,5,327,32"/>
-<area shape="rect" id="node3" href="$string__util_8c.html#a8f6a914dc7b1910470c4b154b2fc1569" title="str_ends_with" alt="" coords="218,56,321,83"/>
-<area shape="rect" id="node4" href="$string__util_8c.html#a421e5f914841061096ef1977d1501b32" title="streq" alt="" coords="375,56,427,83"/>
-</map>

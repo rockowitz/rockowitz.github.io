@@ -1,5 +1,0 @@
-<map id="register_retcode_desc_finder" name="register_retcode_desc_finder">
-<area shape="rect" id="node2" href="$adl__errors_8c.html#ac884d8c24fc60ca145d0fa7215fa182c" title="get_adl_status_description" alt="" coords="211,5,392,32"/>
-<area shape="rect" id="node3" href="$linux__errno_8h.html#aa855fbeac6a501e0290d968e529f5c81" title="init_linux_errno" alt="" coords="246,56,357,83"/>
-<area shape="rect" id="node4" href="$base__init_8h.html#a6483c776997547e7beeccdb451a9f8f1" title="init_base_services" alt="" coords="440,56,573,83"/>
-</map>

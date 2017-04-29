@@ -1,7 +1,0 @@
-<map id="ntsa_length" name="ntsa_length">
-<area shape="rect" id="node2" href="$failsim_8h.html#a47679d378ef8cd71ccbdaf2470d37f21" title="fsim_load_control_from\l_gptrarray" alt="" coords="144,5,304,47"/>
-<area shape="rect" id="node4" href="$string__util_8h.html#a3255337423d43fac3199c13a7192c39d" title="ntsa_to_g_ptr_array" alt="" coords="155,71,293,98"/>
-<area shape="rect" id="node5" href="$udev__util_8h.html#a25d919095c7730db7bd16fb6ebd92743" title="report_udev_device" alt="" coords="153,122,295,149"/>
-<area shape="rect" id="node3" href="$failsim_8h.html#a0956766f1ad629bfade7cb1725c57ebe" title="fsim_load_control_file" alt="" coords="359,13,509,39"/>
-<area shape="rect" id="node6" href="$udev__util_8h.html#a99b7881f22243d06502945cddebbe6ab" title="probe_udev_subsystem" alt="" coords="352,122,516,149"/>
-</map>

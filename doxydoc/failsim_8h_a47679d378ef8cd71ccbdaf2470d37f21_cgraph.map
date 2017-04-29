@@ -1,9 +1,0 @@
-<map id="fsim_load_control_from_gptrarray" name="fsim_load_control_from_gptrarray">
-<area shape="rect" id="node2" href="$string__util_8c.html#a1ecb7458987387bfab6da137cdebc4cc" title="bool_repr" alt="" coords="230,5,309,32"/>
-<area shape="rect" id="node3" href="$failsim_8c.html#a2f683090d49d58a869be750cc6957e9c" title="fsim_add_error" alt="" coords="213,56,325,83"/>
-<area shape="rect" id="node4" href="$string__util_8c.html#a5db6062886ba44024fed481315c41e64" title="ntsa_free" alt="" coords="231,107,308,133"/>
-<area shape="rect" id="node5" href="$string__util_8c.html#a30d5da07ffd3470b7a0858166e0871ad" title="ntsa_length" alt="" coords="224,157,315,184"/>
-<area shape="rect" id="node6" href="$string__util_8c.html#a0d0184489aca3b5345de818a5b6bd1c3" title="strsplit" alt="" coords="240,208,299,235"/>
-<area shape="rect" id="node7" href="$string__util_8c.html#ada65b72acbc6657ea068618852614779" title="strtrim" alt="" coords="241,259,298,285"/>
-<area shape="rect" id="node8" href="$string__util_8c.html#a532393d96d5bb161b62c13a07a8ad1e7" title="strtrim_r" alt="" coords="373,259,441,285"/>
-</map>

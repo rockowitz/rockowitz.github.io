@@ -1,5 +1,0 @@
-<map id="is_command_in_path" name="is_command_in_path">
-<area shape="rect" id="node2" href="$subprocess__util_8c.html#a900726b5c6996b1c6008f375f642cbec" title="execute_shell_cmd_collect" alt="" coords="201,5,385,32"/>
-<area shape="rect" id="node3" href="$string__util_8c.html#a8f6a914dc7b1910470c4b154b2fc1569" title="str_ends_with" alt="" coords="433,5,536,32"/>
-<area shape="rect" id="node4" href="$string__util_8c.html#a421e5f914841061096ef1977d1501b32" title="streq" alt="" coords="584,5,636,32"/>
-</map>
