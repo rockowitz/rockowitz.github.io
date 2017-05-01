@@ -7,13 +7,19 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
   <meta name="author" content="Sanford Rockowitz">
-  <link rel="shortcut icon" href="../img/favicon.ico">
+  
   <title>Special Nvidia Driver Settings - ddcutil Documentation</title>
+  
+
+  <link rel="shortcut icon" href="../img/favicon.ico">
+
+  
   <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
 
   <link rel="stylesheet" href="../css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../css/theme_extra.css" type="text/css" />
   <link rel="stylesheet" href="../css/highlight.css">
+
   
   <script>
     // Current page data
@@ -24,7 +30,9 @@
   
   <script src="../js/jquery-2.1.1.min.js"></script>
   <script src="../js/modernizr-2.8.3.min.js"></script>
-  <script type="text/javascript" src="../js/highlight.pack.js"></script> 
+  <script type="text/javascript" src="../js/highlight.pack.js"></script>
+  <script src="../js/theme.js"></script> 
+
   
 </head>
 
@@ -44,7 +52,7 @@
       </div>
 
       <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
-	<ul class="current">
+        <ul class="current">
           
             <li>
     <li class="toctree-l1 ">
@@ -63,6 +71,13 @@
             <li>
     <li class="toctree-l1 ">
         <a class="" href="../cmdargs/">Command Arguments</a>
+        
+    </li>
+<li>
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="../cmdopts/">Command Specific Options</a>
         
     </li>
 <li>
@@ -210,6 +225,13 @@
           
             <li>
     <li class="toctree-l1 ">
+        <a class="" href="../ddc_null_response/">DDC Null Message</a>
+        
+    </li>
+<li>
+          
+            <li>
+    <li class="toctree-l1 ">
         <a class="" href="../api_main/">APIs</a>
         
     </li>
@@ -289,8 +311,9 @@
     <li>Special Nvidia Driver Settings</li>
     <li class="wy-breadcrumbs-aside">
       
-        <a href="https://github.com/rockowitz/ddcutil/edit/master/docs/nvidia.md"
-          class="icon icon-github"> Edit on GitHub</a>
+        
+          <a href="https://github.com/rockowitz/ddcutil" class="icon icon-github"> Edit on GitHub</a>
+        
       
     </li>
   </ul>
@@ -323,7 +346,7 @@ EndSection
 <p>Copy this file to /etc/X11/xorg.conf.d  </p>
 <p>Note: This file works if there is no /etc/X11/xorg.conf file.  If you do have an 
 xorg.conf file the Identifier field will likely require modification.</p>
-<p>This does not, however, appear to be a universal solution.  It has been reported to fail on a GTX960 with Nvidia driver version 358.16.  </p>
+<p>This does not, however, appear to be a universal solution.  It has been reported to fail on a GTX960 with Nvidia driver version 358.16 and a GTX1060 (?) with driver Nvidia driver version ???</p>
               
             </div>
           </div>
@@ -353,10 +376,10 @@ xorg.conf file the Identifier field will likely require modification.</p>
       </div>
 
     </section>
-    
+
   </div>
 
-  <div class="rst-versions" role="note" style="cursor: pointer">
+<div class="rst-versions" role="note" style="cursor: pointer">
     <span class="rst-current-version" data-toggle="rst-current-version">
       
           <a href="https://github.com/rockowitz/ddcutil" class="icon icon-github" style="float: left; color: #fcfcfc"> GitHub</a>
@@ -369,7 +392,6 @@ xorg.conf file the Identifier field will likely require modification.</p>
       
     </span>
 </div>
-    <script src="../js/theme.js"></script>
 
 </body>
 </html>

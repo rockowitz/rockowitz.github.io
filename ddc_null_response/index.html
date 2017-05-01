@@ -8,7 +8,7 @@
   
   <meta name="author" content="Sanford Rockowitz">
   
-  <title>Comparison with ddccontrol - ddcutil Documentation</title>
+  <title>DDC Null Message - ddcutil Documentation</title>
   
 
   <link rel="shortcut icon" href="../img/favicon.ico">
@@ -23,9 +23,9 @@
   
   <script>
     // Current page data
-    var mkdocs_page_name = "Comparison with ddccontrol";
-    var mkdocs_page_input_path = "ddccontrol.md";
-    var mkdocs_page_url = "/ddccontrol/";
+    var mkdocs_page_name = "DDC Null Message";
+    var mkdocs_page_input_path = "ddc_null_response.md";
+    var mkdocs_page_url = "/ddc_null_response/";
   </script>
   
   <script src="../js/jquery-2.1.1.min.js"></script>
@@ -203,15 +203,8 @@
 <li>
           
             <li>
-    <li class="toctree-l1 current">
-        <a class="current" href="./">Comparison with ddccontrol</a>
-        
-            <ul>
-            
-                <li class="toctree-l3"><a href="#comparison-with-ddccontrol">Comparison with ddccontrol</a></li>
-                
-            
-            </ul>
+    <li class="toctree-l1 ">
+        <a class="" href="../ddccontrol/">Comparison with ddccontrol</a>
         
     </li>
 <li>
@@ -224,8 +217,15 @@
 <li>
           
             <li>
-    <li class="toctree-l1 ">
-        <a class="" href="../ddc_null_response/">DDC Null Message</a>
+    <li class="toctree-l1 current">
+        <a class="current" href="./">DDC Null Message</a>
+        
+            <ul>
+            
+                <li class="toctree-l3"><a href="#ddc-null-message">DDC Null Message</a></li>
+                
+            
+            </ul>
         
     </li>
 <li>
@@ -308,7 +308,7 @@
     
       
     
-    <li>Comparison with ddccontrol</li>
+    <li>DDC Null Message</li>
     <li class="wy-breadcrumbs-aside">
       
         
@@ -322,21 +322,29 @@
           <div role="main">
             <div class="section">
               
-                <h2 id="comparison-with-ddccontrol">Comparison with ddccontrol</h2>
-<p>The program <strong>ddccontrol</strong> appears to be unmaintained, and has been dropped from distributions.  It is brittle 
-in ways that I surmise reflect the services availble at the time it was written.  In particular:  </p>
+                <h2 id="ddc-null-message">DDC Null Message</h2>
+<p>Per section 6.4 of the Display Data Channel Command Interface Standard, Version 1.1, October 29, 2004:</p>
+<blockquote>
+<p>A DDC NULL message from display to host is used in the following cases:<br />
+- To detect that the display is DDC/CI capable (by reading it at 0x6Fh I2C slave address)<br />
+- To tell the host that the display does not have any answer to give the host (not ready or not expected)<br />
+- The "Enable Application Report" has not been sent before using Application Messages</p>
+</blockquote>
+<p>The second bullet point causes ambiguity:  </p>
 <ul>
-<li><strong>ddcctontrol</strong>, as it is normally built (based on <strong><em>configure</em></strong> options that control conditional compilation), programs the I2C devcies directly at the PCI level.  It has dedicated code for each of several video card interfaces (e.g. nvidia, sis, intel740, intell 810).
-<strong>ddcutil</strong>, 
-on the other hand, relies exclusively on the the <strong>i2c-dev</strong> userspace 
-interface to I2C.  This should make it less fragile to video card variations.</li>
-<li><strong>ddccontrol</strong> uses a monitor attribute database to interpret VCP feature codes.  With MCCS 
-2.0 and greater, VCP feature code definitions are largely standardized.  <strong>ddcutil</strong> uses the 
-MCCS specification to interpret VCP feature values, and considerable
-effort has gone into understanding that specification, particularly the variation among versions.  Unlike <strong>ddccontrol</strong>, <strong>ddcutil</strong> makes
-no attempt to interpret values for feature codes designated as manufacturer 
-specific (E0..FF). </li>
+<li>In the context of a getting a VCP value or reading the capabilities string, a Null Message 
+normally indicates that the display is not ready to process a DDC message.  The proper response in 
+this case is to sleep for an extended period and retry.   </li>
+<li>Some monitors use the Null Message to indicate an 
+unsupported feature, instead of returning a normal response with the Unsupported Feature bit set.
+The proper response in this case is to not retry.  </li>
 </ul>
+<p>However, it is still possible
+that a monitor that users the Null Message to indicate an unsupported feature also on occasion uses
+the Null Message to indicate an error.  The unfortunate consequence is that multiple retries will occur in cases where the Null Message is used to indicate VCP value not found, slowing down operation for those monitors.</p>
+<p>DDC attempts to read VCP feature 0x00, which never exists, during the monitor detection phase to determine if a monitor uses the Null Message to indicated unsupported.  This is used to control whether 
+a persistent Null Message response is interpreted by higher levels of <strong>ddcutil</strong> as an error or 
+unsupported feature indication.</p>
               
             </div>
           </div>
@@ -344,10 +352,10 @@ specific (E0..FF). </li>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../monitor_notes/" class="btn btn-neutral float-right" title="Notes on specific monitors">Next <span class="icon icon-circle-arrow-right"></span></a>
+        <a href="../api_main/" class="btn btn-neutral float-right" title="APIs">Next <span class="icon icon-circle-arrow-right"></span></a>
       
       
-        <a href="../raspberry/" class="btn btn-neutral" title="Raspberry Pi"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../monitor_notes/" class="btn btn-neutral" title="Notes on specific monitors"><span class="icon icon-circle-arrow-left"></span> Previous</a>
       
     </div>
   
@@ -375,10 +383,10 @@ specific (E0..FF). </li>
           <a href="https://github.com/rockowitz/ddcutil" class="icon icon-github" style="float: left; color: #fcfcfc"> GitHub</a>
       
       
-        <span><a href="../raspberry/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+        <span><a href="../monitor_notes/" style="color: #fcfcfc;">&laquo; Previous</a></span>
       
       
-        <span style="margin-left: 15px"><a href="../monitor_notes/" style="color: #fcfcfc">Next &raquo;</a></span>
+        <span style="margin-left: 15px"><a href="../api_main/" style="color: #fcfcfc">Next &raquo;</a></span>
       
     </span>
 </div>

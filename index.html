@@ -7,24 +7,32 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="ddcutil (formerly ddctool) is a Linux utility for reading and changing monitor settings such as brightness and color levels. ddcutil primarily uses DDC/CI (Display Data Channel Command Interface) to communicate with monitors implementing MCCS (Monitor Control Command Set) over I2C.  Alternatively, there is support for monitors (such as Eizo Coloredge) that implement MCCS using a USB connection.">
   <meta name="author" content="Sanford Rockowitz">
+  
+  <title>ddcutil Documentation</title>
+  
+
   <link rel="shortcut icon" href="./img/favicon.ico">
-  <title>Overview - ddcutil Documentation</title>
+
+  
   <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
 
   <link rel="stylesheet" href="./css/theme.css" type="text/css" />
   <link rel="stylesheet" href="./css/theme_extra.css" type="text/css" />
   <link rel="stylesheet" href="./css/highlight.css">
+
   
   <script>
     // Current page data
-    var mkdocs_page_name = "Overview";
+    var mkdocs_page_name = "None";
     var mkdocs_page_input_path = "index.md";
     var mkdocs_page_url = "/";
   </script>
   
   <script src="./js/jquery-2.1.1.min.js"></script>
   <script src="./js/modernizr-2.8.3.min.js"></script>
-  <script type="text/javascript" src="./js/highlight.pack.js"></script> 
+  <script type="text/javascript" src="./js/highlight.pack.js"></script>
+  <script src="./js/theme.js"></script> 
+
   
 </head>
 
@@ -44,7 +52,7 @@
       </div>
 
       <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
-	<ul class="current">
+        <ul class="current">
           
             <li>
     <li class="toctree-l1 current">
@@ -86,6 +94,13 @@
             <li>
     <li class="toctree-l1 ">
         <a class="" href="cmdargs/">Command Arguments</a>
+        
+    </li>
+<li>
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="cmdopts/">Command Specific Options</a>
         
     </li>
 <li>
@@ -226,6 +241,13 @@
           
             <li>
     <li class="toctree-l1 ">
+        <a class="" href="ddc_null_response/">DDC Null Message</a>
+        
+    </li>
+<li>
+          
+            <li>
+    <li class="toctree-l1 ">
         <a class="" href="api_main/">APIs</a>
         
     </li>
@@ -305,8 +327,9 @@
     <li>Overview</li>
     <li class="wy-breadcrumbs-aside">
       
-        <a href="https://github.com/rockowitz/ddcutil/edit/master/docs/index.md"
-          class="icon icon-github"> Edit on GitHub</a>
+        
+          <a href="https://github.com/rockowitz/ddcutil" class="icon icon-github"> Edit on GitHub</a>
+        
       
     </li>
   </ul>
@@ -317,41 +340,31 @@
               
                 <h1 id="ddcutil">ddcutil</h1>
 <h2 id="announcements">Announcements</h2>
+<p>01 May 2017</p>
+<p>Release 0.8.0 contains new features intended to address issues with particular monitors and user environments,
+and to improve performance</p>
+<p>The most significant changes visible to users are:  </p>
+<ul>
+<li>If there are multiple monitors and option <strong>--async</strong> is specified, initial monitor checks are performed in separate threads.
+Users with multiple monitors should see significantly better startup time.  </li>
+<li>If a display is specified by its I2C bus number (option <strong>--busno</strong>) and option <strong>--nodetect</strong> is specified,
+global display detection is skipped, improving performance.</li>
+<li>By default, <strong>setvcp</strong> and <strong>loadvcp</strong> now read the VCP value after it has been set, 
+to confirm that the monitor has made the change requested.  </li>
+<li>Command <strong>getvcp --terse</strong> now reports VCP settings in a form that is easily machine readable.</li>
+<li>The C API has been extensively revised.  Many names have changed for consistency and clarity.<br />
+(Apologies to those of you who have written applications.)</li>
+</ul>
+<p>For a complete list of changes and bug fixes, see <a href="release_notes/">Release Notes</a>.
+Prior annoucnements can be found <a href="prior_announcements/">here</a>.</p>
 <p>29 April 2017</p>
-<p>As some time in the recent past, the files for release 0.7.3 in the OpenSUSE Build Service were corrupted 
+<p>At some time in the recent past, the files for release 0.7.3 in the OpenSUSE Build Service were corrupted 
 with files from the test system.  Symptoms of this corruption include</p>
 <ul>
-<li>Prefixing a VCP feature code number with "0x" causes a segfault, e.g. "ddcutil setvcp 0x10 50"</li>
+<li>Prefixing a VCP feature code number with "0x" causes a segfault, e.g. "ddcutil setvcp 0x10 50"  </li>
 <li>Command line option "--verify" is recognized</li>
 </ul>
 <p>As of this morning, the production ddcutil project on OBS was restored to release 0.7.3.</p>
-<p>05 March 2017</p>
-<p>Release 0.7.3 is a maintenance release.  There is no need to install it unless you are experiencing problems.</p>
-<p>This release introduces the following features:</p>
-<ul>
-<li>Command <strong>ddcutil detect --verbose</strong> shows additional information.</li>
-<li>Command <strong>ddcutil environment --verbose</strong> implements additional diagnostic tests.</li>
-<li><strong>configure</strong> option <strong><em>--enable-drm</em></strong> controls whether DRM is used to enhance the diagnostics of command <strong>ddcutil environment --verbose</strong>.
-If <strong><em>enable-drm=yes</em></strong>, package libdrm-dev or libdrm-devel (depending on Linux distribution) must be installed to build <strong>ddcutil</strong>.
-Setting <strong><em>--enable-drm=no</em></strong> affects only diagnostic output, not normal execution.</li>
-</ul>
-<p>For a complete list of changes and bug fixes, see <a href="release_notes/">Release Notes</a>.
-Prior annoucnements can be found <a href="prior_announcements/">here</a>.</p>
-<p>01 Febrary 2017</p>
-<p>Release 0.7.2 fixes a critical bug in release 0.7.1 where insufficient privileges on a /dev/i2c-n device causes program termination.
-Additionally there are minor improvements to diagnostic output.  </p>
-<p>For a complete list of changes and bug fixes, see <a href="release_notes/">Release Notes</a>.
-Prior annoucnements can be found <a href="prior_announcements/">here</a>.</p>
-<p>27 January 2017</p>
-<p>Release 0.7.1 is a maintenance release.  There is no need to install it unless you are experiencing problems.</p>
-<p>This release introduces the following features:</p>
-<ul>
-<li>Command option <strong><em>--force-slave-address</em></strong> causes <strong>ddcutil</strong> to attempt to take control of slave addresses
-on the I2C bus even if they are in use by another driver.  This may aid in certain situations where monitors on 
-an I2C bus are not properly detected. See <a href="tuning/#force_slave">Instrumentation and Tuning</a>)</li>
-</ul>
-<p>For a complete list of changes and bug fixes, see <a href="release_notes/">Release Notes</a>.
-Prior annoucnements can be found <a href="prior_announcements/">here</a>.</p>
 <h2 id="introduction">Introduction</h2>
 <p><strong>ddcutil</strong> is a Linux program for querying and changing monitor settings, such as 
 brightness and color levels.   </p>
@@ -362,6 +375,12 @@ monitor exposes the I2C channel as devices named /dev/i2c-n.  Alternatively, the
 calibration is relative to the monitor color settings currently in effect, 
 e.g. red gain.  ddcutil allows color related settings to be saved at the time 
 a monitor is calibrated, and then restored when the calibration is applied.</p>
+<p>Other common uses include:</p>
+<ul>
+<li>Switching monitor input  </li>
+<li>Controlling brightness</li>
+</ul>
+<p>In general, anything that </p>
 <p>Restrictions:<br />
 -<strong>ddcutil</strong> does not support laptop displays, which are controlled using a special API, not I2C. <br />
 - Nvidia's proprietary video driver may require special configuration.  See 
@@ -570,10 +589,10 @@ For USB connected monitors, use command <code>ddcutil usbenvironment</code>.</p>
       </div>
 
     </section>
-    
+
   </div>
 
-  <div class="rst-versions" role="note" style="cursor: pointer">
+<div class="rst-versions" role="note" style="cursor: pointer">
     <span class="rst-current-version" data-toggle="rst-current-version">
       
           <a href="https://github.com/rockowitz/ddcutil" class="icon icon-github" style="float: left; color: #fcfcfc"> GitHub</a>
@@ -584,12 +603,11 @@ For USB connected monitors, use command <code>ddcutil usbenvironment</code>.</p>
       
     </span>
 </div>
-    <script src="./js/theme.js"></script>
 
 </body>
 </html>
 
 <!--
-MkDocs version : 0.16.1
-Build Date UTC : 2017-04-29 14:31:55
+MkDocs version : 0.15.3
+Build Date UTC : 2017-05-01 06:06:20.314456
 -->

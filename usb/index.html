@@ -7,13 +7,19 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
   <meta name="author" content="Sanford Rockowitz">
-  <link rel="shortcut icon" href="../img/favicon.ico">
+  
   <title>USB Connected Monitors - ddcutil Documentation</title>
+  
+
+  <link rel="shortcut icon" href="../img/favicon.ico">
+
+  
   <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
 
   <link rel="stylesheet" href="../css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../css/theme_extra.css" type="text/css" />
   <link rel="stylesheet" href="../css/highlight.css">
+
   
   <script>
     // Current page data
@@ -24,7 +30,9 @@
   
   <script src="../js/jquery-2.1.1.min.js"></script>
   <script src="../js/modernizr-2.8.3.min.js"></script>
-  <script type="text/javascript" src="../js/highlight.pack.js"></script> 
+  <script type="text/javascript" src="../js/highlight.pack.js"></script>
+  <script src="../js/theme.js"></script> 
+
   
 </head>
 
@@ -44,7 +52,7 @@
       </div>
 
       <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
-	<ul class="current">
+        <ul class="current">
           
             <li>
     <li class="toctree-l1 ">
@@ -63,6 +71,13 @@
             <li>
     <li class="toctree-l1 ">
         <a class="" href="../cmdargs/">Command Arguments</a>
+        
+    </li>
+<li>
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="../cmdopts/">Command Specific Options</a>
         
     </li>
 <li>
@@ -141,6 +156,8 @@
                 
                     <li><a class="toctree-l4" href="#command-ddcutil-chkusbmon">Command ddcutil chkusbmon</a></li>
                 
+                    <li><a class="toctree-l4" href="#command-option-hiddev">Command option --hiddev</a></li>
+                
                     <li><a class="toctree-l4" href="#command-option-usb">Command option --usb</a></li>
                 
             
@@ -208,6 +225,13 @@
             <li>
     <li class="toctree-l1 ">
         <a class="" href="../monitor_notes/">Notes on specific monitors</a>
+        
+    </li>
+<li>
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="../ddc_null_response/">DDC Null Message</a>
         
     </li>
 <li>
@@ -293,8 +317,9 @@
     <li>USB Connected Monitors</li>
     <li class="wy-breadcrumbs-aside">
       
-        <a href="https://github.com/rockowitz/ddcutil/edit/master/docs/usb.md"
-          class="icon icon-github"> Edit on GitHub</a>
+        
+          <a href="https://github.com/rockowitz/ddcutil" class="icon icon-github"> Edit on GitHub</a>
+        
       
     </li>
   </ul>
@@ -309,7 +334,7 @@ The support is considered initial in that it has only been tested with only a fe
 <p>Note that some monitors use USB to communicate, but do not follow the specification for MCCS over USB. 
 For example, the HP Dreamcolor 2480zx uses a proprietary, undocumented protocol. </p>
 <p>Limitations: <br />
-- The MCCS over USB specification has no method for querying a capabilities string.  The <strong>ddcutil capabilities</strong> 
+- The MCCS over USB specification has no mechanism for querying a capabilities string.  The <strong>ddcutil capabilities</strong> 
 command synthesizes a response based on the feature codes it detects. <br />
 - Table type features are completely unsupported.<br />
 - Apple Thunderbolt displays might work, but are not supported.  Thunderbolt integrates video, USB, and ethernet into a single cable, and 
@@ -329,6 +354,9 @@ Other than actual Macs, these are uncommon.</p>
 </code></pre>
 
 <p>Returns 0 if a device represents a USB attached monitor, non-zero if not.  See <a href="../i2c_permissions/">Device Permissions</a></p>
+<h3 id="command-option-hiddev">Command option --hiddev</h3>
+<p>USB connected monitors can be specfied by their hiddev device number, which specifies the /dev file 
+by which they are accessed. That is, <strong>--hiddev 2</strong> refers to /dev/usb/hiddev2. </p>
 <h3 id="command-option-usb">Command option --usb</h3>
 <p>USB connected monitors can be specified by their USB bus number and device number.  The numbers are separated by either a period or colon.</p>
 <p>For example: </p>
@@ -368,10 +396,10 @@ Other than actual Macs, these are uncommon.</p>
       </div>
 
     </section>
-    
+
   </div>
 
-  <div class="rst-versions" role="note" style="cursor: pointer">
+<div class="rst-versions" role="note" style="cursor: pointer">
     <span class="rst-current-version" data-toggle="rst-current-version">
       
           <a href="https://github.com/rockowitz/ddcutil" class="icon icon-github" style="float: left; color: #fcfcfc"> GitHub</a>
@@ -384,7 +412,6 @@ Other than actual Macs, these are uncommon.</p>
       
     </span>
 </div>
-    <script src="../js/theme.js"></script>
 
 </body>
 </html>

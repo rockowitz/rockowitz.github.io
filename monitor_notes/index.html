@@ -7,13 +7,19 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
   <meta name="author" content="Sanford Rockowitz">
-  <link rel="shortcut icon" href="../img/favicon.ico">
+  
   <title>Notes on specific monitors - ddcutil Documentation</title>
+  
+
+  <link rel="shortcut icon" href="../img/favicon.ico">
+
+  
   <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
 
   <link rel="stylesheet" href="../css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../css/theme_extra.css" type="text/css" />
   <link rel="stylesheet" href="../css/highlight.css">
+
   
   <script>
     // Current page data
@@ -24,7 +30,9 @@
   
   <script src="../js/jquery-2.1.1.min.js"></script>
   <script src="../js/modernizr-2.8.3.min.js"></script>
-  <script type="text/javascript" src="../js/highlight.pack.js"></script> 
+  <script type="text/javascript" src="../js/highlight.pack.js"></script>
+  <script src="../js/theme.js"></script> 
+
   
 </head>
 
@@ -44,7 +52,7 @@
       </div>
 
       <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
-	<ul class="current">
+        <ul class="current">
           
             <li>
     <li class="toctree-l1 ">
@@ -63,6 +71,13 @@
             <li>
     <li class="toctree-l1 ">
         <a class="" href="../cmdargs/">Command Arguments</a>
+        
+    </li>
+<li>
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="../cmdopts/">Command Specific Options</a>
         
     </li>
 <li>
@@ -206,6 +221,8 @@
                 
                     <li><a class="toctree-l4" href="#asus-ve247">Asus VE247</a></li>
                 
+                    <li><a class="toctree-l4" href="#benq-xl2411z">BenQ XL2411Z</a></li>
+                
                     <li><a class="toctree-l4" href="#dell-p2411">Dell P2411</a></li>
                 
                     <li><a class="toctree-l4" href="#dell-ultrasharp-1905fp">Dell Ultrasharp 1905FP</a></li>
@@ -217,6 +234,8 @@
                     <li><a class="toctree-l4" href="#gateway-diamondtron-vx920">Gateway Diamondtron VX920</a></li>
                 
                     <li><a class="toctree-l4" href="#hanns-g-hi221d">Hanns G Hi221D</a></li>
+                
+                    <li><a class="toctree-l4" href="#hp-lp2475w">HP LP2475w</a></li>
                 
                     <li><a class="toctree-l4" href="#hp-lp2480zx">HP LP2480zx</a></li>
                 
@@ -232,12 +251,23 @@
                 
                     <li><a class="toctree-l4" href="#nec-pa241">NEC PA241</a></li>
                 
+                    <li><a class="toctree-l4" href="#phillips-bdm3270">Phillips BDM3270</a></li>
+                
+                    <li><a class="toctree-l4" href="#samsung-s32d850">Samsung S32D850</a></li>
+                
                     <li><a class="toctree-l4" href="#samsung-syncmaster-213t">Samsung Syncmaster 213T</a></li>
                 
                     <li><a class="toctree-l4" href="#samsung-syncmaster-730b">Samsung Syncmaster 730B</a></li>
                 
             
             </ul>
+        
+    </li>
+<li>
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="../ddc_null_response/">DDC Null Message</a>
         
     </li>
 <li>
@@ -323,8 +353,9 @@
     <li>Notes on specific monitors</li>
     <li class="wy-breadcrumbs-aside">
       
-        <a href="https://github.com/rockowitz/ddcutil/edit/master/docs/monitor_notes.md"
-          class="icon icon-github"> Edit on GitHub</a>
+        
+          <a href="https://github.com/rockowitz/ddcutil" class="icon icon-github"> Edit on GitHub</a>
+        
       
     </li>
   </ul>
@@ -354,6 +385,15 @@ Firmware version: 2.0 <br />
 Maufacture year:  2010</p>
 <p>Responds to unknown VCP codes using the DDC NULL message instead of setting the <strong><em>Unsupported VCP code</em></strong> bit in the GETVCP response.</p>
 <p>Sensible reponses to VCP codes 0B and 0C. </p>
+<h3 id="benq-xl2411z">BenQ XL2411Z</h3>
+<p>VCP version:  2.2<br />
+Controller Manufacturer: Mstar<br />
+Controller Model: mh=0x00 mh=0x00, ml-0x85, sh=0x56<br />
+Firmware version: 2.1 <br />
+Manufacture year: 2013</p>
+<p>Sensible response to VCP code 0B (color temperature increment) = 50 degrees Kelvin<br />
+Nonsensical reponse 0  to VCP code 0C (Color temperature request), implies color temperature = 300  degrees Kelvin. </p>
+<p>Responds to VCP feature 60 (Input Source) even though this is not documented in the capabilities string.</p>
 <h3 id="dell-p2411">Dell P2411</h3>
 <p>VCP version: 2.1 <br />
 Controller Manufacturer: Mstar<br />
@@ -395,6 +435,18 @@ Controller manufacturer:  Mstar <br />
 Controller model:   mh=0x00, ml=0x92, sh=0x00 <br />
 Firmware version:  0.6  </p>
 <p>All GETVCP requests return a value, whether or not the feature is valid for the monitor.   The monitor never reports a feature as unsupported.</p>
+<h3 id="hp-lp2475w">HP LP2475w</h3>
+<p>VCP version:  2.1<br />
+Controller manufacturer: Genesis<br />
+Controller model:  mh=xff   ml=xff  sh=x80
+Firmware version: 0.31<br />
+Manufacture year: 2008  </p>
+<p>Color temperature:<br />
+  color temp increment (feature 0B):  3000 deg K<br />
+  color temp request (feature 0C):    1<br />
+  calculated color temp = 3000 + (x0c_val * x0b_val) = 3000  + (1 * 3000) = 6000 degrees Kelvin</p>
+<p>LUT loading not supported using standard VCP feature codes.</p>
+<p>Implements MCCS over USB as well as I2C.   However, the USB implementation appears to be non-standard.  It does not conform to the USB Monitor Control Class Specification. </p>
 <h3 id="hp-lp2480zx">HP LP2480zx</h3>
 <p>VCP version:   2.1 <br />
 Controller manufacturer:  Genesis <br />
@@ -406,7 +458,15 @@ standard VCP feature codes.</p>
 <p>Implements MCCS over USB as well as I2C.   However, the USB implementation appears to be non-standard.  It does not conform to the USB Monitor Control Class Specification. </p>
 <p>Sensible reponses to VCP codes 0B and 0C. </p>
 <p>Capabilities string does not match actual capabilities observed.  For example, capaibilites does not include VCP feature code 0x10, brightness, which is recognized by getvcp and setvcp.</p>
-<p>Capabilities string does include cmds() segment listed supported commands, ore model() segment listing model.</p>
+<p>Values in capabilities string for feature 60 is a mixture of hex and decimal values, i.e. </p>
+<pre><code> 01 02 03 04 05 07 0C 13 14 15 17 1C
+</code></pre>
+
+<p>Should be:</p>
+<pre><code> 01 02 03 04 05 07 0C 0D 0E 0F 11 ??
+</code></pre>
+
+<p>Capabilities string does include cmds() segment listing supported commands, or model() segment listing model.</p>
 <h3 id="hp-w2207">HP w2207</h3>
 <p>VCP Version:  2.1<br />
 Controller manufacturer:  Mstar<br />
@@ -451,6 +511,21 @@ specific DDC commands  The USB interface also makes heavy use of manufacturer sp
 <p>VCP code 0x0c (Color Temperature Request) returns 0, which is nonsensical. </p>
 <p>Does not use the usual VCP codes (.e.g. 0x16/Red Gain) for color control.
 Instead uses the 6 axis color control features 0x8c..0xa0.</p>
+<h3 id="phillips-bdm3270">Phillips BDM3270</h3>
+<p>VCP Version: 2.2
+Controller manufacturer:  Novatek, model info: mh=0xff, ml=0xff, sh=0x00
+Firmware version:  1.0
+Manufature year:  2016</p>
+<p>Color temperature increment (VCP code x0B) = 50 degrees Kelvin (sensible)<br />
+Color temperature request (VCP code 0x0C) yields a calculated color temperator of 3000+(70*50) = 6500 degrees Kelvin</p>
+<h3 id="samsung-s32d850">Samsung S32D850</h3>
+<p>Manufacture year:  2015 
+VCP Version: 2.0
+Controller manufacturer:  Mstar, controller number: mh=0x00, ml=0x10, sh=0x00
+Firmware version:         0.1</p>
+<p>Capabilites request returns a 0 length string.</p>
+<p>Features x0B and X0C are unsupported.  Cannot calculate color temperature.</p>
+<p>Has no serial number in EDID</p>
 <h3 id="samsung-syncmaster-213t">Samsung Syncmaster 213T</h3>
 <p>Does not support DDC.</p>
 <h3 id="samsung-syncmaster-730b">Samsung Syncmaster 730B</h3>
@@ -466,7 +541,7 @@ Firmware version:  Unknown (VCP feature code C9 unsupported)  </p>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../api_main/" class="btn btn-neutral float-right" title="APIs">Next <span class="icon icon-circle-arrow-right"></span></a>
+        <a href="../ddc_null_response/" class="btn btn-neutral float-right" title="DDC Null Message">Next <span class="icon icon-circle-arrow-right"></span></a>
       
       
         <a href="../ddccontrol/" class="btn btn-neutral" title="Comparison with ddccontrol"><span class="icon icon-circle-arrow-left"></span> Previous</a>
@@ -488,10 +563,10 @@ Firmware version:  Unknown (VCP feature code C9 unsupported)  </p>
       </div>
 
     </section>
-    
+
   </div>
 
-  <div class="rst-versions" role="note" style="cursor: pointer">
+<div class="rst-versions" role="note" style="cursor: pointer">
     <span class="rst-current-version" data-toggle="rst-current-version">
       
           <a href="https://github.com/rockowitz/ddcutil" class="icon icon-github" style="float: left; color: #fcfcfc"> GitHub</a>
@@ -500,11 +575,10 @@ Firmware version:  Unknown (VCP feature code C9 unsupported)  </p>
         <span><a href="../ddccontrol/" style="color: #fcfcfc;">&laquo; Previous</a></span>
       
       
-        <span style="margin-left: 15px"><a href="../api_main/" style="color: #fcfcfc">Next &raquo;</a></span>
+        <span style="margin-left: 15px"><a href="../ddc_null_response/" style="color: #fcfcfc">Next &raquo;</a></span>
       
     </span>
 </div>
-    <script src="../js/theme.js"></script>
 
 </body>
 </html>

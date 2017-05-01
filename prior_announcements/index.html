@@ -7,13 +7,19 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
   <meta name="author" content="Sanford Rockowitz">
-  <link rel="shortcut icon" href="../img/favicon.ico">
+  
   <title>Announcement History - ddcutil Documentation</title>
+  
+
+  <link rel="shortcut icon" href="../img/favicon.ico">
+
+  
   <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
 
   <link rel="stylesheet" href="../css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../css/theme_extra.css" type="text/css" />
   <link rel="stylesheet" href="../css/highlight.css">
+
   
   <script>
     // Current page data
@@ -24,7 +30,9 @@
   
   <script src="../js/jquery-2.1.1.min.js"></script>
   <script src="../js/modernizr-2.8.3.min.js"></script>
-  <script type="text/javascript" src="../js/highlight.pack.js"></script> 
+  <script type="text/javascript" src="../js/highlight.pack.js"></script>
+  <script src="../js/theme.js"></script> 
+
   
 </head>
 
@@ -44,7 +52,7 @@
       </div>
 
       <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
-	<ul class="current">
+        <ul class="current">
           
             <li>
     <li class="toctree-l1 ">
@@ -63,6 +71,13 @@
             <li>
     <li class="toctree-l1 ">
         <a class="" href="../cmdargs/">Command Arguments</a>
+        
+    </li>
+<li>
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="../cmdopts/">Command Specific Options</a>
         
     </li>
 <li>
@@ -203,6 +218,13 @@
           
             <li>
     <li class="toctree-l1 ">
+        <a class="" href="../ddc_null_response/">DDC Null Message</a>
+        
+    </li>
+<li>
+          
+            <li>
+    <li class="toctree-l1 ">
         <a class="" href="../api_main/">APIs</a>
         
     </li>
@@ -222,6 +244,8 @@
             <ul>
             
                 <li class="toctree-l3"><a href="#prior-announcements">Prior Announcements</a></li>
+                
+                    <li><a class="toctree-l4" href="#073">0.7.3</a></li>
                 
                     <li><a class="toctree-l4" href="#072">0.7.2</a></li>
                 
@@ -299,8 +323,9 @@
     <li>Announcement History</li>
     <li class="wy-breadcrumbs-aside">
       
-        <a href="https://github.com/rockowitz/ddcutil/edit/master/docs/prior_announcements.md"
-          class="icon icon-github"> Edit on GitHub</a>
+        
+          <a href="https://github.com/rockowitz/ddcutil" class="icon icon-github"> Edit on GitHub</a>
+        
       
     </li>
   </ul>
@@ -310,6 +335,19 @@
             <div class="section">
               
                 <h2 id="prior-announcements">Prior Announcements</h2>
+<h3 id="073">0.7.3</h3>
+<p>05 March 2017</p>
+<p>Release 0.7.3 is a maintenance release.  There is no need to install it unless you are experiencing problems.</p>
+<p>This release introduces the following features:</p>
+<ul>
+<li>Command <strong>ddcutil detect --verbose</strong> shows additional information.</li>
+<li>Command <strong>ddcutil environment --verbose</strong> implements additional diagnostic tests.</li>
+<li><strong>configure</strong> option <strong><em>--enable-drm</em></strong> controls whether DRM is used to enhance the diagnostics of command <strong>ddcutil environment --verbose</strong>.
+If <strong><em>enable-drm=yes</em></strong>, package libdrm-dev or libdrm-devel (depending on Linux distribution) must be installed to build <strong>ddcutil</strong>.
+Setting <strong><em>--enable-drm=no</em></strong> affects only diagnostic output, not normal execution.</li>
+</ul>
+<p>For a complete list of changes and bug fixes, see <a href="../release_notes/">Release Notes</a>.
+Prior annoucnements can be found <a href="./">here</a>.</p>
 <h3 id="072">0.7.2</h3>
 <p>01 February 2017</p>
 <p>Maintenance release.</p>
@@ -320,6 +358,8 @@
 <li>Minor improvements to <strong>ddcutil detect --verbose</strong></li>
 <li>Add explanations for additional <strong><em>errno</em></strong> values</li>
 </ul>
+<p>For a complete list of changes and bug fixes, see <a href="../release_notes/">Release Notes</a>.
+Prior annoucnements can be found <a href="./">here</a>.</p>
 <h3 id="071">0.7.1</h3>
 <p>27 January 2017</p>
 <p>Release 0.7.1 is a maintenance release.  There is no need to install it unless you are experiencing problems.</p>
@@ -411,10 +451,10 @@ to avoid confusion with a commerical datacenter program also named <strong>ddcto
       </div>
 
     </section>
-    
+
   </div>
 
-  <div class="rst-versions" role="note" style="cursor: pointer">
+<div class="rst-versions" role="note" style="cursor: pointer">
     <span class="rst-current-version" data-toggle="rst-current-version">
       
           <a href="https://github.com/rockowitz/ddcutil" class="icon icon-github" style="float: left; color: #fcfcfc"> GitHub</a>
@@ -427,7 +467,6 @@ to avoid confusion with a commerical datacenter program also named <strong>ddcto
       
     </span>
 </div>
-    <script src="../js/theme.js"></script>
 
 </body>
 </html>

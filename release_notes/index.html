@@ -7,13 +7,19 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
   <meta name="author" content="Sanford Rockowitz">
-  <link rel="shortcut icon" href="../img/favicon.ico">
+  
   <title>Release Notes - ddcutil Documentation</title>
+  
+
+  <link rel="shortcut icon" href="../img/favicon.ico">
+
+  
   <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
 
   <link rel="stylesheet" href="../css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../css/theme_extra.css" type="text/css" />
   <link rel="stylesheet" href="../css/highlight.css">
+
   
   <script>
     // Current page data
@@ -24,7 +30,9 @@
   
   <script src="../js/jquery-2.1.1.min.js"></script>
   <script src="../js/modernizr-2.8.3.min.js"></script>
-  <script type="text/javascript" src="../js/highlight.pack.js"></script> 
+  <script type="text/javascript" src="../js/highlight.pack.js"></script>
+  <script src="../js/theme.js"></script> 
+
   
 </head>
 
@@ -44,7 +52,7 @@
       </div>
 
       <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
-	<ul class="current">
+        <ul class="current">
           
             <li>
     <li class="toctree-l1 ">
@@ -63,6 +71,13 @@
             <li>
     <li class="toctree-l1 ">
         <a class="" href="../cmdargs/">Command Arguments</a>
+        
+    </li>
+<li>
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="../cmdopts/">Command Specific Options</a>
         
     </li>
 <li>
@@ -203,6 +218,13 @@
           
             <li>
     <li class="toctree-l1 ">
+        <a class="" href="../ddc_null_response/">DDC Null Message</a>
+        
+    </li>
+<li>
+          
+            <li>
+    <li class="toctree-l1 ">
         <a class="" href="../api_main/">APIs</a>
         
     </li>
@@ -229,6 +251,14 @@
             <ul>
             
                 <li class="toctree-l3"><a href="#release-notes">Release Notes</a></li>
+                
+                    <li><a class="toctree-l4" href="#080">0.8.0</a></li>
+                
+                    <li><a class="toctree-l4" href="#bug-fixes">Bug Fixes</a></li>
+                
+                    <li><a class="toctree-l4" href="#c-api">C API</a></li>
+                
+                    <li><a class="toctree-l4" href="#name-changes">Name Changes</a></li>
                 
                     <li><a class="toctree-l4" href="#073">0.7.3</a></li>
                 
@@ -307,8 +337,9 @@
     <li>Release Notes</li>
     <li class="wy-breadcrumbs-aside">
       
-        <a href="https://github.com/rockowitz/ddcutil/edit/master/docs/release_notes.md"
-          class="icon icon-github"> Edit on GitHub</a>
+        
+          <a href="https://github.com/rockowitz/ddcutil" class="icon icon-github"> Edit on GitHub</a>
+        
       
     </li>
   </ul>
@@ -318,6 +349,395 @@
             <div class="section">
               
                 <h2 id="release-notes">Release Notes</h2>
+<h3 id="080">0.8.0</h3>
+<p>01 May 2017</p>
+<p>Release 0.8.0 contains new features intended to address issues with particular monitors and user environments,
+to changes to improve performance, and code restructuring for future enhancements</p>
+<h4 id="general-changes">General Changes</h4>
+<ul>
+<li>
+<p>Monitor detection and cataloging has been extensively reworked. 
+To support the library version of <strong>ddcutil</strong> used by the C (and future Pascal)
+APIs, the list of displays is determined at program/library initialization and 
+saved.  </p>
+</li>
+<li>
+<p>The processing of the DDC Null Response has changed.  Normally a Null Response
+indicates a processing error in the monitor.  Some monitors also use the Null Response
+to indicate that a VCP feature is unsupported.  <strong>ddcutil</strong> now performs an 
+extended sleep when receiving a Null Message response to allow the monitor 
+to recover.  It also performs an initial check of whether a monitor uses DDC Null Response to 
+indicate unsupported features. See <a href="../ddc_null_response/">DDC Null Response</a>.</p>
+</li>
+<li>
+<p>Linux error numbers no longer appear "modulated" in messages.  That is, an EACCES
+error is reported as -13, not -1013.  Note that the C API has always returned 
+Linux error numbers in unmodulated form.</p>
+</li>
+</ul>
+<h4 id="general-options">General Options</h4>
+<p>Option <strong>--async</strong> parallelizes the monitor checks executed during display detection. 
+If there are multiple monitors, initial monitor checks are performed
+in multiple threads, improving performance.  This may become the default in future releases.</p>
+<p>Option <strong>--nodetect</strong> is valid if the display is specified by its I2C bus number, using option <strong>--busno</strong>.
+In that case the initial detection of all displays is skipped, improving performance.
+This may become the default in future releases.</p>
+<p>Option <strong>--hiddev <number></strong> specifies a USB monitor connection by its hiddev device number.  For example:</p>
+<pre><code>--hiddev 3
+</code></pre>
+
+<p>refers to device /dev/usb/hiddev3.  There is no single letter 
+specifier for this option.</p>
+<p>Option <strong>--brief</strong> is now a synonym for <strong>--terse</strong></p>
+<p>Added <strong>--stats</strong> class <strong>elapsed</strong>.  <strong>--stats time</strong> is a synonum for <strong>--stats elapsed</strong>.  Shows program 
+elapsed time.  </p>
+<h4 id="changes-to-specific-commands">Changes to Specific Commands:</h4>
+<p><strong>environment</strong> and <strong>interrogate</strong> commands:</p>
+<ul>
+<li>Report ddcutil version</li>
+</ul>
+<p><strong>probe</strong>, <strong>interrogate</strong>, and <strong>getvcp scan</strong> commands:</p>
+<ul>
+<li>Do not include table features unless output level is VERBOSE. 
+This speeds up execution as table reads for unsupported features 
+execute the maximum number of retries.  It also clarifies performance statistics.
+No monitors implementing table type features have yet been observed.</li>
+</ul>
+<p><strong>interrogate</strong> command:  </p>
+<ul>
+<li>Report performance statistics for individual parts of <strong>interrogate</strong>.</li>
+</ul>
+<p><strong>getvcp</strong> command:  </p>
+<ul>
+<li>If <strong>--terse</strong> output is specified, then the VCP data is output in a form that
+is easily machine readable.  See <a href="../cmdopts/">Command Specific Options</a></li>
+</ul>
+<p><strong>setvcp</strong> and <strong>loadvcp</strong> commands:</p>
+<p>By default, <strong>setvcp</strong> and <strong>loadvcp</strong> verify that a value has been successfully
+set by reading the value from the monitor after writing it.  Option <strong>--noverify</strong> 
+disables this check.</p>
+<h3 id="bug-fixes">Bug Fixes</h3>
+<ul>
+<li>Fixed a segfault that occurred when a monitor returned a 0 length capabilities string.</li>
+<li>Variables holding nanoseconds have been changed from type <strong>long</strong> to <strong>uint64_t</strong>
+to address overflow problems on 32 bit systems such as Raspberry Pi.</li>
+</ul>
+<h3 id="c-api">C API</h3>
+<p>The C API has undergone extensive changes.</p>
+<h3 id="name-changes">Name Changes</h3>
+<p>Names have been changed for consistency and clarity.
+Names of certain functions used in message generation have been shortened 
+to simplify printf() type functions. </p>
+<table>
+<thead>
+<tr>
+<th>Old typedef name</th>
+<th>New typedef name</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>VCP_Feature_Code</td>
+<td>DDCA_Vcp_Feature_Code</td>
+</tr>
+<tr>
+<td>Version_Feature_Info</td>
+<td>DDCA_Version_Feature_Info</td>
+</tr>
+<tr>
+<td>Vcp_Value_Type</td>
+<td>DDCA_Vcp_Value_Type</td>
+</tr>
+<tr>
+<td>Single_Vcp_Value</td>
+<td>DDCA_Single_Vcp_Value</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Old function name</th>
+<th>New function name</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ddca_status_code_name()</td>
+<td>ddca_rc_name()</td>
+</tr>
+<tr>
+<td>ddca_status_code_desc()</td>
+<td>ddca_rc_desc()</td>
+</tr>
+<tr>
+<td>ddca_repr_display_identifier()</td>
+<td>ddca_did_repr()</td>
+</tr>
+<tr>
+<td>ddca_create_display_ref()</td>
+<td>ddca_get_display_ref()</td>
+</tr>
+<tr>
+<td>ddca_repr_display_ref()</td>
+<td>ddca_dref_repr()</td>
+</tr>
+<tr>
+<td>ddca_repr_display_handle()</td>
+<td>ddca_dh_repr()</td>
+</tr>
+<tr>
+<td>ddca_get_displays()</td>
+<td>ddca_get_display_info_list()</td>
+</tr>
+<tr>
+<td>ddca_repr_mccs_version()</td>
+<td>ddca_mccs_version_id_name()</td>
+</tr>
+<tr>
+<td>ddca_mccs_version_id_string()</td>
+<td>ddca_mccs_version_id_desc()</td>
+</tr>
+</tbody>
+</table>
+<p>Comments:<br />
+- Function <strong>ddca_create_display_ref()</strong> was renamed to <strong>ddca_get_display_ref()</strong> to reflect 
+the fact that it returns a <strong>DDCA_Display_Reference</strong> from the internal data structures 
+representing detected displays.</p>
+<table>
+<thead>
+<tr>
+<th>Struct</th>
+<th>Old field name</th>
+<th>New field name</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>DDCA_Ddcutil_Version_Spec</td>
+<td>build</td>
+<td>micro</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Enum</th>
+<th>Old value name</th>
+<th>New value name</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>DDCA_Output_Level</td>
+<td>OL_TERSE</td>
+<td>DDCA_OL_TERSE</td>
+</tr>
+<tr>
+<td>DDCA_Output_Level</td>
+<td>OL_NORMAL</td>
+<td>DDCA_OL_NORMAL</td>
+</tr>
+<tr>
+<td>DDCA_Output_Level</td>
+<td>OL_VERBOSE</td>
+<td>DDCA_OL_VERBOSE</td>
+</tr>
+<tr>
+<td>DDCA_IO_Mode</td>
+<td>DDC_IO_DEVI2C</td>
+<td>DDCA_IO_DEVI2C</td>
+</tr>
+<tr>
+<td>DDCA_IO_Mode</td>
+<td>DDC_IO_ADL</td>
+<td>DDCA_IO_ADL</td>
+</tr>
+<tr>
+<td>DDCA_IO_Mode</td>
+<td>USB_IO</td>
+<td>DDCA_IO_USB</td>
+</tr>
+<tr>
+<td>DDCA_Vcp_Value_Type</td>
+<td>NON_TABLE_VCP_VALUE</td>
+<td>DDCA_NON_TABLE_VCP_VALUE</td>
+</tr>
+<tr>
+<td>DDCA_Vcp_Value_Type</td>
+<td>TABLE_VCP_VALUE</td>
+<td>DDCA_TABLE_VCP_VALUE</td>
+</tr>
+</tbody>
+</table>
+<h4 id="structs-and-functions-removed">Structs and Functions Removed</h4>
+<table>
+<thead>
+<tr>
+<th>Structs removed</th>
+<th>Comment</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>DDCA_IO_Location</td>
+<td>Use DCCA_IO_Path</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Functions removed</th>
+<th>Comment</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ddca_built_with_adl()</td>
+<td>Use ddca_get_build_options()</td>
+</tr>
+<tr>
+<td>ddca_built_with_usb()</td>
+<td>Use ddca_get_built_options()</td>
+</tr>
+</tbody>
+</table>
+<h4 id="enums-structs-and-functions-added-or-changed">Enums, Structs, and Functions Added or Changed</h4>
+<table>
+<thead>
+<tr>
+<th>New enum</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>DDCA_Stats_Type</td>
+<td>Used as both values and bitflags for statistics types</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>New Structs</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>DDCA_Adlno</td>
+<td>Represents a ADL adapter number/display number pair</td>
+</tr>
+<tr>
+<td>DDCA_IO_PATH</td>
+<td>Physical path for MCCS communication</td>
+</tr>
+</tbody>
+</table>
+<p>Comments:  </p>
+<ul>
+<li>Struct <strong>DDCA_Display_Location</strong> is replaced by <strong>DDCA_IO_Path</strong>, 
+which contains only the io mode and device identifiers 
+for that mode.  USB bus and device numbers were removed
+because they are attributes by which the physical path 
+(hiddev device) can be found, not the path itself.</li>
+<li>Struct <strong>DDCA_Display_Info</strong> has been adjusted to use <strong>DDCA_IO_Path</strong>.</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Function added</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ddca_ddcutil_version()</td>
+<td>gets version as a struct of numbers</td>
+</tr>
+<tr>
+<td>ddca_reset_stats()</td>
+<td>reset performance statistics</td>
+</tr>
+<tr>
+<td>ddca_show_stats()</td>
+<td>report performance statistics</td>
+</tr>
+<tr>
+<td>ddca_enable_verify()</td>
+<td>controls whether VCP values are read after being set</td>
+</tr>
+<tr>
+<td>ddca_is_verify_enabled()</td>
+<td>queries whether VCP values are verified</td>
+</tr>
+<tr>
+<td>ddca_free_display_info_list()</td>
+<td>free function for struct</td>
+</tr>
+<tr>
+<td>ddca_create_usb_hiddev_display_identifier()</td>
+<td>create identifier for hiddev number</td>
+</tr>
+<tr>
+<td>ddca_get_simple_nc_feature_value_name()</td>
+<td>lookup name of simple NC feature value</td>
+</tr>
+</tbody>
+</table>
+<h4 id="other-changes">Other Changes</h4>
+<p>Functions now return Linux error number -EINVAL rather than DDC specific 
+error number DDCL_ARG in case of invalid argument </p>
+<p>The display selection lifecycle has been changed.  The <strong>DDCA_Display_Identifier</strong> is not 
+the only way to obtain a <strong>DDCA_Display_Reference</strong>. 
+It can be found in one of 2 ways:  </p>
+<ul>
+<li>Function <strong>ddca_get_display_info_list()</strong> returns  a collection <strong>DDCA_Display_Info</strong>, containing 
+display identification information (e.g. ddcutil assigned display number, I2c Bus number, manufacturer id, etc.) and a display reference.
+The client program can search through the returned collection to find the
+desired monitor.  </li>
+<li>A <strong>DDCA_Display_Identifier</strong> can be created and passed to ddca_get_display_ref(), which returns 
+a <strong>DDCA_Display_Reference</strong>.</li>
+</ul>
+<p>See sample program <strong>demo_display_selection.c</strong> for examples. </p>
+<h4 id="sample-code-files">Sample code files:</h4>
+<p>The following example files for using the C API have been added:</p>
+<table>
+<thead>
+<tr>
+<th>File name</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>demo_global_settings.c</td>
+<td>Report and modify global settings</td>
+</tr>
+<tr>
+<td>demo_display_selection.c</td>
+<td>Display selection</td>
+</tr>
+<tr>
+<td>demo_vcpinfo.c</td>
+<td>Query VCP feature code descriptons</td>
+</tr>
+<tr>
+<td>demo_get_set_vcp.c</td>
+<td>Get and set VCP values</td>
+</tr>
+</tbody>
+</table>
+<p>File <strong>clmain.c</strong> is now a miscellaneous catchall, mainly for testing.</p>
+<h4 id="build-system-changes">Build system changes</h4>
+<ul>
+<li>src/Makefile.am: change dist-hook to use -prune option per Knut Omang; 
+avoids eror in case there is nothing to erase (i.e. build hasn't happened)</li>
+<li>Added cmake file FindDDCUtil.cmake from Dorian Vogel</li>
+</ul>
 <h3 id="073">0.7.3</h3>
 <p>05 March 2017</p>
 <p>Maintenance release.</p>
@@ -468,10 +888,10 @@ be addressed in a subsequent release. openSUSE users can build ddcutil from its 
       </div>
 
     </section>
-    
+
   </div>
 
-  <div class="rst-versions" role="note" style="cursor: pointer">
+<div class="rst-versions" role="note" style="cursor: pointer">
     <span class="rst-current-version" data-toggle="rst-current-version">
       
           <a href="https://github.com/rockowitz/ddcutil" class="icon icon-github" style="float: left; color: #fcfcfc"> GitHub</a>
@@ -484,7 +904,6 @@ be addressed in a subsequent release. openSUSE users can build ddcutil from its 
       
     </span>
 </div>
-    <script src="../js/theme.js"></script>
 
 </body>
 </html>
