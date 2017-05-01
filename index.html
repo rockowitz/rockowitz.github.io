@@ -381,12 +381,14 @@ a monitor is calibrated, and then restored when the calibration is applied.</p>
 <li>Controlling brightness</li>
 </ul>
 <p>Restrictions:  </p>
-<p>-<strong>ddcutil</strong> does not support laptop displays, which are controlled using a special API, not I2C. <br />
-- Nvidia's proprietary video driver may require special configuration.  See 
-<a href="nvidia/">Special Nvidia Driver Settings</a>. <br />
-- Operation with AMD's proprietary video driver fglrx requires a 
-specially built version of <strong>ddcutil</strong>.  See <a href="adl/">Building with ADL Support</a>.<br />
-- Reading and writing <strong><em>Table</em></strong> type features is implemented but untested.  See <a href="table_features/">Table Features</a>  </p>
+<ul>
+<li><strong>ddcutil</strong> does not support laptop displays, which are controlled using a special API, not I2C.   </li>
+<li>Nvidia's proprietary video driver may require special configuration.  See 
+<a href="nvidia/">Special Nvidia Driver Settings</a>.   </li>
+<li>Operation with AMD's proprietary video driver fglrx requires a 
+specially built version of <strong>ddcutil</strong>.  See <a href="adl/">Building with ADL Support</a>.  </li>
+<li>Reading and writing <strong><em>Table</em></strong> type features is implemented but untested.  See <a href="table_features/">Table Features</a>  </li>
+</ul>
 <h2 id="command-overview">Command Overview</h2>
 <p><strong>ddcutil</strong> is a command line program.  (A GUI user interface is planned.)  <strong>ddcutil</strong> implements 
 the following subcommands:</p>
@@ -480,13 +482,15 @@ using any of the following options:</p>
 --mfg &lt;mfg code&gt; --model &lt;model name&gt; and/or --sn &lt;serial number&gt;
 </code></pre>
 
-<p>Notes:<br />
-- Monitors under control of AMD's proprietary driver (fglrx) are selected by
+<p>Notes:   </p>
+<ul>
+<li>Monitors under control of AMD's proprietary driver (fglrx) are selected by
   adapter number and display number. These numbers are specified on the --adl 
-  option separated by a period, e.g. "--adlno 1.0"<br />
-- Any combination of manufacturer code, model name and serial number can be used together to identify a monitor.
+  option separated by a period, e.g. "--adlno 1.0"  </li>
+<li>Any combination of manufacturer code, model name and serial number can be used together to identify a monitor.
   The first monitor to satisfy all the specified criteria is selected.
-  (This behavior differs from releases prior to 0.7 where model name and serial number had to be specified together.)</p>
+  (This behavior differs from releases prior to 0.7 where model name and serial number had to be specified together.)</li>
+</ul>
 <p>To see a list of all attached monitors and their associated identifiers:</p>
 <pre><code>$ ddcutil detect
 </code></pre>
@@ -500,13 +504,15 @@ using any of the following options:</p>
 </ul>
 <h2 id="installing-ddcutil-from-prebuilt-packages">Installing ddcutil From Prebuilt Packages</h2>
 <p>Packages for recent Debian, Fedoray, openSUSE, and Ubuntu releases are available for download from the openSUSE Build Service.
-Unfortunately, there's not one clean link for downloading OBS packages, so here are several.<br />
-- <a href="http://software.opensuse.org/download.html?project=home%3Arockowitz&amp;package=ddcutil">Add repository and download package ddcutil</a>.
-This is all you will need if just installing the command line version of ddcutil.<br />
-- <a href="http://software.opensuse.org/search?utf8=%E2%9C%93&amp;q=ddcutil&amp;search_devel=true&amp;baseproject=ALL">All ddcutil packages</a>
+Unfortunately, there's not one clean link for downloading OBS packages, so here are several.  </p>
+<ul>
+<li><a href="http://software.opensuse.org/download.html?project=home%3Arockowitz&amp;package=ddcutil">Add repository and download package ddcutil</a>.
+This is all you will need if just installing the command line version of ddcutil.  </li>
+<li><a href="http://software.opensuse.org/search?utf8=%E2%9C%93&amp;q=ddcutil&amp;search_devel=true&amp;baseproject=ALL">All ddcutil packages</a>
 Packages for both the command line and shared library version of <strong>ddcutil</strong>.  Note that the development package is named 
-<strong>libddcutil-devel</strong> on RPM based distributions (SUSE, Fedora) and <strong>libddcutil-dev</strong> on dpkg based distributions (Debian, Ubuntu).<br />
-- <a href="http://download.opensuse.org/repositories/home:/rockowitz/">File system view</a>  </p>
+<strong>libddcutil-devel</strong> on RPM based distributions (SUSE, Fedora) and <strong>libddcutil-dev</strong> on dpkg based distributions (Debian, Ubuntu).  </li>
+<li><a href="http://download.opensuse.org/repositories/home:/rockowitz/">File system view</a>  </li>
+</ul>
 <p>For Ubuntu xenial, there's a <a href="https://launchpad.net/~rockowitz/+archive/ubuntu/ddcutil">PPA</a>.
 To use it, add the following lines to /etc/apt/sources.list:</p>
 <pre><code>deb http://ppa.launchpad.net/rockowitz/ddcutil/ubuntu xenial main 
@@ -608,5 +614,5 @@ For USB connected monitors, use command <code>ddcutil usbenvironment</code>.</p>
 
 <!--
 MkDocs version : 0.15.3
-Build Date UTC : 2017-05-01 06:47:21.538136
+Build Date UTC : 2017-05-01 06:52:29.171730
 -->
