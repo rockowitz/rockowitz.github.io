@@ -7,13 +7,19 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
   <meta name="author" content="Sanford Rockowitz">
-  <link rel="shortcut icon" href="../img/favicon.ico">
+  
   <title>Color Management - ddcutil Documentation</title>
+  
+
+  <link rel="shortcut icon" href="../img/favicon.ico">
+
+  
   <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
 
   <link rel="stylesheet" href="../css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../css/theme_extra.css" type="text/css" />
   <link rel="stylesheet" href="../css/highlight.css">
+
   
   <script>
     // Current page data
@@ -24,7 +30,9 @@
   
   <script src="../js/jquery-2.1.1.min.js"></script>
   <script src="../js/modernizr-2.8.3.min.js"></script>
-  <script type="text/javascript" src="../js/highlight.pack.js"></script> 
+  <script type="text/javascript" src="../js/highlight.pack.js"></script>
+  <script src="../js/theme.js"></script> 
+
   
 </head>
 
@@ -44,7 +52,7 @@
       </div>
 
       <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
-	<ul class="current">
+        <ul class="current">
           
             <li>
     <li class="toctree-l1 ">
@@ -307,8 +315,9 @@
     <li>Color Management</li>
     <li class="wy-breadcrumbs-aside">
       
-        <a href="https://github.com/rockowitz/ddcutil/edit/master/docs/colormgt.md"
-          class="icon icon-github"> Edit on GitHub</a>
+        
+          <a href="https://github.com/rockowitz/ddcutil" class="icon icon-github"> Edit on GitHub</a>
+        
       
     </li>
   </ul>
@@ -356,7 +365,8 @@ These are:</p>
 </li>
 </ul>
 <h3 id="monitor-lookup-tables">Monitor Lookup Tables</h3>
-<p>Typically, monitor calibration creates a color lookup table that is loaded into the video card.  Advanced monitors, such as the HP Dreamcolor LP2480zx, NEC PA241, Eizos, and even a few "prosumer" models such as the recent Dell U2413 have an internal lookup table.   Typically, these monitors have a software development kit with an API for accessing the LUT, and typically thse SDKs support Linux either poorly or not at all.  However, the internal lookup table can also be accessed using the following VCP feature codes: </p>
+<p>Typically, monitor calibration creates a color lookup table that is loaded into the video card.  Some advanced monitors have an internal lookup table.   Typically, these monitors have a software development kit with an API for accessing the LUT, and typically thse SDKs support Linux either poorly or not at all.  </p>
+<p>The MCCS specification defines a set of features for accessing the monitor's internal lookup table: </p>
 <ul>
 <li>73: LUT size</li>
 <li>74: Single point LUT operation</li>
@@ -364,6 +374,13 @@ These are:</p>
 <li>76: Remote procedure call</li>
 </ul>
 <p>These are what MCCS categorizes as "Table" type features.   Reading and writing table type features is implemented in <strong>ddcutil</strong>, but has not yet been tested for lack of a monitor to test with.</p>
+<p>If a monitor were to implement these features, <strong>ddcutil</strong> should be able to load the LUT.  Unfortunately, no monitor with an internal hardware LUT that has yet been tested do implement them.  None of the following monitors with a hardware LUT implement the VCP codes:</p>
+<ul>
+<li>HP Dreamcolor LP2480zx</li>
+<li>NEC PA241</li>
+<li>Eizo CG19 (has only USB interface)</li>
+<li>Dell U2413</li>
+</ul>
               
             </div>
           </div>
@@ -393,10 +410,10 @@ These are:</p>
       </div>
 
     </section>
-    
+
   </div>
 
-  <div class="rst-versions" role="note" style="cursor: pointer">
+<div class="rst-versions" role="note" style="cursor: pointer">
     <span class="rst-current-version" data-toggle="rst-current-version">
       
           <a href="https://github.com/rockowitz/ddcutil" class="icon icon-github" style="float: left; color: #fcfcfc"> GitHub</a>
@@ -409,7 +426,6 @@ These are:</p>
       
     </span>
 </div>
-    <script src="../js/theme.js"></script>
 
 </body>
 </html>
