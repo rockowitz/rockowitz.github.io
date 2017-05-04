@@ -342,8 +342,14 @@
 on command <strong>ddcutil getvcp known</strong>.  </p>
 <p>You may need the Nvidia secret handshake.  See <a href="../nvidia/">Special Nvidia Driver Settings</a>.</p>
 <h3 id="the-capabilities-command-reports-the-mccs-aka-vcp-version-but-elsewhere-ddcutil-says-the-version-is-unknown">The <strong><em>capabilities</em></strong> command reports the MCCS (aka VCP) version, but elsewhere <strong>ddcutil</strong> says the version is unknown.</h3>
-<p>Command <strong><em>ddcutil capabilities</em></strong> reports the response to the DDC API capabilities request.  However, <strong>ddcutil</strong> regards this 
-output as purely informational.   It does not use the capabilities API call when formulating commands and 
+<p>DDC/CI has two ways of reporting the the MCCS version:</p>
+<ul>
+<li>As part of the capabilities string returned in response to a DDC Capabilities Request.</li>
+<li>As the response to a VCP Feature Request for feature xDF (VCP Version). </li>
+</ul>
+<p>Sometimes they disagree.</p>
+<p>Command <strong><em>ddcutil capabilities</em></strong> reports the response to the DDC Capabilities Request.  However, <strong>ddcutil</strong> regards this 
+output as purely informational.   It does not use the capabilities string when formulating commands and 
 interpeting responses.  This is for multiple reasons:</p>
 <ul>
 <li>
@@ -361,7 +367,7 @@ monitor does not list VCP feature code x10 (brighness) as supported.  However, f
 way to know for sure if a monitor implememts a VCP feature code is to try. </p>
 </li>
 </ul>
-<p><strong>ddcutil</strong> relies on VCP feature code xDF to determine the VCP version.  (For USB connected monitors, it queries HID usage x00800004.)  It is possible that feature code xDF is unspported, even though the capabilities response specifies a version.</p>
+<p><strong>ddcutil</strong> therefore relies on VCP feature code xDF to determine the VCP version.  (For USB connected monitors, it queries HID usage x00800004.)  It is possible that feature code xDF is unspported, even though the capabilities response specifies a version.</p>
 <h3 id="ddcutil-detect-verbose-reports-that-both-i2c-address-x50-edid-and-x37-ddc-are-responsive-but-ddc-communication-fails"><strong><em>ddcutil detect --verbose</em></strong> reports that both I2C address x50 (EDID) and x37 (DDC) are responsive, but DDC communication fails.</h3>
 <p>There can be any number of reasons for this situation.</p>
 <ul>
