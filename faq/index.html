@@ -374,9 +374,9 @@ way to know for sure if a monitor implememts a VCP feature code is to try. </p>
 EDID at on both buses, but DDC communication succeeds on only 1 bus.  The other bus is regarded as an invalid display.
 The invalid bus appears to be related to the DisplayPort multistream facility.  You can ignore the invalid entry.</p>
 <h3 id="the-detect-command-reports-different-edids-depnending-on-how-the-monitor-is-connected-to-the-video-card">The <strong><em>detect</em></strong> command reports different EDIDs depnending on how the monitor is connected to the video card.</h3>
-<p>Strange as it may seem, a monitor can have more than one EDID.<br />
-The EDID for a VGA connection will have a different video input definition (byte x14) than that for a  digital connection. <br />
-It will have timing information.  </p>
+<p>Strange as it may seem, a monitor can have more than one EDID.
+The EDID for a VGA connection will have a different video input definition (byte x14) than that for a  digital connection.
+The VGA version of the EDID will have timing information.</p>
 <h3 id="the-detect-command-reports-that-i2c-bus-address-x30-edid-block-number-is-inactive">The <strong><em>detect</em></strong> command reports that I2C bus address x30 (EDID block number) is inactive.</h3>
 <p>EDID version 1.4 allows for addtional 128 byte EDID blocks.  I2C bus address x30 specifies 
 which block to read.  These blocks generally contain extended timing information.
