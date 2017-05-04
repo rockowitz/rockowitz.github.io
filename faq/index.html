@@ -363,11 +363,11 @@ ddcutil simulates a capabilities response by looking at what USB HID reports exi
 </li>
 <li>
 <p>The response to the DDC capabilities API request may be incorrect.   For example, the capabilities response from the HP LP2480zx
-monitor does not list VCP feature code x10 (brighness) as supported.  However, feature code x10 is in fact supported.  The only 
-way to know for sure if a monitor implememts a VCP feature code is to try. </p>
+monitor does not list VCP feature code x10 (brightness) as supported.  However, feature code x10 is in fact supported.  The only 
+way to know for sure if a monitor implememts a VCP feature code is to try it.</p>
 </li>
 </ul>
-<p><strong>ddcutil</strong> therefore relies on VCP feature code xDF to determine the VCP version.  (For USB connected monitors, it queries HID usage x00800004.)  It is possible that feature code xDF is unspported, even though the capabilities response specifies a version.</p>
+<p><strong>ddcutil</strong> therefore relies on VCP feature code xDF to determine the VCP version.  (For USB connected monitors, it queries HID usage x00800004.)  It is possible that feature code xDF is unsupported, even though the capabilities response specifies a version.</p>
 <h3 id="ddcutil-detect-verbose-reports-that-both-i2c-address-x50-edid-and-x37-ddc-are-responsive-but-ddc-communication-fails"><strong><em>ddcutil detect --verbose</em></strong> reports that both I2C address x50 (EDID) and x37 (DDC) are responsive, but DDC communication fails.</h3>
 <p>There can be any number of reasons for this situation.</p>
 <ul>
