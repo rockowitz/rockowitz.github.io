@@ -380,7 +380,7 @@ The VGA version of the EDID will have timing information.</p>
 <h3 id="the-detect-command-reports-that-i2c-bus-address-x30-edid-block-number-is-inactive">The <strong><em>detect</em></strong> command reports that I2C bus address x30 (EDID block number) is inactive.</h3>
 <p>EDID version 1.4 allows for addtional 128 byte EDID blocks.  I2C bus address x30 specifies 
 which block to read.  These blocks generally contain extended timing information.
-<strong>ddcutil</strong> is interested only in the contents of the first EDID block.<br />
+<strong>ddcutil</strong> is interested only in the contents of the first EDID block.
 The check of bus address x30 is purely informational.</p>
 <h3 id="configure-complains-that-a-required-package-does-not-exist-but-it-is-installed-on-my-system"><strong><em>configure</em></strong> complains that a required package does not exist, but it is installed on my system.</h3>
 <p>When building <strong>ddcutil</strong> Error messages from pkg-config (which is called by configure) can be misleading.
