@@ -339,6 +339,7 @@
             <div class="section">
               
                 <h2 id="frequently-asked-questions">Frequently Asked Questions</h2>
+<p><a name="docking"></a></p>
 <h3 id="ddcutil-cant-communicate-with-a-monitor-when-its-plugged-into-a-docking-station"><strong>ddcutil</strong> can't communicate with a monitor when it's plugged into a docking station.</h3>
 <p><strong>ddcutil</strong> does work when the monitor is plugged directly into the laptop.
 The problem affects DisplayPort, DVI, and HDMI connectors on the dock.</p>
@@ -381,8 +382,9 @@ way to know for sure if a monitor implememts a VCP feature code is to try it.</p
 <ul>
 <li>Check that DDC/CI communication is enabled in the monitor's on-screen display?</li>
 <li>It has been observed in the case of a Tegra video card using the nouveau driver.</li>
-<li>See also the discussions of duplicate entries for a DisplayPort monitor, and of failures with newer docking stations.</li>
+<li>See also the discussions of <a href="#duplicate_displayport">duplicate entries for a DisplayPort monitor</a>, and of <a href="#docking">failures with newer docking stations</a>.</li>
 </ul>
+<p><a name="duplicate_displayport"></a></p>
 <h3 id="the-same-displayport-connected-monitor-appears-twice-the-output-of-ddcutil-detect">The same DisplayPort connected monitor appears twice the output of <strong><em>ddcutil detect</em></strong>.</h3>
 <p>Sometimes the same DisplayPort connected monitor is detected at 2 different I2C bus numbers.  <strong><em>ddcutil detect</em></strong> reads the
 EDID at on both buses, but DDC communication succeeds on only 1 bus.  The other bus is regarded as an invalid display.
