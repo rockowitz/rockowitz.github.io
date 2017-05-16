@@ -217,6 +217,8 @@
             
                 <li class="toctree-l3"><a href="#notes-on-specific-monitors">Notes on Specific Monitors</a></li>
                 
+                    <li><a class="toctree-l4" href="#aoc-q2775">AOC Q2775</a></li>
+                
                     <li><a class="toctree-l4" href="#apple-cinema-display-a1082">Apple Cinema Display A1082</a></li>
                 
                     <li><a class="toctree-l4" href="#asus-ve247">Asus VE247</a></li>
@@ -224,6 +226,8 @@
                     <li><a class="toctree-l4" href="#benq-xl2411z">BenQ XL2411Z</a></li>
                 
                     <li><a class="toctree-l4" href="#dell-p2411">Dell P2411</a></li>
+                
+                    <li><a class="toctree-l4" href="#dell-p2715q">Dell P2715Q</a></li>
                 
                     <li><a class="toctree-l4" href="#dell-ultrasharp-1905fp">Dell Ultrasharp 1905FP</a></li>
                 
@@ -258,6 +262,8 @@
                     <li><a class="toctree-l4" href="#nec-pa241">NEC PA241</a></li>
                 
                     <li><a class="toctree-l4" href="#phillips-bdm3270">Phillips BDM3270</a></li>
+                
+                    <li><a class="toctree-l4" href="#phillips-bdm4037u">Phillips BDM4037U</a></li>
                 
                     <li><a class="toctree-l4" href="#samsung-s32d850">Samsung S32D850</a></li>
                 
@@ -372,6 +378,16 @@
               
                 <h2 id="notes-on-specific-monitors">Notes on Specific Monitors</h2>
 <p>The following list describes some monitors that have been tested.  It highlights the variability in DDC implementation among monitors.</p>
+<h3 id="aoc-q2775">AOC Q2775</h3>
+<p>VCP Version:   2.2<br />
+Controller Manufacturer:  Mstar <br />
+Controller Model:  mh=0xff, ml=0x16, sh=0x00<br />
+Firmware version:  0.7<br />
+Manufacture year: 2016  </p>
+<p>Feature 0B: Color temperature increment:  100 deg Kelvin<br />
+Feature 0C: Color temperature request: 100<br />
+Caclculated color temperature = 3000 + 100 * 100 = 3000+10000 = 13000 deg Kelvin  (nonsensical)  </p>
+<p>Capabilities string has controller manufacturer name in model() field.</p>
 <h3 id="apple-cinema-display-a1082">Apple Cinema Display A1082</h3>
 <p>Has both I2C and USB interfaces. </p>
 <p>VCP Version:  2.0<br />
@@ -410,13 +426,22 @@ Manufacture year:       2011</p>
 More recently, works with nouveau driver, but fails with proprietary Nvidia driver. </p>
 <p>Reports VCP code 0B (color temperature increment) as 1 degree Kelvin, which makes the GETVCP response to VCP code 0C (color temperature
 request) nonsensical.</p>
+<h3 id="dell-p2715q">Dell P2715Q</h3>
+<p>VCP version: 2.1
+Controller Manufacturer: Mstar (sl=x05)
+Controller Model: mh=x00, ml=x00,x sh=x56 <br />
+Firmware version:       2.1
+Manufacture year:       2015</p>
+<p>Feature x0B, Color temperature increment:   unsupported<br />
+Feature x0C, Color temperature request:     unsupported</p>
+<p>very clean, no  DDC retries needed</p>
 <h3 id="dell-ultrasharp-1905fp">Dell Ultrasharp 1905FP</h3>
 <p>Does not support DDC.</p>
 <h3 id="dell-ultrasharp-u2413">Dell Ultrasharp U2413</h3>
 <p>VCP version:   2.1
-Controller Manufacturer:  STMicroelectronics (sl=x0d)
-Controller Model:  mh=x00, ml=x93, sh=x01
-Firmware version:  2.1
+Controller Manufacturer:  STMicroelectronics (sl=x0d)<br />
+Controller Model:  mh=x00, ml=x93, sh=x01<br />
+Firmware version:  2.1<br />
 Manufacture year:  2013</p>
 <p>This monitor has a hardware LUT, however LUT loading not supported using standard VCP feature codes.</p>
 <p>Responds to VCP feature xc0 (Display Usage Time), but returns 0.</p>
@@ -439,7 +464,7 @@ VCP code x0C (color temperature request) nonsensical.</p>
 <h3 id="dell-ultrasharp-u3415w">Dell Ultrasharp U3415W</h3>
 <p>VCP version: 2.1 <br />
 Controller manufacturer:  Realtek (sl=x09)    <br />
-Controller Model: mh=x00, ml=011, sh=x11     <br />
+Controller Model: mh=x00, ml=x11, sh=x11     <br />
 Firmware version: 65.1   <br />
 Manufacture year: 2015  </p>
 <p>Neither feature 0B (color temperature increment) or 0C (color temperature request) are listed
@@ -526,7 +551,7 @@ Manufacture year:         2007  </p>
 <h3 id="iilyama-pl2779q">Iilyama PL2779Q</h3>
 <p>VCP Version:    2.1<br />
 Controller manufacturer:   unknown (feature code xC8 unsupported)<br />
-Firmware version:          unkown  (feature code xC9 unsupported)<br />
+Firmware version:          unknown (feature code xC9 unsupported)<br />
 Manufacture year:          2013  </p>
 <p>Color temperature increment (feature x0B) and request (feature x0C) result in a color temperature of 26,100 degress Kelvin</p>
 <p>Does not include command x02 (VCP Response) or xE3 (Capabilities Reply) in its capabilities string, even though these are supported.</p>
@@ -563,6 +588,14 @@ Firmware version:  1.0
 Manufature year:  2016</p>
 <p>Color temperature increment (VCP code x0B) = 50 degrees Kelvin (sensible)<br />
 Color temperature request (VCP code x0C) yields a calculated color temperator of 3000+(70*50) = 6500 degrees Kelvin</p>
+<h3 id="phillips-bdm4037u">Phillips BDM4037U</h3>
+<p>VCP Version:  2.2<br />
+Controller manufacturer:  Realtek (sl=x09), Controller model: mh=x00, ml=x00, sh=x00<br />
+Firmware version 0.1<br />
+Manufacture year:  2016  </p>
+<p>color temp increment (feature 0B):  100 deg K <br />
+  color temp request (feature 0C):    70 -&gt; 3000+(70*100) = 10000 deg K</p>
+<p>DDC communication clean, no need for retries</p>
 <h3 id="samsung-s32d850">Samsung S32D850</h3>
 <p>Manufacture year:  2015 
 VCP Version: 2.0
