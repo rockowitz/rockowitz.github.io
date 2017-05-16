@@ -384,8 +384,8 @@ Controller Manufacturer:  Mstar <br />
 Controller Model:  mh=0xff, ml=0x16, sh=0x00<br />
 Firmware version:  0.7<br />
 Manufacture year: 2016  </p>
-<p>Feature 0B: Color temperature increment:  100 deg Kelvin<br />
-Feature 0C: Color temperature request: 100<br />
+<p>Feature x0B: Color temperature increment:  100 deg Kelvin<br />
+Feature x0C: Color temperature request: 100<br />
 Caclculated color temperature = 3000 + 100 * 100 = 3000+10000 = 13000 deg Kelvin  (nonsensical)  </p>
 <p>Capabilities string has controller manufacturer name in model() field.</p>
 <h3 id="apple-cinema-display-a1082">Apple Cinema Display A1082</h3>
@@ -413,8 +413,9 @@ Controller Manufacturer: Mstar<br />
 Controller Model: mh=x00 mh=x00, ml-x85, sh=x56<br />
 Firmware version: 2.1 <br />
 Manufacture year: 2013</p>
-<p>Sensible response to VCP code x0B (color temperature increment) = 50 degrees Kelvin<br />
-Nonsensical reponse 0  to VCP code x0C (Color temperature request), implies color temperature = 300  degrees Kelvin. </p>
+<p>Feature x0B: Color temperature increment:  50 deg Kelvin<br />
+Feature x0C: Color temperature request: 0<br />
+Caclculated color temperature = 3000 + (0*50) = 3000 deg Kelvin  (nonsensical)  </p>
 <p>Responds to VCP feature x60 (Input Source) even though this is not documented in the capabilities string.</p>
 <h3 id="dell-p2411">Dell P2411</h3>
 <p>VCP version: 2.1 <br />
@@ -445,7 +446,7 @@ Firmware version:  2.1<br />
 Manufacture year:  2013</p>
 <p>This monitor has a hardware LUT, however LUT loading not supported using standard VCP feature codes.</p>
 <p>Responds to VCP feature xc0 (Display Usage Time), but returns 0.</p>
-<p>Color temperature:
+<p>Color temperature:<br />
   color temp increment (feature 0B):  unsupported
   color temp request (feature 0C):    unsupported</p>
 <h3 id="dell-u3011">Dell U3011</h3>
