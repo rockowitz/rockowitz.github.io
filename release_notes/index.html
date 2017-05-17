@@ -252,6 +252,16 @@
             
                 <li class="toctree-l3"><a href="#release-notes">Release Notes</a></li>
                 
+                    <li><a class="toctree-l4" href="#082">0.8.2</a></li>
+                
+                    <li><a class="toctree-l4" href="#command-ddcutil-detect">Command ddcutil detect</a></li>
+                
+                    <li><a class="toctree-l4" href="#option-stats-errors">Option --stats errors</a></li>
+                
+                    <li><a class="toctree-l4" href="#ddcutil-environment-verbose-changes">ddcutil environment --verbose changes</a></li>
+                
+                    <li><a class="toctree-l4" href="#packaging">Packaging</a></li>
+                
                     <li><a class="toctree-l4" href="#081">0.8.1</a></li>
                 
                     <li><a class="toctree-l4" href="#080">0.8.0</a></li>
@@ -351,6 +361,45 @@
             <div class="section">
               
                 <h2 id="release-notes">Release Notes</h2>
+<h3 id="082">0.8.2</h3>
+<p>17 May 2017</p>
+<p>This release introduces minor improvements to the diagnostic output of the <strong>environment</strong>, 
+<strong>detect</strong>, and <strong>interrogate</strong> commands.  There is no need to install it unless you are 
+experiencing problems.</p>
+<h3 id="command-ddcutil-detect">Command <strong>ddcutil detect</strong></h3>
+<ul>
+<li>If a display appears to support DDC (I2C slave address x37 is active) but communication fails, 
+  perform a heuristic test as to whether it is a laptop display, issue message appropriately.</li>
+<li>Changes to reduce the number of feature reads performed when detecting monitors, slightly 
+  improving performance.</li>
+</ul>
+<h3 id="option-stats-errors">Option <strong>--stats errors</strong></h3>
+<ul>
+<li>Maintain and report a secondary count of the individual errors that are rolled up into "retry count exceeded" errors.</li>
+</ul>
+<h3 id="ddcutil-environment-verbose-changes"><strong>ddcutil environment --verbose</strong> changes</h3>
+<ul>
+<li>Eliminate checks for package <strong>i2c-tools</strong></li>
+<li>Report additional information about system hardware</li>
+<li>Add a cross reference report for the multiple ways that different subsystems identify 
+    a monitor and its I2C bus</li>
+<li>Consolidate some tests to reduce redundancy</li>
+<li>Check for DisplayPort Multi-Stream Technology (DPMST) devices</li>
+<li>Eliminate the cause of a bogus error message when scanning devices</li>
+</ul>
+<h3 id="packaging">Packaging</h3>
+<ul>
+<li>Changes to the requirements of package <strong>i2c-tools</strong>.  Generally speaking, it is no longer needed for 
+  building <strong>ddcutil</strong>, and is optionally used as part of the diagnostic output of the <strong>environment</strong> command.<ul>
+<li>Changed from <strong>Requires:</strong> to <strong>Suggests:</strong> for dpkg</li>
+<li><strong>Requires:</strong> and <strong>BuildRequires:</strong> eliminated for rpm packaging in general</li>
+<li><strong>BuildRequires:</strong> kept for SuSE rpm packaging.  <strong>ddcutil</strong> needs file linux/i2c-dev.h, which is 
+  contained in package <strong>i2c-tools</strong> in SuSE releases through 13.2</li>
+</ul>
+</li>
+<li>Changes to packaging to conform to Debian standards</li>
+<li>Changes to packaging to conform to Fedora standards</li>
+</ul>
 <h3 id="081">0.8.1</h3>
 <p>06 May 2017</p>
 <p>This is a bugfix release.  There is no need to install it unless you are experiencing the 
