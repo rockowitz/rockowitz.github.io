@@ -1,5 +1,5 @@
 Name:    ddcutil
-Version: 0.8.2
+Version: 0.8.3
 Release: 1%{dist}
 Summary: Query and update monitor settings
 License: GPLv2+
@@ -15,6 +15,7 @@ Source:  http://www.ddcutil.com/%{name}-%{version}.tar.gz
 # ExcludeArch: ppc64       # builds successfully in Koji, untested
 # ExcludeArch: ppc         # builds successfully in Koji, untested
 
+BuildRequires: gcc
 BuildRequires: pkgconfig(glib-2.0) 
 BuildRequires: pkgconfig(libusb-1.0) >= 1.0.15
 BuildRequires: pkgconfig(systemd)
@@ -48,14 +49,11 @@ rpm --version
 rpmbuild --version
 
 %build
-%configure --enable-lib=no --enable-drm=yes --enable-usb=yes
+%configure --enable-lib=no 
 %make_build V=1
 
 %install
 make DESTDIR=%{buildroot} install
-# rm -rf %%{buildroot}%%{_datadir}/doc/%%{name}/html
-# rm -f  %%{buildroot}%%{_datadir}/%%{name}/data/FindDDCUtil.cmake
-# rm -rf %%{buildroot}%%{_datadir}/doc/libddcutil
 
 %files
 %defattr(664,root,root)
