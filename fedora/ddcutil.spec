@@ -1,8 +1,8 @@
 Name:    ddcutil
 Version: 0.8.3
-Release: 1%{dist}
+Release: 1%{?dist}
 Summary: Query and update monitor settings
-License: GPLv2+
+License: GPLv2
 URL:     https://github.com/rockowitz/ddcutil
 Source:  http://www.ddcutil.com/%{name}-%{version}.tar.gz
 
@@ -58,7 +58,7 @@ make DESTDIR=%{buildroot} install
 %files
 %defattr(664,root,root)
 %doc %{_datadir}/doc/%{name}/AUTHORS
-%doc %{_datadir}/doc/%{name}/COPYING
+%license %{_datadir}/doc/%{name}/COPYING
 %doc %{_datadir}/doc/%{name}/NEWS 
 %doc %{_datadir}/doc/%{name}/README.md
 %{_datadir}/%{name}/data/*rules
