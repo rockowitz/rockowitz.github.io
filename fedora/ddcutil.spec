@@ -15,7 +15,6 @@ Source:  http://www.ddcutil.com/%{name}-%{version}.tar.gz
 # ExcludeArch: ppc64       # builds successfully in Koji, untested
 # ExcludeArch: ppc         # builds successfully in Koji, untested
 
-BuildRequires: gcc
 BuildRequires: pkgconfig(glib-2.0) 
 BuildRequires: pkgconfig(libusb-1.0) >= 1.0.15
 BuildRequires: pkgconfig(systemd)
@@ -51,6 +50,8 @@ rpmbuild --version
 %build
 %configure --enable-lib=no 
 %make_build V=1
+
+%check
 
 %install
 make DESTDIR=%{buildroot} install
