@@ -67,6 +67,9 @@ make DESTDIR=%{buildroot} install
 %attr(755,root,root)%{_bindir}/ddcutil
 
 %changelog
+* Sat May 20 2017 Sanford Rockowitz <rockowitz@minsoft.com> 0.8.3-1
+- Changes for Fedora packaging
+
 * Wed May 17 2017 Sanford Rockowitz <rockowitz@minsoft.com> 0.8.2-1
 - Minor enchancements to diagnostics in the environment and interrogate
   commands
