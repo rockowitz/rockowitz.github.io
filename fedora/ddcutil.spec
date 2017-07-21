@@ -1,5 +1,5 @@
 Name:    ddcutil
-Version: 0.8.3
+Version: 0.8.4
 Release: 1%{?dist}
 Summary: Query and update monitor settings
 License: GPLv2
@@ -21,6 +21,8 @@ BuildRequires: pkgconfig(systemd)
 BuildRequires: pkgconfig(libudev)
 BuildRequires: pkgconfig(xrandr)
 BuildRequires: pkgconfig(libdrm) >= 2.4.16
+
+Requires(pre): shadow-utils
 
 Recommends: i2c-tools
 
@@ -57,17 +59,32 @@ rpmbuild --version
 make DESTDIR=%{buildroot} install
 
 %files
-%defattr(664,root,root)
-%doc %{_datadir}/doc/%{name}/AUTHORS
-%license %{_datadir}/doc/%{name}/COPYING
-%doc %{_datadir}/doc/%{name}/NEWS 
-%doc %{_datadir}/doc/%{name}/README.md
-%{_datadir}/%{name}/data/*rules
-%{_datadir}/%{name}/data/90-nvidia-i2c.conf
+# Not needed, is default:
+# %%defattr(664,root,root)
+
+# fedora-review complains if use %%docdir instead of %%dir:
+# %%docdir %%{_datadir}/doc/%%{name}
+%dir     %{_docdir}/%{name}
+%doc     %{_docdir}/%{name}/AUTHORS
+%license %{_docdir}/%{name}/COPYING
+%doc     %{_docdir}/%{name}/NEWS 
+%doc     %{_docdir}/%{name}/README.md
+
+%{_datadir}/%{name}
+
+# %%dir %%{_datadir}/%%{name}
+# %%dir %%{_datadir}/%%{name}/data
+# %%{_datadir}/%%{name}/data/*rules
+# %%{_datadir}/%%{name}/data/90-nvidia-i2c.conf
+
 %{_mandir}/man1/ddcutil.1*
 %attr(755,root,root)%{_bindir}/ddcutil
 
 %changelog
+
+* Sat Jul 22 2017 Sanford Rockowitz <rockowitz@minsoft.com> 0.8.4-1
+- Minor fixes and changes for Fedora packaging
+
 * Sat May 20 2017 Sanford Rockowitz <rockowitz@minsoft.com> 0.8.3-1
 - Changes for Fedora packaging
 
