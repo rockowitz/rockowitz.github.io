@@ -329,7 +329,7 @@ name to group i2c: </p>
 
 <p>If needed, a udev rule for giving group i2c RW permission on the /i2c-dev-* devices 
 can be found in distributed file <strong>45-ddcutils-i2c.rules</strong>.  It can be copied to 
-/etc/udef/rules.d, but do check that this rule does not conflict with others in that directory.</p>
+/etc/udev/rules.d, but do check that this rule does not conflict with others in that directory.</p>
 <pre><code>$ sudo cp /usr/share/ddcutil/data/etc/udev/rules.d/45-ddcutils-i2c.rules /etc/udev/rules.d
 </code></pre>
 
