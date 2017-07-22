@@ -244,6 +244,14 @@
             
                 <li class="toctree-l3"><a href="#release-notes">Release Notes</a></li>
                 
+                    <li><a class="toctree-l4" href="#084">0.8.4</a></li>
+                
+                    <li><a class="toctree-l4" href="#command-ddcutil-interrogate">Command ddcutil interrogate</a></li>
+                
+                    <li><a class="toctree-l4" href="#libddcutil-devel">libddcutil-devel</a></li>
+                
+                    <li><a class="toctree-l4" href="#bug-fixes">Bug fixes</a></li>
+                
                     <li><a class="toctree-l4" href="#082">0.8.2</a></li>
                 
                     <li><a class="toctree-l4" href="#command-ddcutil-detect">Command ddcutil detect</a></li>
@@ -258,7 +266,7 @@
                 
                     <li><a class="toctree-l4" href="#080">0.8.0</a></li>
                 
-                    <li><a class="toctree-l4" href="#bug-fixes">Bug Fixes</a></li>
+                    <li><a class="toctree-l4" href="#bug-fixes_1">Bug Fixes</a></li>
                 
                     <li><a class="toctree-l4" href="#c-api">C API</a></li>
                 
@@ -352,6 +360,33 @@
             <div class="section">
               
                 <h2 id="release-notes">Release Notes</h2>
+<h3 id="084">0.8.4</h3>
+<p>22 July 2017</p>
+<p>This release primarily contains packaging changes to meet Fedora distribution standards.
+It also includes minor improvements and bug fixes. 
+There is no need to install it unless you are experiencing problems.</p>
+<h3 id="command-ddcutil-interrogate">Command <strong>ddcutil interrogate</strong></h3>
+<ul>
+<li>Do not include <strong>usbenvironment</strong> diagnostics as part of the <strong>interrogate</strong> command. USB connected monitors 
+  are rare and USB related diagnostics clutter the report.</li>
+</ul>
+<h3 id="libddcutil-devel">libddcutil-devel</h3>
+<ul>
+<li>Do not package static libraries (.a and .la files) in libddcutil-devel. </li>
+</ul>
+<h3 id="bug-fixes">Bug fixes</h3>
+<ul>
+<li>
+<p>Prevent a segfault in monitor detection that occurrs when slave address x50 is detected on an I2C bus, but reading the EDID at that address fails.</p>
+</li>
+<li>
+<p>Address an assert failure in the <strong>ddcutil usbenvironment</strong> command due to an unexpected library return code.</p>
+</li>
+<li>
+<p>In the device identification cross reference report of <strong>ddcutil environment</strong>, properly handle I2C bus number -1, used internally to 
+  indicate unknown.</p>
+</li>
+</ul>
 <h3 id="082">0.8.2</h3>
 <p>17 May 2017</p>
 <p>This release introduces minor improvements to the diagnostic output of the <strong>environment</strong>, 
@@ -465,7 +500,7 @@ is easily machine readable.  See <a href="../cmdopts/">Command Specific Options<
 <p>By default, <strong>setvcp</strong> and <strong>loadvcp</strong> verify that a value has been successfully
 set by reading the value from the monitor after writing it.  Option <strong>--noverify</strong> 
 disables this check.</p>
-<h3 id="bug-fixes">Bug Fixes</h3>
+<h3 id="bug-fixes_1">Bug Fixes</h3>
 <ul>
 <li>Fixed a segfault that occurred when a monitor returned a 0 length capabilities string.</li>
 <li>Variables holding nanoseconds have been changed from type <strong>long</strong> to <strong>uint64_t</strong>
