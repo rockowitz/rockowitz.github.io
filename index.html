@@ -7,24 +7,32 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="ddcutil (formerly ddctool) is a Linux utility for reading and changing monitor settings such as brightness and color levels. ddcutil primarily uses DDC/CI (Display Data Channel Command Interface) to communicate with monitors implementing MCCS (Monitor Control Command Set) over I2C.  Alternatively, there is support for monitors (such as Eizo Coloredge) that implement MCCS using a USB connection.">
   <meta name="author" content="Sanford Rockowitz">
+  
+  <title>ddcutil Documentation</title>
+  
+
   <link rel="shortcut icon" href="./img/favicon.ico">
-  <title>Overview - ddcutil Documentation</title>
+
+  
   <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
 
   <link rel="stylesheet" href="./css/theme.css" type="text/css" />
   <link rel="stylesheet" href="./css/theme_extra.css" type="text/css" />
   <link rel="stylesheet" href="./css/highlight.css">
+
   
   <script>
     // Current page data
-    var mkdocs_page_name = "Overview";
+    var mkdocs_page_name = "None";
     var mkdocs_page_input_path = "index.md";
     var mkdocs_page_url = "/";
   </script>
   
   <script src="./js/jquery-2.1.1.min.js"></script>
   <script src="./js/modernizr-2.8.3.min.js"></script>
-  <script type="text/javascript" src="./js/highlight.pack.js"></script> 
+  <script type="text/javascript" src="./js/highlight.pack.js"></script>
+  <script src="./js/theme.js"></script> 
+
   
 </head>
 
@@ -44,7 +52,7 @@
       </div>
 
       <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
-	<ul class="current">
+        <ul class="current">
           
             <li>
     <li class="toctree-l1 current">
@@ -171,6 +179,13 @@
             <li>
     <li class="toctree-l1 ">
         <a class="" href="building/">Building From Source</a>
+        
+    </li>
+<li>
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="releases/">Releases</a>
         
     </li>
 <li>
@@ -319,8 +334,9 @@
     <li>Overview</li>
     <li class="wy-breadcrumbs-aside">
       
-        <a href="https://github.com/rockowitz/ddcutil/edit/master/docs/index.md"
-          class="icon icon-github"> Edit on GitHub</a>
+        
+          <a href="https://github.com/rockowitz/ddcutil" class="icon icon-github"> Edit on GitHub</a>
+        
       
     </li>
   </ul>
@@ -351,7 +367,7 @@ and to improve performance</p>
 <ul>
 <li>If there are multiple monitors and option <strong>--async</strong> is specified, initial monitor checks are performed in separate threads.
 Users with multiple monitors should see significantly better startup time.  </li>
-<li>If a display is specified by its I2C bus number (option <strong>--busno</strong>) and option <strong>--nodetect</strong> is specified,
+<li>If a display is specified by its I2C bus number (option <strong>--bus</strong>) and option <strong>--nodetect</strong> is specified,
 global display detection is skipped, improving performance.</li>
 <li>By default, <strong>setvcp</strong> and <strong>loadvcp</strong> now read the VCP value after it has been set, 
 to confirm that the monitor has made the change requested.  </li>
@@ -598,10 +614,10 @@ For USB connected monitors, use command <code>ddcutil usbenvironment</code>.</p>
       </div>
 
     </section>
-    
+
   </div>
 
-  <div class="rst-versions" role="note" style="cursor: pointer">
+<div class="rst-versions" role="note" style="cursor: pointer">
     <span class="rst-current-version" data-toggle="rst-current-version">
       
           <a href="https://github.com/rockowitz/ddcutil" class="icon icon-github" style="float: left; color: #fcfcfc"> GitHub</a>
@@ -612,12 +628,11 @@ For USB connected monitors, use command <code>ddcutil usbenvironment</code>.</p>
       
     </span>
 </div>
-    <script src="./js/theme.js"></script>
 
 </body>
 </html>
 
 <!--
-MkDocs version : 0.16.1
-Build Date UTC : 2017-07-22 20:05:56
+MkDocs version : 0.15.3
+Build Date UTC : 2017-08-26 12:23:08.932203
 -->
