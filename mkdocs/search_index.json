@@ -297,7 +297,7 @@
         }, 
         {
             "location": "/releases/", 
-            "text": "Releases\n\n\nTarballs\n\n\nThese tarballs were created by command \nmake dist\n. \nThe Signatures were created by command \ngpg --armor --detach-sign\n.\nEleven\n\n\n\n\nddcutil-0.7.0.tar.gz\n\n\nddcutil-0.7.0.tar.gz.asc\n\n\nddcutil-0.7.1.tar.gz\n\n\nddcutil-0.7.1.tar.gz.asc\n\n\nddcutil-0.7.2.tar.gz\n\n\nddcutil-0.7.2.tar.gz.asc\n\n\nddcutil-0.7.3.tar.gz\n\n\nddcutil-0.7.3.tar.gz.asc\n\n\nddcutil-0.7.4.tar.gz\n\n\nddcutil-0.7.4.tar.gz.asc\n\n\nddcutil-0.8.0.tar.gz\n\n\nddcutil-0.8.0.tar.gz.asc\n\n\nddcutil-0.8.1.tar.gz\n\n\nddcutil-0.8.1.tar.gz.asc\n\n\nddcutil-0.8.2.tar.gz\n\n\nddcutil-0.8.2.tar.gz.asc\n\n\nddcutil-0.8.3.tar.gz\n\n\nddcutil-0.8.3.tar.gz.asc\n\n\nddcutil-0.8.4.tar.gz\n\n\nddcutil-0.8.4.tar.gz.asc", 
+            "text": "Releases\n\n\nTarballs\n\n\nThese tarballs were created by command \nmake dist\n. \n\n\n\n\nddcutil-0.7.0.tar.gz\n\n\nddcutil-0.7.1.tar.gz\n\n\nddcutil-0.7.2.tar.gz\n\n\nddcutil-0.7.3.tar.gz\n\n\nddcutil-0.7.4.tar.gz\n\n\nddcutil-0.8.0.tar.gz\n\n\nddcutil-0.8.1.tar.gz\n\n\nddcutil-0.8.2.tar.gz\n\n\nddcutil-0.8.3.tar.gz\n\n\nddcutil-0.8.4.tar.gz", 
             "title": "Releases"
         }, 
         {
@@ -307,7 +307,7 @@
         }, 
         {
             "location": "/releases/#tarballs", 
-            "text": "These tarballs were created by command  make dist . \nThe Signatures were created by command  gpg --armor --detach-sign .\nEleven   ddcutil-0.7.0.tar.gz  ddcutil-0.7.0.tar.gz.asc  ddcutil-0.7.1.tar.gz  ddcutil-0.7.1.tar.gz.asc  ddcutil-0.7.2.tar.gz  ddcutil-0.7.2.tar.gz.asc  ddcutil-0.7.3.tar.gz  ddcutil-0.7.3.tar.gz.asc  ddcutil-0.7.4.tar.gz  ddcutil-0.7.4.tar.gz.asc  ddcutil-0.8.0.tar.gz  ddcutil-0.8.0.tar.gz.asc  ddcutil-0.8.1.tar.gz  ddcutil-0.8.1.tar.gz.asc  ddcutil-0.8.2.tar.gz  ddcutil-0.8.2.tar.gz.asc  ddcutil-0.8.3.tar.gz  ddcutil-0.8.3.tar.gz.asc  ddcutil-0.8.4.tar.gz  ddcutil-0.8.4.tar.gz.asc", 
+            "text": "These tarballs were created by command  make dist .    ddcutil-0.7.0.tar.gz  ddcutil-0.7.1.tar.gz  ddcutil-0.7.2.tar.gz  ddcutil-0.7.3.tar.gz  ddcutil-0.7.4.tar.gz  ddcutil-0.8.0.tar.gz  ddcutil-0.8.1.tar.gz  ddcutil-0.8.2.tar.gz  ddcutil-0.8.3.tar.gz  ddcutil-0.8.4.tar.gz", 
             "title": "Tarballs"
         }, 
         {
