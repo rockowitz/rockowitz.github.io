@@ -8,7 +8,7 @@
   
   <meta name="author" content="Sanford Rockowitz">
   
-  <title>Color Management - ddcutil Documentation</title>
+  <title>Announcement History - ddcutil Documentation</title>
   
 
   <link rel="shortcut icon" href="../img/favicon.ico">
@@ -23,9 +23,9 @@
   
   <script>
     // Current page data
-    var mkdocs_page_name = "Color Management";
-    var mkdocs_page_input_path = "colormgt.md";
-    var mkdocs_page_url = "/colormgt/";
+    var mkdocs_page_name = "Announcement History";
+    var mkdocs_page_input_path = "prior_announcements.md";
+    var mkdocs_page_url = "/prior_announcements/";
   </script>
   
   <script src="../js/jquery-2.1.1.min.js"></script>
@@ -126,19 +126,8 @@
 <li>
           
             <li>
-    <li class="toctree-l1 current">
-        <a class="current" href="./">Color Management</a>
-        
-            <ul>
-            
-                <li class="toctree-l3"><a href="#color-management">Color Management</a></li>
-                
-                    <li><a class="toctree-l4" href="#color-management-workflow">Color Management Workflow</a></li>
-                
-                    <li><a class="toctree-l4" href="#monitor-lookup-tables">Monitor Lookup Tables</a></li>
-                
-            
-            </ul>
+    <li class="toctree-l1 ">
+        <a class="" href="../colormgt/">Color Management</a>
         
     </li>
 <li>
@@ -256,8 +245,27 @@
 <li>
           
             <li>
-    <li class="toctree-l1 ">
-        <a class="" href="../prior_announcements/">Announcement History</a>
+    <li class="toctree-l1 current">
+        <a class="current" href="./">Announcement History</a>
+        
+            <ul>
+            
+                <li class="toctree-l3"><a href="#prior-announcements">Prior Announcements</a></li>
+                
+                    <li><a class="toctree-l4" href="#073">0.7.3</a></li>
+                
+                    <li><a class="toctree-l4" href="#072">0.7.2</a></li>
+                
+                    <li><a class="toctree-l4" href="#071">0.7.1</a></li>
+                
+                    <li><a class="toctree-l4" href="#070">0.7.0</a></li>
+                
+                    <li><a class="toctree-l4" href="#061">0.6.1</a></li>
+                
+                    <li><a class="toctree-l4" href="#060">0.6.0</a></li>
+                
+            
+            </ul>
         
     </li>
 <li>
@@ -319,7 +327,7 @@
     
       
     
-    <li>Color Management</li>
+    <li>Announcement History</li>
     <li class="wy-breadcrumbs-aside">
       
         
@@ -333,61 +341,94 @@
           <div role="main">
             <div class="section">
               
-                <h2 id="color-management">Color Management</h2>
-<p>A primary use for <strong>ddcutil</strong> is as part of color profile management.  A monitor calibration is meaningful only if the color settings on the monitor are the same as when the calibration was performed. </p>
-<p>Normally, monitor settings are changed by pressing buttons on the monitor bezel.  Depending on the monitor, the process ranges from annoying to excruciating.  <strong>ddcutil</strong> allows this process to be automated.</p>
-<p>Command <strong>ddcutil dumpvcp</strong> saves the current color related monitor settings in a file, and <strong>ddcutil loadvcp</strong> restores them from a file. </p>
-<p>If implemented by the monitor, the VCP feature codes in feature group <strong>PROFILE</strong> are saved by <strong>dumpvcp</strong> and restored by <strong>loadvcp</strong>. 
-These are:</p>
+                <h2 id="prior-announcements">Prior Announcements</h2>
+<h3 id="073">0.7.3</h3>
+<p>05 March 2017</p>
+<p>Release 0.7.3 is a maintenance release.  There is no need to install it unless you are experiencing problems.</p>
+<p>This release introduces the following features:</p>
 <ul>
-<li>10: Brightness</li>
-<li>12: Contrast</li>
-<li>13: Backlight control</li>
-<li>14: Video gain: Red</li>
-<li>16: Video gain: Green</li>
-<li>18: Video gain: Blue</li>
-<li>6B: Backlight level: White</li>
-<li>6C: Video black level: Red</li>
-<li>6D: Backlight Level: Red</li>
-<li>6E: Video black level: Green</li>
-<li>6F: Backlight level: Green</li>
-<li>70: Video black level: Blue</li>
-<li>71: Backlight Level: Blue</li>
+<li>Command <strong>ddcutil detect --verbose</strong> shows additional information.</li>
+<li>Command <strong>ddcutil environment --verbose</strong> implements additional diagnostic tests.</li>
+<li><strong>configure</strong> option <strong><em>--enable-drm</em></strong> controls whether DRM is used to enhance the diagnostics of command <strong>ddcutil environment --verbose</strong>.
+If <strong><em>enable-drm=yes</em></strong>, package libdrm-dev or libdrm-devel (depending on Linux distribution) must be installed to build <strong>ddcutil</strong>.
+Setting <strong><em>--enable-drm=no</em></strong> affects only diagnostic output, not normal execution.</li>
 </ul>
-<p>To see the list of feature codes saved and restored, you can also issue the command: </p>
-<pre><code>ddcutil vcpinfo profile --terse
-</code></pre>
-
-<h3 id="color-management-workflow">Color Management Workflow</h3>
-<p>To discuss: </p>
+<p>For a complete list of changes and bug fixes, see <a href="../release_notes/">Release Notes</a>.
+Prior annoucnements can be found <a href="./">here</a>.</p>
+<h3 id="072">0.7.2</h3>
+<p>01 February 2017</p>
+<p>Maintenance release.</p>
 <ul>
-<li>
-<p>Save profile related VCP values in a custom tag in monitor profile file instead of a separate file</p>
-</li>
-<li>
-<p>Having a GUI for ddcutil would make monitor color adjustment much easier.   Such as GUI could be shown along size the <strong>dispcal</strong> color balance screen shown at the start of calibration.</p>
-</li>
-<li>
-<p>API access to dump/load features for simpler integration with other programs.</p>
-</li>
+<li>Fixes a critical bug in release 0.7.1 where insufficient privileges on a /dev/i2c-n device causes program termination.</li>
+<li><strong>ddcutil interrogate</strong> always executes with <strong><em>--set-slave-address</em></strong> in effect</li>
+<li>Minor improvements to <strong>ddcutil environment</strong> and <strong>ddcutil interrogate</strong> output</li>
+<li>Minor improvements to <strong>ddcutil detect --verbose</strong></li>
+<li>Add explanations for additional <strong><em>errno</em></strong> values</li>
 </ul>
-<h3 id="monitor-lookup-tables">Monitor Lookup Tables</h3>
-<p>Typically, monitor calibration creates a color lookup table that is loaded into the video card.  Some advanced monitors have an internal lookup table.   Typically, these monitors have a software development kit with an API for accessing the LUT, and typically thse SDKs support Linux either poorly or not at all.  </p>
-<p>The MCCS specification defines a set of features for accessing the monitor's internal lookup table: </p>
+<p>For a complete list of changes and bug fixes, see <a href="../release_notes/">Release Notes</a>.
+Prior annoucnements can be found <a href="./">here</a>.</p>
+<h3 id="071">0.7.1</h3>
+<p>27 January 2017</p>
+<p>Release 0.7.1 is a maintenance release.  There is no need to install it unless you are experiencing problems.</p>
+<p>This release introduces the following features:</p>
 <ul>
-<li>73: LUT size</li>
-<li>74: Single point LUT operation</li>
-<li>75: Block LUT operation</li>
-<li>76: Remote procedure call</li>
+<li>Command option <strong><em>--force-slave-address</em></strong> causes <strong>ddcutil</strong> to attempt to take control of slave addresses
+on the I2C bus even if they are in use by another driver.  This may aid in certain situations where monitors on 
+an I2C bus are not properly detected. See <a href="../tuning/#force_slave">Instrumentation and Tuning</a>)</li>
 </ul>
-<p>These are what MCCS categorizes as "Table" type features.   Reading and writing table type features is implemented in <strong>ddcutil</strong>, but has not yet been tested for lack of a monitor to test with.</p>
-<p>If a monitor were to implement these features, <strong>ddcutil</strong> should be able to load the LUT.  Unfortunately, no monitor with an internal hardware LUT that has yet been tested do implement them.  None of the following monitors with a hardware LUT implement the VCP codes:</p>
+<p>For a complete list of changes and bug fixes, see <a href="../release_notes/">Release Notes</a>.
+Prior annoucnements can be found <a href="./">here</a>.</p>
+<h3 id="070">0.7.0</h3>
+<p>03 January 2017</p>
+<p>Release 0.7 introduces the following features: </p>
 <ul>
-<li>HP Dreamcolor LP2480zx</li>
-<li>NEC PA241</li>
-<li>Eizo CG19 (has only USB interface)</li>
-<li>Dell U2413</li>
+<li>C API, exposed by shared library <strong>libddcutil</strong>.  See <a href="../api_main/">API</a>.  </li>
+<li>A new command line option <strong><em>--mfg</em></strong>, allows for the 3 character manufaturer id found in the EDID to used as part of monitor selection.</li>
+<li>The monitor feature and capabilities portion of <strong><em>interrogate</em></strong> is also exposed by the  new <strong><em>probe</em></strong> command which explores the capabilities string and features found on a single monitor.</li>
 </ul>
+<p>For details, see <a href="../release_notes/">Release Notes</a>.
+Prior annoucnements can be found <a href="./">here</a>.</p>
+<p>openSUSE Build Service packaging of release 0.7.0 is complete.  Owing to Launchpad constraints, the PPA will not be correct until <strong>ddcutil</strong>'s release is incremented, i.e. until release 0.7.1</p>
+<h3 id="061">0.6.1</h3>
+<p>21 November 2016</p>
+<p>The most recent release of <strong>ddcutil</strong> is 0.6.1.  This is a maintenance release and need not be installed
+unless you are experiencing problems.  For details, see <a href="../release_notes/">Release Notes</a>.</p>
+<h3 id="060">0.6.0</h3>
+<p>01 October 2016</p>
+<p>As of release 0.6, the name of this program changed from <strong>ddctool</strong> to <strong>ddcutil</strong> 
+to avoid confusion with a commerical datacenter program also named <strong>ddctool.</strong></p>
+<p>The following are affected:</p>
+<table>
+<thead>
+<tr>
+<th>Object</th>
+<th>Old name</th>
+<th>New Name</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Repository URL</td>
+<td>https://github.com/rockowitz/ddctool.git</td>
+<td>https://github.com/rockowitz/ddcutil.git</td>
+</tr>
+<tr>
+<td>Web site URL</td>
+<td>http://www.ddctool.com</td>
+<td>http://www.ddcutil.com</td>
+</tr>
+<tr>
+<td>Primary executable</td>
+<td>ddctool</td>
+<td>ddcutil</td>
+</tr>
+<tr>
+<td>Shared library</td>
+<td>libddctool.so</td>
+<td>libddcutil.so</td>
+</tr>
+</tbody>
+</table>
               
             </div>
           </div>
@@ -395,10 +436,10 @@ These are:</p>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../tuning/" class="btn btn-neutral float-right" title="Instrumentation and Tuning">Next <span class="icon icon-circle-arrow-right"></span></a>
+        <a href="../release_notes/" class="btn btn-neutral float-right" title="Release Notes">Next <span class="icon icon-circle-arrow-right"></span></a>
       
       
-        <a href="../getvcp_known_u3011_output/" class="btn btn-neutral" title="ddcutil getvcp example"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../faq/" class="btn btn-neutral" title="Frequently Asked Questions"><span class="icon icon-circle-arrow-left"></span> Previous</a>
       
     </div>
   
@@ -426,10 +467,10 @@ These are:</p>
           <a href="https://github.com/rockowitz/ddcutil" class="icon icon-github" style="float: left; color: #fcfcfc"> GitHub</a>
       
       
-        <span><a href="../getvcp_known_u3011_output/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+        <span><a href="../faq/" style="color: #fcfcfc;">&laquo; Previous</a></span>
       
       
-        <span style="margin-left: 15px"><a href="../tuning/" style="color: #fcfcfc">Next &raquo;</a></span>
+        <span style="margin-left: 15px"><a href="../release_notes/" style="color: #fcfcfc">Next &raquo;</a></span>
       
     </span>
 </div>

@@ -119,14 +119,6 @@
 
     
     <url>
-     <loc>None/tarballs/</loc>
-     <lastmod>2017-08-26</lastmod>
-     <changefreq>daily</changefreq>
-    </url>
-    
-
-    
-    <url>
      <loc>None/i2c_permissions/</loc>
      <lastmod>2017-08-26</lastmod>
      <changefreq>daily</changefreq>

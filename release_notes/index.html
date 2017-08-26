@@ -1,0 +1,1009 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <meta name="author" content="Sanford Rockowitz">
+  
+  <title>Release Notes - ddcutil Documentation</title>
+  
+
+  <link rel="shortcut icon" href="../img/favicon.ico">
+
+  
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="../css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../css/theme_extra.css" type="text/css" />
+  <link rel="stylesheet" href="../css/highlight.css">
+
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "Release Notes";
+    var mkdocs_page_input_path = "release_notes.md";
+    var mkdocs_page_url = "/release_notes/";
+  </script>
+  
+  <script src="../js/jquery-2.1.1.min.js"></script>
+  <script src="../js/modernizr-2.8.3.min.js"></script>
+  <script type="text/javascript" src="../js/highlight.pack.js"></script>
+  <script src="../js/theme.js"></script> 
+
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+      <div class="wy-side-nav-search">
+        <a href=".." class="icon icon-home"> ddcutil Documentation</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+        <ul class="current">
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="..">Overview</a>
+        
+    </li>
+<li>
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="../mccs_background/">Monitor Control Command Set</a>
+        
+    </li>
+<li>
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="../cmdargs/">Command Arguments</a>
+        
+    </li>
+<li>
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="../cmdopts/">Command Specific Options</a>
+        
+    </li>
+<li>
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="../cmd_output/">Command Output Examples</a>
+        
+    </li>
+<li>
+          
+            <li>
+    <ul class="subnav">
+    <li><span>Examples</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../vcpinfo_output/">ddcutil vcpinfo example</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../detect_verbose_output/">ddcutil detect example</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../cap_u3011_verbose_output/">ddcutil capabilities example</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../getvcp_known_u3011_output/">ddcutil getvcp example</a>
+        
+    </li>
+
+        
+    </ul>
+<li>
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="../colormgt/">Color Management</a>
+        
+    </li>
+<li>
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="../tuning/">Instrumentation and Tuning</a>
+        
+    </li>
+<li>
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="../table_features/">Table Type Features</a>
+        
+    </li>
+<li>
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="../usb/">USB Connected Monitors</a>
+        
+    </li>
+<li>
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="../building/">Building From Source</a>
+        
+    </li>
+<li>
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="../tarballs/releases/">Releases</a>
+        
+    </li>
+<li>
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="../i2c_permissions/">Device Permissions</a>
+        
+    </li>
+<li>
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="../kernel_module/">Kernel Module Configuration</a>
+        
+    </li>
+<li>
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="../nvidia/">Special Nvidia Driver Settings</a>
+        
+    </li>
+<li>
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="../adl/">AMD fglrx Driver</a>
+        
+    </li>
+<li>
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="../virtual_machines/">Virtual Machines</a>
+        
+    </li>
+<li>
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="../raspberry/">Raspberry Pi</a>
+        
+    </li>
+<li>
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="../ddccontrol/">Comparison with ddccontrol</a>
+        
+    </li>
+<li>
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="../monitor_notes/">Notes on specific monitors</a>
+        
+    </li>
+<li>
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="../ddc_null_response/">DDC Null Message</a>
+        
+    </li>
+<li>
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="../api_main/">APIs</a>
+        
+    </li>
+<li>
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="../faq/">Frequently Asked Questions</a>
+        
+    </li>
+<li>
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="../prior_announcements/">Announcement History</a>
+        
+    </li>
+<li>
+          
+            <li>
+    <li class="toctree-l1 current">
+        <a class="current" href="./">Release Notes</a>
+        
+            <ul>
+            
+                <li class="toctree-l3"><a href="#release-notes">Release Notes</a></li>
+                
+                    <li><a class="toctree-l4" href="#084">0.8.4</a></li>
+                
+                    <li><a class="toctree-l4" href="#command-ddcutil-interrogate">Command ddcutil interrogate</a></li>
+                
+                    <li><a class="toctree-l4" href="#libddcutil-devel">libddcutil-devel</a></li>
+                
+                    <li><a class="toctree-l4" href="#bug-fixes">Bug fixes</a></li>
+                
+                    <li><a class="toctree-l4" href="#082">0.8.2</a></li>
+                
+                    <li><a class="toctree-l4" href="#command-ddcutil-detect">Command ddcutil detect</a></li>
+                
+                    <li><a class="toctree-l4" href="#option-stats-errors">Option --stats errors</a></li>
+                
+                    <li><a class="toctree-l4" href="#ddcutil-environment-verbose-changes">ddcutil environment --verbose changes</a></li>
+                
+                    <li><a class="toctree-l4" href="#packaging">Packaging</a></li>
+                
+                    <li><a class="toctree-l4" href="#081">0.8.1</a></li>
+                
+                    <li><a class="toctree-l4" href="#080">0.8.0</a></li>
+                
+                    <li><a class="toctree-l4" href="#bug-fixes_1">Bug Fixes</a></li>
+                
+                    <li><a class="toctree-l4" href="#c-api">C API</a></li>
+                
+                    <li><a class="toctree-l4" href="#name-changes">Name Changes</a></li>
+                
+                    <li><a class="toctree-l4" href="#073">0.7.3</a></li>
+                
+                    <li><a class="toctree-l4" href="#072">0.7.2</a></li>
+                
+                    <li><a class="toctree-l4" href="#071">0.7.1</a></li>
+                
+                    <li><a class="toctree-l4" href="#070">0.7.0</a></li>
+                
+                    <li><a class="toctree-l4" href="#061">0.6.1</a></li>
+                
+                    <li><a class="toctree-l4" href="#060">0.6.0</a></li>
+                
+                    <li><a class="toctree-l4" href="#053">0.5.3</a></li>
+                
+                    <li><a class="toctree-l4" href="#051">0.5.1</a></li>
+                
+                    <li><a class="toctree-l4" href="#05">0.5</a></li>
+                
+            
+            </ul>
+        
+    </li>
+<li>
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="../todo/">Future Tasks</a>
+        
+    </li>
+<li>
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="../feedback/">Feedback</a>
+        
+    </li>
+<li>
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="../bibliography/">References</a>
+        
+    </li>
+<li>
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="../acknowledgements/">Acknowledgements</a>
+        
+    </li>
+<li>
+          
+        </ul>
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="..">ddcutil Documentation</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="..">Docs</a> &raquo;</li>
+    
+      
+    
+    <li>Release Notes</li>
+    <li class="wy-breadcrumbs-aside">
+      
+        
+          <a href="https://github.com/rockowitz/ddcutil" class="icon icon-github"> Edit on GitHub</a>
+        
+      
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h2 id="release-notes">Release Notes</h2>
+<h3 id="084">0.8.4</h3>
+<p>22 July 2017</p>
+<p>This release primarily contains packaging changes to meet Fedora distribution standards.
+It also includes minor improvements and bug fixes. 
+There is no need to install it unless you are experiencing problems.</p>
+<h3 id="command-ddcutil-interrogate">Command <strong>ddcutil interrogate</strong></h3>
+<ul>
+<li>Do not include <strong>usbenvironment</strong> diagnostics as part of the <strong>interrogate</strong> command. USB connected monitors 
+  are rare and USB related diagnostics clutter the report.</li>
+</ul>
+<h3 id="libddcutil-devel">libddcutil-devel</h3>
+<ul>
+<li>Do not package static libraries (.a and .la files) in libddcutil-devel. </li>
+</ul>
+<h3 id="bug-fixes">Bug fixes</h3>
+<ul>
+<li>
+<p>Prevent a segfault in monitor detection that occurrs when slave address x50 is detected on an I2C bus, but reading the EDID at that address fails.</p>
+</li>
+<li>
+<p>Address an assert failure in the <strong>ddcutil usbenvironment</strong> command due to an unexpected library return code.</p>
+</li>
+<li>
+<p>In the device identification cross reference report of <strong>ddcutil environment</strong>, properly handle I2C bus number -1, used internally to 
+  indicate unknown.</p>
+</li>
+</ul>
+<h3 id="082">0.8.2</h3>
+<p>17 May 2017</p>
+<p>This release introduces minor improvements to the diagnostic output of the <strong>environment</strong>, 
+<strong>detect</strong>, and <strong>interrogate</strong> commands.  There is no need to install it unless you are 
+experiencing problems.</p>
+<h3 id="command-ddcutil-detect">Command <strong>ddcutil detect</strong></h3>
+<ul>
+<li>If a display appears to support DDC (I2C slave address x37 is active) but communication fails, 
+  perform a heuristic test as to whether it is a laptop display, issue message appropriately.</li>
+<li>Changes to reduce the number of feature reads performed when detecting monitors, slightly 
+  improving performance.</li>
+</ul>
+<h3 id="option-stats-errors">Option <strong>--stats errors</strong></h3>
+<ul>
+<li>Maintain and report a secondary count of the individual errors that are rolled up into "retry count exceeded" errors.</li>
+</ul>
+<h3 id="ddcutil-environment-verbose-changes"><strong>ddcutil environment --verbose</strong> changes</h3>
+<ul>
+<li>Eliminate checks for package <strong>i2c-tools</strong></li>
+<li>Report additional information about system hardware</li>
+<li>Add a cross reference report for the multiple ways that different subsystems identify 
+    a monitor and its I2C bus</li>
+<li>Consolidate some tests to reduce redundancy</li>
+<li>Check for DisplayPort Multi-Stream Technology (DPMST) devices</li>
+<li>Eliminate the cause of a bogus error message when scanning devices</li>
+</ul>
+<h3 id="packaging">Packaging</h3>
+<ul>
+<li>Changes to the requirements of package <strong>i2c-tools</strong>.  Generally speaking, it is no longer needed for 
+  building <strong>ddcutil</strong>, and is optionally used as part of the diagnostic output of the <strong>environment</strong> command.<ul>
+<li>Changed from <strong>Requires:</strong> to <strong>Suggests:</strong> for dpkg</li>
+<li><strong>Requires:</strong> and <strong>BuildRequires:</strong> eliminated for rpm packaging in general</li>
+<li><strong>BuildRequires:</strong> kept for SuSE rpm packaging.  <strong>ddcutil</strong> needs file linux/i2c-dev.h, which is 
+  contained in package <strong>i2c-tools</strong> in SuSE releases through 13.2</li>
+</ul>
+</li>
+<li>Changes to packaging to conform to Debian standards</li>
+<li>Changes to packaging to conform to Fedora standards</li>
+</ul>
+<h3 id="081">0.8.1</h3>
+<p>06 May 2017</p>
+<p>This is a bugfix release.  There is no need to install it unless you are experiencing the 
+segfault described below.</p>
+<ul>
+<li>Fixes a segfault that can occur after open() fails for a /dev/usb/hiddev device.  </li>
+</ul>
+<h3 id="080">0.8.0</h3>
+<p>01 May 2017</p>
+<p>Release 0.8.0 contains new features intended to address issues with particular monitors and user environments,
+to changes to improve performance, and code restructuring for future enhancements</p>
+<h4 id="general-changes">General Changes</h4>
+<ul>
+<li>
+<p>Monitor detection and cataloging has been extensively reworked. 
+To support the library version of <strong>ddcutil</strong> used by the C (and future Pascal)
+APIs, the list of displays is determined at program/library initialization and 
+saved.  </p>
+</li>
+<li>
+<p>The processing of the DDC Null Response has changed.  Normally a Null Response
+indicates a processing error in the monitor.  Some monitors also use the Null Response
+to indicate that a VCP feature is unsupported.  <strong>ddcutil</strong> now performs an 
+extended sleep when receiving a Null Message response to allow the monitor 
+to recover.  It also performs an initial check of whether a monitor uses DDC Null Response to 
+indicate unsupported features. See <a href="../ddc_null_response/">DDC Null Response</a>.</p>
+</li>
+<li>
+<p>Linux error numbers no longer appear "modulated" in messages.  That is, an EACCES
+error is reported as -13, not -1013.  Note that the C API has always returned 
+Linux error numbers in unmodulated form.</p>
+</li>
+</ul>
+<h4 id="general-options">General Options</h4>
+<p>Option <strong>--async</strong> parallelizes the monitor checks executed during display detection. 
+If there are multiple monitors, initial monitor checks are performed
+in multiple threads, improving performance.  This may become the default in future releases.</p>
+<p>Option <strong>--nodetect</strong> is valid if the display is specified by its I2C bus number, using option <strong>--bus</strong>.
+In that case the initial detection of all displays is skipped, improving performance.
+This may become the default in future releases.</p>
+<p>Option <strong>--hiddev <number></strong> specifies a USB monitor connection by its hiddev device number.  For example:</p>
+<pre><code>--hiddev 3
+</code></pre>
+
+<p>refers to device /dev/usb/hiddev3.  There is no single letter 
+specifier for this option.</p>
+<p>Option <strong>--brief</strong> is now a synonym for <strong>--terse</strong></p>
+<p>Added <strong>--stats</strong> class <strong>elapsed</strong>.  <strong>--stats time</strong> is a synonum for <strong>--stats elapsed</strong>.  Shows program 
+elapsed time.  </p>
+<h4 id="changes-to-specific-commands">Changes to Specific Commands:</h4>
+<p><strong>environment</strong> and <strong>interrogate</strong> commands:</p>
+<ul>
+<li>Report ddcutil version</li>
+</ul>
+<p><strong>probe</strong>, <strong>interrogate</strong>, and <strong>getvcp scan</strong> commands:</p>
+<ul>
+<li>Do not include table features unless output level is VERBOSE. 
+This speeds up execution as table reads for unsupported features 
+execute the maximum number of retries.  It also clarifies performance statistics.
+No monitors implementing table type features have yet been observed.</li>
+</ul>
+<p><strong>interrogate</strong> command:  </p>
+<ul>
+<li>Report performance statistics for individual parts of <strong>interrogate</strong>.</li>
+</ul>
+<p><strong>getvcp</strong> command:  </p>
+<ul>
+<li>If <strong>--terse</strong> output is specified, then the VCP data is output in a form that
+is easily machine readable.  See <a href="../cmdopts/">Command Specific Options</a></li>
+</ul>
+<p><strong>setvcp</strong> and <strong>loadvcp</strong> commands:</p>
+<p>By default, <strong>setvcp</strong> and <strong>loadvcp</strong> verify that a value has been successfully
+set by reading the value from the monitor after writing it.  Option <strong>--noverify</strong> 
+disables this check.</p>
+<h3 id="bug-fixes_1">Bug Fixes</h3>
+<ul>
+<li>Fixed a segfault that occurred when a monitor returned a 0 length capabilities string.</li>
+<li>Variables holding nanoseconds have been changed from type <strong>long</strong> to <strong>uint64_t</strong>
+to address overflow problems on 32 bit systems such as Raspberry Pi.</li>
+</ul>
+<h3 id="c-api">C API</h3>
+<p>The C API has undergone extensive changes.</p>
+<h3 id="name-changes">Name Changes</h3>
+<p>Names have been changed for consistency and clarity.
+Names of certain functions used in message generation have been shortened 
+to simplify printf() type functions. </p>
+<table>
+<thead>
+<tr>
+<th>Old typedef name</th>
+<th>New typedef name</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>VCP_Feature_Code</td>
+<td>DDCA_Vcp_Feature_Code</td>
+</tr>
+<tr>
+<td>Version_Feature_Info</td>
+<td>DDCA_Version_Feature_Info</td>
+</tr>
+<tr>
+<td>Vcp_Value_Type</td>
+<td>DDCA_Vcp_Value_Type</td>
+</tr>
+<tr>
+<td>Single_Vcp_Value</td>
+<td>DDCA_Single_Vcp_Value</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Old function name</th>
+<th>New function name</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ddca_status_code_name()</td>
+<td>ddca_rc_name()</td>
+</tr>
+<tr>
+<td>ddca_status_code_desc()</td>
+<td>ddca_rc_desc()</td>
+</tr>
+<tr>
+<td>ddca_repr_display_identifier()</td>
+<td>ddca_did_repr()</td>
+</tr>
+<tr>
+<td>ddca_create_display_ref()</td>
+<td>ddca_get_display_ref()</td>
+</tr>
+<tr>
+<td>ddca_repr_display_ref()</td>
+<td>ddca_dref_repr()</td>
+</tr>
+<tr>
+<td>ddca_repr_display_handle()</td>
+<td>ddca_dh_repr()</td>
+</tr>
+<tr>
+<td>ddca_get_displays()</td>
+<td>ddca_get_display_info_list()</td>
+</tr>
+<tr>
+<td>ddca_repr_mccs_version()</td>
+<td>ddca_mccs_version_id_name()</td>
+</tr>
+<tr>
+<td>ddca_mccs_version_id_string()</td>
+<td>ddca_mccs_version_id_desc()</td>
+</tr>
+</tbody>
+</table>
+<p>Comments:<br />
+- Function <strong>ddca_create_display_ref()</strong> was renamed to <strong>ddca_get_display_ref()</strong> to reflect 
+the fact that it returns a <strong>DDCA_Display_Reference</strong> from the internal data structures 
+representing detected displays.</p>
+<table>
+<thead>
+<tr>
+<th>Struct</th>
+<th>Old field name</th>
+<th>New field name</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>DDCA_Ddcutil_Version_Spec</td>
+<td>build</td>
+<td>micro</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Enum</th>
+<th>Old value name</th>
+<th>New value name</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>DDCA_Output_Level</td>
+<td>OL_TERSE</td>
+<td>DDCA_OL_TERSE</td>
+</tr>
+<tr>
+<td>DDCA_Output_Level</td>
+<td>OL_NORMAL</td>
+<td>DDCA_OL_NORMAL</td>
+</tr>
+<tr>
+<td>DDCA_Output_Level</td>
+<td>OL_VERBOSE</td>
+<td>DDCA_OL_VERBOSE</td>
+</tr>
+<tr>
+<td>DDCA_IO_Mode</td>
+<td>DDC_IO_DEVI2C</td>
+<td>DDCA_IO_DEVI2C</td>
+</tr>
+<tr>
+<td>DDCA_IO_Mode</td>
+<td>DDC_IO_ADL</td>
+<td>DDCA_IO_ADL</td>
+</tr>
+<tr>
+<td>DDCA_IO_Mode</td>
+<td>USB_IO</td>
+<td>DDCA_IO_USB</td>
+</tr>
+<tr>
+<td>DDCA_Vcp_Value_Type</td>
+<td>NON_TABLE_VCP_VALUE</td>
+<td>DDCA_NON_TABLE_VCP_VALUE</td>
+</tr>
+<tr>
+<td>DDCA_Vcp_Value_Type</td>
+<td>TABLE_VCP_VALUE</td>
+<td>DDCA_TABLE_VCP_VALUE</td>
+</tr>
+</tbody>
+</table>
+<h4 id="structs-and-functions-removed">Structs and Functions Removed</h4>
+<table>
+<thead>
+<tr>
+<th>Structs removed</th>
+<th>Comment</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>DDCA_IO_Location</td>
+<td>Use DCCA_IO_Path</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Functions removed</th>
+<th>Comment</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ddca_built_with_adl()</td>
+<td>Use ddca_get_build_options()</td>
+</tr>
+<tr>
+<td>ddca_built_with_usb()</td>
+<td>Use ddca_get_built_options()</td>
+</tr>
+</tbody>
+</table>
+<h4 id="enums-structs-and-functions-added-or-changed">Enums, Structs, and Functions Added or Changed</h4>
+<table>
+<thead>
+<tr>
+<th>New enum</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>DDCA_Stats_Type</td>
+<td>Used as both values and bitflags for statistics types</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>New Structs</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>DDCA_Adlno</td>
+<td>Represents a ADL adapter number/display number pair</td>
+</tr>
+<tr>
+<td>DDCA_IO_PATH</td>
+<td>Physical path for MCCS communication</td>
+</tr>
+</tbody>
+</table>
+<p>Comments:  </p>
+<ul>
+<li>Struct <strong>DDCA_Display_Location</strong> is replaced by <strong>DDCA_IO_Path</strong>, 
+which contains only the io mode and device identifiers 
+for that mode.  USB bus and device numbers were removed
+because they are attributes by which the physical path 
+(hiddev device) can be found, not the path itself.</li>
+<li>Struct <strong>DDCA_Display_Info</strong> has been adjusted to use <strong>DDCA_IO_Path</strong>.</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Function added</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ddca_ddcutil_version()</td>
+<td>gets version as a struct of numbers</td>
+</tr>
+<tr>
+<td>ddca_reset_stats()</td>
+<td>reset performance statistics</td>
+</tr>
+<tr>
+<td>ddca_show_stats()</td>
+<td>report performance statistics</td>
+</tr>
+<tr>
+<td>ddca_enable_verify()</td>
+<td>controls whether VCP values are read after being set</td>
+</tr>
+<tr>
+<td>ddca_is_verify_enabled()</td>
+<td>queries whether VCP values are verified</td>
+</tr>
+<tr>
+<td>ddca_free_display_info_list()</td>
+<td>free function for struct</td>
+</tr>
+<tr>
+<td>ddca_create_usb_hiddev_display_identifier()</td>
+<td>create identifier for hiddev number</td>
+</tr>
+<tr>
+<td>ddca_get_simple_nc_feature_value_name()</td>
+<td>lookup name of simple NC feature value</td>
+</tr>
+</tbody>
+</table>
+<h4 id="other-changes">Other Changes</h4>
+<p>Functions now return Linux error number -EINVAL rather than DDC specific 
+error number DDCL_ARG in case of invalid argument </p>
+<p>The display selection lifecycle has been changed.  The <strong>DDCA_Display_Identifier</strong> is not 
+the only way to obtain a <strong>DDCA_Display_Reference</strong>. 
+It can be found in one of 2 ways:  </p>
+<ul>
+<li>Function <strong>ddca_get_display_info_list()</strong> returns  a collection <strong>DDCA_Display_Info</strong>, containing 
+display identification information (e.g. ddcutil assigned display number, I2c Bus number, manufacturer id, etc.) and a display reference.
+The client program can search through the returned collection to find the
+desired monitor.  </li>
+<li>A <strong>DDCA_Display_Identifier</strong> can be created and passed to ddca_get_display_ref(), which returns 
+a <strong>DDCA_Display_Reference</strong>.</li>
+</ul>
+<p>See sample program <strong>demo_display_selection.c</strong> for examples. </p>
+<h4 id="sample-code-files">Sample code files:</h4>
+<p>The following example files for using the C API have been added:</p>
+<table>
+<thead>
+<tr>
+<th>File name</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>demo_global_settings.c</td>
+<td>Report and modify global settings</td>
+</tr>
+<tr>
+<td>demo_display_selection.c</td>
+<td>Display selection</td>
+</tr>
+<tr>
+<td>demo_vcpinfo.c</td>
+<td>Query VCP feature code descriptons</td>
+</tr>
+<tr>
+<td>demo_get_set_vcp.c</td>
+<td>Get and set VCP values</td>
+</tr>
+</tbody>
+</table>
+<p>File <strong>clmain.c</strong> is now a miscellaneous catchall, mainly for testing.</p>
+<h4 id="build-system-changes">Build system changes</h4>
+<ul>
+<li>src/Makefile.am: change dist-hook to use -prune option per Knut Omang; 
+avoids eror in case there is nothing to erase (i.e. build hasn't happened)</li>
+<li>Added cmake file FindDDCUtil.cmake from Dorian Vogel</li>
+</ul>
+<h3 id="073">0.7.3</h3>
+<p>05 March 2017</p>
+<p>Maintenance release.</p>
+<ul>
+<li>Add additional diagnostic tests to command <strong>ddcutil environment --verbose</strong>*. </li>
+<li>New configure option <strong><em>--enable-drm</em></strong>.   <ul>
+<li>If enabled (the default), command <strong>ddcutil environment --verbose</strong> includes additional tests that use
+DRM services to better analyze disrepancies observed in the field between the EDID read directly from the monitor and that reported by X11.</li>
+<li>Option <strong><em>--enable-drm</em></strong> requires that a recent version (&gt;= 2.4.67) of the development package for libdrm2 (libdrm-dev or libdrm-devel depending on Linux distribution) be
+installed when building <strong>ddcutil</strong>.  If a sufficently recent version is not detected, <strong>configure</strong> issues a warning and reverts to <strong><em>--disable-drm</em></strong>.</li>
+<li>If minimizing executable size is important, set <strong><em>--disable-drm</em></strong>, as DRM services are used only for diagnostics.</li>
+</ul>
+</li>
+<li>Additional information on <strong>ddcutil detect --verbose</strong>.<ul>
+<li>Report and interpret USB vendor id/product id when <strong>detect</strong> cannot open a hiddev device.  This is usually benign, and identifying the device should make this evident.</li>
+<li>Suggest that the user check that DDC/CI is enabled in the monitor's on screen display if I2C bus x37 (DDC) is responsive, but DDC communication fails.</li>
+</ul>
+</li>
+</ul>
+<h3 id="072">0.7.2</h3>
+<p>01 February 2017</p>
+<p>Maintenance release.</p>
+<ul>
+<li>Fixes a critical bug in release 0.7.1 where insufficient privileges on a /dev/i2c-n device causes program termination.</li>
+<li><strong>ddcutil interrogate</strong> always executes with <strong><em>--set-slave-address</em></strong> in effect</li>
+<li>Minor improvements to <strong>ddcutil environment</strong> and <strong>ddcutil interrogate</strong> output</li>
+<li>Minor improvements to <strong>ddcutil detect --verbose</strong></li>
+<li>Add explanations for additional <strong><em>errno</em></strong> values</li>
+</ul>
+<h3 id="071">0.7.1</h3>
+<p>27 January 2017</p>
+<p>Mantenance release.</p>
+<ul>
+<li>Add option <strong><em>--force-slave-address</em></strong> which causes ddcutil to take control of slave addresses on the 
+I2C bus even if they are in use.  Internally, <strong><em>ioctl(I2C_FORCE_SLAVE)</em></strong> is called instead of <strong><em>ioctl(I2C_SLAVE)</em></strong>.
+This is intended as a possible workaround for situations where monitors on an I2C bus are not detected. See <a href="../tuning/#force_slave">Option --force-slave-address</a></li>
+<li>Option <strong><em>--force</em></strong> disables various checking.  It's use is likely to result in command failure, but may 
+provide useful information as to the source of problems.  See <a href="../tuning/#slave">Option --force</a></li>
+<li>Fix the cause of a segfault when displaying  statistics for option <strong><em>--stats errors</em></strong> or simply <strong><em>--stats</em></strong>, or on 
+the <strong>interrogate</strong> command.</li>
+<li><strong>make install</strong> will not install C header files unless configuration option <strong><em>--enable-lib</em></strong> is set.</li>
+<li>Fix the cause of a Makefile error when trying to strip dependency information from <strong>libddctuil.la</strong> during <strong>make install</strong>.</li>
+<li>Extensive rework of Autotools files for future support of Python 3 as well as Python 2.  This work is incomplete.</li>
+<li>Emit diagnostic messages to aid in debugging certain situations seen only in the field.</li>
+</ul>
+<h3 id="070">0.7.0</h3>
+<p>03 January 2017</p>
+<ul>
+<li><a href="../api_main/">C API</a><ul>
+<li>Should be fairly stable, though not all features of <strong>ddcutil</strong> are exposed.</li>
+<li>Reflecting the presence of APIs, the default for the <strong><em>--enable-lib</em></strong> configuration option is now "yes".
+  The following shared object library is created: libddcutil.so</li>
+<li>Additional prebuilt packages: libddcutil0, libddcutil-dev (Debian, Ubuntu) or ddcutil-devel (Fedora, SUSE)</li>
+</ul>
+</li>
+<li><a href="../api_main/">Python API</a><ul>
+<li>The Python API, implemented using SWIG, is a rough proof of concept and subject to major change.</li>
+<li>SWIG support is only available by building from source, not from pre-built packages.  Requires <strong><em>--enable-swig</em></strong> configuration option.  </li>
+</ul>
+</li>
+<li>A new command line option <strong><em>--mfg</em></strong>, which allows for monitor selection using the 3 character manufacturer id 
+  found in the EDID.  <strong><em>--model</em></strong> and <strong><em>-sn</em></strong> no longer need to specified together.  If any of <strong><em>--mfg</em></strong>, <strong><em>-model</em></strong>, and <strong><em>-sn</em></strong>
+  are specified, the first monitor to match all of the manufacturer/model/serial-numbers that are specified is chosen.</li>
+<li>The monitor feature and capabilities portion of <strong><em>interrogate</em></strong> has been enhanced.  This functionality is also exposed using the 
+  new <strong><em>probe</em></strong> command which operates on a single monitor.</li>
+<li>Parsing of the capabilities string is enhanced to accomodate monitors that do not separate feature codes by blanks.</li>
+</ul>
+<h3 id="061">0.6.1</h3>
+<p>21 November 2016</p>
+<p>Maintenance release.  </p>
+<ul>
+<li>Improve recovery and diagnotistic messages for certain exceptional conditions. </li>
+<li>Command <strong>ddcutil interrogate</strong> now reports the differences between VCP codes 
+declared in the capabilities string and those observed by scanning. </li>
+<li>Extensive internal changes in preparation for future C and Python APIs.</li>
+</ul>
+<h3 id="060">0.6.0</h3>
+<p>01 October 2016</p>
+<p>Rename project from ddctool to ddcutil.  </p>
+<ul>
+<li>Primary executable is now named ddcutil  </li>
+<li>Shared library is now named libddcutil.so</li>
+<li>Tarball is now named ddcutil.n.n.n.tar.gz</li>
+</ul>
+<h3 id="053">0.5.3</h3>
+<p>24 September 2016</p>
+<p>Fix overzealous code cleanup in release 0.5.1.  </p>
+<ul>
+<li>Undefined reference to function is_module_loaded_using_sysfs() when building without ADL support.  </li>
+<li>Error in command parsing. Command arguments were ignored.</li>
+</ul>
+<h3 id="051">0.5.1</h3>
+<p>23 September 2016</p>
+<p>Minor improvements to diagnostics of the <strong>environment</strong> and <strong>interrogate</strong> commands:</p>
+<ul>
+<li>Check if i2c_dev is built into the kernel as an alternative to it being a loadable kernel module  </li>
+<li>Recognize amdgpu video driver</li>
+</ul>
+<h3 id="05">0.5</h3>
+<p>09 September 2016</p>
+<p>This is the first formal release of <strong>ddcutil</strong></p>
+<ul>
+<li>Rework USB monitor support based on testing with Eizo Coloredge and NEC PA series<br />
+-- Probing of USB connected monitors is greatly extended and refactored from <strong>ddcutil environment</strong> into a separate command <strong>ddcutil usbenv</strong>.
+Libraries hidraw and libusb are used as well as hiddev.  HID Report Descriptors are parsed.  This probing is included in <strong>ddcutil interrogate</strong>. <br />
+  -- <strong>configure</strong> option <strong>--enable-usb/--disable-usb</strong> controls whether ddcutil is built
+  with USB monitor support.  The default is <strong>--enable-usb</strong>.  When building with USB support,
+  packages for udev, hidraw, hiddev, and libusb are required.</li>
+<li>Simplify README.md.  Refer to www.ddcutil.com for most documentation  </li>
+<li>The assumption that I2C buses are numbered consecutively is removed.  Required for Raspberry Pi. </li>
+<li>Allow a display to be specified on the command <strong>ddcutil loadvcp</strong>.
+ This addresses the situation where a monitor presents both an I2C and a USB interface.
+ Normally, the display is determined using the data stored in the VCP file, and the I2C display interface is
+ chosen over the USB interface.
+ If a display is specified, then the model and sn from its EDID must match
+ those in the VCP data being loaded.  </li>
+<li>Add <strong>ddcutil</strong> command option <strong>--timestamp/--ts</strong>.  If specified, trace messages are prefaced with an elapsed timestamp.</li>
+<li>Because of changing package requirements, <strong>ddcutil</strong> no longer builds in the openSUSE Build Service (OBS) for older OS versions (openSUSE 13.1, Ubuntu 12.04, 14.04). </li>
+<li><strong>ddcutil</strong> currently does not build for any openSUSE version in the openSUSE Build Service due to violation of policy guidelines.  This problem will
+be addressed in a subsequent release. openSUSE users can build ddcutil from its tarball.</li>
+</ul>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../todo/" class="btn btn-neutral float-right" title="Future Tasks">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="../prior_announcements/" class="btn btn-neutral" title="Announcement History"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+	  
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+<div class="rst-versions" role="note" style="cursor: pointer">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+          <a href="https://github.com/rockowitz/ddcutil" class="icon icon-github" style="float: left; color: #fcfcfc"> GitHub</a>
+      
+      
+        <span><a href="../prior_announcements/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+        <span style="margin-left: 15px"><a href="../todo/" style="color: #fcfcfc">Next &raquo;</a></span>
+      
+    </span>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,670 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <meta name="author" content="Sanford Rockowitz">
+  
+  <title>Notes on specific monitors - ddcutil Documentation</title>
+  
+
+  <link rel="shortcut icon" href="../img/favicon.ico">
+
+  
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="../css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../css/theme_extra.css" type="text/css" />
+  <link rel="stylesheet" href="../css/highlight.css">
+
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "Notes on specific monitors";
+    var mkdocs_page_input_path = "monitor_notes.md";
+    var mkdocs_page_url = "/monitor_notes/";
+  </script>
+  
+  <script src="../js/jquery-2.1.1.min.js"></script>
+  <script src="../js/modernizr-2.8.3.min.js"></script>
+  <script type="text/javascript" src="../js/highlight.pack.js"></script>
+  <script src="../js/theme.js"></script> 
+
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+      <div class="wy-side-nav-search">
+        <a href=".." class="icon icon-home"> ddcutil Documentation</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+        <ul class="current">
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="..">Overview</a>
+        
+    </li>
+<li>
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="../mccs_background/">Monitor Control Command Set</a>
+        
+    </li>
+<li>
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="../cmdargs/">Command Arguments</a>
+        
+    </li>
+<li>
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="../cmdopts/">Command Specific Options</a>
+        
+    </li>
+<li>
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="../cmd_output/">Command Output Examples</a>
+        
+    </li>
+<li>
+          
+            <li>
+    <ul class="subnav">
+    <li><span>Examples</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../vcpinfo_output/">ddcutil vcpinfo example</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../detect_verbose_output/">ddcutil detect example</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../cap_u3011_verbose_output/">ddcutil capabilities example</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../getvcp_known_u3011_output/">ddcutil getvcp example</a>
+        
+    </li>
+
+        
+    </ul>
+<li>
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="../colormgt/">Color Management</a>
+        
+    </li>
+<li>
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="../tuning/">Instrumentation and Tuning</a>
+        
+    </li>
+<li>
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="../table_features/">Table Type Features</a>
+        
+    </li>
+<li>
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="../usb/">USB Connected Monitors</a>
+        
+    </li>
+<li>
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="../building/">Building From Source</a>
+        
+    </li>
+<li>
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="../tarballs/releases/">Releases</a>
+        
+    </li>
+<li>
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="../i2c_permissions/">Device Permissions</a>
+        
+    </li>
+<li>
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="../kernel_module/">Kernel Module Configuration</a>
+        
+    </li>
+<li>
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="../nvidia/">Special Nvidia Driver Settings</a>
+        
+    </li>
+<li>
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="../adl/">AMD fglrx Driver</a>
+        
+    </li>
+<li>
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="../virtual_machines/">Virtual Machines</a>
+        
+    </li>
+<li>
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="../raspberry/">Raspberry Pi</a>
+        
+    </li>
+<li>
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="../ddccontrol/">Comparison with ddccontrol</a>
+        
+    </li>
+<li>
+          
+            <li>
+    <li class="toctree-l1 current">
+        <a class="current" href="./">Notes on specific monitors</a>
+        
+            <ul>
+            
+                <li class="toctree-l3"><a href="#notes-on-specific-monitors">Notes on Specific Monitors</a></li>
+                
+                    <li><a class="toctree-l4" href="#aoc-q2775">AOC Q2775</a></li>
+                
+                    <li><a class="toctree-l4" href="#apple-cinema-display-a1082">Apple Cinema Display A1082</a></li>
+                
+                    <li><a class="toctree-l4" href="#asus-ve247">Asus VE247</a></li>
+                
+                    <li><a class="toctree-l4" href="#benq-xl2411z">BenQ XL2411Z</a></li>
+                
+                    <li><a class="toctree-l4" href="#dell-p2411">Dell P2411</a></li>
+                
+                    <li><a class="toctree-l4" href="#dell-p2715q">Dell P2715Q</a></li>
+                
+                    <li><a class="toctree-l4" href="#dell-ultrasharp-1905fp">Dell Ultrasharp 1905FP</a></li>
+                
+                    <li><a class="toctree-l4" href="#dell-ultrasharp-u2413">Dell Ultrasharp U2413</a></li>
+                
+                    <li><a class="toctree-l4" href="#dell-u3011">Dell U3011</a></li>
+                
+                    <li><a class="toctree-l4" href="#dell-ultrasharp-u3415w">Dell Ultrasharp U3415W</a></li>
+                
+                    <li><a class="toctree-l4" href="#eizo-coloredge-cg19">Eizo Coloredge CG19</a></li>
+                
+                    <li><a class="toctree-l4" href="#gateway-diamondtron-vx920">Gateway Diamondtron VX920</a></li>
+                
+                    <li><a class="toctree-l4" href="#hanns-g-hi221d">Hanns G Hi221D</a></li>
+                
+                    <li><a class="toctree-l4" href="#hp-lp1965">HP LP1965</a></li>
+                
+                    <li><a class="toctree-l4" href="#hp-lp2475w">HP LP2475w</a></li>
+                
+                    <li><a class="toctree-l4" href="#hp-lp2480zx">HP LP2480zx</a></li>
+                
+                    <li><a class="toctree-l4" href="#hp-w2207">HP w2207</a></li>
+                
+                    <li><a class="toctree-l4" href="#hp-zr2740w">HP ZR2740w</a></li>
+                
+                    <li><a class="toctree-l4" href="#iilyama-pl2779q">Iilyama PL2779Q</a></li>
+                
+                    <li><a class="toctree-l4" href="#lg-ultrawide">LG Ultrawide</a></li>
+                
+                    <li><a class="toctree-l4" href="#nec-lcd3090wqxi">NEC LCD3090WQXi</a></li>
+                
+                    <li><a class="toctree-l4" href="#nec-pa241">NEC PA241</a></li>
+                
+                    <li><a class="toctree-l4" href="#phillips-bdm3270">Phillips BDM3270</a></li>
+                
+                    <li><a class="toctree-l4" href="#phillips-bdm4037u">Phillips BDM4037U</a></li>
+                
+                    <li><a class="toctree-l4" href="#samsung-s32d850">Samsung S32D850</a></li>
+                
+                    <li><a class="toctree-l4" href="#samsung-syncmaster-213t">Samsung Syncmaster 213T</a></li>
+                
+                    <li><a class="toctree-l4" href="#samsung-syncmaster-730b">Samsung Syncmaster 730B</a></li>
+                
+            
+            </ul>
+        
+    </li>
+<li>
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="../ddc_null_response/">DDC Null Message</a>
+        
+    </li>
+<li>
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="../api_main/">APIs</a>
+        
+    </li>
+<li>
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="../faq/">Frequently Asked Questions</a>
+        
+    </li>
+<li>
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="../prior_announcements/">Announcement History</a>
+        
+    </li>
+<li>
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="../release_notes/">Release Notes</a>
+        
+    </li>
+<li>
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="../todo/">Future Tasks</a>
+        
+    </li>
+<li>
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="../feedback/">Feedback</a>
+        
+    </li>
+<li>
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="../bibliography/">References</a>
+        
+    </li>
+<li>
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="../acknowledgements/">Acknowledgements</a>
+        
+    </li>
+<li>
+          
+        </ul>
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="..">ddcutil Documentation</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="..">Docs</a> &raquo;</li>
+    
+      
+    
+    <li>Notes on specific monitors</li>
+    <li class="wy-breadcrumbs-aside">
+      
+        
+          <a href="https://github.com/rockowitz/ddcutil" class="icon icon-github"> Edit on GitHub</a>
+        
+      
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h2 id="notes-on-specific-monitors">Notes on Specific Monitors</h2>
+<p>The following list describes some monitors that have been tested.  It highlights the variability in DDC implementation among monitors.</p>
+<h3 id="aoc-q2775">AOC Q2775</h3>
+<p>VCP Version:   2.2<br />
+Controller Manufacturer:  Mstar <br />
+Controller Model:  mh=0xff, ml=0x16, sh=0x00<br />
+Firmware version:  0.7<br />
+Manufacture year: 2016  </p>
+<p>Feature x0B: Color temperature increment:  100 deg Kelvin<br />
+Feature x0C: Color temperature request: 100<br />
+Caclculated color temperature = 3000 + 100 * 100 = 3000+10000 = 13000 deg Kelvin  (nonsensical)  </p>
+<p>Capabilities string has controller manufacturer name in model() field.</p>
+<h3 id="apple-cinema-display-a1082">Apple Cinema Display A1082</h3>
+<p>Has both I2C and USB interfaces. </p>
+<p>VCP Version:  2.0<br />
+Controller Manufacturer:   unspecified<br />
+Controller Model:          unspecified  <br />
+Firmware version:          unspecified<br />
+Manufacture year:          2005</p>
+<p>I2C interface has more VCP features than USB interface. </p>
+<p>USB interface does not report VCP version (feature DF).</p>
+<p>Able to read EDID over USB. </p>
+<p>Capabilities string does not begin and end with parentheses. </p>
+<h3 id="asus-ve247">Asus VE247</h3>
+<p>VCP version:  2.0 <br />
+Controller Manufacturer:   RealTek<br />
+Controller Model: mh=x00, ml=x24, sh=x82   <br />
+Firmware version: 2.0 <br />
+Maufacture year:  2010</p>
+<p>Responds to unknown VCP codes using the DDC NULL message instead of setting the <strong><em>Unsupported VCP code</em></strong> bit in the GETVCP response.</p>
+<p>Sensible responses to VCP codes x0B and x0C. </p>
+<h3 id="benq-xl2411z">BenQ XL2411Z</h3>
+<p>VCP version:  2.2<br />
+Controller Manufacturer: Mstar<br />
+Controller Model: mh=x00 mh=x00, ml-x85, sh=x56<br />
+Firmware version: 2.1 <br />
+Manufacture year: 2013</p>
+<p>Feature x0B: Color temperature increment:  50 deg Kelvin<br />
+Feature x0C: Color temperature request: 0<br />
+Caclculated color temperature = 3000 + (0*50) = 3000 deg Kelvin  (nonsensical)  </p>
+<p>Responds to VCP feature x60 (Input Source) even though this is not documented in the capabilities string.</p>
+<h3 id="dell-p2411">Dell P2411</h3>
+<p>VCP version: 2.1 <br />
+Controller Manufacturer: Mstar<br />
+Controller Model: mh=x00, ml=x00, sh=x56 <br />
+Firmware version:       1.1<br />
+Manufacture year:       2011</p>
+<p>Lots of I2C errors.  Heavily dependant on retries.  The CAPABILITIES command sometimes fails, even with maximum retries. 
+More recently, works with nouveau driver, but fails with proprietary Nvidia driver. </p>
+<p>Reports VCP code 0B (color temperature increment) as 1 degree Kelvin, which makes the GETVCP response to VCP code 0C (color temperature
+request) nonsensical.</p>
+<h3 id="dell-p2715q">Dell P2715Q</h3>
+<p>VCP version: 2.1
+Controller Manufacturer: Mstar (sl=x05)
+Controller Model: mh=x00, ml=x00,x sh=x56 <br />
+Firmware version:       2.1
+Manufacture year:       2015</p>
+<p>Feature x0B, Color temperature increment:   unsupported<br />
+Feature x0C, Color temperature request:     unsupported</p>
+<p>very clean, no  DDC retries needed</p>
+<h3 id="dell-ultrasharp-1905fp">Dell Ultrasharp 1905FP</h3>
+<p>Does not support DDC.</p>
+<h3 id="dell-ultrasharp-u2413">Dell Ultrasharp U2413</h3>
+<p>VCP version:   2.1
+Controller Manufacturer:  STMicroelectronics (sl=x0d)<br />
+Controller Model:  mh=x00, ml=x93, sh=x01<br />
+Firmware version:  2.1<br />
+Manufacture year:  2013</p>
+<p>This monitor has a hardware LUT, however LUT loading not supported using standard VCP feature codes.</p>
+<p>Responds to VCP feature xc0 (Display Usage Time), but returns 0.</p>
+<p>Color temperature:<br />
+  color temp increment (feature 0B):  unsupported
+  color temp request (feature 0C):    unsupported</p>
+<h3 id="dell-u3011">Dell U3011</h3>
+<p>VCP version: 2.1 <br />
+Controller manufacturer:  Mstar <br />
+Controller Model: mh=x00, ml=x94, sh=x85   <br />
+Firmware version: 1.5 <br />
+Manufacture year: 2012  </p>
+<p>If a value is set using SETVCP, the new value takes effect and appears in the on-screen display.   However, GETVCP sometimes still retieves the old value, not the new one.</p>
+<p>Reports VCP code x0B (color temperature increment) as 1 degree Kelvin, which makes the GETVCP response to
+VCP code x0C (color temperature request) nonsensical.</p>
+<p>Color temperature:<br />
+  color temp increment (feature 0B):  1 deg K<br />
+  color temp request (feature 0C):    2
+  calculated color temp = 3000 + (x0c_val * x0b_val) = 3000  + (1 * 2) = 3002 degrees Kelvin</p>
+<h3 id="dell-ultrasharp-u3415w">Dell Ultrasharp U3415W</h3>
+<p>VCP version: 2.1 <br />
+Controller manufacturer:  Realtek (sl=x09)    <br />
+Controller Model: mh=x00, ml=x11, sh=x11     <br />
+Firmware version: 65.1   <br />
+Manufacture year: 2015  </p>
+<p>Neither feature 0B (color temperature increment) or 0C (color temperature request) are listed
+in the capabilities string.
+However, querying feature 0B does work.  Querying feature 0C fails.</p>
+<p>Color temperature:<br />
+  color temp increment (feature 0B):  100 deg K<br />
+  color temp request (feature 0C):    query fails </p>
+<h3 id="eizo-coloredge-cg19">Eizo Coloredge CG19</h3>
+<p>VCP version:  unreported <br />
+Controller manufacturer and model: unreported (VCP feature code C8 unsupported) <br />
+Firmware version: unreported (VCP feature code C9 unsupported)   </p>
+<p>Reports EDID at I2C bus address x50.  Does not support DDC over I2C (bus address x37). </p>
+<p>Does implement MCCS over USB, and appears to conform to the USB Monitor Control Class Specification.
+However, it appears that the more sophisticated monitor features such as LUT loading use manufacturer
+specific USB HID reports. </p>
+<p>Unable to read EDID over USB, even though the HID Report for EDID can be located.</p>
+<p>To set color related VCP feature values, Custom Color mode must be selected.   If set to sRGB or Calibrated, the SETVCP command
+will appear to succeed, but will have no effect.  (In sRGB mode, Brightness can be set, in Calibrated mode it cannot.)</p>
+<h3 id="gateway-diamondtron-vx920">Gateway Diamondtron VX920</h3>
+<p>VCP version:  Unspecified, implies 1.0 <br />
+Controller manufacturer and model:   Unknown (VCP feature code C8 unsupported)   <br />
+Firmware version:  Unknown (VCP feature code C9 unsupported)  </p>
+<h3 id="hanns-g-hi221d">Hanns G Hi221D</h3>
+<p>VCP version:  2.1 <br />
+Controller manufacturer:  Mstar <br />
+Controller model:   mh=x00, ml=x92, sh=x00 <br />
+Firmware version:  0.6  </p>
+<p>All GETVCP requests return a value, whether or not the feature is valid for the monitor.   The monitor never reports a feature as unsupported.</p>
+<h3 id="hp-lp1965">HP LP1965</h3>
+<p>VCP version:   2.0<br />
+Controller manufacturer:  Undocumented value:  x64<br />
+Controller model:   mh=xff, ml=xff, sh=x86<br />
+Firmware version: 0.3<br />
+Manufacture year: 2007</p>
+<p>Capabilities reports non-standard DDC command x4E.</p>
+<p>Color temperature:<br />
+  color temp increment (feature 0B):  50 deg K<br />
+  color temp request (feature 0C):    70<br />
+  calculated color temp = 3000 + (x0c_val * x0b_val) = 3000  + (70 * 50) = 6500 degrees Kelvin</p>
+<h3 id="hp-lp2475w">HP LP2475w</h3>
+<p>VCP version:  2.1<br />
+Controller manufacturer: Genesis<br />
+Controller model:  mh=xff   ml=xff  sh=x80
+Firmware version: 0.31<br />
+Manufacture year: 2008  </p>
+<p>Color temperature:<br />
+  color temp increment (feature 0B):  3000 deg K<br />
+  color temp request (feature 0C):    1<br />
+  calculated color temp = 3000 + (x0c_val * x0b_val) = 3000  + (1 * 3000) = 6000 degrees Kelvin</p>
+<p>LUT loading not supported using standard VCP feature codes.</p>
+<p>Implements MCCS over USB as well as I2C.   However, the USB implementation appears to be non-standard.  It does not conform to the USB Monitor Control Class Specification. </p>
+<h3 id="hp-lp2480zx">HP LP2480zx</h3>
+<p>VCP version:   2.1 <br />
+Controller manufacturer:  Genesis <br />
+Controller Model: mh=xff, ml=xff, sh=x80 <br />
+Firmware version:      0.139<br />
+Manufacture year:      2008  </p>
+<p>Heavily reliant on manufacturer specific VCP codes.  Most color related features, including loading the internal LUT, are not supported using
+standard VCP feature codes.</p>
+<p>Implements MCCS over USB as well as I2C.   However, the USB implementation appears to be non-standard.  It does not conform to the USB Monitor Control Class Specification. </p>
+<p>Sensible reponses to VCP codes 0B and 0C. </p>
+<p>Capabilities string does not match actual capabilities observed.  For example, capaibilites does not include VCP feature code x10, brightness, which is recognized by getvcp and setvcp.</p>
+<p>Values in capabilities string for feature 60 is a mixture of hex and decimal values, i.e. </p>
+<pre><code> 01 02 03 04 05 07 0C 13 14 15 17 1C
+</code></pre>
+
+<p>Should be:</p>
+<pre><code> 01 02 03 04 05 07 0C 0D 0E 0F 11 ??
+</code></pre>
+
+<p>Capabilities string does include cmds() segment listing supported commands, or model() segment listing model.</p>
+<h3 id="hp-w2207">HP w2207</h3>
+<p>VCP Version:  2.1<br />
+Controller manufacturer:  Mstar<br />
+Firmware Version:          3.5<br />
+Manufacture year:         2007  </p>
+<p>Color temperature increment (feature x0B) and request (feature x0C) result in a color temperature of 13,000 degress Kelvin</p>
+<p>Responds with data to all VCP feature requests, never reports a feature as unsupported </p>
+<h3 id="hp-zr2740w">HP ZR2740w</h3>
+<p>VCP version:  2.2  </p>
+<p>Implements only a few VCP codes. </p>
+<p>VCP feature codes 0B and 0C unsupported.</p>
+<h3 id="iilyama-pl2779q">Iilyama PL2779Q</h3>
+<p>VCP Version:    2.1<br />
+Controller manufacturer:   unknown (feature code xC8 unsupported)<br />
+Firmware version:          unknown (feature code xC9 unsupported)<br />
+Manufacture year:          2013  </p>
+<p>Color temperature increment (feature x0B) and request (feature x0C) result in a color temperature of 26,100 degress Kelvin</p>
+<p>Does not include command x02 (VCP Response) or xE3 (Capabilities Reply) in its capabilities string, even though these are supported.</p>
+<p>Responds to several VCP feature not listed in capabilities</p>
+<h3 id="lg-ultrawide">LG Ultrawide</h3>
+<p>VCP version:  2.1 <br />
+Controller manufacturer and model:  STK<br />
+Firmware version:  0.1<br />
+Manufacture year:  2014  </p>
+<p>Feature codes are not separated by blanks in the vcp() section of the capabilities string.</p>
+<p>No serial number in the EDID.</p>
+<p>When responding to a Get VCP Feature request, the monitor never sets sets the Result Code field of the VCP Feature Reply to Unsupported VCP Code.
+Instead, it always reports No Error.<br />
+For unsupported VCP codes, all bytes in the response (MH, ML, SH, SL) are set to x00.</p>
+<h3 id="nec-lcd3090wqxi">NEC LCD3090WQXi</h3>
+<p>VCP Version 2.0<br />
+Controller manufacturer and model: unreported (VCP feature code C8 unsupported)<br />
+Firmware version: unreported (VCP feature code C9 unsupported)   </p>
+<h3 id="nec-pa241">NEC PA241</h3>
+<p>VCP Version 2.0<br />
+Controller manufacturer and model: unreported (VCP feature code C8 unsupported)<br />
+Firmware version: unreported (VCP feature code C9 unsupported)   </p>
+<p>Implements both I2C and USB interfaces.  </p>
+<p>Makes heavy use of manufacturer specific VCP feature codes.  Also, ddcutil capabilities --verbose reports numerous manufacturer
+specific DDC commands  The USB interface also makes heavy use of manufacturer specific usage codes.</p>
+<p>Monitor must be set to ??? to allow changes. </p>
+<p>VCP code x0c (Color Temperature Request) returns 0, which is nonsensical. </p>
+<p>Does not use the usual VCP codes (.e.g. x16/Red Gain) for color control.
+Instead uses the 6 axis color control features x8c..xa0.</p>
+<h3 id="phillips-bdm3270">Phillips BDM3270</h3>
+<p>VCP Version: 2.2
+Controller manufacturer:  Novatek, model info: mh=xff, ml=xff, sh=x00
+Firmware version:  1.0
+Manufature year:  2016</p>
+<p>Color temperature increment (VCP code x0B) = 50 degrees Kelvin (sensible)<br />
+Color temperature request (VCP code x0C) yields a calculated color temperator of 3000+(70*50) = 6500 degrees Kelvin</p>
+<h3 id="phillips-bdm4037u">Phillips BDM4037U</h3>
+<p>VCP Version:  2.2<br />
+Controller manufacturer:  Realtek (sl=x09), Controller model: mh=x00, ml=x00, sh=x00<br />
+Firmware version 0.1<br />
+Manufacture year:  2016  </p>
+<p>color temp increment (feature 0B):  100 deg K <br />
+  color temp request (feature 0C):    70 -&gt; 3000+(70*100) = 10000 deg K</p>
+<p>DDC communication clean, no need for retries</p>
+<h3 id="samsung-s32d850">Samsung S32D850</h3>
+<p>Manufacture year:  2015 
+VCP Version: 2.0
+Controller manufacturer:  Mstar, controller number: mh=x00, ml=x10, sh=x00
+Firmware version:         0.1</p>
+<p>Capabilites request returns a 0 length string.</p>
+<p>Features x0B and X0C are unsupported.  Cannot calculate color temperature.</p>
+<p>Has no serial number in EDID</p>
+<h3 id="samsung-syncmaster-213t">Samsung Syncmaster 213T</h3>
+<p>Does not support DDC.</p>
+<h3 id="samsung-syncmaster-730b">Samsung Syncmaster 730B</h3>
+<p>VCP version:   Unspecified, implies 1.0 <br />
+Controller manufacturer and model:   Unknown (VCP feature code C8 unsupported)   <br />
+Firmware version:  Unknown (VCP feature code C9 unsupported)  </p>
+<p>The capabilities string spcifies the values for non-continuous features in decimal rather than hexadecimal</p>
+<p>VCP feature codes 0B and 0C unsupported.</p>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../ddc_null_response/" class="btn btn-neutral float-right" title="DDC Null Message">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="../ddccontrol/" class="btn btn-neutral" title="Comparison with ddccontrol"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+	  
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+<div class="rst-versions" role="note" style="cursor: pointer">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+          <a href="https://github.com/rockowitz/ddcutil" class="icon icon-github" style="float: left; color: #fcfcfc"> GitHub</a>
+      
+      
+        <span><a href="../ddccontrol/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+        <span style="margin-left: 15px"><a href="../ddc_null_response/" style="color: #fcfcfc">Next &raquo;</a></span>
+      
+    </span>
+</div>
+
+</body>
+</html>

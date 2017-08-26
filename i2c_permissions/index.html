@@ -8,7 +8,7 @@
   
   <meta name="author" content="Sanford Rockowitz">
   
-  <title>Color Management - ddcutil Documentation</title>
+  <title>Device Permissions - ddcutil Documentation</title>
   
 
   <link rel="shortcut icon" href="../img/favicon.ico">
@@ -23,9 +23,9 @@
   
   <script>
     // Current page data
-    var mkdocs_page_name = "Color Management";
-    var mkdocs_page_input_path = "colormgt.md";
-    var mkdocs_page_url = "/colormgt/";
+    var mkdocs_page_name = "Device Permissions";
+    var mkdocs_page_input_path = "i2c_permissions.md";
+    var mkdocs_page_url = "/i2c_permissions/";
   </script>
   
   <script src="../js/jquery-2.1.1.min.js"></script>
@@ -126,19 +126,8 @@
 <li>
           
             <li>
-    <li class="toctree-l1 current">
-        <a class="current" href="./">Color Management</a>
-        
-            <ul>
-            
-                <li class="toctree-l3"><a href="#color-management">Color Management</a></li>
-                
-                    <li><a class="toctree-l4" href="#color-management-workflow">Color Management Workflow</a></li>
-                
-                    <li><a class="toctree-l4" href="#monitor-lookup-tables">Monitor Lookup Tables</a></li>
-                
-            
-            </ul>
+    <li class="toctree-l1 ">
+        <a class="" href="../colormgt/">Color Management</a>
         
     </li>
 <li>
@@ -179,8 +168,15 @@
 <li>
           
             <li>
-    <li class="toctree-l1 ">
-        <a class="" href="../i2c_permissions/">Device Permissions</a>
+    <li class="toctree-l1 current">
+        <a class="current" href="./">Device Permissions</a>
+        
+            <ul>
+            
+                <li class="toctree-l3"><a href="#device-permissions">Device Permissions</a></li>
+                
+            
+            </ul>
         
     </li>
 <li>
@@ -319,7 +315,7 @@
     
       
     
-    <li>Color Management</li>
+    <li>Device Permissions</li>
     <li class="wy-breadcrumbs-aside">
       
         
@@ -333,61 +329,70 @@
           <div role="main">
             <div class="section">
               
-                <h2 id="color-management">Color Management</h2>
-<p>A primary use for <strong>ddcutil</strong> is as part of color profile management.  A monitor calibration is meaningful only if the color settings on the monitor are the same as when the calibration was performed. </p>
-<p>Normally, monitor settings are changed by pressing buttons on the monitor bezel.  Depending on the monitor, the process ranges from annoying to excruciating.  <strong>ddcutil</strong> allows this process to be automated.</p>
-<p>Command <strong>ddcutil dumpvcp</strong> saves the current color related monitor settings in a file, and <strong>ddcutil loadvcp</strong> restores them from a file. </p>
-<p>If implemented by the monitor, the VCP feature codes in feature group <strong>PROFILE</strong> are saved by <strong>dumpvcp</strong> and restored by <strong>loadvcp</strong>. 
-These are:</p>
-<ul>
-<li>10: Brightness</li>
-<li>12: Contrast</li>
-<li>13: Backlight control</li>
-<li>14: Video gain: Red</li>
-<li>16: Video gain: Green</li>
-<li>18: Video gain: Blue</li>
-<li>6B: Backlight level: White</li>
-<li>6C: Video black level: Red</li>
-<li>6D: Backlight Level: Red</li>
-<li>6E: Video black level: Green</li>
-<li>6F: Backlight level: Green</li>
-<li>70: Video black level: Blue</li>
-<li>71: Backlight Level: Blue</li>
-</ul>
-<p>To see the list of feature codes saved and restored, you can also issue the command: </p>
-<pre><code>ddcutil vcpinfo profile --terse
+                <h2 id="device-permissions">Device Permissions</h2>
+<p>Except when using AMD's proprietary driver (see <a href="../adl/">here</a>) ddcutil requires 
+write access to /dev/i2c-*.  </p>
+<p>On some distributions, package i2c-tools creates group i2c, and assigns that the group to
+/dev/i2c-* devices using a udev rule. In that case all that is necessary is to add your user
+name to group i2c: </p>
+<pre><code>$ sudo usermod your-user-name -aG i2c
 </code></pre>
 
-<h3 id="color-management-workflow">Color Management Workflow</h3>
-<p>To discuss: </p>
-<ul>
-<li>
-<p>Save profile related VCP values in a custom tag in monitor profile file instead of a separate file</p>
-</li>
-<li>
-<p>Having a GUI for ddcutil would make monitor color adjustment much easier.   Such as GUI could be shown along size the <strong>dispcal</strong> color balance screen shown at the start of calibration.</p>
-</li>
-<li>
-<p>API access to dump/load features for simpler integration with other programs.</p>
-</li>
-</ul>
-<h3 id="monitor-lookup-tables">Monitor Lookup Tables</h3>
-<p>Typically, monitor calibration creates a color lookup table that is loaded into the video card.  Some advanced monitors have an internal lookup table.   Typically, these monitors have a software development kit with an API for accessing the LUT, and typically thse SDKs support Linux either poorly or not at all.  </p>
-<p>The MCCS specification defines a set of features for accessing the monitor's internal lookup table: </p>
-<ul>
-<li>73: LUT size</li>
-<li>74: Single point LUT operation</li>
-<li>75: Block LUT operation</li>
-<li>76: Remote procedure call</li>
-</ul>
-<p>These are what MCCS categorizes as "Table" type features.   Reading and writing table type features is implemented in <strong>ddcutil</strong>, but has not yet been tested for lack of a monitor to test with.</p>
-<p>If a monitor were to implement these features, <strong>ddcutil</strong> should be able to load the LUT.  Unfortunately, no monitor with an internal hardware LUT that has yet been tested do implement them.  None of the following monitors with a hardware LUT implement the VCP codes:</p>
-<ul>
-<li>HP Dreamcolor LP2480zx</li>
-<li>NEC PA241</li>
-<li>Eizo CG19 (has only USB interface)</li>
-<li>Dell U2413</li>
-</ul>
+<p>For testing, it may be simpler to give everyone permission to write to 
+/dev/i2c-* for the current boot:</p>
+<pre><code>$ sudo chmod a+rw /dev/i2c-*
+</code></pre>
+
+<p>If needed, a udev rule for giving group i2c RW permission on the /i2c-dev-* devices 
+can be found in distributed file <strong>45-ddcutils-i2c.rules</strong>.  It can be copied to 
+/etc/udev/rules.d, but do check that this rule does not conflict with others in that directory.</p>
+<pre><code>$ sudo cp /usr/share/ddcutil/data/etc/udev/rules.d/45-ddcutils-i2c.rules /etc/udev/rules.d
+</code></pre>
+
+<p>If using a monitor that transmits MCCS over USB, ddcutil requires read/write access to device
+/dev/usb/hiddev<strong>N</strong>, where <strong>N</strong> is the number for the device representing the monitor's USB connection.</p>
+<p>ddcutil has to be careful when accessing the /dev/usb/hiddev* devices, as some of these 
+can represent USB attached input devices such as keyboards or mice. </p>
+<p>Distributed file <strong>45-ddcutil-usb.rules</strong> shows a couple ways to give ddcutil the required 
+access.  This file can be copied to /etc/udev/rules.d.  All but one of the command lines in 
+that file should commented out. </p>
+<p>The following rule gives group <strong>video</strong> access to the USB port of an Apple Cinema Display by specifying its 
+USB device user id (aka uid) and product id (aka pid):</p>
+<pre><code>SUBSYSTEM==&quot;usbmisc&quot;, ATTRS{idVendor}==&quot;05ac&quot;, ATTRS{idProduct}==&quot;9223&quot;,  MODE=&quot;0666&quot; 
+</code></pre>
+
+<p>This line would of course have to edited for your monitor.  One way to find its uid/pid is the 
+<strong>lsusb</strong> command. </p>
+<p>An alternative way to set proper device permissions is to call <strong>ddcutil</strong> from the udev rule 
+to test whether a device is a HID compliant monitor: </p>
+<pre><code>SUBSYSTEM==&quot;usbmisc&quot;,  KERNEL==&quot;hiddev*&quot;, PROGRAM=&quot;/usr/local/bin/ddcutil chkusbmon $env{DEVNAME} -v&quot;, MODE=&quot;0660&quot;, GROUP=&quot;video&quot;
+</code></pre>
+
+<p>Note that the path to the ddcutil executable will have be edited to the location where ddcutil installed on your system. </p>
+<p>The -v option produces informational messages.  These are lost when the rule is normally executed by
+udev, but can be helpful when rules are tested using the "udevadm test" command. </p>
+<p>Distribution
+file <strong>45-ddcutils-usb.rules</strong> contains sample udev rules to set permissions for USB connector monitors. 
+It can be copied to 
+/etc/udev/rules.d, but do check that this rule does not conflict with others in that directory.</p>
+<pre><code>$ sudo cp /usr/share/ddcutil/data/etc/udev/rules.d/45-ddcutils-usb.rules /etc/udev/rules.d
+</code></pre>
+
+<p>Bear in mind when looking at the variety of udev rules is that there are often several valid ways to identify a device.</p>
+<p>The following section from the udev documentation 
+(<a href="https://www.kernel.org/pub/linux/utils/kernel/hotplug/udev/udev.html">https://www.kernel.org/pub/linux/utils/kernel/hotplug/udev/udev.html</a>) 
+may be helpful:</p>
+<blockquote>
+<p>The udev rules are read from the files located in the system rules directory 
+/usr/lib/udev/rules.d, the volatile runtime directory /run/udev/rules.d and 
+the local administration directory /etc/udev/rules.d. All rules files are 
+collectively sorted and processed in lexical order, regardless of the directories 
+in which they live. However, files with identical file names replace each other. 
+Files in /etc have the highest priority, files in /run take precedence over files 
+with the same name in /lib. This can be used to override a system-supplied rules 
+file with a local file if needed; a symlink in /etc with the same name as a rules 
+file in /lib, pointing to /dev/null, disables the rules file entirely.</p>
+</blockquote>
               
             </div>
           </div>
@@ -395,10 +400,10 @@ These are:</p>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../tuning/" class="btn btn-neutral float-right" title="Instrumentation and Tuning">Next <span class="icon icon-circle-arrow-right"></span></a>
+        <a href="../kernel_module/" class="btn btn-neutral float-right" title="Kernel Module Configuration">Next <span class="icon icon-circle-arrow-right"></span></a>
       
       
-        <a href="../getvcp_known_u3011_output/" class="btn btn-neutral" title="ddcutil getvcp example"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../tarballs/releases/" class="btn btn-neutral" title="Releases"><span class="icon icon-circle-arrow-left"></span> Previous</a>
       
     </div>
   
@@ -426,10 +431,10 @@ These are:</p>
           <a href="https://github.com/rockowitz/ddcutil" class="icon icon-github" style="float: left; color: #fcfcfc"> GitHub</a>
       
       
-        <span><a href="../getvcp_known_u3011_output/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+        <span><a href="../tarballs/releases/" style="color: #fcfcfc;">&laquo; Previous</a></span>
       
       
-        <span style="margin-left: 15px"><a href="../tuning/" style="color: #fcfcfc">Next &raquo;</a></span>
+        <span style="margin-left: 15px"><a href="../kernel_module/" style="color: #fcfcfc">Next &raquo;</a></span>
       
     </span>
 </div>
