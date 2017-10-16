@@ -86,6 +86,13 @@
           
             <li>
     <li class="toctree-l1 ">
+        <a class="" href="tech_support/">Technical Support</a>
+        
+    </li>
+<li>
+          
+            <li>
+    <li class="toctree-l1 ">
         <a class="" href="mccs_background/">Monitor Control Command Set</a>
         
     </li>
@@ -347,6 +354,11 @@
               
                 <h1 id="ddcutil">ddcutil</h1>
 <h2 id="announcements">Announcements</h2>
+<p>15 October 2017</p>
+<p>Package <strong>ddcutil</strong> has been sponsored into Debian and is now included in <a href="https://wiki.debian.org/DebianTesting">Debian Testing</a>.
+It is on track to be part of the next Debian release, which means it should eventually appear in downstream distributions such as Ubuntu. 
+Note that only package <strong>ddcutil</strong>, containing the command line version of <strong>ddcutil</strong> is currently in the Debian repositories.
+The shared library packages, including the C and Python APIs, are not yet part of Debian.</p>
 <p>22 July 2017</p>
 <p>Release 0.8.4 primarily contains packaging changes to meet Fedora distribution standards.</p>
 <p>For a complete list of changes and bug fixes, see <a href="release_notes/">Release Notes</a>.
@@ -391,15 +403,12 @@ brightness and color levels.   </p>
 <p><strong>ddcutil</strong> primarily uses DDC/CI (Display Data Channel Command Interface) to communicate with monitors implementing MCCS 
 (Monitor Control Command Set) over I2C.  Normally, the video driver for the
 monitor exposes the I2C channel as devices named /dev/i2c-n.  Alternatively, there is support for monitors (such as Eizo ColorEdge displays) that implement MCCS using a USB connection.  See <a href="usb/">USB Connected Monitors</a>. </p>
-<p>A particular use case for <strong>ddcutil</strong> is as part of color profile management. Monitor
-calibration is relative to the monitor color settings currently in effect, 
+<p>Generally speaking, any settings that can be changed by pressing buttons on the monitor can be modified by <strong>ddcutil</strong>.
+Examples include controlling brigtness and switching input source.</p>
+<p>A particular use case for <strong>ddcutil</strong>, and the one that inspired its development, is as part of color profile management. 
+Monitor calibration is relative to the monitor color settings currently in effect, 
 e.g. red gain.  ddcutil allows color related settings to be saved at the time 
 a monitor is calibrated, and then restored when the calibration is applied.</p>
-<p>Other common uses include:</p>
-<ul>
-<li>Switching monitor input  </li>
-<li>Controlling brightness</li>
-</ul>
 <p>Restrictions:  </p>
 <ul>
 <li><strong>ddcutil</strong> does not support laptop displays, which are controlled using a special API, not I2C.   </li>
@@ -552,6 +561,9 @@ For USB connected monitors, use command <code>ddcutil usbenvironment</code>.</p>
 <h2 id="additional-topics">Additional Topics</h2>
 <ul>
 <li>
+<p><a href="tech_support/">Technical Support</a></p>
+</li>
+<li>
 <p><a href="mccs_background/">Monitor Control Command Set</a></p>
 </li>
 <li>
@@ -594,7 +606,7 @@ For USB connected monitors, use command <code>ddcutil usbenvironment</code>.</p>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="mccs_background/" class="btn btn-neutral float-right" title="Monitor Control Command Set">Next <span class="icon icon-circle-arrow-right"></span></a>
+        <a href="tech_support/" class="btn btn-neutral float-right" title="Technical Support">Next <span class="icon icon-circle-arrow-right"></span></a>
       
       
     </div>
@@ -624,7 +636,7 @@ For USB connected monitors, use command <code>ddcutil usbenvironment</code>.</p>
       
       
       
-        <span style="margin-left: 15px"><a href="mccs_background/" style="color: #fcfcfc">Next &raquo;</a></span>
+        <span style="margin-left: 15px"><a href="tech_support/" style="color: #fcfcfc">Next &raquo;</a></span>
       
     </span>
 </div>
@@ -634,5 +646,5 @@ For USB connected monitors, use command <code>ddcutil usbenvironment</code>.</p>
 
 <!--
 MkDocs version : 0.15.3
-Build Date UTC : 2017-08-26 23:07:12.275088
+Build Date UTC : 2017-10-16 02:33:39.543554
 -->

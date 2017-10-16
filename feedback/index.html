@@ -63,6 +63,13 @@
           
             <li>
     <li class="toctree-l1 ">
+        <a class="" href="../tech_support/">Technical Support</a>
+        
+    </li>
+<li>
+          
+            <li>
+    <li class="toctree-l1 ">
         <a class="" href="../mccs_background/">Monitor Control Command Set</a>
         
     </li>
@@ -330,31 +337,30 @@
             <div class="section">
               
                 <h2 id="feedback-needed">Feedback Needed</h2>
-<p>This is a preliminary release, and feedback would be very helpful. There are a 
-lot of "moving parts" that can vary from system to system: </p>
+<p>By its nature, <strong>ddcutil</strong> is very sensitive to the system environment.  It is not possible to exhaustively test all possibilities. </p>
 <ul>
 <li>The build environment can vary. </li>
-<li>I2C implementation can vary with card, monitor, and driver.<br />
-  There is variation in MCCS interpretation.  </li>
+<li>I2C implementation can vary with card, monitor, and driver.  </li>
+<li>Monitors vary in their MCCS interpretation.  </li>
 <li>I2C is an inherently unreliable protocol, requiring retry management.  </li>
 </ul>
-<p>In particular: </p>
+<p>I would appreciate hearing about any issues building and installing <strong>ddcutil</strong>.
+In particular: </p>
 <ul>
-<li>Were you able to install/build ddcutil?<br />
-  What changes were required to the Autoconf files?   </li>
+<li>What changes were required to build and install <strong>ddcutil</strong>?</li>
 <li>Does it work with given card, driver, and monitor?  I'm not particularly 
   concerned with older monitors whose MCCS version is unspecified (i.e. is 
   less than 2.0).  On the other hand, I'm very interested in how ddcutil
   handles monitors implementing MCCS V3.0, as the V3.0 specific code has not 
   been tested. In particular, does ddcutil properly read Table type features? </li>
-<li>And of course, is the program useful?   Does it merit further development?  What 
-  additional features are most important?</li>
 </ul>
-<p>Command <code>ddcutil interrogate</code> collects maximal information about the 
+<p><strong>ddcutil</strong> can build for many hardware platforms, e.g. MIPS, that have not been tested.
+I'd appreciate hearing from any who have attempted to use <strong>ddcutil</strong> on platforms beyond x86 and ARM. </p>
+<p>Command <strong><em>ddcutil interrogate</em></strong> collects maximal information about the 
 installation environment, video card and driver, and monitor capabilities.
 I'd appreciate it if you could redirect its output to a file and <a href="mailto:rockowitz@minsoft.com">send the file</a>
 to me. This will help diagnose problems and identify features that should be 
-implemented.</p>
+implemented.  It also helps to document the variability in MCCS implementation across monitors.</p>
               
             </div>
           </div>
