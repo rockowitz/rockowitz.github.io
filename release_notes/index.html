@@ -266,13 +266,25 @@
             
                 <li class="toctree-l3"><a href="#release-notes">Release Notes</a></li>
                 
+                    <li><a class="toctree-l4" href="#085">0.8.5</a></li>
+                
+                    <li><a class="toctree-l4" href="#changes-to-facilitate-scripting">Changes to facilitate scripting</a></li>
+                
+                    <li><a class="toctree-l4" href="#packaging">Packaging</a></li>
+                
+                    <li><a class="toctree-l4" href="#glib-20">glib-2.0</a></li>
+                
+                    <li><a class="toctree-l4" href="#bug-fixes">Bug fixes</a></li>
+                
+                    <li><a class="toctree-l4" href="#miscellaneous">Miscellaneous</a></li>
+                
                     <li><a class="toctree-l4" href="#084">0.8.4</a></li>
                 
                     <li><a class="toctree-l4" href="#command-ddcutil-interrogate">Command ddcutil interrogate</a></li>
                 
                     <li><a class="toctree-l4" href="#libddcutil-devel">libddcutil-devel</a></li>
                 
-                    <li><a class="toctree-l4" href="#bug-fixes">Bug fixes</a></li>
+                    <li><a class="toctree-l4" href="#bug-fixes_1">Bug fixes</a></li>
                 
                     <li><a class="toctree-l4" href="#082">0.8.2</a></li>
                 
@@ -282,13 +294,13 @@
                 
                     <li><a class="toctree-l4" href="#ddcutil-environment-verbose-changes">ddcutil environment --verbose changes</a></li>
                 
-                    <li><a class="toctree-l4" href="#packaging">Packaging</a></li>
+                    <li><a class="toctree-l4" href="#packaging_1">Packaging</a></li>
                 
                     <li><a class="toctree-l4" href="#081">0.8.1</a></li>
                 
                     <li><a class="toctree-l4" href="#080">0.8.0</a></li>
                 
-                    <li><a class="toctree-l4" href="#bug-fixes_1">Bug Fixes</a></li>
+                    <li><a class="toctree-l4" href="#bug-fixes_2">Bug Fixes</a></li>
                 
                     <li><a class="toctree-l4" href="#c-api">C API</a></li>
                 
@@ -383,6 +395,48 @@
             <div class="section">
               
                 <h2 id="release-notes">Release Notes</h2>
+<h3 id="085">0.8.5</h3>
+<p>nn October 2017</p>
+<p>This release contains packaging changes to meet Debian distribution standards.
+It also includes minor improvements and bug fixes.  The most visible change is that 
+glib-2.0 version 2.34 is now required.</p>
+<p>There is no need to install this release unless you are experiencing problems.</p>
+<h3 id="changes-to-facilitate-scripting">Changes to facilitate scripting</h3>
+<ul>
+<li>Do not output a warning message regarding undetected VCP version if message level is <strong><em>--terse</em></strong>.</li>
+<li>"Display not found" message now directed to stderr instead of stdout.</li>
+</ul>
+<h3 id="packaging">Packaging</h3>
+<ul>
+<li>Clean up debian/rules and other files in the debian directory.</li>
+<li>Add a changelog file, normally installed in file /usr/share/doc/ddcutil/Changelog.</li>
+<li>Rename NEWS file to NEWS.md</li>
+</ul>
+<h3 id="glib-20">glib-2.0</h3>
+<p>The required glib-2.0 version has been increased from 2.16 to 2.32 reflecting the use of glib 
+thread functions.  Consequently, <strong>ddcutil</strong> no longer builds on some older Linux distributions.</p>
+<h3 id="bug-fixes">Bug fixes</h3>
+<ul>
+<li>Fix a logic error in the VCP version comparison function vcp_version_le().  This bug affected only audio 
+related VCP feature codes x8f, x91, and x93.  It also affected experimental command <strong><em>watch</em></strong> which listens for monitor
+changes not made by <strong>ddcutil</strong>, i.e. by pressing buttons on the monitor.</li>
+<li>Properly handle the failure case where a display is detected on an I2C bus (EDID is read) but DDC communication fails, 
+and the user specifies the display on the command line using the I2C bus number (option <strong><em>--bus</em></strong>).</li>
+<li>Fix the cause of a segfault when the <strong><em>loadvcp</em></strong> command reads a user modified VCP file.  The 
+command now fails gracefully if none of MFG_ID, MODEL, and SN are present.</li>
+</ul>
+<h3 id="miscellaneous">Miscellaneous</h3>
+<ul>
+<li>Ongoing work to make functions thread safe. </li>
+<li>Code cleanup.</li>
+<li>Minor enhancements to the <strong><em>environment</em></strong> command.</li>
+<li><strong><em>interrogate</em></strong>, <strong><em>environment</em></strong> and <strong><em>usbenvironment</em></strong> now redirect all stderr output to stdout for easier capture</li>
+<li>Added command line options <strong><em>-trcfile</em></strong> and <strong><em>-trcfunc</em></strong> to enable tracing by file name and function name.</li>
+<li>Added configuration option <strong><em>--enable-x11</em></strong> controlling whether X11 related diagnostics are included in the <strong><em>environment</em></strong>
+and <strong><em>interrogate</em></strong> commands, allowing <strong>ddcutil</strong> to build in embedded environments that lack X11.  The default is <strong><em>yes</em></strong>.</li>
+<li>Verbose EDID decription, e.g. on command <strong><em>detect --verbose</em></strong>, now reports EDID byte 24 (x14), the supported features bitmap.
+This is purely informational.</li>
+</ul>
 <h3 id="084">0.8.4</h3>
 <p>22 July 2017</p>
 <p>This release primarily contains packaging changes to meet Fedora distribution standards.
@@ -397,7 +451,7 @@ There is no need to install it unless you are experiencing problems.</p>
 <ul>
 <li>Do not package static libraries (.a and .la files) in libddcutil-devel. </li>
 </ul>
-<h3 id="bug-fixes">Bug fixes</h3>
+<h3 id="bug-fixes_1">Bug fixes</h3>
 <ul>
 <li>
 <p>Prevent a segfault in monitor detection that occurrs when slave address x50 is detected on an I2C bus, but reading the EDID at that address fails.</p>
@@ -436,7 +490,7 @@ experiencing problems.</p>
 <li>Check for DisplayPort Multi-Stream Technology (DPMST) devices</li>
 <li>Eliminate the cause of a bogus error message when scanning devices</li>
 </ul>
-<h3 id="packaging">Packaging</h3>
+<h3 id="packaging_1">Packaging</h3>
 <ul>
 <li>Changes to the requirements of package <strong>i2c-tools</strong>.  Generally speaking, it is no longer needed for 
   building <strong>ddcutil</strong>, and is optionally used as part of the diagnostic output of the <strong>environment</strong> command.<ul>
@@ -523,7 +577,7 @@ is easily machine readable.  See <a href="../cmdopts/">Command Specific Options<
 <p>By default, <strong>setvcp</strong> and <strong>loadvcp</strong> verify that a value has been successfully
 set by reading the value from the monitor after writing it.  Option <strong>--noverify</strong> 
 disables this check.</p>
-<h3 id="bug-fixes_1">Bug Fixes</h3>
+<h3 id="bug-fixes_2">Bug Fixes</h3>
 <ul>
 <li>Fixed a segfault that occurred when a monitor returned a 0 length capabilities string.</li>
 <li>Variables holding nanoseconds have been changed from type <strong>long</strong> to <strong>uint64_t</strong>
