@@ -8,7 +8,7 @@
   
   <meta name="author" content="Sanford Rockowitz">
   
-  <title>USB Connected Monitors - ddcutil Documentation</title>
+  <title>Command Overview - ddcutil Documentation</title>
   
 
   <link rel="shortcut icon" href="../img/favicon.ico">
@@ -23,9 +23,9 @@
   
   <script>
     // Current page data
-    var mkdocs_page_name = "USB Connected Monitors";
-    var mkdocs_page_input_path = "usb.md";
-    var mkdocs_page_url = "/usb/";
+    var mkdocs_page_name = "Command Overview";
+    var mkdocs_page_input_path = "commands.md";
+    var mkdocs_page_url = "/commands/";
   </script>
   
   <script src="../js/jquery-2.1.1.min.js"></script>
@@ -67,8 +67,19 @@
 
         
             
-    <li class="toctree-l1 ">
-        <a class="" href="../commands/">Command Overview</a>
+    <li class="toctree-l1 current">
+        <a class="current" href="./">Command Overview</a>
+        
+            <ul>
+            
+                <li class="toctree-l3"><a href="#command-overview">Command Overview</a></li>
+                
+                    <li><a class="toctree-l4" href="#monitor-selection">Monitor Selection</a></li>
+                
+                    <li><a class="toctree-l4" href="#examples">Examples</a></li>
+                
+            
+            </ul>
         
     </li>
 
@@ -159,21 +170,8 @@
 
         
             
-    <li class="toctree-l1 current">
-        <a class="current" href="./">USB Connected Monitors</a>
-        
-            <ul>
-            
-                <li class="toctree-l3"><a href="#usb-connected-monitors">USB Connected Monitors</a></li>
-                
-                    <li><a class="toctree-l4" href="#command-ddcutil-chkusbmon">Command ddcutil chkusbmon</a></li>
-                
-                    <li><a class="toctree-l4" href="#command-option-hiddev">Command option --hiddev</a></li>
-                
-                    <li><a class="toctree-l4" href="#command-option-usb">Command option --usb</a></li>
-                
-            
-            </ul>
+    <li class="toctree-l1 ">
+        <a class="" href="../usb/">USB Connected Monitors</a>
         
     </li>
 
@@ -377,7 +375,7 @@
         
       
     
-    <li>USB Connected Monitors</li>
+    <li>Command Overview</li>
     <li class="wy-breadcrumbs-aside">
       
         
@@ -391,45 +389,106 @@
           <div role="main">
             <div class="section">
               
-                <h2 id="usb-connected-monitors">USB Connected Monitors</h2>
-<p><strong>ddcutil</strong> has support for monitors that implement the Monitor Control Command Set (MCCS) over USB.
-The support is considered initial in that it has only been tested with only a few models of USB connected monitors.</p>
-<p>Note that some monitors use USB to communicate, but do not follow the specification for MCCS over USB. 
-For example, the HP Dreamcolor 2480zx uses a proprietary, undocumented protocol. </p>
-<p>Limitations: <br />
-- The MCCS over USB specification has no mechanism for querying a capabilities string.  The <strong>ddcutil capabilities</strong> 
-command synthesizes a response based on the feature codes it detects. <br />
-- Table type features are completely unsupported.<br />
-- Apple Thunderbolt displays might work, but are not supported.  Thunderbolt integrates video, USB, and ethernet into a single cable, and 
-appears to require a Thunderbolt capable capable computer, as I can find no adapters that split out all the signals.
-Other than actual Macs, these are uncommon.</p>
-<p>On the other hand, MCCS over USB has advantages:<br />
-- Unlike I2C, the protocol is inherently reliable.  No retry logic is needed.<br />
-- Unlike I2C, USB communication does not require waits between system calls.  It is therefore faster. </p>
-<p>Thanks to Ojdrej Zary, whose <a href="https://github.com/ondrej-zary/usbmonctl">usbmonctl</a> was used as the basis for USB support in <strong>ddcutil</strong>.</p>
-<h3 id="command-ddcutil-chkusbmon">Command <strong>ddcutil chkusbmon</strong></h3>
-<p>Command <strong>ddcutil chkusbmon</strong> helps to detect USB HID compliant monitors.  It is intended for use in udev rules.</p>
-<pre><code>ddcutil chkusbmon ***hiddev device name***
+                <h2 id="command-overview">Command Overview</h2>
+<p><strong>ddcutil</strong> is a command line program.  (A GUI user interface is planned.)  <strong>ddcutil</strong> implements 
+the following subcommands:</p>
+<table>
+<thead>
+<tr>
+<th>Subcommand</th>
+<th>Function</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>detect</td>
+<td>report monitors detected</td>
+</tr>
+<tr>
+<td>capabilities</td>
+<td>report a monitor's capabilities string</td>
+</tr>
+<tr>
+<td>vcpinfo (feature-code-or-group)</td>
+<td>list VCP features codes that ddcutil knows how to interpret</td>
+</tr>
+<tr>
+<td>getvcp feature-code-or-group</td>
+<td>report a single VCP feature value, or a group of values</td>
+</tr>
+<tr>
+<td>setvcp feature-code new-value</td>
+<td>set a single VCP feature value</td>
+</tr>
+<tr>
+<td>dumpvcp filename</td>
+<td>save color related VCP feature values to a file</td>
+</tr>
+<tr>
+<td>loadvcp filename</td>
+<td>restore color related VCP feature values from a file</td>
+</tr>
+<tr>
+<td>environment</td>
+<td>explore the ddcutil installation environment (other than USB)</td>
+</tr>
+<tr>
+<td>usbenv</td>
+<td>explore USB aspects of the ddcutil installation environment</td>
+</tr>
+<tr>
+<td>probe</td>
+<td>explore the capabilities string and probe the features of a single monitor</td>
+</tr>
+<tr>
+<td>interrogate</td>
+<td>collect maximal information for problem diagnosis</td>
+</tr>
+<tr>
+<td>chkusbmon  /dev/hiddevN</td>
+<td>used by udev rules to test if a USB device represents a monitor</td>
+</tr>
+</tbody>
+</table>
+<p>There is an extensive set of options for tailoring ddcutil operation. 
+Some are described in this documentation.   For a full list of options and detailed documentation for each command, 
+use the <strong>--help</strong> option or 
+see the man page:</p>
+<pre><code>$ ddcutil --help
+$ man 1 ddcutil
 </code></pre>
 
-<p>e.g. </p>
-<pre><code>ddcutil chkusbmon /dev/usb/hiddev3 
+<h3 id="monitor-selection">Monitor Selection</h3>
+<p>If more than one monitor is attached, the desired monitor can be specified 
+using any of the following options:</p>
+<pre><code>--display &lt;display number&gt;
+--bus &lt;i2c bus number&gt;
+--adl &lt;iAdapterNumber&gt;.&lt;iDisplayNumber&gt;
+--usb &lt;usb bus number&gt;.&lt;usb device number&gt;
+--edid &lt;256 character hex string&gt;
+--mfg &lt;mfg code&gt; --model &lt;model name&gt; and/or --sn &lt;serial number&gt;
 </code></pre>
 
-<p>Returns 0 if a device represents a USB attached monitor, non-zero if not.  See <a href="../i2c_permissions/">Device Permissions</a></p>
-<h3 id="command-option-hiddev">Command option --hiddev</h3>
-<p>USB connected monitors can be specfied by their hiddev device number, which specifies the /dev file 
-by which they are accessed. That is, <strong>--hiddev 2</strong> refers to /dev/usb/hiddev2. </p>
-<h3 id="command-option-usb">Command option --usb</h3>
-<p>USB connected monitors can be specified by their USB bus number and device number.  The numbers are separated by either a period or colon.</p>
-<p>For example: </p>
-<pre><code>ddcutil --usb 3.5 ...
+<p>Notes:   </p>
+<ul>
+<li>Monitors under control of AMD's proprietary driver (fglrx) are selected by
+  adapter number and display number. These numbers are specified on the --adl 
+  option separated by a period, e.g. "--adl 1.0"  </li>
+<li>Any combination of manufacturer code, model name and serial number can be used together to identify a monitor.
+  The first monitor to satisfy all the specified criteria is selected.
+  (This behavior differs from releases prior to 0.7 where model name and serial number had to be specified together.)</li>
+</ul>
+<p>To see a list of all attached monitors and their associated identifiers:</p>
+<pre><code>$ ddcutil detect
 </code></pre>
 
-<p>selects the monitor at USB bus number 3, device number 5.  </p>
-<p>To see a list of all USB devices: </p>
-<pre><code>lsusb
-</code></pre>
+<h3 id="examples">Examples</h3>
+<ul>
+<li><a href="../vcpinfo_output/">ddcutil vcpinfo</a></li>
+<li><a href="../detect_verbose_output/">ddcutil detect</a></li>
+<li><a href="../cap_u3011_verbose_output/">ddcutil capabilities</a></li>
+<li><a href="../getvcp_known_u3011_output/">ddcutil getvcp</a></li>
+</ul>
               
             </div>
           </div>
@@ -437,10 +496,10 @@ by which they are accessed. That is, <strong>--hiddev 2</strong> refers to /dev/
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../install/" class="btn btn-neutral float-right" title="Install **ddcutil** From Prebuilt Packages">Next <span class="icon icon-circle-arrow-right"></span></a>
+        <a href="../cmdargs/" class="btn btn-neutral float-right" title="Command Arguments">Next <span class="icon icon-circle-arrow-right"></span></a>
       
       
-        <a href="../table_features/" class="btn btn-neutral" title="Table Type Features"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href=".." class="btn btn-neutral" title="Overview"><span class="icon icon-circle-arrow-left"></span> Previous</a>
       
     </div>
   
@@ -468,10 +527,10 @@ by which they are accessed. That is, <strong>--hiddev 2</strong> refers to /dev/
           <a href="https://github.com/rockowitz/ddcutil" class="icon icon-github" style="float: left; color: #fcfcfc"> GitHub</a>
       
       
-        <span><a href="../table_features/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+        <span><a href=".." style="color: #fcfcfc;">&laquo; Previous</a></span>
       
       
-        <span style="margin-left: 15px"><a href="../install/" style="color: #fcfcfc">Next &raquo;</a></span>
+        <span style="margin-left: 15px"><a href="../cmdargs/" style="color: #fcfcfc">Next &raquo;</a></span>
       
     </span>
 </div>

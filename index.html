@@ -66,8 +66,6 @@
                 
                     <li><a class="toctree-l4" href="#introduction">Introduction</a></li>
                 
-                    <li><a class="toctree-l4" href="#command-overview">Command Overview</a></li>
-                
                     <li><a class="toctree-l4" href="#additional-topics">Additional Topics</a></li>
                 
                     <li><a class="toctree-l4" href="#author">Author</a></li>
@@ -81,6 +79,13 @@
             <li>
     <ul class="subnav">
     <li><span>Using ddcutil</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="commands/">Command Overview</a>
+        
+    </li>
 
         
             
@@ -447,107 +452,16 @@ a monitor is calibrated, and then restored when the calibration is applied.</p>
 specially built version of <strong>ddcutil</strong>.  See <a href="adl/">Building with ADL Support</a>.  </li>
 <li>Reading and writing <strong><em>Table</em></strong> type features is implemented but untested.  See <a href="table_features/">Table Features</a>  </li>
 </ul>
-<h2 id="command-overview">Command Overview</h2>
-<p><strong>ddcutil</strong> is a command line program.  (A GUI user interface is planned.)  <strong>ddcutil</strong> implements 
-the following subcommands:</p>
-<table>
-<thead>
-<tr>
-<th>Subcommand</th>
-<th>Function</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>detect</td>
-<td>report monitors detected</td>
-</tr>
-<tr>
-<td>capabilities</td>
-<td>report a monitor's capabilities string</td>
-</tr>
-<tr>
-<td>vcpinfo (feature-code-or-group)</td>
-<td>list VCP features codes that ddcutil knows how to interpret</td>
-</tr>
-<tr>
-<td>getvcp feature-code-or-group</td>
-<td>report a single VCP feature value, or a group of values</td>
-</tr>
-<tr>
-<td>setvcp feature-code new-value</td>
-<td>set a single VCP feature value</td>
-</tr>
-<tr>
-<td>dumpvcp filename</td>
-<td>save color related VCP feature values to a file</td>
-</tr>
-<tr>
-<td>loadvcp filename</td>
-<td>restore color related VCP feature values from a file</td>
-</tr>
-<tr>
-<td>environment</td>
-<td>explore the ddcutil installation environment (other than USB)</td>
-</tr>
-<tr>
-<td>usbenv</td>
-<td>explore USB aspects of the ddcutil installation environment</td>
-</tr>
-<tr>
-<td>probe</td>
-<td>explore the capabilities string and probe the features of a single monitor</td>
-</tr>
-<tr>
-<td>interrogate</td>
-<td>collect maximal information for problem diagnosis</td>
-</tr>
-<tr>
-<td>chkusbmon  /dev/hiddevN</td>
-<td>used by udev rules to test if a USB device represents a monitor</td>
-</tr>
-</tbody>
-</table>
-<p>There is an extensive set of options for tailoring ddcutil operation. 
-Some are described in this documentation.   For a full list of options and detailed documentation for each command, 
-use the <strong>--help</strong> option or 
-see the man page:</p>
-<pre><code>$ ddcutil --help
-$ man 1 ddcutil
-</code></pre>
-
-<h3 id="monitor-selection">Monitor Selection</h3>
-<p>If more than one monitor is attached, the desired monitor can be specified 
-using any of the following options:</p>
-<pre><code>--display &lt;display number&gt;
---bus &lt;i2c bus number&gt;
---adl &lt;iAdapterNumber&gt;.&lt;iDisplayNumber&gt;
---usb &lt;usb bus number&gt;.&lt;usb device number&gt;
---edid &lt;256 character hex string&gt;
---mfg &lt;mfg code&gt; --model &lt;model name&gt; and/or --sn &lt;serial number&gt;
-</code></pre>
-
-<p>Notes:   </p>
-<ul>
-<li>Monitors under control of AMD's proprietary driver (fglrx) are selected by
-  adapter number and display number. These numbers are specified on the --adl 
-  option separated by a period, e.g. "--adl 1.0"  </li>
-<li>Any combination of manufacturer code, model name and serial number can be used together to identify a monitor.
-  The first monitor to satisfy all the specified criteria is selected.
-  (This behavior differs from releases prior to 0.7 where model name and serial number had to be specified together.)</li>
-</ul>
-<p>To see a list of all attached monitors and their associated identifiers:</p>
-<pre><code>$ ddcutil detect
-</code></pre>
-
-<h3 id="examples">Examples</h3>
-<ul>
-<li><a href="vcpinfo_output/">ddcutil vcpinfo</a></li>
-<li><a href="detect_verbose_output/">ddcutil detect</a></li>
-<li><a href="cap_u3011_verbose_output/">ddcutil capabilities</a></li>
-<li><a href="getvcp_known_u3011_output/">ddcutil getvcp</a></li>
-</ul>
+<p><strong>ddcutil</strong> is released under the GNU Public License, V2 (GPLV2).
+The source is hosted on <a href="http://www.github.com/rockowitz/ddcutil">Github</a>.</p>
+<p>General support questions are best directed the to the <a href="https://github.com/rockowitz/ddcutil/issues">issue tracker</a> on Github.    Use of this forum allows everyone to benefit from individual questions and ideas. For details, see <a href="tech_support/">Technical Support</a>. </p>
 <h2 id="additional-topics">Additional Topics</h2>
+<p>Commands:</p>
+<ul>
+<li><a href="commands/">Command Overview</a></li>
+<li><a href="cmdargs/">Command Arguments</a></li>
+<li><a href="cmdopts/">Command Specific Options</a></li>
+</ul>
 <p>Installation and Configuration:</p>
 <ul>
 <li><a href="install/">Install <strong>ddcutil</strong> From Prebuilt Packages</a></li>
@@ -595,7 +509,7 @@ using any of the following options:</p>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="cmdargs/" class="btn btn-neutral float-right" title="Command Arguments">Next <span class="icon icon-circle-arrow-right"></span></a>
+        <a href="commands/" class="btn btn-neutral float-right" title="Command Overview">Next <span class="icon icon-circle-arrow-right"></span></a>
       
       
     </div>
@@ -625,7 +539,7 @@ using any of the following options:</p>
       
       
       
-        <span style="margin-left: 15px"><a href="cmdargs/" style="color: #fcfcfc">Next &raquo;</a></span>
+        <span style="margin-left: 15px"><a href="commands/" style="color: #fcfcfc">Next &raquo;</a></span>
       
     </span>
 </div>
@@ -635,5 +549,5 @@ using any of the following options:</p>
 
 <!--
 MkDocs version : 0.15.3
-Build Date UTC : 2017-11-16 13:57:27.453521
+Build Date UTC : 2017-11-16 16:42:59.231807
 -->

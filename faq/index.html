@@ -68,6 +68,13 @@
         
             
     <li class="toctree-l1 ">
+        <a class="" href="../commands/">Command Overview</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
         <a class="" href="../cmdargs/">Command Arguments</a>
         
     </li>
@@ -297,7 +304,7 @@
                 
                     <li><a class="toctree-l4" href="#ddcutil-detect-verbose-reports-that-both-i2c-address-x50-edid-and-x37-ddc-are-responsive-but-ddc-communication-fails">ddcutil detect --verbose reports that both I2C address x50 (EDID) and x37 (DDC) are responsive, but DDC communication fails.</a></li>
                 
-                    <li><a class="toctree-l4" href="#the-same-displayport-connected-monitor-appears-twice-the-output-of-ddcutil-detect">The same DisplayPort connected monitor appears twice the output of ddcutil detect.</a></li>
+                    <li><a class="toctree-l4" href="#the-same-displayport-connected-monitor-appears-twice-in-the-output-of-ddcutil-detect">The same DisplayPort connected monitor appears twice in the output of ddcutil detect.</a></li>
                 
                     <li><a class="toctree-l4" href="#the-detect-command-reports-different-edids-depending-on-how-the-monitor-is-connected-to-the-video-card">The detect command reports different EDIDs depending on how the monitor is connected to the video card.</a></li>
                 
@@ -499,7 +506,7 @@ The only way to know for sure is by testing. </p>
 <li>See also the discussions of <a href="#duplicate_displayport">duplicate entries for a DisplayPort monitor</a>, and of <a href="#docking">failures with newer docking stations</a>.</li>
 </ul>
 <p><a name="duplicate_displayport"></a></p>
-<h3 id="the-same-displayport-connected-monitor-appears-twice-the-output-of-ddcutil-detect">The same DisplayPort connected monitor appears twice the output of <strong><em>ddcutil detect</em></strong>.</h3>
+<h3 id="the-same-displayport-connected-monitor-appears-twice-in-the-output-of-ddcutil-detect">The same DisplayPort connected monitor appears twice in the output of <strong><em>ddcutil detect</em></strong>.</h3>
 <p>Sometimes the same DisplayPort connected monitor is detected at 2 different I2C bus numbers.  <strong><em>ddcutil detect</em></strong> reads the
 EDID at on both buses, but DDC communication succeeds on only 1 bus.  The other bus is regarded as an invalid display.
 The invalid bus appears to be related to the DisplayPort multistream facility.  You can ignore the invalid entry.</p>

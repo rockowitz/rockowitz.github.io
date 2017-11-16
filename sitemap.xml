@@ -12,6 +12,12 @@
     
         
     <url>
+     <loc>None/commands/</loc>
+     <lastmod>2017-11-16</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+        
+    <url>
      <loc>None/cmdargs/</loc>
      <lastmod>2017-11-16</lastmod>
      <changefreq>daily</changefreq>
