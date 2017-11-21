@@ -1,6 +1,7 @@
 Name:    ddcutil
-Version: 0.8.4
+Version: 0.8.5
 Release: 1%{?dist}
+# Release: 1
 Summary: Query and update monitor settings
 License: GPLv2
 URL:     https://github.com/rockowitz/ddcutil
@@ -67,8 +68,9 @@ make DESTDIR=%{buildroot} install
 %dir     %{_docdir}/%{name}
 %doc     %{_docdir}/%{name}/AUTHORS
 %license %{_docdir}/%{name}/COPYING
-%doc     %{_docdir}/%{name}/NEWS 
+%doc     %{_docdir}/%{name}/NEWS.md
 %doc     %{_docdir}/%{name}/README.md
+%doc     %{_docdir}/%{name}/ChangeLog
 
 %{_datadir}/%{name}
 
@@ -81,6 +83,11 @@ make DESTDIR=%{buildroot} install
 %attr(755,root,root)%{_bindir}/ddcutil
 
 %changelog
+* Thu Nov 16 2017 Sanford Rockowitz <rockowitz@minsoft.com> 0.8.4-1
+- Minor enhancements and bug fixes. 
+- For a complete list of changes and bug fixes,
+  see http://www.ddcutil.com/release_notes
+
 * Sat Jul 22 2017 Sanford Rockowitz <rockowitz@minsoft.com> 0.8.4-1
 - Changes to conform to Fedora packaging standards
 - Minor enhancements and bug fixes. 
