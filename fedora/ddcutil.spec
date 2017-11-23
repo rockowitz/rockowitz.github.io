@@ -1,11 +1,10 @@
 Name:    ddcutil
 Version: 0.8.5
 Release: 1%{?dist}
-# Release: 1
 Summary: Query and update monitor settings
 License: GPLv2
-URL:     https://github.com/rockowitz/ddcutil
-Source:  http://www.ddcutil.com/%{name}-%{version}.tar.gz
+URL:     http://www.ddcutil.com
+Source:  http://www.ddcutil.com/tarballs/%{name}-%{version}.tar.gz
 
 # Alternative architectures build successfully in Koji, but are generally untested
 # How best to handle?
@@ -16,7 +15,7 @@ Source:  http://www.ddcutil.com/%{name}-%{version}.tar.gz
 # ExcludeArch: ppc64       # builds successfully in Koji, untested
 # ExcludeArch: ppc         # builds successfully in Koji, untested
 
-BuildRequires: pkgconfig(glib-2.0) 
+BuildRequires: pkgconfig(glib-2.0)   >= 2.32
 BuildRequires: pkgconfig(libusb-1.0) >= 1.0.15
 BuildRequires: pkgconfig(systemd)
 BuildRequires: pkgconfig(libudev)
@@ -83,6 +82,13 @@ make DESTDIR=%{buildroot} install
 %attr(755,root,root)%{_bindir}/ddcutil
 
 %changelog
+
+* Thu Nov 16 2017 Sanford Rockowitz <rockowitz@minsoft.com> 0.8.5-1
+- Release 0.8.5
+- Minor enhancements and bug fixes, particularly for 32 bit environments.
+- For a complete list of changes and bug fixes, 
+  see http://www.ddcutil.com/release_notes for details.
+
 * Thu Nov 16 2017 Sanford Rockowitz <rockowitz@minsoft.com> 0.8.4-1
 - Minor enhancements and bug fixes. 
 - For a complete list of changes and bug fixes,
