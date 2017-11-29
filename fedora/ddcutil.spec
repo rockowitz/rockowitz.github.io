@@ -8,9 +8,7 @@ Source:  http://www.ddcutil.com/tarballs/%{name}-%{version}.tar.gz
 
 # Alternative architectures build successfully in Koji, but are generally untested
 # How best to handle?
-# ExcludeArch: s390x       # builds successfully in Koji, untested
-# ExcludeArch: aarch64     # builds successfully in Koji, users report success for this architecture with upstream
-# ExcludeArch: armv7hl     # builds successfully in Koji, untested
+ExcludeArch: s390x         # builds successfully in Koji, but makes makes no sense given S390 hardware
 # ExcludeArch: ppc64le     # builds successfully in Koji, untested
 # ExcludeArch: ppc64       # builds successfully in Koji, untested
 # ExcludeArch: ppc         # builds successfully in Koji, untested
@@ -46,8 +44,6 @@ applied.
 
 %prep
 %setup -q
-rpm --version
-rpmbuild --version
 
 %build
 %configure --enable-lib=no 
@@ -56,20 +52,13 @@ rpmbuild --version
 %check
 
 %install
-make DESTDIR=%{buildroot} install
+%make_install
+# temporary until v0.8.6: 
+rm -f %{buildroot}/usr/share/doc/%{name}/COPYING
 
 %files
-# Not needed, is default:
-# %%defattr(664,root,root)
-
-# fedora-review complains if use %%docdir instead of %%dir:
-# %%docdir %%{_datadir}/doc/%%{name}
-%dir     %{_docdir}/%{name}
-%doc     %{_docdir}/%{name}/AUTHORS
-%license %{_docdir}/%{name}/COPYING
-%doc     %{_docdir}/%{name}/NEWS.md
-%doc     %{_docdir}/%{name}/README.md
-%doc     %{_docdir}/%{name}/ChangeLog
+%doc     AUTHORS NEWS.md README.md ChangeLog
+%license COPYING
 
 %{_datadir}/%{name}
 
@@ -79,12 +68,15 @@ make DESTDIR=%{buildroot} install
 # %%{_datadir}/%%{name}/data/90-nvidia-i2c.conf
 
 %{_mandir}/man1/ddcutil.1*
-%attr(755,root,root)%{_bindir}/ddcutil
+%{_bindir}/ddcutil
 
 %changelog
 
-* Thu Nov 16 2017 Sanford Rockowitz <rockowitz@minsoft.com> 0.8.5-1
+* Wed Nov 29 2017 Sanford Rockowitz <rockowitz@minsoft.com> 0.8.5-1
 - Release 0.8.5
+- Spec file cleanup
+- Architecture s390x is execluded since this utility makes no sense in that
+  environment.
 - Minor enhancements and bug fixes, particularly for 32 bit environments.
 - For a complete list of changes and bug fixes, 
   see http://www.ddcutil.com/release_notes for details.
