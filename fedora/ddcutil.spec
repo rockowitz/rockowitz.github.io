@@ -1,5 +1,5 @@
 Name:    ddcutil
-Version: 0.8.5
+Version: 0.8.6
 Release: 1%{?dist}
 Summary: Query and update monitor settings
 License: GPLv2
@@ -71,6 +71,12 @@ rm -f %{buildroot}/usr/share/doc/%{name}/COPYING
 %{_bindir}/ddcutil
 
 %changelog
+
+* Fri Jan 12 2018 Sanford Rockowitz <rockowitz@minsoft.com> 0.8.6-1
+- Release 0.8.6
+- Minor enhancements and bug fixes.
+- For a complete list of changes and bug fixes, 
+  see http://www.ddcutil.com/release_notes for details.
 
 * Wed Nov 29 2017 Sanford Rockowitz <rockowitz@minsoft.com> 0.8.5-1
 - Release 0.8.5
