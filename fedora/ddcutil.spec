@@ -10,7 +10,7 @@ Source:  http://www.ddcutil.com/tarballs/%{name}-%{version}.tar.gz
 # How best to handle?
 ExcludeArch: s390x         # builds successfully in Koji, but makes makes no sense given S390 hardware
 # ExcludeArch: ppc64le     # builds successfully in Koji, untested
-# ExcludeArch: ppc64       # builds successfully in Koji, untested
+# ExcludeArch: ppc64       # builds successfully in Koji, tested
 # ExcludeArch: ppc         # builds successfully in Koji, untested
 
 BuildRequires: pkgconfig(glib-2.0)   >= 2.32
@@ -22,7 +22,7 @@ BuildRequires: pkgconfig(libdrm) >= 2.4.16
 
 Requires(pre): shadow-utils
 
-Recommends: i2c-tools
+Requires: i2c-tools
 
 %description 
 Query and change monitor settings
@@ -72,8 +72,9 @@ rm -f %{buildroot}/usr/share/doc/%{name}/COPYING
 
 %changelog
 
-* Fri Jan 12 2018 Sanford Rockowitz <rockowitz@minsoft.com> 0.8.6-1
+* Tue Jan 16 2018 Sanford Rockowitz <rockowitz@minsoft.com> 0.8.6-1
 - Release 0.8.6
+- Changed "Recommends: i2c-tools" to "Requires: i2c-tools"
 - Minor enhancements and bug fixes.
 - For a complete list of changes and bug fixes, 
   see http://www.ddcutil.com/release_notes for details.
