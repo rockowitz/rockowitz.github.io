@@ -189,6 +189,16 @@
     
         <ul>
         
+            <li><a class="toctree-l4" href="#086">0.8.6</a></li>
+        
+            <li><a class="toctree-l4" href="#user-interface-changes">User Interface Changes</a></li>
+        
+            <li><a class="toctree-l4" href="#c-api-changes">C API changes</a></li>
+        
+            <li><a class="toctree-l4" href="#miscellaneous">Miscellaneous</a></li>
+        
+            <li><a class="toctree-l4" href="#bug-fixes">Bug Fixes</a></li>
+        
             <li><a class="toctree-l4" href="#085">0.8.5</a></li>
         
             <li><a class="toctree-l4" href="#changes-to-facilitate-scripting">Changes to facilitate scripting</a></li>
@@ -199,9 +209,9 @@
         
             <li><a class="toctree-l4" href="#glib-20">glib-2.0</a></li>
         
-            <li><a class="toctree-l4" href="#bug-fixes">Bug fixes</a></li>
+            <li><a class="toctree-l4" href="#bug-fixes_1">Bug fixes</a></li>
         
-            <li><a class="toctree-l4" href="#miscellaneous">Miscellaneous</a></li>
+            <li><a class="toctree-l4" href="#miscellaneous_1">Miscellaneous</a></li>
         
             <li><a class="toctree-l4" href="#084">0.8.4</a></li>
         
@@ -209,7 +219,7 @@
         
             <li><a class="toctree-l4" href="#libddcutil-devel">libddcutil-devel</a></li>
         
-            <li><a class="toctree-l4" href="#bug-fixes_1">Bug fixes</a></li>
+            <li><a class="toctree-l4" href="#bug-fixes_2">Bug fixes</a></li>
         
             <li><a class="toctree-l4" href="#082">0.8.2</a></li>
         
@@ -225,7 +235,7 @@
         
             <li><a class="toctree-l4" href="#080">0.8.0</a></li>
         
-            <li><a class="toctree-l4" href="#bug-fixes_2">Bug Fixes</a></li>
+            <li><a class="toctree-l4" href="#bug-fixes_3">Bug Fixes</a></li>
         
             <li><a class="toctree-l4" href="#c-api">C API</a></li>
         
@@ -329,6 +339,64 @@
             <div class="section">
               
                 <h2 id="release-notes">Release Notes</h2>
+<h3 id="086">0.8.6</h3>
+<p>20 January 2018</p>
+<p>The externally visible changes in this release include minor enhancements and bug fixes.  There are also 
+changes in the C API.  Internally, there have been extensive changes in support of the C and (future) Python APIs.</p>
+<h3 id="user-interface-changes">User Interface Changes</h3>
+<p>Because of the design of the DDC/CI protocol, there is no uncertain way to distinguish a response indicating that 
+a feature of type Table (T) is unsupported from a DDC/CI protocol error.  As a result, <strong><em>ddcutil getvcp</em></strong> performs the maximum 
+number of retries on a Table type feature before giving up.  However, Table type features are rarely implemented.  The new <strong><em>--notable</em></strong> option allows Table type features to be ignored, speeding up execution of <strong><em>getvcp</em></strong> commmands for multiple features.</p>
+<ul>
+<li>Option <strong><em>--notable</em></strong> applies if the argument to <strong><em>getvcp</em></strong> is a feature set, e.g. <strong><em>COLOR</em></strong> or <strong><em>KNOWN</em></strong>
+instead of a single feature id.  In that case Table type features are ignored.</li>
+</ul>
+<h3 id="c-api-changes">C API changes</h3>
+<ul>
+<li>
+<h4 id="replace-structs-that-use-iftests">Replace structs that use #iftests</h4>
+<p>Structs <strong>DDCA_Single_Vcp_Value</strong> and <strong>DDCA_Non_Table_Value_Reponse</strong> used preprocessor #iftests for
+endian-ness to properly overlay the 2 byte continuous values (e.g. max value)
+on a pairs of 1 byte NC values (e.g. ml, mh).  The use of #iftests proved incompatible with 
+Python C function interface systems (e.g. Cython, CFFI).</p>
+</li>
+<li>
+<p>Struct <strong>DDCA_Single_Vcp_Value</strong> has been replaced by struct <strong>DDCA_Any_Vcp_Value</strong>. </p>
+</li>
+<li>Function <strong>ddca_get_single_vcp_value()</strong> has been replaced by fuction <strong>ddca_get_any_vcp_value()</strong>, 
+which uses <strong>DDCA_Any_Vcp_Value</strong>.</li>
+<li>Struct <strong>DDCA_Non_Table_Value_Response</strong> has been replaced by struct <strong>DDCA_Non_Table_Value</strong>.</li>
+<li>Function <strong>ddca_get_non_table_value()</strong> now returns a <strong>DDCA_Non_Table_Value</strong>, not a <strong>DDCA_Non_Table_Value_Response</strong>. </li>
+</ul>
+<p><strong>DDCA_Any_Vcp_Value</strong> and <strong>DDCA_Non_Table_Value</strong> do not define 2  byte current and max values for Continuous (C) 
+features.  The 2 byte current and max values must be calculated from the appropriate pairs of single byte values, e.g.</p>
+<pre><code>cur_val = sh &lt;&lt; 8 | sl
+</code></pre>
+
+<ul>
+<li>
+<h4 id="eliminate-use-of-longjmp">Eliminate use of longjmp</h4>
+<p>The use of longjmp() to handle exceptional error condiitions (typically program logic errors) has been eliminated.</p>
+</li>
+<li>
+<p>API functions removed: <strong>ddca_register_jmp_buf()</strong>, <strong>ddca_get_global_failure_information()</strong></p>
+</li>
+<li>Structs removed:  <strong>DDCA_Global_Failure_Information</strong></li>
+</ul>
+<h3 id="miscellaneous">Miscellaneous</h3>
+<ul>
+<li>Add trace class <strong><em>ENV</em></strong> for tracing environment related functions</li>
+<li>Internally, many functions in key portions of the code base now return exception-like structs 
+  instead of status codes.  Option <strong><em>--excp</em></strong> causes ddcutil to report these exception-like structs
+  when they are converted to status codes (and the internal detail is discarded).</li>
+</ul>
+<h3 id="bug-fixes">Bug Fixes</h3>
+<ul>
+<li>Fix cause of a segfault in the <strong><em>environment</em></strong> command on Arch Linux due to the lack
+  of the "arch" command in that distribution.  Thank you Despruk.</li>
+<li>Fix a segfault when probing DRM using the <strong><em>environment</em></strong> command on aarch64.</li>
+<li>Fix a typo in the recommendations section at the end of the <strong><em>environment</em></strong> command. Thank you Mirek Svoboda</li>
+</ul>
 <h3 id="085">0.8.5</h3>
 <p>16 November 2017</p>
 <p>This release contains a large number of minor enhancements and bug fixes.  Most significant
@@ -368,7 +436,7 @@ shell errors.</li>
 <h3 id="glib-20">glib-2.0</h3>
 <p>The required glib-2.0 version has been increased from 2.16 to 2.32 reflecting the use of glib 
 thread functions.  Consequently, <strong>ddcutil</strong> no longer builds on some older Linux distributions.</p>
-<h3 id="bug-fixes">Bug fixes</h3>
+<h3 id="bug-fixes_1">Bug fixes</h3>
 <ul>
 <li>Fix a logic error in the VCP version comparison function vcp_version_le().  This bug affected only audio 
 related VCP feature codes x8f, x91, and x93.  It also affected experimental command <strong><em>watch</em></strong> which listens for monitor
@@ -382,7 +450,7 @@ was seen only in 32 bit versions of <strong>ddcutil</strong>.</li>
 <li>The --stats option showed incorrect time statistics on 32 bit versions of <strong>ddcutil</strong>.</li>
 <li>Add "-lddcutil" to output of "pkgconfig ddcutil --libs".  Thank you Federico.</li>
 </ul>
-<h3 id="miscellaneous">Miscellaneous</h3>
+<h3 id="miscellaneous_1">Miscellaneous</h3>
 <ul>
 <li>Improve reporting of the individual errors that result in command failure due to maximum I2C retries exceeded.</li>
 <li><strong><em>interrogate</em></strong>, <strong><em>environment</em></strong> and <strong><em>usbenvironment</em></strong> now redirect all stderr output to stdout for easier capture</li>
@@ -408,7 +476,7 @@ There is no need to install it unless you are experiencing problems.</p>
 <ul>
 <li>Do not package static libraries (.a and .la files) in libddcutil-devel. </li>
 </ul>
-<h3 id="bug-fixes_1">Bug fixes</h3>
+<h3 id="bug-fixes_2">Bug fixes</h3>
 <ul>
 <li>
 <p>Prevent a segfault in monitor detection that occurrs when slave address x50 is detected on an I2C bus, but reading the EDID at that address fails.</p>
@@ -534,7 +602,7 @@ is easily machine readable.  See <a href="../cmdopts/">Command Specific Options<
 <p>By default, <strong>setvcp</strong> and <strong>loadvcp</strong> verify that a value has been successfully
 set by reading the value from the monitor after writing it.  Option <strong>--noverify</strong> 
 disables this check.</p>
-<h3 id="bug-fixes_2">Bug Fixes</h3>
+<h3 id="bug-fixes_3">Bug Fixes</h3>
 <ul>
 <li>Fixed a segfault that occurred when a monitor returned a 0 length capabilities string.</li>
 <li>Variables holding nanoseconds have been changed from type <strong>long</strong> to <strong>uint64_t</strong>
