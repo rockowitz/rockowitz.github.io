@@ -3,8 +3,8 @@ Version: 0.8.6
 Release: 1%{?dist}
 Summary: Query and update monitor settings
 License: GPLv2
-# Using rockowitz.gitub.io instead of www.ddcutil.com does not resolve problem 
-# that fedora-review reports Name or Service not known
+# Note: Using rockowitz.gitub.io instead of www.ddcutil.com does not resolve problem 
+#       that fedora-review reports Name or Service not known
 URL:     http://www.ddcutil.com
 Source:  http://www.ddcutil.com/tarballs/%{name}-%{version}.tar.gz
 
@@ -55,8 +55,6 @@ applied.
 
 %install
 %make_install
-# temporary until v0.8.6: 
-rm -f %{buildroot}/usr/share/doc/%{name}/COPYING
 
 %files
 %doc     AUTHORS NEWS.md README.md ChangeLog
