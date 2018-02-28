@@ -307,6 +307,8 @@
                 
                     <li><a class="toctree-l4" href="#asus-ve247">Asus VE247</a></li>
                 
+                    <li><a class="toctree-l4" href="#asus-rog-pg279q">Asus ROG PG279Q</a></li>
+                
                     <li><a class="toctree-l4" href="#benq-xl2411z">BenQ XL2411Z</a></li>
                 
                     <li><a class="toctree-l4" href="#dell-p2411">Dell P2411</a></li>
@@ -470,6 +472,16 @@ Firmware version: 2.0 <br />
 Maufacture year:  2010</p>
 <p>Responds to unknown VCP codes using the DDC NULL message instead of setting the <strong><em>Unsupported VCP code</em></strong> bit in the GETVCP response.</p>
 <p>Sensible responses to VCP codes x0B and x0C. </p>
+<h3 id="asus-rog-pg279q">Asus ROG PG279Q</h3>
+<p>VCP version:  2.2
+Controller Manufacturer:   manufacturer defined controller
+Controller Model:<br />
+Firmware version: 5.57
+Maufacture year:  2017</p>
+<p>Does not support VCP codes x0B and X0C. </p>
+<p>Does not support feature x60 - Input Source</p>
+<p>Does not respond to getvcp of unsupported VCP codes by setting the unsupported feature flag in the GETVCP response.<br />
+Requests for unsupported features fail by exceeding retries.</p>
 <h3 id="benq-xl2411z">BenQ XL2411Z</h3>
 <p>VCP version:  2.2<br />
 Controller Manufacturer: Mstar<br />
