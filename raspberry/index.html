@@ -237,6 +237,8 @@
             
                 <li class="toctree-l3"><a href="#raspberry-pi">Raspberry Pi</a></li>
                 
+                    <li><a class="toctree-l4" href="#background">Background</a></li>
+                
             
             </ul>
         
@@ -386,23 +388,48 @@
             <div class="section">
               
                 <h2 id="raspberry-pi">Raspberry Pi</h2>
-<p>Multiple users have reported building <strong>ddcutil</strong> for the Raspberry Pi and successfully running it.
-One user reported that the following settings were required in file /boot/config.txt in order to enable the I2C buses:</p>
-<pre><code>dtparam=i2c0=on
-dtparam=i2c1=on
-dtparam=i2c_vc=on
-dtparam=i2c_arm=on
-dtparam=i2c2_iknowwhatimdoing=yes
+<p>The following instructions for installing <strong>ddcutil</strong> on the Raspberry Pi are a distillation of user feedback, my own experiences with a Raspberry Pi 3 Model B, 
+and discussions on the Web. </p>
+<p><strong>ddcutil</strong> is known to work on both Raspberry Pi 3 Model B and Raspberry Pi 2.  It has been tested with the following distributions:</p>
+<ul>
+<li>Raspbian (Release 2017-09-07)</li>
+<li>Ubuntu 16.04 </li>
+<li>Fedora 26</li>
+<li>openSUSE Tumbleweed with kernel 4.11.13 </li>
+</ul>
+<p>At least on The Raspberry Pi 2 or 3, the I2C bus for the HDMI connection is /dev/i2c-2.  To enable it, the following line is required in the <strong>config.txt</strong> file: </p>
+<pre><code>dtparam=i2c2_iknowwhatimdoing
 </code></pre>
 
-<p>My own experiences are limited to a Raspberry Pi 3 Model B.  Running Raspbian (Release 2017-09-07), 
-the following single line is required in /boot/config.txt:</p>
+<p>Alternatively, the experimental OpenGL <strong>vc4-kms-v3d driver</strong> enables /dev/i2c-2 automatically.   In that case, the above <strong><em>i2c2_iknowwhatimdoing</em></strong> setting is not needed, though this may possibly change:</p>
 <pre><code>dtoverlay=vc4-kms-v3d
 </code></pre>
 
-<p>I could not find any other way to enable I2C for the HDMI connection, other than by using the vc4-kms-v3d driver.</p>
-<p>Note that the only prebuilt <strong>ddcutil</strong> packages for the Raspberry Pi are those in <a href="https://packages.debian.org/testing/utils/ddcutil">Debian testing</a>, which may be out of date.  Generally speaking, <strong>ddcutil</strong> must be built from source for the Pi. 
-.</p>
+<p>Also, ensure that i2c_dev is listed in /etc/modules, /etc/modules.conf, or a file in /etc/modules-load.d, as appropriate for your system.</p>
+<p>Prebuilt <strong>ddcutil</strong> packages for the Raspberry Pi are available for many distributions.
+See <a href="https://repology.org/metapackage/ddcutil/versions">Repology</a> for pointers.
+If there is no prebuilt version for your environment, or the prebuilt version is out of date, <strong>ddcutil</strong> can be built from source.</p>
+<h3 id="background">Background</h3>
+<p>Enabling /dev/i2c-2 requires the peculiar dtpararm statement described above, instead of the more expected: </p>
+<pre><code># Won't work!
+dtparam=i2c2
+</code></pre>
+
+<p>The parameter name was chosen as a caution.  From the <a href="https://github.com/raspberrypi/linux/commit/c6f0998f61b279d47e210b90d645643a6fe7932b">commit</a> that added the option: </p>
+<blockquote>
+<p>The third I2C bus (I2C2) is normally reserved for HDMI use. Careless use of this bus can break an attached display - use with caution.</p>
+<p>It is recommended to disable accesses by VideoCore by setting hdmi_ignore_edid=1 or hdmi_edid_file=1 in config.txt.</p>
+<p>The interface is disabled by default - enable using the i2c2_iknowwhatimdoing DT parameter.</p>
+</blockquote>
+<p>The issue appears to be that application access to /dev/i2c-2 from the CPU is independent of, and so can conflict with, video driver access via the GPU (at least with the default driver).  From an <a href="https://github.com/raspberrypi/linux/issues/1028">online comment</a>: </p>
+<blockquote>
+<p>Yes, but the GPU considers itself to be the sole user of the BSC2 peripheral. Poking the i2c from the ARM CPU (via linux driver) will likely work, but beware if the GPU tries to access the same peripheral then bad things will happen.
+. As long as you stay away from hotplugging HDMI, or tvservice commands (or anything likely to use tvservice) then the GPU is unlikely cause any traffic on BSC2.</p>
+</blockquote>
+<p>As a practical matter, this does not appear to be an issue.</p>
+<p>Concerns have also been expressed about 3.3v vs 5v voltage incompatibility on the I2C bus, since the HDMI spec is 5v.  However, as I read the 
+<a href="https://www.nxp.com/docs/en/user-guide/UM10204.pdf">I2C Specification</a> any recent I2C implementation should be able to adapt to voltages up
+to 5.5 volt. Again, I have not experienced a problem in this regard. </p>
               
             </div>
           </div>
