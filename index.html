@@ -7,24 +7,32 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="ddcutil (formerly ddctool) is a Linux utility for reading and changing monitor settings such as brightness and color levels. ddcutil primarily uses DDC/CI (Display Data Channel Command Interface) to communicate with monitors implementing MCCS (Monitor Control Command Set) over I2C.  Alternatively, there is support for monitors (such as Eizo Coloredge) that implement MCCS using a USB connection.">
   <meta name="author" content="Sanford Rockowitz">
+  
+  <title>ddcutil Documentation</title>
+  
+
   <link rel="shortcut icon" href="./img/favicon.ico">
-  <title>Overview - ddcutil Documentation</title>
+
+  
   <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
 
   <link rel="stylesheet" href="./css/theme.css" type="text/css" />
   <link rel="stylesheet" href="./css/theme_extra.css" type="text/css" />
   <link rel="stylesheet" href="./css/highlight.css">
+
   
   <script>
     // Current page data
-    var mkdocs_page_name = "Overview";
+    var mkdocs_page_name = "None";
     var mkdocs_page_input_path = "index.md";
     var mkdocs_page_url = "/";
   </script>
   
   <script src="./js/jquery-2.1.1.min.js"></script>
   <script src="./js/modernizr-2.8.3.min.js"></script>
-  <script type="text/javascript" src="./js/highlight.pack.js"></script> 
+  <script type="text/javascript" src="./js/highlight.pack.js"></script>
+  <script src="./js/theme.js"></script> 
+
   
 </head>
 
@@ -44,198 +52,328 @@
       </div>
 
       <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
-	<ul class="current">
-	  
+        <ul class="current">
           
-            <li class="toctree-l1 current">
-		
-    <a class="current" href=".">Overview</a>
-    <ul class="subnav">
+            <li>
+    <li class="toctree-l1 current">
+        <a class="current" href=".">Overview</a>
+        
+            <ul>
             
-    <li class="toctree-l2"><a href="#ddcutil">ddcutil</a></li>
-    
-        <ul>
+                <li class="toctree-l3"><a href="#ddcutil">ddcutil</a></li>
+                
+                    <li><a class="toctree-l4" href="#announcements">Announcements</a></li>
+                
+                    <li><a class="toctree-l4" href="#introduction">Introduction</a></li>
+                
+                    <li><a class="toctree-l4" href="#topics">Topics</a></li>
+                
+                    <li><a class="toctree-l4" href="#author">Author</a></li>
+                
+            
+            </ul>
         
-            <li><a class="toctree-l3" href="#announcements">Announcements</a></li>
-        
-            <li><a class="toctree-l3" href="#introduction">Introduction</a></li>
-        
-            <li><a class="toctree-l3" href="#topics">Topics</a></li>
-        
-            <li><a class="toctree-l3" href="#author">Author</a></li>
-        
-        </ul>
-    
+    </li>
+<li>
+          
+            <li>
+    <ul class="subnav">
+    <li><span>Using ddcutil</span></li>
 
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="commands/">Command Overview</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="cmdargs/">Command Arguments</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="cmdopts/">Command Specific Options</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="cmd_output/">Command Output Examples</a>
+        
+    </li>
+
+        
+            
+    <ul class="subnav">
+    <li><span>Examples</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="vcpinfo_output/">ddcutil vcpinfo example</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="detect_verbose_output/">ddcutil detect example</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="cap_u3011_verbose_output/">ddcutil capabilities example</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="getvcp_known_u3011_output/">ddcutil getvcp example</a>
+        
+    </li>
+
+        
     </ul>
-	    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="mccs_background/">Monitor Control Command Set</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="colormgt/">Color Management</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="tuning/">Instrumentation and Tuning</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="table_features/">Table Type Features</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="usb/">USB Connected Monitors</a>
+        
+    </li>
+
+        
+    </ul>
+<li>
           
-            <li class="toctree-l1">
-		
-    <span class="caption-text">Using ddcutil</span>
+            <li>
     <ul class="subnav">
-                <li class="">
-                    
-    <a class="" href="commands/">Command Overview</a>
-                </li>
-                <li class="">
-                    
-    <a class="" href="cmdargs/">Command Arguments</a>
-                </li>
-                <li class="">
-                    
-    <a class="" href="cmdopts/">Command Specific Options</a>
-                </li>
-                <li class="">
-                    
-    <a class="" href="cmd_output/">Command Output Examples</a>
-                </li>
-                <li class="">
-                    
-    <span class="caption-text">Examples</span>
-    <ul class="subnav">
-                <li class="toctree-l3">
-                    
-    <a class="" href="vcpinfo_output/">ddcutil vcpinfo example</a>
-                </li>
-                <li class="toctree-l3">
-                    
-    <a class="" href="detect_verbose_output/">ddcutil detect example</a>
-                </li>
-                <li class="toctree-l3">
-                    
-    <a class="" href="cap_u3011_verbose_output/">ddcutil capabilities example</a>
-                </li>
-                <li class="toctree-l3">
-                    
-    <a class="" href="getvcp_known_u3011_output/">ddcutil getvcp example</a>
-                </li>
+    <li><span>Installation and Configuration</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="install/">Install ddcutil From Prebuilt Packages</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="building/">Building From Source</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="adl/">AMD fglrx Driver</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="config/">Configuration and Installation Diagnostics</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="i2c_permissions/">Device Permissions</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="kernel_module/">Kernel Module Configuration</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="nvidia/">Special Nvidia Driver Settings</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="virtual_machines/">Virtual Machines</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="raspberry/">Raspberry Pi</a>
+        
+    </li>
+
+        
     </ul>
-                </li>
-                <li class="">
-                    
-    <a class="" href="mccs_background/">Monitor Control Command Set</a>
-                </li>
-                <li class="">
-                    
-    <a class="" href="colormgt/">Color Management</a>
-                </li>
-                <li class="">
-                    
-    <a class="" href="tuning/">Instrumentation and Tuning</a>
-                </li>
-                <li class="">
-                    
-    <a class="" href="table_features/">Table Type Features</a>
-                </li>
-                <li class="">
-                    
-    <a class="" href="usb/">USB Connected Monitors</a>
-                </li>
-    </ul>
-	    </li>
+<li>
           
-            <li class="toctree-l1">
-		
-    <span class="caption-text">Installation and Configuration</span>
+            <li>
     <ul class="subnav">
-                <li class="">
-                    
-    <a class="" href="install/">Install ddcutil From Prebuilt Packages</a>
-                </li>
-                <li class="">
-                    
-    <a class="" href="building/">Building From Source</a>
-                </li>
-                <li class="">
-                    
-    <a class="" href="adl/">AMD fglrx Driver</a>
-                </li>
-                <li class="">
-                    
-    <a class="" href="config/">Configuration and Installation Diagnostics</a>
-                </li>
-                <li class="">
-                    
-    <a class="" href="i2c_permissions/">Device Permissions</a>
-                </li>
-                <li class="">
-                    
-    <a class="" href="kernel_module/">Kernel Module Configuration</a>
-                </li>
-                <li class="">
-                    
-    <a class="" href="nvidia/">Special Nvidia Driver Settings</a>
-                </li>
-                <li class="">
-                    
-    <a class="" href="virtual_machines/">Virtual Machines</a>
-                </li>
-                <li class="">
-                    
-    <a class="" href="raspberry/">Raspberry Pi</a>
-                </li>
-    </ul>
-	    </li>
-          
-            <li class="toctree-l1">
-		
-    <span class="caption-text">Additional Topics</span>
+    <li><span>Additional Topics</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="faq/">Frequently Asked Questions</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="tech_support/">Technical Support</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="feedback/">Feedback</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="releases/">Releases</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="release_notes/">Release Notes</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="prior_announcements/">Announcement History</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="ddccontrol/">Comparison with ddccontrol</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="monitor_notes/">Notes on specific monitors</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="ddc_null_response/">DDC Null Message</a>
+        
+    </li>
+
+        
+            
     <ul class="subnav">
-                <li class="">
-                    
-    <a class="" href="faq/">Frequently Asked Questions</a>
-                </li>
-                <li class="">
-                    
-    <a class="" href="tech_support/">Technical Support</a>
-                </li>
-                <li class="">
-                    
-    <a class="" href="feedback/">Feedback</a>
-                </li>
-                <li class="">
-                    
-    <a class="" href="releases/">Releases</a>
-                </li>
-                <li class="">
-                    
-    <a class="" href="release_notes/">Release Notes</a>
-                </li>
-                <li class="">
-                    
-    <a class="" href="prior_announcements/">Announcement History</a>
-                </li>
-                <li class="">
-                    
-    <a class="" href="ddccontrol/">Comparison with ddccontrol</a>
-                </li>
-                <li class="">
-                    
-    <a class="" href="monitor_notes/">Notes on specific monitors</a>
-                </li>
-                <li class="">
-                    
-    <a class="" href="ddc_null_response/">DDC Null Message</a>
-                </li>
-                <li class="">
-                    
-    <a class="" href="api_main/">APIs</a>
-                </li>
-                <li class="">
-                    
-    <a class="" href="todo/">Future Tasks</a>
-                </li>
-                <li class="">
-                    
-    <a class="" href="bibliography/">References</a>
-                </li>
-                <li class="">
-                    
-    <a class="" href="acknowledgements/">Acknowledgements</a>
-                </li>
+    <li><span>API</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="api_main/">C API</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="c_api_90/">C API Changes for Release 9.0</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="python_api/">Python API Overview</a>
+        
+    </li>
+
+        
     </ul>
-	    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="todo/">Future Tasks</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="bibliography/">References</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="acknowledgements/">Acknowledgements</a>
+        
+    </li>
+
+        
+    </ul>
+<li>
           
         </ul>
       </div>
@@ -262,8 +400,9 @@
     <li>Overview</li>
     <li class="wy-breadcrumbs-aside">
       
-        <a href="https://github.com/rockowitz/ddcutil/edit/master/docs/index.md"
-          class="icon icon-github"> Edit on GitHub</a>
+        
+          <a href="https://github.com/rockowitz/ddcutil" class="icon icon-github"> Edit on GitHub</a>
+        
       
     </li>
   </ul>
@@ -274,52 +413,25 @@
               
                 <h1 id="ddcutil">ddcutil</h1>
 <h2 id="announcements">Announcements</h2>
-<p>20 January 2018</p>
-<p>Release 0.8.6 contains a few minor externally visible enhancements and bug fixes, along with non-upwardly
-compatible changes to the C API.  Most current users will see no need to upgrade.</p>
-<p>For a complete list of changes and bug fixes, see <a href="release_notes/">Release Notes</a>.
-Prior announcements can be found <a href="prior_announcements/">here</a>.</p>
-<p><strong>ddcutil</strong> is now in the repositories for the upcoming Ubuntu 18.04 release and the openSUSE Tumbleweed rolling release. </p>
-<p>16 November 2017</p>
-<p>Release 0.8.5 contains a large number of minor enhancements and bug fixes.  Users of <strong>ddcutil</strong> on 32 bit platforms and
-those on the Raspberry Pi should upgrade.  </p>
-<p>For a complete list of changes and bug fixes, see <a href="release_notes/">Release Notes</a>.
-Prior announcements can be found <a href="prior_announcements/">here</a>.</p>
-<p>15 October 2017</p>
-<p>Package <strong>ddcutil</strong> has been sponsored into Debian and is now included in <a href="https://wiki.debian.org/DebianTesting">Debian Testing</a>.
-It is on track to be part of the next Debian release, which means it should eventually appear in downstream distributions such as Ubuntu. 
-Note that only package <strong>ddcutil</strong>, containing the command line version of <strong>ddcutil</strong>, is currently in the Debian repositories.
-The shared library packages, including the C and Python APIs, are not yet part of Debian.</p>
-<p>22 July 2017</p>
-<p>Release 0.8.4 primarily contains packaging changes to meet Fedora distribution standards.</p>
-<p>For a complete list of changes and bug fixes, see <a href="release_notes/">Release Notes</a>.
-Prior annoucnements can be found <a href="prior_announcements/">here</a>.</p>
-<p>17 May 2017</p>
-<p>Release 0.8.2 contains minor enhancements, primarily to diagnostics in the <strong>environment</strong> and <strong>interrogate</strong> commands. </p>
-<p>For a complete list of changes and bug fixes, see <a href="release_notes/">Release Notes</a>.
-Prior annoucnements can be found <a href="prior_announcements/">here</a>.</p>
-<p>05 May 2017</p>
-<p>Release 0.8.1 is a bugfix release that addresses a segfault that can occur when scanning for 
-USB connected monitors.</p>
-<p>For a complete list of changes and bug fixes, see <a href="release_notes/">Release Notes</a>.
-Prior annoucnements can be found <a href="prior_announcements/">here</a>.</p>
-<p>01 May 2017</p>
-<p>Release 0.8.0 contains new features intended to address issues with particular monitors and user environments,
-and to improve performance</p>
-<p>The most significant changes visible to users are:  </p>
+<p>14 May 2018</p>
+<p>Release 0.9.0 contains minor enhancements and a few very minor bug fixes.  However. the C API is extensively revised. </p>
+<p>Two enhancements will be of interest to general users:<br />
+- The <strong>setvcp</strong> command now allows new values for Continuous type features to be specified as relative values,
+e.g. the following commands increase or decrease the value of the brightness feature by 5. </p>
+<pre><code>$ ddcutil setvcp 10 + 5
+$ ddcutil setvcp 10 - 5
+</code></pre>
+
+<p>Note that parsing requires that "+" and "-" be surrounded by spaces.</p>
 <ul>
-<li>If there are multiple monitors and option <strong>--async</strong> is specified, initial monitor checks are performed in separate threads.
-Users with multiple monitors should see significantly better startup time.  </li>
-<li>If a display is specified by its I2C bus number (option <strong>--bus</strong>) and option <strong>--nodetect</strong> is specified,
-global display detection is skipped, improving performance.</li>
-<li>By default, <strong>setvcp</strong> and <strong>loadvcp</strong> now read the VCP value after it has been set, 
-to confirm that the monitor has made the change requested.  </li>
-<li>Command <strong>getvcp --terse</strong> now reports VCP settings in a form that is easily machine readable.</li>
-<li>The C API has been extensively revised.  Many names have changed for consistency and clarity.<br />
-(Apologies to those of you who have written applications.)</li>
+<li>Table type features are by default not included in most feature groups specified on <strong>getvcp</strong>, e.g. <strong><em>getvcp known</em></strong>.
+Features of type Table are rare.  The DDC/CI spec does not provide a clean way for <strong>getvcp</strong> to determine that a table 
+feature does not exist.  As a result, <strong>getvcp</strong> typically has to exceed its retry count before giving up.
+(Exclusion of table features does not occur if a feature is explicitly specified by its hex code, or for feature group <strong><em>TABLE</em></strong>.)<br />
+The <strong><em>--no-table</em></strong> (formerly <strong><em>--notable</em></strong>) and <strong><em>-show-table</em></strong> options explicitly control this behavior.</li>
 </ul>
 <p>For a complete list of changes and bug fixes, see <a href="release_notes/">Release Notes</a>.
-Prior annoucnements can be found <a href="prior_announcements/">here</a>.</p>
+Prior announcements can be found <a href="prior_announcements/">here</a>.</p>
 <h2 id="introduction">Introduction</h2>
 <p><strong>ddcutil</strong> is a Linux program for querying and changing monitor settings, such as 
 brightness and color levels.   </p>
@@ -409,13 +521,13 @@ Use of that forum allows everyone to benefit from individual questions and ideas
       </div>
 
     </section>
-    
+
   </div>
 
-  <div class="rst-versions" role="note" style="cursor: pointer">
+<div class="rst-versions" role="note" style="cursor: pointer">
     <span class="rst-current-version" data-toggle="rst-current-version">
       
-          <a href="https://github.com/rockowitz/ddcutil" class="fa fa-github" style="float: left; color: #fcfcfc"> GitHub</a>
+          <a href="https://github.com/rockowitz/ddcutil" class="icon icon-github" style="float: left; color: #fcfcfc"> GitHub</a>
       
       
       
@@ -423,12 +535,11 @@ Use of that forum allows everyone to benefit from individual questions and ideas
       
     </span>
 </div>
-    <script src="./js/theme.js"></script>
 
 </body>
 </html>
 
 <!--
-MkDocs version : 0.16.3
-Build Date UTC : 2018-05-13 13:13:54
+MkDocs version : 0.15.3
+Build Date UTC : 2018-05-13 23:39:53.983440
 -->

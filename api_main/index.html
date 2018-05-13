@@ -7,24 +7,32 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
   <meta name="author" content="Sanford Rockowitz">
+  
+  <title>C API - ddcutil Documentation</title>
+  
+
   <link rel="shortcut icon" href="../img/favicon.ico">
-  <title>APIs - ddcutil Documentation</title>
+
+  
   <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
 
   <link rel="stylesheet" href="../css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../css/theme_extra.css" type="text/css" />
   <link rel="stylesheet" href="../css/highlight.css">
+
   
   <script>
     // Current page data
-    var mkdocs_page_name = "APIs";
+    var mkdocs_page_name = "C API";
     var mkdocs_page_input_path = "api_main.md";
     var mkdocs_page_url = "/api_main/";
   </script>
   
   <script src="../js/jquery-2.1.1.min.js"></script>
   <script src="../js/modernizr-2.8.3.min.js"></script>
-  <script type="text/javascript" src="../js/highlight.pack.js"></script> 
+  <script type="text/javascript" src="../js/highlight.pack.js"></script>
+  <script src="../js/theme.js"></script> 
+
   
 </head>
 
@@ -44,195 +52,326 @@
       </div>
 
       <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
-	<ul class="current">
-	  
+        <ul class="current">
           
-            <li class="toctree-l1">
-		
-    <a class="" href="..">Overview</a>
-	    </li>
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="..">Overview</a>
+        
+    </li>
+<li>
           
-            <li class="toctree-l1">
-		
-    <span class="caption-text">Using ddcutil</span>
+            <li>
     <ul class="subnav">
-                <li class="">
-                    
-    <a class="" href="../commands/">Command Overview</a>
-                </li>
-                <li class="">
-                    
-    <a class="" href="../cmdargs/">Command Arguments</a>
-                </li>
-                <li class="">
-                    
-    <a class="" href="../cmdopts/">Command Specific Options</a>
-                </li>
-                <li class="">
-                    
-    <a class="" href="../cmd_output/">Command Output Examples</a>
-                </li>
-                <li class="">
-                    
-    <span class="caption-text">Examples</span>
-    <ul class="subnav">
-                <li class="toctree-l3">
-                    
-    <a class="" href="../vcpinfo_output/">ddcutil vcpinfo example</a>
-                </li>
-                <li class="toctree-l3">
-                    
-    <a class="" href="../detect_verbose_output/">ddcutil detect example</a>
-                </li>
-                <li class="toctree-l3">
-                    
-    <a class="" href="../cap_u3011_verbose_output/">ddcutil capabilities example</a>
-                </li>
-                <li class="toctree-l3">
-                    
-    <a class="" href="../getvcp_known_u3011_output/">ddcutil getvcp example</a>
-                </li>
-    </ul>
-                </li>
-                <li class="">
-                    
-    <a class="" href="../mccs_background/">Monitor Control Command Set</a>
-                </li>
-                <li class="">
-                    
-    <a class="" href="../colormgt/">Color Management</a>
-                </li>
-                <li class="">
-                    
-    <a class="" href="../tuning/">Instrumentation and Tuning</a>
-                </li>
-                <li class="">
-                    
-    <a class="" href="../table_features/">Table Type Features</a>
-                </li>
-                <li class="">
-                    
-    <a class="" href="../usb/">USB Connected Monitors</a>
-                </li>
-    </ul>
-	    </li>
-          
-            <li class="toctree-l1">
-		
-    <span class="caption-text">Installation and Configuration</span>
-    <ul class="subnav">
-                <li class="">
-                    
-    <a class="" href="../install/">Install ddcutil From Prebuilt Packages</a>
-                </li>
-                <li class="">
-                    
-    <a class="" href="../building/">Building From Source</a>
-                </li>
-                <li class="">
-                    
-    <a class="" href="../adl/">AMD fglrx Driver</a>
-                </li>
-                <li class="">
-                    
-    <a class="" href="../config/">Configuration and Installation Diagnostics</a>
-                </li>
-                <li class="">
-                    
-    <a class="" href="../i2c_permissions/">Device Permissions</a>
-                </li>
-                <li class="">
-                    
-    <a class="" href="../kernel_module/">Kernel Module Configuration</a>
-                </li>
-                <li class="">
-                    
-    <a class="" href="../nvidia/">Special Nvidia Driver Settings</a>
-                </li>
-                <li class="">
-                    
-    <a class="" href="../virtual_machines/">Virtual Machines</a>
-                </li>
-                <li class="">
-                    
-    <a class="" href="../raspberry/">Raspberry Pi</a>
-                </li>
-    </ul>
-	    </li>
-          
-            <li class="toctree-l1">
-		
-    <span class="caption-text">Additional Topics</span>
-    <ul class="subnav">
-                <li class="">
-                    
-    <a class="" href="../faq/">Frequently Asked Questions</a>
-                </li>
-                <li class="">
-                    
-    <a class="" href="../tech_support/">Technical Support</a>
-                </li>
-                <li class="">
-                    
-    <a class="" href="../feedback/">Feedback</a>
-                </li>
-                <li class="">
-                    
-    <a class="" href="../releases/">Releases</a>
-                </li>
-                <li class="">
-                    
-    <a class="" href="../release_notes/">Release Notes</a>
-                </li>
-                <li class="">
-                    
-    <a class="" href="../prior_announcements/">Announcement History</a>
-                </li>
-                <li class="">
-                    
-    <a class="" href="../ddccontrol/">Comparison with ddccontrol</a>
-                </li>
-                <li class="">
-                    
-    <a class="" href="../monitor_notes/">Notes on specific monitors</a>
-                </li>
-                <li class="">
-                    
-    <a class="" href="../ddc_null_response/">DDC Null Message</a>
-                </li>
-                <li class=" current">
-                    
-    <a class="current" href="./">APIs</a>
-    <ul class="subnav">
+    <li><span>Using ddcutil</span></li>
+
+        
             
-    <li class="toctree-l3"><a href="#api">API</a></li>
-    
+    <li class="toctree-l1 ">
+        <a class="" href="../commands/">Command Overview</a>
+        
+    </li>
 
-    <li class="toctree-l3"><a href="#c-api">C API</a></li>
-    
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../cmdargs/">Command Arguments</a>
+        
+    </li>
 
-    <li class="toctree-l3"><a href="#python-api">Python API</a></li>
-    
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../cmdopts/">Command Specific Options</a>
+        
+    </li>
 
-    <li class="toctree-l3"><a href="#vestigial-gobject-api">Vestigial GObject API</a></li>
-    
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../cmd_output/">Command Output Examples</a>
+        
+    </li>
 
+        
+            
+    <ul class="subnav">
+    <li><span>Examples</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../vcpinfo_output/">ddcutil vcpinfo example</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../detect_verbose_output/">ddcutil detect example</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../cap_u3011_verbose_output/">ddcutil capabilities example</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../getvcp_known_u3011_output/">ddcutil getvcp example</a>
+        
+    </li>
+
+        
     </ul>
-                </li>
-                <li class="">
-                    
-    <a class="" href="../todo/">Future Tasks</a>
-                </li>
-                <li class="">
-                    
-    <a class="" href="../bibliography/">References</a>
-                </li>
-                <li class="">
-                    
-    <a class="" href="../acknowledgements/">Acknowledgements</a>
-                </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../mccs_background/">Monitor Control Command Set</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../colormgt/">Color Management</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../tuning/">Instrumentation and Tuning</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../table_features/">Table Type Features</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../usb/">USB Connected Monitors</a>
+        
+    </li>
+
+        
     </ul>
-	    </li>
+<li>
+          
+            <li>
+    <ul class="subnav">
+    <li><span>Installation and Configuration</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../install/">Install ddcutil From Prebuilt Packages</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../building/">Building From Source</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../adl/">AMD fglrx Driver</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../config/">Configuration and Installation Diagnostics</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../i2c_permissions/">Device Permissions</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../kernel_module/">Kernel Module Configuration</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../nvidia/">Special Nvidia Driver Settings</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../virtual_machines/">Virtual Machines</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../raspberry/">Raspberry Pi</a>
+        
+    </li>
+
+        
+    </ul>
+<li>
+          
+            <li>
+    <ul class="subnav">
+    <li><span>Additional Topics</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../faq/">Frequently Asked Questions</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../tech_support/">Technical Support</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../feedback/">Feedback</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../releases/">Releases</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../release_notes/">Release Notes</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../prior_announcements/">Announcement History</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../ddccontrol/">Comparison with ddccontrol</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../monitor_notes/">Notes on specific monitors</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../ddc_null_response/">DDC Null Message</a>
+        
+    </li>
+
+        
+            
+    <ul class="subnav">
+    <li><span>API</span></li>
+
+        
+            
+    <li class="toctree-l1 current">
+        <a class="current" href="./">C API</a>
+        
+            <ul>
+            
+                <li class="toctree-l3"><a href="#c-api">C API</a></li>
+                
+                    <li><a class="toctree-l4" href="#naming">Naming</a></li>
+                
+                    <li><a class="toctree-l4" href="#installation">Installation</a></li>
+                
+                    <li><a class="toctree-l4" href="#documentation">Documentation</a></li>
+                
+            
+            </ul>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../c_api_90/">C API Changes for Release 9.0</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../python_api/">Python API Overview</a>
+        
+    </li>
+
+        
+    </ul>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../todo/">Future Tasks</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../bibliography/">References</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../acknowledgements/">Acknowledgements</a>
+        
+    </li>
+
+        
+    </ul>
+<li>
           
         </ul>
       </div>
@@ -259,12 +398,17 @@
           <li>Additional Topics &raquo;</li>
         
       
+        
+          <li>API &raquo;</li>
+        
+      
     
-    <li>APIs</li>
+    <li>C API</li>
     <li class="wy-breadcrumbs-aside">
       
-        <a href="https://github.com/rockowitz/ddcutil/edit/master/docs/api_main.md"
-          class="icon icon-github"> Edit on GitHub</a>
+        
+          <a href="https://github.com/rockowitz/ddcutil" class="icon icon-github"> Edit on GitHub</a>
+        
       
     </li>
   </ul>
@@ -273,40 +417,51 @@
           <div role="main">
             <div class="section">
               
-                <h2 id="api">API</h2>
-<p>As of release 0.7.4, the C API underwent significant changes to regularize naming and better
-align with internal changes.</p>
-<p>Not all <strong>ddcutil</strong> facilities are yet exposed in the C API.</p>
-<p>The Python API is at proof of concept stage and is subject to major changes.
-Because these facilities are still in rapid development, library versioning has not yet been turned on. </p>
-<p>If you are using the APIs, please contact <strong>ddcutil</strong>'s author (rockowitz@minsoft.com&gt;), both because 
+                <h2 id="c-api">C API</h2>
+<p>See also: <br />
+- <a href="../c_api_90/">C API Changes for Release 9.0</a><br />
+- <a href="../python_api/">Python API</a> </p>
+<p>If you are using the API, please contact <strong>ddcutil</strong>'s author (rockowitz@minsoft.com&gt;), both because 
 your input on the API would be helpful and also so I can alert you of upcoming changes. </p>
-<h2 id="c-api">C API</h2>
+<h3 id="naming">Naming</h3>
 <p>Symbol names begin with "ddca_" or "DDCA_" (for <strong>DDC</strong>util <strong>A</strong>pi).</p>
+<h3 id="installation">Installation</h3>
 <p>Header files are located in the src/public directory.
 They are normally installed to /usr/include or /usr/local/include. </p>
-<p>Implemented using shared library libddcutil.so.  Note that the command line version of <strong>ddcutil</strong>
+<table>
+<thead>
+<tr>
+<th>Header File Name</th>
+<th>Contains</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ddcutil_types.h</td>
+<td>typedefs, structs, enums, etc.</td>
+</tr>
+<tr>
+<td>ddcutil_c_api.h</td>
+<td>API functions</td>
+</tr>
+<tr>
+<td>ddcutil_status_codes.h</td>
+<td><strong>ddcutil</strong> specific status codes</td>
+</tr>
+<tr>
+<td>ddcutil_macros.h</td>
+<td>macros to specify <strong>ddcutil</strong> version at compile time</td>
+</tr>
+</tbody>
+</table>
+<p>The API is exposed using shared library libddcutil.so.  The API is subject to change, and will not 
+be SONAME versioned until release 1.0.  Note that the command line version of <strong>ddcutil</strong>
 does not itself use the shared library, but instead links all services statically.</p>
 <p>Installation (make install, package install) installs a Package Config file (ddcutil.pc). </p>
 <p>Installation also saves a cmake file (FindDDCUtil.cmake) in directory /usr/share/ddcutil/data 
 (or /usr/local/share/ddcutil/data if appropriate).  To use this file, copy it to 
 /usr/share/cmake/Modules.</p>
-<p>C API documentation:</p>
-<ul>
-<li>
-<p>The header files contain extensive documentation.   </p>
-</li>
-<li>
-<p>Doxygen generated documentation may exist. 
- However, I think you'll find  the comments in the header files and sample code more informative.</p>
-</li>
-</ul>
-<p><strong>configure</strong> options relating to the C API:</p>
-<ul>
-<li><strong>--enable-lib</strong> Build shared library.  Required for API use.</li>
-<li><strong>--enable-doxygen</strong> Generate C API documentation using <strong><em>Doxygen</em></strong> (if it is installed).
-Note the are numerous options beginning with "--enable-doxygen-" to tailer Doxygen execution.</li>
-</ul>
+<p><strong>configure</strong> options relating to the C API:  </p>
 <table>
 <thead>
 <tr>
@@ -319,13 +474,13 @@ Note the are numerous options beginning with "--enable-doxygen-" to tailer Doxyg
 <td><strong>--enable-lib</strong></td>
 <td>Build shared library. Required for the C API</td>
 </tr>
-<tr>
-<td><strong>--enable-doxygen</strong></td>
-<td>Generate C API documentation using <strong><em>Doxygen</em></strong> (if it is installed).</td>
-</tr>
 </tbody>
 </table>
-<p>Note that there are numerous additional options beginning with "--enable-doxygen-" for tailoring <strong><em>Doxygen</em></strong> execution.</p>
+<h3 id="documentation">Documentation</h3>
+<p>C API documentation:<br />
+- The header files contain extensive documentation. <br />
+- Doxygen documentation can be generated (if Doxygen is installed) using scripts in the doxydoc directory.
+ However, I think you'll find  the comments in the header files and sample code easier to use.</p>
 <p>Sample programs are found in directory src/sample_programs:</p>
 <table>
 <thead>
@@ -336,43 +491,40 @@ Note the are numerous options beginning with "--enable-doxygen-" to tailer Doxyg
 </thead>
 <tbody>
 <tr>
-<td>demo_global_settings.c</td>
-<td>Query and change global settings</td>
+<td>demo_capabilities.c</td>
+<td>Query monitor capabilities string</td>
 </tr>
 <tr>
 <td>demo_display_selection.c</td>
 <td>Select display</td>
 </tr>
 <tr>
-<td>demo_vcpinfo.c</td>
-<td>Query VCP metadata</td>
+<td>demo_feature_list.c</td>
+<td>Using DDCA_Feature_List</td>
 </tr>
 <tr>
 <td>demo_get_set_vcp.c</td>
 <td>Read and write VCP feature values</td>
 </tr>
+<tr>
+<td>demo_global_settings.c</td>
+<td>Query and change global settings</td>
+</tr>
+<tr>
+<td>demo_profile_features.c</td>
+<td>Save and restore color profile related features</td>
+</tr>
+<tr>
+<td>demo_redirection.c</td>
+<td>Capture program output</td>
+</tr>
+<tr>
+<td>demo_vcpinfo.c</td>
+<td>Query VCP feature metadata</td>
+</tr>
 </tbody>
 </table>
 <p>To build the sample client programs, issue the command <strong><em>make check</em></strong>.</p>
-<h2 id="python-api">Python API</h2>
-<p>Symbol names begin with "ddcs_" or "DDCS_" (for <strong>DDC</strong>util <strong>S</strong>wig).</p>
-<p>Currently Python 2.7 only.  </p>
-<p>Generated files:
-- _ddc_swig.so
-- ddc_swig.py </p>
-<p>Normally installed to ${pkgexecdir}/dist-packages   ?? </p>
-<p>Issue: 
-Depending on $(prefix) value, <strong>make install</strong> will install these files to ... 
-If installed to /usr/local... python will not mormally  see these files.  Directory ... must be added to the Python path. 
-This can be done in one several ways: 
-- Modify PYTHONPATH globally.    See generatd fragment src/swig/...
-- Modify PYTHONPATH for a single Python invocation.   See generated script src/swig/...
-- Modify PTYHONPATH within a Python script.  See commented out lines in sample script src/swig/test_swig.py </p>
-<p>For a fuller discussion on modifying  PYTHONPATH, see <a href="http://ask.xmodulo.com/change-syspath-pythonpath-python.html">http://ask.xmodulo.com/change-syspath-pythonpath-python.html</a>.</p>
-<h2 id="vestigial-gobject-api">Vestigial GObject API</h2>
-<p>A vestigial proof of concept for impelmenting scripting language support using <strong>GObject</strong> instrospection remains in 
-subidrectory src/gobject_api, pending removal from the source tree.  Building this code is controlled by configuration options 
-<strong>--enable-gobject-api</strong> and <strong>--enable-introspection</strong>.  These options should be left disabled.</p>
               
             </div>
           </div>
@@ -380,7 +532,7 @@ subidrectory src/gobject_api, pending removal from the source tree.  Building th
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../todo/" class="btn btn-neutral float-right" title="Future Tasks">Next <span class="icon icon-circle-arrow-right"></span></a>
+        <a href="../c_api_90/" class="btn btn-neutral float-right" title="C API Changes for Release 9.0">Next <span class="icon icon-circle-arrow-right"></span></a>
       
       
         <a href="../ddc_null_response/" class="btn btn-neutral" title="DDC Null Message"><span class="icon icon-circle-arrow-left"></span> Previous</a>
@@ -402,23 +554,22 @@ subidrectory src/gobject_api, pending removal from the source tree.  Building th
       </div>
 
     </section>
-    
+
   </div>
 
-  <div class="rst-versions" role="note" style="cursor: pointer">
+<div class="rst-versions" role="note" style="cursor: pointer">
     <span class="rst-current-version" data-toggle="rst-current-version">
       
-          <a href="https://github.com/rockowitz/ddcutil" class="fa fa-github" style="float: left; color: #fcfcfc"> GitHub</a>
+          <a href="https://github.com/rockowitz/ddcutil" class="icon icon-github" style="float: left; color: #fcfcfc"> GitHub</a>
       
       
         <span><a href="../ddc_null_response/" style="color: #fcfcfc;">&laquo; Previous</a></span>
       
       
-        <span style="margin-left: 15px"><a href="../todo/" style="color: #fcfcfc">Next &raquo;</a></span>
+        <span style="margin-left: 15px"><a href="../c_api_90/" style="color: #fcfcfc">Next &raquo;</a></span>
       
     </span>
 </div>
-    <script src="../js/theme.js"></script>
 
 </body>
 </html>
