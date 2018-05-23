@@ -591,22 +591,24 @@ For some manufacturers, the model name in the EDID does not in fact distinguish 
 "Syncmaster" for the model name.  Currently, <strong>loadvcp</strong> recognizes this field name but does not make use of the value.</li>
 </ul>
 <h4 id="building-ddcutil">Building ddcutil</h4>
-<p>Eliminate compiler flag <strong><em>-Wpedantic</em></strong> in Makefiles.  This flag had been added to diagnose some obscure compiler warnings regarding 
-system header files. It was flagging perfectly valid code as problematic, and caused build failures on Gentoo. </p>
-<p>Code changes to avoid <strong><em>-wformat-overflow</em></strong>, <strong><em>-wformat-truncation</em></strong>, and <strong><em>-wstringop-trunction</em></strong> warnings introduced with GCC 8, 
+<ul>
+<li>Eliminate compiler flag <strong><em>-Wpedantic</em></strong> in Makefiles.  This flag had been added to diagnose some obscure compiler warnings regarding 
+system header files. It was flagging perfectly valid code as problematic, and caused build failures on Gentoo. </li>
+<li>Code changes to avoid <strong><em>-wformat-overflow</em></strong>, <strong><em>-wformat-truncation</em></strong>, and <strong><em>-wstringop-trunction</em></strong> warnings introduced with GCC 8, 
 generally by making buffers larger.
-(All such warnings had flagged situations that never would result in buffer overflow.)</p>
+(All such warnings had flagged situations that never would result in buffer overflow.)</li>
+</ul>
 <h4 id="api-changes">API Changes</h4>
 <p>The C API has been extensively revised reflecting experience gained from work on a Qt C++ GUI interface.
 See <a href="../c_api_90/">API Changes in Release 9.0</a> for details.</p>
-<p>Work on Python API has been suspended.  Proof of concept implementations exist in source tree for implementations using GObject API. 
+<p>Work on Python API has been suspended.  Proof of concept implementations exist in the source tree for implementations using GObject API. 
 SWIG, CFFI, and and Cython.  However, these are incomplete and not intended for public use.</p>
 <h3 id="086">0.8.6</h3>
 <p>20 January 2018</p>
 <p>The externally visible changes in this release include minor enhancements and bug fixes.  There are also 
 changes in the C API.  Internally, there have been extensive changes in support of the C and (future) Python APIs.</p>
 <h3 id="user-interface-changes">User Interface Changes</h3>
-<p>Because of the design of the DDC/CI protocol, there is no uncertain way to distinguish a response indicating that 
+<p>Because of the design of the DDC/CI protocol, there is no certain way to distinguish a response indicating that 
 a feature of type Table (T) is unsupported from a DDC/CI protocol error.  As a result, <strong><em>ddcutil getvcp</em></strong> performs the maximum 
 number of retries on a Table type feature before giving up.  However, Table type features are rarely implemented.  The new <strong><em>--notable</em></strong> option allows Table type features to be ignored, speeding up execution of <strong><em>getvcp</em></strong> commmands for multiple features.</p>
 <ul>
