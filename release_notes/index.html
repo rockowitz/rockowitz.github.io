@@ -591,8 +591,11 @@ For some manufacturers, the model name in the EDID does not in fact distinguish 
 "Syncmaster" for the model name.  Currently, <strong>loadvcp</strong> recognizes this field name but does not make use of the value.</li>
 </ul>
 <h4 id="building-ddcutil">Building ddcutil</h4>
-<p>Eliminate compiler flag -Wpedantic in Makefiles.  This flag had been added to diagnose some obscure compiler warnings regarding 
+<p>Eliminate compiler flag <strong><em>-Wpedantic</em></strong> in Makefiles.  This flag had been added to diagnose some obscure compiler warnings regarding 
 system header files. It was flagging perfectly valid code as problematic, and caused build failures on Gentoo. </p>
+<p>Code changes to avoid <strong><em>-wformat-overflow</em></strong>, <strong><em>-wformat-truncation</em></strong>, and <strong><em>-wstringop-trunction</em></strong> warnings introduced with GCC 8, 
+generally by making buffers larger.
+(All such warnings had flagged situations that never would result in buffer overflow.)</p>
 <h4 id="api-changes">API Changes</h4>
 <p>The C API has been extensively revised reflecting experience gained from work on a Qt C++ GUI interface.
 See <a href="../c_api_90/">API Changes in Release 9.0</a> for details.</p>
