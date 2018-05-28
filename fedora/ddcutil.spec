@@ -1,9 +1,9 @@
 Name:    ddcutil
-Version: 0.8.6
+Version: 0.9.1
 Release: 1%{?dist}
 Summary: Query and update monitor settings
 License: GPLv2
-# Note: Using rockowitz.gitub.io instead of www.ddcutil.com does not resolve problem 
+# Note: Using rockowitz.github.io instead of www.ddcutil.com does not resolve problem 
 #       that fedora-review reports Name or Service not known
 URL:     http://www.ddcutil.com
 Source:  http://www.ddcutil.com/tarballs/%{name}-%{version}.tar.gz
@@ -71,6 +71,18 @@ applied.
 %{_bindir}/ddcutil
 
 %changelog
+
+* Sun May 27 2018 Sanford Rockowitz <rockowitz@minsoft.com> 0.9.1-1
+- Release 0.9.1
+- Minor bug fix
+- For a complete list of changes and bug fixes, 
+  see http://www.ddcutil.com/release_notes for details.
+
+* Sun May 13 2018 Sanford Rockowitz <rockowitz@minsoft.com> 0.9.0-1
+- Release 0.9.0
+- Minor enhancements and bug fixes.
+- For a complete list of changes and bug fixes, 
+  see http://www.ddcutil.com/release_notes for details.
 
 * Fri Jan 19 2018 Sanford Rockowitz <rockowitz@minsoft.com> 0.8.6-1
 - Release 0.8.6
