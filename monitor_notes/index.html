@@ -241,6 +241,8 @@
         
             <li><a class="toctree-l4" href="#iilyama-pl2779q">Iilyama PL2779Q</a></li>
         
+            <li><a class="toctree-l4" href="#lg-27mu67">LG 27MU67</a></li>
+        
             <li><a class="toctree-l4" href="#lg-ultrawide">LG Ultrawide</a></li>
         
             <li><a class="toctree-l4" href="#nec-lcd3090wqxi">NEC LCD3090WQXi</a></li>
@@ -256,6 +258,8 @@
             <li><a class="toctree-l4" href="#samsung-syncmaster-213t">Samsung Syncmaster 213T</a></li>
         
             <li><a class="toctree-l4" href="#samsung-syncmaster-730b">Samsung Syncmaster 730B</a></li>
+        
+            <li><a class="toctree-l4" href="#viewsonic-xg2703-gs">Viewsonic XG2703-GS</a></li>
         
         </ul>
     
@@ -529,6 +533,16 @@ Manufacture year:          2013  </p>
 <p>Color temperature increment (feature x0B) and request (feature x0C) result in a color temperature of 26,100 degress Kelvin</p>
 <p>Does not include command x02 (VCP Response) or xE3 (Capabilities Reply) in its capabilities string, even though these are supported.</p>
 <p>Responds to several VCP feature not listed in capabilities</p>
+<h3 id="lg-27mu67">LG 27MU67</h3>
+<p>VCP Version:  2.1<br />
+Manufacture year:  2015<br />
+Controller manufacturer and model:  Mstar (sl=x05)  model(mh=x00, ml=xff, sh=x00)<br />
+Firmware version:         3.7</p>
+<p>Features X0B and X0C are not supported.  Cannot calculate color temperature.</p>
+<p>No serial number in EDID.</p>
+<p>When brightness (VCP feature x10) is changed, it reverts to the original value after approximately 1 second.
+The same behavior is seen on Windows using ClickMonitorDDC and softMCCS, so this is clearly a monitor issue.
+This problem is not observed for other features.</p>
 <h3 id="lg-ultrawide">LG Ultrawide</h3>
 <p>VCP version:  2.1 <br />
 Controller manufacturer and model:  STK<br />
@@ -585,6 +599,16 @@ Controller manufacturer and model:   Unknown (VCP feature code C8 unsupported)  
 Firmware version:  Unknown (VCP feature code C9 unsupported)  </p>
 <p>The capabilities string spcifies the values for non-continuous features in decimal rather than hexadecimal</p>
 <p>VCP feature codes 0B and 0C unsupported.</p>
+<h3 id="viewsonic-xg2703-gs">Viewsonic XG2703-GS</h3>
+<p>Manufacture year:  2016<br />
+VCP Version:  2.2<br />
+Controller manufacturer:  Manufacturer-designed (sl=xff)<br />
+Firmware version:         1.14  </p>
+<p>No serial number in EDID</p>
+<p>For unsupported features, sometimes returns a well-formed reply with the "unsupported feature" flag not set.
+More often, garbage is returned, resulting in the maximum number of retries.</p>
+<p>Does not support feature x60 (input switching)</p>
+<p>Features X0B and x0C are unsupported.  Cannot calculate color temperature.</p>
               
             </div>
           </div>
