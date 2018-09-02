@@ -1,5 +1,5 @@
 Name:    ddcutil
-Version: 0.9.1
+Version: 0.9.2
 Release: 1%{?dist}
 Summary: Query and update monitor settings
 License: GPLv2
@@ -15,6 +15,7 @@ ExcludeArch: s390x         # builds successfully in Koji, but makes makes no sen
 # ExcludeArch: ppc64       # builds successfully in Koji, tested
 # ExcludeArch: ppc         # builds successfully in Koji, untested
 
+BuildRequires: gcc
 BuildRequires: pkgconfig(glib-2.0)   >= 2.32
 BuildRequires: pkgconfig(libusb-1.0) >= 1.0.15
 BuildRequires: pkgconfig(systemd)
@@ -71,6 +72,12 @@ applied.
 %{_bindir}/ddcutil
 
 %changelog
+
+* Sat Sep 01 2018 Sanford Rockowitz <rockowitz@minsoft.com> 0.9.2-1
+- Release 0.9.2
+- Minor enhancements and bug fixes
+- For a complete list of changes and bug fixes, 
+  see http://www.ddcutil.com/release_notes for details.
 
 * Sun May 27 2018 Sanford Rockowitz <rockowitz@minsoft.com> 0.9.1-1
 - Release 0.9.1

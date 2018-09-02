@@ -189,61 +189,23 @@
     
         <ul>
         
+            <li><a class="toctree-l4" href="#092">0.9.2</a></li>
+        
             <li><a class="toctree-l4" href="#091">0.9.1</a></li>
         
             <li><a class="toctree-l4" href="#090">0.9.0</a></li>
         
             <li><a class="toctree-l4" href="#086">0.8.6</a></li>
         
-            <li><a class="toctree-l4" href="#user-interface-changes">User Interface Changes</a></li>
-        
-            <li><a class="toctree-l4" href="#c-api-changes">C API changes</a></li>
-        
-            <li><a class="toctree-l4" href="#miscellaneous_1">Miscellaneous</a></li>
-        
-            <li><a class="toctree-l4" href="#bug-fixes">Bug Fixes</a></li>
-        
             <li><a class="toctree-l4" href="#085">0.8.5</a></li>
-        
-            <li><a class="toctree-l4" href="#changes-to-facilitate-scripting">Changes to facilitate scripting</a></li>
-        
-            <li><a class="toctree-l4" href="#packaging">Packaging</a></li>
-        
-            <li><a class="toctree-l4" href="#command-environment-enhancements">Command environment enhancements</a></li>
-        
-            <li><a class="toctree-l4" href="#glib-20">glib-2.0</a></li>
-        
-            <li><a class="toctree-l4" href="#bug-fixes_1">Bug fixes</a></li>
-        
-            <li><a class="toctree-l4" href="#miscellaneous_2">Miscellaneous</a></li>
         
             <li><a class="toctree-l4" href="#084">0.8.4</a></li>
         
-            <li><a class="toctree-l4" href="#command-ddcutil-interrogate">Command ddcutil interrogate</a></li>
-        
-            <li><a class="toctree-l4" href="#libddcutil-devel">libddcutil-devel</a></li>
-        
-            <li><a class="toctree-l4" href="#bug-fixes_2">Bug fixes</a></li>
-        
             <li><a class="toctree-l4" href="#082">0.8.2</a></li>
-        
-            <li><a class="toctree-l4" href="#command-ddcutil-detect">Command ddcutil detect</a></li>
-        
-            <li><a class="toctree-l4" href="#option-stats-errors">Option --stats errors</a></li>
-        
-            <li><a class="toctree-l4" href="#ddcutil-environment-verbose-changes">ddcutil environment --verbose changes</a></li>
-        
-            <li><a class="toctree-l4" href="#packaging_1">Packaging</a></li>
         
             <li><a class="toctree-l4" href="#081">0.8.1</a></li>
         
             <li><a class="toctree-l4" href="#080">0.8.0</a></li>
-        
-            <li><a class="toctree-l4" href="#bug-fixes_3">Bug Fixes</a></li>
-        
-            <li><a class="toctree-l4" href="#c-api">C API</a></li>
-        
-            <li><a class="toctree-l4" href="#name-changes">Name Changes</a></li>
         
             <li><a class="toctree-l4" href="#073">0.7.3</a></li>
         
@@ -357,6 +319,52 @@
             <div class="section">
               
                 <h2 id="release-notes">Release Notes</h2>
+<h3 id="092">0.9.2</h3>
+<p>01 September 2018</p>
+<h4 id="command-ddcutil-detect">Command <strong><em>ddcutil detect</em></strong></h4>
+<p><strong>Eliminate the <strong><em>Supports DDC:</em></strong> line.</strong></p>
+<p>The output of this line reflects the result of a simple test for slave address x37 at the I2C layer.
+During display detection, <strong>ddcutil</strong> also attempts a real DDC exchange at the higher, DDC layer of code, 
+and relies on this result to determine whether the monitor supports DDC.  The simple x37 test is vestigial and has no effect on program logic.
+It also has been shown to be inadequate.  It has been reported that the Dell P2715Q sometimes
+fails the simple x37 test even though it supports DDC.  On the other hand the x37 test succeeds on a Dell U3011
+when DDC is turned off in the OSD.  Thank you Robert Muntreanu for the Dell P2715Q report.</p>
+<p>The result of the x37 test is still reported as part of the <strong><em>--verbose</em></strong> output of <strong><em>detect</em></strong>.</p>
+<p><strong>Eliminate duplicate displays for DisplayPort connected monitors.</strong></p>
+<p>Under some circumstances, a DisplayPort connected monitor is assigned two /dev/i2c devices, and
+<strong><em>detect</em></strong> would report two (identical) monitors.  However, only one of the /dev/i2c devices supports DDC communication.
+This change addresses the problem for the nouveau driver, and only defines a <strong>ddcutil</strong> display for the 
+good /dev/i2c device.</p>
+<h4 id="command-ddcutil-help">Command <strong><em>ddcutil --help</em></strong></h4>
+<p>Include command <strong><em>scs</em></strong> (Save Current Settings) in the output of <strong><em>ddcutil --help</em></strong>. </p>
+<p><strong><em>ddcutil scs</em></strong> executes a Save Current Settings operation, which is supported by some but not all 
+DDC capable displays.  This command was implemented some time ago, but was not described in the help output.</p>
+<h4 id="command-ddcutil-environment">Command <strong><em>ddcutil environment</em></strong></h4>
+<p>When checking for group i2c membership, issue a special message if running as root instead of the
+generic message that the current user is not a member of group i2c.</p>
+<h4 id="usb-connected-displays">USB connected displays</h4>
+<ul>
+<li>Fix an invalid feature read of a USB connected display, observed when getting the controller manufacturer
+but VCP feature code xC8 is unsupported.</li>
+<li>When reading a USB report, regard errno EINVAL as an expected indication that no 
+value is found rather than an unexpected status code.</li>
+</ul>
+<h4 id="tracing">Tracing</h4>
+<ul>
+<li>Fix the cause of a segfault when tracing a write-only DDC exchange (i.e. setting a VCP value)</li>
+<li>Disable debug messages regarding device id table initialization  in the <strong><em>environment</em></strong> command.</li>
+<li>Eliminate double newlines in several error and trace messages</li>
+</ul>
+<h4 id="building-ddcutil">Building ddcutil</h4>
+<ul>
+<li>libusb function <strong><em>libusb_set_debug()</em></strong> is deprecated in recent libusb versions, in favor of <strong><em>libusb_set_option()</em></strong>, 
+resulting in a compiler warning when flag <strong><em>-Wdeprecated-declarations</em></strong> is set.  Calls to <strong><em>libusb_set_debug()</em></strong> in 
+file <strong>libusb_util.c</strong> are replaced by iftested code that uses the proper function.</li>
+<li>Fix an unreachable <strong><em>assert()</em></strong> statement in file execution_stats.c that was detected by compiling 
+with option -Werror-switch-unreachable. Thank you Jonathan Scruggs.</li>
+<li>Add "__attribute__ ((deprecated))" statements to functions <strong><em>ddca_report_active_displays()</em></strong> and <strong><em>ddca_get_feature_name_by_display()</em></strong>, 
+in header file <strong>ddcutil_c_api.h</strong>.  The inline documentation for these function already indicated their deprecated status.</li>
+</ul>
 <h3 id="091">0.9.1</h3>
 <p>27 May 2018</p>
 <h4 id="bug-fix">Bug Fix</h4>
@@ -471,7 +479,7 @@ Feature sets KNOWN and ALL are now synonyms.    </p>
 For some manufacturers, the model name in the EDID does not in fact distinguish among models. Notably, Samsung commonly uses just 
 "Syncmaster" for the model name.  Currently, <strong>loadvcp</strong> recognizes this field name but does not make use of the value.</li>
 </ul>
-<h4 id="building-ddcutil">Building ddcutil</h4>
+<h4 id="building-ddcutil_1">Building ddcutil</h4>
 <ul>
 <li>Eliminate compiler flag <strong><em>-Wpedantic</em></strong> in Makefiles.  This flag had been added to diagnose some obscure compiler warnings regarding 
 system header files. It was flagging perfectly valid code as problematic, and caused build failures on Gentoo. </li>
@@ -488,7 +496,7 @@ SWIG, CFFI, and and Cython.  However, these are incomplete and not intended for 
 <p>20 January 2018</p>
 <p>The externally visible changes in this release include minor enhancements and bug fixes.  There are also 
 changes in the C API.  Internally, there have been extensive changes in support of the C and (future) Python APIs.</p>
-<h3 id="user-interface-changes">User Interface Changes</h3>
+<h4 id="user-interface-changes">User Interface Changes</h4>
 <p>Because of the design of the DDC/CI protocol, there is no certain way to distinguish a response indicating that 
 a feature of type Table (T) is unsupported from a DDC/CI protocol error.  As a result, <strong><em>ddcutil getvcp</em></strong> performs the maximum 
 number of retries on a Table type feature before giving up.  However, Table type features are rarely implemented.  The new <strong><em>--notable</em></strong> option allows Table type features to be ignored, speeding up execution of <strong><em>getvcp</em></strong> commmands for multiple features.</p>
@@ -496,7 +504,7 @@ number of retries on a Table type feature before giving up.  However, Table type
 <li>Option <strong><em>--notable</em></strong> applies if the argument to <strong><em>getvcp</em></strong> is a feature set, e.g. <strong><em>COLOR</em></strong> or <strong><em>KNOWN</em></strong>
 instead of a single feature id.  In that case Table type features are ignored.</li>
 </ul>
-<h3 id="c-api-changes">C API changes</h3>
+<h4 id="c-api-changes">C API changes</h4>
 <ul>
 <li>
 <h4 id="replace-structs-that-use-iftests">Replace structs that use #iftests</h4>
@@ -528,14 +536,14 @@ features.  The 2 byte current and max values must be calculated from the appropr
 </li>
 <li>Structs removed:  <strong>DDCA_Global_Failure_Information</strong></li>
 </ul>
-<h3 id="miscellaneous_1">Miscellaneous</h3>
+<h4 id="miscellaneous_1">Miscellaneous</h4>
 <ul>
 <li>Add trace class <strong><em>ENV</em></strong> for tracing environment related functions</li>
 <li>Internally, many functions in key portions of the code base now return exception-like structs 
   instead of status codes.  Option <strong><em>--excp</em></strong> causes ddcutil to report these exception-like structs
   when they are converted to status codes (and the internal detail is discarded).</li>
 </ul>
-<h3 id="bug-fixes">Bug Fixes</h3>
+<h4 id="bug-fixes">Bug Fixes</h4>
 <ul>
 <li>Fix cause of a segfault in the <strong><em>environment</em></strong> command on Arch Linux due to the lack
   of the "arch" command in that distribution.  Thank you Despruk.</li>
@@ -549,12 +557,12 @@ are those related to alternative environments, such as Raspberry Pi systems.</p>
 <p>Those running <strong>ddcutil</strong> on a 32 bit system, either i386 or Raspberry Pi, should
 upgrade to address a segfault in the <strong><em>environment</em></strong> command.
 Otherwise, there is no need to upgrade to this release unless you are experiencing problems. </p>
-<h3 id="changes-to-facilitate-scripting">Changes to facilitate scripting</h3>
+<h4 id="changes-to-facilitate-scripting">Changes to facilitate scripting</h4>
 <ul>
 <li>Do not output a warning message regarding undetected VCP version if message level is <strong><em>--terse</em></strong>.</li>
 <li>"Display not found" message now directed to stderr instead of stdout.</li>
 </ul>
-<h3 id="packaging">Packaging</h3>
+<h4 id="packaging">Packaging</h4>
 <ul>
 <li>Changes to meet Debian distribution standards.  Clean up debian/rules and other files in the debian directory.</li>
 <li>Add a changelog file, normally installed in file /usr/share/doc/ddcutil/Changelog.</li>
@@ -566,7 +574,7 @@ used only for diagnostics within the <strong><em>environment</em></strong> comma
 in the tarball.  This more cleanly separates "downstream" from "upstream" activities.
 Packagers for Linux distributions should contact if this creates problems.</li>
 </ul>
-<h3 id="command-environment-enhancements">Command <strong>environment</strong> enhancements</h3>
+<h4 id="command-environment-enhancements">Command <strong>environment</strong> enhancements</h4>
 <p>The <strong><em>environment</em></strong> command is extensively revised.   The increasingly large collection of 
 tests has been consolidated.  In particular:</p>
 <ul>
@@ -578,10 +586,10 @@ user to address configuration issues.</li>
 <li>Use of shell commands has largely been replaced with API calls, addressing some obscure 
 shell errors.</li>
 </ul>
-<h3 id="glib-20">glib-2.0</h3>
+<h4 id="glib-20">glib-2.0</h4>
 <p>The required glib-2.0 version has been increased from 2.16 to 2.32 reflecting the use of glib 
 thread functions.  Consequently, <strong>ddcutil</strong> no longer builds on some older Linux distributions.</p>
-<h3 id="bug-fixes_1">Bug fixes</h3>
+<h4 id="bug-fixes_1">Bug fixes</h4>
 <ul>
 <li>Fix a logic error in the VCP version comparison function vcp_version_le().  This bug affected only audio 
 related VCP feature codes x8f, x91, and x93.  It also affected experimental command <strong><em>watch</em></strong> which listens for monitor
@@ -595,7 +603,7 @@ was seen only in 32 bit versions of <strong>ddcutil</strong>.</li>
 <li>The --stats option showed incorrect time statistics on 32 bit versions of <strong>ddcutil</strong>.</li>
 <li>Add "-lddcutil" to output of "pkgconfig ddcutil --libs".  Thank you Federico.</li>
 </ul>
-<h3 id="miscellaneous_2">Miscellaneous</h3>
+<h4 id="miscellaneous_2">Miscellaneous</h4>
 <ul>
 <li>Improve reporting of the individual errors that result in command failure due to maximum I2C retries exceeded.</li>
 <li><strong><em>interrogate</em></strong>, <strong><em>environment</em></strong> and <strong><em>usbenvironment</em></strong> now redirect all stderr output to stdout for easier capture</li>
@@ -612,16 +620,16 @@ This is purely informational.</li>
 <p>This release primarily contains packaging changes to meet Fedora distribution standards.
 It also includes minor improvements and bug fixes. 
 There is no need to install it unless you are experiencing problems.</p>
-<h3 id="command-ddcutil-interrogate">Command <strong>ddcutil interrogate</strong></h3>
+<h4 id="command-ddcutil-interrogate">Command <strong>ddcutil interrogate</strong></h4>
 <ul>
 <li>Do not include <strong>usbenvironment</strong> diagnostics as part of the <strong>interrogate</strong> command. USB connected monitors 
   are rare and USB related diagnostics clutter the report.</li>
 </ul>
-<h3 id="libddcutil-devel">libddcutil-devel</h3>
+<h4 id="libddcutil-devel">libddcutil-devel</h4>
 <ul>
 <li>Do not package static libraries (.a and .la files) in libddcutil-devel. </li>
 </ul>
-<h3 id="bug-fixes_2">Bug fixes</h3>
+<h4 id="bug-fixes_2">Bug fixes</h4>
 <ul>
 <li>
 <p>Prevent a segfault in monitor detection that occurrs when slave address x50 is detected on an I2C bus, but reading the EDID at that address fails.</p>
@@ -639,18 +647,18 @@ There is no need to install it unless you are experiencing problems.</p>
 <p>This release introduces minor improvements to the diagnostic output of the <strong>environment</strong>, 
 <strong>detect</strong>, and <strong>interrogate</strong> commands.  There is no need to install it unless you are 
 experiencing problems.</p>
-<h3 id="command-ddcutil-detect">Command <strong>ddcutil detect</strong></h3>
+<h4 id="command-ddcutil-detect_1">Command <strong>ddcutil detect</strong></h4>
 <ul>
 <li>If a display appears to support DDC (I2C slave address x37 is active) but communication fails, 
   perform a heuristic test as to whether it is a laptop display, issue message appropriately.</li>
 <li>Changes to reduce the number of feature reads performed when detecting monitors, slightly 
   improving performance.</li>
 </ul>
-<h3 id="option-stats-errors">Option <strong>--stats errors</strong></h3>
+<h4 id="option-stats-errors">Option <strong>--stats errors</strong></h4>
 <ul>
 <li>Maintain and report a secondary count of the individual errors that are rolled up into "retry count exceeded" errors.</li>
 </ul>
-<h3 id="ddcutil-environment-verbose-changes"><strong>ddcutil environment --verbose</strong> changes</h3>
+<h4 id="ddcutil-environment-verbose-changes"><strong>ddcutil environment --verbose</strong> changes</h4>
 <ul>
 <li>Eliminate checks for package <strong>i2c-tools</strong></li>
 <li>Report additional information about system hardware</li>
@@ -660,7 +668,7 @@ experiencing problems.</p>
 <li>Check for DisplayPort Multi-Stream Technology (DPMST) devices</li>
 <li>Eliminate the cause of a bogus error message when scanning devices</li>
 </ul>
-<h3 id="packaging_1">Packaging</h3>
+<h4 id="packaging_1">Packaging</h4>
 <ul>
 <li>Changes to the requirements of package <strong>i2c-tools</strong>.  Generally speaking, it is no longer needed for 
   building <strong>ddcutil</strong>, and is optionally used as part of the diagnostic output of the <strong>environment</strong> command.<ul>
@@ -747,15 +755,15 @@ is easily machine readable.  See <a href="../cmdopts/">Command Specific Options<
 <p>By default, <strong>setvcp</strong> and <strong>loadvcp</strong> verify that a value has been successfully
 set by reading the value from the monitor after writing it.  Option <strong>--noverify</strong> 
 disables this check.</p>
-<h3 id="bug-fixes_3">Bug Fixes</h3>
+<h4 id="bug-fixes_3">Bug Fixes</h4>
 <ul>
 <li>Fixed a segfault that occurred when a monitor returned a 0 length capabilities string.</li>
 <li>Variables holding nanoseconds have been changed from type <strong>long</strong> to <strong>uint64_t</strong>
 to address overflow problems on 32 bit systems such as Raspberry Pi.</li>
 </ul>
-<h3 id="c-api">C API</h3>
+<h4 id="c-api">C API</h4>
 <p>The C API has undergone extensive changes.</p>
-<h3 id="name-changes">Name Changes</h3>
+<h4 id="name-changes">Name Changes</h4>
 <p>Names have been changed for consistency and clarity.
 Names of certain functions used in message generation have been shortened 
 to simplify printf() type functions. </p>
