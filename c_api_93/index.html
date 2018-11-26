@@ -516,7 +516,7 @@ the classes to be traced.</p>
 </table>
 <h3 id="feature-metadata">Feature Metadata</h3>
 <p>To allow for user supplied feature definitions, metadata requests are now generally tied to the display, by
-specifying a <strong><em>DDCA_Display_Ref</em></strong> or <strong><em>DDDCA_Display_Handle</em></strong> instead of the VCP version.  That is, when metadata
+specifying a <strong><em>DDCA_Display_Ref</em></strong> or <strong><em>DDCA_Display_Handle</em></strong> instead of the VCP version.  That is, when metadata
 is requested for a feature, we first look to see if there is a user supplied feature definition for the display. Absent that,
 the VCP version of the display is used to retrieve the appropriate feature definition. </p>
 <p>Eliminate typedef <strong><em>DDCA_Feature_Value_Table</em></strong>, which is defined as <strong><em>DDCA_Feature_Value_Entry</em></strong> *, and is used to reference a feature value lookup table.  Use <strong><em>DDCA_Feature_Value_Entry</em></strong> * instead.  </p>
@@ -627,7 +627,7 @@ the VCP version of the display is used to retrieve the appropriate feature defin
 </tr>
 </tbody>
 </table>
-<p>The above functions now take a DDCA_Metadata*<em> instead of a DDCA_Metadata</em> parm, 
+<p>The above functions now take a DDCA_Metadata** instead of a DDCA_Metadata* parm, 
 i.e. they allocate a new DDCA_Metadata instance instance instead of filling in an 
 exisitng instance.</p>
 <table>
