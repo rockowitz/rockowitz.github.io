@@ -280,6 +280,8 @@
             
                 <li class="toctree-l3"><a href="#release-notes">Release Notes</a></li>
                 
+                    <li><a class="toctree-l4" href="#093">0.9.3</a></li>
+                
                     <li><a class="toctree-l4" href="#092">0.9.2</a></li>
                 
                     <li><a class="toctree-l4" href="#091">0.9.1</a></li>
@@ -364,7 +366,14 @@
         
             
     <li class="toctree-l1 ">
-        <a class="" href="../c_api_90/">C API Changes for Release 9.0</a>
+        <a class="" href="../c_api_90/">C API Changes for Release 0.9.0</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../c_api_93/">C API Changes for Release 0.9.3</a>
         
     </li>
 
@@ -444,6 +453,80 @@
             <div class="section">
               
                 <h2 id="release-notes">Release Notes</h2>
+<h3 id="093">0.9.3</h3>
+<p>nn November 2018</p>
+<h4 id="display-detection">Display Detection</h4>
+<p>Display detection no longer performs initial probes of I2C slave addresses on each possible /dev/i2c device. These initial probes do not return valid information on a Dell P2715Q, and have been seen to cause screen corruption on Dell XPS 13 laptops.
+In addition, /dev/i2c devices for Synopsys DesignWare are automatically skipped.</p>
+<p>Thank you Robert Munteanu for reporting and helping diagnose the P2715Q issues.
+Thank you Federico, developer of <a href="https://github.com/FedeDP/Clightd">CLightd</a> which uses the <strong>ddcutil</strong> API, jghauser, and especially Dr-Ongo for extensive help in reporting and diagnosing the Dell XPS 13 screen corruption. </p>
+<p>As a result of the changes to display detection, <strong><em>ddcutil detect --verbose</em></strong> no longer reports the presence of slave addresses x30 (EDID block number) or x37 (DDC), but does report whether a display is an Embedded Display Port (eDP) device, which is the case for recent laptop displays.  It also reports the sysfs device name. </p>
+<h4 id="user-supplied-feature-definitions">User Supplied Feature Definitions</h4>
+<p><strong>ddcutil</strong> internals have been extensively restructured for future support of user supplied feature definitions.  This will allow users to supply feature definitions for manufacturer reserved features, i.e. those in the range xe0..xff.  While not yet ready for public use, there are a couple changes already visible in the user interface</p>
+<table>
+<thead>
+<tr>
+<th>Command option</th>
+<th>Explanation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>--udef</td>
+<td>check for user supplied feature definitions</td>
+</tr>
+<tr>
+<td>--noudef</td>
+<td>do not check for user suplied feature definitions (currently the default)</td>
+</tr>
+</tbody>
+</table>
+<p>The following feature group has been added:</p>
+<table>
+<thead>
+<tr>
+<th>Group name</th>
+<th>Explanation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>USER or UDF</td>
+<td>features having a user supplied feature definition</td>
+</tr>
+</tbody>
+</table>
+<h4 id="tracing">Tracing</h4>
+<p>Added trace groups: </p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>UDF</td>
+<td>user defined features</td>
+</tr>
+<tr>
+<td>DDCIO</td>
+<td>low level DDC functions</td>
+</tr>
+<tr>
+<td>VCP</td>
+<td>feature metadata</td>
+</tr>
+</tbody>
+</table>
+<p>Because of the volume of output, 
+trace group "DDC" has been split into DDC and DDCIO, with the latter containing low level DDC services.</p>
+<h4 id="api-changes">API Changes</h4>
+<p>The C API has had a few changes to support user supplied feature definitions and reflecting experience gained from work on the Qt C++ GUI interface.
+See <a href="../c_api_93/">API Changes in Release 9.3</a> for details.</p>
+<h4 id="miscellaneous">Miscellaneous</h4>
+<p>Vebose output of the <strong><em>environment</em></strong> command now displays execution timestamps to aid in interpreting system logs.</p>
 <h3 id="092">0.9.2</h3>
 <p>01 September 2018</p>
 <h4 id="command-ddcutil-detect">Command <strong><em>ddcutil detect</em></strong></h4>
@@ -474,7 +557,7 @@ but VCP feature code xC8 is unsupported.</li>
 <li>When reading a USB report, regard errno EINVAL as an expected indication that no 
 value is found rather than an unexpected status code.</li>
 </ul>
-<h4 id="tracing">Tracing</h4>
+<h4 id="tracing_1">Tracing</h4>
 <ul>
 <li>Fix the cause of a segfault when tracing a write-only DDC exchange (i.e. setting a VCP value)</li>
 <li>Disable debug messages regarding device id table initialization  in the <strong><em>environment</em></strong> command.</li>
@@ -598,7 +681,7 @@ particular monitors.  They will likely be of interest to only a few user.</p>
 </table>
 <p>MFG is now a valid synonym for feature set MANUFACTURER.<br />
 Feature sets KNOWN and ALL are now synonyms.    </p>
-<h4 id="miscellaneous">Miscellaneous</h4>
+<h4 id="miscellaneous_1">Miscellaneous</h4>
 <ul>
 <li>The VCP file created by <strong>dumpvcp</strong> now includes a <strong>PRODUCT_CODE</strong> field including the manufacturer product code from the EDID.
 For some manufacturers, the model name in the EDID does not in fact distinguish among models. Notably, Samsung commonly uses just 
@@ -612,7 +695,7 @@ system header files. It was flagging perfectly valid code as problematic, and ca
 generally by making buffers larger.
 (All such warnings had flagged situations that never would result in buffer overflow.)</li>
 </ul>
-<h4 id="api-changes">API Changes</h4>
+<h4 id="api-changes_1">API Changes</h4>
 <p>The C API has been extensively revised reflecting experience gained from work on a Qt C++ GUI interface.
 See <a href="../c_api_90/">API Changes in Release 9.0</a> for details.</p>
 <p>Work on Python API has been suspended.  Proof of concept implementations exist in the source tree for implementations using GObject API. 
@@ -661,7 +744,7 @@ features.  The 2 byte current and max values must be calculated from the appropr
 </li>
 <li>Structs removed:  <strong>DDCA_Global_Failure_Information</strong></li>
 </ul>
-<h4 id="miscellaneous_1">Miscellaneous</h4>
+<h4 id="miscellaneous_2">Miscellaneous</h4>
 <ul>
 <li>Add trace class <strong><em>ENV</em></strong> for tracing environment related functions</li>
 <li>Internally, many functions in key portions of the code base now return exception-like structs 
@@ -728,7 +811,7 @@ was seen only in 32 bit versions of <strong>ddcutil</strong>.</li>
 <li>The --stats option showed incorrect time statistics on 32 bit versions of <strong>ddcutil</strong>.</li>
 <li>Add "-lddcutil" to output of "pkgconfig ddcutil --libs".  Thank you Federico.</li>
 </ul>
-<h4 id="miscellaneous_2">Miscellaneous</h4>
+<h4 id="miscellaneous_3">Miscellaneous</h4>
 <ul>
 <li>Improve reporting of the individual errors that result in command failure due to maximum I2C retries exceeded.</li>
 <li><strong><em>interrogate</em></strong>, <strong><em>environment</em></strong> and <strong><em>usbenvironment</em></strong> now redirect all stderr output to stdout for easier capture</li>
