@@ -280,6 +280,8 @@
             
                 <li class="toctree-l3"><a href="#release-notes">Release Notes</a></li>
                 
+                    <li><a class="toctree-l4" href="#094">0.9.4</a></li>
+                
                     <li><a class="toctree-l4" href="#093">0.9.3</a></li>
                 
                     <li><a class="toctree-l4" href="#092">0.9.2</a></li>
@@ -453,6 +455,20 @@
             <div class="section">
               
                 <h2 id="release-notes">Release Notes</h2>
+<h3 id="094">0.9.4</h3>
+<p>25 December 2018</p>
+<p>Fix the cause of failure to build from source for the <a href="https://en.wikipedia.org/wiki/x32_ABI">x32 ABI</a>.
+The file output by the <strong><em>dumpvcp</em></strong> command no longer contains a <strong><em>TIMESTAMP_MILLIS</em></strong> field,
+the number of seconds since start of the machine epoch, typically January 1, 1970.
+This field, and its companion <strong><em>TIMESTAMP_TEXT</em></strong>, are ignored on input, so this change can
+only affect an external program that relies on the TIMESTAMP_MILLIS field, say for sorting.
+Thank you Jan Palus, who encountered the problem when building <strong>ddcutil</strong> for the PLD Linux distribution.</p>
+<p>Fix an execution failure that resulted from attempting to open an already opened display.  This
+occured on the <strong><em>capabilities</em></strong> command when the <strong><em>vcp</em></strong> field  in the string returned by the 
+monitor was damaaged or missing, causing <strong>ddcutil</strong> to attempt to read the VCP version from feature 0xDF.
+Thank you Sergiy Domin for reporting this bug.</p>
+<p>Features 0x59..0x5E (6 axis separation values).  Report these values as normal continuous (C) values
+instead of just uninterpreted bytes.</p>
 <h3 id="093">0.9.3</h3>
 <p>26 November 2018</p>
 <h4 id="display-detection">Display Detection</h4>

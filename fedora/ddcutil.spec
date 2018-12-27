@@ -1,5 +1,5 @@
 Name:    ddcutil
-Version: 0.9.3
+Version: 0.9.4
 Release: 1%{?dist}
 Summary: Query and update monitor settings
 License: GPLv2
@@ -73,7 +73,19 @@ applied.
 
 %changelog
 
-* Sat Nov 10 2018 Sanford Rockowitz <rockowitz@minsoft.com> 0.9.3-1
+* Tue Dec 25 2018 Sanford Rockowitz <rockowitz@minsoft.com> 0.9.4-1
+- Release 0.9.4
+- Minor bug fixes
+- For a complete list of changes and bug fixes, 
+  see http://www.ddcutil.com/release_notes.
+
+* Sun Nov 25 2018 Sanford Rockowitz <rockowitz@minsoft.com> 0.9.4-1
+- Release 0.9.4
+- Minor enhancements and bug fixes
+- For a complete list of changes and bug fixes, 
+  see http://www.ddcutil.com/release_notes.
+
+* Sat Nov 24 2018 Sanford Rockowitz <rockowitz@minsoft.com> 0.9.3-1
 - Release 0.9.3
 - Minor enhancements and bug fixes
 - Internal changes for future support of user supplied feature definitions.

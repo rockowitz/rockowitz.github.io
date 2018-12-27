@@ -429,6 +429,40 @@
             <div class="section">
               
                 <h2 id="prior-announcements">Prior Announcements</h2>
+<p>15 September 2018</p>
+<p><strong>ddcui</strong> is a Qt-based graphical user interface for <strong>ddcutil</strong>.  An initial alpha release is now available
+on <a href="https://github.com/rockowitz/ddcui">github</a>.  <strong>ddcui</strong> must currently be built from source - there are no
+pre-built (e.g. dpkg or rpm) packages.  For addtional information and rudimentary build instructions,
+see files <a href="https://github.com/rockowitz/ddcui/blob/master/README.md">README.md</a> and
+<a href="https://github.com/rockowitz/ddcui/blob/master/BUILDING.md">BUILDING.md</a>.</p>
+<p>01 September 2018</p>
+<p>Release 0.9.2 contains minor enhancements and bug fixes.</p>
+<p>For a complete list of changes and bug fixes, see <a href="../release_notes/">Release Notes</a>.
+Prior announcements can be found <a href="./">here</a>.</p>
+<p>27 May 2018</p>
+<p>Release 0.9.1 fixes the cause of a failure that may occur on command <strong><em>environment --verbose</em></strong> when examining an extremely large log file.</p>
+<p>For a complete list of changes and bug fixes, see <a href="../release_notes/">Release Notes</a>.
+Prior announcements can be found <a href="./">here</a>.</p>
+<p>13 May 2018</p>
+<p>Release 0.9.0 contains minor enhancements and a few very minor bug fixes.  However. the C API is extensively revised
+(see <a href="../c_api_90/">API Changes in Release 0.9.0</a>).</p>
+<p>Two enhancements will be of interest to general users:<br />
+- The <strong>setvcp</strong> command now allows new values for Continuous type features to be specified as relative values,
+e.g. the following commands increase or decrease the value of the brightness feature by 5. </p>
+<pre><code>$ ddcutil setvcp 10 + 5
+$ ddcutil setvcp 10 - 5
+</code></pre>
+
+<p>Note that parsing requires that "+" and "-" be surrounded by spaces.</p>
+<ul>
+<li>Table type features are by default not included in most feature groups specified on <strong>getvcp</strong>, e.g. <strong><em>getvcp known</em></strong>.
+Features of type Table are rare.  The DDC/CI spec does not provide a clean way for <strong>getvcp</strong> to determine that a table 
+feature does not exist.  As a result, <strong>getvcp</strong> typically has to exceed its retry count before giving up.
+(Exclusion of table features does not occur if a feature is explicitly specified by its hex code, or for feature group <strong><em>TABLE</em></strong>.)<br />
+The <strong><em>--no-table</em></strong> (formerly <strong><em>--notable</em></strong>) and <strong><em>-show-table</em></strong> options explicitly control this behavior.</li>
+</ul>
+<p>For a complete list of changes and bug fixes, see <a href="../release_notes/">Release Notes</a>.
+Prior announcements can be found <a href="./">here</a>.</p>
 <p>20 January 2018</p>
 <p>Release 0.8.6 contains a few minor externally visible enhancements and bug fixes, along with non-upwardly
 compatible changes to the C API.  Most current users will see no need to upgrade.</p>
