@@ -325,6 +325,8 @@
                 
                     <li><a class="toctree-l4" href="#eizo-coloredge-cg19">Eizo Coloredge CG19</a></li>
                 
+                    <li><a class="toctree-l4" href="#eizo-ev2785">Eizo EV2785</a></li>
+                
                     <li><a class="toctree-l4" href="#gateway-diamondtron-vx920">Gateway Diamondtron VX920</a></li>
                 
                     <li><a class="toctree-l4" href="#hanns-g-hi221d">Hanns G Hi221D</a></li>
@@ -632,6 +634,10 @@ specific USB HID reports. </p>
 <p>Unable to read EDID over USB, even though the HID Report for EDID can be located.</p>
 <p>To set color related VCP feature values, Custom Color mode must be selected.   If set to sRGB or Calibrated, the SETVCP command
 will appear to succeed, but will have no effect.  (In sRGB mode, Brightness can be set, in Calibrated mode it cannot.)</p>
+<h3 id="eizo-ev2785">Eizo EV2785</h3>
+<p>Reports EDID ad I2c bus address x.50.  Does not support DDC/CI (bus address x37).</p>
+<p>Uses USB for monitor control, but uses manufacturer-defined usage pages for communication, i.e. does not support the
+<strong><em>USB Monitor Control Class Specification</em></strong>.</p>
 <h3 id="gateway-diamondtron-vx920">Gateway Diamondtron VX920</h3>
 <p>VCP version:  Unspecified, implies 1.0 <br />
 Controller manufacturer and model:   Unknown (VCP feature code C8 unsupported)   <br />
