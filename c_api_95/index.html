@@ -1,0 +1,614 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <meta name="author" content="Sanford Rockowitz">
+  <link rel="shortcut icon" href="../img/favicon.ico">
+  <title>C API Changes for Release 0.9.5 - ddcutil Documentation</title>
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="../css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../css/theme_extra.css" type="text/css" />
+  <link rel="stylesheet" href="../css/highlight.css">
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "C API Changes for Release 0.9.5";
+    var mkdocs_page_input_path = "c_api_95.md";
+    var mkdocs_page_url = "/c_api_95/";
+  </script>
+  
+  <script src="../js/jquery-2.1.1.min.js"></script>
+  <script src="../js/modernizr-2.8.3.min.js"></script>
+  <script type="text/javascript" src="../js/highlight.pack.js"></script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+      <div class="wy-side-nav-search">
+        <a href=".." class="icon icon-home"> ddcutil Documentation</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+	<ul class="current">
+	  
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="..">Overview</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Using ddcutil</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../commands/">Command Overview</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../cmdargs/">Command Arguments</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../cmdopts/">Command Specific Options</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../cmd_output/">Command Output Examples</a>
+                </li>
+                <li class="">
+                    
+    <span class="caption-text">Examples</span>
+    <ul class="subnav">
+                <li class="toctree-l3">
+                    
+    <a class="" href="../vcpinfo_output/">ddcutil vcpinfo example</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../detect_verbose_output/">ddcutil detect example</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../cap_u3011_verbose_output/">ddcutil capabilities example</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../getvcp_known_u3011_output/">ddcutil getvcp example</a>
+                </li>
+    </ul>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../mccs_background/">Monitor Control Command Set</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../colormgt/">Color Management</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../tuning/">Instrumentation and Tuning</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../table_features/">Table Type Features</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../usb/">USB Connected Monitors</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Installation and Configuration</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../install/">Install ddcutil From Prebuilt Packages</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../building/">Building From Source</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../adl/">AMD fglrx Driver</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../config/">Configuration and Installation Diagnostics</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../i2c_permissions/">Device Permissions</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../kernel_module/">Kernel Module Configuration</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../nvidia/">Special Nvidia Driver Settings</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../virtual_machines/">Virtual Machines</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../raspberry/">Raspberry Pi</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Additional Topics</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../faq/">Frequently Asked Questions</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../tech_support/">Technical Support</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../feedback/">Feedback</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../releases/">Releases</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../release_notes/">Release Notes</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../prior_announcements/">Announcement History</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../ddccontrol/">Comparison with ddccontrol</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../monitor_notes/">Notes on specific monitors</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../ddc_null_response/">DDC Null Message</a>
+                </li>
+                <li class=" current">
+                    
+    <span class="caption-text">API</span>
+    <ul class="subnav">
+                <li class="toctree-l3">
+                    
+    <a class="" href="../api_main/">C API</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../c_api_90/">C API Changes for Release 0.9.0</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../c_api_93/">C API Changes for Release 0.9.3</a>
+                </li>
+                <li class="toctree-l3 current">
+                    
+    <a class="current" href="./">C API Changes for Release 0.9.5</a>
+    <ul class="subnav">
+            
+    <li class="toctree-l4"><a href="#c-api-changes-for-release-095">C API Changes for Release 0.9.5</a></li>
+    
+        <ul>
+        
+            <li><a class="toctree-l5" href="#display-reference-lifecycle">Display Reference Lifecycle</a></li>
+        
+            <li><a class="toctree-l5" href="#thread-error-detail">Thread Error Detail</a></li>
+        
+            <li><a class="toctree-l5" href="#miscellaneous">Miscellaneous</a></li>
+        
+            <li><a class="toctree-l5" href="#precondition-failure">Precondition Failure</a></li>
+        
+            <li><a class="toctree-l5" href="#notes-on-freeing-resources">Notes on Freeing Resources</a></li>
+        
+            <li><a class="toctree-l5" href="#newly-deprecated-functions">Newly Deprecated Functions</a></li>
+        
+            <li><a class="toctree-l5" href="#previously-deprecated-functions-deleted">Previously Deprecated Functions Deleted</a></li>
+        
+            <li><a class="toctree-l5" href="#sample-programs">Sample Programs</a></li>
+        
+        </ul>
+    
+
+    </ul>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../python_api/">Python API Overview</a>
+                </li>
+    </ul>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../todo/">Future Tasks</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../bibliography/">References</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../acknowledgements/">Acknowledgements</a>
+                </li>
+    </ul>
+	    </li>
+          
+        </ul>
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="..">ddcutil Documentation</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="..">Docs</a> &raquo;</li>
+    
+      
+        
+          <li>Additional Topics &raquo;</li>
+        
+      
+        
+          <li>API &raquo;</li>
+        
+      
+    
+    <li>C API Changes for Release 0.9.5</li>
+    <li class="wy-breadcrumbs-aside">
+      
+        <a href="https://github.com/rockowitz/ddcutil/edit/master/docs/c_api_95.md"
+          class="icon icon-github"> Edit on GitHub</a>
+      
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h2 id="c-api-changes-for-release-095">C API Changes for Release 0.9.5</h2>
+<h3 id="display-reference-lifecycle">Display Reference Lifecycle</h3>
+<p>While transient display references can exist internally in the command line version of ddcutil,
+in the shared library all display references are persistent.  They are created during
+display enumeration at startup.  Function <strong>ddca_create_display_ref()</strong> has been renamed
+to <strong>ddca_get_display_ref()</strong> to better indicate that it returns an existing display reference.
+There is never a need to free a display reference.</p>
+<table>
+<thead>
+<tr>
+<th>Function</th>
+<th>Comment</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ddca_get_display_ref()</td>
+<td>Renamed from ddca_create_display_ref()</td>
+</tr>
+<tr>
+<td>ddca_create_display_ref()</td>
+<td>Marked as deprecated</td>
+</tr>
+<tr>
+<td>ddca_free_display_ref()</td>
+<td>Marked as deprecated, unnecessary</td>
+</tr>
+</tbody>
+</table>
+<p>Thanks to J&uuml;rgen Altfeld for his questions about this and other aspects of the API
+that have helped make it more consistent and hopefully easier to use.</p>
+<h3 id="thread-error-detail">Thread Error Detail</h3>
+<p>All API functions that return a <strong>DDCA_Status</strong> value now clear the thread error detail during function initialization.  Therefore, a call to
+<strong>ddca_get_error_detail()</strong> is guaranteed to either return detailed error information for the immediately prior API call or NULL if no such information exists.</p>
+<p>The following additional functions now set thead error detail on failure.</p>
+<table>
+<thead>
+<tr>
+<th>Function</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ddca_get_non_table_vcp_value()</td>
+</tr>
+<tr>
+<td>ddca_get_table_vcp_value()</td>
+</tr>
+<tr>
+<td>ddca_get_any_value_using_explicit_type()</td>
+</tr>
+<tr>
+<td>ddca_get_any_value_using_implicit_type()</td>
+</tr>
+<tr>
+<td>ddca_get_capabilities_string()</td>
+</tr>
+</tbody>
+</table>
+<h3 id="miscellaneous">Miscellaneous</h3>
+<p>Move definitions of <strong>DDCA_Build_Option_Flags</strong> and <strong>DDCA_Capture_Option_Flags</strong> from <strong>ddcutil_c_api.h</strong> to <strong>ddcutil_types.h</strong>, to facilitate creation of a C++ API, as requested by J&uuml;rgen Altfeld. </p>
+<p>Some API functions returned <strong><em>DDCRC_ARG</em></strong> when passed an invalid parameter, others returned <strong><em>-EINVAL</em></strong>.
+All now return <strong><em>DDCRC_ARG</em></strong>.</p>
+<table>
+<thead>
+<tr>
+<th>Functions Affected</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ddca_set_max_tries()</td>
+</tr>
+<tr>
+<td>ddca_create_mfg_model_sn_display_identifier()</td>
+</tr>
+<tr>
+<td>ddca_create_edid_display_identifier()</td>
+</tr>
+<tr>
+<td>ddca_create_display_ref()</td>
+</tr>
+<tr>
+<td>ddca_get_feature_list_by_dref()</td>
+</tr>
+<tr>
+<td>ddca_get_feature_name_by_dref()</td>
+</tr>
+</tbody>
+</table>
+<p>API functions can no longer return <strong><em>DDCRC_UNINITIALIZED</em></strong> as initializion is guaranteed when the shared library is loaded</p>
+<p>The following functions now return "const char *" instead of "char *" to emphasize that they return pointers into internal 
+<strong>ddcutil</strong>* data structures that should not be freed.  Note that this is a non-upwardly compatible API change that may 
+require client changes.</p>
+<table>
+<thead>
+<tr>
+<th>Function</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ddca_rc_name()</td>
+</tr>
+<tr>
+<td>ddca_rc_desc()</td>
+</tr>
+<tr>
+<td>ddca_did_repr()</td>
+</tr>
+<tr>
+<td>ddca_dref_repr()</td>
+</tr>
+<tr>
+<td>ddca_dh_repr()</td>
+</tr>
+<tr>
+<td>ddca_get_feature_name()</td>
+</tr>
+<tr>
+<td>ddca_feature_list_string()</td>
+</tr>
+</tbody>
+</table>
+<h3 id="precondition-failure">Precondition Failure</h3>
+<p>API function precondition failures reflect an error in the calling client program.
+How best to deal with them?  Multiple design principles apply here.  Unfortunately,
+they conflict: <br />
+- Libraries should not crash<br />
+- Programming errors should cause immediate and spectacular failure<br />
+- Client programs should not have to test for return codes that
+  reflect programming errors. This clutters the code.</p>
+<p>Java addresses this conundrum through the use of RuntimeExceptions, such as NullPointerException
+and IllegalArgumentException, which need not be caught, or can be caught at the top level of a
+program.  Unfortunately, C doesn't provide such an elegant solution. </p>
+<p>Until now, many precondition tests have been done using assert() statements.
+This is not a long term solution, since assert()s can be disabled when programs are built for production. 
+Other precondition failures have resulted in a return code of <strong><em>DDCRC_ARG</em></strong>.</p>
+<p>As a first step, the assert() statements and other precondition tests have been unified
+with a common set of macros.  This at least provides more consistent behavior, and will facilitate future changes.
+For now, a precondition
+failure results in a message to stderr and a return code of <strong><em>DDCRC_ARG</em></strong>.  In the future,
+this may change to a message followed by library abort.  Or the behavior may be controlled by 
+the client using an API call to select the desired behavior.  Comments on this design issue are invited.</p>
+<h3 id="notes-on-freeing-resources">Notes on Freeing Resources</h3>
+<p><strong>ddca_free_</strong> functions fall into two groups, those that specify client side data structures and are referenced by a normal pointer, and those that specify internal library data structures and are referenced by an opaque pointer. </p>
+<p>Those that specify client side data structures are essentially convenience functions, relieving the client programmer of the details of freeing what may be a complex data structure.  These functions always return void.  If passed a NULL pointer, they do nothing.  </p>
+<table>
+<thead>
+<tr>
+<th>Functions that free client data structures</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ddca_free_error_detail()</td>
+</tr>
+<tr>
+<td>ddca_free_display_info_list()</td>
+</tr>
+<tr>
+<td>ddca_free_parsed_capabilities()</td>
+</tr>
+<tr>
+<td>ddca_free_table_vcp_value()</td>
+</tr>
+<tr>
+<td>ddca_free_any_vcp_value()</td>
+</tr>
+<tr>
+<td>ddca_free_feature_metadata()</td>
+</tr>
+</tbody>
+</table>
+<p>Functions that free internal library data structures take an opaque pointer as an argument.  These functions return a <strong>DDCA_Status</strong>.  They return 
+<strong><em>DDCRC_ARG</em></strong> if the pointer is invalid.  If the pointer is NULL, the function does nothing and <strong><em>DDCRC_OK</em></strong> is returned. Depending on the function, additional status codes are possible.  Whether or not memory is actually freed is a hidden implementation detail, as some opaque pointers reference persistent internal data structures.    </p>
+<table>
+<thead>
+<tr>
+<th>Functions that free internal library data structures</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ddca_free_display_identifier()</td>
+</tr>
+<tr>
+<td>ddca_close_display()</td>
+</tr>
+</tbody>
+</table>
+<p>Additional Notes: </p>
+<p>If a function that creates a resource (e.g. <strong>ddca_create_busno_display_identifier()</strong>) returns other than <strong><em>DDCRC_OK</em></strong> (0), then the resource is not created and need not be freed.</p>
+<p>In general, the order in which the <strong><em>ddca_free_</em></strong> functions are called does not matter.  </p>
+<!--
+The one exception is that a **DDCA_Display_Ref** should not be freed if it is associated with an open **DDCA_Display_Handle**.   A call to **ddca_free_display_ref()** when the display reference is referenced by an open display handle returns ***DDCRC_LOCKED***. 
+-->
+
+<p>The <strong>ddca_free_</strong> functions are not idempotent.  Attempting to free an already freed opaque resource will likely return <strong><em>DDCA_ARG</em></strong>, but may result in a segfault.  Attempting to free an already freed client side resource will also likely result in a segfault.</p>
+<h3 id="newly-deprecated-functions">Newly Deprecated Functions</h3>
+<p>API function <strong>ddca_get_formatted_vcp_value()</strong> is marked as deprecated and will be removed in a future release.  It does not support user defined data types.</p>
+<h3 id="previously-deprecated-functions-deleted">Previously Deprecated Functions Deleted</h3>
+<p>The following functions and type definitions, along with related constants, were deprecated in Release 0.9.0.
+They have now been deleted from files <strong>ddcutil_c_api.h</strong> and <strong>ddcutil_types.h</strong>*.  </p>
+<table>
+<thead>
+<tr>
+<th>Function or Typedef Deleted</th>
+<th>Comment</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>DDCA_MCCS_Version_Id</td>
+<td>use DDCA_MCCS_Version_Spec</td>
+</tr>
+<tr>
+<td>ddca_get_mccs_version_id_name()</td>
+<td></td>
+</tr>
+<tr>
+<td>ddca_get_mccs_version_id_desc()</td>
+<td></td>
+</tr>
+<tr>
+<td>ddca_get_display_info_list()</td>
+<td>use ddca_get_display_info_list2()</td>
+</tr>
+<tr>
+<td>ddca_get_simple_feature_value_name_by_display()</td>
+<td>obtain from DDCA_Feature_Metadata</td>
+</tr>
+<tr>
+<td>ddca_get_edid_by_dref()</td>
+<td>obtain from DDCA_Feature_Metadata</td>
+</tr>
+<tr>
+<td>ddca_open_display()</td>
+<td>use ddca_open_display2()</td>
+</tr>
+<tr>
+<td>ddca_set_simple_nc_vcp_value()</td>
+<td>use ddca_set_non_table_vcp_value()</td>
+</tr>
+<tr>
+<td>ddca_set_continuous_vcp_value()</td>
+<td>use ddca_set_non_table_vcp_value()</td>
+</tr>
+</tbody>
+</table>
+<h3 id="sample-programs">Sample Programs</h3>
+<p>The sample client programs have been modified to reflect the API changes.</p>
+<p>Fixed an incorrect printf() format string in sample program demo_get_set_vcp.c.  Reported by J&uuml;rgen Altfeld.</p>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../python_api/" class="btn btn-neutral float-right" title="Python API Overview">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="../c_api_93/" class="btn btn-neutral" title="C API Changes for Release 0.9.3"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+	  
+        </div>
+      </div>
+
+    </section>
+    
+  </div>
+
+  <div class="rst-versions" role="note" style="cursor: pointer">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+          <a href="https://github.com/rockowitz/ddcutil" class="fa fa-github" style="float: left; color: #fcfcfc"> GitHub</a>
+      
+      
+        <span><a href="../c_api_93/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+        <span style="margin-left: 15px"><a href="../python_api/" style="color: #fcfcfc">Next &raquo;</a></span>
+      
+    </span>
+</div>
+    <script src="../js/theme.js"></script>
+
+</body>
+</html>

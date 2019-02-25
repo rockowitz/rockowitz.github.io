@@ -224,6 +224,10 @@
                 </li>
                 <li class="toctree-l3">
                     
+    <a class="" href="../c_api_95/">C API Changes for Release 0.9.5</a>
+                </li>
+                <li class="toctree-l3">
+                    
     <a class="" href="../python_api/">Python API Overview</a>
                 </li>
     </ul>
@@ -283,7 +287,7 @@
             <div class="section">
               
                 <h2 id="kernel-module-configuration">Kernel Module Configuration</h2>
-<p>If using an open source video driver, kernel module i2c-dev must be available.
+<p>Unless using the proprietary AMD <strong>fglrx</strong> driver, kernel module i2c-dev must be available.
 On some distributions, it is built into the Linux kernel.  If not, it must be loaded explicitly. </p>
 <p>To see if i2c-dev is built into the kernel, issue the following command: </p>
 <pre><code>grep i2c-dev.ko  /lib/modules/`uname -r`/modules.builtin
@@ -302,14 +306,10 @@ On some distributions, it is built into the Linux kernel.  If not, it must be lo
 <blockquote>
 <p>systemd-modules-load.service(8) reads files from the [following]directories
 which contain kernel modules to load during boot in a static list. </p>
-<p>/etc/modules-load.d/<em>.conf
-/run/modules-load.d/</em>.conf
-/usr.lib.modules-load.d/*.conf</p>
-<p>Each configuration file is named in the style of /etc/modules-load.d/program.conf. 
-Note that it is usually a better idea to rely on the automatic module loading 
-by PCI IDs, USB IDs, DMI IDs or similar triggers encoded in the kernel modules 
-themselves instead of static configuration like this. In fact, most modern 
-kernel modules are prepared for automatic loading already.</p>
+<p>/etc/modules-load.d/<em>.conf<br />
+/run/modules-load.d/</em>.conf<br />
+/usr.lib.modules-load.d/*.conf  </p>
+<p>Each configuration file is named in the style of /etc/modules-load.d/program.conf. </p>
 </blockquote>
               
             </div>

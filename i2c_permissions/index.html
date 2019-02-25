@@ -224,6 +224,10 @@
                 </li>
                 <li class="toctree-l3">
                     
+    <a class="" href="../c_api_95/">C API Changes for Release 0.9.5</a>
+                </li>
+                <li class="toctree-l3">
+                    
     <a class="" href="../python_api/">Python API Overview</a>
                 </li>
     </ul>
@@ -309,7 +313,7 @@ can represent USB attached input devices such as keyboards or mice. </p>
 <p>Distributed file <strong>45-ddcutil-usb.rules</strong> shows a couple ways to give ddcutil the required 
 access.  This file can be copied to /etc/udev/rules.d.  All but one of the command lines in 
 that file should commented out. </p>
-<p>The following rule gives group <strong>video</strong> access to the USB port of an Apple Cinema Display by specifying its 
+<p>The following rule gives all users access to the USB port of an Apple Cinema Display by specifying its 
 USB device user id (aka uid) and product id (aka pid):</p>
 <pre><code>SUBSYSTEM==&quot;usbmisc&quot;, ATTRS{idVendor}==&quot;05ac&quot;, ATTRS{idProduct}==&quot;9223&quot;,  MODE=&quot;0666&quot; 
 </code></pre>
@@ -318,7 +322,7 @@ USB device user id (aka uid) and product id (aka pid):</p>
 <strong>lsusb</strong> command. </p>
 <p>An alternative way to set proper device permissions is to call <strong>ddcutil</strong> from the udev rule 
 to test whether a device is a HID compliant monitor: </p>
-<pre><code>SUBSYSTEM==&quot;usbmisc&quot;,  KERNEL==&quot;hiddev*&quot;, PROGRAM=&quot;/usr/local/bin/ddcutil chkusbmon $env{DEVNAME} -v&quot;, MODE=&quot;0660&quot;, GROUP=&quot;video&quot;
+<pre><code>SUBSYSTEM==&quot;usbmisc&quot;,  KERNEL==&quot;hiddev*&quot;, PROGRAM=&quot;/usr/bin/ddcutil chkusbmon $env{DEVNAME} -v&quot;, MODE=&quot;0660&quot;, GROUP=&quot;video&quot;
 </code></pre>
 
 <p>Note that the path to the ddcutil executable will have be edited to the location where ddcutil installed on your system. </p>
