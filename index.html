@@ -461,8 +461,8 @@ a monitor is calibrated, and then restored when the calibration is applied.</p>
 <ul>
 <li><strong>ddcutil</strong> does not support laptop displays, which are controlled using a special API, not I2C.   </li>
 <li>Generally speaking, <strong>ddcutil</strong> can be built in a virtual machine, but will not run in a VM.  This is
-because the virtual video drivers to not implement I2C.  However, if the VM is connected to a separate
-video and running a non-virtualized driver for the card in passthru mode then <strong>ddcutil</strong> will work.  </li>
+because the virtual video drivers do not implement I2C.  However, if the VM is connected to a separate
+video card and running a non-virtualized driver for the card in passthru mode then <strong>ddcutil</strong> will work.  </li>
 <li>Nvidia's proprietary video driver may require special configuration.  See 
 <a href="nvidia/">Special Nvidia Driver Settings</a>.   </li>
 <li>Operation with AMD's proprietary video driver fglrx requires a 
@@ -557,5 +557,5 @@ Use of that forum allows everyone to benefit from individual questions and ideas
 
 <!--
 MkDocs version : 0.15.3
-Build Date UTC : 2019-05-30 12:22:16.218966
+Build Date UTC : 2019-05-30 12:32:18.696543
 -->
