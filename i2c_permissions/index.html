@@ -423,7 +423,7 @@
               
                 <h2 id="device-permissions">Device Permissions</h2>
 <p>Except when using AMD's proprietary driver (see <a href="../adl/">here</a>) ddcutil requires 
-write access to /dev/i2c-*.  </p>
+read/write access to /dev/i2c-*.  </p>
 <p>On some distributions, package i2c-tools creates group i2c, and assigns that the group to
 /dev/i2c-* devices using a udev rule. In that case all that is necessary is to add your user
 name to group i2c: </p>
