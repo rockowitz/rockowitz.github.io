@@ -302,22 +302,20 @@
               
                 <h1 id="ddcutil">ddcutil</h1>
 <h2 id="announcements">Announcements</h2>
-<p>29 August 2019</p>
-<p>Prebuilt packages for release 0.9.6 are now available on <a href="https://copr.fedorainfracloud.org/coprs/rockowitz/ddcutil/">COPR</a> (for Fedora), 
-<a href="https://launchpad.net/~rockowitz/+archive/ubuntu/ddcutil">Launchpad</a> (for Ubuntu), 
-and <a href="http://download.opensuse.org/repositories/home:/rockowitz/">openSUSE Build Service</a> (for multiple Linux distributions).</p>
-<p>Note that there are files for multiple versions of Release 0.9.6 on the openSUSE download server.  Those for version 
-0.9.6-12 are spurious.  I have not been able to delete them.  If you find several versions of a file on the download server,
-use the one with the most recent date.</p>
+<p>04 September 2019</p>
+<p><strong>ddcutil</strong> release 0.9.7 fixes the cause of a segfault during display detection if a monitor appearing to support 
+the <strong>USB Monitor Control Class Specification</strong>, i.e. one that uses USB to communicate monitor settings, is connected to the system.
+If also contains some minor code cleanup. </p>
+<p>For a complete list of changes and bug fixes, see <a href="release_notes/">Release Notes</a>.
+Prior announcements can be found <a href="prior_announcements/">here</a>.</p>
 <p>25 August 2019</p>
 <p><strong>ddcutil</strong> release 0.9.6 contains minor enhancements, bug fixes, and API changes.</p>
 <p>SONAME versioning is now enabled for <strong>libddcutil</strong>.  </p>
 <p>For a complete list of changes and bug fixes, see <a href="release_notes/">Release Notes</a>.
 Prior announcements can be found <a href="prior_announcements/">here</a>.</p>
 <h3 id="ddcui">ddcui</h3>
-<p><strong>ddcui</strong> release 0.0.5 requires the version of <strong>libddcutil</strong> provided by this release (0.9.6).</p>
-<h3 id="prebuilt-packages">Prebuilt Packages</h3>
-<p>Prebuilt packages have not yet been created for this release.  You must build from source.</p>
+<p><strong>ddcui</strong> release 0.0.5 will require the version of <strong>libddcutil</strong> provided by this release (0.9.6).</p>
+<p><strong>ddcui 0.0.5</strong> has not yet been released.</p>
 <h2 id="introduction">Introduction</h2>
 <p><strong>ddcutil</strong> is a Linux program for managing monitor settings, such as brightness, color levels, and input source.
 Generally speaking, any settings that can be changed by pressing buttons on the monitor can be modified by <strong>ddcutil</strong>.</p>
@@ -435,5 +433,5 @@ The source is hosted on <a href="http://www.github.com/rockowitz/ddcuui">Github<
 
 <!--
 MkDocs version : 0.16.3
-Build Date UTC : 2019-09-03 12:52:06
+Build Date UTC : 2019-09-05 19:14:49
 -->
