@@ -502,7 +502,7 @@
         },
         {
             "location": "/releases/",
-            "text": "Releases\n\n\nTarballs\n\n\nThese tarballs were created by command \nmake dist\n. \n\n\n\n\nddcutil-0.7.0.tar.gz\n\n\nddcutil-0.7.1.tar.gz\n\n\nddcutil-0.7.2.tar.gz\n\n\nddcutil-0.7.3.tar.gz\n\n\nddcutil-0.7.4.tar.gz\n\n\nddcutil-0.8.0.tar.gz\n\n\nddcutil-0.8.1.tar.gz\n\n\nddcutil-0.8.2.tar.gz\n\n\nddcutil-0.8.3.tar.gz\n\n\nddcutil-0.8.4.tar.gz\n\n\nddcutil-0.8.5.tar.gz\n\n\nddcutil-0.8.6.tar.gz\n\n\nddcutil-0.9.0.tar.gz\n\n\nddcutil-0.9.1.tar.gz\n\n\nddcutil-0.9.2.tar.gz\n\n\nddcutil-0.9.3.tar.gz\n\n\nddcutil-0.9.4.tar.gz\n\n\nddcutil-0.9.5.tar.gz\n\n\nddcutil-0.9.6.tar.gz\n\n\nddcutil-0.9.6.tar.gz\n\n\nddcutil-0.9.6.tar.gz",
+            "text": "Releases\n\n\nTarballs\n\n\nThese tarballs were created by command \nmake dist\n. \n\n\n\n\nddcutil-0.7.0.tar.gz\n\n\nddcutil-0.7.1.tar.gz\n\n\nddcutil-0.7.2.tar.gz\n\n\nddcutil-0.7.3.tar.gz\n\n\nddcutil-0.7.4.tar.gz\n\n\nddcutil-0.8.0.tar.gz\n\n\nddcutil-0.8.1.tar.gz\n\n\nddcutil-0.8.2.tar.gz\n\n\nddcutil-0.8.3.tar.gz\n\n\nddcutil-0.8.4.tar.gz\n\n\nddcutil-0.8.5.tar.gz\n\n\nddcutil-0.8.6.tar.gz\n\n\nddcutil-0.9.0.tar.gz\n\n\nddcutil-0.9.1.tar.gz\n\n\nddcutil-0.9.2.tar.gz\n\n\nddcutil-0.9.3.tar.gz\n\n\nddcutil-0.9.4.tar.gz\n\n\nddcutil-0.9.5.tar.gz\n\n\nddcutil-0.9.6.tar.gz\n\n\nddcutil-0.9.6.tar.gz\n\n\nddcutil-0.9.7.tar.gz",
             "title": "Releases"
         },
         {
@@ -512,7 +512,7 @@
         },
         {
             "location": "/releases/#tarballs",
-            "text": "These tarballs were created by command  make dist .    ddcutil-0.7.0.tar.gz  ddcutil-0.7.1.tar.gz  ddcutil-0.7.2.tar.gz  ddcutil-0.7.3.tar.gz  ddcutil-0.7.4.tar.gz  ddcutil-0.8.0.tar.gz  ddcutil-0.8.1.tar.gz  ddcutil-0.8.2.tar.gz  ddcutil-0.8.3.tar.gz  ddcutil-0.8.4.tar.gz  ddcutil-0.8.5.tar.gz  ddcutil-0.8.6.tar.gz  ddcutil-0.9.0.tar.gz  ddcutil-0.9.1.tar.gz  ddcutil-0.9.2.tar.gz  ddcutil-0.9.3.tar.gz  ddcutil-0.9.4.tar.gz  ddcutil-0.9.5.tar.gz  ddcutil-0.9.6.tar.gz  ddcutil-0.9.6.tar.gz  ddcutil-0.9.6.tar.gz",
+            "text": "These tarballs were created by command  make dist .    ddcutil-0.7.0.tar.gz  ddcutil-0.7.1.tar.gz  ddcutil-0.7.2.tar.gz  ddcutil-0.7.3.tar.gz  ddcutil-0.7.4.tar.gz  ddcutil-0.8.0.tar.gz  ddcutil-0.8.1.tar.gz  ddcutil-0.8.2.tar.gz  ddcutil-0.8.3.tar.gz  ddcutil-0.8.4.tar.gz  ddcutil-0.8.5.tar.gz  ddcutil-0.8.6.tar.gz  ddcutil-0.9.0.tar.gz  ddcutil-0.9.1.tar.gz  ddcutil-0.9.2.tar.gz  ddcutil-0.9.3.tar.gz  ddcutil-0.9.4.tar.gz  ddcutil-0.9.5.tar.gz  ddcutil-0.9.6.tar.gz  ddcutil-0.9.6.tar.gz  ddcutil-0.9.7.tar.gz",
             "title": "Tarballs"
         },
         {

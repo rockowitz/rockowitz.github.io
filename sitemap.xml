@@ -4,7 +4,7 @@
     
     <url>
      <loc>/</loc>
-     <lastmod>2019-09-05</lastmod>
+     <lastmod>2019-09-10</lastmod>
      <changefreq>daily</changefreq>
     </url>
     
@@ -13,25 +13,25 @@
         
     <url>
      <loc>/commands/</loc>
-     <lastmod>2019-09-05</lastmod>
+     <lastmod>2019-09-10</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>/cmdargs/</loc>
-     <lastmod>2019-09-05</lastmod>
+     <lastmod>2019-09-10</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>/cmdopts/</loc>
-     <lastmod>2019-09-05</lastmod>
+     <lastmod>2019-09-10</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>/cmd_output/</loc>
-     <lastmod>2019-09-05</lastmod>
+     <lastmod>2019-09-10</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
@@ -43,31 +43,31 @@
         
     <url>
      <loc>/mccs_background/</loc>
-     <lastmod>2019-09-05</lastmod>
+     <lastmod>2019-09-10</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>/colormgt/</loc>
-     <lastmod>2019-09-05</lastmod>
+     <lastmod>2019-09-10</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>/tuning/</loc>
-     <lastmod>2019-09-05</lastmod>
+     <lastmod>2019-09-10</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>/table_features/</loc>
-     <lastmod>2019-09-05</lastmod>
+     <lastmod>2019-09-10</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>/usb/</loc>
-     <lastmod>2019-09-05</lastmod>
+     <lastmod>2019-09-10</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
@@ -77,55 +77,55 @@
         
     <url>
      <loc>/install/</loc>
-     <lastmod>2019-09-05</lastmod>
+     <lastmod>2019-09-10</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>/building/</loc>
-     <lastmod>2019-09-05</lastmod>
+     <lastmod>2019-09-10</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>/adl/</loc>
-     <lastmod>2019-09-05</lastmod>
+     <lastmod>2019-09-10</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>/config/</loc>
-     <lastmod>2019-09-05</lastmod>
+     <lastmod>2019-09-10</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>/i2c_permissions/</loc>
-     <lastmod>2019-09-05</lastmod>
+     <lastmod>2019-09-10</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>/kernel_module/</loc>
-     <lastmod>2019-09-05</lastmod>
+     <lastmod>2019-09-10</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>/nvidia/</loc>
-     <lastmod>2019-09-05</lastmod>
+     <lastmod>2019-09-10</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>/virtual_machines/</loc>
-     <lastmod>2019-09-05</lastmod>
+     <lastmod>2019-09-10</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>/raspberry/</loc>
-     <lastmod>2019-09-05</lastmod>
+     <lastmod>2019-09-10</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
@@ -135,55 +135,55 @@
         
     <url>
      <loc>/faq/</loc>
-     <lastmod>2019-09-05</lastmod>
+     <lastmod>2019-09-10</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>/tech_support/</loc>
-     <lastmod>2019-09-05</lastmod>
+     <lastmod>2019-09-10</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>/feedback/</loc>
-     <lastmod>2019-09-05</lastmod>
+     <lastmod>2019-09-10</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>/releases/</loc>
-     <lastmod>2019-09-05</lastmod>
+     <lastmod>2019-09-10</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>/release_notes/</loc>
-     <lastmod>2019-09-05</lastmod>
+     <lastmod>2019-09-10</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>/prior_announcements/</loc>
-     <lastmod>2019-09-05</lastmod>
+     <lastmod>2019-09-10</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>/ddccontrol/</loc>
-     <lastmod>2019-09-05</lastmod>
+     <lastmod>2019-09-10</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>/monitor_notes/</loc>
-     <lastmod>2019-09-05</lastmod>
+     <lastmod>2019-09-10</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>/ddc_null_response/</loc>
-     <lastmod>2019-09-05</lastmod>
+     <lastmod>2019-09-10</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
@@ -195,19 +195,19 @@
         
     <url>
      <loc>/todo/</loc>
-     <lastmod>2019-09-05</lastmod>
+     <lastmod>2019-09-10</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>/bibliography/</loc>
-     <lastmod>2019-09-05</lastmod>
+     <lastmod>2019-09-10</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>/acknowledgements/</loc>
-     <lastmod>2019-09-05</lastmod>
+     <lastmod>2019-09-10</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
