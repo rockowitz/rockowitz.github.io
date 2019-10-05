@@ -355,14 +355,17 @@ $ ./ddcui
 <p>So now it is <strong>ddcutil.pc"" that must be found by </strong>pkg-config**.  Now the question becomes whether
 the local directory in which ddcutil.pc is installed is in the distribution-specific default search path. </p>
 <p>To see the the default search path: </p>
-<pre><code>pkg-config --variable pc_path pkg-config
+<pre><code>$ pkg-config --variable pc_path pkg-config
 </code></pre>
 
-<p>To add the local directory to the <strong>pkg-config</strong> search path, set environment variable PKG_CONFIG_PATH.  Note that
-this affects <strong>pkg-config</strong> when run by configure, cmake, qmake etc.</p>
-<pre><code>export PKG_CONFIG_PATH=/usr/local/lib/pkgconfig
-./configure
+<p>To add a local directory to the <strong>pkg-config</strong> search path, set environment variable PKG_CONFIG_PATH.  Note that
+this affects <strong>pkg-config</strong> when run by configure, cmake, qmake etc.  Examples:</p>
+<pre><code>$ export PKG_CONFIG_PATH=/usr/local/lib/pkgconfig
+$ ./configure
 </code></pre>
+
+<p>$ PKG_CONFIG_PATH=/usr/local/lib/pkgconfig qmake
+~~~</p>
               
             </div>
           </div>
