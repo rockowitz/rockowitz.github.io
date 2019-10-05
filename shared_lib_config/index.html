@@ -8,7 +8,7 @@
   
   <meta name="author" content="Sanford Rockowitz">
   <link rel="shortcut icon" href="../img/favicon.ico">
-  <title>Python API Overview - ddcutil Documentation</title>
+  <title>Shared Library Configuration - ddcutil Documentation</title>
   <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
 
   <link rel="stylesheet" href="../css/theme.css" type="text/css" />
@@ -17,9 +17,9 @@
   
   <script>
     // Current page data
-    var mkdocs_page_name = "Python API Overview";
-    var mkdocs_page_input_path = "python_api.md";
-    var mkdocs_page_url = "/python_api/";
+    var mkdocs_page_name = "Shared Library Configuration";
+    var mkdocs_page_input_path = "shared_lib_config.md";
+    var mkdocs_page_url = "/shared_lib_config/";
   </script>
   
   <script src="../js/jquery-2.1.1.min.js"></script>
@@ -129,9 +129,25 @@
                     
     <a class="" href="../building/">Building From Source</a>
                 </li>
-                <li class="">
+                <li class=" current">
                     
-    <a class="" href="../shared_lib_config/">Shared Library Configuration</a>
+    <a class="current" href="./">Shared Library Configuration</a>
+    <ul class="subnav">
+            
+    <li class="toctree-l3"><a href="#shared-library-configuration">Shared Library Configuration</a></li>
+    
+        <ul>
+        
+            <li><a class="toctree-l4" href="#locating-shared-libraries">Locating shared libraries</a></li>
+        
+            <li><a class="toctree-l4" href="#locating-include-files">Locating include files</a></li>
+        
+            <li><a class="toctree-l4" href="#pkgconfig-files">PKGCONFIG files</a></li>
+        
+        </ul>
+    
+
+    </ul>
                 </li>
                 <li class="">
                     
@@ -204,7 +220,7 @@
                     
     <a class="" href="../ddc_null_response/">DDC Null Message</a>
                 </li>
-                <li class=" current">
+                <li class="">
                     
     <span class="caption-text">API</span>
     <ul class="subnav">
@@ -228,23 +244,9 @@
                     
     <a class="" href="../c_api_96/">C API Changes for Release 0.9.6</a>
                 </li>
-                <li class="toctree-l3 current">
+                <li class="toctree-l3">
                     
-    <a class="current" href="./">Python API Overview</a>
-    <ul class="subnav">
-            
-    <li class="toctree-l4"><a href="#python-api">Python API</a></li>
-    
-        <ul>
-        
-            <li><a class="toctree-l5" href="#swig-api">SWIG API</a></li>
-        
-            <li><a class="toctree-l5" href="#gobject-api">GObject API</a></li>
-        
-        </ul>
-    
-
-    </ul>
+    <a class="" href="../python_api/">Python API Overview</a>
                 </li>
     </ul>
                 </li>
@@ -285,18 +287,14 @@
     
       
         
-          <li>Additional Topics &raquo;</li>
-        
-      
-        
-          <li>API &raquo;</li>
+          <li>Installation and Configuration &raquo;</li>
         
       
     
-    <li>Python API Overview</li>
+    <li>Shared Library Configuration</li>
     <li class="wy-breadcrumbs-aside">
       
-        <a href="https://github.com/rockowitz/ddcutil/edit/master/docs/python_api.md"
+        <a href="https://github.com/rockowitz/ddcutil/edit/master/docs/shared_lib_config.md"
           class="icon icon-github"> Edit on GitHub</a>
       
     </li>
@@ -306,27 +304,65 @@
           <div role="main">
             <div class="section">
               
-                <h2 id="python-api">Python API</h2>
-<p>Proof of concept implementations exist using GObject introspection, SWIG, Cython, and CFFI.  However, work
-on a Python API has been suspended.  The following are old comments on the implementations. </p>
-<h3 id="swig-api">SWIG API</h3>
-<p>Symbol names begin with "ddcs_" or "DDCS_" (for <strong>DDC</strong>util <strong>S</strong>wig).</p>
-<p>Generated files:<br />
-- _ddc_swig.so<br />
-- ddc_swig.py </p>
-<p>Normally installed to ${pkgexecdir}/dist-packages   ?? </p>
-<p>Issue: 
-Depending on $(prefix) value, <strong>make install</strong> will install these files to ... 
-If installed to /usr/local... python will not mormally  see these files.  Directory ... must be added to the Python path. 
-This can be done in one several ways: <br />
-- Modify PYTHONPATH globally.    See generatd fragment src/swig/...<br />
-- Modify PYTHONPATH for a single Python invocation.   See generated script src/swig/...<br />
-- Modify PTYHONPATH within a Python script.  See commented out lines in sample script src/swig/test_swig.py </p>
-<p>For a fuller discussion on modifying  PYTHONPATH, see <a href="http://ask.xmodulo.com/change-syspath-pythonpath-python.html">http://ask.xmodulo.com/change-syspath-pythonpath-python.html</a>.</p>
-<h3 id="gobject-api">GObject API</h3>
-<p>A vestigial proof of concept for implementing scripting language support using <strong>GObject</strong> instrospection remains in 
-subidrectory src/gobject_api, pending removal from the source tree.  Building this code is controlled by configuration options 
-<strong>--enable-gobject-api</strong> and <strong>--enable-introspection</strong>.  These options should be left disabled.</p>
+                <h2 id="shared-library-configuration">Shared Library Configuration</h2>
+<p>When installation is performed using a package (e.g. rpm, deb), the include file, shared libraries, and pkgconfig file
+are installed in the default system production locations.  On Fedora, for example, these are:
+/usr/include, /usr/lib, and /usr/share/pkgconfig. If the package installation does not do it for you, it may be necessary to 
+run <strong>ldconfig</strong> after installation to rebuild the shared library cache (normally file /etc/ld.so.conf) to make the shared libraries available.</p>
+<pre><code>$ sudo ldconfig
+</code></pre>
+
+<p>When installing from a .tar file, or building and installing from source, the situation is more complicated.  As the saying goes, your mileage may vary.</p>
+<p>Include files, shared libraries, and pkg-config files are installed in distriibution specific local directories.
+(This can be altered by the <strong><em>--prefix</em></strong> and other options to  <strong>configure</strong>, 
+but that is beyond the scope of this discussion.  For details, see <a href="https://www.gnu.org/prep/standards/html_node/Directory-Variables.html">Variables for Installation Directories</a>.
+For example, on Fedora these are <strong>/usr/local/include</strong>, <strong>/usr/local/lib</strong>, and 
+<strong>/usr/local/share/pkgconfig</strong>. </p>
+<p>Depending on distribution, these local directories may or may not be part of the standard path
+for the corresponding program.  For example, <strong>/usr/local/lib</strong> may or may not be automatically searched by <strong>ldconfig</strong>, 
+<strong>/usr/local/share/pkgconfig</strong> may or may not be searched automatically by <strong>pkg-config</strong>, and the directory containing <strong>ddcutil</strong> include files may or
+may not be part of the default include path. If they are, then as in the case of production locations, all that may be
+necessary is to execute <strong>ldconfig</strong>. </p>
+<h3 id="locating-shared-libraries">Locating shared libraries</h3>
+<p>If the shared libraries are not found, the following command shows the library search path: </p>
+<pre><code>$ ld --verbose | grep SEARCH_DIR | tr -s ' ;' \\012
+</code></pre>
+
+<p>To check if the linker can locate all the libraries required by a program, use the <strong>ldd</strong> command.  For example (assuming you're 
+in the directory containing <strong>ddcui</strong>, which uses <strong>libddcutil</strong>)::</p>
+<pre><code>ldd ddcui
+</code></pre>
+
+<p>To add a directory to search, set environment variable <strong>LD_LIBRARY_PATH</strong> prior to executing a program that requires the shared library.
+For example:</p>
+<pre><code>$ export LD_LIBRARY_PATH=shared_library_directory:$LD_LIBRARY_PATH
+$ ./ddcui
+</code></pre>
+
+<p>To permanently add the local library directory to the search path, create a .conf file in directory <strong>/etc/ld.conf.d</strong> that specifies the local library directory, or if appropriate add the library directory name to an existing .conf file.</p>
+<h3 id="locating-include-files">Locating include files</h3>
+<p>To see the default include file path: </p>
+<pre><code>$ gcc -xc++ -E -v 
+</code></pre>
+
+<p>If the local include directory is not in the default include path, you can add it to the default include directories, e.g.</p>
+<pre><code>$ export INCLUDE=/usr/local/include
+</code></pre>
+
+<p>Alternatively, you can rely on pkg-config to set the required directory at compile time.</p>
+<h3 id="pkgconfig-files">PKGCONFIG files</h3>
+<p>If <strong>pkg-config</strong> is called as part of building <strong>Makefile</strong>, e.g. from autoconf/automake, cmake, or qmake, then the ddcutil pkg-config file <strong>ddcutil.pkg</strong> specifies the required include files, libraries, and library directories.  </p>
+<p>So now it is <strong>ddcutil.pc"" that must be found by </strong>pkg-config**.  Now the question becomes whether
+the local directory in which ddcutil.pc is installed is in the distribution-specific default search path. </p>
+<p>To see the the default search path: </p>
+<pre><code>pkg-config --variable pc_path pkg-config
+</code></pre>
+
+<p>To add the local directory to the <strong>pkg-config</strong> search path, set environment variable PKG_CONFIG_PATH.  Note that
+this affects <strong>pkg-config</strong> when run by configure, cmake, qmake etc.</p>
+<pre><code>export PKG_CONFIG_PATH=/usr/local/lib/pkgconfig
+./configure
+</code></pre>
               
             </div>
           </div>
@@ -334,10 +370,10 @@ subidrectory src/gobject_api, pending removal from the source tree.  Building th
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../todo/" class="btn btn-neutral float-right" title="Future Tasks">Next <span class="icon icon-circle-arrow-right"></span></a>
+        <a href="../adl/" class="btn btn-neutral float-right" title="AMD fglrx Driver">Next <span class="icon icon-circle-arrow-right"></span></a>
       
       
-        <a href="../c_api_96/" class="btn btn-neutral" title="C API Changes for Release 0.9.6"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../building/" class="btn btn-neutral" title="Building From Source"><span class="icon icon-circle-arrow-left"></span> Previous</a>
       
     </div>
   
@@ -365,10 +401,10 @@ subidrectory src/gobject_api, pending removal from the source tree.  Building th
           <a href="https://github.com/rockowitz/ddcutil" class="fa fa-github" style="float: left; color: #fcfcfc"> GitHub</a>
       
       
-        <span><a href="../c_api_96/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+        <span><a href="../building/" style="color: #fcfcfc;">&laquo; Previous</a></span>
       
       
-        <span style="margin-left: 15px"><a href="../todo/" style="color: #fcfcfc">Next &raquo;</a></span>
+        <span style="margin-left: 15px"><a href="../adl/" style="color: #fcfcfc">Next &raquo;</a></span>
       
     </span>
 </div>
