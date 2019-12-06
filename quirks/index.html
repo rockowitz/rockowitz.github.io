@@ -8,7 +8,7 @@
   
   <meta name="author" content="Sanford Rockowitz">
   <link rel="shortcut icon" href="../img/favicon.ico">
-  <title>C API Changes for Release 0.9.3 - ddcutil Documentation</title>
+  <title>Notes on particular configurations - ddcutil Documentation</title>
   <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
 
   <link rel="stylesheet" href="../css/theme.css" type="text/css" />
@@ -17,9 +17,9 @@
   
   <script>
     // Current page data
-    var mkdocs_page_name = "C API Changes for Release 0.9.3";
-    var mkdocs_page_input_path = "c_api_93.md";
-    var mkdocs_page_url = "/c_api_93/";
+    var mkdocs_page_name = "Notes on particular configurations";
+    var mkdocs_page_input_path = "quirks.md";
+    var mkdocs_page_url = "/quirks/";
   </script>
   
   <script src="../js/jquery-2.1.1.min.js"></script>
@@ -193,7 +193,7 @@
                 </li>
                 <li class="">
                     
-    <a class="" href="../quirks/">Notes on Particular Configurations</a>
+    <a class="" href="./">Notes on Particular Configurations</a>
                 </li>
                 <li class="">
                     
@@ -223,15 +223,21 @@
                     
     <a class="" href="../monitor_notes/">Notes on specific monitors</a>
                 </li>
-                <li class="">
+                <li class=" current">
                     
-    <a class="" href="../quirks/">Notes on particular configurations</a>
+    <a class="current" href="./">Notes on particular configurations</a>
+    <ul class="subnav">
+            
+    <li class="toctree-l3"><a href="#notes-on-particular-configurations">Notes on Particular Configurations</a></li>
+    
+
+    </ul>
                 </li>
                 <li class="">
                     
     <a class="" href="../ddc_null_response/">DDC Null Message</a>
                 </li>
-                <li class=" current">
+                <li class="">
                     
     <span class="caption-text">API</span>
     <ul class="subnav">
@@ -243,25 +249,9 @@
                     
     <a class="" href="../c_api_90/">C API Changes for Release 0.9.0</a>
                 </li>
-                <li class="toctree-l3 current">
+                <li class="toctree-l3">
                     
-    <a class="current" href="./">C API Changes for Release 0.9.3</a>
-    <ul class="subnav">
-            
-    <li class="toctree-l4"><a href="#c-api-changes-for-release-093">C API Changes for Release 0.9.3</a></li>
-    
-        <ul>
-        
-            <li><a class="toctree-l5" href="#trace-control">Trace Control</a></li>
-        
-            <li><a class="toctree-l5" href="#feature-metadata">Feature Metadata</a></li>
-        
-            <li><a class="toctree-l5" href="#miscellaneous">Miscellaneous</a></li>
-        
-        </ul>
-    
-
-    </ul>
+    <a class="" href="../c_api_93/">C API Changes for Release 0.9.3</a>
                 </li>
                 <li class="toctree-l3">
                     
@@ -332,15 +322,11 @@
           <li>Additional Topics &raquo;</li>
         
       
-        
-          <li>API &raquo;</li>
-        
-      
     
-    <li>C API Changes for Release 0.9.3</li>
+    <li>Notes on particular configurations</li>
     <li class="wy-breadcrumbs-aside">
       
-        <a href="https://github.com/rockowitz/ddcutil/edit/master/docs/c_api_93.md"
+        <a href="https://github.com/rockowitz/ddcutil/edit/master/docs/quirks.md"
           class="icon icon-github"> Edit on GitHub</a>
       
     </li>
@@ -350,347 +336,11 @@
           <div role="main">
             <div class="section">
               
-                <h2 id="c-api-changes-for-release-093">C API Changes for Release 0.9.3</h2>
-<h3 id="trace-control">Trace Control</h3>
-<p>API functions to control tracing have been added.  This API corresponds to
-ddcutil command line options <strong><em>--trace</em></strong>, <strong><em>--trcfunc</em></strong>, and <strong><em>--trcfile.</em></strong></p>
-<p>Added enum DDCA_Trace_Group, whose values can be ORed together, to specify 
-the classes to be traced.</p>
-<table>
-<thead>
-<tr>
-<th>Flag</th>
-<th>Meaning</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>DDCA_TRC_BASE</td>
-<td>Base functions</td>
-</tr>
-<tr>
-<td>DDCA_TRC_I2C</td>
-<td>I2C layer</td>
-</tr>
-<tr>
-<td>DDCA_TRC_ADL</td>
-<td>ADL layer</td>
-</tr>
-<tr>
-<td>DDCA_TRC_DDC</td>
-<td>Higher level functions in the DDC layer</td>
-</tr>
-<tr>
-<td>DDCA_TRC_USB</td>
-<td>USB connecte didplay</td>
-</tr>
-<tr>
-<td>DDCA_TRC_TOP</td>
-<td><strong>ddcutil</strong> mailine **</td>
-</tr>
-<tr>
-<td>DDCA_TRC_ENV</td>
-<td><strong><em>environment</em></strong> command</td>
-</tr>
-<tr>
-<td>DDCA_TRC_API</td>
-<td>top level API functions</td>
-</tr>
-<tr>
-<td>DDCA_TRC_UDF</td>
-<td>user-defined functions</td>
-</tr>
-<tr>
-<td>DDCA_TRC_VCP</td>
-<td>VCP layer, feature definitions</td>
-</tr>
-<tr>
-<td>DDCA_TRC_DDCIO</td>
-<td>Low level functions in the DDC layer</td>
-</tr>
-<tr>
-<td>DDCA_TRC_NONE</td>
-<td>all tracing disabled</td>
-</tr>
-<tr>
-<td>DDCA_TRC_ALL</td>
-<td>all tracing enabled</td>
-</tr>
-</tbody>
-</table>
-<table>
-<thead>
-<tr>
-<th>New Function</th>
-<th>Comments</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>ddca_add_traced_function()</td>
-<td>turn on tracing for a specific function</td>
-</tr>
-<tr>
-<td>ddca_add_traced_file()</td>
-<td>turn on tracing for a specific source file</td>
-</tr>
-<tr>
-<td>ddca_set_trace_groups()</td>
-<td>turn on tracing for one or more trace groups</td>
-</tr>
-</tbody>
-</table>
-<h3 id="feature-metadata">Feature Metadata</h3>
-<p>To allow for user supplied feature definitions, metadata requests are now generally tied to the display, by
-specifying a <strong><em>DDCA_Display_Ref</em></strong> or <strong><em>DDCA_Display_Handle</em></strong> instead of the VCP version.  That is, when metadata
-is requested for a feature, we first look to see if there is a user supplied feature definition for the display. Absent that,
-the VCP version of the display is used to retrieve the appropriate feature definition. </p>
-<p>Eliminate typedef <strong><em>DDCA_Feature_Value_Table</em></strong>, which is defined as <strong><em>DDCA_Feature_Value_Entry</em></strong> *, and is used to reference a feature value lookup table.  Use <strong><em>DDCA_Feature_Value_Entry</em></strong> * instead.  </p>
-<p>Functions whose signatures are affected: </p>
-<table>
-<thead>
-<tr>
-<th>Function</th>
-<th>Comments</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>ddca_get_simple_nc_feature_value_name_by_table()</td>
-<td></td>
-</tr>
-</tbody>
-</table>
-<table>
-<thead>
-<tr>
-<th>Deleted Structs and Functions</th>
-<th>Comments</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>struct DDCA_Version_Feature_Info</td>
-<td>used by feature_info functions</td>
-</tr>
-<tr>
-<td>ddca_get_feature_info_by_vcp_version()</td>
-<td>deprecated in 0.9.0, returned DDCA_Version_Feature_Info</td>
-</tr>
-<tr>
-<td>ddca_get_feature_info_by_display()</td>
-<td>deprecated in 0.9.0, returned DDCA_Version_Feature_Info</td>
-</tr>
-<tr>
-<td>ddca_free_feature_info()</td>
-<td>deprecated in 0.9.0</td>
-</tr>
-<tr>
-<td>ddca_get_mccs_version_id()</td>
-<td>deprecated in 0.9.0</td>
-</tr>
-<tr>
-<td>ddca_get_simple_sl_value_table()</td>
-<td>deprecated in 0.9.0, use ddca_get_feature_metadata...() variant</td>
-</tr>
-<tr>
-<td>ddca_get_simple_nc_feature_value_name_by_display()</td>
-<td>deprecated in 0.9.0</td>
-</tr>
-</tbody>
-</table>
-<table>
-<thead>
-<tr>
-<th>Deprecated</th>
-<th>Comments</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>ddca_get_feature_name_by_dref()</td>
-<td>use ddca_get_feature_metadata()</td>
-</tr>
-<tr>
-<td>ddca_free_metadata_contents()</td>
-<td>use ddca_free_feature_metadata()</td>
-</tr>
-</tbody>
-</table>
-<table>
-<thead>
-<tr>
-<th>Renamed Function</th>
-<th>Comments</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>ddca_get_feature_name_by_dref()</td>
-<td>was ddca_feature_name_by_dref()</td>
-</tr>
-</tbody>
-</table>
-<table>
-<thead>
-<tr>
-<th>Modified Functions</th>
-<th>Comments</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>ddca_get_feature_metadata_by_vspec()</td>
-<td>returns pointer to new <strong><em>DDCA_Feature_Metadata</em></strong></td>
-</tr>
-<tr>
-<td>ddca_get_feature_metadata_by_dref()</td>
-<td>returns pointer to new <strong><em>DDCA_Feature_Metadata</em></strong></td>
-</tr>
-<tr>
-<td>ddca_get_feature_metadata_by_dh()</td>
-<td>returns pointer to new <strong><em>DDCA_Feature_Metadata</em></strong></td>
-</tr>
-</tbody>
-</table>
-<p>The above functions now take a <strong><em>DDCA_Metadata**</em></strong> instead of a <strong><em>DDCA_Metadata*</em></strong> parm, 
-i.e. they allocate a new DDCA_Metadata instance instance instead of filling in an 
-exisitng instance.</p>
-<table>
-<thead>
-<tr>
-<th>Funcations Added</th>
-<th>Comments</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>ddca_free_feature_metadata()</td>
-<td>replaces ddca_free_metadata_contents()</td>
-</tr>
-<tr>
-<td>ddca_enable_udf()</td>
-<td>controls whether user supplied feature definitions are enabled</td>
-</tr>
-<tr>
-<td>ddca_is_udf_enabled()</td>
-<td>reports whether usr supplied feature definitions are enabled</td>
-</tr>
-<tr>
-<td>ddca_report_capabilities_by_dref()</td>
-<td>handles display-specific user supplied feature definitions</td>
-</tr>
-<tr>
-<td>ddca_report_capabilities_by_dh()</td>
-<td>handles display-specific user supplied feature definitions</td>
-</tr>
-<tr>
-<td>ddca_check_by_dref()</td>
-<td>ensures user supplied feature defintions are loaded</td>
-</tr>
-<tr>
-<td>ddca_check_by_dh()</td>
-<td>ensures user supplied feature defintions are loaded</td>
-</tr>
-<tr>
-<td>ddca_free_feature_metadata()</td>
-<td></td>
-</tr>
-<tr>
-<td>ddca_report_parsed_capabilities_by_dref()</td>
-<td>uses user supplied feature definitions</td>
-</tr>
-<tr>
-<td>ddca_report_parsed_capabilities_by_dh()</td>
-<td>uses user supplied feature definitions</td>
-</tr>
-</tbody>
-</table>
-<p>The following flags have been added to field <strong>feature_flags</strong> in struct <strong>DDCA_Feature_Metadata</strong> 
-or therir meaning may have been modified, and they may be visible when an instance is returned by the API: </p>
-<table>
-<thead>
-<tr>
-<th>Bit flag</th>
-<th></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>DDCA_SYNTHETIC</td>
-<td>metadata was dynamically created for undefined feature</td>
-</tr>
-<tr>
-<td>DDCA_USER_DEFINED</td>
-<td>added, metadata is from user supplied feature definition</td>
-</tr>
-</tbody>
-</table>
-<p>Sample files reflect signature changes of ddca_get_feature_metadata_by_vspec() etc</p>
-<table>
-<thead>
-<tr>
-<th>File name</th>
-<th>Comments</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>demo_capabilities.c</td>
-<td></td>
-</tr>
-<tr>
-<td>demo_get_set_vcp.c</td>
-<td></td>
-</tr>
-<tr>
-<td>demo_vcpinfo.c</td>
-<td></td>
-</tr>
-</tbody>
-</table>
-<h3 id="miscellaneous">Miscellaneous</h3>
-<table>
-<thead>
-<tr>
-<th>Functions Added</th>
-<th>Comments</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>ddca_report_error_detail()</td>
-<td>Convenience function that formats <strong>DDCA_Error_Detail</strong></td>
-</tr>
-</tbody>
-</table>
-<p>Removed structs and typedefs related to experimental async support</p>
-<table>
-<thead>
-<tr>
-<th>Removed</th>
-<th>Comments</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>enum DDCA_Queue_Request_Type</td>
-<td></td>
-</tr>
-<tr>
-<td>struct DDCA_Queued_Request</td>
-<td></td>
-</tr>
-<tr>
-<td>function prototype DDCA_Notification_Func</td>
-<td></td>
-</tr>
-<tr>
-<td>function prototype Simple_Callback_Func</td>
-<td></td>
-</tr>
-</tbody>
-</table>
+                <h2 id="notes-on-particular-configurations">Notes on Particular Configurations</h2>
+<p>This page contains notes on some particular configuration issues that have been reported by users.  They are too specific to put into the FAQ, but may be helpful to users trying to figure out why <strong>ddcutil</strong> does not work properly on a particular combination of computer, docking station, video card, driver, and monitor.</p>
+<p><strong>Problem:</strong> I2C communication not working using a DisplayPort output and DP to DVI (or HDMI) adapter.  Does work with DP to VGA adapter.  Radeon driver. RX 480 video card.</p>
+<p><strong>Solution:</strong>  The radeon <strong><em>hw_i2c</em></strong> parm was set to 1 in /etc/modprobe.d/radeon.conf.  The default is 0.  Setting the value back to 0 solved the problem.
+Note that parm can also be specified as a boot option, radeon.hw_i2c=0.  (Reported by user sergio.)</p>
               
             </div>
           </div>
@@ -698,10 +348,10 @@ or therir meaning may have been modified, and they may be visible when an instan
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../c_api_95/" class="btn btn-neutral float-right" title="C API Changes for Release 0.9.5">Next <span class="icon icon-circle-arrow-right"></span></a>
+        <a href="../ddc_null_response/" class="btn btn-neutral float-right" title="DDC Null Message">Next <span class="icon icon-circle-arrow-right"></span></a>
       
       
-        <a href="../c_api_90/" class="btn btn-neutral" title="C API Changes for Release 0.9.0"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../monitor_notes/" class="btn btn-neutral" title="Notes on specific monitors"><span class="icon icon-circle-arrow-left"></span> Previous</a>
       
     </div>
   
@@ -729,10 +379,10 @@ or therir meaning may have been modified, and they may be visible when an instan
           <a href="https://github.com/rockowitz/ddcutil" class="fa fa-github" style="float: left; color: #fcfcfc"> GitHub</a>
       
       
-        <span><a href="../c_api_90/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+        <span><a href="../monitor_notes/" style="color: #fcfcfc;">&laquo; Previous</a></span>
       
       
-        <span style="margin-left: 15px"><a href="../c_api_95/" style="color: #fcfcfc">Next &raquo;</a></span>
+        <span style="margin-left: 15px"><a href="../ddc_null_response/" style="color: #fcfcfc">Next &raquo;</a></span>
       
     </span>
 </div>

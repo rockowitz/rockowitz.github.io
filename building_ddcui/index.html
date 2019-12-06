@@ -8,7 +8,7 @@
   
   <meta name="author" content="Sanford Rockowitz">
   <link rel="shortcut icon" href="../img/favicon.ico">
-  <title>C API Changes for Release 0.9.3 - ddcutil Documentation</title>
+  <title>Building ddcui - ddcutil Documentation</title>
   <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
 
   <link rel="stylesheet" href="../css/theme.css" type="text/css" />
@@ -17,9 +17,9 @@
   
   <script>
     // Current page data
-    var mkdocs_page_name = "C API Changes for Release 0.9.3";
-    var mkdocs_page_input_path = "c_api_93.md";
-    var mkdocs_page_url = "/c_api_93/";
+    var mkdocs_page_name = "Building ddcui";
+    var mkdocs_page_input_path = "building_ddcui.md";
+    var mkdocs_page_url = "/building_ddcui/";
   </script>
   
   <script src="../js/jquery-2.1.1.min.js"></script>
@@ -131,7 +131,7 @@
                 </li>
                 <li class="">
                     
-    <a class="" href="../building_ddcui/">Building ddcui</a>
+    <a class="" href="./">Building ddcui</a>
                 </li>
                 <li class="">
                     
@@ -176,9 +176,30 @@
                     
     <a class="" href="../ddcui_main/">Overview</a>
                 </li>
-                <li class="">
+                <li class=" current">
                     
-    <a class="" href="../building_ddcui/">Building ddcui</a>
+    <a class="current" href="./">Building ddcui</a>
+    <ul class="subnav">
+            
+    <li class="toctree-l3"><a href="#bulding-ddcui">Bulding ddcui</a></li>
+    
+
+    <li class="toctree-l3"><a href="#requirements">Requirements</a></li>
+    
+
+    <li class="toctree-l3"><a href="#building-using-qmake">Building Using qmake</a></li>
+    
+
+    <li class="toctree-l3"><a href="#building-using-cmake">Building Using CMake</a></li>
+    
+
+    <li class="toctree-l3"><a href="#using-qtcreator">Using QtCreator</a></li>
+    
+
+    <li class="toctree-l3"><a href="#issues">Issues:</a></li>
+    
+
+    </ul>
                 </li>
     </ul>
 	    </li>
@@ -231,7 +252,7 @@
                     
     <a class="" href="../ddc_null_response/">DDC Null Message</a>
                 </li>
-                <li class=" current">
+                <li class="">
                     
     <span class="caption-text">API</span>
     <ul class="subnav">
@@ -243,25 +264,9 @@
                     
     <a class="" href="../c_api_90/">C API Changes for Release 0.9.0</a>
                 </li>
-                <li class="toctree-l3 current">
+                <li class="toctree-l3">
                     
-    <a class="current" href="./">C API Changes for Release 0.9.3</a>
-    <ul class="subnav">
-            
-    <li class="toctree-l4"><a href="#c-api-changes-for-release-093">C API Changes for Release 0.9.3</a></li>
-    
-        <ul>
-        
-            <li><a class="toctree-l5" href="#trace-control">Trace Control</a></li>
-        
-            <li><a class="toctree-l5" href="#feature-metadata">Feature Metadata</a></li>
-        
-            <li><a class="toctree-l5" href="#miscellaneous">Miscellaneous</a></li>
-        
-        </ul>
-    
-
-    </ul>
+    <a class="" href="../c_api_93/">C API Changes for Release 0.9.3</a>
                 </li>
                 <li class="toctree-l3">
                     
@@ -329,18 +334,14 @@
     
       
         
-          <li>Additional Topics &raquo;</li>
-        
-      
-        
-          <li>API &raquo;</li>
+          <li>ddcui &raquo;</li>
         
       
     
-    <li>C API Changes for Release 0.9.3</li>
+    <li>Building ddcui</li>
     <li class="wy-breadcrumbs-aside">
       
-        <a href="https://github.com/rockowitz/ddcutil/edit/master/docs/c_api_93.md"
+        <a href="https://github.com/rockowitz/ddcutil/edit/master/docs/building_ddcui.md"
           class="icon icon-github"> Edit on GitHub</a>
       
     </li>
@@ -350,347 +351,61 @@
           <div role="main">
             <div class="section">
               
-                <h2 id="c-api-changes-for-release-093">C API Changes for Release 0.9.3</h2>
-<h3 id="trace-control">Trace Control</h3>
-<p>API functions to control tracing have been added.  This API corresponds to
-ddcutil command line options <strong><em>--trace</em></strong>, <strong><em>--trcfunc</em></strong>, and <strong><em>--trcfile.</em></strong></p>
-<p>Added enum DDCA_Trace_Group, whose values can be ORed together, to specify 
-the classes to be traced.</p>
-<table>
-<thead>
-<tr>
-<th>Flag</th>
-<th>Meaning</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>DDCA_TRC_BASE</td>
-<td>Base functions</td>
-</tr>
-<tr>
-<td>DDCA_TRC_I2C</td>
-<td>I2C layer</td>
-</tr>
-<tr>
-<td>DDCA_TRC_ADL</td>
-<td>ADL layer</td>
-</tr>
-<tr>
-<td>DDCA_TRC_DDC</td>
-<td>Higher level functions in the DDC layer</td>
-</tr>
-<tr>
-<td>DDCA_TRC_USB</td>
-<td>USB connecte didplay</td>
-</tr>
-<tr>
-<td>DDCA_TRC_TOP</td>
-<td><strong>ddcutil</strong> mailine **</td>
-</tr>
-<tr>
-<td>DDCA_TRC_ENV</td>
-<td><strong><em>environment</em></strong> command</td>
-</tr>
-<tr>
-<td>DDCA_TRC_API</td>
-<td>top level API functions</td>
-</tr>
-<tr>
-<td>DDCA_TRC_UDF</td>
-<td>user-defined functions</td>
-</tr>
-<tr>
-<td>DDCA_TRC_VCP</td>
-<td>VCP layer, feature definitions</td>
-</tr>
-<tr>
-<td>DDCA_TRC_DDCIO</td>
-<td>Low level functions in the DDC layer</td>
-</tr>
-<tr>
-<td>DDCA_TRC_NONE</td>
-<td>all tracing disabled</td>
-</tr>
-<tr>
-<td>DDCA_TRC_ALL</td>
-<td>all tracing enabled</td>
-</tr>
-</tbody>
-</table>
-<table>
-<thead>
-<tr>
-<th>New Function</th>
-<th>Comments</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>ddca_add_traced_function()</td>
-<td>turn on tracing for a specific function</td>
-</tr>
-<tr>
-<td>ddca_add_traced_file()</td>
-<td>turn on tracing for a specific source file</td>
-</tr>
-<tr>
-<td>ddca_set_trace_groups()</td>
-<td>turn on tracing for one or more trace groups</td>
-</tr>
-</tbody>
-</table>
-<h3 id="feature-metadata">Feature Metadata</h3>
-<p>To allow for user supplied feature definitions, metadata requests are now generally tied to the display, by
-specifying a <strong><em>DDCA_Display_Ref</em></strong> or <strong><em>DDCA_Display_Handle</em></strong> instead of the VCP version.  That is, when metadata
-is requested for a feature, we first look to see if there is a user supplied feature definition for the display. Absent that,
-the VCP version of the display is used to retrieve the appropriate feature definition. </p>
-<p>Eliminate typedef <strong><em>DDCA_Feature_Value_Table</em></strong>, which is defined as <strong><em>DDCA_Feature_Value_Entry</em></strong> *, and is used to reference a feature value lookup table.  Use <strong><em>DDCA_Feature_Value_Entry</em></strong> * instead.  </p>
-<p>Functions whose signatures are affected: </p>
-<table>
-<thead>
-<tr>
-<th>Function</th>
-<th>Comments</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>ddca_get_simple_nc_feature_value_name_by_table()</td>
-<td></td>
-</tr>
-</tbody>
-</table>
-<table>
-<thead>
-<tr>
-<th>Deleted Structs and Functions</th>
-<th>Comments</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>struct DDCA_Version_Feature_Info</td>
-<td>used by feature_info functions</td>
-</tr>
-<tr>
-<td>ddca_get_feature_info_by_vcp_version()</td>
-<td>deprecated in 0.9.0, returned DDCA_Version_Feature_Info</td>
-</tr>
-<tr>
-<td>ddca_get_feature_info_by_display()</td>
-<td>deprecated in 0.9.0, returned DDCA_Version_Feature_Info</td>
-</tr>
-<tr>
-<td>ddca_free_feature_info()</td>
-<td>deprecated in 0.9.0</td>
-</tr>
-<tr>
-<td>ddca_get_mccs_version_id()</td>
-<td>deprecated in 0.9.0</td>
-</tr>
-<tr>
-<td>ddca_get_simple_sl_value_table()</td>
-<td>deprecated in 0.9.0, use ddca_get_feature_metadata...() variant</td>
-</tr>
-<tr>
-<td>ddca_get_simple_nc_feature_value_name_by_display()</td>
-<td>deprecated in 0.9.0</td>
-</tr>
-</tbody>
-</table>
-<table>
-<thead>
-<tr>
-<th>Deprecated</th>
-<th>Comments</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>ddca_get_feature_name_by_dref()</td>
-<td>use ddca_get_feature_metadata()</td>
-</tr>
-<tr>
-<td>ddca_free_metadata_contents()</td>
-<td>use ddca_free_feature_metadata()</td>
-</tr>
-</tbody>
-</table>
-<table>
-<thead>
-<tr>
-<th>Renamed Function</th>
-<th>Comments</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>ddca_get_feature_name_by_dref()</td>
-<td>was ddca_feature_name_by_dref()</td>
-</tr>
-</tbody>
-</table>
-<table>
-<thead>
-<tr>
-<th>Modified Functions</th>
-<th>Comments</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>ddca_get_feature_metadata_by_vspec()</td>
-<td>returns pointer to new <strong><em>DDCA_Feature_Metadata</em></strong></td>
-</tr>
-<tr>
-<td>ddca_get_feature_metadata_by_dref()</td>
-<td>returns pointer to new <strong><em>DDCA_Feature_Metadata</em></strong></td>
-</tr>
-<tr>
-<td>ddca_get_feature_metadata_by_dh()</td>
-<td>returns pointer to new <strong><em>DDCA_Feature_Metadata</em></strong></td>
-</tr>
-</tbody>
-</table>
-<p>The above functions now take a <strong><em>DDCA_Metadata**</em></strong> instead of a <strong><em>DDCA_Metadata*</em></strong> parm, 
-i.e. they allocate a new DDCA_Metadata instance instance instead of filling in an 
-exisitng instance.</p>
-<table>
-<thead>
-<tr>
-<th>Funcations Added</th>
-<th>Comments</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>ddca_free_feature_metadata()</td>
-<td>replaces ddca_free_metadata_contents()</td>
-</tr>
-<tr>
-<td>ddca_enable_udf()</td>
-<td>controls whether user supplied feature definitions are enabled</td>
-</tr>
-<tr>
-<td>ddca_is_udf_enabled()</td>
-<td>reports whether usr supplied feature definitions are enabled</td>
-</tr>
-<tr>
-<td>ddca_report_capabilities_by_dref()</td>
-<td>handles display-specific user supplied feature definitions</td>
-</tr>
-<tr>
-<td>ddca_report_capabilities_by_dh()</td>
-<td>handles display-specific user supplied feature definitions</td>
-</tr>
-<tr>
-<td>ddca_check_by_dref()</td>
-<td>ensures user supplied feature defintions are loaded</td>
-</tr>
-<tr>
-<td>ddca_check_by_dh()</td>
-<td>ensures user supplied feature defintions are loaded</td>
-</tr>
-<tr>
-<td>ddca_free_feature_metadata()</td>
-<td></td>
-</tr>
-<tr>
-<td>ddca_report_parsed_capabilities_by_dref()</td>
-<td>uses user supplied feature definitions</td>
-</tr>
-<tr>
-<td>ddca_report_parsed_capabilities_by_dh()</td>
-<td>uses user supplied feature definitions</td>
-</tr>
-</tbody>
-</table>
-<p>The following flags have been added to field <strong>feature_flags</strong> in struct <strong>DDCA_Feature_Metadata</strong> 
-or therir meaning may have been modified, and they may be visible when an instance is returned by the API: </p>
-<table>
-<thead>
-<tr>
-<th>Bit flag</th>
-<th></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>DDCA_SYNTHETIC</td>
-<td>metadata was dynamically created for undefined feature</td>
-</tr>
-<tr>
-<td>DDCA_USER_DEFINED</td>
-<td>added, metadata is from user supplied feature definition</td>
-</tr>
-</tbody>
-</table>
-<p>Sample files reflect signature changes of ddca_get_feature_metadata_by_vspec() etc</p>
-<table>
-<thead>
-<tr>
-<th>File name</th>
-<th>Comments</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>demo_capabilities.c</td>
-<td></td>
-</tr>
-<tr>
-<td>demo_get_set_vcp.c</td>
-<td></td>
-</tr>
-<tr>
-<td>demo_vcpinfo.c</td>
-<td></td>
-</tr>
-</tbody>
-</table>
-<h3 id="miscellaneous">Miscellaneous</h3>
-<table>
-<thead>
-<tr>
-<th>Functions Added</th>
-<th>Comments</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>ddca_report_error_detail()</td>
-<td>Convenience function that formats <strong>DDCA_Error_Detail</strong></td>
-</tr>
-</tbody>
-</table>
-<p>Removed structs and typedefs related to experimental async support</p>
-<table>
-<thead>
-<tr>
-<th>Removed</th>
-<th>Comments</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>enum DDCA_Queue_Request_Type</td>
-<td></td>
-</tr>
-<tr>
-<td>struct DDCA_Queued_Request</td>
-<td></td>
-</tr>
-<tr>
-<td>function prototype DDCA_Notification_Func</td>
-<td></td>
-</tr>
-<tr>
-<td>function prototype Simple_Callback_Func</td>
-<td></td>
-</tr>
-</tbody>
-</table>
+                <h2 id="bulding-ddcui">Bulding <strong>ddcui</strong></h2>
+<h2 id="requirements">Requirements</h2>
+<ul>
+<li>The latest version of ddcutil (currently 0.9.8).  If <strong>ddcutil</strong> is installed from pre-compiled packages, 
+the shared library and development packages must be installed as well as the main ddcutil package. </li>
+<li>A recent version of QT 5.  <strong>ddcui</strong> will not build with versions of Qt older than 5.5. 
+Unless you want to modify the the dialog boxes, or prefer the Qt Creator IDE, Qt Creator is not required. </li>
+</ul>
+<h2 id="building-using-qmake">Building Using qmake</h2>
+<ul>
+<li>A qmake control file (<strong><em>ddcui.pro</em></strong>) is provided.</li>
+<li>To create the Makefile, change to the directory in which you wish to 
+  build <strong>ddcui</strong> and issue one of the commands: </li>
+</ul>
+<pre><code>  qmake -qt=qt5 &lt;directory containing ddcui.pro&gt;/ddcui.pro
+  qtchooser -qt=5 -run-tool=qmake &lt;directory containing ddcui.pro&gt;/ddcui.pro
+</code></pre>
+
+<h2 id="building-using-cmake">Building Using CMake</h2>
+<ul>
+<li>A CMake control file (<strong><em>CMakeLists.txt</em></strong>) is provided.</li>
+<li>To create the Makefile, change to the directory in which you wish to 
+  build <strong>ddcui</strong> and issue the command: </li>
+</ul>
+<pre><code>   cmake &lt;directory containing CMakeLists.txt&gt; 
+</code></pre>
+
+<ul>
+<li>Using the -S and -B options can ensure that the proper directory is used for the build tree. 
+See the cmake man page for detais.</li>
+</ul>
+<p>Erasing file CMakeCache.txt and directory CMakeFiles from the build directory befure running cmake can avoid perplexing errors
+due to saved state.  This has a negligable effect on cmake performance.</p>
+<h2 id="using-qtcreator">Using QtCreator</h2>
+<p>User arupda has written up <a href="https://github.com/rockowitz/ddcui/issues/1">notes</a> on building <strong>ddcui</strong> using QtCreator and CMake.
+Note that arupda has modified the source to build with an earlier version of Qt. </p>
+<h2 id="issues">Issues:</h2>
+<ul>
+<li>If ddcutil is installed from the tarball using command <strong><em>make install</em></strong>, the
+PKGCONFIG file ddcutil.pc is installed in a subdirectory of /usr/local.  Depending on Linux distribution, 
+this subdirectory may or may not be in the default PKGCONFIG search path.  For example, on Ubuntu it is in the 
+search path, but on Fedora it is not.  To add the relevant path, issue the command: </li>
+</ul>
+<pre><code>export PKG_CONFIG_DIR=/usr/local/share/pkgconfig
+</code></pre>
+
+<p>before running <strong><em>qmake</em></strong> or <strong><em>cmake</em></strong>. </p>
+<p>To see the default PKGCONFIG search path, issue the command:</p>
+<pre><code>pkg-config --variable pc_path pkg-config
+</code></pre>
+
+<p>Generally speaking, if the ddcutil library and development files are installed in  under directory /usr instead of /usr/local
+tool path adjustments (often distribution specific) will be unnecessary.  This will be the case if the files are installed
+from an rpm or dpkg package, or (if building ddcutil from source), ".configure" is run with argument "--prefix=/usr". </p>
+<p>For additional information, <a href="http://www.ddcutil.com/shared_lib_config.md">Shared Library Configuration</a></p>
               
             </div>
           </div>
@@ -698,10 +413,10 @@ or therir meaning may have been modified, and they may be visible when an instan
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../c_api_95/" class="btn btn-neutral float-right" title="C API Changes for Release 0.9.5">Next <span class="icon icon-circle-arrow-right"></span></a>
+        <a href="../faq/" class="btn btn-neutral float-right" title="Frequently Asked Questions">Next <span class="icon icon-circle-arrow-right"></span></a>
       
       
-        <a href="../c_api_90/" class="btn btn-neutral" title="C API Changes for Release 0.9.0"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../ddcui_main/" class="btn btn-neutral" title="Overview"><span class="icon icon-circle-arrow-left"></span> Previous</a>
       
     </div>
   
@@ -729,10 +444,10 @@ or therir meaning may have been modified, and they may be visible when an instan
           <a href="https://github.com/rockowitz/ddcutil" class="fa fa-github" style="float: left; color: #fcfcfc"> GitHub</a>
       
       
-        <span><a href="../c_api_90/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+        <span><a href="../ddcui_main/" style="color: #fcfcfc;">&laquo; Previous</a></span>
       
       
-        <span style="margin-left: 15px"><a href="../c_api_95/" style="color: #fcfcfc">Next &raquo;</a></span>
+        <span style="margin-left: 15px"><a href="../faq/" style="color: #fcfcfc">Next &raquo;</a></span>
       
     </span>
 </div>
