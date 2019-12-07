@@ -451,6 +451,10 @@
             
                 <li class="toctree-l3"><a href="#ddcui-overview">ddcui Overview</a></li>
                 
+                    <li><a class="toctree-l4" href="#unexpected-behavior">Unexpected Behavior</a></li>
+                
+                    <li><a class="toctree-l4" href="#user-interface-options">User Interface Options</a></li>
+                
             
             </ul>
         
@@ -501,9 +505,9 @@
             <div class="section">
               
                 <h2 id="ddcui-overview">ddcui Overview</h2>
-<p><strong>ddcui</strong> is a graphical user user interface for <strong>ddcutil</strong>, implemented using Qt.  It is currently in development, and is considered beta level code.
+<p><strong>ddcui</strong> is a graphical user user interface for <strong>ddcutil</strong>, implemented using Qt.  It is considered beta level code.
  Many features are not yet fully implemented, including online help, error reporting, and proper interpretation of certain peculiar VCP features codes. </p>
-<p>This page collects the beginnings of <strong>ddcui</strong> documentation.</p>
+<p>This page collects the beginnings of <strong>ddcui</strong> documentation, which is incomplete but growing. </p>
 <p>Key facts: <br />
 - Implemented using Qt.<br />
 - Code is available on <a href="https://github.com/rockowitz/ddcui">GitHub</a>.  Some prebuilt packages are available on 
@@ -542,11 +546,8 @@ and requires <strong>ddcutil</strong> <a href="https://github.com/rockowitz/ddcu
 </tr>
 </tbody>
 </table>
-<p><br><br />
-Known issues:<br />
-- Help is largely unimplemented.<br />
-- Qt layout requires generalization and cleanup.<br />
-- How best to report DDC/CI errors and handle monitor quirks.  </p>
+<p><br>  </p>
+<h3 id="unexpected-behavior">Unexpected Behavior</h3>
 <p>It is possible for feature values reported in <strong>ddcui</strong> to become out of sync with actual monitor 
 values.
 - If feature values are changed using the monitor's On Screen Display. 
@@ -558,12 +559,14 @@ in the monitor's DDC/CI implementation.
 is unchanged. Again, this is a bug in the monitor's DDC/CI implementation.</p>
 <p>In some, but not all, cases, <strong>ddcui</strong> can be resynced with the actual monitor settings using menu item
 <strong><em>Actions-&gt;Rescan Monitor Values</em></strong>. </p>
-<p>GUI settings of interest: <br />
-- When using the mouse scroll wheel to scroll through the VCP Features and 
-when performing other mouse operations it is easy to accidentally move a slider
+<h3 id="user-interface-options">User Interface Options</h3>
+<ul>
+<li>When swiping the mouse or using the mouse wheel to scroll the VCP Features section, it is<br />
+possible to accidentally move a slider
 that changes a continuous feature value.  Optionally, the UI behavior can be 
 altered to require that the control key be held down in order to move a slider.
-This behavior is modified using dialog <strong><em>Options-&gt;User Interface Options-&gt;Require control key to move sliders</em></strong>.</p>
+This behavior is modified using dialog <strong><em>Options-&gt;User Interface Options-&gt;Require control key to move sliders</em></strong>.</li>
+</ul>
 <p>For basic instructions on building <strong>ddcui</strong>, see file <strong><em>BUILDING.md</em></strong>. Both a CMake <strong><em>CMakeLists.txt</em></strong>
 and a Qt <strong><em>ddcui.pro</em></strong> file are provided.</p>
 <p>Pages with additional <strong>ddcui</strong> information:   :<br />
