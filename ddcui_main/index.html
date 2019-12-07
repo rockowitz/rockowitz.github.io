@@ -501,13 +501,15 @@
             <div class="section">
               
                 <h2 id="ddcui-overview">ddcui Overview</h2>
-<p><strong>ddcui</strong> is a graphical user user interface for <strong>ddcutil</strong>.  It is currently in development, and is considered alpha level code.  As such, it is intended only for the adventurous, however feedback is very much appreciated. This page collects the beginnings of <strong>ddcui</strong> documentation.</p>
+<p><strong>ddcui</strong> is a graphical user user interface for <strong>ddcutil</strong>, implemented using Qt.  It is currently in development, and is considered beta level code.
+ Many features are not yet fully implemented, including online help, error reporting, and proper interpretation of certain peculiar VCP features codes. </p>
+<p>This page collects the beginnings of <strong>ddcui</strong> documentation.</p>
 <p>Key facts: <br />
 - Implemented using Qt.<br />
 - Code is available on <a href="https://github.com/rockowitz/ddcui">GitHub</a>.  Some prebuilt packages are available on 
 <a href="https://copr.fedorainfracloud.org/coprs/rockowitz/ddcutil/">Copr</a> and 
 <a href="https://launchpad.net/~rockowitz/+archive/ubuntu/ddcutil">Launchpad</a><br />
-- The latest alpha release is <a href="https:/github.com/rockowitz/ddcui/releases/tag/v0.0.8">0.0.8</a>, 
+- The latest release is <a href="https:/github.com/rockowitz/ddcui/releases/tag/v0.1.0">0.1.0</a>, 
 and requires <strong>ddcutil</strong> <a href="https://github.com/rockowitz/ddcutil/eleases/tag/v0.9.9">release 0.9.8</a>. </p>
 <p>Command line options of interest to general users:  </p>
 <table>
@@ -545,12 +547,25 @@ Known issues:<br />
 - Help is largely unimplemented.<br />
 - Qt layout requires generalization and cleanup.<br />
 - How best to report DDC/CI errors and handle monitor quirks.  </p>
+<p>It is possible for feature values reported in <strong>ddcui</strong> to become out of sync with actual monitor 
+values.
+- If feature values are changed using the monitor's On Screen Display. 
+- If feature values are changed by another program, including the command line program <strong>ddcutil</strong>. 
+- Some monitors will change their state (e.g. red gain) when the value in the GUI changes.
+However, the monitor still reports the old value, which is shown in <strong>ddcui</strong>.  This is a bug 
+in the monitor's DDC/CI implementation.
+- Conversely, some monitors will report a newly set value, but the observed state of the monitor
+is unchanged. Again, this is a bug in the monitor's DDC/CI implementation.</p>
+<p>In some, but not all, cases, <strong>ddcui</strong> can be resynced with the actual monitor settings using menu item
+<strong><em>Actions-&gt;Rescan Monitor Values</em></strong>. </p>
 <p>GUI settings of interest: <br />
 - When using the mouse scroll wheel to scroll through the VCP Features and 
 when performing other mouse operations it is easy to accidentally move a slider
 that changes a continuous feature value.  Optionally, the UI behavior can be 
 altered to require that the control key be held down in order to move a slider.
 This behavior is modified using dialog <strong><em>Options-&gt;User Interface Options-&gt;Require control key to move sliders</em></strong>.</p>
+<p>For basic instructions on building <strong>ddcui</strong>, see file <strong><em>BUILDING.md</em></strong>. Both a CMake <strong><em>CMakeLists.txt</em></strong>
+and a Qt <strong><em>ddcui.pro</em></strong> file are provided.</p>
 <p>Pages with additional <strong>ddcui</strong> information:   :<br />
 - <a href="../building_ddcui/">Building <strong>ddcui</strong></a><br />
 - <a href="../install/">Prebuilt Packages</a></p>
