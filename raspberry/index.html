@@ -505,6 +505,7 @@
                 <h2 id="raspberry-pi">Raspberry Pi</h2>
 <p>The following instructions for installing <strong>ddcutil</strong> on the Raspberry Pi are a distillation of user feedback, my own experiences with a Raspberry Pi 3 Model B, 
 and discussions on the Web. </p>
+<p><strong>ddcutil does not work on the Raspberry Pi 4.</strong>  The HDMI related chip has changed, and drivers have not yet been revised to enable userspace access to /dev/i2c-2.  This does not appear to be a high priority for the Pi developers.  User bangom has explored the problem in depth, and does have a workaround that entails modifying the HDMI cable.  See <a href="https://github.com/rockowitz/ddcutil/issues/97">ddcutil issue #97 on github</a>. For a detailed discussion of the problem, and bangom's hardware workaround, see [Issue #3152 on the github raspberrypi/linux project][https://github.com/raspberrypi/linux/issues/3152].  </p>
 <p><strong>ddcutil</strong> is known to work on both Raspberry Pi 3 Model B and Raspberry Pi 2.  It has been tested with the following distributions:</p>
 <ul>
 <li>Raspbian (Release 2017-09-07)</li>
