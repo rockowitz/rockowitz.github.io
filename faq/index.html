@@ -304,10 +304,19 @@
                 
                     <li><a class="toctree-l4" href="#the-detect-command-reports-that-i2c-bus-address-x30-edid-block-number-is-inactive">The detect command reports that I2C bus address x30 (EDID block number) is inactive.</a></li>
                 
+                    <li><a class="toctree-l4" href="#recent-laptop-use-embedded-display-port-edp-panels-which-have-an-i2c-interface-why-doesnt-ddcutil-work">Recent laptop use Embedded Display Port (eDP) panels which have an I2C interface.  Why doesn't ddcutil work?</a></li>
+                
                     <li><a class="toctree-l4" href="#configure-complains-that-a-required-package-does-not-exist-but-it-is-installed-on-my-system">configure complains that a required package does not exist, but it is installed on my system.</a></li>
                 
             
             </ul>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../monitor_notes/">Notes on specific monitors</a>
         
     </li>
 
@@ -357,20 +366,6 @@
             
     <li class="toctree-l1 ">
         <a class="" href="../ddccontrol/">Comparison with ddccontrol</a>
-        
-    </li>
-
-        
-            
-    <li class="toctree-l1 ">
-        <a class="" href="../monitor_notes/">Notes on specific monitors</a>
-        
-    </li>
-
-        
-            
-    <li class="toctree-l1 ">
-        <a class="" href="../quirks/">Notes on particular configurations</a>
         
     </li>
 
@@ -634,6 +629,9 @@ The VGA version of the EDID will have timing information.</p>
 which block to read.  These blocks generally contain extended timing information.
 <strong>ddcutil</strong> is interested only in the contents of the first EDID block.
 The check of bus address x30 is purely informational.</p>
+<h3 id="recent-laptop-use-embedded-display-port-edp-panels-which-have-an-i2c-interface-why-doesnt-ddcutil-work">Recent laptop use Embedded Display Port (eDP) panels which have an I2C interface.  Why doesn't <strong>ddcutil</strong> work?</h3>
+<p>The I2C connection on eDP panels implements slave address x50, which allows programs to read the EDID in the expected way.  However, it does not implement slave address x37, i.e. it does not support DDC/CI. </p>
+<p>If eDP panels did implement DDC/CI, ddcutil  would support it.  For each I2C bus that could possibly be associated with a monitor, as part of display detection ddcutil attempts to read the EDID at slave address x50.  If successful, it then attempts to communicate on slave address x37.  If that fails, and display detection is occurring in the context of <strong><em>ddcutil detect --verbose</em></strong>, ddcutil then looks for a possible reason, and checks to see if the display is a laptop.  If so, it then reports that laptops to not support DDC/CI.</p>
 <h3 id="configure-complains-that-a-required-package-does-not-exist-but-it-is-installed-on-my-system"><strong><em>configure</em></strong> complains that a required package does not exist, but it is installed on my system.</h3>
 <p>When building <strong>ddcutil</strong>, error messages from pkg-config (which is called by configure) can be misleading.
 If configure complains that a package is not found but it seems to be installed, it's likely that what's 
@@ -645,7 +643,7 @@ missing is the associated development package (with a suffix like "-dev").</p>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../quirks/" class="btn btn-neutral float-right" title="Notes on Particular Configurations">Next <span class="icon icon-circle-arrow-right"></span></a>
+        <a href="../monitor_notes/" class="btn btn-neutral float-right" title="Notes on specific monitors">Next <span class="icon icon-circle-arrow-right"></span></a>
       
       
         <a href="../building_ddcui/" class="btn btn-neutral" title="Building ddcui"><span class="icon icon-circle-arrow-left"></span> Previous</a>
@@ -679,7 +677,7 @@ missing is the associated development package (with a suffix like "-dev").</p>
         <span><a href="../building_ddcui/" style="color: #fcfcfc;">&laquo; Previous</a></span>
       
       
-        <span style="margin-left: 15px"><a href="../quirks/" style="color: #fcfcfc">Next &raquo;</a></span>
+        <span style="margin-left: 15px"><a href="../monitor_notes/" style="color: #fcfcfc">Next &raquo;</a></span>
       
     </span>
 </div>
