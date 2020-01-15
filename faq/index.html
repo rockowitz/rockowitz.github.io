@@ -306,6 +306,8 @@
                 
                     <li><a class="toctree-l4" href="#recent-laptop-use-embedded-display-port-edp-panels-which-have-an-i2c-interface-why-doesnt-ddcutil-work">Recent laptop use Embedded Display Port (eDP) panels which have an I2C interface.  Why doesn't ddcutil work?</a></li>
                 
+                    <li><a class="toctree-l4" href="#ddcutil-does-not-work-on-a-raspberry-pi-4">ddcutil does not work on a Raspberry Pi 4</a></li>
+                
                     <li><a class="toctree-l4" href="#configure-complains-that-a-required-package-does-not-exist-but-it-is-installed-on-my-system">configure complains that a required package does not exist, but it is installed on my system.</a></li>
                 
             
@@ -632,6 +634,9 @@ The check of bus address x30 is purely informational.</p>
 <h3 id="recent-laptop-use-embedded-display-port-edp-panels-which-have-an-i2c-interface-why-doesnt-ddcutil-work">Recent laptop use Embedded Display Port (eDP) panels which have an I2C interface.  Why doesn't <strong>ddcutil</strong> work?</h3>
 <p>The I2C connection on eDP panels implements slave address x50, which allows programs to read the EDID in the expected way.  However, it does not implement slave address x37, i.e. it does not support DDC/CI. </p>
 <p>If eDP panels did implement DDC/CI, ddcutil  would support it.  For each I2C bus that could possibly be associated with a monitor, as part of display detection ddcutil attempts to read the EDID at slave address x50.  If successful, it then attempts to communicate on slave address x37.  If that fails, and display detection is occurring in the context of <strong><em>ddcutil detect --verbose</em></strong>, ddcutil then looks for a possible reason, and checks to see if the display is a laptop.  If so, it then reports that laptops to not support DDC/CI.</p>
+<h3 id="ddcutil-does-not-work-on-a-raspberry-pi-4"><strong>ddcutil</strong> does not work on a Raspberry Pi 4</h3>
+<p>The HDMI related chip has been changed on the Raspberry Pi 4, and drivers have not yet been revised to enable userspace access to /dev/i2c-2.
+For details, see page <a href="rasbberry.md">Raspberry Pi</a>. </p>
 <h3 id="configure-complains-that-a-required-package-does-not-exist-but-it-is-installed-on-my-system"><strong><em>configure</em></strong> complains that a required package does not exist, but it is installed on my system.</h3>
 <p>When building <strong>ddcutil</strong>, error messages from pkg-config (which is called by configure) can be misleading.
 If configure complains that a package is not found but it seems to be installed, it's likely that what's 
