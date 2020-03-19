@@ -551,7 +551,7 @@ PKGCONFIG file ddcutil.pc is installed in a subdirectory of /usr/local.  Dependi
 this subdirectory may or may not be in the default PKGCONFIG search path.  For example, on Ubuntu it is in the 
 search path, but on Fedora it is not.  To add the relevant path, issue the command: </li>
 </ul>
-<pre><code>export PKG_CONFIG_DIR=/usr/local/share/pkgconfig
+<pre><code>export PKG_CONFIG_PATH=/usr/local/share/pkgconfig
 </code></pre>
 
 <p>before running <strong><em>qmake</em></strong> or <strong><em>cmake</em></strong>. </p>
@@ -559,7 +559,7 @@ search path, but on Fedora it is not.  To add the relevant path, issue the comma
 <pre><code>pkg-config --variable pc_path pkg-config
 </code></pre>
 
-<p>Generally speaking, if the ddcutil library and development files are installed in  under directory /usr instead of /usr/local
+<p>Generally speaking, if the ddcutil library and development files are installed under directory /usr instead of /usr/local
 tool path adjustments (often distribution specific) will be unnecessary.  This will be the case if the files are installed
 from an rpm or dpkg package, or (if building ddcutil from source), ".configure" is run with argument "--prefix=/usr". </p>
 <p>For additional information, <a href="../shared_lib_config/">Shared Library Configuration</a></p>
