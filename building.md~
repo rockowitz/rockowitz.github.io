@@ -40,6 +40,7 @@ ddcutil requires the following packages for both building and execution:
 - libudev (e.g. libudev1)
 - libdrm2 
 - libxrandr2
+- hwdata
 
 On most platforms, development related files (e.g. headers files) are in separate packages having a 
 "-dev" or similar suffix in their names.   ddcutil needs development packages for:
