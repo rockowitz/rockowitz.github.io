@@ -8,31 +8,25 @@
   
   <meta name="author" content="Sanford Rockowitz">
   
-  <title>C API Changes for Release 0.9.0 - ddcutil Documentation</title>
-  
-
   <link rel="shortcut icon" href="../img/favicon.ico">
+  <title>C API Changes for Release 0.9.0 - ddcutil Documentation</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
 
-  
-  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
-
-  <link rel="stylesheet" href="../css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="../css/theme_extra.css" type="text/css" />
-  <link rel="stylesheet" href="../css/highlight.css">
-
+  <link rel="stylesheet" href="../css/theme.css" />
+  <link rel="stylesheet" href="../css/theme_extra.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css" />
   
   <script>
     // Current page data
     var mkdocs_page_name = "C API Changes for Release 0.9.0";
     var mkdocs_page_input_path = "c_api_90.md";
-    var mkdocs_page_url = "/c_api_90/";
+    var mkdocs_page_url = null;
   </script>
   
-  <script src="../js/jquery-2.1.1.min.js"></script>
-  <script src="../js/modernizr-2.8.3.min.js"></script>
-  <script type="text/javascript" src="../js/highlight.pack.js"></script>
-  <script src="../js/theme.js"></script> 
-
+  <script src="../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
   
 </head>
 
@@ -42,436 +36,190 @@
 
     
     <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
       <div class="wy-side-nav-search">
         <a href=".." class="icon icon-home"> ddcutil Documentation</a>
         <div role="search">
   <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" />
+    <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
   </form>
 </div>
       </div>
 
       <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
-        <ul class="current">
-          
-            <li>
-    <li class="toctree-l1 ">
-        <a class="" href="..">Overview</a>
-        
-    </li>
-<li>
-          
-            <li>
-    <ul class="subnav">
-    <li><span>Using ddcutil</span></li>
-
-        
-            
-    <li class="toctree-l1 ">
-        <a class="" href="../commands/">Command Overview</a>
-        
-    </li>
-
-        
-            
-    <li class="toctree-l1 ">
-        <a class="" href="../cmdargs/">Command Arguments</a>
-        
-    </li>
-
-        
-            
-    <li class="toctree-l1 ">
-        <a class="" href="../cmdopts/">Command Specific Options</a>
-        
-    </li>
-
-        
-            
-    <li class="toctree-l1 ">
-        <a class="" href="../cmd_output/">Command Output Examples</a>
-        
-    </li>
-
-        
-            
-    <ul class="subnav">
-    <li><span>Examples</span></li>
-
-        
-            
-    <li class="toctree-l1 ">
-        <a class="" href="../vcpinfo_output/">ddcutil vcpinfo example</a>
-        
-    </li>
-
-        
-            
-    <li class="toctree-l1 ">
-        <a class="" href="../detect_verbose_output/">ddcutil detect example</a>
-        
-    </li>
-
-        
-            
-    <li class="toctree-l1 ">
-        <a class="" href="../cap_u3011_verbose_output/">ddcutil capabilities example</a>
-        
-    </li>
-
-        
-            
-    <li class="toctree-l1 ">
-        <a class="" href="../getvcp_known_u3011_output/">ddcutil getvcp example</a>
-        
-    </li>
-
-        
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="..">Overview</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">Using ddcutil</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../commands/">Command Overview</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../cmdargs/">Command Arguments</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../cmdopts/">Command Specific Options</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../cmd_output/">Command Output Examples</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="#">Examples</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../vcpinfo_output/">ddcutil vcpinfo example</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../detect_verbose_output/">ddcutil detect example</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../cap_u3011_verbose_output/">ddcutil capabilities example</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../getvcp_known_u3011_output/">ddcutil getvcp example</a>
+                </li>
     </ul>
-
-        
-            
-    <li class="toctree-l1 ">
-        <a class="" href="../mccs_background/">Monitor Control Command Set</a>
-        
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../mccs_background/">Monitor Control Command Set</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../colormgt/">Color Management</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../tuning/">Instrumentation and Tuning</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../table_features/">Table Type Features</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../usb/">USB Connected Monitors</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">Installation and Configuration</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../install/">Install ddcutil From Prebuilt Packages</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../building/">Building From Source</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../building_ddcui/">Building ddcui</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../shared_lib_config/">Shared Library Configuration</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../adl/">AMD fglrx Driver</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../config/">Configuration and Installation Diagnostics</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../i2c_permissions/">Device Permissions</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../kernel_module/">Kernel Module Configuration</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../nvidia/">Special Nvidia Driver Settings</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../virtual_machines/">Virtual Machines</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../raspberry/">Raspberry Pi</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">ddcui</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../ddcui_main/">Overview</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../building_ddcui/">Building ddcui</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">Additional Topics</span></p>
+                <ul class="current">
+                    <li class="toctree-l1"><a class="reference internal" href="../faq/">Frequently Asked Questions</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../monitor_notes/">Notes on specific monitors</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../quirks/">Notes on Particular Configurations</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../tech_support/">Technical Support</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../feedback/">Feedback</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../releases/">Releases</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../release_notes/">Release Notes</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../prior_announcements/">Announcement History</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../ddccontrol/">Comparison with ddccontrol</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../ddc_null_response/">DDC Null Message</a>
+                    </li>
+                    <li class="toctree-l1 current"><a class="reference internal current" href="#">API</a>
+    <ul class="current">
+                <li class="toctree-l2"><a class="reference internal" href="../api_main/">C API</a>
+                </li>
+                <li class="toctree-l2 current"><a class="reference internal current" href="./">C API Changes for Release 0.9.0</a>
+    <ul class="current">
+    <li class="toctree-l3"><a class="reference internal" href="#multithreading">Multithreading</a>
     </li>
-
-        
-            
-    <li class="toctree-l1 ">
-        <a class="" href="../colormgt/">Color Management</a>
-        
+    <li class="toctree-l3"><a class="reference internal" href="#library-build-information">Library Build Information</a>
     </li>
-
-        
-            
-    <li class="toctree-l1 ">
-        <a class="" href="../tuning/">Instrumentation and Tuning</a>
-        
+    <li class="toctree-l3"><a class="reference internal" href="#status-code-functions">Status Code Functions</a>
     </li>
-
-        
-            
-    <li class="toctree-l1 ">
-        <a class="" href="../table_features/">Table Type Features</a>
-        
+    <li class="toctree-l3"><a class="reference internal" href="#detailed-error-reports">Detailed Error Reports</a>
     </li>
-
-        
-            
-    <li class="toctree-l1 ">
-        <a class="" href="../usb/">USB Connected Monitors</a>
-        
+    <li class="toctree-l3"><a class="reference internal" href="#global-settings">Global Settings</a>
     </li>
-
-        
-    </ul>
-<li>
-          
-            <li>
-    <ul class="subnav">
-    <li><span>Installation and Configuration</span></li>
-
-        
-            
-    <li class="toctree-l1 ">
-        <a class="" href="../install/">Install ddcutil From Prebuilt Packages</a>
-        
+    <li class="toctree-l3"><a class="reference internal" href="#output-redirection-and-capture">Output Redirection and Capture</a>
     </li>
-
-        
-            
-    <li class="toctree-l1 ">
-        <a class="" href="../building/">Building From Source</a>
-        
+    <li class="toctree-l3"><a class="reference internal" href="#message-control">Message Control</a>
     </li>
-
-        
-            
-    <li class="toctree-l1 ">
-        <a class="" href="../building_ddcui/">Building ddcui</a>
-        
+    <li class="toctree-l3"><a class="reference internal" href="#statistics-and-diagnostics">Statistics and Diagnostics</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#feature-lists">Feature Lists</a>
     </li>
-
-        
-            
-    <li class="toctree-l1 ">
-        <a class="" href="../shared_lib_config/">Shared Library Configuration</a>
-        
+    <li class="toctree-l4"><a class="reference internal" href="#mccs-version-identification">MCCS Version Identification</a>
     </li>
-
-        
-            
-    <li class="toctree-l1 ">
-        <a class="" href="../adl/">AMD fglrx Driver</a>
-        
+    <li class="toctree-l4"><a class="reference internal" href="#detect-displays">Detect Displays</a>
     </li>
-
-        
-            
-    <li class="toctree-l1 ">
-        <a class="" href="../config/">Configuration and Installation Diagnostics</a>
-        
+    <li class="toctree-l4"><a class="reference internal" href="#display-identifiers">Display Identifiers</a>
     </li>
-
-        
-            
-    <li class="toctree-l1 ">
-        <a class="" href="../i2c_permissions/">Device Permissions</a>
-        
+    <li class="toctree-l4"><a class="reference internal" href="#display-references">Display References</a>
     </li>
-
-        
-            
-    <li class="toctree-l1 ">
-        <a class="" href="../kernel_module/">Kernel Module Configuration</a>
-        
+    <li class="toctree-l4"><a class="reference internal" href="#display-handles">Display Handles</a>
     </li>
-
-        
-            
-    <li class="toctree-l1 ">
-        <a class="" href="../nvidia/">Special Nvidia Driver Settings</a>
-        
+    <li class="toctree-l4"><a class="reference internal" href="#capabilities-string">Capabilities String</a>
     </li>
-
-        
-            
-    <li class="toctree-l1 ">
-        <a class="" href="../virtual_machines/">Virtual Machines</a>
-        
+    <li class="toctree-l4"><a class="reference internal" href="#feature-metadata">Feature Metadata</a>
     </li>
-
-        
-            
-    <li class="toctree-l1 ">
-        <a class="" href="../raspberry/">Raspberry Pi</a>
-        
+    <li class="toctree-l4"><a class="reference internal" href="#nc-feature-value-lookup">NC Feature Value Lookup</a>
     </li>
-
-        
-    </ul>
-<li>
-          
-            <li>
-    <ul class="subnav">
-    <li><span>ddcui</span></li>
-
-        
-            
-    <li class="toctree-l1 ">
-        <a class="" href="../ddcui_main/">Overview</a>
-        
+    <li class="toctree-l4"><a class="reference internal" href="#symbol-name-changes">Symbol Name Changes</a>
     </li>
-
-        
-            
-    <li class="toctree-l1 ">
-        <a class="" href="../building_ddcui/">Building ddcui</a>
-        
+    <li class="toctree-l4"><a class="reference internal" href="#get-and-set-vcp-feature-values">Get and Set VCP Feature Values</a>
     </li>
-
-        
-    </ul>
-<li>
-          
-            <li>
-    <ul class="subnav">
-    <li><span>Additional Topics</span></li>
-
-        
-            
-    <li class="toctree-l1 ">
-        <a class="" href="../faq/">Frequently Asked Questions</a>
-        
+    <li class="toctree-l4"><a class="reference internal" href="#get-or-set-multiple-values">Get or Set Multiple Values</a>
     </li>
-
-        
-            
-    <li class="toctree-l1 ">
-        <a class="" href="../monitor_notes/">Notes on specific monitors</a>
-        
+    <li class="toctree-l4"><a class="reference internal" href="#format-feature-values">Format Feature Values</a>
     </li>
-
-        
-            
-    <li class="toctree-l1 ">
-        <a class="" href="../quirks/">Notes on Particular Configurations</a>
-        
+    <li class="toctree-l4"><a class="reference internal" href="#miscellaneous-changes">Miscellaneous Changes</a>
     </li>
-
-        
-            
-    <li class="toctree-l1 ">
-        <a class="" href="../tech_support/">Technical Support</a>
-        
+    <li class="toctree-l4"><a class="reference internal" href="#sample-programs">Sample programs</a>
     </li>
-
-        
-            
-    <li class="toctree-l1 ">
-        <a class="" href="../feedback/">Feedback</a>
-        
-    </li>
-
-        
-            
-    <li class="toctree-l1 ">
-        <a class="" href="../releases/">Releases</a>
-        
-    </li>
-
-        
-            
-    <li class="toctree-l1 ">
-        <a class="" href="../release_notes/">Release Notes</a>
-        
-    </li>
-
-        
-            
-    <li class="toctree-l1 ">
-        <a class="" href="../prior_announcements/">Announcement History</a>
-        
-    </li>
-
-        
-            
-    <li class="toctree-l1 ">
-        <a class="" href="../ddccontrol/">Comparison with ddccontrol</a>
-        
-    </li>
-
-        
-            
-    <li class="toctree-l1 ">
-        <a class="" href="../ddc_null_response/">DDC Null Message</a>
-        
-    </li>
-
-        
-            
-    <ul class="subnav">
-    <li><span>API</span></li>
-
-        
-            
-    <li class="toctree-l1 ">
-        <a class="" href="../api_main/">C API</a>
-        
-    </li>
-
-        
-            
-    <li class="toctree-l1 current">
-        <a class="current" href="./">C API Changes for Release 0.9.0</a>
-        
-            <ul>
-            
-                <li class="toctree-l3"><a href="#c-api-changes-for-release-090">C API Changes for Release 0.9.0</a></li>
-                
-                    <li><a class="toctree-l4" href="#multithreading">Multithreading</a></li>
-                
-                    <li><a class="toctree-l4" href="#library-build-information">Library Build Information</a></li>
-                
-                    <li><a class="toctree-l4" href="#status-code-functions">Status Code Functions</a></li>
-                
-                    <li><a class="toctree-l4" href="#detailed-error-reports">Detailed Error Reports</a></li>
-                
-                    <li><a class="toctree-l4" href="#global-settings">Global Settings</a></li>
-                
-                    <li><a class="toctree-l4" href="#output-redirection-and-capture">Output Redirection and Capture</a></li>
-                
-                    <li><a class="toctree-l4" href="#message-control">Message Control</a></li>
-                
-                    <li><a class="toctree-l4" href="#statistics-and-diagnostics">Statistics and Diagnostics</a></li>
-                
-            
-            </ul>
-        
-    </li>
-
-        
-            
-    <li class="toctree-l1 ">
-        <a class="" href="../c_api_93/">C API Changes for Release 0.9.3</a>
-        
-    </li>
-
-        
-            
-    <li class="toctree-l1 ">
-        <a class="" href="../c_api_95/">C API Changes for Release 0.9.5</a>
-        
-    </li>
-
-        
-            
-    <li class="toctree-l1 ">
-        <a class="" href="../c_api_96/">C API Changes for Release 0.9.6</a>
-        
-    </li>
-
-        
-            
-    <li class="toctree-l1 ">
-        <a class="" href="../c_api_98/">C API Changes for Release 0.9.8</a>
-        
-    </li>
-
-        
-            
-    <li class="toctree-l1 ">
-        <a class="" href="../python_api/">Python API Overview</a>
-        
-    </li>
-
-        
-    </ul>
-
-        
-            
-    <li class="toctree-l1 ">
-        <a class="" href="../todo/">Future Tasks</a>
-        
-    </li>
-
-        
-            
-    <li class="toctree-l1 ">
-        <a class="" href="../bibliography/">References</a>
-        
-    </li>
-
-        
-            
-    <li class="toctree-l1 ">
-        <a class="" href="../acknowledgements/">Acknowledgements</a>
-        
-    </li>
-
-        
-    </ul>
-<li>
-          
-            <li>
-    <ul class="subnav">
-    <li><span>ddcui</span></li>
-
-        
-            
-    <li class="toctree-l1 ">
-        <a class="" href="../ddcui_main/">Overview</a>
-        
-    </li>
-
-        
-    </ul>
-<li>
-          
         </ul>
+    </li>
+    </ul>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../c_api_93/">C API Changes for Release 0.9.3</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../c_api_95/">C API Changes for Release 0.9.5</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../c_api_96/">C API Changes for Release 0.9.6</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../c_api_98/">C API Changes for Release 0.9.8</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../python_api/">Python API Overview</a>
+                </li>
+    </ul>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../todo/">Future Tasks</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../bibliography/">References</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../acknowledgements/">Acknowledgements</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">ddcui</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../ddcui_main/">Overview</a>
+                    </li>
+                </ul>
       </div>
-      &nbsp;
+    </div>
     </nav>
 
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
@@ -491,23 +239,23 @@
     
       
         
-          <li>Additional Topics &raquo;</li>
+          <li>API &raquo;</li>
         
       
         
-          <li>API &raquo;</li>
+          <li>Additional Topics &raquo;</li>
         
       
     
     <li>C API Changes for Release 0.9.0</li>
     <li class="wy-breadcrumbs-aside">
       
-        
-          <a href="https://github.com/rockowitz/ddcutil" class="icon icon-github"> Edit on GitHub</a>
-        
+        <a href="https://github.com/rockowitz/ddcutil/edit/master/docs/c_api_90.md"
+          class="icon icon-github"> Edit on GitHub</a>
       
     </li>
   </ul>
+  
   <hr/>
 </div>
           <div role="main">
@@ -1211,42 +959,13 @@ that both Version 3.0 and Version 2.2 are independent successors to Version 2.1.
 <h4 id="feature-metadata">Feature Metadata</h4>
 <p>Struct <strong>DDCA_Version_Feature_Info</strong> and related functions are deprecated.  Instead, the master 
 record for feature metadata is now <strong>DDCA_Feature_Metadata</strong>.  </p>
-<table>
-<thead>
-<tr>
-<th>Deprecated and Deleted</th>
-<th>Comments</th>
-<th></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>DDCA_Version_Feature_Info</td>
-<td>use DDCA_Feature_Metadata</td>
-<td></td>
-</tr>
-<tr>
-<td>ddca_get_feature_info_by_vcp_version()</td>
-<td>Use ddca_get_feature_metadata()  - in 0.8.7</td>
-<td></td>
-</tr>
-<tr>
-<td>ddca_get_feature_info_by_display()</td>
-<td>Use ddca_get_feature_metadata()</td>
-<td></td>
-</tr>
-<tr>
-<td>ddca_free_feature_info()</td>
-<td>in 0.8.7?</td>
-<td></td>
-</tr>
-<tr>
-<td>ddca_get_simple_sl_value_table()</td>
-<td>Takes a DDCA_MCCS_Version_Id argument.</td>
-<td></td>
-</tr>
-</tbody>
-</table>
+<p>|Deprecated and Deleted                  |Comments |
+|---------------------|------------------|-----------------------------------------------------------------------|
+|DDCA_Version_Feature_Info               | use DDCA_Feature_Metadata |
+|ddca_get_feature_info_by_vcp_version()  | Use ddca_get_feature_metadata()  - in 0.8.7
+|ddca_get_feature_info_by_display()      | Use ddca_get_feature_metadata()   |
+|ddca_free_feature_info()                | in 0.8.7? 
+|ddca_get_simple_sl_value_table()        | Takes a DDCA_MCCS_Version_Id argument. |</p>
 <table>
 <thead>
 <tr>
@@ -1367,12 +1086,12 @@ in favor of <strong>DDCA_MCCS_Version_Spec</strong>)<br />
 </table>
 <p>Naming patterns: <br />
 - Functions that always return the same value generally do not include "<strong><em>_get_</em></strong>" in their names,
-e.g. <strong>ddca_ddcutil_version()</strong>, <strong>ddca_max_max_tries()</strong> <br />
-- In the case of "overloaded" functions, "<strong><em>_by_</em></strong>" is usually used to distinguish variants,
-e.g. <strong>ddca_get_feature_metadata_by_vspec()</strong>, <strong>ddca_get_feature_metadata_by_dref()</strong>, <strong>get_feature_metadata_by_display()</strong><br />
+e.g. <strong>ddca_ddcutil_version()*<em>, <strong>ddca_max_max_tries()</strong> <br />
+- In the case of "overloaded" functions, "</em></strong>_by_<strong><em>" is usually used to distinguish variants,
+e.g. </em>*ddca_get_feature_metadata_by_vspec()</strong>, <strong>ddca_get_feature_metadata_by_dref()*<em>, <strong>get_feature_metadata_by_display()</strong><br />
 - However, in the case where there the result depends on a single input value from which the result
-is extracted, "<strong><em>_from_</em></strong>" is used,
-e.g. <strong>ddca_mmk_from_dref()</strong>, <strong>ddca_mmk_from_dh()</strong> </p>
+is extracted, "</em></strong>_from_<strong><em>" is used,
+e.g. </em>*ddca_mmk_from_dref()</strong>, <strong>ddca_mmk_from_dh()</strong> </p>
 <h4 id="get-and-set-vcp-feature-values">Get and Set VCP Feature Values</h4>
 <p><strong>DDCA_Any_Vcp_Value</strong> vs <strong>DDCA_Non_Table_Vcp_Value</strong></p>
 <p>The API provides functions for getting, setting, and otherwise processing VCP values in 3 forms, 
@@ -1570,9 +1289,9 @@ now return the prior setting  </li>
     
   </div>
 
-  Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
 </footer>
-	  
+      
         </div>
       </div>
 
@@ -1580,10 +1299,10 @@ now return the prior setting  </li>
 
   </div>
 
-<div class="rst-versions" role="note" style="cursor: pointer">
+  <div class="rst-versions" role="note" aria-label="versions">
     <span class="rst-current-version" data-toggle="rst-current-version">
       
-          <a href="https://github.com/rockowitz/ddcutil" class="icon icon-github" style="float: left; color: #fcfcfc"> GitHub</a>
+          <a href="https://github.com/rockowitz/ddcutil/" class="fa fa-github" style="float: left; color: #fcfcfc"> GitHub</a>
       
       
         <span><a href="../api_main/" style="color: #fcfcfc;">&laquo; Previous</a></span>
@@ -1593,6 +1312,14 @@ now return the prior setting  </li>
       
     </span>
 </div>
+    <script>var base_url = '..';</script>
+    <script src="../js/theme.js" defer></script>
+      <script src="../search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
 
 </body>
 </html>

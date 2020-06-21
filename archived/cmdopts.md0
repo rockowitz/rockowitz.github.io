@@ -1,0 +1,98 @@
+## Command Specific Options
+
+### Command **getvcp**
+
+#### Option **--terse**
+
+If --terse is specified on a getvcp command, output is in a format this is easily machine readable,
+to facilitate use in scripts.  The format depends on the feature type.  
+
+In keeping with **ddcutil** 
+practice, VCP feature codes are shown without a leading hex indicator even though they are 
+hexidecimal values.
+
+For a continuous VCP feature, both the current value (in decimal) and maximum value (in decimal) 
+are shown.  Output takes the form:
+
+<pre>
+&nbsp;&nbsp;<em>VCP</em> feature-code <em>C</em> cur-value-decimal max-value-decimal
+</pre>
+
+For example:
+~~~
+VCP 10  C 50 100
+~~~
+
+For a simple non-continuous VCP feature, i.e. one for which only the SL response byte is 
+significant, the value is reported in hex.   Output takes the form:  
+
+<pre>
+&nbsp;&nbsp;<em>VCP</em> feature-code <em>SNC</em> hex-value
+</pre>
+
+For example:
+~~~
+VCP 60 SNC x03
+~~~
+
+Complex non-continuous VCP features are ones for which more then 1 response byte is 
+significant.  In that case all 4 bytes are reported in hex.  Output takes the form:
+
+<pre>
+&nbsp;&nbsp;<em>VCP</em> feature-code <em>CNC</em> mh-hex ml-hex sh-hex sl-hex
+</pre>
+
+For example:
+~~~
+VCP DF CND xff xff x02 x00
+~~~
+
+Table VCP features report the value as hexidecimal string.  Output takes the form:
+
+<pre>
+&nbsp;&nbsp;<em>VCP</em> feature-code <em>T</em> hex-string
+</pre>
+
+For example:
+~~~
+VCP 73 T x01020304
+~~~
+
+Finally, if a feature is not supported or some other error occurs, this may be reported
+or there may simply be no output.  It is always reported for single feature getvcp requests. 
+Normally not reported for multi-feature getvcp requests, but see **--show-unsupported** 
+If reported, output takes the form:
+
+<pre>
+&nbsp;&nbsp;<em>VCP</em> feature-code <em>ERR</em>
+</pre>
+
+For example:
+~~~
+VCP 84 ERR
+~~~
+
+#### Option **--show-unsupported**
+
+If querying a single feature, **getvcp** reports an error if the feature is unsupported or 
+some other error occurs.  If querying a feature subset, e.g. COLOR, output for invalid features is suppressd.
+The **--show-unsupported** option forces error messages in all cases. 
+
+
+### Commands **setvcp, loadvcp**
+
+### Option **--noverify**
+
+The underlying DDC operation used by **setvcp** writes the command specifying a new VCP value to 
+the I2C bus.  The status code from this operation simply indicates whether the write was successful.
+It does not indicate whether the display successfully received and processed the command.  There 
+have been occasional reports in the field of cases where the **setvcp** command appeared to succeed, but 
+the new value was not set.  Therefore **setvcp** and **loadvcp** by default read the feature value 
+to verify that the value in the monitor has actually changed.
+
+As this facility causes a minor increase in processing time and addresses a rare condition, it 
+can be disabled using the **--noverify** option.
+
+### Option **--verbose**
+
+Display informational messages regarding verification.

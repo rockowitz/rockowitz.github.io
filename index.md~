@@ -1,0 +1,110 @@
+
+ddcutil
+=======
+
+##Announcements
+
+13 June 2020 
+
+**ddcutil** release 0.9.9 contains changes of general interest: 
+
+- A new command line option, ***--less-sleep*** eliminates many of the delays between the time that **ddcutil** receives a DDC response from a display
+and sends the next request, improving performance.
+<!-- - User Defined Features are now supported. -->
+- Support for AMD's old proprietary **fglrx** driver has been dropped.
+
+The **libddcutil** shared libray has minor changes.  For details, see [Shared Library Changes for Release 0.9.9](c_api_99.md).
+
+**ddcui** release 0.1.1 adds additional features and has numerous changes in the "fit and finish" category.  In particular:
+
+- Command line options for starting **ddcui**, corresponding to settings in the ***Option*** dialogs, and (if multiple monitors) 
+  the initlal monitor selected.
+- The ***Feature Selection Dialog***, along with command line option ***--custom-feature-set***, 
+enable the user to specify the VCP features to be shown.
+- Better handling of error conditions
+- Better **Help** text
+
+For general information about the graphical user interface, see [ddcui](ddcui_main.md).
+
+For a complete list of changes and bug fixes, see [Release Notes](release_notes.md).
+Prior announcements can be found [here](prior_announcements.md).
+
+Lastly, this website has been extensively revised to reflect the current state of **ddcutil** and **ddcui**.
+
+##Introduction
+
+**ddcutil** is a Linux program for managing monitor settings, such as brightness, color levels, and input source.
+Generally speaking, any setting that can be changed by pressing buttons on the monitor can be modified by **ddcutil**.
+
+**ddcutil** primarily uses DDC/CI (Display Data Channel Command Interface) to communicate with monitors implementing MCCS 
+(Monitor Control Command Set) over I2C.  Normally, the video driver for the
+monitor exposes the I2C channel as devices named /dev/i2c-n.  Alternatively, there is support for monitors (such as Eizo ColorEdge displays) that implement MCCS using a USB connection.  See [USB Connected Monitors](usb.md). 
+
+A particular use case for **ddcutil**, and the one that inspired its development, is as part of color profile management. 
+Monitor calibration is relative to the monitor color settings currently in effect, 
+e.g. red gain.  ddcutil allows color related settings to be saved at the time 
+a monitor is calibrated, and then restored when the calibration is applied.
+
+Restrictions:  
+
+- **ddcutil** does not support laptop displays, which are controlled using a special API, not I2C.   
+- Generally speaking, **ddcutil** can be built in a virtual machine, but will not run in a VM.  This is
+because the virtual video drivers do not implement I2C.  However, if the VM is connected to a separate
+video card and is running a non-virtualized driver for the card in passthru mode, then **ddcutil** will work.  
+- Nvidia's proprietary video driver may require special configuration.  See 
+[Special Nvidia Driver Settings](nvidia.md).   
+- Reading and writing ***Table*** type features is implemented but untested.  See [Table Features](table_features.md)  
+
+**ddcutil** is released under the GNU Public License, V2 (GPLV2).
+The source is hosted on [Github](https://github.com/rockowitz/ddcutil).
+
+General support questions are best directed to the [issue tracker](https://github.com/rockowitz/ddcutil/issues) on Github.
+Use of that forum allows everyone to benefit from individual questions and ideas. For details, see [Technical Support](tech_support.md). 
+
+## ddcui
+
+**ddcui** is a graphical user interface to **ddcutil**, built using Qt. It is currently beta level code. For further information, 
+see [ddcui Overview](ddcui_main.md).
+
+**ddcui** is released under the GNU Public License, V2 (GPLV2).
+The source is hosted on [Github](http://www.github.com/rockowitz/ddcuui).
+
+**ddcui** questions should also be directed the to the [ddcutil issue tracker](https://github.com/rockowitz/ddcutil/issues) on Github.
+
+
+## Topics
+
+Using **ddcutil**:
+
+- [Command Overview](commands.md)
+- [Command Output Examples](cmd_output.md)
+- [Monitor Control Command Set](mccs_background.md)
+- [Color Management](colormgt.md)
+
+Commands and Options:
+- Detailed command and option documentation(command_detail.md)
+
+Installation and Configuration:
+
+- [Install **ddcutil** From Prebuilt Packages](install.md)
+- [Building From Source](building.md)
+- [Configuration and Installation Diagnostics](config.md)
+
+Other:
+
+- [Frequently Asked Questions](faq.md)
+- [Technical Support](tech_support.md)
+- [Releases](releases.md)
+- [Release Notes](release_notes.md)
+- [Announcement History](prior_announcements.md)
+- [Virtual Machines](virtual_machines.md)
+- [Comparison with ddccontrol](ddccontrol.md)
+- [Notes on Specific Monitors](monitor_notes.md)
+- [DDC Null Response](ddc_null_response.md)
+- [APIs](api_main.md)
+- [References](bibliography.md)
+- [Acknowledgements](acknowledgements.md)
+
+## Author
+
+Sanford Rockowitz  <rockowitz@minsoft.com>
