@@ -7,7 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
   <meta name="author" content="Sanford Rockowitz">
-  
+  <link rel="canonical" href="https://www.ddcutil.com/release_notes/">
   <link rel="shortcut icon" href="../img/favicon.ico">
   <title>Release Notes - ddcutil Documentation</title>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
@@ -20,7 +20,7 @@
     // Current page data
     var mkdocs_page_name = "Release Notes";
     var mkdocs_page_input_path = "release_notes.md";
-    var mkdocs_page_url = null;
+    var mkdocs_page_url = "/release_notes/";
   </script>
   
   <script src="../js/jquery-2.1.1.min.js" defer></script>
@@ -48,40 +48,82 @@
 
       <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
                 <ul>
-                    <li class="toctree-l1"><a class="reference internal" href="..">Overview</a>
+                    <li class="toctree-l1"><a class="reference internal" href="..">Introduction</a>
                     </li>
                 </ul>
-                <p class="caption"><span class="caption-text">Using ddcutil</span></p>
                 <ul>
                     <li class="toctree-l1"><a class="reference internal" href="../commands/">Command Overview</a>
                     </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../cmdargs/">Command Arguments</a>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../cmd_output/">Command Examples</a>
                     </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../cmdopts/">Command Specific Options</a>
+                </ul>
+                <p class="caption"><span class="caption-text">Command Examples</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../detect_verbose_output/">ddcutil detect example</a>
                     </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../cmd_output/">Command Output Examples</a>
+                    <li class="toctree-l1"><a class="reference internal" href="../getvcp_known_u3011_output/">ddcutil getvcp example</a>
                     </li>
-                    <li class="toctree-l1"><a class="reference internal" href="#">Examples</a>
+                    <li class="toctree-l1"><a class="reference internal" href="../vcpinfo_output/">ddcutil vcpinfo example</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../cap_u3011_verbose_output/">ddcutil capabilities example</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../command_detail/">Command Detail</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">Command Detail</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="#">Primary Commands</a>
     <ul>
-                <li class="toctree-l2"><a class="reference internal" href="../vcpinfo_output/">ddcutil vcpinfo example</a>
+                <li class="toctree-l2"><a class="reference internal" href="../command_detect/">detect</a>
                 </li>
-                <li class="toctree-l2"><a class="reference internal" href="../detect_verbose_output/">ddcutil detect example</a>
+                <li class="toctree-l2"><a class="reference internal" href="../command_capabilities/">capabilities</a>
                 </li>
-                <li class="toctree-l2"><a class="reference internal" href="../cap_u3011_verbose_output/">ddcutil capabilities example</a>
+                <li class="toctree-l2"><a class="reference internal" href="../command_getvcp/">getvcp</a>
                 </li>
-                <li class="toctree-l2"><a class="reference internal" href="../getvcp_known_u3011_output/">ddcutil getvcp example</a>
+                <li class="toctree-l2"><a class="reference internal" href="../command_setvcp/">setvcp</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../command_vcpinfo/">vcpinfo</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../command_dumpvcp_loadvcp/">dumpvcp &amp; loadvcp</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../command_scs/">scs</a>
                 </li>
     </ul>
                     </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../mccs_background/">Monitor Control Command Set</a>
+                    <li class="toctree-l1"><a class="reference internal" href="../secondary_commands/">Secondary Commands</a>
                     </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../colormgt/">Color Management</a>
+                    <li class="toctree-l1"><a class="reference internal" href="../options_main/">Command Options</a>
                     </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../tuning/">Instrumentation and Tuning</a>
+                    <li class="toctree-l1"><a class="reference internal" href="#">Command Options</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../display_selection/">Display Selection</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../feature_selection/">Feature Selection</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../performance_options/">Performance and Tuning Options</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../instrumentation_options/">Instrumentation Options</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../output_control_options/">Output Level Options</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../other_options/">Miscellaneous Options</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../debug_options/">Debugging Options</a>
+                </li>
+    </ul>
                     </li>
+                </ul>
+                <p class="caption"><span class="caption-text">Specific Facilities</span></p>
+                <ul>
                     <li class="toctree-l1"><a class="reference internal" href="../table_features/">Table Type Features</a>
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="../usb/">USB Connected Monitors</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../colormgt/">Color Management</a>
                     </li>
                 </ul>
                 <p class="caption"><span class="caption-text">Installation and Configuration</span></p>
@@ -90,48 +132,102 @@
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="../building/">Building From Source</a>
                     </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../building_ddcui/">Building ddcui</a>
-                    </li>
                     <li class="toctree-l1"><a class="reference internal" href="../shared_lib_config/">Shared Library Configuration</a>
-                    </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../adl/">AMD fglrx Driver</a>
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="../config/">Configuration and Installation Diagnostics</a>
                     </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../i2c_permissions/">Device Permissions</a>
+                    <li class="toctree-l1"><a class="reference internal" href="../i2c_permissions/">I2C Device Permissions</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../usb_permissions/">USB Device Permissions</a>
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="../kernel_module/">Kernel Module Configuration</a>
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="../nvidia/">Special Nvidia Driver Settings</a>
                     </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../adl/">AMD fglrx Driver</a>
+                    </li>
                     <li class="toctree-l1"><a class="reference internal" href="../virtual_machines/">Virtual Machines</a>
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="../raspberry/">Raspberry Pi</a>
-                    </li>
-                </ul>
-                <p class="caption"><span class="caption-text">ddcui</span></p>
-                <ul>
-                    <li class="toctree-l1"><a class="reference internal" href="../ddcui_main/">Overview</a>
-                    </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../building_ddcui/">Building ddcui</a>
-                    </li>
-                </ul>
-                <p class="caption"><span class="caption-text">Additional Topics</span></p>
-                <ul class="current">
-                    <li class="toctree-l1"><a class="reference internal" href="../faq/">Frequently Asked Questions</a>
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="../monitor_notes/">Notes on specific monitors</a>
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="../quirks/">Notes on Particular Configurations</a>
                     </li>
+                </ul>
+                <p class="caption"><span class="caption-text">API</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../api_main/">C API</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../c_api_90/">C API Changes for Release 0.9.0</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../c_api_93/">C API Changes for Release 0.9.3</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../c_api_95/">C API Changes for Release 0.9.5</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../c_api_96/">C API Changes for Release 0.9.6</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../c_api_98/">C API Changes for Release 0.9.8</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../c_api_99/">C API Changes for Release 0.9.9</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../python_api/">Python API Overview</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">Background</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../mccs_background/">Monitor Control Command Set</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../ddc_vs_i2c/">DDC vs I2C</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">Additional Topics</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../faq/">Frequently Asked Questions</a>
+                    </li>
                     <li class="toctree-l1"><a class="reference internal" href="../tech_support/">Technical Support</a>
                     </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../feedback/">Feedback</a>
+                    <li class="toctree-l1"><a class="reference internal" href="../ddccontrol/">Comparison with ddccontrol</a>
                     </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../ddc_null_response/">DDC Null Message</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../bibliography/">References</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../acknowledgements/">Acknowledgements</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">Release History</span></p>
+                <ul class="current">
                     <li class="toctree-l1"><a class="reference internal" href="../releases/">Releases</a>
                     </li>
                     <li class="toctree-l1 current"><a class="reference internal current" href="./">Release Notes</a>
     <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#099">0.9.9</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#execution-statistics">Execution Statistics</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#performance-related-command-options">Performance Related Command Options</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#less-useful-performace-related-command-optons">Less Useful Performace Related Command Optons</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#other-options">Other Options</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#support-for-fglrx-removed">Support for fglrx removed</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#miscellaneous">Miscellaneous</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#tracing">Tracing</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#building-ddcutil">Building ddcutil</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#shared-library">Shared Library</a>
+    </li>
+        </ul>
+    </li>
     <li class="toctree-l2"><a class="reference internal" href="#098">0.9.8</a>
         <ul>
     <li class="toctree-l3"><a class="reference internal" href="#command-line-option-sleep-multiplier">Command line option --sleep-multiplier</a>
@@ -142,7 +238,7 @@
     </li>
     <li class="toctree-l3"><a class="reference internal" href="#display-detection-messages">Display Detection messages</a>
     </li>
-    <li class="toctree-l3"><a class="reference internal" href="#miscellaneous">Miscellaneous</a>
+    <li class="toctree-l3"><a class="reference internal" href="#miscellaneous_1">Miscellaneous</a>
     </li>
     <li class="toctree-l3"><a class="reference internal" href="#api-changes">API Changes</a>
     </li>
@@ -170,7 +266,7 @@
     </li>
     <li class="toctree-l3"><a class="reference internal" href="#monitor-quirks">Monitor Quirks</a>
     </li>
-    <li class="toctree-l3"><a class="reference internal" href="#miscellaneous_1">Miscellaneous</a>
+    <li class="toctree-l3"><a class="reference internal" href="#miscellaneous_2">Miscellaneous</a>
     </li>
     <li class="toctree-l3"><a class="reference internal" href="#api-changes_2">API Changes</a>
     </li>
@@ -184,11 +280,11 @@
     </li>
     <li class="toctree-l3"><a class="reference internal" href="#user-supplied-feature-definitions">User Supplied Feature Definitions</a>
     </li>
-    <li class="toctree-l3"><a class="reference internal" href="#tracing">Tracing</a>
+    <li class="toctree-l3"><a class="reference internal" href="#tracing_1">Tracing</a>
     </li>
     <li class="toctree-l3"><a class="reference internal" href="#api-changes_3">API Changes</a>
     </li>
-    <li class="toctree-l3"><a class="reference internal" href="#miscellaneous_2">Miscellaneous</a>
+    <li class="toctree-l3"><a class="reference internal" href="#miscellaneous_3">Miscellaneous</a>
     </li>
         </ul>
     </li>
@@ -202,9 +298,9 @@
     </li>
     <li class="toctree-l3"><a class="reference internal" href="#usb-connected-displays">USB connected displays</a>
     </li>
-    <li class="toctree-l3"><a class="reference internal" href="#tracing_1">Tracing</a>
+    <li class="toctree-l3"><a class="reference internal" href="#tracing_2">Tracing</a>
     </li>
-    <li class="toctree-l3"><a class="reference internal" href="#building-ddcutil">Building ddcutil</a>
+    <li class="toctree-l3"><a class="reference internal" href="#building-ddcutil_1">Building ddcutil</a>
     </li>
         </ul>
     </li>
@@ -228,9 +324,9 @@
     </li>
         </ul>
     </li>
-    <li class="toctree-l3"><a class="reference internal" href="#miscellaneous_3">Miscellaneous</a>
+    <li class="toctree-l3"><a class="reference internal" href="#miscellaneous_4">Miscellaneous</a>
     </li>
-    <li class="toctree-l3"><a class="reference internal" href="#building-ddcutil_1">Building ddcutil</a>
+    <li class="toctree-l3"><a class="reference internal" href="#building-ddcutil_2">Building ddcutil</a>
     </li>
     <li class="toctree-l3"><a class="reference internal" href="#api-changes_4">API Changes</a>
     </li>
@@ -246,7 +342,7 @@
     </li>
     <li class="toctree-l3"><a class="reference internal" href="#eliminate-use-of-longjmp">Eliminate use of longjmp</a>
     </li>
-    <li class="toctree-l3"><a class="reference internal" href="#miscellaneous_4">Miscellaneous</a>
+    <li class="toctree-l3"><a class="reference internal" href="#miscellaneous_5">Miscellaneous</a>
     </li>
     <li class="toctree-l3"><a class="reference internal" href="#bug-fixes_1">Bug Fixes</a>
     </li>
@@ -264,7 +360,7 @@
     </li>
     <li class="toctree-l3"><a class="reference internal" href="#bug-fixes_2">Bug fixes</a>
     </li>
-    <li class="toctree-l3"><a class="reference internal" href="#miscellaneous_5">Miscellaneous</a>
+    <li class="toctree-l3"><a class="reference internal" href="#miscellaneous_6">Miscellaneous</a>
     </li>
         </ul>
     </li>
@@ -340,38 +436,16 @@
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="../prior_announcements/">Announcement History</a>
                     </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../ddccontrol/">Comparison with ddccontrol</a>
-                    </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../ddc_null_response/">DDC Null Message</a>
-                    </li>
-                    <li class="toctree-l1"><a class="reference internal" href="#">API</a>
-    <ul>
-                <li class="toctree-l2"><a class="reference internal" href="../api_main/">C API</a>
-                </li>
-                <li class="toctree-l2"><a class="reference internal" href="../c_api_90/">C API Changes for Release 0.9.0</a>
-                </li>
-                <li class="toctree-l2"><a class="reference internal" href="../c_api_93/">C API Changes for Release 0.9.3</a>
-                </li>
-                <li class="toctree-l2"><a class="reference internal" href="../c_api_95/">C API Changes for Release 0.9.5</a>
-                </li>
-                <li class="toctree-l2"><a class="reference internal" href="../c_api_96/">C API Changes for Release 0.9.6</a>
-                </li>
-                <li class="toctree-l2"><a class="reference internal" href="../c_api_98/">C API Changes for Release 0.9.8</a>
-                </li>
-                <li class="toctree-l2"><a class="reference internal" href="../python_api/">Python API Overview</a>
-                </li>
-    </ul>
-                    </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../todo/">Future Tasks</a>
-                    </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../bibliography/">References</a>
-                    </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../acknowledgements/">Acknowledgements</a>
-                    </li>
                 </ul>
                 <p class="caption"><span class="caption-text">ddcui</span></p>
                 <ul>
                     <li class="toctree-l1"><a class="reference internal" href="../ddcui_main/">Overview</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../ddcui_options/">Command Line Options</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../building_ddcui/">Building ddcui</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../ddcui_release_notes/">ddcui Release Notes</a>
                     </li>
                 </ul>
       </div>
@@ -395,7 +469,7 @@
     
       
         
-          <li>Additional Topics &raquo;</li>
+          <li>Release History &raquo;</li>
         
       
     
@@ -414,11 +488,151 @@
             <div class="section">
               
                 <h2 id="release-notes">Release Notes</h2>
+<h3 id="099">0.9.9</h3>
+<p>13 June 2020</p>
+<!--
+### User Defined Features
+
+User supplied feature definitions are now supported.  For details see [User Defined Features](udf.md).
+-->
+
+<h4 id="execution-statistics">Execution Statistics</h4>
+<p>Additional per-thread statistics are shown when <strong><em>--verbose</em></strong> is specified along with <strong><em>--stats</em></strong>. </p>
+<p>Statistics output has become voluminous.  New  group <strong><em>ELAPSED</em></strong> (alternatively <strong><em>TIME</em></strong>) shows only the elapsed execution time.
+For example</p>
+<pre><code>$ ddcutil detect --stats elapsed
+</code></pre>
+
+<p>Statistics now seperately reports multi-part read and multi-part write tries.  This reflects how statistics are implementated, allowing for <strong><em>Table</em></strong> features.
+As a practival matter, no monitor has ever been seen that implements features of type <strong><em>Table</em></strong>, so the 
+multi-part write statistics will always be zero.</p>
+<h4 id="performance-related-command-options">Performance Related Command Options</h4>
+<p>Option: <strong><em>--less-sleep</em></strong>, <strong><em>--sleep-less</em></strong></p>
+<p>Eliminates many of the sleeps between the time that <strong><em>ddcutil</em></strong> receives a response packet from the display and then sends the next request packet.
+Depending on monitor, this can markedly improve performance, at the cost of more retries owing to increased DDC communication errors. 
+Option <strong><em>--sleep-multipler</em></strong> still applies to the remaining sleeps.  </p>
+<h5 id="less-useful-performace-related-command-optons">Less Useful Performace Related Command Optons</h5>
+<p>The remaining new performance related options seemed like good ideas, but do not appear to 
+significantly reduce execution time.  They are included for user experimentation and feedback.
+They may be removed in future releases.</p>
+<p>Option: <strong><em>--lazy-sleep</em></strong></p>
+<p>Causes some sleep events required by the DDC/CI protocol to occur in deferred mode. 
+Instead of immediately sleeping after DDC IO events that require an interval before the next request 
+is made of the display, the required sleep time is
+added to the current realtime value and saved in the associated
+display reference.  Before the next DDC IO message to the display, the value
+in the display reference is checked, and if greater than the
+now current real time, a sleep for the remaining time occurs.</p>
+<p>Unfortunately, this option appears to have only a neglible effect on execution time. 
+Execution statistics show an approximately 1 ms reduction in sleep time, e.g. 50 to 49 miliiseconds.
+This negligable effect reinforces the fact that most of <strong>ddcutil</strong>'s elapsed time is spent in DDC mandated delays
+and waiting for DDC IO to complete.  '</p>
+<p>Option: <strong><em>--dynamic-sleep-adjustment</em></strong>, (alternative name <strong><em>--dsa</em></strong>)</p>
+<p>If retry is required, dynamically increases the delay time before subsequent retries, 
+up to a maximum.  Does not appear to have an appreciable effect on retry success, but it 
+may be a useful alternative to option <strong><em>--sleep-multiplier</em></strong>. </p>
+<h4 id="other-options">Other Options</h4>
+<p>Option: <strong><em>--timeout-i2c-io</em></strong></p>
+<p>Causes (most) I2C read calls to eventually time out if they do not return.
+This has been implemented as a POSSIBLE way to address occasional reports of <strong>ddcutil</strong> locking up, with subsequent
+ <strong>ddcutiil</strong> calls blocking behind it.   This may become the default in future releases.</p>
+<h4 id="support-for-fglrx-removed">Support for <strong>fglrx</strong> removed</h4>
+<p><strong><em>ddcutil</em></strong> no longer supports AMD's old proprietary display driver <strong><em>fglrx</em></strong>.  Command line option <strong><em>--adl</em></strong> is no longer recognized.
+<strong><em>.configure</em></strong> option <strong><em>--with-adl</em></strong> has been removed.</p>
+<h4 id="miscellaneous">Miscellaneous</h4>
+<ul>
+<li>
+<p>Command <strong>ddcutil environment</strong> should have output the message "Group i2c not not exist" if 
+group i2c was not found.  The critical word "not" was missing.  Thank you Michaël Defferrard.</p>
+</li>
+<li>
+<p>The display identifier cross-reference table output by command <strong>ddcutil environment --verbose</strong>
+has been modifed to handle multiple displays with an identical EDID. Certain LG Ultrawide
+monitors contain neither an ASCII nor binary serial number in their EDID.  Consequently, all monitors of the same model have the same EDID. </p>
+</li>
+<li>
+<p>Display detection now reads the EDID a byte at a time, similarly to 
+command <strong>get-edid</strong>. This is occasionaly more 
+reliable than the standard multi-byte read code.  Thank you "InconsolableCellist" 
+for pointing out this difference between <strong>ddcutil</strong> and <strong>get-edid</strong>. </p>
+</li>
+<li>
+<p>I2C slave address (DDC) is once again checked during display detection. 
+This had been removed in release 0.9.3 because it caused lockups on 
+Dell XPS 13 laptops.  To address this situation, slave address x37 is not 
+checked for laptop displays, which never support DDC. 
+Command <strong>ddcutil detect --verbose</strong> reports the result of the x37 test.
+This is presently purely for informational purposes.</p>
+</li>
+<li>
+<p>Correctly handle multiple relative values in a single setvcp string, e.g. </p>
+</li>
+</ul>
+<pre><code>$ddcutil setvcp 10 + 5 12 - 3
+</code></pre>
+
+<p>This frankly not very useful corner case had not been taken into account 
+when relative <strong><em>setvcp</em></strong> values were implemented.  Well, now it is.
+- <strong><em>ddcutil</em></strong> issues an error message instead of aborting if an utterly nonsensical
+<strong><em>--sleep-multiplier</em></strong> value greater than 100 is specified, e.g.</p>
+<pre><code>$ ddcutil detect --sleep-multiplier 200      # WRONG
+</code></pre>
+
+<ul>
+<li>
+<p>Verification is always disabled if setting VCP feature xDF (Power Mode) to 5.
+This is a write-only value that turns off the display.
+Verification can never succeed. </p>
+</li>
+<li>
+<p>Correct the spelling of "Finnish" in the list of On Screen Display languages for 
+feature xCC.  Thank you Simon Alling.</p>
+</li>
+</ul>
+<h4 id="tracing">Tracing</h4>
+<ul>
+<li>
+<p>Trace group <strong><em>RETRY</em></strong> has been added. This subset of trace group <strong><em>DDCIO</em></strong> reports only 
+retry activity. </p>
+</li>
+<li>
+<p>In a handful of unusual situations, trace messages are issued unconditionally, 
+irrespective of the trace settings in effect.  This is to highlight some rare situations, such as 
+recovery from multiple DDC Null Messages.</p>
+</li>
+</ul>
+<pre><code>$ ddcutil getvcp 10
+(ddc_wright_read_with_retry) ddc_write_read() succeeded after 3 Null Messages
+</code></pre>
+
+<p>If you encounter such a message, please report the circumstances in which it occurred.</p>
+<h3 id="building-ddcutil">Building ddcutil</h3>
+<ul>
+<li>
+<p>As noted above, <strong><em>ddcutil</em></strong> no longer supports AMD's old proprietary video driver <strong><em>fglrx</em></strong>.
+<strong><em>.configure</em></strong> option <strong><em>--with-adl</em></strong> no longer exists.</p>
+</li>
+<li>
+<p>Reflecting changes to how the PCI and USB hardware ID tables are packaged,  <strong>ddcutil</strong> now prioritizes <strong>pci.ids</strong> and <strong>usb.ids</strong>
+files in directory /usr/share/misc over those in /usr/share/hwdata.
+Packaging requires packages pci.ids, usb.ids, and usbutils, not hwdata.
+Corresponding changes have been made to configuration file <strong>configure.ac</strong>.
+Thank you Pino Toscano.</p>
+</li>
+<li>
+<p>Use of include file &lt;sys/cdefs.h> has been eliminated. This include file does not exist on Alpine Linux. </p>
+</li>
+</ul>
+<h4 id="shared-library">Shared Library</h4>
+<p>The SONAME for <strong>libddcutil</strong> is now libddcutil.so.3.
+For details see <a href="../c_api_99/">Shared Library Changes for Release 0.9.9</a>.</p>
 <h3 id="098">0.9.8</h3>
 <p>30 November 2019</p>
 <h4 id="command-line-option-sleep-multiplier">Command line option <strong>--sleep-multiplier</strong></h4>
 <p>The DDC/CI specification dictates that the host computer wait 40-200 ms (depending on operation) between sending a command to the monitor and reading the response.
-As a result, <strong>ddcutil*<em> spends approximately 90% of its elapsed time sleeping.  Many monitors respond properly with much shorter waits.  On the other hand, there are some monitors that require longer waits to avoid DDC/CI errors.  Option </em></strong>--sleep-multiplier*** applies a multiplication factor to the DDC/CI specified sleep times.
+As a result, <strong><em>ddcutil</em></strong> spends approximately 90% of its elapsed time sleeping.  Many monitors respond properly with much shorter waits.
+On the other hand, there are some monitors that require longer waits to avoid DDC/CI errors.
+Option <strong><em>--sleep-multiplier</em></strong> applies a floating point multiplication factor to the DDC/CI specified sleep times.
 For example,  </p>
 <pre><code>--sleep-multiplier .5 
 </code></pre>
@@ -428,7 +642,7 @@ For example,  </p>
 </code></pre>
 
 <p>causes 40 ms waits to beome 160 ms. </p>
-<p>Note that <strong>ddcutil*<em> may automatically increase wait times when peforming retries.  Option </em></strong>--sleep-multiplier*** applies to the inital wait time.</p>
+<p>Note that <strong><em>ddcutil</em></strong> may automatically increase wait times when peforming retries.  Option <strong><em>--sleep-multiplier</em></strong> applies to the inital wait time.</p>
 <p>Option <strong><em>--sleep-multiplier</em></strong> can significantly speed up <strong>ddcutil</strong> execution - some monitors have been seen to operate properly with a sleep-multiplier as low as .1, </p>
 <p>Undocumented option <strong><em>-y</em></strong> for adjusting wait times is removed.</p>
 <h4 id="command-line-options-thread-id-and-timestamp">Command line options <strong>--thread-id</strong> and <strong>--timestamp</strong></h4>
@@ -443,15 +657,15 @@ For example,  </p>
 <p>If both options are specified, then both thread id and timestamp are shown. </p>
 <h4 id="mouse-corruption-during-display-detection">Mouse corruption during display detection</h4>
 <p>When examining USB devices to determine if they support the <strong><em>USB Monitor Control Class Specification</em></strong>, it was possible to hang USB connected mice. This change peforms a pre-check to ignore mice and keyboards.  It affects:<br />
-- Normal <strong>ddcutil*<em> commands, e.g. </em></strong>ddcutil detect<strong><em> <br />
-- The </em></strong>usbenvironment<strong><em> command <br />
-- Command </em></strong>chkusbmon***, intended for use in UDEV rules.</p>
+- Normal <strong><em>ddcutil</em></strong> commands, e.g. <strong><em>ddcutil detect</em></strong> <br />
+- The <strong><em>usbenvironment</em></strong> command <br />
+- Command <strong><em>chkusbmon</em></strong>, intended for use in UDEV rules.</p>
 <h4 id="display-detection-messages">Display Detection messages</h4>
 <p>When DDC/CI communication fails during display detection and a monitor is reported as an "Invalid Display", 
 if the display appears to belong to a laptop, issue a message that laptop displays do not support DDC/CI.  This should reduce the incidence of 
 people needlessly trying to diagnose a DDC/CI communication failure.</p>
 <p>Command <strong><em>ddcutil detect</em></strong> now shows a blank instead of "unspecified" to indicate that an EDID is not found. </p>
-<h4 id="miscellaneous">Miscellaneous</h4>
+<h4 id="miscellaneous_1">Miscellaneous</h4>
 <p>Improve the output for feature x14 (Color Preset) to take into account the MH byte, which is defined in MCCS 3.0 and 2.2. 
 ( Unfortunately, observed behavior on at least one MCCS 2.2 monitor, an HP Z22i, does not match the spec.)</p>
 <h4 id="api-changes">API Changes</h4>
@@ -497,7 +711,7 @@ Reported by Igor Ovsyanka.</p>
 <p>Instead of setting the "unsupported feature" bit in the <strong><em>getvcp</em></strong> reply packet for an unsupported feature, the Dell AW3418DW causes I2C
 failure with Linux errno <strong>EIO</strong>.  <strong>ddcutil</strong> now interprets the <strong>EIO</strong> response as indicating an unsupported feature instead of reporting an error.
 This special handling currently applies only to the Dell AW3418DW.</p>
-<h4 id="miscellaneous_1">Miscellaneous</h4>
+<h4 id="miscellaneous_2">Miscellaneous</h4>
 <p>Update file README.md and make it more usable as the github overview file.</p>
 <h4 id="api-changes_2">API Changes</h4>
 <p>See <a href="../c_api_95/">API Changes in Release 0.9.5</a> for details.</p>
@@ -535,15 +749,16 @@ Thank you Federico, developer of <a href="https://github.com/FedeDP/Clightd">CLi
 <tbody>
 <tr>
 <td>--udef</td>
-<td>check for user supplied feature definitions</td>
+<td>&nbsp; check for user supplied feature definitions</td>
 </tr>
 <tr>
 <td>--noudef</td>
-<td>do not check for user suplied feature definitions (currently the default)</td>
+<td>&nbsp; do not check for user suplied feature definitions (currently the default)</td>
 </tr>
 </tbody>
 </table>
-<p>The following feature group has been added:</p>
+<p><br>
+The following feature group has been added:</p>
 <table>
 <thead>
 <tr>
@@ -554,11 +769,11 @@ Thank you Federico, developer of <a href="https://github.com/FedeDP/Clightd">CLi
 <tbody>
 <tr>
 <td>USER or UDF</td>
-<td>features having a user supplied feature definition</td>
+<td>&nbsp; features having a user supplied feature definition</td>
 </tr>
 </tbody>
 </table>
-<h4 id="tracing">Tracing</h4>
+<h4 id="tracing_1">Tracing</h4>
 <p>Added trace groups: </p>
 <table>
 <thead>
@@ -570,24 +785,25 @@ Thank you Federico, developer of <a href="https://github.com/FedeDP/Clightd">CLi
 <tbody>
 <tr>
 <td>UDF</td>
-<td>user defined features</td>
+<td>&nbsp; user defined features</td>
 </tr>
 <tr>
 <td>DDCIO</td>
-<td>low level DDC functions</td>
+<td>&nbsp; low level DDC functions</td>
 </tr>
 <tr>
 <td>VCP</td>
-<td>feature metadata</td>
+<td>&nbsp; feature metadata</td>
 </tr>
 </tbody>
 </table>
-<p>Because of the volume of output, 
+<p><br>
+Because of the volume of output, 
 trace group "DDC" has been split into DDC and DDCIO, with the latter containing low level DDC services.</p>
 <h4 id="api-changes_3">API Changes</h4>
 <p>The C API has had a few changes to support user supplied feature definitions and reflecting experience gained from work on the Qt C++ GUI interface.
 See <a href="../c_api_93/">API Changes in Release 9.3</a> for details.</p>
-<h4 id="miscellaneous_2">Miscellaneous</h4>
+<h4 id="miscellaneous_3">Miscellaneous</h4>
 <p>Vebose output of the <strong><em>environment</em></strong> command now displays execution timestamps to aid in interpreting system logs.</p>
 <h3 id="092">0.9.2</h3>
 <p>01 September 2018</p>
@@ -619,13 +835,13 @@ but VCP feature code xC8 is unsupported.</li>
 <li>When reading a USB report, regard errno EINVAL as an expected indication that no 
 value is found rather than an unexpected status code.</li>
 </ul>
-<h4 id="tracing_1">Tracing</h4>
+<h4 id="tracing_2">Tracing</h4>
 <ul>
 <li>Fix the cause of a segfault when tracing a write-only DDC exchange (i.e. setting a VCP value)</li>
 <li>Disable debug messages regarding device id table initialization  in the <strong><em>environment</em></strong> command.</li>
 <li>Eliminate double newlines in several error and trace messages</li>
 </ul>
-<h4 id="building-ddcutil">Building ddcutil</h4>
+<h4 id="building-ddcutil_1">Building ddcutil</h4>
 <ul>
 <li>libusb function <strong><em>libusb_set_debug()</em></strong> is deprecated in recent libusb versions, in favor of <strong><em>libusb_set_option()</em></strong>, 
 resulting in a compiler warning when flag <strong><em>-Wdeprecated-declarations</em></strong> is set.  Calls to <strong><em>libusb_set_debug()</em></strong> in 
@@ -657,26 +873,26 @@ $ ddcutil setvcp 10 - 5
 <p>Option <strong><em>--no-table</em></strong> is now the default.</p>
 </li>
 <li>
-<p>Table type features are by default not included in most feature groups specified on <strong>getvcp*<em>, e.g. </em></strong>getvcp known<strong><em>.<br />
-Features of type Table are rare.  The DDC/CI spec does not provide a clean way for </em>*getvcp</strong> to determine that a table 
-feature does not exist.  As a result, <strong>getvcp*<em> typically has to exceed its retry count before giving up.
+<p>Table type features are by default not included in most feature groups specified on <strong><em>getvcp</em></strong>, e.g. <strong><em>getvcp known</em></strong>.
+Features of type Table are rare.  The DDC/CI spec does not provide a clean way for <strong><em>getvcp</em></strong> to determine that a table 
+feature does not exist.  As a result, <strong><em>getvcp</em></strong> typically has to exceed its retry count before giving up.
 (Exclusion of table features does not occur if a feature is explicitly specified by its hex code, 
-or for feature groups </em></strong>TABLE<strong><em> or </em></strong>LUT<strong><em>.)<br />
-The </em></strong>--no-table<strong><em> (formerly </em></strong>--notable<strong><em>) and </em></strong>-show-table*** options explicitly control this behavior.</p>
+or for feature groups <strong><em>TABLE</em></strong> or <strong><em>LUT</em></strong>.)<br />
+The <strong><em>--no-table</em></strong> (formerly <strong><em>--notable</em></strong>) and <strong><em>-show-table</em></strong> options explicitly control this behavior.</p>
 </li>
 </ul>
 <p>Note that <strong><em>--no-table</em></strong> does not apply for subsets TABLE or LUT.   </p>
-<p>For subsets SCAN and MANUFACTURER,  the effect of <strong>--show-table*<em>/<strong>--no-table</strong> on 
-manufacturer-specific feature codes (xe0..xff) is more complicated. <strong>ddcutil</strong> 
+<p>For subsets SCAN and MANUFACTURER,  the effect of <strong><em>--show-table</em></strong>/<strong><em>--no-table</em></strong> on 
+manufacturer-specific feature codes (xe0..xff) is more complicated. <strong>ddcutil*<em> 
 has no information about the feature characteristics of manufacturer-specific codes.  Normally, it attempts only a non-table read.<br />
 However, if both </em></strong>--verbose<strong><em> and </em></strong>--show-table*** are in effect, then a table read is attempted as well as a non-table read. </p>
 <h5 id="reporting-unsupported-features">Reporting Unsupported Features</h5>
 <p>The interpretation of <strong><em>--show-unsupported</em></strong> has been tweaked.  This option applies to command <strong><em>getvcp</em></strong>.  (The <strong><em>probe</em></strong>
 command always reports unsupported features.) 
- Command <strong>getvcp*<em> reports unsupported features if any of the following hold:<br />
+ Command <strong><em>getvcp</em></strong> reports unsupported features if any of the following hold:<br />
 - A specific feature was specified by its code, as opposed to a feature set.<br />
 - Verbose output is in effect<br />
-- Option </em></strong>--show-unsupported*** was specified.</p>
+- Option <strong><em>--show-unsupported</em></strong> was specified.</p>
 <p>Option <strong><em>--show-unsupported</em></strong> is no longer automatically set for feature set <strong><em>ALL</em></strong>, which is now simply a synonym for <strong><em>KNOWN</em></strong>.</p>
 <h5 id="options-rw-ro-wo">Options <strong><em>--rw</em></strong>, <strong><em>--ro</em></strong>, <strong><em>--wo</em></strong></h5>
 <p>Options <strong><em>--rw</em></strong> and <strong><em>--ro</em></strong> apply to both the <strong>getvcp*<em> and <strong>vcpinfo</strong> commands.  Option </em></strong>--wo<strong><em> applies only to </em>*vcpinfo</strong>. </p>
@@ -743,13 +959,13 @@ particular monitors.  They will likely be of interest to only a few user.</p>
 </table>
 <p>MFG is now a valid synonym for feature set MANUFACTURER.<br />
 Feature sets KNOWN and ALL are now synonyms.    </p>
-<h4 id="miscellaneous_3">Miscellaneous</h4>
+<h4 id="miscellaneous_4">Miscellaneous</h4>
 <ul>
 <li>The VCP file created by <strong>dumpvcp</strong> now includes a <strong>PRODUCT_CODE</strong> field including the manufacturer product code from the EDID.
 For some manufacturers, the model name in the EDID does not in fact distinguish among models. Notably, Samsung commonly uses just 
 "Syncmaster" for the model name.  Currently, <strong>loadvcp</strong> recognizes this field name but does not make use of the value.</li>
 </ul>
-<h4 id="building-ddcutil_1">Building ddcutil</h4>
+<h4 id="building-ddcutil_2">Building ddcutil</h4>
 <ul>
 <li>Eliminate compiler flag <strong><em>-Wpedantic</em></strong> in Makefiles.  This flag had been added to diagnose some obscure compiler warnings regarding 
 system header files. It was flagging perfectly valid code as problematic, and caused build failures on Gentoo. </li>
@@ -806,7 +1022,7 @@ features.  The 2 byte current and max values must be calculated from the appropr
 </li>
 <li>Structs removed:  <strong>DDCA_Global_Failure_Information</strong></li>
 </ul>
-<h4 id="miscellaneous_4">Miscellaneous</h4>
+<h4 id="miscellaneous_5">Miscellaneous</h4>
 <ul>
 <li>Add trace class <strong><em>ENV</em></strong> for tracing environment related functions</li>
 <li>Internally, many functions in key portions of the code base now return exception-like structs 
@@ -873,7 +1089,7 @@ was seen only in 32 bit versions of <strong>ddcutil</strong>.</li>
 <li>The --stats option showed incorrect time statistics on 32 bit versions of <strong>ddcutil</strong>.</li>
 <li>Add "-lddcutil" to output of "pkgconfig ddcutil --libs".  Thank you Federico.</li>
 </ul>
-<h4 id="miscellaneous_5">Miscellaneous</h4>
+<h4 id="miscellaneous_6">Miscellaneous</h4>
 <ul>
 <li>Improve reporting of the individual errors that result in command failure due to maximum I2C retries exceeded.</li>
 <li><strong><em>interrogate</em></strong>, <strong><em>environment</em></strong> and <strong><em>usbenvironment</em></strong> now redirect all stderr output to stdout for easier capture</li>
@@ -998,7 +1214,7 @@ This may become the default in future releases.</p>
 <p>refers to device /dev/usb/hiddev3.  There is no single letter 
 specifier for this option.</p>
 <p>Option <strong>--brief</strong> is now a synonym for <strong>--terse</strong></p>
-<p>Added <strong>--stats</strong> class <strong>elapsed</strong>.  <strong>--stats time</strong> is a synonum for <strong>--stats elapsed</strong>.  Shows program 
+<p>Added <strong>--stats</strong> class <strong>elapsed</strong>.  <strong>--stats time</strong> is a synonym for <strong>--stats elapsed</strong>.  Shows program 
 elapsed time.  </p>
 <h4 id="changes-to-specific-commands">Changes to Specific Commands:</h4>
 <p><strong>environment</strong> and <strong>interrogate</strong> commands:</p>
@@ -1019,7 +1235,7 @@ No monitors implementing table type features have yet been observed.</li>
 <p><strong>getvcp</strong> command:  </p>
 <ul>
 <li>If <strong>--terse</strong> output is specified, then the VCP data is output in a form that
-is easily machine readable.  See <a href="../cmdopts/">Command Specific Options</a></li>
+is easily machine readable.  See <a href="../command_getvcp/">getvcp command</a></li>
 </ul>
 <p><strong>setvcp</strong> and <strong>loadvcp</strong> commands:</p>
 <p>By default, <strong>setvcp</strong> and <strong>loadvcp</strong> verify that a value has been successfully
@@ -1382,9 +1598,9 @@ installed when building <strong>ddcutil*<em>.  If a sufficently recent version i
 <ul>
 <li>Add option <strong><em>--force-slave-address</em></strong> which causes ddcutil to take control of slave addresses on the 
 I2C bus even if they are in use.  Internally, <strong><em>ioctl(I2C_FORCE_SLAVE)</em></strong> is called instead of <strong><em>ioctl(I2C_SLAVE)</em></strong>.
-This is intended as a possible workaround for situations where monitors on an I2C bus are not detected. See <a href="../tuning/#force_slave">Option --force-slave-address</a></li>
+This is intended as a possible workaround for situations where monitors on an I2C bus are not detected. See <a href="../other_options/#force_slave">Option --force-slave-address</a></li>
 <li>Option <strong><em>--force</em></strong> disables various checking.  It's use is likely to result in command failure, but may 
-provide useful information as to the source of problems.  See <a href="../tuning/#slave">Option --force</a></li>
+provide useful information as to the source of problems.  See <a href="../debug_options/#slave">Option --force</a></li>
 <li>Fix the cause of a segfault when displaying  statistics for option <strong><em>--stats errors</em></strong> or simply <strong><em>--stats</em></strong>, or on 
 the <strong>interrogate</strong> command.</li>
 <li><strong>make install*<em> will not install C header files unless configuration option </em></strong>--enable-lib*** is set.</li>
@@ -1518,7 +1734,7 @@ be addressed in a subsequent release. openSUSE users can build ddcutil from its 
       <script src="../search/main.js" defer></script>
     <script defer>
         window.onload = function () {
-            SphinxRtdTheme.Navigation.enable(true);
+            SphinxRtdTheme.Navigation.enable(false);
         };
     </script>
 

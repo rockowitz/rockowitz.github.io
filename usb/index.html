@@ -7,7 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
   <meta name="author" content="Sanford Rockowitz">
-  
+  <link rel="canonical" href="https://www.ddcutil.com/usb/">
   <link rel="shortcut icon" href="../img/favicon.ico">
   <title>USB Connected Monitors - ddcutil Documentation</title>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
@@ -20,7 +20,7 @@
     // Current page data
     var mkdocs_page_name = "USB Connected Monitors";
     var mkdocs_page_input_path = "usb.md";
-    var mkdocs_page_url = null;
+    var mkdocs_page_url = "/usb/";
   </script>
   
   <script src="../js/jquery-2.1.1.min.js" defer></script>
@@ -48,48 +48,96 @@
 
       <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
                 <ul>
-                    <li class="toctree-l1"><a class="reference internal" href="..">Overview</a>
+                    <li class="toctree-l1"><a class="reference internal" href="..">Introduction</a>
                     </li>
                 </ul>
-                <p class="caption"><span class="caption-text">Using ddcutil</span></p>
-                <ul class="current">
+                <ul>
                     <li class="toctree-l1"><a class="reference internal" href="../commands/">Command Overview</a>
                     </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../cmdargs/">Command Arguments</a>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../cmd_output/">Command Examples</a>
                     </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../cmdopts/">Command Specific Options</a>
+                </ul>
+                <p class="caption"><span class="caption-text">Command Examples</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../detect_verbose_output/">ddcutil detect example</a>
                     </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../cmd_output/">Command Output Examples</a>
+                    <li class="toctree-l1"><a class="reference internal" href="../getvcp_known_u3011_output/">ddcutil getvcp example</a>
                     </li>
-                    <li class="toctree-l1"><a class="reference internal" href="#">Examples</a>
+                    <li class="toctree-l1"><a class="reference internal" href="../vcpinfo_output/">ddcutil vcpinfo example</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../cap_u3011_verbose_output/">ddcutil capabilities example</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../command_detail/">Command Detail</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">Command Detail</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="#">Primary Commands</a>
     <ul>
-                <li class="toctree-l2"><a class="reference internal" href="../vcpinfo_output/">ddcutil vcpinfo example</a>
+                <li class="toctree-l2"><a class="reference internal" href="../command_detect/">detect</a>
                 </li>
-                <li class="toctree-l2"><a class="reference internal" href="../detect_verbose_output/">ddcutil detect example</a>
+                <li class="toctree-l2"><a class="reference internal" href="../command_capabilities/">capabilities</a>
                 </li>
-                <li class="toctree-l2"><a class="reference internal" href="../cap_u3011_verbose_output/">ddcutil capabilities example</a>
+                <li class="toctree-l2"><a class="reference internal" href="../command_getvcp/">getvcp</a>
                 </li>
-                <li class="toctree-l2"><a class="reference internal" href="../getvcp_known_u3011_output/">ddcutil getvcp example</a>
+                <li class="toctree-l2"><a class="reference internal" href="../command_setvcp/">setvcp</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../command_vcpinfo/">vcpinfo</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../command_dumpvcp_loadvcp/">dumpvcp &amp; loadvcp</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../command_scs/">scs</a>
                 </li>
     </ul>
                     </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../mccs_background/">Monitor Control Command Set</a>
+                    <li class="toctree-l1"><a class="reference internal" href="../secondary_commands/">Secondary Commands</a>
                     </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../colormgt/">Color Management</a>
+                    <li class="toctree-l1"><a class="reference internal" href="../options_main/">Command Options</a>
                     </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../tuning/">Instrumentation and Tuning</a>
+                    <li class="toctree-l1"><a class="reference internal" href="#">Command Options</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../display_selection/">Display Selection</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../feature_selection/">Feature Selection</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../performance_options/">Performance and Tuning Options</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../instrumentation_options/">Instrumentation Options</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../output_control_options/">Output Level Options</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../other_options/">Miscellaneous Options</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../debug_options/">Debugging Options</a>
+                </li>
+    </ul>
                     </li>
+                </ul>
+                <p class="caption"><span class="caption-text">Specific Facilities</span></p>
+                <ul class="current">
                     <li class="toctree-l1"><a class="reference internal" href="../table_features/">Table Type Features</a>
                     </li>
                     <li class="toctree-l1 current"><a class="reference internal current" href="./">USB Connected Monitors</a>
     <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#options-for-display-selection">Options for Display Selection</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#option-usb">Option: --usb</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#option-hiddev">Option --hiddev</a>
+    </li>
+        </ul>
+    </li>
     <li class="toctree-l2"><a class="reference internal" href="#command-ddcutil-chkusbmon">Command ddcutil chkusbmon</a>
     </li>
-    <li class="toctree-l2"><a class="reference internal" href="#command-option-hiddev">Command option --hiddev</a>
-    </li>
-    <li class="toctree-l2"><a class="reference internal" href="#command-option-usb">Command option --usb</a>
+    <li class="toctree-l2"><a class="reference internal" href="#command-ddcutil-usbenvironment">Command ddcutil usbenvironment</a>
     </li>
     </ul>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../colormgt/">Color Management</a>
                     </li>
                 </ul>
                 <p class="caption"><span class="caption-text">Installation and Configuration</span></p>
@@ -98,82 +146,88 @@
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="../building/">Building From Source</a>
                     </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../building_ddcui/">Building ddcui</a>
-                    </li>
                     <li class="toctree-l1"><a class="reference internal" href="../shared_lib_config/">Shared Library Configuration</a>
-                    </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../adl/">AMD fglrx Driver</a>
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="../config/">Configuration and Installation Diagnostics</a>
                     </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../i2c_permissions/">Device Permissions</a>
+                    <li class="toctree-l1"><a class="reference internal" href="../i2c_permissions/">I2C Device Permissions</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../usb_permissions/">USB Device Permissions</a>
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="../kernel_module/">Kernel Module Configuration</a>
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="../nvidia/">Special Nvidia Driver Settings</a>
                     </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../adl/">AMD fglrx Driver</a>
+                    </li>
                     <li class="toctree-l1"><a class="reference internal" href="../virtual_machines/">Virtual Machines</a>
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="../raspberry/">Raspberry Pi</a>
                     </li>
-                </ul>
-                <p class="caption"><span class="caption-text">ddcui</span></p>
-                <ul>
-                    <li class="toctree-l1"><a class="reference internal" href="../ddcui_main/">Overview</a>
+                    <li class="toctree-l1"><a class="reference internal" href="../monitor_notes/">Notes on specific monitors</a>
                     </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../building_ddcui/">Building ddcui</a>
+                    <li class="toctree-l1"><a class="reference internal" href="../quirks/">Notes on Particular Configurations</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">API</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../api_main/">C API</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../c_api_90/">C API Changes for Release 0.9.0</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../c_api_93/">C API Changes for Release 0.9.3</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../c_api_95/">C API Changes for Release 0.9.5</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../c_api_96/">C API Changes for Release 0.9.6</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../c_api_98/">C API Changes for Release 0.9.8</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../c_api_99/">C API Changes for Release 0.9.9</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../python_api/">Python API Overview</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">Background</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../mccs_background/">Monitor Control Command Set</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../ddc_vs_i2c/">DDC vs I2C</a>
                     </li>
                 </ul>
                 <p class="caption"><span class="caption-text">Additional Topics</span></p>
                 <ul>
                     <li class="toctree-l1"><a class="reference internal" href="../faq/">Frequently Asked Questions</a>
                     </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../monitor_notes/">Notes on specific monitors</a>
-                    </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../quirks/">Notes on Particular Configurations</a>
-                    </li>
                     <li class="toctree-l1"><a class="reference internal" href="../tech_support/">Technical Support</a>
-                    </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../feedback/">Feedback</a>
-                    </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../releases/">Releases</a>
-                    </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../release_notes/">Release Notes</a>
-                    </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../prior_announcements/">Announcement History</a>
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="../ddccontrol/">Comparison with ddccontrol</a>
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="../ddc_null_response/">DDC Null Message</a>
-                    </li>
-                    <li class="toctree-l1"><a class="reference internal" href="#">API</a>
-    <ul>
-                <li class="toctree-l2"><a class="reference internal" href="../api_main/">C API</a>
-                </li>
-                <li class="toctree-l2"><a class="reference internal" href="../c_api_90/">C API Changes for Release 0.9.0</a>
-                </li>
-                <li class="toctree-l2"><a class="reference internal" href="../c_api_93/">C API Changes for Release 0.9.3</a>
-                </li>
-                <li class="toctree-l2"><a class="reference internal" href="../c_api_95/">C API Changes for Release 0.9.5</a>
-                </li>
-                <li class="toctree-l2"><a class="reference internal" href="../c_api_96/">C API Changes for Release 0.9.6</a>
-                </li>
-                <li class="toctree-l2"><a class="reference internal" href="../c_api_98/">C API Changes for Release 0.9.8</a>
-                </li>
-                <li class="toctree-l2"><a class="reference internal" href="../python_api/">Python API Overview</a>
-                </li>
-    </ul>
-                    </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../todo/">Future Tasks</a>
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="../bibliography/">References</a>
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="../acknowledgements/">Acknowledgements</a>
                     </li>
                 </ul>
+                <p class="caption"><span class="caption-text">Release History</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../releases/">Releases</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../release_notes/">Release Notes</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../prior_announcements/">Announcement History</a>
+                    </li>
+                </ul>
                 <p class="caption"><span class="caption-text">ddcui</span></p>
                 <ul>
                     <li class="toctree-l1"><a class="reference internal" href="../ddcui_main/">Overview</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../ddcui_options/">Command Line Options</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../building_ddcui/">Building ddcui</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../ddcui_release_notes/">ddcui Release Notes</a>
                     </li>
                 </ul>
       </div>
@@ -197,7 +251,7 @@
     
       
         
-          <li>Using ddcutil &raquo;</li>
+          <li>Specific Facilities &raquo;</li>
         
       
     
@@ -220,6 +274,8 @@
 The support is considered initial in that it has only been tested with only a few models of USB connected monitors.</p>
 <p>Note that some monitors use USB to communicate, but do not follow the specification for MCCS over USB. 
 For example, the HP Dreamcolor 2480zx uses a proprietary, undocumented protocol. </p>
+<p>Also, it bears emphasizing that when <strong>ddcutil</strong> refers to USB connected monitors, it means monitors that communicate
+MCCS over USB, <strong>NOT</strong> to monitors that communicate the video signal over USB.</p>
 <p>Limitations: <br />
 - The MCCS over USB specification has no mechanism for querying a capabilities string.  The <strong>ddcutil capabilities</strong> 
 command synthesizes a response based on the feature codes it detects. <br />
@@ -231,8 +287,24 @@ Other than actual Macs, these are uncommon.</p>
 - Unlike I2C, the protocol is inherently reliable.  No retry logic is needed.<br />
 - Unlike I2C, USB communication does not require waits between system calls.  It is therefore faster. </p>
 <p>Thanks to Ojdrej Zary, whose <a href="https://github.com/ondrej-zary/usbmonctl">usbmonctl</a> was used as the basis for USB support in <strong>ddcutil</strong>.</p>
-<h3 id="command-ddcutil-chkusbmon">Command <strong>ddcutil chkusbmon</strong></h3>
+<p>If there are multiple monitors, a USB connected monitor can be selected in the usual manner using its display number (option <strong><em>--display</em></strong>), or by
+its bus number/device number pair (option <strong><em>--usb</em></strong>) or hiddev device number (option <strong><em>--hiddev</em></strong>).  </p>
+<p>There are also 2 <strong>ddcutil</strong> commands specific to USB connected monitors, <strong>chkusbmon</strong>, and <strong>usbenvironment</strong></p>
+<p>For details on USB device permissions, see <a href="../usb_permissions/">USB Device Permissions</a>.</p>
+<h3 id="options-for-display-selection">Options for Display Selection</h3>
+<h4 id="option-usb">Option: --usb<a name="option_usb"></a></h4>
+<p>USB connected monitors can be specified by their USB bus number and device number.  The numbers are separated by either a period or colon.</p>
+<p>For example: </p>
+<pre><code>ddcutil --usb 3.5 ...
+</code></pre>
+
+<p>selects the monitor at USB bus number 3, device number 5.  </p>
+<h4 id="option-hiddev">Option --hiddev<a name="option_hiddev"></a></h4>
+<p>USB connected monitors can also be specfied by their hiddev device number, which specifies the /dev file 
+by which they are accessed. That is, <strong>--hiddev 2</strong> refers to /dev/usb/hiddev2. </p>
+<h3 id="command-ddcutil-chkusbmon">Command <strong>ddcutil chkusbmon</strong><a name="command_chkusbmon"></a></h3>
 <p>Command <strong>ddcutil chkusbmon</strong> helps to detect USB HID compliant monitors.  It is intended for use in udev rules.</p>
+<p>It uses Read-Only access to check that a USB device is of class User Interface Device, but is not a keyboard or mouse.   </p>
 <pre><code>ddcutil chkusbmon ***hiddev device name***
 </code></pre>
 
@@ -241,18 +313,11 @@ Other than actual Macs, these are uncommon.</p>
 </code></pre>
 
 <p>Returns 0 if a device represents a USB attached monitor, non-zero if not.  See <a href="../i2c_permissions/">Device Permissions</a></p>
-<h3 id="command-option-hiddev">Command option --hiddev</h3>
-<p>USB connected monitors can be specfied by their hiddev device number, which specifies the /dev file 
-by which they are accessed. That is, <strong>--hiddev 2</strong> refers to /dev/usb/hiddev2. </p>
-<h3 id="command-option-usb">Command option --usb</h3>
-<p>USB connected monitors can be specified by their USB bus number and device number.  The numbers are separated by either a period or colon.</p>
-<p>For example: </p>
-<pre><code>ddcutil --usb 3.5 ...
-</code></pre>
-
-<p>selects the monitor at USB bus number 3, device number 5.  </p>
-<p>To see a list of all USB devices: </p>
-<pre><code>lsusb
+<h3 id="command-ddcutil-usbenvironment">Command <strong>ddcutil usbenvironment</strong><a name="command_usbenv"></a></h3>
+<p>Explores the system's USB environment as an aid to diagnosing USB device detection and communication issues.</p>
+<p>Option <strong><em>--verbose</em></strong> increases the amount of information. </p>
+<p>The word "usbenvironment" can be abbreviated down to its first 6 letters, e.g. </p>
+<pre><code>$ ddcutil usbenv
 </code></pre>
               
             </div>
@@ -261,7 +326,7 @@ by which they are accessed. That is, <strong>--hiddev 2</strong> refers to /dev/
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../install/" class="btn btn-neutral float-right" title="Install ddcutil From Prebuilt Packages">Next <span class="icon icon-circle-arrow-right"></span></a>
+        <a href="../colormgt/" class="btn btn-neutral float-right" title="Color Management">Next <span class="icon icon-circle-arrow-right"></span></a>
       
       
         <a href="../table_features/" class="btn btn-neutral" title="Table Type Features"><span class="icon icon-circle-arrow-left"></span> Previous</a>
@@ -295,7 +360,7 @@ by which they are accessed. That is, <strong>--hiddev 2</strong> refers to /dev/
         <span><a href="../table_features/" style="color: #fcfcfc;">&laquo; Previous</a></span>
       
       
-        <span style="margin-left: 15px"><a href="../install/" style="color: #fcfcfc">Next &raquo;</a></span>
+        <span style="margin-left: 15px"><a href="../colormgt/" style="color: #fcfcfc">Next &raquo;</a></span>
       
     </span>
 </div>
@@ -304,7 +369,7 @@ by which they are accessed. That is, <strong>--hiddev 2</strong> refers to /dev/
       <script src="../search/main.js" defer></script>
     <script defer>
         window.onload = function () {
-            SphinxRtdTheme.Navigation.enable(true);
+            SphinxRtdTheme.Navigation.enable(false);
         };
     </script>
 

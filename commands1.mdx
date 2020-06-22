@@ -1,0 +1,78 @@
+##Command Overview
+
+**ddcutil** has the following subcommands:
+
+| Subcommand | Function |
+|---------------------------------|--------------------------------------------------------------|
+| detect                          | report monitors detected                                     |
+| capabilities                    | report a monitor's capabilities string                       |
+| vcpinfo (feature-code-or-group) | list VCP features codes that ddcutil knows how to interpret  | 
+| getvcp feature-code-or-group    | report a single VCP feature value, or a group of values      |
+| setvcp feature-code new-value   | set a single VCP feature value                               |
+| dumpvcp filename                | save color related VCP feature values to a file              |
+| loadvcp filename                | restore color related VCP feature values from a file         |
+| scs                             | execute DDC/CI Save Current Settings operation                |
+| environment                     | explore the ddcutil installation environment (other than USB) |
+| usbenv                          | explore USB aspects of the ddcutil installation environment  |
+| probe                           | report the capabilities string and probe the features of a single monitor |
+| interrogate                     | collect maximal information for problem diagnosis            |
+| chkusbmon  /dev/hiddevN         | used by udev rules to test if a USB device represents a monitor |
+
+<br>
+For extended command documentation, see: 
+
+- 
+There is an extensive set of options for tailoring ddcutil operation.
+Some are described in this documentation.
+For a full list of options and detailed documentation for each command, 
+use the **--help** option or 
+see the man page:
+~~~bash
+$ ddcutil --help
+$ man 1 ddcutil
+~~~
+
+### Monitor Selection
+
+If more than one monitor is attached, the desired monitor can be specified 
+using any of the following options:
+
+***--display*** &lt;display number>  
+***--bus*** &lt;i2c bus number>  
+***--usb*** &lt;usb bus number>.&lt;usb device number>  
+***--hiddev*** &lt;usb hiddev device number>  
+***--edid*** &lt;256 character hex string>  
+***--mfg*** &lt;mfg code>   
+***--model*** &lt;model name>   
+***--sn*** &lt;serial number>
+
+
+Notes:   
+
+- Any combination of manufacturer code, model name and serial number can be used together to identify a monitor.
+  The first monitor to satisfy all the specified criteria is selected.
+  (This behavior differs from releases prior to 0.7 where model name and serial number had to be specified together.)
+  
+To see a list of all attached monitors and their associated identifiers:
+~~~
+$ ddcutil detect
+~~~
+
+
+
+For extended command documentation, see: 
+
+- [Command Detail](command_detail.md)
+- [Command Options](options.md)
+
+
+### Command Examples  
+
+- [ddcutil detect](detect_verbose_output.md)
+
+- [ddcutil vcpinfo](vcpinfo_output.md)
+
+- [ddcutil capabilities](cap_u3011_verbose_output.md)
+
+- [ddcutil getvcp](getvcp_known_u3011_output.md)
+

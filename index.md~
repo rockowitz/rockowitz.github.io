@@ -6,7 +6,7 @@ ddcutil
 
 13 June 2020 
 
-**ddcutil** release 0.9.9 contains changes of general interest: 
+**ddcutil** release 0.9.9 contains a couple changes of general interest: 
 
 - A new command line option, ***--less-sleep*** eliminates many of the delays between the time that **ddcutil** receives a DDC response from a display
 and sends the next request, improving performance.
@@ -17,7 +17,7 @@ The **libddcutil** shared libray has minor changes.  For details, see [Shared Li
 
 **ddcui** release 0.1.1 adds additional features and has numerous changes in the "fit and finish" category.  In particular:
 
-- Command line options for starting **ddcui**, corresponding to settings in the ***Option*** dialogs, and (if multiple monitors) 
+- Command line options for starting ***ddcui***, corresponding to settings in the ***Option*** dialogs, and (if multiple monitors) 
   the initlal monitor selected.
 - The ***Feature Selection Dialog***, along with command line option ***--custom-feature-set***, 
 enable the user to specify the VCP features to be shown.

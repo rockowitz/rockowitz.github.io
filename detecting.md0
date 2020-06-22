@@ -1,0 +1,21 @@
+## Detecting Monitors
+
+### I2C Connected Monitors
+
+**ddcutil** performs the following checks on each I2C bus:
+
+- Is slave addrexx x50 active?   This is the address at which the monitor returns the EDID.  
+- Is slave address x37 active?   This is the address for DDC communication.  
+- Attempts to read EDID at address x50.  Checks if the EDID is valid.  
+
+This test is not perfect.  
+
+#### Laptop monitors
+
+
+In some cases, particularly laptop monitors, there's no real I2C bus.   Because reading the EDID at x50 is 
+such a common operation, the video driver simulates an I2C bus for this purpose.  Normally, the I2C bus for 
+such a display does not respond on address x37, so **ddcutil** marks this display as invalid.  However, have seen 
+one case where address x37 is responsive, but does not support DDC.  Confused  
+
+
