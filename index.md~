@@ -4,16 +4,16 @@ ddcutil
 
 ##Announcements
 
-13 June 2020 
+21 June 2020 
 
-**ddcutil** release 0.9.9 contains a couple changes of general interest: 
+**ddcutil** release 0.9.9 contains two changes of general interest: 
 
 - A new command line option, ***--less-sleep*** eliminates many of the delays between the time that **ddcutil** receives a DDC response from a display
 and sends the next request, improving performance.
 <!-- - User Defined Features are now supported. -->
 - Support for AMD's old proprietary **fglrx** driver has been dropped.
 
-The **libddcutil** shared libray has minor changes.  For details, see [Shared Library Changes for Release 0.9.9](c_api_99.md).
+The **libddcutil** shared libray has non-upwardly compatible changes.  For details, see [Shared Library Changes for Release 0.9.9](c_api_99.md).
 
 **ddcui** release 0.1.1 adds additional features and has numerous changes in the "fit and finish" category.  In particular:
 
@@ -23,6 +23,8 @@ The **libddcutil** shared libray has minor changes.  For details, see [Shared Li
 enable the user to specify the VCP features to be shown.
 - Better handling of error conditions
 - Better **Help** text
+
+**ddcui** release 0.1.1 requires ddcutil 0.9.9.
 
 For general information about the graphical user interface, see [ddcui](ddcui_main.md).
 
