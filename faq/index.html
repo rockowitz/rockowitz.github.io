@@ -209,6 +209,10 @@
     </li>
     <li class="toctree-l2"><a class="reference internal" href="#ddcutil-does-not-work-on-a-raspberry-pi-4">ddcutil does not work on a Raspberry Pi 4</a>
     </li>
+    <li class="toctree-l2"><a class="reference internal" href="#the-monitor-supports-dynamic-contrast-range-dcr-setvcp-for-feature-x10-brightness-does-not-work">The monitor supports Dynamic Contrast Range (DCR). setvcp for feature x10 (brightness) does not work</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#the-new-value-for-feature-x10-is-different-from-the-value-specified-on-setvcp">The new value for feature x10 is different from the value specified on setvcp</a>
+    </li>
     </ul>
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="../tech_support/">Technical Support</a>
@@ -397,6 +401,19 @@ The check of bus address x30 is purely informational.</p>
 <h3 id="ddcutil-does-not-work-on-a-raspberry-pi-4"><strong>ddcutil</strong> does not work on a Raspberry Pi 4</h3>
 <p>The HDMI related chip has been changed on the Raspberry Pi 4, and drivers have not yet been revised to enable userspace access to /dev/i2c-2.
 For details, see page <a href="/raspberry">Raspberry Pi</a>. </p>
+<h3 id="the-monitor-supports-dynamic-contrast-range-dcr-setvcp-for-feature-x10-brightness-does-not-work">The monitor supports Dynamic Contrast Range (DCR). <strong>setvcp</strong> for feature x10 (brightness) does not work</h3>
+<p>Brightness does not change, which can be detected by: 
+- observation
+- verifycation on on the <strong>setvcp*<em> command
+- a subsequent </em></strong>getvcp 10***
+- the On Screen Display (OSD)</p>
+<p>At least some monitors with Dynamic Contrast Range (DCR) disable feature x10 (brightness) and possibly other features 
+when DCR is enabled. This has been reported with both Lenovo and Benq monitors.</p>
+<h3 id="the-new-value-for-feature-x10-is-different-from-the-value-specified-on-setvcp">The new value for feature x10 is different from the value specified on <strong>setvcp</strong></h3>
+<p>It is common for the new value of a Continuous feature to be off by 1 from the specified value.
+This appears to be the result of integer to floating point to integer conversion in the monitor.</p>
+<p>At least one monigor (Dell 2407wfp) does not allow setting brightness less than 30.  <strong>setvcp</strong> values
+in the range 0..50 are mapped to to 30..50. </p>
 <h2 id="questions-about-building-ddcutil">Questions about building <strong>ddcutil</strong></h2>
 <h3 id="configure-complains-that-a-required-package-does-not-exist-but-it-is-installed-on-my-system"><strong><em>configure</em></strong> complains that a required package does not exist, but it is installed on my system.</h3>
 <p>When building <strong>ddcutil</strong>, error messages from pkg-config (which is called by configure) can be misleading.

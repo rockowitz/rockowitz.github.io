@@ -160,6 +160,8 @@
     </li>
     <li class="toctree-l2"><a class="reference internal" href="#asus-rog-pg279q">Asus ROG PG279Q</a>
     </li>
+    <li class="toctree-l2"><a class="reference internal" href="#benq-gw2480">BenQ  GW2480</a>
+    </li>
     <li class="toctree-l2"><a class="reference internal" href="#benq-xl2411z">BenQ XL2411Z</a>
     </li>
     <li class="toctree-l2"><a class="reference internal" href="#dell-aw3418dw">Dell AW3418DW</a>
@@ -172,9 +174,13 @@
     </li>
     <li class="toctree-l2"><a class="reference internal" href="#dell-ultrasharp-u2413">Dell Ultrasharp U2413</a>
     </li>
+    <li class="toctree-l2"><a class="reference internal" href="#dell-2407wfp">Dell 2407wfp</a>
+    </li>
     <li class="toctree-l2"><a class="reference internal" href="#dell-u3011">Dell U3011</a>
     </li>
     <li class="toctree-l2"><a class="reference internal" href="#dell-ultrasharp-u3415w">Dell Ultrasharp U3415W</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#dell-u3818dw">Dell U3818DW</a>
     </li>
     <li class="toctree-l2"><a class="reference internal" href="#eizo-coloredge-cg19">Eizo Coloredge CG19</a>
     </li>
@@ -196,9 +202,15 @@
     </li>
     <li class="toctree-l2"><a class="reference internal" href="#iilyama-pl2779q">Iilyama PL2779Q</a>
     </li>
+    <li class="toctree-l2"><a class="reference internal" href="#lenovo-thinkvision-x1">Lenovo ThinkVision X1</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#lenovo-l22e-20">Lenovo L22e-20</a>
+    </li>
     <li class="toctree-l2"><a class="reference internal" href="#lg-22mp48d-p">LG 22MP48D-P</a>
     </li>
     <li class="toctree-l2"><a class="reference internal" href="#lg-27mu67">LG 27MU67</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#lg-27md5kl-ultrafine">LG 27MD5KL UltraFine</a>
     </li>
     <li class="toctree-l2"><a class="reference internal" href="#lg-23ea73">LG 23EA73</a>
     </li>
@@ -371,6 +383,17 @@ Maufacture year:  2017, 2018</p>
 <p>Does not respond to getvcp of unsupported VCP codes by setting the unsupported feature flag in the GETVCP
 response. Requests for unsupported features return garbage bytes, the requests fail by exceeding retries.</p>
 <p>The output of the <strong><em>capabilities</em></strong> command does appear to accurately report which features are supported.</p>
+<h3 id="benq-gw2480">BenQ  GW2480</h3>
+<p>VCP: 2.1
+Controller Manufacturer: Mstar<br />
+Controller Model:    mh=0x00, ml=0x58, sh=0x00<br />
+Firmware version: 3.10<br />
+Manufacture year: 2018</p>
+<p>Color temperature increment (x0b) = 50 degrees Kelvin
+Color temperature request   (x0c) = 70
+Requested color temperature = (3000 deg Kelvin) + 70 * (50 degrees Kelvin) = 6500 degrees Kelvin</p>
+<p>Brightness and possibly other color related features are disabled when
+Dynamic Contrast Range (DCR) is enabled (using OSD).</p>
 <h3 id="benq-xl2411z">BenQ XL2411Z</h3>
 <p>VCP version:  2.2<br />
 Controller Manufacturer: Mstar<br />
@@ -423,6 +446,25 @@ Manufacture year:  2013</p>
 <p>Color temperature:<br />
   color temp increment (feature 0B):  unsupported<br />
   color temp request (feature 0C):    unsupported  </p>
+<h3 id="dell-2407wfp">Dell 2407wfp</h3>
+<p>VCP version: 2.0
+Controller Manufacturer:  Genesis
+Controller Model:  mh=0xff, ml=0xff, sh=0x4a
+Firmware version: 29.1</p>
+<p>Cannot set brightness less than 30. <strong>setvcp</strong> values in the range 0..50 are mapped to the range 30..50</p>
+<p>User eskampie created the following table. </p>
+<p>Requested setvcp value | observed OSD value
+0  | 30
+10   34
+20  | 38
+30 |  42
+40 |  46
+50  | 50
+60  | 60
+70  |  70
+80 |  80
+90 |  90
+100 |  100</p>
 <h3 id="dell-u3011">Dell U3011</h3>
 <p>VCP version: 2.1 <br />
 Controller manufacturer:  Mstar <br />
@@ -484,6 +526,13 @@ However, querying feature 0B does work.  Querying feature 0C fails.</p>
 <p>Color temperature:<br />
   color temp increment (feature 0B):  100 deg K<br />
   color temp request (feature 0C):    query fails </p>
+<h3 id="dell-u3818dw">Dell U3818DW</h3>
+<p>VCP version:             2.1<br />
+Controller Manufacturer: RealTek<br />
+Controller Model:        mh=0x00, ml=0x11, sh=0x11<br />
+Firmware version:        65.1<br />
+Manufacture year:        2017</p>
+<p>Fails to set the Unsupported VCP Code bit in the <strong>getvcp</strong> response packet for unsupported features.</p>
 <h3 id="eizo-coloredge-cg19">Eizo Coloredge CG19</h3>
 <p>VCP version:  unreported <br />
 Controller manufacturer and model: unreported (VCP feature code C8 unsupported) <br />
@@ -521,11 +570,11 @@ Manufacture year: 2007</p>
   color temp request (feature 0C):    70<br />
   calculated color temp = 3000 + (x0c_val * x0b_val) = 3000  + (70 * 50) = 6500 degrees Kelvin</p>
 <h3 id="hp-lp2475w">HP LP2475w</h3>
-<p>VCP version:  2.1<br />
+<p>VCP version:             2.1<br />
 Controller manufacturer: Genesis<br />
-Controller model:  mh=xff   ml=xff  sh=x80
-Firmware version: 0.31<br />
-Manufacture year: 2008  </p>
+Controller model:        mh=xff   ml=xff  sh=x80<br />
+Firmware version:        0.31 <br />
+Manufacture year:        2008  </p>
 <p>Color temperature:<br />
   color temp increment (feature 0B):  3000 deg K<br />
   color temp request (feature 0C):    1<br />
@@ -553,10 +602,10 @@ standard VCP feature codes.</p>
 
 <p>Capabilities string does include cmds() segment listing supported commands, or model() segment listing model.</p>
 <h3 id="hp-w2207">HP w2207</h3>
-<p>VCP Version:  2.1<br />
-Controller manufacturer:  Mstar<br />
+<p>VCP Version:               2.1<br />
+Controller manufacturer:   Mstar  <br />
 Firmware Version:          3.5<br />
-Manufacture year:         2007  </p>
+Manufacture year:          2007  </p>
 <p>Color temperature increment (feature x0B) and request (feature x0C) result in a color temperature of 13,000 degress Kelvin</p>
 <p>Responds with data to all VCP feature requests, never reports a feature as unsupported </p>
 <h3 id="hp-zr2740w">HP ZR2740w</h3>
@@ -571,6 +620,37 @@ Manufacture year:          2013  </p>
 <p>Color temperature increment (feature x0B) and request (feature x0C) result in a color temperature of 26,100 degress Kelvin</p>
 <p>Does not include command x02 (VCP Response) or xE3 (Capabilities Reply) in its capabilities string, even though these are supported.</p>
 <p>Responds to several VCP feature not listed in capabilities</p>
+<h3 id="lenovo-thinkvision-x1">Lenovo ThinkVision X1</h3>
+<p>VCP Version: 2.1<br />
+Controller manufactuer: Mstar
+Controller Model:       mh=0xff, ml=0x16, sh=0x00<br />
+Firmware level          1.0<br />
+Manufacture year:       2016</p>
+<p>Color temperature:<br />
+  color temperature increment (feature 0B):  100 deg Kelvin<br />
+  color temperature request (feature 0C):    35        35 -&gt; 300+(35*100) = 6500 deg kelvin<br />
+  calculated color temperature:              3000 + (x0c_val * x0b_val) = 3000  + (35 * 100) = 6500 degrees Kelvin</p>
+<p>Brightness and possibly other color related features are disabled when
+Dynamic Contrast Range (DCR) is enabled (using OSD).</p>
+<h3 id="lenovo-l22e-20">Lenovo L22e-20</h3>
+<pre><code>  Mfg id:           LEN
+  Model:            LEN L22e-20
+  Serial number:    
+  Manufacture year: 2019
+  EDID version:     1.3
+  Product code:     26078
+</code></pre>
+<p>VCP Version:     2.0 <br />
+Controller Manufacturer: Mstar
+Controller Model:        mh=0x00, ml=0x00, sh=0x00<br />
+Firmware level  1.0<br />
+Manuracture year:  2019</p>
+<p>EDID has no serial number.</p>
+<p>Color temperature: 
+  color temperature increment (x0B):   100 degrees Kelvin
+  color temperature request:  (x0C)    0 </p>
+<p>Brightness and possibly other color related features are disabled when
+Dynamic Contrast Range (DCR) is enabled (using OSD).</p>
 <h3 id="lg-22mp48d-p">LG 22MP48D-P</h3>
 <p>VCP Version: 2.1<br />
 Manufacture year: 2016<br />
@@ -581,15 +661,33 @@ Firmware version: 5.0  </p>
 <p>Never sets the Unsupported Feature bit in replying to a GETVCP request for an unsupported feature. 
 Instead retuns a success response with all response bytes = 0. </p>
 <h3 id="lg-27mu67">LG 27MU67</h3>
-<p>VCP Version:  2.1<br />
-Manufacture year:  2015<br />
-Controller manufacturer and model:  Mstar (sl=x05)  model(mh=x00, ml=xff, sh=x00)<br />
+<p>VCP Version:             2.1<br />
+Manufacture year:        2015<br />
+Controller manufacturer: Mstar<br />
+Controller model:        mh=x00, ml=xff, sh=x00<br />
 Firmware version:         3.7</p>
 <p>Features X0B and X0C are not supported.  Cannot calculate color temperature.</p>
 <p>No serial number in EDID.</p>
 <p>When brightness (VCP feature x10) is changed, it reverts to the original value after approximately 1 second.
 The same behavior is seen on Windows using ClickMonitorDDC and softMCCS, so this is clearly a monitor issue.
 This problem is not observed for other features.</p>
+<h3 id="lg-27md5kl-ultrafine">LG 27MD5KL UltraFine</h3>
+<p>VCP Version: 2.2 (from the capabilities string)<br />
+Manufacture year: 2020<br />
+Controller manufacturer:  unknown (feature xc8 unsupported)<br />
+Controller version:  unknown (feature xc8 unsupported)<br />
+Firmware version: 3.4</p>
+<p>The EDID model name is generic "LG UltraFine".</p>
+<p>Features x0B and x0C are supported.  Calculated color temperature = 6500 degrees Kelvin.   ???</p>
+<p>This 5K monitor appears to have been built with only Macs in mind. It has no buttons, and no on screen display (OSD).</p>
+<p>Despite an extensive list of features in the capabilities string, <strong>getvcp</strong> for most returns with the unsupported feature
+bit set in the response packet.  The only features in the capabilities string that can be read using <strong>getvcp</strong> are: 
+0x10 (brightness),  xFD (manufacturer reserved), xFF (manufacturer reserved).</p>
+<p>The following features are not listed in the capabilities string and are not documented in MCCS, but return a value for
+<strong>getvcp</strong>: xD1, xD3,  xD5, xDD</p>
+<p>This monitor also supports USB access to the Virtual Display Panel, but the only feature supported through this interface is 0x10 (brightness).</p>
+<p>In particular, <strong>getvcp</strong> of feature xDF (VCP version) fails.  Per the MCCS specification, this 
+feature must be supported as of MCCS 2.0. </p>
 <h3 id="lg-23ea73">LG 23EA73</h3>
 <p>Never sets the Unsupported Feature bit in replying to a GETVCP request for an unsupported feature. 
 Instead retuns a success response with all response bytes = 0. </p>
@@ -597,9 +695,9 @@ Instead retuns a success response with all response bytes = 0. </p>
 <p>No model name string in EDID.  Binary model number is set (x7702 = 30471) </p>
 <p>No ASCII serial number in EDID.  Binary serial number is present</p>
 <p>VCP version:   2.1 <br />
-Controller manufacturer:  MStar (sl=x05) 
-Controller Model: mh=x0, ml=xff, sh=x00
-Firmware version:      3.4 
+Controller manufacturer:  MStar (sl=x05)<br />
+Controller Model: mh=x0, ml=xff, sh=x00<br />
+Firmware version:      3.4<br />
 Manufacture year:      2019</p>
 <p>Properly sets the Unsupport VCP Code bit in a GETVCP response.</p>
 <h3 id="lg-ultrawide">LG Ultrawide</h3>
