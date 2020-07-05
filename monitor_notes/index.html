@@ -342,7 +342,7 @@
             <div class="section">
               
                 <h2 id="notes-on-specific-monitors">Notes on Specific Monitors</h2>
-<p>The following list describes some monitors that have been tested.  It highlights the variability in DDC implementation among monitors.</p>
+<p>The following list describes some monitors that have been tested or reported by users.  It highlights the variability in DDC implementation among monitors.</p>
 <h3 id="aoc-q2775">AOC Q2775</h3>
 <p>VCP Version:   2.2<br />
 Controller Manufacturer:  Mstar <br />
@@ -384,8 +384,8 @@ Maufacture year:  2017, 2018</p>
 response. Requests for unsupported features return garbage bytes, the requests fail by exceeding retries.</p>
 <p>The output of the <strong><em>capabilities</em></strong> command does appear to accurately report which features are supported.</p>
 <h3 id="benq-gw2480">BenQ  GW2480</h3>
-<p>VCP: 2.1
-Controller Manufacturer: Mstar<br />
+<p>VCP Version: 2.1<br />
+Controller Manufacturer: Mstar <br />
 Controller Model:    mh=0x00, ml=0x58, sh=0x00<br />
 Firmware version: 3.10<br />
 Manufacture year: 2018</p>
@@ -447,24 +447,66 @@ Manufacture year:  2013</p>
   color temp increment (feature 0B):  unsupported<br />
   color temp request (feature 0C):    unsupported  </p>
 <h3 id="dell-2407wfp">Dell 2407wfp</h3>
-<p>VCP version: 2.0
-Controller Manufacturer:  Genesis
-Controller Model:  mh=0xff, ml=0xff, sh=0x4a
+<p>VCP version: 2.0<br />
+Controller Manufacturer:  Genesis<br />
+Controller Model:  mh=0xff, ml=0xff, sh=0x4a<br />
 Firmware version: 29.1</p>
 <p>Cannot set brightness less than 30. <strong>setvcp</strong> values in the range 0..50 are mapped to the range 30..50</p>
 <p>User eskampie created the following table. </p>
-<p>Requested setvcp value | observed OSD value
-0  | 30
-10   34
-20  | 38
-30 |  42
-40 |  46
-50  | 50
-60  | 60
-70  |  70
-80 |  80
-90 |  90
-100 |  100</p>
+<table>
+<thead>
+<tr>
+<th>Requested setvcp value</th>
+<th>observed OSD value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>30</td>
+</tr>
+<tr>
+<td>10   34</td>
+<td></td>
+</tr>
+<tr>
+<td>20</td>
+<td>38</td>
+</tr>
+<tr>
+<td>30</td>
+<td>42</td>
+</tr>
+<tr>
+<td>40</td>
+<td>46</td>
+</tr>
+<tr>
+<td>50</td>
+<td>50</td>
+</tr>
+<tr>
+<td>60</td>
+<td>60</td>
+</tr>
+<tr>
+<td>70</td>
+<td>70</td>
+</tr>
+<tr>
+<td>80</td>
+<td>80</td>
+</tr>
+<tr>
+<td>90</td>
+<td>90</td>
+</tr>
+<tr>
+<td>100</td>
+<td>100</td>
+</tr>
+</tbody>
+</table>
 <h3 id="dell-u3011">Dell U3011</h3>
 <p>VCP version: 2.1 <br />
 Controller manufacturer:  Mstar <br />
@@ -622,7 +664,7 @@ Manufacture year:          2013  </p>
 <p>Responds to several VCP feature not listed in capabilities</p>
 <h3 id="lenovo-thinkvision-x1">Lenovo ThinkVision X1</h3>
 <p>VCP Version: 2.1<br />
-Controller manufactuer: Mstar
+Controller manufactuer: Mstar<br />
 Controller Model:       mh=0xff, ml=0x16, sh=0x00<br />
 Firmware level          1.0<br />
 Manufacture year:       2016</p>
@@ -633,21 +675,14 @@ Manufacture year:       2016</p>
 <p>Brightness and possibly other color related features are disabled when
 Dynamic Contrast Range (DCR) is enabled (using OSD).</p>
 <h3 id="lenovo-l22e-20">Lenovo L22e-20</h3>
-<pre><code>  Mfg id:           LEN
-  Model:            LEN L22e-20
-  Serial number:    
-  Manufacture year: 2019
-  EDID version:     1.3
-  Product code:     26078
-</code></pre>
 <p>VCP Version:     2.0 <br />
-Controller Manufacturer: Mstar
-Controller Model:        mh=0x00, ml=0x00, sh=0x00<br />
+Controller Manufacturer: Mstar<br />
+Controller Model:        mh=0x00, ml=0x00, sh=0x00 <br />
 Firmware level  1.0<br />
 Manuracture year:  2019</p>
 <p>EDID has no serial number.</p>
-<p>Color temperature: 
-  color temperature increment (x0B):   100 degrees Kelvin
+<p>Color temperature:<br />
+  color temperature increment (x0B):   100 degrees Kelvin<br />
   color temperature request:  (x0C)    0 </p>
 <p>Brightness and possibly other color related features are disabled when
 Dynamic Contrast Range (DCR) is enabled (using OSD).</p>
@@ -678,16 +713,15 @@ Controller manufacturer:  unknown (feature xc8 unsupported)<br />
 Controller version:  unknown (feature xc8 unsupported)<br />
 Firmware version: 3.4</p>
 <p>The EDID model name is generic "LG UltraFine".</p>
-<p>Features x0B and x0C are supported.  Calculated color temperature = 6500 degrees Kelvin.   ???</p>
 <p>This 5K monitor appears to have been built with only Macs in mind. It has no buttons, and no on screen display (OSD).</p>
 <p>Despite an extensive list of features in the capabilities string, <strong>getvcp</strong> for most returns with the unsupported feature
 bit set in the response packet.  The only features in the capabilities string that can be read using <strong>getvcp</strong> are: 
-0x10 (brightness),  xFD (manufacturer reserved), xFF (manufacturer reserved).</p>
-<p>The following features are not listed in the capabilities string and are not documented in MCCS, but return a value for
+0x10 (brightness),  xFD (manufacturer reserved), xFF (manufacturer reserved).
+In particular, <strong>getvcp</strong> of feature xDF (VCP version) fails.  Per the MCCS specification, this 
+feature must be supported as of MCCS 2.0. </p>
+<p>The following features unknown to MCCS are not listed in the capabilities string, but return a value for
 <strong>getvcp</strong>: xD1, xD3,  xD5, xDD</p>
 <p>This monitor also supports USB access to the Virtual Display Panel, but the only feature supported through this interface is 0x10 (brightness).</p>
-<p>In particular, <strong>getvcp</strong> of feature xDF (VCP version) fails.  Per the MCCS specification, this 
-feature must be supported as of MCCS 2.0. </p>
 <h3 id="lg-23ea73">LG 23EA73</h3>
 <p>Never sets the Unsupported Feature bit in replying to a GETVCP request for an unsupported feature. 
 Instead retuns a success response with all response bytes = 0. </p>
