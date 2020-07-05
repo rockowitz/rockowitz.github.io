@@ -389,8 +389,8 @@ Controller Manufacturer: Mstar <br />
 Controller Model:    mh=0x00, ml=0x58, sh=0x00<br />
 Firmware version: 3.10<br />
 Manufacture year: 2018</p>
-<p>Color temperature increment (x0b) = 50 degrees Kelvin
-Color temperature request   (x0c) = 70
+<p>Color temperature increment (x0b) = 50 degrees Kelvin<br />
+Color temperature request   (x0c) = 70<br />
 Requested color temperature = (3000 deg Kelvin) + 70 * (50 degrees Kelvin) = 6500 degrees Kelvin</p>
 <p>Brightness and possibly other color related features are disabled when
 Dynamic Contrast Range (DCR) is enabled (using OSD).</p>
@@ -466,8 +466,8 @@ Firmware version: 29.1</p>
 <td>30</td>
 </tr>
 <tr>
-<td>10   34</td>
-<td></td>
+<td>10</td>
+<td>34</td>
 </tr>
 <tr>
 <td>20</td>
@@ -504,6 +504,10 @@ Firmware version: 29.1</p>
 <tr>
 <td>100</td>
 <td>100</td>
+</tr>
+<tr>
+<td><br></td>
+<td></td>
 </tr>
 </tbody>
 </table>
@@ -670,7 +674,7 @@ Firmware level          1.0<br />
 Manufacture year:       2016</p>
 <p>Color temperature:<br />
   color temperature increment (feature 0B):  100 deg Kelvin<br />
-  color temperature request (feature 0C):    35        35 -&gt; 300+(35*100) = 6500 deg kelvin<br />
+  color temperature request (feature 0C):    35    <br />
   calculated color temperature:              3000 + (x0c_val * x0b_val) = 3000  + (35 * 100) = 6500 degrees Kelvin</p>
 <p>Brightness and possibly other color related features are disabled when
 Dynamic Contrast Range (DCR) is enabled (using OSD).</p>
@@ -683,7 +687,8 @@ Manuracture year:  2019</p>
 <p>EDID has no serial number.</p>
 <p>Color temperature:<br />
   color temperature increment (x0B):   100 degrees Kelvin<br />
-  color temperature request:  (x0C)    0 </p>
+  color temperature request:  (x0C)    0<br />
+  calculated color temperature = 3000 + (0*100) = 3000 degrees Kelvin</p>
 <p>Brightness and possibly other color related features are disabled when
 Dynamic Contrast Range (DCR) is enabled (using OSD).</p>
 <h3 id="lg-22mp48d-p">LG 22MP48D-P</h3>
