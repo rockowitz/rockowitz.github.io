@@ -457,53 +457,53 @@ Firmware version: 29.1</p>
 <thead>
 <tr>
 <th>Requested setvcp value</th>
-<th>&amp;nbsp.Observed OSD value</th>
+<th>&amp;nbsp&amp;Observed OSD value</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td>0</td>
-<td>&amp;nbsp.30</td>
+<td>&amp;nbsp&amp;30</td>
 </tr>
 <tr>
 <td>10</td>
-<td>&amp;nbsp.34</td>
+<td>&amp;nbsp&amp;34</td>
 </tr>
 <tr>
 <td>20</td>
-<td>&amp;nbsp.38</td>
+<td>&amp;nbsp&amp;38</td>
 </tr>
 <tr>
 <td>30</td>
-<td>&amp;nbsp.42</td>
+<td>&amp;nbsp&amp;42</td>
 </tr>
 <tr>
 <td>40</td>
-<td>&amp;nbsp.46</td>
+<td>&amp;nbsp&amp;46</td>
 </tr>
 <tr>
 <td>50</td>
-<td>&amp;nbsp.50</td>
+<td>&amp;nbsp&amp;50</td>
 </tr>
 <tr>
 <td>60</td>
-<td>&amp;nbsp.60</td>
+<td>&amp;nbsp&amp;60</td>
 </tr>
 <tr>
 <td>70</td>
-<td>&amp;nbsp. 70</td>
+<td>&amp;nbsp&amp; 70</td>
 </tr>
 <tr>
 <td>80</td>
-<td>&amp;nbsp.80</td>
+<td>&amp;nbsp&amp;80</td>
 </tr>
 <tr>
 <td>90</td>
-<td>&amp;nbsp.90</td>
+<td>&amp;nbsp&amp;90</td>
 </tr>
 <tr>
 <td>100</td>
-<td>&amp;nbsp.100</td>
+<td>&amp;nbsp&amp;100</td>
 </tr>
 </tbody>
 </table>
@@ -675,7 +675,7 @@ Manufacture year:       2016</p>
 - color temperature request (feature 0C):    35    <br />
 - calculated color temperature:              3000 + (x0c_val * x0b_val) = 3000  + (35 * 100) = 6500 degrees Kelvin</p>
 <p>Brightness (feature x10) cannot be changed when Dynamic Contrast Range (DCR) is enabled (using OSD).</p>
-<p>Based on a report by user Janusz Kowalczyk, setting Dynamic Constrast Range and/or Low Blue light in the OSD disables various features in the OSD.
+<p>Per user Janusz Kowalczyk, setting Dynamic Constrast Range and/or Low Blue light in the OSD disables various features in the OSD.
 Presumably they cannot bhe changed by <strong>ddcutil</strong> either.</p>
 <ul>
 <li>Brightness and Contrast may or may not be disabled</li>
@@ -683,22 +683,6 @@ Presumably they cannot bhe changed by <strong>ddcutil</strong> either.</p>
 <li>Image scaling is disabled</li>
 <li>DisplayPort version selection is disabled </li>
 </ul>
-<p>&lt;--!
-When Dynamic Contrast Range (DCR) is enabled in the OSD: <br />
-- Brightness and contrast cannot are disabled.
-- Color menu is disabled (color related features)
-- Scaling
-- DisplayPort version selection is disabled </p>
-<p>When Low Blue Light feature is enabled in the OSD: 
-- Brightness and Contrast unaffected, Color unaffected
-- Scaling disabled
-- DisplayPort version selection is disabled</p>
-<p>When both are enabled:
-- Brightness and contrast cannot are disabled.
-- Color menu is disabled (color related features)
-- Scaling
-- DisplayPort version selection is disabled </p>
-<p>--&gt;</p>
 <h3 id="lenovo-l22e-20">Lenovo L22e-20</h3>
 <p>VCP Version:     2.0 <br />
 Controller Manufacturer: Mstar<br />
@@ -707,9 +691,9 @@ Firmware level  1.0<br />
 Manuracture year:  2019</p>
 <p>EDID has no serial number.</p>
 <p>Color temperature:<br />
-  color temperature increment (x0B):   100 degrees Kelvin<br />
-  color temperature request:  (x0C)    0<br />
-  calculated color temperature = 3000 + (0*100) = 3000 degrees Kelvin</p>
+- color temperature increment (x0B):   100 degrees Kelvin<br />
+- color temperature request:  (x0C)    0<br />
+- calculated color temperature = 3000 + (0*100) = 3000 degrees Kelvin</p>
 <p>Brightness and possibly other color related features are disabled when
 Dynamic Contrast Range (DCR) is enabled (using OSD).</p>
 <h3 id="lg-22mp48d-p">LG 22MP48D-P</h3>
