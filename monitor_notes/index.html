@@ -671,11 +671,34 @@ Controller Model:       mh=0xff, ml=0x16, sh=0x00<br />
 Firmware level          1.0<br />
 Manufacture year:       2016</p>
 <p>Color temperature:<br />
-  color temperature increment (feature 0B):  100 deg Kelvin<br />
-  color temperature request (feature 0C):    35    <br />
-  calculated color temperature:              3000 + (x0c_val * x0b_val) = 3000  + (35 * 100) = 6500 degrees Kelvin</p>
-<p>Brightness and possibly other color related features are disabled when
-Dynamic Contrast Range (DCR) is enabled (using OSD).</p>
+- color temperature increment (feature 0B):  100 deg Kelvin<br />
+- color temperature request (feature 0C):    35    <br />
+- calculated color temperature:              3000 + (x0c_val * x0b_val) = 3000  + (35 * 100) = 6500 degrees Kelvin</p>
+<p>Brightness (feature x10) cannot be changed when Dynamic Contrast Range (DCR) is enabled (using OSD).</p>
+<p>Based on a report by user Janusz Kowalczyk, setting Dynamic Constrast Range and/or Low Blue light in the OSD disables various features in the OSD.
+Presumably they cannot bhe changed by <strong>ddcutil</strong> either.</p>
+<ul>
+<li>Brightness and Contrast may or may not be disabled</li>
+<li>Color related settings may or may not be disabled</li>
+<li>Image scaling is disabled</li>
+<li>DisplayPort version selection is disabled </li>
+</ul>
+<p>&lt;--!
+When Dynamic Contrast Range (DCR) is enabled in the OSD: <br />
+- Brightness and contrast cannot are disabled.
+- Color menu is disabled (color related features)
+- Scaling
+- DisplayPort version selection is disabled </p>
+<p>When Low Blue Light feature is enabled in the OSD: 
+- Brightness and Contrast unaffected, Color unaffected
+- Scaling disabled
+- DisplayPort version selection is disabled</p>
+<p>When both are enabled:
+- Brightness and contrast cannot are disabled.
+- Color menu is disabled (color related features)
+- Scaling
+- DisplayPort version selection is disabled </p>
+<p>--&gt;</p>
 <h3 id="lenovo-l22e-20">Lenovo L22e-20</h3>
 <p>VCP Version:     2.0 <br />
 Controller Manufacturer: Mstar<br />
@@ -777,9 +800,9 @@ specific DDC commands  The USB interface also makes heavy use of manufacturer sp
 <p>Does not use the usual VCP codes (.e.g. x16/Red Gain) for color control.
 Instead uses the 6 axis color control features x8c..xa0.</p>
 <h3 id="phillips-bdm3270">Phillips BDM3270</h3>
-<p>VCP Version: 2.2
-Controller manufacturer:  Novatek, model info: mh=xff, ml=xff, sh=x00
-Firmware version:  1.0
+<p>VCP Version: 2.2<br />
+Controller manufacturer:  Novatek, model info: mh=xff, ml=xff, sh=x00<br />
+Firmware version:  1.0<br />
 Manufature year:  2016</p>
 <p>Color temperature increment (VCP code x0B) = 50 degrees Kelvin (sensible)<br />
 Color temperature request (VCP code x0C) yields a calculated color temperator of 3000+(70*50) = 6500 degrees Kelvin</p>
