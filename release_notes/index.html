@@ -573,9 +573,11 @@ This is presently purely for informational purposes.</p>
 </code></pre>
 
 <p>This frankly not very useful corner case had not been taken into account 
-when relative <strong><em>setvcp</em></strong> values were implemented.  Well, now it is.
-- <strong><em>ddcutil</em></strong> issues an error message instead of aborting if an utterly nonsensical
-<strong><em>--sleep-multiplier</em></strong> value greater than 100 is specified, e.g.</p>
+when relative <strong><em>setvcp</em></strong> values were implemented.  Well, now it is.</p>
+<ul>
+<li><strong><em>ddcutil</em></strong> issues an error message instead of aborting if an utterly nonsensical
+<strong><em>--sleep-multiplier</em></strong> value greater than 100 is specified, e.g.</li>
+</ul>
 <pre><code>$ ddcutil detect --sleep-multiplier 200      # WRONG
 </code></pre>
 
