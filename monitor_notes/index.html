@@ -667,14 +667,14 @@ Manufacture year:          2013  </p>
 <p>Does not include command x02 (VCP Response) or xE3 (Capabilities Reply) in its capabilities string, even though these are supported.</p>
 <p>Responds to several VCP feature not listed in capabilities.</p>
 <h3 id="iilyama-pl2792q">Iilyama PL2792Q</h3>
-<p>VCP Version:   2.2 reported by capabilities string, 2.1 reported by feature XDF.<br />
+<p>VCP Version:   2.2 (reported by capabilities string), 2.1 (reported by feature xdf)
 Controller Manufacturer:   RealTek  (controller number mh=x00, ml=x27, sh=x85)<br />
 Firmware version:   0.0<br />
 Manufacture year:   2020</p>
-<p>Color temperature increment (feature X0B):  100 degrees Kelvin
+<p>Color temperature increment (feature X0B):  100 degrees Kelvin<br />
 Color temperature request (feature X0C):  results in a nonsensical color temperature of 1300 degrees Kelvin</p>
 <p>Requires that a Save Current Settings packet (command <strong><em>scs</em></strong>) be sent immediately after a Set VCP Feature packet (command <strong><em>setvcp</em></strong>) to actually set the value. </p>
-<p>Never sets the unsupported feature bit in a VCP Feature Reply packet (command <strong><em>getvcp</em></strong>).  All features appear to be supported.  The capabilities command must be checked to determine if a feature is supported.</p>
+<p>Never sets the unsupported feature bit in a VCP Feature Reply packet (command <strong><em>getvcp</em></strong>).  The capabilities command must be checked to determine if a feature is supported.</p>
 <h3 id="lenovo-thinkvision-x1">Lenovo ThinkVision X1</h3>
 <p>VCP Version: 2.1<br />
 Controller manufactuer: Mstar<br />
