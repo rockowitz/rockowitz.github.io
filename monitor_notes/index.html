@@ -852,8 +852,8 @@ Firmware version: 0.1  </p>
 <p>The capabilities string returned by the monitor is malformed.  As a result, <strong>ddcutil</strong> cannot parse the "cmds" field.  </p>
 <p>Features x0B and X0C are unsupported.  Cannot calculate color temperature.</p>
 <p>No matter what the color mode (x14 Preset, xDC Display Mode) color settings (x16, x18, x1a) cannot be changed.  Brightness (x10) and contrast can be changed only in some modes. </p>
-<p>Values in the capabilities string correlate poorly with observed values.</p>
-<p>For example, according to the capaiblities string, feature x60 (Input source) has values x11, x12, and x0f, which the MCCS spec defines as HDMI-1, HDMI-2
+<p>Values in the capabilities string correlate poorly with observed values. 
+For example, according to the capaiblities string, feature x60 (Input source) has values x11, x12, and x0f, which the MCCS spec defines as HDMI-1, HDMI-2
 and DisplayPort-1 respectively.  However, the observed values are x05, x06, and x0f, which the MCCS spec defines as Composite video 1, 
 Composite video 2, and Displayport respectively. </p>
 <p><a name="viewsonic_xg2703"></a></p>
