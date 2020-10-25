@@ -200,9 +200,11 @@
     </li>
     <li class="toctree-l2"><a class="reference internal" href="#hp-zr2740w">HP ZR2740w</a>
     </li>
-    <li class="toctree-l2"><a class="reference internal" href="#iilyama-pl2779q">Iilyama PL2779Q</a>
+    <li class="toctree-l2"><a class="reference internal" href="#iiyama-pl2492h">Iiyama PL2492H</a>
     </li>
-    <li class="toctree-l2"><a class="reference internal" href="#iilyama-pl2792q">Iilyama PL2792Q</a>
+    <li class="toctree-l2"><a class="reference internal" href="#iiyama-pl2779q">Iiyama PL2779Q</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#iiyama-pl2792q">Iiyama PL2792Q</a>
     </li>
     <li class="toctree-l2"><a class="reference internal" href="#lenovo-thinkvision-x1">Lenovo ThinkVision X1</a>
     </li>
@@ -235,6 +237,8 @@
     <li class="toctree-l2"><a class="reference internal" href="#samsung-syncmaster-213t">Samsung Syncmaster 213T</a>
     </li>
     <li class="toctree-l2"><a class="reference internal" href="#samsung-syncmaster-730b">Samsung Syncmaster 730B</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#samsung-u32h750">Samsung U32H750</a>
     </li>
     <li class="toctree-l2"><a class="reference internal" href="#viewsonic-xg2703-gs">Viewsonic XG2703-GS</a>
     </li>
@@ -658,7 +662,18 @@ Manufacture year:          2007  </p>
 <p>VCP version:  2.2  </p>
 <p>Implements only a few VCP codes. </p>
 <p>VCP feature codes 0B and 0C unsupported.</p>
-<h3 id="iilyama-pl2779q">Iilyama PL2779Q</h3>
+<p><a name="iiyama_pl2492h"></a></p>
+<h3 id="iiyama-pl2492h">Iiyama PL2492H</h3>
+<p>VCP Version:   2.2 (reported by capabilities string), 2.1 (reported by feature xdf)<br />
+Controller Manufacturer:   Connexant<br />
+Firmware version:   0.0<br />
+Manufacture year:   2017</p>
+<p>Color temperature increment (feature X0B):  100 degrees Kelvin<br />
+Color temperature request (feature X0C):  results in a nonsensical color temperature 1300 (3000 + 100 * 100) degrees Kelvin  </p>
+<p>Requires that a Save Current Settings packet (command <strong><em>scs</em></strong>) be sent immediately after a Set VCP Feature packet (command <strong><em>setvcp</em></strong>) to actually set the value. </p>
+<p>Never sets the unsupported feature bit in a VCP Feature Reply packet (command <strong><em>getvcp</em></strong>).  The capabilities command must be checked to determine if a feature is supported.</p>
+<p><a name="iiyama_pl2779q"></a></p>
+<h3 id="iiyama-pl2779q">Iiyama PL2779Q</h3>
 <p>VCP Version:    2.1<br />
 Controller manufacturer:   unknown (feature code xC8 unsupported)<br />
 Firmware version:          unknown (feature code xC9 unsupported)<br />
@@ -666,7 +681,8 @@ Manufacture year:          2013  </p>
 <p>Color temperature increment (feature x0B) and request (feature x0C) result in a color temperature of 26,100 degress Kelvin</p>
 <p>Does not include command x02 (VCP Response) or xE3 (Capabilities Reply) in its capabilities string, even though these are supported.</p>
 <p>Responds to several VCP feature not listed in capabilities.</p>
-<h3 id="iilyama-pl2792q">Iilyama PL2792Q</h3>
+<p><a name="iiyama_pl2792q"></a></p>
+<h3 id="iiyama-pl2792q">Iiyama PL2792Q</h3>
 <p>VCP Version:   2.2 (reported by capabilities string), 2.1 (reported by feature xdf)
 Controller Manufacturer:   RealTek  (controller number mh=x00, ml=x27, sh=x85)<br />
 Firmware version:   0.0<br />
@@ -704,7 +720,7 @@ Manuracture year:  2019</p>
 <p>Color temperature:<br />
 - color temperature increment (x0B):   100 degrees Kelvin<br />
 - color temperature request:  (x0C)    0<br />
-- calculated color temperature = 3000 + (0*100) = 3000 degrees Kelvin</p>
+- calculated color temperature = 3000 + (0 * 100) = 3000 degrees Kelvin</p>
 <p>Brightness and possibly other color related features are disabled when
 Dynamic Contrast Range (DCR) is enabled (using OSD).</p>
 <h3 id="lg-22mp48d-p">LG 22MP48D-P</h3>
@@ -747,7 +763,7 @@ feature must be supported as of MCCS 2.0. </p>
 <p>Never sets the Unsupported Feature bit in replying to a GETVCP request for an unsupported feature. 
 Instead retuns a success response with all response bytes = 0. </p>
 <h3 id="lg-hdr-4k">LG HDR 4K</h3>
-<p>No model name string in EDID.  Binary model number is set (x7702 = 30471) </p>
+<p>No model name string in EDID.  The binary model number is set (x7702 = 30471) </p>
 <p>No ASCII serial number in EDID.  Binary serial number is present</p>
 <p>VCP version:   2.1 <br />
 Controller manufacturer:  MStar (sl=x05)<br />
@@ -779,10 +795,12 @@ The response to feature X0B (color temperature increment) is 50 degrees Kelvin, 
 The response to feature X0C (number of color temperature increments) is 0, resulting in a temperature 
 of 3000 degrees Kelvin, which is nonsensical.</p>
 <p>Responds to getvcp for feature xA8, which  is not defined in the MCCS specification.</p>
+<p><a name="nec_lcd3090w"></a></p>
 <h3 id="nec-lcd3090wqxi">NEC LCD3090WQXi</h3>
 <p>VCP Version 2.0<br />
 Controller manufacturer and model: unreported (VCP feature code C8 unsupported)<br />
 Firmware version: unreported (VCP feature code C9 unsupported)   </p>
+<p><a name="nec_pa241"></a></p>
 <h3 id="nec-pa241">NEC PA241</h3>
 <p>VCP Version 2.0<br />
 Controller manufacturer and model: unreported (VCP feature code C8 unsupported)<br />
@@ -824,7 +842,23 @@ Firmware version:         0.1  </p>
 Controller manufacturer and model:   Unknown (VCP feature code C8 unsupported)   <br />
 Firmware version:  Unknown (VCP feature code C9 unsupported)  </p>
 <p>The capabilities string spcifies the values for non-continuous features in decimal rather than hexadecimal</p>
-<p>VCP feature codes 0B and 0C unsupported.</p>
+<p>VCP feature code</p>
+<p><a name="samsung_u32h750"></a>  </p>
+<h3 id="samsung-u32h750">Samsung U32H750</h3>
+<p>VCP version: Capabilities string: 2.1,  Feature xdf: 2.0<br />
+Controller manufacturer and model:  Mstar, model id:  mh=x00, ml=0x10, sh=0x00<br />
+Firmware version: 0.1  </p>
+<p>This monitor is a MCCS disaster area.</p>
+<p>The capabilities string returned by the monitor is malformed.  As a result, <strong>ddcutil</strong> cannot parse the "cmds" field.  </p>
+<p>Features x0B and X0C are unsupported.  Cannot calculate color temperature.</p>
+<p>Values in the capabilities string correlate poorly with observed values. </p>
+<ul>
+<li>According to the capaiblities string, feature x60 (Input source) has values x11, x12, and x0f, which the MCCS spec defines as HDMI-1, HDMI-2
+and DisplayPort-1 respectively.  However, the observed values are x05, x06, and x0f, which the MCCS spec defines as Composite video 1, 
+Composite video 2, and Displayport respectively. </li>
+<li>No matter what the color mode (x14 Preset, xDC Display Mode) color settings (x16, x18, x1a) cannot be changed.  Brightness (x10) and contrast can be changed only in some modes. </li>
+</ul>
+<p><a name="viewsonic_xg2703"></a></p>
 <h3 id="viewsonic-xg2703-gs">Viewsonic XG2703-GS</h3>
 <p>Manufacture year:  2016<br />
 VCP Version:  2.2<br />
