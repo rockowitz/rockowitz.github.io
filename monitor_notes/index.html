@@ -851,13 +851,11 @@ Firmware version: 0.1  </p>
 <p>This monitor is a MCCS disaster area.</p>
 <p>The capabilities string returned by the monitor is malformed.  As a result, <strong>ddcutil</strong> cannot parse the "cmds" field.  </p>
 <p>Features x0B and X0C are unsupported.  Cannot calculate color temperature.</p>
-<p>Values in the capabilities string correlate poorly with observed values. </p>
-<ul>
-<li>According to the capaiblities string, feature x60 (Input source) has values x11, x12, and x0f, which the MCCS spec defines as HDMI-1, HDMI-2
+<p>No matter what the color mode (x14 Preset, xDC Display Mode) color settings (x16, x18, x1a) cannot be changed.  Brightness (x10) and contrast can be changed only in some modes. </p>
+<p>Values in the capabilities string correlate poorly with observed values.</p>
+<p>For example, according to the capaiblities string, feature x60 (Input source) has values x11, x12, and x0f, which the MCCS spec defines as HDMI-1, HDMI-2
 and DisplayPort-1 respectively.  However, the observed values are x05, x06, and x0f, which the MCCS spec defines as Composite video 1, 
-Composite video 2, and Displayport respectively. </li>
-<li>No matter what the color mode (x14 Preset, xDC Display Mode) color settings (x16, x18, x1a) cannot be changed.  Brightness (x10) and contrast can be changed only in some modes. </li>
-</ul>
+Composite video 2, and Displayport respectively. </p>
 <p><a name="viewsonic_xg2703"></a></p>
 <h3 id="viewsonic-xg2703-gs">Viewsonic XG2703-GS</h3>
 <p>Manufacture year:  2016<br />
