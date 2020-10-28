@@ -258,27 +258,28 @@
             <div class="section">
               
                 <h2 id="i2c-device-permissions">I2C Device Permissions<a name="i2c_permissions"></a></h2>
-<p>Except when using AMD's proprietary driver (see <a href="../adl/">here</a>) ddcutil requires 
-read/write access to /dev/i2c-*.  </p>
-<p>On some distributions, package i2c-tools creates group i2c, and assigns that the group to
-/dev/i2c-* devices using a udev rule. In that case all that is necessary is to add your user
-name to group i2c: </p>
+<p>ddcutil requires read/write access to /dev/i2c-*.  </p>
+<p>On some distributions, package i2c-tools creates group <strong><em>i2c</em></strong>, and assigns that group to the
+/dev/i2c-<em> devices using a udev rule. In that case all that is necessary is to add your user
+name to group </em><strong>i2c</strong>*: </p>
 <pre><code>$ sudo usermod your-user-name -aG i2c
 </code></pre>
 
-<p>If group i2c does not already exist, the following command will create it: </p>
+<p>If group <strong><em>i2c</em></strong> does not already exist, the following command will create it: </p>
 <pre><code>sudo groupadd --system i2c
+</code></pre>
+
+<p>Then add your userid to group <strong><em>i2c</em></strong> as above.</p>
+<p>A sample udev rule for giving group <strong><em>i2c</em></strong> RW permission on the /dev/i2c devices 
+can be found in distributed file <strong>45-ddcutils-i2c.rules</strong>.  Its exact location varies by distribution, but 
+commonly the file is found in directory /usr/share/ddcutil/data.  The file can be copied to 
+/etc/udev/rules.d, but do check that this rule does not conflict with others in that directory.</p>
+<pre><code>$ sudo cp /usr/share/ddcutil/data/45-ddcutils-i2c.rules /etc/udev/rules.d
 </code></pre>
 
 <p>For testing, it may be simpler to give everyone permission to write to 
 /dev/i2c-* for the current boot:</p>
 <pre><code>$ sudo chmod a+rw /dev/i2c-*
-</code></pre>
-
-<p>If needed, a sample udev rule for giving group i2c RW permission on the /dev/i2c devices 
-can be found in distributed file <strong>45-ddcutils-i2c.rules</strong>.  It can be copied to 
-/etc/udev/rules.d, but do check that this rule does not conflict with others in that directory.</p>
-<pre><code>$ sudo cp /usr/share/ddcutil/data/etc/udev/rules.d/45-ddcutils-i2c.rules /etc/udev/rules.d
 </code></pre>
 
 <p>For USB devices, see <a href="../usb_permissions/">USB Device Permissions</a></p>
