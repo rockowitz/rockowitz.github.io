@@ -267,7 +267,7 @@ following to the "Device" section for the Nvidia driver resolves the problem for
 <pre><code> Option     &quot;RegistryDwords&quot;  &quot;RMUseSwI2c=0x01; RMI2cSpeed=100&quot;
 </code></pre>
 
-<p>A file for making this change is 90-nvidia_i2c.conf.  Its exact location varies by where a distribution installs an application's data files. Commonly it can be found in  directory /usr/share/ddcutil/data/etc/data.  </p>
+<p>A file for making this change is 90-nvidia_i2c.conf.  Its exact location varies by where a distribution installs an application's data files. Commonly it can be found in directory /usr/share/ddcutil/data.  </p>
 <pre><code>Section &quot;Device&quot;
    Driver &quot;nvidia&quot;
    Identifier &quot;Dev0&quot;
