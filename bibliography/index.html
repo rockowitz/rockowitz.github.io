@@ -274,7 +274,8 @@ See the <a href="https://en.wikipedia.org/wiki/Display_Data_Channel">Wikipedia D
 <p><a href="https://usb.org/sites/default/files/usbmon10.pdf">USB Monitor Control Class Specification Revision 1.0, January 5, 1998</a>]</p>
 </li>
 <li>
-<p><a href="https://vesa.org/vesa-standards/">VESA Display Data Channel Command Interface (DDC/CI) Standard Version 1.1, October 29, 2004</a> </p>
+<p><a href="https://vesa.org/vesa-standards/">VESA Display Data Channel Command Interface (DDC/CI) Standard Version 1.1, October 29, 2004</a> 
+  Also available [here](https://milek7.pl/ddcbacklight/ddcci.pdf]</p>
 </li>
 <li>
 <p>VESA Display Data Channel Command Interface Standard, Version 1. August 14, 1998. This is a predecessor to the current standard, DDC/CI 1.1.  The contents of this document sometimes clarify the current specification, but should not be regarded as definitive.</p>
@@ -328,15 +329,19 @@ DDC is as a subclass of superclass I2C, that is DDC obeys the
 rules of I2C, but is more specific.  For example, only certain byte sequences are legal. SMBUS is another protocol based on I2C.  </p>
 <p><strong><em>ddcutil</em></strong> reads from and writes to the userspace <strong>/dev-i2c</strong>* devices which present a file system like abstraction of an I2C bus.  It leaves
 the bit-banging to the video device drivers, e.g. amdgpu, nouveau. </p>
-<p>One source of confusion in DDC documentation is the specification of slave adddresses on the I2C bus.  Sometimes you'll see the DDC address documented as x37, other times as the pair x6e/x6f. Leaving aside the implementation of 10 bit I2C bus addresses (uncommon), I2C slave addresses are encoded in a single byte. The high order 7 bits are used for the address per se.  The low order bit is 0 for a write operation, 1 for a read operation. Much of the VESA documenation regards the entire 8 bit value as an address, which means address x37 becomes the pair x63/x6f.  Similarly, the 7 bit address for the EDID is x50.  Regarded as an 8 bit address, the EDID address becomes xA0/xA1. <strong><em>ddcutil</em></strong> specifies I2C slave addresses in 7 bit form, as do utilities such as <strong><em>i2cdetect</em></strong>, <strong><em>i2cget</em></strong>, and <strong><em>i2cset</em></strong>.</p>
+<p>One source of confusion in DDC documentation is the specification of slave adddresses on the I2C bus.  Sometimes you'll see the DDC address documented as x37, other times as the pair x6e/x6f. Leaving aside the implementation of 10 bit I2C bus addresses (uncommon), I2C slave addresses are encoded in a single byte. The high order 7 bits are used for the address per se.  The low order bit is 0 for a write operation, 1 for a read operation. Much of the VESA documenation regards the entire 8 bit value as an address, which means address x37 becomes the pair x6e/x6f.  Similarly, the 7 bit address for the EDID is x50; regarded as an 8 bit address, the EDID address becomes xA0/xA1. <strong><em>ddcutil</em></strong> specifies I2C slave addresses in 7 bit form, as do utilities such as <strong><em>i2cdetect</em></strong>, <strong><em>i2cget</em></strong>, and <strong><em>i2cset</em></strong>.</p>
 <p>The following specifications and articles provide backgroud information about the I2C bus. </p>
 <ul>
 <li><a href="http://www.ti.com/lit/an/slva704/slva704.pdf">Understanding the I<sup>2</sup>C Bus, Texas Instruments Application Report, SLVA702, June 2015</a></li>
 <li><a href="https://luxielectronics.com/attachments/File/HDCP_and_EDID_Demystified.pdf">HDCP and EDID Demystified</a></li>
 <li><a href="https://www.nxp.com/docs/en/user-guide/UM10204.pdf">I2C-bus specification and user manual, Rev 6 - 4 April 2014</a></li>
+<li><a href="https://i2c.info">I<sup>2</sup>C Info -I<sup>2</sup>C Bus, Interface and Protocol</a></li>
 <li><a href="https://i2c.info/i2c-bus-specification">I<sup>2</sup>C Bus Specification</a></li>
+<li><a href="https://deepbluembedded.com/i2c-communication-protocol-tutorial-pic/">I<sub>2</sub>C Communication Protocol Tutorial</a></li>
 <li><a href="https://www.i2c-bus.org/">I2C - What's That?</a></li>
 <li><a href="https://en.wikipedia.org/wiki/I2C">Wikipedia</a></li>
+<li><a href="https://www.totalphase.com/support/articles/200349176-7-bit-8-bit-and-10-bit-I2C-Slave-Addressing">7-bit, 8-bit, and 10-bit I2C Slave Addressing</a></li>
+<li><a href="https://www.slideshare.net/shudhanshu29/i2c-protocol-94259889">I2C Protocol Lecture Notes, Sudhanshu Janwadkar</a></li>
 <li><a href="https://www.kernel.org/doc/html/latest/i2c/index.html#introduction">Linux kernel documentation</a></li>
 </ul>
               
