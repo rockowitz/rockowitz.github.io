@@ -176,6 +176,8 @@
     </li>
     <li class="toctree-l2"><a class="reference internal" href="#dell-2407wfp">Dell 2407wfp</a>
     </li>
+    <li class="toctree-l2"><a class="reference internal" href="#dell-u2518d">Dell U2518D</a>
+    </li>
     <li class="toctree-l2"><a class="reference internal" href="#dell-u3011">Dell U3011</a>
     </li>
     <li class="toctree-l2"><a class="reference internal" href="#dell-ultrasharp-u3415w">Dell Ultrasharp U3415W</a>
@@ -225,6 +227,8 @@
     <li class="toctree-l2"><a class="reference internal" href="#mitsubishi-rdt232wlm">Mitsubishi RDT232WLM</a>
     </li>
     <li class="toctree-l2"><a class="reference internal" href="#nec-lcd3090wqxi">NEC LCD3090WQXi</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#nec-p241w">NEC P241W</a>
     </li>
     <li class="toctree-l2"><a class="reference internal" href="#nec-pa241">NEC PA241</a>
     </li>
@@ -410,6 +414,7 @@ Manufacture year: 2013</p>
 Feature x0C: Color temperature request: 0<br />
 Caclculated color temperature = 3000 + (0*50) = 3000 deg Kelvin  (nonsensical)  </p>
 <p>Responds to VCP feature x60 (Input Source) even though this is not documented in the capabilities string.</p>
+<p><a name="dell_aw3401dw"></a></p>
 <h3 id="dell-aw3418dw">Dell AW3418DW</h3>
 <p>VCP Version: 2.2<br />
 Controller Manufacturer: manufacturer designed (sl=0xff)<br />
@@ -420,6 +425,7 @@ Manufacture year: 2017  </p>
 Feature x0C: Color temperature request: unsupported  </p>
 <p>Reading unsupported feature 0x00 returns normally, with ml=ml=sh=sl=0.  The unsupported feature bit is not set.
 Reading any other unsupported feature value results in an IOCTL failure with Linux errno=EIO (5).</p>
+<p><a name="dell_p2411"></a></p>
 <h3 id="dell-p2411">Dell P2411</h3>
 <p>VCP version: 2.1 <br />
 Controller Manufacturer: Mstar<br />
@@ -430,6 +436,7 @@ Manufacture year:       2011</p>
 More recently, works with nouveau driver, but fails with proprietary Nvidia driver. </p>
 <p>Reports VCP code 0B (color temperature increment) as 1 degree Kelvin, which makes the GETVCP response to VCP code 0C (color temperature
 request) nonsensical.</p>
+<p><a name="dell_p2715q"></a></p>
 <h3 id="dell-p2715q">Dell P2715Q</h3>
 <p>VCP version: 2.1<br />
 Controller Manufacturer: Mstar (sl=x05)<br />
@@ -439,8 +446,10 @@ Manufacture year:       2015</p>
 <p>Feature x0B, Color temperature increment:   unsupported<br />
 Feature x0C, Color temperature request:     unsupported</p>
 <p>very clean, no  DDC retries needed</p>
+<p><a name="dell_u1905p"></a></p>
 <h3 id="dell-ultrasharp-1905fp">Dell Ultrasharp 1905FP</h3>
 <p>Does not support DDC.</p>
+<p><a name="dell_u2413"></a></p>
 <h3 id="dell-ultrasharp-u2413">Dell Ultrasharp U2413</h3>
 <p>VCP version:   2.1<br />
 Controller Manufacturer:  STMicroelectronics (sl=x0d)<br />
@@ -452,6 +461,7 @@ Manufacture year:  2013</p>
 <p>Color temperature:<br />
   color temp increment (feature 0B):  unsupported<br />
   color temp request (feature 0C):    unsupported  </p>
+<p><a name="dell_2407wfp"></a></p>
 <h3 id="dell-2407wfp">Dell 2407wfp</h3>
 <p>VCP version: 2.0<br />
 Controller Manufacturer:  Genesis<br />
@@ -463,57 +473,70 @@ Firmware version: 29.1</p>
 <thead>
 <tr>
 <th>Requested setvcp value</th>
-<th>&amp;nbsp&amp;Observed OSD value</th>
+<th>&nbsp;Observed OSD value</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td>0</td>
-<td>&amp;nbsp&amp;30</td>
+<td>&nbsp;30</td>
 </tr>
 <tr>
 <td>10</td>
-<td>&amp;nbsp&amp;34</td>
+<td>&nbsp;34</td>
 </tr>
 <tr>
 <td>20</td>
-<td>&amp;nbsp&amp;38</td>
+<td>&nbsp;38</td>
 </tr>
 <tr>
 <td>30</td>
-<td>&amp;nbsp&amp;42</td>
+<td>&nbsp;42</td>
 </tr>
 <tr>
 <td>40</td>
-<td>&amp;nbsp&amp;46</td>
+<td>&nbsp;46</td>
 </tr>
 <tr>
 <td>50</td>
-<td>&amp;nbsp&amp;50</td>
+<td>&nbsp;50</td>
 </tr>
 <tr>
 <td>60</td>
-<td>&amp;nbsp&amp;60</td>
+<td>&nbsp;60</td>
 </tr>
 <tr>
 <td>70</td>
-<td>&amp;nbsp&amp; 70</td>
+<td>&nbsp; 70</td>
 </tr>
 <tr>
 <td>80</td>
-<td>&amp;nbsp&amp;80</td>
+<td>&nbsp;80</td>
 </tr>
 <tr>
 <td>90</td>
-<td>&amp;nbsp&amp;90</td>
+<td>&nbsp;90</td>
 </tr>
 <tr>
 <td>100</td>
-<td>&amp;nbsp&amp;100</td>
+<td>&nbsp;100</td>
 </tr>
 </tbody>
 </table>
 <p><br></p>
+<p><a name="dell_u2518d"></a></p>
+<h3 id="dell-u2518d">Dell U2518D</h3>
+<p>VCP Version: 2,1<br />
+Controller Manufacturer: MStar<br />
+Controller Model:   mh=0x00, ml=0x00, sh=0x56<br />
+Firmware version:  2.1<br />
+Manufacture year:  2018</p>
+<p>Features 0B, 0C are unsupported.</p>
+<p>Cannot set contrast (feature x12) less than 25.  Attempting to setting a value less than 25 results in the set value being 25. 
+However, it is possible to set a lower contrast value in the OSD .  </p>
+<p>Unlike the <strong><em>Dell 2407wfp</em></strong>, feature x10 (brightness) can be set to any value between 0..100. </p>
+<p>Clean implementation, no I2c retries required.</p>
+<p><a name="dell_u3011"></a></p>
 <h3 id="dell-u3011">Dell U3011</h3>
 <p>VCP version: 2.1 <br />
 Controller manufacturer:  Mstar <br />
@@ -564,6 +587,7 @@ VCP code x0C (color temperature request) nonsensical.</p>
   color temp increment (feature 0B):  1 deg K<br />
   color temp request (feature 0C):    2
   calculated color temp = 3000 + (x0c_val * x0b_val) = 3000  + (1 * 2) = 3002 degrees Kelvin</p>
+<p><a name="dell_u3415w"></a></p>
 <h3 id="dell-ultrasharp-u3415w">Dell Ultrasharp U3415W</h3>
 <p>VCP version: 2.1 <br />
 Controller manufacturer:  Realtek (sl=x09)    <br />
@@ -576,6 +600,7 @@ However, querying feature 0B does work.  Querying feature 0C fails.</p>
 <p>Color temperature:<br />
   color temp increment (feature 0B):  100 deg K<br />
   color temp request (feature 0C):    query fails </p>
+<p><a name="dell_u3818w"></a></p>
 <h3 id="dell-u3818dw">Dell U3818DW</h3>
 <p>VCP version:             2.1<br />
 Controller Manufacturer: RealTek<br />
@@ -583,6 +608,7 @@ Controller Model:        mh=0x00, ml=0x11, sh=0x11<br />
 Firmware version:        65.1<br />
 Manufacture year:        2017</p>
 <p>Fails to set the Unsupported VCP Code bit in the <strong>getvcp</strong> response packet for unsupported features.</p>
+<p><a name="eizo_CG19"></a></p>
 <h3 id="eizo-coloredge-cg19">Eizo Coloredge CG19</h3>
 <p>VCP version:  unreported <br />
 Controller manufacturer and model: unreported (VCP feature code C8 unsupported) <br />
@@ -594,6 +620,7 @@ specific USB HID reports. </p>
 <p>Unable to read EDID over USB, even though the HID Report for EDID can be located.</p>
 <p>To set color related VCP feature values, Custom Color mode must be selected.   If set to sRGB or Calibrated, the SETVCP command
 will appear to succeed, but will have no effect.  (In sRGB mode, Brightness can be set, in Calibrated mode it cannot.)</p>
+<p><a name="eizo_ev2785"></a></p>
 <h3 id="eizo-ev2785">Eizo EV2785</h3>
 <p>Reports EDID ad I2c bus address x.50.  Does not support DDC/CI (bus address x37).</p>
 <p>Uses USB for monitor control, but uses manufacturer-defined usage pages for communication, i.e. does not support the
@@ -781,6 +808,7 @@ Manufacture year:  2014  </p>
 <p>When responding to a Get VCP Feature request, the monitor never sets sets the Result Code field of the VCP Feature Reply to Unsupported VCP Code.
 Instead, it always reports No Error.<br />
 For unsupported VCP codes, all bytes in the response (MH, ML, SH, SL) are set to x00.</p>
+<p><a name="mitsubishi_rdt232wlm"></a></p>
 <h3 id="mitsubishi-rdt232wlm">Mitsubishi RDT232WLM</h3>
 <p>VCP Version: 2.1<br />
 Controller manufacturer and model: unreported (VCP feature code C8 unsupported)<br />
@@ -799,7 +827,22 @@ of 3000 degrees Kelvin, which is nonsensical.</p>
 <h3 id="nec-lcd3090wqxi">NEC LCD3090WQXi</h3>
 <p>VCP Version 2.0<br />
 Controller manufacturer and model: unreported (VCP feature code C8 unsupported)<br />
+Firmware version: unreported (VCP feature code C9 unsupported) <br />
+Manufactur year:  2012</p>
+<p>Color temperature increment:  x0B  100 degress kelvin
+Color temperature request     35 -&gt;  3000 + 35*100 = 6500</p>
+<p><a name="nec_p241w"></a></p>
+<h3 id="nec-p241w">NEC P241W</h3>
+<p>VCP Version 2.0<br />
+Controller manufacturer and model: unreported (VCP feature code C8 unsupported)<br />
 Firmware version: unreported (VCP feature code C9 unsupported)   </p>
+<p>The capabilities string has 2 additional sets of features, designated vcp_p02 and vcp_p10, in addition to the set specified in 
+the vcp() field.  It also reports the commands xC2, xC4, xC6 and xC8, which are not part of the DDC/CI specification. 
+Likely these commands are feature request/response pairs for vcp_p02 and vcp_p10. </p>
+<p>Does not use the usual VCP codes (e.g. x16/Red Gain) for color control.
+Instead uses the 6 axis color control features x8c..xa0.</p>
+<p>Has an internal hardware LUT, but it is not accessed using the MCCS defined features for LUT mannipulation. </p>
+<p>Uses a proprietary USB for communication, which does not support adhere to the <strong><em>USB Monitor Control Class Specification</em></strong>. </p>
 <p><a name="nec_pa241"></a></p>
 <h3 id="nec-pa241">NEC PA241</h3>
 <p>VCP Version 2.0<br />
@@ -810,7 +853,7 @@ Firmware version: unreported (VCP feature code C9 unsupported)   </p>
 specific DDC commands  The USB interface also makes heavy use of manufacturer specific usage codes.</p>
 <p>Monitor must be set to ??? to allow changes. </p>
 <p>VCP code x0c (Color Temperature Request) returns 0, which is nonsensical. </p>
-<p>Does not use the usual VCP codes (.e.g. x16/Red Gain) for color control.
+<p>Does not use the usual VCP codes (e.g. x16/Red Gain) for color control.
 Instead uses the 6 axis color control features x8c..xa0.</p>
 <h3 id="phillips-bdm3270">Phillips BDM3270</h3>
 <p>VCP Version: 2.2<br />
