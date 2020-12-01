@@ -825,15 +825,16 @@ The response to feature X0B (color temperature increment) is 50 degrees Kelvin, 
 The response to feature X0C (number of color temperature increments) is 0, resulting in a temperature 
 of 3000 degrees Kelvin, which is nonsensical.</p>
 <p>Responds to getvcp for feature xA8, which  is not defined in the MCCS specification.</p>
-<p><a name="monoprice_40776"></a></p>
+<p><a id="monoprice_40776"></a></p>
 <h3 id="monoprice-dark-matter-40776">Monoprice Dark Matter 40776</h3>
 <p>VCP Version: 2.1<br />
-Controller manufacturer:   Mstar
+Controller manufacturer:   Mstar<br />
 Controller model:  mh=x00, ml=xff, sh=x56<br />
 Firmware version:  0.0<br />
 Manufacture year:  2020  </p>
-<p>This monitor has 2 HDMI input and 2 DisplayPort inputs.  The capabilities string reports that VCP feature x60 takes the values 
-x11, x12, x0f, and x10, which per the MCCS spec are HDMI-1, HDMI-2, DisplayPort-1 and DisplayPort-2 respectively.  However
+<p>This monitor has 2 HDMI inputs and 2 DisplayPort inputs.  The capabilities string reports that VCP feature x60 takes the values 
+x11, x12, x0f, and x10, which per the MCCS spec are HDMI-1, HDMI-2, DisplayPort-1 and DisplayPort-2 respectively.  </p>
+<p>However
 the actual values, which are reported by <strong>getvcp</strong> and settable by <strong>setvcp</strong> are: </p>
 <ul>
 <li>x05 - HDMI-1  </li>
