@@ -226,6 +226,8 @@
     </li>
     <li class="toctree-l2"><a class="reference internal" href="#mitsubishi-rdt232wlm">Mitsubishi RDT232WLM</a>
     </li>
+    <li class="toctree-l2"><a class="reference internal" href="#monoprice-dark-matter-40776">Monoprice Dark Matter 40776</a>
+    </li>
     <li class="toctree-l2"><a class="reference internal" href="#nec-lcd3090wqxi">NEC LCD3090WQXi</a>
     </li>
     <li class="toctree-l2"><a class="reference internal" href="#nec-p241w">NEC P241W</a>
@@ -823,6 +825,26 @@ The response to feature X0B (color temperature increment) is 50 degrees Kelvin, 
 The response to feature X0C (number of color temperature increments) is 0, resulting in a temperature 
 of 3000 degrees Kelvin, which is nonsensical.</p>
 <p>Responds to getvcp for feature xA8, which  is not defined in the MCCS specification.</p>
+<p><a name="monoprice_40776"></a></p>
+<h3 id="monoprice-dark-matter-40776">Monoprice Dark Matter 40776</h3>
+<p>VCP Version: 2.1<br />
+Controller manufacturer:   Mstar
+Controller model:  mh=x00, ml=xff, sh=x56<br />
+Firmware version:  0.0<br />
+Manufacture year:  2020  </p>
+<p>This monitor has 2 HDMI input and 2 DisplayPort inputs.  The capabilities string reports that VCP feature x60 takes the values 
+x11, x12, x0f, and x10, which per the MCCS spec are HDMI-1, HDMI-2, DisplayPort-1 and DisplayPort-2 respectively.  However
+the actual values, which are reported by <strong>getvcp</strong> and settable by <strong>setvcp</strong> are: </p>
+<ul>
+<li>x05 - HDMI-1  </li>
+<li>x06 - HDMI-2  </li>
+<li>x07 - DisplayPort-1  </li>
+<li>x07 - DisplayPort-2 </li>
+</ul>
+<p>A new input source can only be set when <strong><em>ddcutil setvcp 60</em></strong> is issued from the current input source. </p>
+<p>It is also the case that <strong><em>getvcp</em></strong> and other queries work when issued on the current input source. </p>
+<p>The ASCII "serial number" in the EDID is blank, and the binary serial number is 0.  Consequently, 2 monitors manufactured at the same time will have
+identical EDIDs, which will confuse software that depends on the EDID to uniquely identify a display. </p>
 <p><a name="nec_lcd3090w"></a></p>
 <h3 id="nec-lcd3090wqxi">NEC LCD3090WQXi</h3>
 <p>VCP Version 2.0<br />
