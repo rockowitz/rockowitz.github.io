@@ -263,9 +263,17 @@
               
                 <h3 id="command-scs">Command <strong>scs</strong></h3>
 <p>Syntax:  scs &lt;display-selection-optiongs&gt; scs</p>
-<p>Sends a DDC <strong><em>Save Current Settings</em></strong> request to the display. Some displays implement this request, others do not.  (See the output of <strong>ddcutil capabilities</strong>.)</p>
-<p>Saves the current monitor settings to the display's nonvolatile storage.</p>
-<p>In actuality, this command has not been observed to have any effect, but is was simple to implement and people can experiment with it if interested.</p>
+<p>Sends a DDC <strong><em>Save Current Settings</em></strong> request to the display, which saves the current monitor settings to the display's nonvolatile storage.</p>
+<p>Some displays implement this request, others do not. (See the output of <strong>ddcutil capabilities</strong>.)</p>
+<p>The command has only been seen to have any effect for Iilama monitors.  Users of models <a href="../monitor_notes/#Iiyama-PL2942H">PL2492H</a> 
+and (PL2792Q)[monitor_notes.md#Iiyama-pl2792q] have reported that <strong>setvcp*<em>commands do not actually change the value unless immediately followed by a <strong>scp</strong> command.  In that case, the <strong>setvcp</strong> command should
+use the </em></strong>--noverify<strong><em> option.  Otherwise, </em>*setvcp</strong> internally performs a <strong>getvcp</strong> operation to check that the new value has actually been set, but retrieves the old value because <strong>scs</strong> has not occurred.  </p>
+<p>For example: </p>
+<pre><code>$ setvcp 10 85             # verifcation fails, the value is unchanged
+$ setvcp 10 85 --noverify
+$ scs
+$ getvcp 10                # works after scs
+</code></pre>
               
             </div>
           </div>

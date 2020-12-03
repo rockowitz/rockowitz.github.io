@@ -156,9 +156,11 @@
     </li>
     <li class="toctree-l2"><a class="reference internal" href="#apple-cinema-display-a1082">Apple Cinema Display A1082</a>
     </li>
-    <li class="toctree-l2"><a class="reference internal" href="#asus-ve247">Asus VE247</a>
+    <li class="toctree-l2"><a class="reference internal" href="#asus-mg279">Asus MG279</a>
     </li>
     <li class="toctree-l2"><a class="reference internal" href="#asus-rog-pg279q">Asus ROG PG279Q</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#asus-ve247">Asus VE247</a>
     </li>
     <li class="toctree-l2"><a class="reference internal" href="#benq-gw2480">BenQ  GW2480</a>
     </li>
@@ -376,14 +378,8 @@ Manufacture year:          2005</p>
 <p>USB interface does not report VCP version (feature DF).</p>
 <p>Able to read EDID over USB. </p>
 <p>Capabilities string does not begin and end with parentheses. </p>
-<h3 id="asus-ve247">Asus VE247</h3>
-<p>VCP version:  2.0 <br />
-Controller Manufacturer:   RealTek<br />
-Controller Model: mh=x00, ml=x24, sh=x82   <br />
-Firmware version: 2.0 <br />
-Maufacture year:  2010</p>
-<p>Responds to unknown VCP codes using the DDC NULL message instead of setting the <strong><em>Unsupported VCP code</em></strong> bit in the GETVCP response.</p>
-<p>Sensible responses to VCP codes x0B and x0C. </p>
+<h3 id="asus-mg279">Asus MG279</h3>
+<p>The capabilities string is malformed.</p>
 <h3 id="asus-rog-pg279q">Asus ROG PG279Q</h3>
 <p>VCP version:  2.2 <br />
 Controller Manufacturer:   manufacturer defined controller <br />
@@ -395,6 +391,14 @@ Maufacture year:  2017, 2018</p>
 <p>Does not respond to getvcp of unsupported VCP codes by setting the unsupported feature flag in the GETVCP
 response. Requests for unsupported features return garbage bytes, the requests fail by exceeding retries.</p>
 <p>The output of the <strong><em>capabilities</em></strong> command does appear to accurately report which features are supported.</p>
+<h3 id="asus-ve247">Asus VE247</h3>
+<p>VCP version:  2.0 <br />
+Controller Manufacturer:   RealTek<br />
+Controller Model: mh=x00, ml=x24, sh=x82   <br />
+Firmware version: 2.0 <br />
+Maufacture year:  2010</p>
+<p>Responds to unknown VCP codes using the DDC NULL message instead of setting the <strong><em>Unsupported VCP code</em></strong> bit in the GETVCP response.</p>
+<p>Sensible responses to VCP codes x0B and x0C. </p>
 <h3 id="benq-gw2480">BenQ  GW2480</h3>
 <p>VCP Version: 2.1<br />
 Controller Manufacturer: Mstar <br />
