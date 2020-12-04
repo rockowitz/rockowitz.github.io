@@ -264,9 +264,12 @@
                 <h3 id="command-scs">Command <strong>scs</strong></h3>
 <p>Syntax:  scs &lt;display-selection-options&gt; scs</p>
 <p>Sends a DDC <strong><em>Save Current Settings</em></strong> request to the display, which saves the current monitor settings to the display's nonvolatile storage.</p>
-<p>Some displays implement this request, others do not. (See the output of <strong>ddcutil capabilities</strong>. )</p>
-<p>The command has only been seen to have any effect for Iilama monitors.  Users of models <a href="../monitor_notes/#Iiyama-PL2942H">PL2492H</a> 
-and <a href="www.ddcutil.com/monitor_notes#iiyama-pl2792q">PL2792Q</a> have reported that <strong><em>setvcp</em></strong> commands do not actually change the value unless immediately followed by a <strong>scp*<em> command.  In that case, the <strong>setvcp</strong> command should
+<p>Some displays implement this request, others do not. (See the output of <strong>ddcutil capabilities</strong>.)
+Even for most that do, the command has no apparent effect.</p>
+<p>However, the command is required when settomg a featuer value for at least some Iilama monitors.  Users of models 
+<a href="../monitor_notes/#iiyama-pl2942h">PL2492H</a> 
+and <a href="https://www.ddcutil.com/monitor_notes#iiyama-pl2792q">PL2792Q</a> 
+have reported that <strong><em>setvcp</em></strong> commands do not actually change the value unless immediately followed by a <strong>scp*<em> command.  In that case, the <strong>setvcp</strong> command should
 use the </em></strong>--noverify<strong><em> option.  Otherwise, </em></strong>setvcp<strong><em> internally performs a </em>*getvcp</strong> operation to check that the new value has actually been set, but retrieves the old value because <strong>scs</strong> has not occurred.  </p>
 <p>For example: </p>
 <pre><code>$ setvcp 10 85             # verifcation fails, the value is unchanged
