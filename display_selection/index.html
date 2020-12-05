@@ -278,11 +278,11 @@ using the following options:</p>
 </thead>
 <tbody>
 <tr>
-<td>--display &lt;display number&gt;</td>
+<td><strong><em>--display</em></strong> &lt;display number&gt;</td>
 <td></td>
 </tr>
 <tr>
-<td>--bus &lt;i2c bus number&gt;</td>
+<td><strong><em>--bus</em></strong> &lt;i2c bus number&gt;</td>
 <td>alt: -b &lt;i2c bus number&gt;</td>
 </tr>
 <tr>
@@ -319,26 +319,6 @@ The first monitor to satisfy all the specified criteria is selected.</p>
 </code></pre>
 
 <p>See also: <a href="../detect_verbose_output/">ddcutil detect example</a></p>
-<p>ALTERNATIVE</p>
-<p>If more than one monitor is attached, the desired monitor can be specified 
-using any of the following options:</p>
-<p><strong><em>--display</em></strong> &lt;display number&gt;<br />
-<strong><em>--bus</em></strong> &lt;i2c bus number&gt;<br />
-<strong><em>--usb</em></strong> &lt;usb bus number&gt;.&lt;usb device number&gt;<br />
-<strong><em>--hiddev</em></strong> &lt;usb hiddev device number&gt;<br />
-<strong><em>--edid</em></strong> &lt;256 character hex string&gt;<br />
-<strong><em>--mfg</em></strong> &lt;mfg code&gt; <br />
-<strong><em>--model</em></strong> &lt;model name&gt; <br />
-<strong><em>--sn</em></strong> &lt;serial number&gt;</p>
-<p>Notes:   </p>
-<ul>
-<li>Any combination of manufacturer code, model name and serial number can be used together to identify a monitor.
-  The first monitor to satisfy all the specified criteria is selected.
-  (This behavior differs from releases prior to 0.7 where model name and serial number had to be specified together.)</li>
-</ul>
-<p>To see a list of all attached monitors and their associated identifiers:
-~~~
-$ ddcutil detect</p>
               
             </div>
           </div>
