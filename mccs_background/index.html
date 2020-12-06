@@ -272,11 +272,11 @@ representation, e.g. 1A for blue level.   </p>
 <li>Non-continuous (NC): Able to take only a designated set of values</li>
 <li>Table (T): Used for "raw" data such as a video LUT</li>
 </ul>
-<p>This clean distinction has broken down as the MCCS specification has 
-evolved.   Some features have changed category.  ddcutil distinguishes
+<p>This clean distinction broke down as the MCCS specification evolved.
+Some features have changed category.  ddcutil distinguishes
 between "simple" NC fields, which are encoded using only a single byte (in field SL) and for which there is a simple list of possible values,
 and "complex" NC fields, where an algorithm must be applied to 
-interpret the bytes of a feature query.  This is a ddcutil distinction and 
+interpret the bytes of a feature value.  This is a ddcutil distinction and 
 not part of the MCCS specification.</p>
 <p>Most features are both readable and writable (RW).  Some, such as 
 VCP Version (DF), are read-only (RO), while others, such as Restore
@@ -308,7 +308,7 @@ Extends version 2.1, incorporating most of the new features from Version 3.0 in 
 Minor revision to Version 2.2. </p>
 </li>
 </ul>
-<p>Note that because Version 2.2 was issued after Version 3.0, when <strong>ddcutil</strong> reports MCCS versions it orders them 1.0, 2.0, 2.1, 3.0, 2.2. </p>
+<p>Note that Version 2.2 was issued after Version 3.0,  Therefore, when <strong>ddcutil</strong> reports MCCS versions it orders them 1.0, 2.0, 2.1, 3.0, 2.2. </p>
               
             </div>
           </div>
