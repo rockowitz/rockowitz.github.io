@@ -146,8 +146,6 @@
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="../nvidia/">Special Nvidia Driver Settings</a>
                     </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../adl/">AMD fglrx Driver</a>
-                    </li>
                     <li class="toctree-l1"><a class="reference internal" href="../virtual_machines/">Virtual Machines</a>
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="../raspberry/">Raspberry Pi</a>
@@ -271,7 +269,7 @@ interpeting responses.  </p>
 <p>The capabilities string is unreliable for several reasons: </p>
 <ul>
 <li>
-<p>The response to the DDC capabilities API request is simply incorrect.   For example, the capabilities response from the HP LP2480zx
+<p>The response to the DDC capabilities request may simply be incorrect.   For example, the capabilities response from the HP LP2480zx
 monitor does not list VCP feature code x10 (brightness) as supported.  However, feature code x10 is in fact supported.  The only 
 way to know for sure if a monitor implememts a VCP feature code is to try it.</p>
 </li>

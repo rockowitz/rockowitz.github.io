@@ -146,8 +146,6 @@
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="../nvidia/">Special Nvidia Driver Settings</a>
                     </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../adl/">AMD fglrx Driver</a>
-                    </li>
                     <li class="toctree-l1"><a class="reference internal" href="../virtual_machines/">Virtual Machines</a>
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="../raspberry/">Raspberry Pi</a>
@@ -258,7 +256,7 @@
             <div class="section">
               
                 <h2 id="kernel-module-configuration">Kernel Module Configuration</h2>
-<p>Unless using the proprietary AMD <strong>fglrx</strong> driver, kernel module i2c-dev must be available.
+<p>Kernel module i2c-dev must be loaded.
 On some distributions, it is built into the Linux kernel.  If not, it must be loaded explicitly. </p>
 <p>To see if i2c-dev is built into the kernel, issue the following command: </p>
 <pre><code>grep i2c-dev.ko  /lib/modules/`uname -r`/modules.builtin

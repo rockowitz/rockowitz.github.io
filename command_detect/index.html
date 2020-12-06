@@ -154,8 +154,6 @@
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="../nvidia/">Special Nvidia Driver Settings</a>
                     </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../adl/">AMD fglrx Driver</a>
-                    </li>
                     <li class="toctree-l1"><a class="reference internal" href="../virtual_machines/">Virtual Machines</a>
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="../raspberry/">Raspberry Pi</a>
@@ -272,7 +270,7 @@
                 <h3 id="command-detect">Command <strong>detect</strong></h3>
 <p>Syntax: <strong>detect</strong> &lt;options&gt;</p>
 <p>Scans the system for displays supporting the Monitor Control Command Set (MCCS), most commonly using DDC/CI but alternatively using USB for communication.
-This command reports the results of the display search that occurs at the start of most <strong>ddcutil</strong> commands. </p>
+This command reports the results of the display search, which also is part of most <strong>ddcutil</strong> commands. </p>
 <h4 id="option-async">Option <strong><em>--async</em></strong><a name="option_async"></a></h4>
 <p>If there are 3 or more monitors and option <strong><em>--async</em></strong> is specified, initial monitor DDC checks are performed in separate threads.
 improving startup time.  </p>
