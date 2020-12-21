@@ -1,0 +1,206 @@
+If you want to use ddcutil for color adjustment or access to features like Picture By Picture, bear in mind that you're likely to see baffling interactions among VCP features. Monitor settings have outstripped what was envisioned in the MCCS spec. For example, I have a Samsung U32H750 that has complicated interactions between feature xdc (display mode), feature x14 (select color preset) and various specific settings such as x16 (red gain). And some features such as Picture By Picture appear to be managed only thorough the OSD. I've not found any VCP feature code, including manufacturer reserved codes, that affect them
+
+
+possibly add additional sleep after setvcp  60
+
+
+
+A couple things to try: (1) Connect the monitor using DisplyayPort instead of HDMI. (2) Connect the monitor using the discrete Nvidia processor instead of the integrated Intel one.
+
+You can use the "--ddc" option to see reports of DDC data errors.
+
+Rapid setvcp changes lost 
+
+
+setvcp/getvcp values off by 1
+
+DP vs HDMI/DVI - one may work and another doesn't
+
+
+
+For our purposes the major difference between VGA/DVI/HDMI and DisplayPort is that the former use dedicated pins for I2C communication, while the latter carries the logical I2C signal over its AUX channel. So a DP-DVI adapter will have to perform a conversion. I believe this is one of the differences between active vs passive adapters, but I have not seen this documented and have not tested to confirm.
+
+A further follow up re lost setvcp requests. For getvcp, the host sends a getvcp request packet to the display. As part of the protocol for sending an I2C packet, a sequence of ACKs and NACKs ensure that the packet was delivered. The display subsequently sends a response packet to the host, which includes a flag indicating whether the feature is supported, along with its value. Or it may return a DDC Null Message, indicating that it can't respond, e.g. if it doesn't know what to do with the request.
+
+For setvcp, there is only the request packet sent from the host to the display. There is no response packet. So all the host knows is that the request was delivered, not that it was processed. If the requests arrive too quickly, unless the display has an internal request queue of sufficient size, some requests will not be processed properly, i.e. some setvcp requests will fail.
+
+if communication fails, use --ddcoption.  REsponses should begin with 6e.  Double bytes a giveaway for data errors
+
+
+
+
+In terms of signalling, HDMI and DVI are identical. If you can, try a DisplayPort<->DisplayPort connection. (As I read the manual for the LA2006, it has a DP connector.) Instead of using dedicated wires in the cable, DisplayPort "emulates" I2C communication over its AUX channel, so the communication mechanism is a bit different. I doubt the DisplayPort connection will succeed when the DVI/HDMI connections do not, but it's worth a shot.
+
+
+
+One thing to keep in mind in your tests if your have multiple connections to the monitor. Some monitors respond to DDC communication only on the currently selected input. Others respond to DDC communication on any input.
+
+
+
+The following options ddcutil may be of use:
+   --ddc    Show ddc data errors
+   --stats   Report error statistics
+   --sleep-multiplier  Sometimes helps with marginal monitors
+
+
+Nonstandard /dev/i2c device names: 
+
+
+
+
+So, I noticed that ddcutil has multiple builds with exactly the same version number. See, for example, builds 1506802 and 1499738: at least for F32 x86_64, they both built ddcutil-0.9.9-1.fc32.x86_64.rpm.
+
+The problem is that COPR will output both versions in the repo metadata, not just the last one
+
+Discuss Gnome Software PackageKit, etc
+
+
+
+  On Fedora there numerous applications, both command line and GUI, that
+maintain repository data and install/update/remove software. These break
+down into 2 groups:
+
+dnf/dnfdragora:
+-  Repository data saved in /var/cache/dnf
+
+Applications based on PackageKit:
+- pkcon, gnome-software (Software), gpk-application (Packages), apper
+(Apper), plasma-discover (Discover)
+- Repository data saved in /var/cache/PackageKit
+- Alternatively, PackageKit can be configured to use the dnf backend,
+but that doesn't matter for our purposes.
+
+The repository data downloaded from COPR is the same in both directories.
+
+All the applications other than gnome-software successfully install
+software from the COPR repository.
+
+gnome-software does not find ddcutil/ddcui. From online posts this
+appears to be a common problem with packages not in the official
+repositories.
+
+I didn't observe that a ddcutil repository with multiple builds having
+the same epoch-version-release prevents gnome-software from updating
+other software on the system.  However, I will ensure that there is only
+one copy of ddcutil or ddcui in the repository with a given
+epoch-version-release, and will bump the release number if anything
+changes in the specfile.
+
+What's different about gnome-software is that it requires AppStream
+metadata.  (See AppStream-Glib,
+<https://github.com/hughsie/appstream-glib/blob/master/README.md>AppStream
+documentation <https://www.freedesktop.org/software/appstream/docs/>,
+and Wikipedia <https://en.wikipedia.org/wiki/AppStream> for details.)
+The AppStream files for a COPR repository are collected into  a file  in
+repository directory repodata.  For COPR this file is named
+repodata/<cache-id>-appstream.xml.  Currently, the appstream.xml file
+for ddcutil is essentially empty.  It's not clear to me what information
+needs to be specified, and how, in order to create the necessary
+
+142-141
+
+To clarify, there's no database that ddcutil consults to activate a
+monitor.  It "simply" attempts to communicate with the monitor's Virtual
+Control Panel (VCP)  using DDC/CI.  It interprets VCP features (e.g.
+that feature x10 is brightness) per the definitions in the Monitor
+Command Control Set (MCCS) specification.
+
+What you've got is a marginal DDC/CI implementation in the monitor/video
+driver combination. Sometimes it works, sometimes it doesn't .   DDC/CI
+is an inherently  unreliable protocol (think UDP).  The client, ddcutil
+in this case, is responsible for retrying failed operations.  With most
+monitors, retries are seldom needed.  If you look at the statistics
+sections of the interrogate output, you'll see that operations commonly
+require multiple retries to succeed, and even then often do not.
+
+Why do things work on Windows but not Linux?  (And I take "In Windows
+this worked most of the time" to indicate that it does not always work
+even in Windows.)  First, I suspect the Windows drivers are just better
+at handling marginal monitors.  It may be that Windows drivers slow down
+the I2C bus speed when errors are encountered.  LInux drivers do not. 
+Second, I doubt that monitor manufacturers test on Linux.
+
+Of note, despite being a recent model, the monitor reports its MCCS
+version as 2.0.  That is very old.  The most recent version (for many
+years now) is 2.2.  That suggests that the monitor may be using an old
+DDC/CI implementation as well.
+
+Things to try:
+
+Use the --sleep-multiplier option, (e.g. --sleep-multiplier 3) to
+increase the time that ddcutil waits, as per the DDC/CI spec, between
+sending a request to the monitor and reading the response. The delay is
+intended to give the monitor time to process the request.
+
+If you have another monitor available, try connecting that one instead. 
+Does it have similar problems?
+
+The interrogate output shows that the monitor is connected to the on
+chip video implementation, which uses the i915 driver.  What happens
+when you switch the monitor to the discrete Nvidia chip, which currently
+uses the Nvidia proprietary driver?  If you try that, be sure to use the
+Spedial Nvidia Driver Settings <http://www.ddcutil.com/nvidia/>.  You
+might also try using the open source nouveau driver instead of the
+proprietary Nvidia driver.
+
+Good luck and let me know your results.
+
+--
+137
+
+The DDC response packets that ddcutil reads are invalid. Sometimes the packets are entirely zero, sometimes they have a repeated byte in them. Typically this indicates a marginal DDC implementation in the monitor.
+
+Things to try:
+
+Option --sleep-multipler 4
+
+Some monitors need extra time to prepare a response. This option increases the time ddcutil waits between sending a request to the monitor and trying to read a response. With a value or 4, a 200 ms wait mandated by the DDC/CI specification becomes 800 ms.
+
+Option --maxtries "0,15,0"
+
+I2C is an inherently unreliable protocol. This option increases the number of times ddcutil retries a write request/read response sequence, in this case from the default 10 to 15.
+
+If neither of these solve the problem, execute the following command and send the output as an attachment:
+
+$ ddcutil detect --verbose --stats --trace i2c --trace ddcio
+
+
+136
+
+
+"ddcutil scs" was implemented for completeness - it was trivial to do. 
+Some monitors claim to support the command, some do not. This is the
+first monitor for which it actually appears to do something.
+
+To clarify what you observed, normally ddcutil internally does a getvcp
+after a setvcp to see if the feature value has actually changed.  This
+verification is not performed for write-only features like x04.  There
+are also some other special cases where verification is skipped. Feature
+x60 changes the monitor's input source away from the current system, so
+a subsequent getvcp will fail.
+
+Short of adding a table of monitor quirks, I don't offhand see how to
+automatically detect the need for scs.  What is doable is a command line
+option named something like "--setvcp-requires-scs" to indicate that a
+Save Current Settings request should be sent after setting  a feature
+value  Would this satisfy your needs?
+
+I see that there are 2 connections to the monitor, a DisplayPort
+connection with I2C device /dev/i2c-1 and a DVI connection with I2C
+device /dev/i2c-3.  Do you experience the same problem on both
+connections?  Why are there 2 connections?
+
+Both amdgpu and the older radeon driver are loaded.  Is this intentional?
+
+Finally, this monitor exhibits what I call the "overeager student
+syndrome".  Ask it the value for any  feature number, and it will always
+return an answer. The "unsupported feature" bit never set in the
+response.  A few monitors misuse the DDC Null Message  to indicate an
+unsupported feature, and a fewer number still set all value bytes in the
+response (MH, ML, SH, SL) to 0. ddcutil can cope with those situations. 
+But this monitor gives no indication that a feature is unsupported.
+
+Also of note: the VCP version in the capabilities string is 2.2, but the
+version reported by feature xDF is 2.1.
+
+130/129

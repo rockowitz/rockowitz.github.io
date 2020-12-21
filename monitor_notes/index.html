@@ -244,6 +244,8 @@
     </li>
     <li class="toctree-l2"><a class="reference internal" href="#samsung-syncmaster-730b">Samsung Syncmaster 730B</a>
     </li>
+    <li class="toctree-l2"><a class="reference internal" href="#samsung-lc49g95t-odyssey-g9">Samsung LC49G95T Odyssey G9</a>
+    </li>
     <li class="toctree-l2"><a class="reference internal" href="#samsung-u32h750">Samsung U32H750</a>
     </li>
     <li class="toctree-l2"><a class="reference internal" href="#viewsonic-xg2703-gs">Viewsonic XG2703-GS</a>
@@ -910,9 +912,31 @@ Controller manufacturer and model:   Unknown (VCP feature code C8 unsupported)  
 Firmware version:  Unknown (VCP feature code C9 unsupported)  </p>
 <p>The capabilities string spcifies the values for non-continuous features in decimal rather than hexadecimal</p>
 <p>VCP feature code</p>
+<p><a name="samsung_odyssey_g9"></a></p>
+<h3 id="samsung-lc49g95t-odyssey-g9">Samsung LC49G95T Odyssey G9</h3>
+<p>VCP version reported by Capabilitise string: 2.0<br />
+VCP version reported by feature xDF:         2.1 <br />
+Controller manufacturer and model:  Novatek, model id:  mh=xff, ml=0xff, sh=0x00<br />
+Firmware version: 0.0</p>
+<p>Two users have reported that DDC/CI does not work over DisplayPort. In both cases they were using the amdgpu
+video driver  with R9 280x,  As of 12/2020, this is not fixed by the most recent firmware update.</p>
+<p>The capabilites string reports an unrecognized command code, x4e</p>
+<p>Feature x14 (Color Perset), x06 (Color Temperature Increament) and x06 (Color temperature requrest) are consistent: <br />
+   VCP code 0x14 (Select color preset           ): 7500 K (sl=0x06)<br />
+   Color temperature increment (x0b) = 50 degrees Kelvin<br />
+   Color temperature request   (x0c) = 90<br />
+   Requested color temperature = (3000 deg Kelvin) + 90 * (50 degrees Kelvin) = 7500 degrees Kelvin</p>
+<p>The monitor has two DisplayPort inputs and one HDMI input.  However, the capabilities string reports valid values as being
+as x01 - VGA and X03 - DVI-1. </p>
+<p>The following features not declared in the capabiliteis string but were found by scanning:<br />
+   Feature x52 - Active control<br />
+   Feature xb2 - Flat panel sub-pixel layout<br />
+   Feature xf4 - Manufacturer Specific<br />
+   Feature xfe - Manufacturer Specific</p>
 <p><a name="samsung_u32h750"></a>  </p>
 <h3 id="samsung-u32h750">Samsung U32H750</h3>
-<p>VCP version: Capabilities string: 2.1,  Feature xdf: 2.0<br />
+<p>VCP version reported by capabilities string: 2.1,<br />
+VCP version reported by feature xdf: 2.0<br />
 Controller manufacturer and model:  Mstar, model id:  mh=x00, ml=0x10, sh=0x00<br />
 Firmware version: 0.1  </p>
 <p>This monitor is a MCCS disaster area.</p>
