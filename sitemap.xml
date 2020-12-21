@@ -247,5 +247,9 @@
      <loc>https://www.ddcutil.com/ddcui_release_notes/</loc>
      <lastmod>2020-12-21</lastmod>
      <changefreq>daily</changefreq>
+    </url><url>
+     <loc>https://www.ddcutil.com/udf/</loc>
+     <lastmod>2020-12-21</lastmod>
+     <changefreq>daily</changefreq>
     </url>
 </urlset>
