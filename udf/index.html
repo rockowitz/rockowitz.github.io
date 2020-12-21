@@ -274,7 +274,7 @@ enabled or disabled using command line options <strong><em>--udf</em></strong> o
 <p>The user defined features for a monitor are specified in a feature definition file. The format of this file is subject to change.</p>
 <h3 id="user-defined-feature-file">User Defined Feature File</h3>
 <p>Here's an example of a file that specifies user defined features. </p>
-<pre><code>$ cat DEL-DELL_U3011-16485.mccs
+<pre><code>$ cat ~/.local/share/ddcutil/DEL-DELL_U3011-16485.mccs
 MFG_ID       DEL
 MODEL        DELL U3011
 PRODUCT_CODE 16485
@@ -305,7 +305,7 @@ Feature codes are implicitly hex numbers, and can be written with or without a l
 <p>The <strong><em>ATTRS</em></strong> line contains feature attributes: "C" or "NC" indicating whether 
 the feature is continuous or non-continuous, and "RW", "RO", or "WO" indicating whether 
 the feature is read-write, read-only, or write-only. </p>
-<p>For non-continuous features, there are 1 or more <strong><em>VALUE</em></strong> lines describing the possible values. 
+<p>For non-continuous features, there are one or more <strong><em>VALUE</em></strong> lines describing the possible values. 
 Each line has the form: "VALUE &lt;value&gt; &lt;description&gt;".  Feature values can be written either 
 as decimal or hexadecimal. </p>
 <p>The MCCS specification describes features that don't neatly conform the original Continous/Non-Continuous classification.  For example, continous features can have special reserved values, and non-continuous features exist that do not have simple tables of feature values, but instead have unique interpretations.  The <strong><em>User Defined Feature</em></strong> facility
