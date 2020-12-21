@@ -919,9 +919,10 @@ VCP version reported by feature xdf:         2.1 <br />
 Controller manufacturer and model:  Novatek, model id:  mh=xff, ml=0xff, sh=0x00<br />
 Firmware version: 0.0</p>
 <p>Two users have reported that DDC/CI does not work over DisplayPort. In both cases they were using the amdgpu
-video driver  As of 12/2020, this is not fixed by the most recent firmware update.</p>
+video driver  As of 12/2020, this is not fixed by the most recent monitor firmware update.</p>
 <p>The capabilites string reports an unrecognized command code, x4e</p>
-<p>Feature x14 (Color Perset), x06 (Color Temperature Increament) and x06 (Color temperature requrest) are consistent: <br />
+<p>Feature x14 (Color Perset), x06 (Color Temperature Increament) and x06 (Color temperature requrest) appear consistent.
+In one report:<br />
    VCP code 0x14 (Select color preset           ): 7500 K (sl=0x06)<br />
    Color temperature increment (x0b) = 50 degrees Kelvin<br />
    Color temperature request   (x0c) = 90<br />
