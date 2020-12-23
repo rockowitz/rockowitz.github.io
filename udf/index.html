@@ -268,7 +268,7 @@
               
                 <h2 id="user-defined-features">User Defined Features</h2>
 <p><strong><em>ddcutil</em></strong> contains a preliminary implementation of <strong><em>User Defined Features</em></strong>. 
-The implementation of this facility is subject to change. This section describes the implementation in development branch 1.0.0-dev.
+This section describes the current implementation in git development branch 1.0.0-dev.
 <strong><em>User Defined Features</em></strong> is
 enabled or disabled using command line options <strong><em>--udf</em></strong> or <strong><em>--noudef</em></strong>.  The default is currently <strong><em>--noudf</em></strong>. </p>
 <p>The user defined features for a monitor are specified in a feature definition file. The format of this file is subject to change.</p>
@@ -301,7 +301,8 @@ For example, Samsung commonly uses the name "SyncMaster", and LG commonly uses t
 which has the form <strong><em>&lt;mfg_id&gt;-&lt;model name&gt;-&lt;product code&gt;.mccs</em></strong>. The values in the
 file name must match those in the file. </p>
 <p>The optional <strong><em>MCCS_VERSION</em></strong> line specifies the version of the MCCS Specification used to describe the monitor.
-If the MCCS version is also specified using the <strong><em>--mccs</em></strong> option, the command line option takes precedence.</p>
+If specified, it is used instead of the value returned by querying VCP feature xDF (VCP Version). 
+If the MCCS version is also specified using the <strong><em>--mccs</em></strong> command  line option, the command line option takes precedence.</p>
 <p>In addition to the monitor identification lines and optional MCCS version line, there are one or more feature definitions.  </p>
 <p>Each defnition starts with a line of the form <strong><em>FEATURE_CODE &lt;feature-id&gt; &lt;feature name&gt;</em></strong>.
 Feature codes are implicitly hex numbers, and can be written with or without a leading "x". </p>
