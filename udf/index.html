@@ -278,6 +278,7 @@ enabled or disabled using command line options <strong><em>--udf</em></strong> o
 MFG_ID       DEL
 MODEL        DELL U2222
 PRODUCT_CODE 16485
+MCCS_VERSION 2.2
 FEATURE_CODE FD  Feature Name
     ATTRS NC RW
     VALUE 0 First Val
@@ -299,7 +300,9 @@ For example, Samsung commonly uses the name "SyncMaster", and LG commonly uses t
 <p>These three fields are also are used to create the file name of the feature description, 
 which has the form <strong><em>&lt;mfg_id&gt;-&lt;model name&gt;-&lt;product code&gt;.mccs</em></strong>. The values in the
 file name must match those in the file. </p>
-<p>Following the monitor identification fields are one or more feature definitions.  </p>
+<p>The optional <strong><em>MCCS_VERSION</em></strong> line specifies the version of the MCCS Specification used to describe the monitor.
+If the MCCS version is also specified using the <strong><em>--mccs</em></strong> option, the command line option takes precedence.</p>
+<p>In addition to the monitor identification lines and optional MCCS version line, there are one or more feature definitions.  </p>
 <p>Each defnition starts with a line of the form <strong><em>FEATURE_CODE &lt;feature-id&gt; &lt;feature name&gt;</em></strong>.
 Feature codes are implicitly hex numbers, and can be written with or without a leading "x". </p>
 <p>The <strong><em>ATTRS</em></strong> line contains feature attributes: "C" or "NC" indicating whether 
@@ -308,7 +311,7 @@ the feature is read-write, read-only, or write-only. </p>
 <p>For non-continuous features, there are one or more <strong><em>VALUE</em></strong> lines describing the possible values. 
 Each line has the form: <strong><em>VALUE &lt;value&gt; &lt;description&gt;</em></strong>.  Feature values can be written either 
 as decimal or hexadecimal. </p>
-<p>The MCCS specification describes features that don't neatly conform the original Continous/Non-Continuous classification.  For example, continous features can have special reserved values, and non-continuous features exist that do not have simple tables of feature values, but instead have unique interpretations.  The <strong><em>User Defined Feature</em></strong> facility
+<p>The MCCS specification has evoloved include features that don't neatly conform the original Continous/Non-Continuous classification.  For example, continous features can have special reserved values, and non-continuous features exist that do not have simple tables of feature values, but instead have unique interpretations.  The <strong><em>User Defined Feature</em></strong> facility
 cannont define such features.</p>
 <p>Blank lines and lines beginning with "*" or "#" are ignored.</p>
 <h3 id="examples">Examples</h3>
@@ -317,6 +320,7 @@ cannont define such features.</p>
 MFG_ID       SAM
 MODEL        U32H75x
 PRODUCT_CODE 3586
+MCCS_VERSION 2.1
 FEATURE_CODE 60 Input Source
   ATTRS NC RW
   VALUE x05 HDMI-1

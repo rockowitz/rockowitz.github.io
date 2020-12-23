@@ -204,3 +204,269 @@ Also of note: the VCP version in the capabilities string is 2.2, but the
 version reported by feature xDF is 2.1.
 
 130/129
+
+129, 122:  FindDDCUtil.cmake
+
+
+118:   FREEBSD  TODO: create post
+
+random failures
+
+
+With displays that old the first question is whether DDC is supported at
+all.  The first check is to use i2cdetect (in package i2c-tools) to see
+if I2C slave address x37 (DDC) is even responsive.
+
+Also, the DisplayPort-VGA combination is problematic.  VGA, DVI, HDMI
+have dedicated pins for I2C. DisplayPort implements I2C communication in
+software using its AUX channel, so both sides need to understand how to
+do the conversion.
+
+That said, it does look like I2C communication is taking place, but is
+garbled.  The double bytes in what otherwise would be a proper response
+packet is a giveaway.  Some monitors, particularly older ones, cannot
+keep up with the 100mhz speed of the I2C bus. Unfortunately, there's no
+way for ddcutil to tell the video drivers to slow down.  You could try
+using the --sleep-multiplier option, e.g. "--sleep multiplier 4.0" to
+tell ddcutil to wait longer than the spec requires between sending a
+request to the monitor and reading the response.  This occasionally helps.
+
+----
+
+First, let me say I appreciate the completeness of  your problem report.
+I don't know if we'll be able to solve it, but we won't go through
+several rounds of repeated requests for the output of the diagnostic
+programs and various other basic tests.  Since your report was quite
+complete I'll try to make mine so as well.
+
+This reply is TMI.  However, it was useful to write this stuff down for
+incorporation in the ddcutil documentation.  Here's the executive summary:
+
+- What happens if you use a different monitor?  What happens if you use
+the Benq monitor on a Linux system with a driver other than i915?
+
+- Try option --sleep-multiplier, e.g. "ddcutil getvcp 10
+--sleep-multiplier 4.0"
+
+- Is there anything interesting in the softMCCS DDC/CI communication log?
+
+- The Windows video drivers are just better than the Linux drivers at
+handling monitors with marginal I2C implementations.
+
+Regards,
+Sanford
+
+
+In no particular order, some observations and comments.
+
+1) The problem is in DDC communication.  Feature x60 may be problematic,
+but that is not relevant here.
+
+2) softMCCS is the best tool I know for testing monitor DDC
+functionality.  As you probably know, enTech makes DDC chips for
+monitors.  softMCCS is a tool for monitor customers to test their
+implementations.  It's safe to say the enTech understands DDC as well as
+anyone around. I don't know if softMCCS uses the core Windows DDC API,
+or a lower level API. You night look for anything interesting in its
+DDC/CI communication log.  (Low probability).
+
+3) ddcutil uses the dev-i2c userspace driver.  The kernel side of the
+driver in turn uses the video driver.
+
+4) In the getvcp trace, the call into i2c-dev fails for feature x00,
+with Linux errno ENXIO.  If a monitor supports DDC, ddcutil expects to
+see a properly formed DDC response indicating that it doesn't support
+that feature.   So ddcutil decides that DDC is unsupported.  (It's a bit
+more complicated than that.  There are monitors that trigger ENXIO in
+response to a query for any unsupported feature. But for our purposes
+here that doesn't matter.
+
+5) In the environment command, ddcutil doesn't make any preliminary
+check of whether a monitor supports DDC, it just tries to get the value
+of feature x10 (brightness) which any monitor implementing DDC will
+support.   Here ddcutil tries to read the value by directly writing to
+and reading from the /dev/i2c bus without using the usual layering.  The
+the output is interesting, the first response is all 0, the second
+returns ENXIO.  Again, an all 0 response is ambiguous.  I have
+occasionally seen monitors that use it to indicate an unsupported
+feature.  Usually it indicates that the monitor hasn't had time to
+compose a proper response, so it is a retryable error.  That the second
+request returns ENXIO, a different error condition, indicates that we
+indeed have a DDC communication problem.
+
+6) There are several possible causes of DDC communication failure.
+
+First, it may just be the particular monitor/video card/driver
+combination.  If you have another monitor around, what happens if you
+use that monitor instead?  What happens if you use the Benq on a
+different Linux system, preferably with a different video driver?
+
+Second, there are monitors that can't keep up with the 100Mhz bus
+speed.  Or sometimes they do and sometimes they don't.  A few years ago
+there was an experimental change to the i915 driver to lower the I2C bus
+speed when communicating with slave address x37 (DDC).  It never made it
+into a released version.  I don't have a solution for this.
+
+Third, the monitor may just be slow and needs more time than allotted by
+the DDC/CI specification to formulate a reply. You can try using the
+--sleep-multiplier option to tell ddcutil to wait longer between writing 
+a request and attempting to read a reply, e.g.
+$ddcutil getvcp 10 --speed-multiplier 2.0
+
+7) Why does the monitor work on Windows and not Linux?  First, the
+Windows video drivers may just be better accommodating marginal
+monitors, e.g. by slowing the bus speed.  This of course is just
+conjecture on my part.  Second, I doubt manufacturers test their
+monitors on Linux.
+
+8) The correct DDC documentation is indeed hard to identify locate by
+searching. The DDC protocol evolved, being part of Access Bus at one
+point, and shedding various pieces, e.g. EDID, into separate protocols. 
+See the Wikipedia DDC page
+(https://en.wikipedia.org/wiki/Display_Data_Channel)  to see how it
+morphed.  You're looking for are the following document:
+
+VESA Display Data Channel Command Interface Standard, Version 1.1,
+October 29, 2004
+(https://app.box.com/s/vcocw3z73ta09txiskj7cnk6289j356b/file/93518804682)
+The current most definitive document.
+
+
+VESA Display Data Channel Command Interface Standard, Version 1, August
+14, 1998 (http://read.pudn.com/downloads84/ebook/322616/ddcciv1.pdf). 
+Its description of the protocol helps clarify version 1.1.
+
+VESA Access.bus Specification Version 3.0
+(https://app.box.com/s/vcocw3z73ta09txiskj7cnk6289j356b/file/93518584526)
+for its low level description of the I2C protocol.
+
+The most current Monitor Control Command Set spec is VESA Monitor
+Control Command Set Standard Version 2.2a, 13 January 2011
+(https://app.box.com/s/vcocw3z73ta09txiskj7cnk6289j356b/file/93517210750/
+
+There is an earlier MCCS standard
+(http://read.pudn.com/downloads515/doc/2139715/mccsV3.pdf), 3.0, that
+was too much of a departure from version 2.1, and did not gain
+traction.  However, the documentation can be informative.
+
+More generally, see the VESA standards page:
+https://vesa.org/vesa-standards/
+
+A very nice description of I2C is found in a paper I found recently,
+HDCP and EDID Demystified from Luxi Electronics
+(https://luxielectronics.com/attachments/File/HDCP_and_EDID_Demystified.pdf).
+
+
+Finally, there's the i2c-dev documentation in Linux itself.  The
+documentation is dated - the next release of i2c-dev will have a major
+update.
+
+First let me try to address your general questions about I2C.
+
+My apologies on the invalid link - it must have been generated for me
+specifically.  All the files on box.com are once from the VESA web
+site.  Go to https://vesa.org. Navigate Standards & Specs ->Free
+Standards.  There's a big block of text that ends with "They can all be
+downloaded here..."  Click on the link, which will take you to a
+registration page.  Once you've filled out the form, you'll have access
+the the downloads. The one you're primarily interested in is DDCCI.
+
+I2C is a low level specification of a 2 wire protocol for sending and
+receiving sequences of bytes.  For the gory details,  see
+https://i2c.info, https://i2c.info/i2c-bus-specification,
+https://en.wikipedia.org/wiki/i2c.  I particularly like the "HDCP and
+EDID Demystified" paper
+(https://luxielectronics.com/attachments/File/HDCP_and_EDID_Demystified.pdf)
+that I mentioned earlier. DDC is a particular use of that specification.
+It describes how sequences of bytes are transmitted over an I2C bus
+between a master device and a slave device at address x37.   By analogy,
+you can think of DDC is as a subclass of superclass I2C.   DDC obeys the
+rules of I2C, but is more specific, e.g. it communicates only certain
+byte sequences are legal.
+
+In practice, bit-banging is the responsibility of an I2C device driver. 
+Note the use "an" rather than "the" -  amdgpu, radeon, nvida, nouveau,
+i915, etc. each know how to do so for the devices they support.  As a
+first order approximation, /dev/i2c provides a file system type
+interface that allows user space programs just read and write sequences
+of bytes, leaving the gory details to device driver writers.  One of the
+reasons ddcutil has proven more robust than ddccontrol is that it hasn't
+tried to  access the hardware directly, instead relying on the /dev/i2c
+interface.
+
+As to your results: the failing combination is the Benq monitor,
+internal GPU, and i915 driver.  Likely there's something marginal in the
+Benq's DDC implementation that only results in failure in that
+combination.  That communication fails in seemingly different ways is a
+symptom of corrupted communication.  Sometimes it is caught at a lower
+layer of the call stack, sometimes it is not apparent until the checksum
+is tested.  Unfortunately, there's not much that you can do other than
+to swap hardware.
+
+Finally, the softMCCS output shows no errors.
+
+
+
+The execution time of ddcutil is dominated by sleeps mandated by the
+DDC/CI protocol. (--sleep-multiplier, as you know, allows you to adjust
+the length of those sleeps to a lower value that still works for your
+monitor.)  The time spent opening and closing /dev/i2c devices is
+negligible - see the output of the --stats option.
+
+The current version of branch 0.9.9-dev on github contains a change
+which eliminates some sleeps entirely and does not appear to cause problems.
+
+You could also run ddcutil using the --bus option, which bypasses
+display detection, though this is of most value in a multi-monitor
+environment.
+
+Do be aware that some users have reported problems when multiple setvcp
+commands issued in rapid succession, i.e. in a script.
+
+
+#125
+
+I've seen situations where setvcp appears to work yet the monitor brightness doesn't change, and conversely situations where setvcp appears to fail yet the monitor brightness does change. Sometimes the monitor overrides values. See for example issue #121.
+
+As background, the setvcp command causes a DDC Set Feature Request packet to be sent. At the I2C level the monitor acknowledges that it has successfully received that packet, but there's no guarantee that it has successfully executed the request. Therefore, ddcutil internally performs a getvcp to check that the change has been made successfully (unless --noverify is specified).
+
+Some things to check:
+
+    Do you see a change in the monitor brightness? (Testing with very high or low values makes it apparent whether a change has occurred.)
+    Does the value in the On Screen Display change?
+    Try using the --noverify option on the setvcp command, then explicitly issue a getvcp command.
+    DDC mandates that the host give the monitor enough time to perform an operation. The --sleep-multiplier option will increase those delays, e.g. --sleep-multiplier 2 will double the delays from those in the DDC/CI specification.
+    Are multiple ddcutil calls occurring in a script? Inserting a delay between calls may help.
+
+Let me know if any of these actions gives a clue.
+
+
+--
+
+
+First, using ddcutil as the name for what the program has become is a
+bit of a misnomer.  Originally the Monitor Control Class Spec simply
+defined the contents of the messages carried by I2C.  Then in a bit of
+jujitsu, a spec was defined for communicating MCCS over USB.  Originally
+designed for DDC/CI, the ability to communicate MCCS over USB instead of
+I2C was added a couple years .  So ddcutil might better be named
+mccsutil, but that would be even more confusing.
+
+What usbenv is saying is that the monitor identifies itself on the USB
+bus as supporting the USB Monitor Control Class Specification, as a
+particular type of USB Human Interface Device (HID).  That is, it claims
+to implement a set of USB "reports" that carry MCCS related commands. 
+When ddcutil detect tries to use those reports, it doesn't work.   The
+other commands (getvcp, probe, etc.)  start out performing the detection
+reported by the detect command.   So if detect doesn't find any monitors
+supporting MCCS, neither will the other commands.
+
+While I2C is carried over a specified set of wires in VGA, DVI, and HDMI
+cables, for DisplayPort I2C communication is emulated over the AUX
+channel.  Unfortunately, the i915 driver does not implement the I2C
+communication for recent docking stations (which use DisplayPort Multi
+Stream Protocol, aka MST).   It may be that the I2C over Aux emulation
+has been extended to Thunderbolt, and we're simply seeing a limitation
+of the i915 driver.  If you can, one thing to try is to bypass the dock
+and plug directly into the laptop, using a type C connector if that
+exists on the laptop or a DisplayPort to Thunderbolt converter cable.
