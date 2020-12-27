@@ -896,14 +896,14 @@ Controller manufacturer: Mstar (sl=0x05), controller number: mh=0xff, ml=0x16, s
 Firmware version:  0.0<br />
 Manufacture year: 2019  </p>
 <p>The EDID contains a binary serial number, but does not contain an ASCII "serial number".</p>
-<p>When VCP code 0x14 (Select color preset) = User 1 (0x0b):<br />
-VCP code 0x0b (Color temperature increment   ): 100 degree(s) Kelvin<br />
+<p>VCP code 0x0b (Color temperature increment   ): 100 degree(s) Kelvin<br />
+When VCP code 0x14 (Select color preset) = User 1 (0x0b):<br />
 VCP code 0x0c (Color temperature request     ): 3000 + 35 * (feature 0B color temp increment) degree(s) Kelvin -&gt; 6500 degrees Kelvin<br />
 This is sensible.</p>
 <p>Feature xDF (VCP Version) incorrectly reports that the VCP version is 3.0.  </p>
 <p>Problems with feature x60 (Input Source):<br />
 - In MCCS version 3.0, feature x60 (Input Source) is of type Table, not Non-Continuous. Because of this <strong><em>getvcp</em></strong> incorrectly 
-reads the feature value, and <strong><em>setvcp</em></strong> fails because it expects a value of type Table as input. 
+reads the feature value, and <strong><em>setvcp</em></strong> fails because it expects a value of type Table as input.<br />
 - Feature value x00, which is not listed in any MCCS specification,
  represents the USB-C connector.</p>
 <p>Feature xc0 (Display Usage Time) reports mh=ml=0xff, sh=sl=x00, which is nonsense.</p>
