@@ -234,6 +234,8 @@
     </li>
     <li class="toctree-l2"><a class="reference internal" href="#nec-pa241">NEC PA241</a>
     </li>
+    <li class="toctree-l2"><a class="reference internal" href="#phillips-328p6vu">Phillips 328P6VU</a>
+    </li>
     <li class="toctree-l2"><a class="reference internal" href="#phillips-bdm3270">Phillips BDM3270</a>
     </li>
     <li class="toctree-l2"><a class="reference internal" href="#phillips-bdm4037u">Phillips BDM4037U</a>
@@ -886,6 +888,25 @@ specific DDC commands  The USB interface also makes heavy use of manufacturer sp
 <p>VCP code x0c (Color Temperature Request) returns 0, which is nonsensical. </p>
 <p>Does not use the usual VCP codes (e.g. x16/Red Gain) for color control.
 Instead uses the 6 axis color control features x8c..xa0.</p>
+<p><a name="phillips_328p6vu"></a></p>
+<h3 id="phillips-328p6vu">Phillips 328P6VU</h3>
+<p>VCP Version: 2.2  (capabilities string)<br />
+VCP Version: 3.0  (feature xDF)<br />
+Controller manufacturer: Mstar (sl=0x05), controller number: mh=0xff, ml=0x16, sh=0x00
+Firmware version:  0.0<br />
+Manufacture year: 2019  </p>
+<p>The EDID contains a binary serial number, but does not contain an ASCII "serial number".</p>
+<p>When VCP code 0x14 (Select color preset) = User 1 (0x0b):<br />
+VCP code 0x0b (Color temperature increment   ): 100 degree(s) Kelvin<br />
+VCP code 0x0c (Color temperature request     ): 3000 + 35 * (feature 0B color temp increment) degree(s) Kelvin -&gt; 6500 degrees Kelvin<br />
+This is sensible.</p>
+<p>Feature xDF (VCP Version) incorrectly reports that the VCP version is 3.0.  In version 3.0, feature x60 (Input Source) is of 
+type Table, not Non-Continuous. Because of this <strong><em>getvcp</em></strong> incorrectly interprets the output, and <strong><em>setvcp</em></strong> expects a
+value of type Table as input. </p>
+<p>The capabilities string describes Feature x60 as non-continuous.  However, for many reasons, <strong><em>ddcutil</em></strong> relies on the MCCS
+specifications and does not consult the capaiblities string.  Feature value x00, which is not listed in any MCCS specification,
+ represents the USB-C connector.</p>
+<p>Feature xc0 (Display Usage Time) reports mh=ml=0xff, sh=sl=x00, which is nonsense.</p>
 <h3 id="phillips-bdm3270">Phillips BDM3270</h3>
 <p>VCP Version: 2.2<br />
 Controller manufacturer:  Novatek, model info: mh=xff, ml=xff, sh=x00<br />
@@ -924,7 +945,9 @@ VCP version reported by feature xdf:         2.1 <br />
 Controller manufacturer and model:  Novatek, model id:  mh=xff, ml=0xff, sh=0x00<br />
 Firmware version: 0.0</p>
 <p>Two users have reported that DDC/CI does not work over DisplayPort. In both cases they were using the amdgpu
-video driver  As of 12/2020, this is not fixed by the most recent monitor firmware update.</p>
+video driver  This was true no matter which DisplayPort version was chosen in the OSD.
+As of 12/2020, this is not fixed by the most recent monitor firmware update. User razamatan reports
+that he was told in Samsung's chat support that DDC/CI is not implemented on DisplayPort.</p>
 <p>The capabilites string reports an unrecognized command code, x4e</p>
 <p>Feature x14 (Color Perset), x06 (Color Temperature Increament) and x06 (Color temperature requrest) appear consistent.
 In one report:<br />

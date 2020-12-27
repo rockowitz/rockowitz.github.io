@@ -309,7 +309,37 @@ The problem affects DisplayPort, DVI, and HDMI connectors on the dock.</p>
 <p>This is a problem with newer docking stations that implement DisplayPort Multi Stream Transport.  The drm driver layer
 does not implement I2C writes. </p>
 <p>For the gory details, see this <a href="https://lists.freedesktop.org/archives/intel-gfx/2017-May/127350.html">thread</a> on the Intel-gfx developers list. </p>
-<p>A <a href="https://cgit.freedesktop.org/drm-misc/commit/drivers/gpu/drm/drm_dp_mst_topology.c?id=adb48b26985686f93f20ca71c16c067d790e7af3">fix for this problem</a> has been developed. It is expected to appear in kernel release 5.9.2. </p>
+<p>A <a href="https://cgit.freedesktop.org/drm-misc/commit/drivers/gpu/drm/drm_dp_mst_topology.c?id=adb48b26985686f93f20ca71c16c067d790e7af3">fix for this problem</a> has been developed. It is merged into kernel release 5.11. </p>
+<!--
+<a name="faq_displayport"></a>
+### DisplayPort communcation fails, but DVI/HDMI work
+
+DP<->DP vs DP++ Dual mode DP<->DVI/HDMI
+
+DP<->DVI/HDMI using Active Converted
+
+DP 1.1 vs 1.2
+
+[MegaChips STDP2600 Advanced HDMI to DisplayPort converter Datasheet](https://media.digikey.com/pdf/Data%20Sheets/MegaChips%20PDFs/STDP2600_DS.pdf)
+04-March_2916
+
+- for use in active converter dongle
+- I2C to AUX bridge for EDID/MCCS patth through
+- Disp;ayPort DualMode
+  - AUX CH 1 MBPS
+  - HDMI/DVI operation with level transmitter
+- HDMI input -> DP++ output
+  - input: HDMI signal, CEC, DDC
+  - output DP Main Lanes, AUX CH
+    - SST format only, no MST format support
+
+
+
+
+
+
+-->
+
 <h3 id="im-using-nvidias-proprietary-driver-ddcutil-doesnt-seem-to-be-be-working">I'm using Nvidia's proprietary driver.  <strong>ddcutil</strong> doesn't seem to be be working.</h3>
 <p>Symptoms include "DDC communication failed" on <strong>ddcutil detect</strong>, and lots of "Maximum retries exceeded" errors
 on command <strong>ddcutil getvcp known</strong>.  </p>
