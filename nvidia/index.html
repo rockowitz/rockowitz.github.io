@@ -280,7 +280,7 @@ following to the "Device" section for the Nvidia driver resolves the problem for
 EndSection
 </code></pre>
 
-<p>Copy this file to /etc/X11/xorg.conf.d  </p>
+<p>Copy this file to /etc/X11/xorg.conf.d.  You will have to restart X11 for this change to take effect.  It's probably simplest to reboot.</p>
 <p>Note: This file works if there is no /etc/X11/xorg.conf file.  If you do have an 
 xorg.conf file the Identifier field will likely require modification.</p>
 <p>This does not, however, appear to be a universal solution.  It does not work with some cards. </p>
