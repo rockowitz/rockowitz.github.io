@@ -266,7 +266,7 @@
 <p>Sometimes, DDC works over a HDMI or DVI connection but not over DisplayPort.  Occasionally the converse is true.
 This section describes how DDC, or more precisely I2C, is communicated over DisplayPort, and may prove helpful when analyzing
 DDC communication problems.</p>
-<p>I2C is a simple serial protocol that uses 2 signalling lines, referred to as SCL and SDA, or DDC clock and DDC data, and their associated grounds.
+<p>I2C is a simple serial protocol that uses 2 signaling lines, referred to as SCL and SDA, sometimes referred to as DDC clock and DDC data, along with their associated grounds.
 These are pins 12/15 on a HD15 VGA connector, 6/7 on a DVI connector, and 15/16 on a HDMI connector. </p>
 <p>DVI and HDMI use the same protocol, TDMS (Transition Minimized Differential Signaling) for transmitting video information.   </p>
 <p>While more recent versions of HDMI have additional capabilities, e.g. Ethernet, CEC, for video and DDC of monitor communication DVI and HDMI are equivalent, 
@@ -277,17 +277,17 @@ DDC is implemented using  the AUX channel, but the AUX channel itself is not DDC
 The "multiplexing" of I2C over the AUX channel is transparent to all but the lowest level of I2C software at each end.</p>
 <p>In is possible to connect the DisplayPort output on a host to a DVI or HDMI input on a monitor using an "active", or sometimes a "passive", adapter. </p>
 <p>Most active adapters connect a DisplayPort output on the host to a DVI or HDMI input on the monitor. An active adapter converts the DisplayPort video
-signal to the TDMS video signal used by DVI or HDMI. It also convert the I2C signals on the AUX channel to and from the physical SDA and SCL signals on 
-the DVI/HDMI cable.  To the video card it appears that it is communicating with a DisplayPort input on the monitor, and to the monitor it appears that 
+signal to the TDMS video signal used by DVI or HDMI. It also converts the I2C signals on the AUX channel to and from the physical SDA and SCL signals on 
+the DVI/HDMI connector.  To the host, it appears that it is communicating with a DisplayPort input on the monitor. To the monitor it appears that 
 it is communicating with a HDMI or DVI output on the host.</p>
 <p>There are active adapters that convert a DVI/HDMI output on the host to a DisplayPort input on the monitor. These adapters are uncommon, and are 
-much more expensive.  There do not appear to be any adapters that can be used in both directions.</p>
+much more expensive.  There do not appear to be any adapters that operate in both directions.</p>
 <p>Active adapters will be labeled "Active".</p>
 <p>If the video adapter implements Display Port Dual Mode, also known as DP++, then it is possible to use a "passive adapter" between the DisplayPort output on the host and the HDMI/DVI input on the monitor.</p>
-<p>When the host detects that its DisplayPort output is connected to a HDMI/DVI input instead of a DisplayPort input, 
+<p>When the host detects that its DisplayPort output is connected to a HDMI/DVI monitor input instead of a DisplayPort input, 
 it shifts to "alternate" mode, treating its DisplayPort connector as if it were a weird DVI/HDMI connector.  It uses TDMS for the video signal, and uses the AUX channel pins as simple SDA/SCL pins.
 A "passive" adapter simply routes wires appropriately, and adjusts voltage levels.</p>
-<p>Host DisplayPort connectors that support dual mode should be marked as such.  The marker is a D with a P inside, and two + signs to the left, one above the other. Most DisplayPort connectors on most recent video cards are dual mode. Unfortunately, they are not always marked as such. </p>
+<p>Host DisplayPort connectors that support dual mode should be marked as such.  The marker is a D with a P inside, and two + signs to the left, one above the other. Most DisplayPort connectors on recent video cards are dual mode. Unfortunately, they are not always marked as such. </p>
 <p>Thunderbolt ports, which use the DisplayPort protocol for video signaling, support DP++ natively.</p>
 <p>Note that here may be limitations on the number of DisplayPort outputs can operate in alternate mode.  In that case, active adapters are required.</p>
 <p>For futher details of DisplayPort, its <a href="https://en.wikipedia.org/wiki/DisplayPort">Wikipedia page</a> is an excellent resource.</p>
