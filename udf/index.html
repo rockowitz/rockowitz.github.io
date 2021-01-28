@@ -9,7 +9,7 @@
   <meta name="author" content="Sanford Rockowitz">
   <link rel="canonical" href="https://www.ddcutil.com/udf/">
   <link rel="shortcut icon" href="../img/favicon.ico">
-  <title>User Defined Features - ddcutil Documentation</title>
+  <title>Udf - ddcutil Documentation</title>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
 
   <link rel="stylesheet" href="../css/theme.css" />
@@ -18,7 +18,7 @@
   
   <script>
     // Current page data
-    var mkdocs_page_name = "User Defined Features";
+    var mkdocs_page_name = "Udf";
     var mkdocs_page_input_path = "udf.md";
     var mkdocs_page_url = "/udf/";
   </script>
@@ -144,6 +144,8 @@
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="../nvidia/">Special Nvidia Driver Settings</a>
                     </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../adl/">AMD fglrx Driver</a>
+                    </li>
                     <li class="toctree-l1"><a class="reference internal" href="../virtual_machines/">Virtual Machines</a>
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="../raspberry/">Raspberry Pi</a>
@@ -169,6 +171,8 @@
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="../c_api_99/">C API Changes for Release 0.9.9</a>
                     </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../c_api_100/">C API Changes for Release 1.0.0</a>
+                    </li>
                     <li class="toctree-l1"><a class="reference internal" href="../python_api/">Python API Overview</a>
                     </li>
                 </ul>
@@ -177,10 +181,6 @@
                     <li class="toctree-l1"><a class="reference internal" href="../mccs_background/">Monitor Control Command Set</a>
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="../ddc_vs_i2c/">DDC vs I2C</a>
-                    </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../displayport/">DDC and DisplayPort</a>
-                    </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../bibliography/">References</a>
                     </li>
                 </ul>
                 <p class="caption"><span class="caption-text">Additional Topics</span></p>
@@ -192,6 +192,8 @@
                     <li class="toctree-l1"><a class="reference internal" href="../ddccontrol/">Comparison with ddccontrol</a>
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="../ddc_null_response/">DDC Null Message</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../bibliography/">References</a>
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="../acknowledgements/">Acknowledgements</a>
                     </li>
@@ -216,19 +218,6 @@
                     <li class="toctree-l1"><a class="reference internal" href="../ddcui_release_notes/">ddcui Release Notes</a>
                     </li>
                 </ul>
-                <p class="caption"><span class="caption-text">Futuere Features</span></p>
-                <ul class="current">
-                    <li class="toctree-l1 current"><a class="reference internal current" href="./">User Defined Features</a>
-    <ul class="current">
-    <li class="toctree-l2"><a class="reference internal" href="#user-defined-feature-file">User Defined Feature File</a>
-    </li>
-    <li class="toctree-l2"><a class="reference internal" href="#examples">Examples</a>
-    </li>
-    <li class="toctree-l2"><a class="reference internal" href="#feature-definition-search-path">Feature Definition Search Path</a>
-    </li>
-    </ul>
-                    </li>
-                </ul>
       </div>
     </div>
     </nav>
@@ -249,12 +238,8 @@
     <li><a href="..">Docs</a> &raquo;</li>
     
       
-        
-          <li>Futuere Features &raquo;</li>
-        
-      
     
-    <li>User Defined Features</li>
+    <li>Udf</li>
     <li class="wy-breadcrumbs-aside">
       
         <a href="https://github.com/rockowitz/ddcutil/edit/master/docs/udf.md"
@@ -269,82 +254,57 @@
             <div class="section">
               
                 <h2 id="user-defined-features">User Defined Features</h2>
-<p><strong><em>ddcutil</em></strong> contains a preliminary implementation of <strong><em>User Defined Features</em></strong>. 
-This section describes the current implementation in git development branch 1.0.0-dev.
-<strong><em>User Defined Features</em></strong> is
-enabled or disabled using command line options <strong><em>--udf</em></strong> or <strong><em>--noudef</em></strong>.  The default is currently <strong><em>--noudf</em></strong>. </p>
-<p>The user defined features for a monitor are specified in a feature definition file. The format of this file is subject to change.</p>
+<p><strong>ddcutil*<em> 0.9.9 marks the formal release of </em></strong>User Defined Features<strong><em>. This capability can 
+be enabled or disabled using command line options </em></strong>--udf<strong><em> or </em></strong>--noudef<strong><em>.  The default is </em></strong>--udf***. </p>
+<p>(This capability has existed for some time but was undocumented as it was subject to change. Until now it was disabled by default.) </p>
+<p>The user defined features for a monitor are specified in a feature definition file.</p>
 <h3 id="user-defined-feature-file">User Defined Feature File</h3>
 <p>Here's an example of a file that specifies user defined features. </p>
-<pre><code>$ cat ~/.local/share/ddcutil/DEL-DELL_U2222-16485.mccs
+<pre><code>$ cat DEL-DELL_U3011-16485.mccs
 MFG_ID       DEL
-MODEL        DELL U2222
+MODEL        DELL U3011
 PRODUCT_CODE 16485
-MCCS_VERSION 2.2
-FEATURE_CODE FD  Feature Name
+FEATURE_CODE FD  a Feature  Something
     ATTRS NC RW
     VALUE 0 First Val
     VALUE 0X01 Second Val 0x
     VALUE X02  Third value X
     VALUE 03H  H at end
-FEATURE_CODE xFB Another Feature
+FEATURE_CODE xFB a name of continuous feature
     ATTRS C RO
 FEATURE_CODE 0xfa a feature with code staring with 0x
-    ATTRS C RO 
+    ATTRS C ROrock@banner:/shared/playproj/i2c$ 
 </code></pre>
 
 <p>The first 3 lines identify the monitor model, using a 3 character manufacturer id, the model name, 
-and the product number, as given in the EDID.
-The feature definition applies to any monitor that matches those identifiers. 
-Model name and product number are both required because some manufacturers use generic model names, 
+and the product number, as given in the EDID.  The feature definition applies to any monitor that matches those identifiers. 
+Model name and product number are both used because some manufacturer use generic model names, 
 and many set the product number to 0. 
 For example, Samsung commonly uses the name "SyncMaster", and LG commonly uses the name "LG ULTRAWIDE".</p>
 <p>These three fields are also are used to create the file name of the feature description, 
 which has the form <strong><em>&lt;mfg_id&gt;-&lt;model name&gt;-&lt;product code&gt;.mccs</em></strong>. The values in the
 file name must match those in the file. </p>
-<p>The optional <strong><em>MCCS_VERSION</em></strong> line specifies the version of the MCCS Specification used to describe the monitor.
-If specified, it is used instead of the value returned by querying VCP feature xDF (VCP Version). 
-If the MCCS version is also specified using the <strong><em>--mccs</em></strong> command  line option, the command line option takes precedence.</p>
-<p>In addition to the monitor identification lines and optional MCCS version line, there are one or more feature definitions.  </p>
-<p>Each defnition starts with a line of the form <strong><em>FEATURE_CODE &lt;feature-id&gt; &lt;feature name&gt;</em></strong>.
-Feature codes are implicitly hex numbers, and can be written with or without a leading "x". </p>
-<p>The <strong><em>ATTRS</em></strong> line contains feature attributes: "C" or "NC" indicating whether 
+<p>Following the monitor identification fields are one or more feature descriptions.  </p>
+<p>Each defnition starts with a line of the form <strong><em>FEATURE_CODE <feature-id> <feature name></em></strong>.
+Feature codes are implicitly hex numbers, and can be written with or without a leading "x". 
+Feature codes must be in the manufacturer reserved range, E0..FF. </p>
+<p>The <strong><em>ATTRS</em></strong> line contains mnoitor attributes: "C" or "NC" indicating whether 
 the feature is continuous or non-continuous, and "RW", "RO", or "WO" indicating whether 
 the feature is read-write, read-only, or write-only. </p>
-<p>For non-continuous features, there are one or more <strong><em>VALUE</em></strong> lines describing the possible values. 
-Each line has the form: <strong><em>VALUE &lt;value&gt; &lt;description&gt;</em></strong>.  Feature values can be written either 
+<p>For non-continuous features, there are 1 or more <strong><em>VALUE</em></strong> lines describing the possible values. 
+Each line has the form: "VALUE &lt;value&gt; &lt;description&gt;".  Feature values can be written either 
 as decimal or hexadecimal. </p>
-<p>The MCCS specification has evoloved include features that don't neatly conform the original Continous/Non-Continuous classification.  For example, continous features can have special reserved values, and non-continuous features exist that do not have simple tables of feature values, but instead have unique interpretations.  The <strong><em>User Defined Feature</em></strong> facility
+<p>The MCCS specification defines non-continuous features that do not have simple tables of feature values.
+These have special interpretations unique to the each feature.  The <strong><em>User Defined Feature</em></strong> facility
 cannont define such features.</p>
 <p>Blank lines and lines beginning with "*" or "#" are ignored.</p>
-<h3 id="examples">Examples</h3>
-<p>An actual feature definition file for a monitor whose values for feature x60 (Input Source) do not conform to the MCCS specification. </p>
-<pre><code>$ cat ~/.local/share/ddcutil/SAM-U32H75x-3586.mccs
-MFG_ID       SAM
-MODEL        U32H75x
-PRODUCT_CODE 3586
-MCCS_VERSION 2.1
-FEATURE_CODE 60 Input Source
-  ATTRS NC RW
-  VALUE x05 HDMI-1
-  VALUE x06 HDMI-2
-  VALUE x0f DisplayPort
-</code></pre>
-
-<h3 id="feature-definition-search-path">Feature Definition Search Path</h3>
-<p>Feature definition files are saved in the user's <strong><em>ddcutil</em></strong> data directory, $HOME/.local/share/ddcutil. 
-More generally, <strong><em>ddcutil</em></strong> searches for feature definition files using environment variables <strong><em>$XDG_DATA_HOME</em></strong> and <strong><em>$XDG_DATA_DIRS</em></strong>, per the <a href="https://specifications.freedesktop.org/basedir-spec/basedir-spec-latest.html">XDG Base Directory Specification</a>.</p>
+<p>The format of feature definition files is subject to change in future releases. </p>
+<h2 id="feature-definition-search-path">Feature Definition Search Path</h2>
+<p>For now, feature definitions must be found in the user's <strong>ddcutil</strong> configuration directory, $HOME/.config/ddcutil. Future releases may extend the search path to recognize files in the appropriate directory under /usr/share and the XDG search path.</p>
               
             </div>
           </div>
           <footer>
-  
-    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-      
-      
-        <a href="../ddcui_release_notes/" class="btn btn-neutral" title="ddcui Release Notes"><span class="icon icon-circle-arrow-left"></span> Previous</a>
-      
-    </div>
   
 
   <hr/>
@@ -369,8 +329,6 @@ More generally, <strong><em>ddcutil</em></strong> searches for feature definitio
       
           <a href="https://github.com/rockowitz/ddcutil/" class="fa fa-github" style="float: left; color: #fcfcfc"> GitHub</a>
       
-      
-        <span><a href="../ddcui_release_notes/" style="color: #fcfcfc;">&laquo; Previous</a></span>
       
       
     </span>

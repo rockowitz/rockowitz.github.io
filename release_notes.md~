@@ -1,5 +1,202 @@
 ## Release Notes
 
+For **ddcui** release notes, see [**ddcui** Release Notes](ddcui_release_notes.md).
+
+### 1.0.0
+
+01 January 2020
+
+### User Defined Features
+
+***ddcutil***, for some time now, has implementated user supplied feature definitions. This facility is now formally available. 
+A feature definition file for a monitor model specifies feature definitions that add to or override those in the MCCS spec. It can also optionally force the MCCS version of the monitor. A user supplied feature definition can, for example, specify a monitor's actual values for a Non-Continuous feature such as x60 (Input Source), or define a feature in the manufacturer supplied range xE0..XFF. The facility is enabled by option ***--udf***. The default is currently ***--noudf***.  See page [User Defined Features](udf.md) for details.
+
+### USB
+
+By default, ***ddcutil*** no longer checks for monitors that use USB to communicate with the 
+monitor's ***Virtual Control Panel***.  Such monitors are rare, and the error messages that occur when  
+permissions have not been granted on /dev/usb/hiddev devices can be confusuing.  USB display detection 
+can be enabled using command line option ***--enable-usb***.  The default is ***--disable-usb***. 
+
+#### Command **detect** 
+
+- If no displays are found, add a message suggesting ***ddcutil environment***  
+- Always show the product code and binary serial number  
+- Additional /sys information for ***--verbose*** output  
+- Revised logic to better handle some marginal monitor/driver cases
+
+### Command **capabilities**
+
+- The **capabilities** command now issues detailed error messages for malformed capabilities strings, and 
+attempts to continue if recovery from the parsing error can produce useful information. 
+ 
+- Fixed instances of assert failures when parsing a capabilities string with unmatched parentheses or the 
+in which the model name is unparenthesized.
+
+- In the "Commands" segment, the id values are referred to as "operation codes" for consistency with 
+DDC/CI documentaion. Capitalization in command output is more consistent.
+
+### Command **getvcp**
+
+- If **getvcp** does not know how to format a value, it now includes the mh, ml, sh, and sl byte values in the "UNABLE TO FORMAT OUTPUT" message.
+
+- Implement special handling for features x62 (audio volume) x87 (audio treble), x91 (audio bass) and x93 (audio balance).
+In MCCS 3.0 and 2.2, these features have special reserved values along with a range of continuous values.
+
+- Fix the cause of an assert failure when showing the value of feature x93 (audio balance). 
+
+
+### Command **setvcp**
+
+- The parsing of **setvcp** arguments has been rewritten to correctly allow for more than 1 relative values. 
+- A command such as "setvcp 10 +15" was was incorrectly being interpreted as indicating a 
+relative feature value.  The "+" or "-" in relative values must be surrounded by spaces.
+
+<!--
+The syntax for specifying relative values has been relaxed.  Spaces are no longer required around "+" or "-".
+For example, the following all specify relative values: 
+~~~
+$ ddcutil setvcp 10 + 5
+$ ddcutil setvcp 10-5
+$ ddcutil setvcp 10 +15
+~~~
+
+A consequence of this change is that a plus sign in from of a value is no longer indicates a positive number. 
+That is, in the final example above, ***setvcp*** increases the value of feature 10 by 15.  It does not set 
+the value of feature 10 to 15.
+-->
+
+
+### Command **dumpvcp**
+
+- If no file name is specified on the command line, **dumpvcp** now writes its output to a newly created file in directory $HOME/.local/share/ddcutil. 
+
+- Documentation has been changed to conform to code behavior. 
+
+- Fixed the cause of the user name being null in the generated portion of the file name. 
+
+An example of a generated file name is: 
+
+DELL_P2411H-F8NDP11G119U-20201206-091307.vcp
+
+where:  
+- ***DELL_P2411H*** is the model name reported by the EDID  
+- ***F8NDP11G119U*** is the ASCII "serial number" in the EDID  
+- ***20201206-091307*** is a timestamp of when the file was created
+
+
+
+### Command **watch**
+
+- Better handle fatal errors instead of continuing in an infinite loop
+
+### New option ***--no-x52-fifo***
+
+Features x02 (new control value) and feature x52 (active control) are used together to report
+feature values changed using the On Screen Display (OSD). 
+
+In MCCS 2.0 and 2.1, if feature x02 has the value x02 (changed controls exist) feature x52 is read once to get the id of a feature that has changed.
+The changed feature can be read in the usual way.
+Feature x02 is then read again to see if there are more features that have changed.
+
+In MCCS 3.0 and 2.2, feature X52 is supposed to be a FIFO of the ids of
+changed features.  It is intended to be read until value x00 is returned, indicating
+no more features.
+    
+It has been observed that at least for some v2.2 monitors (HP Z22i), feature x52 never
+returns x00, just always returns the same feature id. This option forces the
+**watch** command to treat all monitors as having the VCP 2.0/2.1 behavior.
+
+
+### Command **environment**
+
+- If option ***--verbose*** is specified, the /sys file system is probed far more extensively. This change also 
+applies to command ***interrogate***, which incorporates ***environment --verbose***.
+
+### Option ***--mccs &lt;vcp version>***
+
+Option ***--mccs*** now applies to commands **getvcp**, **setvcp**, and **dumpvcp** in addition to **vcpinfo**.
+See documentation of the individual commands for details.
+
+### New Option ***--per-thread-stats***
+
+Option ***---per-thread-stats*** causes ***--stats*** output to include per thread statistics. 
+
+By default, the ***--stats*** option does not display per thread statistics. These statistics 
+are generally meaninful only in the shared library context, and their display is simply TMI<sup>TM</sup>.
+
+<!--
+<sup>&#x2122;</sup> <sup>. 
+
+TO CONSIDER: --per-thread-stats as an alternative to --stats
+--> 
+
+### Option ***--enable-sleep-less***
+
+Option ***--sleep-less***, now also known as ***--enable-sleep-less*** is now the default.  This eliminates some sleeps after reading DDC packets,
+and does not appear to affect stability.  Option ***--disable-sleep-less*** restores the prior behavior. 
+
+
+### Desktop Integration
+
+If a repository containing **ddcutil** is enabled, **ddcutil** is installable by the **KDE Discover** application explorer (plasma-discover)
+and **GNOME Software** (gnome-software) app store programs.
+
+To provide for this, **ddcutil** installs the following files:  
+- /usr/share/applications/ddcutil.desktop  
+- Icon files are installed in the /usr/share/icons/hicolor tree  
+- For backward compatibility, icon file /usr/share/pixmaps/ddcutil.png is installed.  
+- /usr/share/metainfo/ddcutil.appdata.xml
+
+<!--
+TODO: Notes on problems with app stores
+-->
+
+
+### Miscellaneous Changes and Bug Fixes 
+
+- Fix trace message corruption when both ***--thread-id*** (***--tid***) and ***--timestamp*** (***--ts***) are both specified.   
+- If any tracing is enabled, report the **ddcutil** starting and ending clock times.  
+- More functions can be individually traced using ***--trcfunc***.
+- Option ***--nodetect*** is eliminated. It was reduncant since using the ***--bus*** 
+option forces display detection to be skipped, and this is the only context in which 
+option ***--nodetect*** was recognized.   
+- Fix the recording of the minimum and maxium maxtries values that occur in each thread.  
+- Correct ***--help*** output to indiate that "0" or "." in a ***--maxtries*** value string 
+leaves the value of a try type unchanged.  This was incorrectly documented as "." or "".
+For example, "--maxtries "., 15, 0""  changes only the write-read maxtries value. 
+- At startup, check that module i2c-dev is either loaded or built in. 
+
+
+### Building **ddcutil**
+
+Some ***.configure*** options have been added, primarily in support of an as yet incomplete FreeBSD implementation. 
+(Development suspended until FreeBSD's video drivers expose the I2C bus.)
+
+| Option             | Default | Description 
+|--------------------|---------|-----------------
+| --enable-asan      | no      | Build for execution with the Google Address Space Sanitizer.
+| --enable-envcmds   | yes     | Controls whether commands **environment** and **usbenvironment** are included.
+| --enable-udev      | yes     | Controls whether udev is used. 
+| --enable-targetbsd | no      | Build for FreeBSD. 
+
+Notes:  
+- Option ***--disable-envcmds*** forces ***--disable-drm***, and ***--disable-x11***   
+- Option ***--enable-targetbsd*** forces ***--disable-envcmds***, ***--disable-udev***, and ***--disable-usb***
+
+Option-***-with-adl-headers*** has been removed.
+
+The ***.gitignore*** file has been simplified with the expectation that repository-specific files to be
+ignored will be specified in .git/info/exclude.
+
+
+
+#### Shared Library
+
+The SONAME for **libddcutil** is now libddcutil.so.4.
+For details on changes, see [Shared Library Changes for Release 1.0.0](c_api_100.md).
+
+
 ### 0.9.9
 
 13 June 2020
@@ -64,7 +261,7 @@ may be a useful alternative to option ***--sleep-multiplier***.
 
 Option: ***--timeout-i2c-io***
 
-Causes (most) I2C read calls to eventually time out if they do not return.
+Causes (most) I2C read and write calls to eventually time out if they do not return.
 This has been implemented as a POSSIBLE way to address occasional reports of **ddcutil** locking up, with subsequent
  **ddcutiil** calls blocking behind it.   This may become the default in future releases.
 
@@ -78,7 +275,7 @@ This has been implemented as a POSSIBLE way to address occasional reports of **d
 
 #### Miscellaneous
 
-- Command **ddcutil environment** should have output the message "Group i2c not not exist" if 
+- Command **ddcutil environment** should have output the message "Group i2c does not exist" if 
 group i2c was not found.  The critical word "not" was missing.  Thank you Michaël Defferrard.
  
 - The display identifier cross-reference table output by command **ddcutil environment --verbose**
@@ -103,6 +300,7 @@ $ddcutil setvcp 10 + 5 12 - 3
 ~~~ 
 This frankly not very useful corner case had not been taken into account 
 when relative ***setvcp*** values were implemented.  Well, now it is.
+
 - ***ddcutil*** issues an error message instead of aborting if an utterly nonsensical
 ***--sleep-multiplier*** value greater than 100 is specified, e.g.
 ~~~
@@ -489,7 +687,7 @@ However, if both ***--verbose*** and ***--show-table*** are in effect, then a ta
 
 The interpretation of ***--show-unsupported*** has been tweaked.  This option applies to command ***getvcp***.  (The ***probe***
 command always reports unsupported features.) 
- Command **getvcp** reports unsupported features if any of the following hold:  
+ Command ***getvcp*** reports unsupported features if any of the following hold:  
 - A specific feature was specified by its code, as opposed to a feature set.  
 - Verbose output is in effect  
 - Option ***--show-unsupported*** was specified.

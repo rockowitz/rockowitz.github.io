@@ -144,6 +144,8 @@
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="../nvidia/">Special Nvidia Driver Settings</a>
                     </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../adl/">AMD fglrx Driver</a>
+                    </li>
                     <li class="toctree-l1"><a class="reference internal" href="../virtual_machines/">Virtual Machines</a>
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="../raspberry/">Raspberry Pi</a>
@@ -154,11 +156,9 @@
     </li>
     <li class="toctree-l2"><a class="reference internal" href="#apple-cinema-display-a1082">Apple Cinema Display A1082</a>
     </li>
-    <li class="toctree-l2"><a class="reference internal" href="#asus-mg279">Asus MG279</a>
+    <li class="toctree-l2"><a class="reference internal" href="#asus-ve247">Asus VE247</a>
     </li>
     <li class="toctree-l2"><a class="reference internal" href="#asus-rog-pg279q">Asus ROG PG279Q</a>
-    </li>
-    <li class="toctree-l2"><a class="reference internal" href="#asus-ve247">Asus VE247</a>
     </li>
     <li class="toctree-l2"><a class="reference internal" href="#benq-gw2480">BenQ  GW2480</a>
     </li>
@@ -175,8 +175,6 @@
     <li class="toctree-l2"><a class="reference internal" href="#dell-ultrasharp-u2413">Dell Ultrasharp U2413</a>
     </li>
     <li class="toctree-l2"><a class="reference internal" href="#dell-2407wfp">Dell 2407wfp</a>
-    </li>
-    <li class="toctree-l2"><a class="reference internal" href="#dell-u2518d">Dell U2518D</a>
     </li>
     <li class="toctree-l2"><a class="reference internal" href="#dell-u3011">Dell U3011</a>
     </li>
@@ -226,15 +224,9 @@
     </li>
     <li class="toctree-l2"><a class="reference internal" href="#mitsubishi-rdt232wlm">Mitsubishi RDT232WLM</a>
     </li>
-    <li class="toctree-l2"><a class="reference internal" href="#monoprice-dark-matter-40776">Monoprice Dark Matter 40776</a>
-    </li>
     <li class="toctree-l2"><a class="reference internal" href="#nec-lcd3090wqxi">NEC LCD3090WQXi</a>
     </li>
-    <li class="toctree-l2"><a class="reference internal" href="#nec-p241w">NEC P241W</a>
-    </li>
     <li class="toctree-l2"><a class="reference internal" href="#nec-pa241">NEC PA241</a>
-    </li>
-    <li class="toctree-l2"><a class="reference internal" href="#phillips-328p6vu">Phillips 328P6VU</a>
     </li>
     <li class="toctree-l2"><a class="reference internal" href="#phillips-bdm3270">Phillips BDM3270</a>
     </li>
@@ -245,8 +237,6 @@
     <li class="toctree-l2"><a class="reference internal" href="#samsung-syncmaster-213t">Samsung Syncmaster 213T</a>
     </li>
     <li class="toctree-l2"><a class="reference internal" href="#samsung-syncmaster-730b">Samsung Syncmaster 730B</a>
-    </li>
-    <li class="toctree-l2"><a class="reference internal" href="#samsung-lc49g95t-odyssey-g9">Samsung LC49G95T Odyssey G9</a>
     </li>
     <li class="toctree-l2"><a class="reference internal" href="#samsung-u32h750">Samsung U32H750</a>
     </li>
@@ -273,6 +263,8 @@
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="../c_api_99/">C API Changes for Release 0.9.9</a>
                     </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../c_api_100/">C API Changes for Release 1.0.0</a>
+                    </li>
                     <li class="toctree-l1"><a class="reference internal" href="../python_api/">Python API Overview</a>
                     </li>
                 </ul>
@@ -281,10 +273,6 @@
                     <li class="toctree-l1"><a class="reference internal" href="../mccs_background/">Monitor Control Command Set</a>
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="../ddc_vs_i2c/">DDC vs I2C</a>
-                    </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../displayport/">DDC and DisplayPort</a>
-                    </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../bibliography/">References</a>
                     </li>
                 </ul>
                 <p class="caption"><span class="caption-text">Additional Topics</span></p>
@@ -296,6 +284,8 @@
                     <li class="toctree-l1"><a class="reference internal" href="../ddccontrol/">Comparison with ddccontrol</a>
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="../ddc_null_response/">DDC Null Message</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../bibliography/">References</a>
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="../acknowledgements/">Acknowledgements</a>
                     </li>
@@ -318,11 +308,6 @@
                     <li class="toctree-l1"><a class="reference internal" href="../building_ddcui/">Building ddcui</a>
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="../ddcui_release_notes/">ddcui Release Notes</a>
-                    </li>
-                </ul>
-                <p class="caption"><span class="caption-text">Futuere Features</span></p>
-                <ul>
-                    <li class="toctree-l1"><a class="reference internal" href="../udf/">User Defined Features</a>
                     </li>
                 </ul>
       </div>
@@ -387,8 +372,14 @@ Manufacture year:          2005</p>
 <p>USB interface does not report VCP version (feature DF).</p>
 <p>Able to read EDID over USB. </p>
 <p>Capabilities string does not begin and end with parentheses. </p>
-<h3 id="asus-mg279">Asus MG279</h3>
-<p>The capabilities string is malformed.</p>
+<h3 id="asus-ve247">Asus VE247</h3>
+<p>VCP version:  2.0 <br />
+Controller Manufacturer:   RealTek<br />
+Controller Model: mh=x00, ml=x24, sh=x82   <br />
+Firmware version: 2.0 <br />
+Maufacture year:  2010</p>
+<p>Responds to unknown VCP codes using the DDC NULL message instead of setting the <strong><em>Unsupported VCP code</em></strong> bit in the GETVCP response.</p>
+<p>Sensible responses to VCP codes x0B and x0C. </p>
 <h3 id="asus-rog-pg279q">Asus ROG PG279Q</h3>
 <p>VCP version:  2.2 <br />
 Controller Manufacturer:   manufacturer defined controller <br />
@@ -400,14 +391,6 @@ Maufacture year:  2017, 2018</p>
 <p>Does not respond to getvcp of unsupported VCP codes by setting the unsupported feature flag in the GETVCP
 response. Requests for unsupported features return garbage bytes, the requests fail by exceeding retries.</p>
 <p>The output of the <strong><em>capabilities</em></strong> command does appear to accurately report which features are supported.</p>
-<h3 id="asus-ve247">Asus VE247</h3>
-<p>VCP version:  2.0 <br />
-Controller Manufacturer:   RealTek<br />
-Controller Model: mh=x00, ml=x24, sh=x82   <br />
-Firmware version: 2.0 <br />
-Maufacture year:  2010</p>
-<p>Responds to unknown VCP codes using the DDC NULL message instead of setting the <strong><em>Unsupported VCP code</em></strong> bit in the GETVCP response.</p>
-<p>Sensible responses to VCP codes x0B and x0C. </p>
 <h3 id="benq-gw2480">BenQ  GW2480</h3>
 <p>VCP Version: 2.1<br />
 Controller Manufacturer: Mstar <br />
@@ -429,7 +412,6 @@ Manufacture year: 2013</p>
 Feature x0C: Color temperature request: 0<br />
 Caclculated color temperature = 3000 + (0*50) = 3000 deg Kelvin  (nonsensical)  </p>
 <p>Responds to VCP feature x60 (Input Source) even though this is not documented in the capabilities string.</p>
-<p><a name="dell_aw3401dw"></a></p>
 <h3 id="dell-aw3418dw">Dell AW3418DW</h3>
 <p>VCP Version: 2.2<br />
 Controller Manufacturer: manufacturer designed (sl=0xff)<br />
@@ -440,7 +422,6 @@ Manufacture year: 2017  </p>
 Feature x0C: Color temperature request: unsupported  </p>
 <p>Reading unsupported feature 0x00 returns normally, with ml=ml=sh=sl=0.  The unsupported feature bit is not set.
 Reading any other unsupported feature value results in an IOCTL failure with Linux errno=EIO (5).</p>
-<p><a name="dell_p2411"></a></p>
 <h3 id="dell-p2411">Dell P2411</h3>
 <p>VCP version: 2.1 <br />
 Controller Manufacturer: Mstar<br />
@@ -451,7 +432,6 @@ Manufacture year:       2011</p>
 More recently, works with nouveau driver, but fails with proprietary Nvidia driver. </p>
 <p>Reports VCP code 0B (color temperature increment) as 1 degree Kelvin, which makes the GETVCP response to VCP code 0C (color temperature
 request) nonsensical.</p>
-<p><a name="dell_p2715q"></a></p>
 <h3 id="dell-p2715q">Dell P2715Q</h3>
 <p>VCP version: 2.1<br />
 Controller Manufacturer: Mstar (sl=x05)<br />
@@ -461,10 +441,8 @@ Manufacture year:       2015</p>
 <p>Feature x0B, Color temperature increment:   unsupported<br />
 Feature x0C, Color temperature request:     unsupported</p>
 <p>very clean, no  DDC retries needed</p>
-<p><a name="dell_u1905p"></a></p>
 <h3 id="dell-ultrasharp-1905fp">Dell Ultrasharp 1905FP</h3>
 <p>Does not support DDC.</p>
-<p><a name="dell_u2413"></a></p>
 <h3 id="dell-ultrasharp-u2413">Dell Ultrasharp U2413</h3>
 <p>VCP version:   2.1<br />
 Controller Manufacturer:  STMicroelectronics (sl=x0d)<br />
@@ -476,7 +454,6 @@ Manufacture year:  2013</p>
 <p>Color temperature:<br />
   color temp increment (feature 0B):  unsupported<br />
   color temp request (feature 0C):    unsupported  </p>
-<p><a name="dell_2407wfp"></a></p>
 <h3 id="dell-2407wfp">Dell 2407wfp</h3>
 <p>VCP version: 2.0<br />
 Controller Manufacturer:  Genesis<br />
@@ -488,70 +465,57 @@ Firmware version: 29.1</p>
 <thead>
 <tr>
 <th>Requested setvcp value</th>
-<th>&nbsp;Observed OSD value</th>
+<th>&amp;nbsp&amp;Observed OSD value</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td>0</td>
-<td>&nbsp;30</td>
+<td>&amp;nbsp&amp;30</td>
 </tr>
 <tr>
 <td>10</td>
-<td>&nbsp;34</td>
+<td>&amp;nbsp&amp;34</td>
 </tr>
 <tr>
 <td>20</td>
-<td>&nbsp;38</td>
+<td>&amp;nbsp&amp;38</td>
 </tr>
 <tr>
 <td>30</td>
-<td>&nbsp;42</td>
+<td>&amp;nbsp&amp;42</td>
 </tr>
 <tr>
 <td>40</td>
-<td>&nbsp;46</td>
+<td>&amp;nbsp&amp;46</td>
 </tr>
 <tr>
 <td>50</td>
-<td>&nbsp;50</td>
+<td>&amp;nbsp&amp;50</td>
 </tr>
 <tr>
 <td>60</td>
-<td>&nbsp;60</td>
+<td>&amp;nbsp&amp;60</td>
 </tr>
 <tr>
 <td>70</td>
-<td>&nbsp; 70</td>
+<td>&amp;nbsp&amp; 70</td>
 </tr>
 <tr>
 <td>80</td>
-<td>&nbsp;80</td>
+<td>&amp;nbsp&amp;80</td>
 </tr>
 <tr>
 <td>90</td>
-<td>&nbsp;90</td>
+<td>&amp;nbsp&amp;90</td>
 </tr>
 <tr>
 <td>100</td>
-<td>&nbsp;100</td>
+<td>&amp;nbsp&amp;100</td>
 </tr>
 </tbody>
 </table>
 <p><br></p>
-<p><a name="dell_u2518d"></a></p>
-<h3 id="dell-u2518d">Dell U2518D</h3>
-<p>VCP Version: 2,1<br />
-Controller Manufacturer: MStar<br />
-Controller Model:   mh=0x00, ml=0x00, sh=0x56<br />
-Firmware version:  2.1<br />
-Manufacture year:  2018</p>
-<p>Features 0B, 0C are unsupported.</p>
-<p>Attempting to set feature x12 (contrast) less than 25 results in a value of 25. 
-However, it is possible to set a lower contrast value in the OSD .  </p>
-<p>Unlike the <a href="http://www.ddcutil.com/monitor_notes#dell_2407wfp">Dell 2404wfp</a> feature x10 (brightness) can be set to any value between 0..100. </p>
-<p>Clean implementation, no I2c retries required.</p>
-<p><a name="dell_u3011"></a></p>
 <h3 id="dell-u3011">Dell U3011</h3>
 <p>VCP version: 2.1 <br />
 Controller manufacturer:  Mstar <br />
@@ -602,7 +566,6 @@ VCP code x0C (color temperature request) nonsensical.</p>
   color temp increment (feature 0B):  1 deg K<br />
   color temp request (feature 0C):    2
   calculated color temp = 3000 + (x0c_val * x0b_val) = 3000  + (1 * 2) = 3002 degrees Kelvin</p>
-<p><a name="dell_u3415w"></a></p>
 <h3 id="dell-ultrasharp-u3415w">Dell Ultrasharp U3415W</h3>
 <p>VCP version: 2.1 <br />
 Controller manufacturer:  Realtek (sl=x09)    <br />
@@ -615,7 +578,6 @@ However, querying feature 0B does work.  Querying feature 0C fails.</p>
 <p>Color temperature:<br />
   color temp increment (feature 0B):  100 deg K<br />
   color temp request (feature 0C):    query fails </p>
-<p><a name="dell_u3818w"></a></p>
 <h3 id="dell-u3818dw">Dell U3818DW</h3>
 <p>VCP version:             2.1<br />
 Controller Manufacturer: RealTek<br />
@@ -623,7 +585,6 @@ Controller Model:        mh=0x00, ml=0x11, sh=0x11<br />
 Firmware version:        65.1<br />
 Manufacture year:        2017</p>
 <p>Fails to set the Unsupported VCP Code bit in the <strong>getvcp</strong> response packet for unsupported features.</p>
-<p><a name="eizo_CG19"></a></p>
 <h3 id="eizo-coloredge-cg19">Eizo Coloredge CG19</h3>
 <p>VCP version:  unreported <br />
 Controller manufacturer and model: unreported (VCP feature code C8 unsupported) <br />
@@ -635,7 +596,6 @@ specific USB HID reports. </p>
 <p>Unable to read EDID over USB, even though the HID Report for EDID can be located.</p>
 <p>To set color related VCP feature values, Custom Color mode must be selected.   If set to sRGB or Calibrated, the SETVCP command
 will appear to succeed, but will have no effect.  (In sRGB mode, Brightness can be set, in Calibrated mode it cannot.)</p>
-<p><a name="eizo_ev2785"></a></p>
 <h3 id="eizo-ev2785">Eizo EV2785</h3>
 <p>Reports EDID ad I2c bus address x.50.  Does not support DDC/CI (bus address x37).</p>
 <p>Uses USB for monitor control, but uses manufacturer-defined usage pages for communication, i.e. does not support the
@@ -823,7 +783,6 @@ Manufacture year:  2014  </p>
 <p>When responding to a Get VCP Feature request, the monitor never sets sets the Result Code field of the VCP Feature Reply to Unsupported VCP Code.
 Instead, it always reports No Error.<br />
 For unsupported VCP codes, all bytes in the response (MH, ML, SH, SL) are set to x00.</p>
-<p><a name="mitsubishi_rdt232wlm"></a></p>
 <h3 id="mitsubishi-rdt232wlm">Mitsubishi RDT232WLM</h3>
 <p>VCP Version: 2.1<br />
 Controller manufacturer and model: unreported (VCP feature code C8 unsupported)<br />
@@ -838,46 +797,11 @@ The response to feature X0B (color temperature increment) is 50 degrees Kelvin, 
 The response to feature X0C (number of color temperature increments) is 0, resulting in a temperature 
 of 3000 degrees Kelvin, which is nonsensical.</p>
 <p>Responds to getvcp for feature xA8, which  is not defined in the MCCS specification.</p>
-<h3 id="monoprice-dark-matter-40776">Monoprice Dark Matter 40776</h3>
-<p>VCP Version: 2.1<br />
-Controller manufacturer:   Mstar<br />
-Controller model:  mh=x00, ml=xff, sh=x56<br />
-Firmware version:  0.0<br />
-Manufacture year:  2020  </p>
-<p>This monitor has 2 HDMI inputs and 2 DisplayPort inputs.  The capabilities string reports that VCP feature x60 takes the values 
-x11, x12, x0f, and x10, which per the MCCS spec are HDMI-1, HDMI-2, DisplayPort-1 and DisplayPort-2 respectively.  </p>
-<p>However
-the actual values, which are reported by <strong>getvcp</strong> and settable by <strong>setvcp</strong> are: </p>
-<ul>
-<li>x05 - HDMI-1  </li>
-<li>x06 - HDMI-2  </li>
-<li>x07 - DisplayPort-1  </li>
-<li>x08 - DisplayPort-2 </li>
-</ul>
-<p>A new input source can only be set when <strong><em>ddcutil setvcp 60</em></strong> is issued from the current input source. </p>
-<p>It is also the case that <strong><em>getvcp</em></strong> and other queries only work when issued on the current input source. </p>
-<p>The ASCII "serial number" in the EDID is blank, and the binary serial number is 0.  Consequently, 2 monitors manufactured at the same time will have
-identical EDIDs, which will confuse software that depends on the EDID to uniquely identify a display. </p>
 <p><a name="nec_lcd3090w"></a></p>
 <h3 id="nec-lcd3090wqxi">NEC LCD3090WQXi</h3>
 <p>VCP Version 2.0<br />
 Controller manufacturer and model: unreported (VCP feature code C8 unsupported)<br />
-Firmware version: unreported (VCP feature code C9 unsupported) <br />
-Manufactur year:  2012</p>
-<p>Color temperature increment:  x0B  100 degress kelvin
-Color temperature request     35 -&gt;  3000 + 35*100 = 6500</p>
-<p><a name="nec_p241w"></a></p>
-<h3 id="nec-p241w">NEC P241W</h3>
-<p>VCP Version 2.0<br />
-Controller manufacturer and model: unreported (VCP feature code C8 unsupported)<br />
 Firmware version: unreported (VCP feature code C9 unsupported)   </p>
-<p>The capabilities string has 2 additional sets of features, designated vcp_p02 and vcp_p10, in addition to the set specified in 
-the vcp() field.  It also reports the commands xC2, xC4, xC6 and xC8, which are not part of the DDC/CI specification. 
-Likely these commands are feature request/response pairs for vcp_p02 and vcp_p10. </p>
-<p>Does not use the usual VCP codes (e.g. x16/Red Gain) for color control.
-Instead uses the 6 axis color control features x8c..xa0.</p>
-<p>Has an internal hardware LUT, but it is not accessed using the MCCS defined features for LUT mannipulation. </p>
-<p>Uses a proprietary USB for communication, which does not support adhere to the <strong><em>USB Monitor Control Class Specification</em></strong>. </p>
 <p><a name="nec_pa241"></a></p>
 <h3 id="nec-pa241">NEC PA241</h3>
 <p>VCP Version 2.0<br />
@@ -888,27 +812,8 @@ Firmware version: unreported (VCP feature code C9 unsupported)   </p>
 specific DDC commands  The USB interface also makes heavy use of manufacturer specific usage codes.</p>
 <p>Monitor must be set to ??? to allow changes. </p>
 <p>VCP code x0c (Color Temperature Request) returns 0, which is nonsensical. </p>
-<p>Does not use the usual VCP codes (e.g. x16/Red Gain) for color control.
+<p>Does not use the usual VCP codes (.e.g. x16/Red Gain) for color control.
 Instead uses the 6 axis color control features x8c..xa0.</p>
-<p><a name="phillips_328p6vu"></a></p>
-<h3 id="phillips-328p6vu">Phillips 328P6VU</h3>
-<p>VCP Version: 2.2  (capabilities string)<br />
-VCP Version: 3.0  (feature xDF)<br />
-Controller manufacturer: Mstar (sl=0x05), controller number: mh=0xff, ml=0x16, sh=0x00<br />
-Firmware version:  0.0<br />
-Manufacture year: 2019  </p>
-<p>The EDID contains a binary serial number, but does not contain an ASCII "serial number".</p>
-<p>VCP code 0x0b (Color temperature increment   ): 100 degree(s) Kelvin<br />
-When VCP code 0x14 (Select color preset) = User 1 (0x0b):<br />
-VCP code 0x0c (Color temperature request     ): 3000 + 35 * (feature 0B color temp increment) degree(s) Kelvin -&gt; 6500 degrees Kelvin<br />
-This is sensible.</p>
-<p>Feature xDF (VCP Version) incorrectly reports that the VCP version is 3.0.  </p>
-<p>Problems with feature x60 (Input Source):<br />
-- In MCCS version 3.0, feature x60 (Input Source) is of type Table, not Non-Continuous. Because of this <strong><em>getvcp</em></strong> incorrectly 
-reads the feature value, and <strong><em>setvcp</em></strong> fails because it expects a value of type Table as input.<br />
-- Feature value x00, which is not listed in any MCCS specification,
- represents the USB-C connector.</p>
-<p>Feature xc0 (Display Usage Time) reports mh=ml=0xff, sh=sl=x00, which is nonsense.</p>
 <h3 id="phillips-bdm3270">Phillips BDM3270</h3>
 <p>VCP Version: 2.2<br />
 Controller manufacturer:  Novatek, model info: mh=xff, ml=xff, sh=x00<br />
@@ -940,34 +845,9 @@ Controller manufacturer and model:   Unknown (VCP feature code C8 unsupported)  
 Firmware version:  Unknown (VCP feature code C9 unsupported)  </p>
 <p>The capabilities string spcifies the values for non-continuous features in decimal rather than hexadecimal</p>
 <p>VCP feature code</p>
-<p><a name="samsung_odyssey_g9"></a></p>
-<h3 id="samsung-lc49g95t-odyssey-g9">Samsung LC49G95T Odyssey G9</h3>
-<p>VCP version reported by capabilitise string: 2.0<br />
-VCP version reported by feature xdf:         2.1 <br />
-Controller manufacturer and model:  Novatek, model id:  mh=xff, ml=0xff, sh=0x00<br />
-Firmware version: 0.0</p>
-<p>Two users have reported that DDC/CI does not work over DisplayPort. In both cases they were using the amdgpu
-video driver  This was true no matter which DisplayPort version was chosen in the OSD.
-As of 12/2020, this is not fixed by the most recent monitor firmware update. User razamatan reports
-that he was told in Samsung's chat support that DDC/CI is not implemented on DisplayPort.</p>
-<p>The capabilites string reports an unrecognized command code, x4e</p>
-<p>Feature x14 (Color Perset), x06 (Color Temperature Increament) and x06 (Color temperature requrest) appear consistent.
-In one report:<br />
-   VCP code 0x14 (Select color preset           ): 7500 K (sl=0x06)<br />
-   Color temperature increment (x0b) = 50 degrees Kelvin<br />
-   Color temperature request   (x0c) = 90<br />
-   Requested color temperature = (3000 deg Kelvin) + 90 * (50 degrees Kelvin) = 7500 degrees Kelvin</p>
-<p>The monitor has two DisplayPort inputs and one HDMI input.  However, the capabilities string reports valid values as being
-as x01 - VGA and X03 - DVI-1. </p>
-<p>The following features are not declared in the capabiliteis string but were found by scanning:<br />
-   Feature x52 - Active control<br />
-   Feature xb2 - Flat panel sub-pixel layout<br />
-   Feature xf4 - Manufacturer Specific<br />
-   Feature xfe - Manufacturer Specific</p>
 <p><a name="samsung_u32h750"></a>  </p>
 <h3 id="samsung-u32h750">Samsung U32H750</h3>
-<p>VCP version reported by capabilities string: 2.1,<br />
-VCP version reported by feature xdf: 2.0<br />
+<p>VCP version: Capabilities string: 2.1,  Feature xdf: 2.0<br />
 Controller manufacturer and model:  Mstar, model id:  mh=x00, ml=0x10, sh=0x00<br />
 Firmware version: 0.1  </p>
 <p>This monitor is a MCCS disaster area.</p>

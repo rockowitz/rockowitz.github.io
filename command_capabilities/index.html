@@ -146,6 +146,8 @@
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="../nvidia/">Special Nvidia Driver Settings</a>
                     </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../adl/">AMD fglrx Driver</a>
+                    </li>
                     <li class="toctree-l1"><a class="reference internal" href="../virtual_machines/">Virtual Machines</a>
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="../raspberry/">Raspberry Pi</a>
@@ -171,6 +173,8 @@
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="../c_api_99/">C API Changes for Release 0.9.9</a>
                     </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../c_api_100/">C API Changes for Release 1.0.0</a>
+                    </li>
                     <li class="toctree-l1"><a class="reference internal" href="../python_api/">Python API Overview</a>
                     </li>
                 </ul>
@@ -179,10 +183,6 @@
                     <li class="toctree-l1"><a class="reference internal" href="../mccs_background/">Monitor Control Command Set</a>
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="../ddc_vs_i2c/">DDC vs I2C</a>
-                    </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../displayport/">DDC and DisplayPort</a>
-                    </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../bibliography/">References</a>
                     </li>
                 </ul>
                 <p class="caption"><span class="caption-text">Additional Topics</span></p>
@@ -194,6 +194,8 @@
                     <li class="toctree-l1"><a class="reference internal" href="../ddccontrol/">Comparison with ddccontrol</a>
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="../ddc_null_response/">DDC Null Message</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../bibliography/">References</a>
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="../acknowledgements/">Acknowledgements</a>
                     </li>
@@ -216,11 +218,6 @@
                     <li class="toctree-l1"><a class="reference internal" href="../building_ddcui/">Building ddcui</a>
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="../ddcui_release_notes/">ddcui Release Notes</a>
-                    </li>
-                </ul>
-                <p class="caption"><span class="caption-text">Futuere Features</span></p>
-                <ul>
-                    <li class="toctree-l1"><a class="reference internal" href="../udf/">User Defined Features</a>
                     </li>
                 </ul>
       </div>
@@ -270,16 +267,10 @@
 <p>Syntax: <strong>capabilities</strong> &lt;display-selection-options&gt;</p>
 <p>Reports the monitor's capabilities string.  This string describes, among other things, the VCP Features that the
 monitor supports and, for non-continuous features where appropriate, the allowed values.</p>
-<p>Unfortunately, the capabilities string is unreliable. Therefore <strong>ddcutil</strong> simply presents the string.
+<p>In practice, the capabilities string is often inaccurate. Therefore <strong>ddcutil</strong> simply presents the string.
 It does not use the capabilities string when formulating commands and 
-interpeting responses.  </p>
-<p>The capabilities string is unreliable for several reasons: </p>
+interpeting responses.  This is for multiple reasons:</p>
 <ul>
-<li>
-<p>The response to the DDC capabilities request may simply be incorrect.   For example, the capabilities response from the HP LP2480zx
-monitor does not list VCP feature code x10 (brightness) as supported.  However, feature code x10 is in fact supported.  The only 
-way to know for sure if a monitor implememts a VCP feature code is to try it.</p>
-</li>
 <li>
 <p>A DDC capabilities request requires multiple I2C exchanges, making it both slow and unreliable.  Because of its complexity, it is particularly vulnerable to
 I2C errors.  On monitors with paticularly poor I2C implementations it sometimes fails because the maximum number of 
@@ -288,6 +279,11 @@ I2C retries is exceeded.</p>
 <li>
 <p>There is no capabilities request defined in the programming interface for USB connected monitors. 
 ddcutil simulates a capabilities response by looking at what USB HID reports exist for feature codes. </p>
+</li>
+<li>
+<p>The response to the DDC capabilities API request may be incorrect.   For example, the capabilities response from the HP LP2480zx
+monitor does not list VCP feature code x10 (brightness) as supported.  However, feature code x10 is in fact supported.  The only 
+way to know for sure if a monitor implememts a VCP feature code is to try it.</p>
 </li>
 </ul>
 <p>Note however, that <strong>ddcui</strong> does make use of the the capabilities string.</p>

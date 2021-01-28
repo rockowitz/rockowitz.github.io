@@ -162,6 +162,8 @@
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="../nvidia/">Special Nvidia Driver Settings</a>
                     </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../adl/">AMD fglrx Driver</a>
+                    </li>
                     <li class="toctree-l1"><a class="reference internal" href="../virtual_machines/">Virtual Machines</a>
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="../raspberry/">Raspberry Pi</a>
@@ -187,6 +189,8 @@
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="../c_api_99/">C API Changes for Release 0.9.9</a>
                     </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../c_api_100/">C API Changes for Release 1.0.0</a>
+                    </li>
                     <li class="toctree-l1"><a class="reference internal" href="../python_api/">Python API Overview</a>
                     </li>
                 </ul>
@@ -195,10 +199,6 @@
                     <li class="toctree-l1"><a class="reference internal" href="../mccs_background/">Monitor Control Command Set</a>
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="../ddc_vs_i2c/">DDC vs I2C</a>
-                    </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../displayport/">DDC and DisplayPort</a>
-                    </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../bibliography/">References</a>
                     </li>
                 </ul>
                 <p class="caption"><span class="caption-text">Additional Topics</span></p>
@@ -210,6 +210,8 @@
                     <li class="toctree-l1"><a class="reference internal" href="../ddccontrol/">Comparison with ddccontrol</a>
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="../ddc_null_response/">DDC Null Message</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../bibliography/">References</a>
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="../acknowledgements/">Acknowledgements</a>
                     </li>
@@ -232,11 +234,6 @@
                     <li class="toctree-l1"><a class="reference internal" href="../building_ddcui/">Building ddcui</a>
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="../ddcui_release_notes/">ddcui Release Notes</a>
-                    </li>
-                </ul>
-                <p class="caption"><span class="caption-text">Futuere Features</span></p>
-                <ul>
-                    <li class="toctree-l1"><a class="reference internal" href="../udf/">User Defined Features</a>
                     </li>
                 </ul>
       </div>
@@ -299,19 +296,23 @@ The publicly supported options are:</p>
 </thead>
 <tbody>
 <tr>
-<td><strong><em>--enable-usb</em></strong></td>
+<td>--with-adl <directory></td>
+<td>Build with support for ADL connected monitors. See below</td>
+</tr>
+<tr>
+<td>--enable-usb</td>
 <td>Build with support for USB connected monitors.  Setting --disable-usb reduces size and package requirements. (Default is --enable-usb.)</td>
 </tr>
 <tr>
-<td><strong><em>--enable-drm</em></strong></td>
+<td>--enable-drm</td>
 <td>Build with DRM support, used for enhanced diagnostics.  Setting --disable-drm reduces size and package requirements. (Default is --enable-drm.)</td>
 </tr>
 <tr>
-<td><strong>--enable-lib</strong>*</td>
-<td>Build the shared library. (Default is --enable-lib.)</td>
+<td>--enable-lib</td>
+<td>Build with shared libraries.  Needed for API support.  (Default is --enable-lib.)</td>
 </tr>
 <tr>
-<td><strong><em>--enable-x11</em></strong></td>
+<td>--enable-x11</td>
 <td>Build using X11 services, used for enhanced diagnostics.  Setting --disable-x11 allows for use on systems lacking X11.  (Default is --enable-x11.)</td>
 </tr>
 </tbody>
@@ -394,6 +395,8 @@ in a file in /etc/ld.so.conf.d.  This is the case in Ubuntu.</p>
 <p>For further details, see: <a href="../shared_lib_config/">Shared Library Configuration</a></p>
 <h3 id="common-issues">Common issues:</h3>
 <ul>
+<li>Building with support for the AMD proprietary video driver (fglrx) requires that <em>configure</em> be executed using 
+the <em>-with-adl-headers</em> argument.  See <a href="../adl/">ADL support</a>.  </li>
 <li>If you see a message "required file './ltmain.sh.' not found", run <em>libtoolize</em>
   (See https://www.gnu.org/software/automake/manual/html_node/Error-required-file-ltmain_002esh-not-found.html)  </li>
 <li>May get the following warning when running automake</li>
@@ -401,8 +404,8 @@ in a file in /etc/ld.so.conf.d.  This is the case in Ubuntu.</p>
 <pre><code>src/Makefile.am:38: warning: compiling 'cmdline/cmd_parser_aux.c' in subdir requires 'AM_PROG_CC_C_O' in 'configure.ac'
 </code></pre>
 
-<p>This is an autotools versioning issue.  It appears that this warning can be ignored.  </p>
-<p>TO DO: add notes on other warnings that can be ignored </p>
+<p>This is an autotools versioning issue.  It appears that this warning can be ignored.<br />
+- (need notes on other warnings that can be ignored) </p>
 <h3 id="development-configuration-options">Development configuration options.</h3>
 <p>There are several <strong>configure</strong> options that exist for developing <strong>ddcutil</strong>.  They are listed here for completeness,
 and should be left disabled.</p>

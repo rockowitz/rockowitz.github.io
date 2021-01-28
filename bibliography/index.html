@@ -144,6 +144,8 @@
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="../nvidia/">Special Nvidia Driver Settings</a>
                     </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../adl/">AMD fglrx Driver</a>
+                    </li>
                     <li class="toctree-l1"><a class="reference internal" href="../virtual_machines/">Virtual Machines</a>
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="../raspberry/">Raspberry Pi</a>
@@ -169,26 +171,20 @@
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="../c_api_99/">C API Changes for Release 0.9.9</a>
                     </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../c_api_100/">C API Changes for Release 1.0.0</a>
+                    </li>
                     <li class="toctree-l1"><a class="reference internal" href="../python_api/">Python API Overview</a>
                     </li>
                 </ul>
                 <p class="caption"><span class="caption-text">Background</span></p>
-                <ul class="current">
+                <ul>
                     <li class="toctree-l1"><a class="reference internal" href="../mccs_background/">Monitor Control Command Set</a>
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="../ddc_vs_i2c/">DDC vs I2C</a>
                     </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../displayport/">DDC and DisplayPort</a>
-                    </li>
-                    <li class="toctree-l1 current"><a class="reference internal current" href="./">References</a>
-    <ul class="current">
-    <li class="toctree-l2"><a class="reference internal" href="#i2c">I2C</a>
-    </li>
-    </ul>
-                    </li>
                 </ul>
                 <p class="caption"><span class="caption-text">Additional Topics</span></p>
-                <ul>
+                <ul class="current">
                     <li class="toctree-l1"><a class="reference internal" href="../faq/">Frequently Asked Questions</a>
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="../tech_support/">Technical Support</a>
@@ -196,6 +192,12 @@
                     <li class="toctree-l1"><a class="reference internal" href="../ddccontrol/">Comparison with ddccontrol</a>
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="../ddc_null_response/">DDC Null Message</a>
+                    </li>
+                    <li class="toctree-l1 current"><a class="reference internal current" href="./">References</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#i2c">I2C</a>
+    </li>
+    </ul>
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="../acknowledgements/">Acknowledgements</a>
                     </li>
@@ -220,11 +222,6 @@
                     <li class="toctree-l1"><a class="reference internal" href="../ddcui_release_notes/">ddcui Release Notes</a>
                     </li>
                 </ul>
-                <p class="caption"><span class="caption-text">Futuere Features</span></p>
-                <ul>
-                    <li class="toctree-l1"><a class="reference internal" href="../udf/">User Defined Features</a>
-                    </li>
-                </ul>
       </div>
     </div>
     </nav>
@@ -246,7 +243,7 @@
     
       
         
-          <li>Background &raquo;</li>
+          <li>Additional Topics &raquo;</li>
         
       
     
@@ -328,7 +325,6 @@ See the <a href="https://en.wikipedia.org/wiki/Display_Data_Channel">Wikipedia D
 <p><a href="https://vesa.org/vesa-standards/standards-faq/">VESA Standards FAQ</a></p>
 </li>
 </ul>
-<p>Many standards can be found <a href="https://glenwing.github.io/docs">here</a></p>
 <h3 id="i2c">I2C<a name="i2c"></a></h3>
 <p>As background, I2C is a low level, slow speed specification of a 2 wire protocol for sending and receiving bytes. DDC/CI is layered on top of that protocol, describing particular sequences of bytes that are communicated between a master device (the host computer) and a slave device (a monitor) at address x37 on an I2C bus. By analogy,
 DDC is as a subclass of superclass I2C, that is DDC obeys the
@@ -350,19 +346,6 @@ the bit-banging to the video device drivers, e.g. amdgpu, nouveau. </p>
 <li><a href="https://www.slideshare.net/shudhanshu29/i2c-protocol-94259889">I2C Protocol Lecture Notes, Sudhanshu Janwadkar</a></li>
 <li><a href="https://www.kernel.org/doc/html/latest/i2c/index.html#introduction">Linux kernel documentation</a></li>
 </ul>
-<!--
-*** Cabling<a name=cabling"></a>
-
-Users sometimes encounter problems with I2C communication over DisplayPort. The following articles may be of help.
--->
-
-<p>Wikipedia has several high quality pages on related specifications:  They The may be helpful when trying to figure out why DDC communication is not working: </p>
-<ul>
-<li><a href="https://en.wikipedia.org/wiki/DisplayPort#Dual-mode">DisplayPort</a></li>
-<li>[HDMI(https://en.wikipedia.org/wiki/HDMI)]</li>
-<li><a href="https://en.wikipedia.org/wiki/Thunderbolt_(interface)">Thunderbolt</a></li>
-<li><a href="https://en.wikipedia.org/wiki/USB-C">USB-C</a>. See in particular section <a href="https://en.wikipedia.org/wiki/USB-C#Hardware_support">Hardware Support</a> for a discussion of <strong><em>USB-C Alternate Mode</em></strong></li>
-</ul>
               
             </div>
           </div>
@@ -370,10 +353,10 @@ Users sometimes encounter problems with I2C communication over DisplayPort. The 
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../faq/" class="btn btn-neutral float-right" title="Frequently Asked Questions">Next <span class="icon icon-circle-arrow-right"></span></a>
+        <a href="../acknowledgements/" class="btn btn-neutral float-right" title="Acknowledgements">Next <span class="icon icon-circle-arrow-right"></span></a>
       
       
-        <a href="../displayport/" class="btn btn-neutral" title="DDC and DisplayPort"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../ddc_null_response/" class="btn btn-neutral" title="DDC Null Message"><span class="icon icon-circle-arrow-left"></span> Previous</a>
       
     </div>
   
@@ -401,10 +384,10 @@ Users sometimes encounter problems with I2C communication over DisplayPort. The 
           <a href="https://github.com/rockowitz/ddcutil/" class="fa fa-github" style="float: left; color: #fcfcfc"> GitHub</a>
       
       
-        <span><a href="../displayport/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+        <span><a href="../ddc_null_response/" style="color: #fcfcfc;">&laquo; Previous</a></span>
       
       
-        <span style="margin-left: 15px"><a href="../faq/" style="color: #fcfcfc">Next &raquo;</a></span>
+        <span style="margin-left: 15px"><a href="../acknowledgements/" style="color: #fcfcfc">Next &raquo;</a></span>
       
     </span>
 </div>
