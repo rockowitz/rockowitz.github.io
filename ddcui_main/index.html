@@ -144,8 +144,6 @@
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="../nvidia/">Special Nvidia Driver Settings</a>
                     </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../adl/">AMD fglrx Driver</a>
-                    </li>
                     <li class="toctree-l1"><a class="reference internal" href="../virtual_machines/">Virtual Machines</a>
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="../raspberry/">Raspberry Pi</a>
@@ -171,8 +169,6 @@
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="../c_api_99/">C API Changes for Release 0.9.9</a>
                     </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../c_api_100/">C API Changes for Release 1.0.0</a>
-                    </li>
                     <li class="toctree-l1"><a class="reference internal" href="../python_api/">Python API Overview</a>
                     </li>
                 </ul>
@@ -181,6 +177,10 @@
                     <li class="toctree-l1"><a class="reference internal" href="../mccs_background/">Monitor Control Command Set</a>
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="../ddc_vs_i2c/">DDC vs I2C</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../displayport/">DDC and DisplayPort</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../bibliography/">References</a>
                     </li>
                 </ul>
                 <p class="caption"><span class="caption-text">Additional Topics</span></p>
@@ -192,8 +192,6 @@
                     <li class="toctree-l1"><a class="reference internal" href="../ddccontrol/">Comparison with ddccontrol</a>
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="../ddc_null_response/">DDC Null Message</a>
-                    </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../bibliography/">References</a>
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="../acknowledgements/">Acknowledgements</a>
                     </li>
@@ -228,6 +226,11 @@
                     <li class="toctree-l1"><a class="reference internal" href="../building_ddcui/">Building ddcui</a>
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="../ddcui_release_notes/">ddcui Release Notes</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">Futuere Features</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../udf/">User Defined Features</a>
                     </li>
                 </ul>
       </div>
@@ -270,25 +273,27 @@
             <div class="section">
               
                 <h2 id="ddcui-overview">ddcui Overview</h2>
-<p><strong>ddcui</strong> is a graphical user user interface for <strong>ddcutil</strong>, implemented using Qt.  It is beta quality code, 
-Many features are not yet fully implemented. and many corner cases are as yet unaddressed.</p>
+<p><strong>ddcui</strong> is a graphical user user interface for <strong>ddcutil</strong>, implemented using Qt.  It is beta quality code.
+ Some features are not yet fully implemented.  In particular</p>
+<ul>
+<li>Certain unique VCP feature codes are not properly reported. </li>
+</ul>
 <p>This page collects the beginnings of <strong>ddcui</strong> documentation, which is incomplete but growing. </p>
 <h3 id="source-code-and-prebuilt-packages">Source code and prebuilt packages:</h3>
 <ul>
 <li>Code is available on <a href="https://github.com/rockowitz/ddcui">GitHub</a>.  Some prebuilt packages are available on 
 <a href="https://copr.fedorainfracloud.org/coprs/rockowitz/ddcutil/">Copr</a> and 
 <a href="https://launchpad.net/~rockowitz/+archive/ubuntu/ddcutil">Launchpad</a>  </li>
-<li>The latest <strong>ddcui</strong> release is <a href="https:/github.com/rockowitz/ddcui/releases/tag/v0.2.0">0.2.0</a>, 
-It requires <strong>ddcutil</strong> <a href="https://github.com/rockowitz/ddcutil/eleases/tag/v1.0.0">release 1.0.0</a>. </li>
+<li>The latest <strong>ddcui</strong> release is <a href="https:/github.com/rockowitz/ddcui/releases/tag/v0.1.2">0.1.2</a>, 
+It requires <strong>ddcutil</strong> <a href="https://github.com/rockowitz/ddcutil/eleases/tag/v0.9.9">release 0.9.9</a>. </li>
 </ul>
-<p>For instructions on how to build <strong><em>ddcui</em></strong>, see <a href="../building_ddcui/">Building <strong>ddcui</strong></a>. 
-Both a CMake <strong><em>CMakeLists.txt</em></strong> and a Qt <strong><em>ddcui.pro</em></strong> file are provided.</p>
-<p>Prebuilt packages can be found on:   </p>
+<p>For basic instructions on building ddcui, see file <strong><em>BUILDING.md</em></strong> in the source Both a CMake <strong><em>CMakeLists.txt</em></strong>
+and a Qt <strong><em>ddcui.pro</em></strong> file are provided.</p>
+<p>For more detailed instructions, see <a href="../building_ddcui/">Building <strong>ddcui</strong></a>  </p>
+<p>Prebuilt packages can be found on: </p>
 <ul>
-<li><a href="https::/launchpad.net/~rockowitz/">launchpad</a> for Ubuntu, Debian, and derivatives. 
-Note that on <a href="https://launchpad.net">launchpad</a> <strong>ddcui</strong> and <strong>ddcutil</strong> are found together.  </li>
-<li><a href="https://copr.fedorainfracloud.org/coprs/rockowitz/ddcutil/">copr</a> for Fedora, openSUSE, Centos.
-Note that on <a href="https://copr/fedorainfracloud">copr</a> <strong>ddcui</strong> and <strong>ddcutil</strong> are found together.</li>
+<li><a href="https::/launchpad.net/~rockowitz/">launchpad</a> for Ubuntu, Debian, and derivatives. Note that  on <a href="https://launchpad.net">launchpad</a> <strong>ddcui</strong> and <strong>ddcutil</strong> and <strong>ddcui</strong> are found together.  </li>
+<li><a href="https://copr.fedorainfracloud.org/coprs/rockowitz/ddcui/">copr</a> for Fedora, openSUSE, Centos.  Note that on <a href="https://copr/fedaorainfracloud.org">copr</a> <strong>ddcui</strong> and <strong>ddcutil</strong> must be in separate projects.</li>
 </ul>
 <h3 id="unexpected-behavior">Unexpected Behavior</h3>
 <h4 id="incorrect-values-shown">Incorrect values shown</h4>

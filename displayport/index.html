@@ -7,9 +7,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
   <meta name="author" content="Sanford Rockowitz">
-  <link rel="canonical" href="https://www.ddcutil.com/c_api_100/">
+  <link rel="canonical" href="https://www.ddcutil.com/displayport/">
   <link rel="shortcut icon" href="../img/favicon.ico">
-  <title>C API Changes for Release 1.0.0 - ddcutil Documentation</title>
+  <title>DDC and DisplayPort - ddcutil Documentation</title>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
 
   <link rel="stylesheet" href="../css/theme.css" />
@@ -18,9 +18,9 @@
   
   <script>
     // Current page data
-    var mkdocs_page_name = "C API Changes for Release 1.0.0";
-    var mkdocs_page_input_path = "c_api_100.md";
-    var mkdocs_page_url = "/c_api_100/";
+    var mkdocs_page_name = "DDC and DisplayPort";
+    var mkdocs_page_input_path = "displayport.md";
+    var mkdocs_page_url = "/displayport/";
   </script>
   
   <script src="../js/jquery-2.1.1.min.js" defer></script>
@@ -144,8 +144,6 @@
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="../nvidia/">Special Nvidia Driver Settings</a>
                     </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../adl/">AMD fglrx Driver</a>
-                    </li>
                     <li class="toctree-l1"><a class="reference internal" href="../virtual_machines/">Virtual Machines</a>
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="../raspberry/">Raspberry Pi</a>
@@ -156,7 +154,7 @@
                     </li>
                 </ul>
                 <p class="caption"><span class="caption-text">API</span></p>
-                <ul class="current">
+                <ul>
                     <li class="toctree-l1"><a class="reference internal" href="../api_main/">C API</a>
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="../c_api_90/">C API Changes for Release 0.9.0</a>
@@ -171,22 +169,20 @@
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="../c_api_99/">C API Changes for Release 0.9.9</a>
                     </li>
-                    <li class="toctree-l1 current"><a class="reference internal current" href="./">C API Changes for Release 1.0.0</a>
-    <ul class="current">
-    <li class="toctree-l2"><a class="reference internal" href="#overview">Overview</a>
-    </li>
-    <li class="toctree-l2"><a class="reference internal" href="#api-changes">API Changes</a>
-    </li>
-    </ul>
-                    </li>
                     <li class="toctree-l1"><a class="reference internal" href="../python_api/">Python API Overview</a>
                     </li>
                 </ul>
                 <p class="caption"><span class="caption-text">Background</span></p>
-                <ul>
+                <ul class="current">
                     <li class="toctree-l1"><a class="reference internal" href="../mccs_background/">Monitor Control Command Set</a>
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="../ddc_vs_i2c/">DDC vs I2C</a>
+                    </li>
+                    <li class="toctree-l1 current"><a class="reference internal current" href="./">DDC and DisplayPort</a>
+    <ul class="current">
+    </ul>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../bibliography/">References</a>
                     </li>
                 </ul>
                 <p class="caption"><span class="caption-text">Additional Topics</span></p>
@@ -198,8 +194,6 @@
                     <li class="toctree-l1"><a class="reference internal" href="../ddccontrol/">Comparison with ddccontrol</a>
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="../ddc_null_response/">DDC Null Message</a>
-                    </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../bibliography/">References</a>
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="../acknowledgements/">Acknowledgements</a>
                     </li>
@@ -224,6 +218,11 @@
                     <li class="toctree-l1"><a class="reference internal" href="../ddcui_release_notes/">ddcui Release Notes</a>
                     </li>
                 </ul>
+                <p class="caption"><span class="caption-text">Futuere Features</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../udf/">User Defined Features</a>
+                    </li>
+                </ul>
       </div>
     </div>
     </nav>
@@ -245,14 +244,14 @@
     
       
         
-          <li>API &raquo;</li>
+          <li>Background &raquo;</li>
         
       
     
-    <li>C API Changes for Release 1.0.0</li>
+    <li>DDC and DisplayPort</li>
     <li class="wy-breadcrumbs-aside">
       
-        <a href="https://github.com/rockowitz/ddcutil/edit/master/docs/c_api_100.md"
+        <a href="https://github.com/rockowitz/ddcutil/edit/master/docs/displayport.md"
           class="icon icon-github"> Edit on GitHub</a>
       
     </li>
@@ -263,45 +262,35 @@
           <div role="main">
             <div class="section">
               
-                <h2 id="shared-library-changes-for-release-100">Shared Library Changes for Release 1.0.0</h2>
-<h3 id="overview">Overview</h3>
-<p>Ths release contains a handful of changes, which affect backward compatibility. 
-Consequently, the <strong>libddcutil*<em> SONAME is now libddcutil.so.4. 
-In conformance with Debian practice, the package name is </em></strong>libddcutil4***.</p>
-<h3 id="api-changes">API Changes</h3>
-<table>
-<thead>
-<tr>
-<th>Structs and Enums</th>
-<th>Change</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>enum DDCA_Output_Level</td>
-<td>add value DDCA_OL_VV (very vebose)</td>
-</tr>
-<tr>
-<td>struct DDca_Feature_Metadata</td>
-<td>add field latest_sl_values</td>
-</tr>
-</tbody>
-</table>
-<table>
-<thead>
-<tr>
-<th>Modified Functions</th>
-<th>Comments</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>ddca_create_adlno_display_identifier</td>
-<td>removed</td>
-</tr>
-</tbody>
-</table>
-<p>The Doxygen documentation in ddcutil_c_api.h has had numerous changes. </p>
+                <h2 id="ddc-over-displayport">DDC Over DisplayPort</h2>
+<p>Sometimes, DDC works over a HDMI or DVI connection but not over DisplayPort.  Occasionally the converse is true.
+This section describes how DDC, or more precisely I2C, is communicated over DisplayPort, and may prove helpful when analyzing
+DDC communication problems.</p>
+<p>I2C is a simple serial protocol that uses 2 signaling lines, referred to as SCL and SDA, sometimes referred to as DDC clock and DDC data, along with their associated grounds.
+These are pins 12/15 on a HD15 VGA connector, 6/7 on a DVI connector, and 15/16 on a HDMI connector. </p>
+<p>DVI and HDMI use the same protocol, TDMS (Transition Minimized Differential Signaling) for transmitting video information.   </p>
+<p>While more recent versions of HDMI have additional capabilities, e.g. Ethernet, CEC, for video and DDC of monitor communication DVI and HDMI are equivalent, 
+except for bandwidth. It's possible to connect a DVI output on a host to a HDMI input on a monitor, or vice-versa,
+using a simple DVI&lt;-&gt;HDMI cable.</p>
+<p>DisplayPort, on ther other hand, uses its own protocol for video.  It also has a secondary Auxilliary (AUX) channel (and pins) for non-video communication.  DisplayPort does not have the I2C SLA/SLC pins. Instead, the logical I2C signals are converted at each end into messages on the AUX channel. Put another way, 
+DDC is implemented using  the AUX channel, but the AUX channel itself is not DDC. 
+The "multiplexing" of I2C over the AUX channel is transparent to all but the lowest level of I2C software at each end.</p>
+<p>In is possible to connect the DisplayPort output on a host to a DVI or HDMI input on a monitor using an "active", or sometimes a "passive", adapter. </p>
+<p>Most active adapters connect a DisplayPort output on the host to a DVI or HDMI input on the monitor. An active adapter converts the DisplayPort video
+signal to the TDMS video signal used by DVI or HDMI. It also converts the I2C signals on the AUX channel to and from the physical SDA and SCL signals on 
+the DVI/HDMI connector.  To the host, it appears that it is communicating with a DisplayPort input on the monitor. To the monitor it appears that 
+it is communicating with a HDMI or DVI output on the host.</p>
+<p>There are active adapters that convert a DVI/HDMI output on the host to a DisplayPort input on the monitor. These adapters are uncommon, and are 
+much more expensive.  There do not appear to be any adapters that operate in both directions.</p>
+<p>Active adapters will be labeled "Active".</p>
+<p>If the video adapter implements Display Port Dual Mode, also known as DP++, then it is possible to use a "passive adapter" between the DisplayPort output on the host and the HDMI/DVI input on the monitor.</p>
+<p>When the host detects that its DisplayPort output is connected to a HDMI/DVI monitor input instead of a DisplayPort input, 
+it shifts to "alternate" mode, treating its DisplayPort connector as if it were a weird DVI/HDMI connector.  It uses TDMS for the video signal, and uses the AUX channel pins as simple SDA/SCL pins.
+A "passive" adapter simply routes wires appropriately, and adjusts voltage levels.</p>
+<p>Host DisplayPort connectors that support dual mode should be marked as such.  The marker is a D with a P inside, and two + signs to the left, one above the other. Most DisplayPort connectors on recent video cards are dual mode. Unfortunately, they are not always marked as such. </p>
+<p>Thunderbolt ports, which use the DisplayPort protocol for video signaling, support DP++ natively.</p>
+<p>Note that here may be limitations on the number of DisplayPort outputs can operate in alternate mode.  In that case, active adapters are required.</p>
+<p>For futher details of DisplayPort, its <a href="https://en.wikipedia.org/wiki/DisplayPort">Wikipedia page</a> is an excellent resource.</p>
               
             </div>
           </div>
@@ -309,10 +298,10 @@ In conformance with Debian practice, the package name is </em></strong>libddcuti
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../python_api/" class="btn btn-neutral float-right" title="Python API Overview">Next <span class="icon icon-circle-arrow-right"></span></a>
+        <a href="../bibliography/" class="btn btn-neutral float-right" title="References">Next <span class="icon icon-circle-arrow-right"></span></a>
       
       
-        <a href="../c_api_99/" class="btn btn-neutral" title="C API Changes for Release 0.9.9"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../ddc_vs_i2c/" class="btn btn-neutral" title="DDC vs I2C"><span class="icon icon-circle-arrow-left"></span> Previous</a>
       
     </div>
   
@@ -340,10 +329,10 @@ In conformance with Debian practice, the package name is </em></strong>libddcuti
           <a href="https://github.com/rockowitz/ddcutil/" class="fa fa-github" style="float: left; color: #fcfcfc"> GitHub</a>
       
       
-        <span><a href="../c_api_99/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+        <span><a href="../ddc_vs_i2c/" style="color: #fcfcfc;">&laquo; Previous</a></span>
       
       
-        <span style="margin-left: 15px"><a href="../python_api/" style="color: #fcfcfc">Next &raquo;</a></span>
+        <span style="margin-left: 15px"><a href="../bibliography/" style="color: #fcfcfc">Next &raquo;</a></span>
       
     </span>
 </div>

@@ -152,8 +152,6 @@
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="../nvidia/">Special Nvidia Driver Settings</a>
                     </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../adl/">AMD fglrx Driver</a>
-                    </li>
                     <li class="toctree-l1"><a class="reference internal" href="../virtual_machines/">Virtual Machines</a>
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="../raspberry/">Raspberry Pi</a>
@@ -179,8 +177,6 @@
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="../c_api_99/">C API Changes for Release 0.9.9</a>
                     </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../c_api_100/">C API Changes for Release 1.0.0</a>
-                    </li>
                     <li class="toctree-l1"><a class="reference internal" href="../python_api/">Python API Overview</a>
                     </li>
                 </ul>
@@ -189,6 +185,10 @@
                     <li class="toctree-l1"><a class="reference internal" href="../mccs_background/">Monitor Control Command Set</a>
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="../ddc_vs_i2c/">DDC vs I2C</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../displayport/">DDC and DisplayPort</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../bibliography/">References</a>
                     </li>
                 </ul>
                 <p class="caption"><span class="caption-text">Additional Topics</span></p>
@@ -200,8 +200,6 @@
                     <li class="toctree-l1"><a class="reference internal" href="../ddccontrol/">Comparison with ddccontrol</a>
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="../ddc_null_response/">DDC Null Message</a>
-                    </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../bibliography/">References</a>
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="../acknowledgements/">Acknowledgements</a>
                     </li>
@@ -224,6 +222,11 @@
                     <li class="toctree-l1"><a class="reference internal" href="../building_ddcui/">Building ddcui</a>
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="../ddcui_release_notes/">ddcui Release Notes</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">Futuere Features</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../udf/">User Defined Features</a>
                     </li>
                 </ul>
       </div>
@@ -270,15 +273,16 @@
             <div class="section">
               
                 <h3 id="command-getvcp">Command <strong>getvcp</strong></h3>
-<p>Syntax: <strong>getvcp</strong> &lt;monitor selection options&gt; &lt;other options&gt; &lt;feature-code-or-group&gt; </p>
+<p>Syntax: <strong>getvcp</strong> &lt;display-selection-options&gt; &lt;other options&gt; &lt;feature-code-or-group&gt; </p>
 <p>Monitor selection options are detailed <a href="../display_selection/">here</a>.</p>
 <p>Feature code/group specification is detailed <a href="../feature_selection/">here</a>.</p>
 <p>If a feature group has been specified, there is normally no message if a feature is unsupported.
 This rule is not absolute.  For some feature-groups it is appropriate to always report that a 
 feature is unsupported. This is also affected by the <strong><em>--show-unsupported</em></strong> option described below.</p>
+<p><a id="getvcp_terse"></a></p>
 <h4 id="option-terse-brief">Option: <strong><em>--terse</em></strong>, <strong><em>--brief</em></strong></h4>
 <p>If <strong><em>--terse</em></strong> is specified on a getvcp command, output is in a format this is easily machine readable.
-This format is also used by <a href="../command_dumpvcp_loadvcp/">vcpinfo</a>.  </p>
+This format is also used by <a href="../command_dumpvcp_loadvcp/">dumpvcp</a>.  </p>
 <p>The format depends on the feature type. 
 In keeping with <strong>ddcutil</strong> 
 practice, VCP feature codes are shown without a leading hex indicator even though they are 
@@ -340,8 +344,6 @@ If reported, output takes the form:</p>
 <p>If querying a single feature, <strong><em>getvcp</em></strong> reports an error if the feature is unsupported or 
 some other error occurs.  If querying a feature group, e.g. COLOR, output for invalid features is suppressd unless <strong><em>--verbose</em></strong> is specified.
 The <strong><em>--show-unsupported</em></strong> option forces error messages in all cases. </p>
-<h3 id="option-mccs-vcp-version">Option: <strong><em>--mccs &lt;vcp-version&gt;</em></strong><a name="option_getvcp_mccs"></a></h3>
-<p>Interprets the feature value as per the specified VCP (aka MCCS) version, instead of using the VCP version obtained from VCP feature xDF.</p>
               
             </div>
           </div>

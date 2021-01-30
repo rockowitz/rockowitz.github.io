@@ -144,8 +144,6 @@
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="../nvidia/">Special Nvidia Driver Settings</a>
                     </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../adl/">AMD fglrx Driver</a>
-                    </li>
                     <li class="toctree-l1"><a class="reference internal" href="../virtual_machines/">Virtual Machines</a>
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="../raspberry/">Raspberry Pi</a>
@@ -171,8 +169,6 @@
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="../c_api_99/">C API Changes for Release 0.9.9</a>
                     </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../c_api_100/">C API Changes for Release 1.0.0</a>
-                    </li>
                     <li class="toctree-l1"><a class="reference internal" href="../python_api/">Python API Overview</a>
                     </li>
                 </ul>
@@ -181,6 +177,10 @@
                     <li class="toctree-l1"><a class="reference internal" href="../mccs_background/">Monitor Control Command Set</a>
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="../ddc_vs_i2c/">DDC vs I2C</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../displayport/">DDC and DisplayPort</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../bibliography/">References</a>
                     </li>
                 </ul>
                 <p class="caption"><span class="caption-text">Additional Topics</span></p>
@@ -192,8 +192,6 @@
                     <li class="toctree-l1"><a class="reference internal" href="../ddccontrol/">Comparison with ddccontrol</a>
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="../ddc_null_response/">DDC Null Message</a>
-                    </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../bibliography/">References</a>
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="../acknowledgements/">Acknowledgements</a>
                     </li>
@@ -232,6 +230,11 @@
                     <li class="toctree-l1"><a class="reference internal" href="../building_ddcui/">Building ddcui</a>
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="../ddcui_release_notes/">ddcui Release Notes</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">Futuere Features</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../udf/">User Defined Features</a>
                     </li>
                 </ul>
       </div>
@@ -274,39 +277,6 @@
             <div class="section">
               
                 <h2 id="prior-announcements">Prior Announcements</h2>
-<p>09 July 2020</p>
-<p>Branch master on github was out of sync with the <a href="../tarballs/ddcutil-0.9.9.tar.gz">reference tarball</a> and prebuilt packages on <a href="https://launchpad.net/~rockowitz/+archive/ubuntu/ddcutil">launchpad</a>,
-<a href="https://copr.fedorainfracloud.org/coprs/rockowitz/ddcutil/">COPR</a>, and the <a href="http://download.opensuse.org/repositories/home:/rockowitz/">openSUSE Build Service</a>. The missing changes have been pushed to the master branch. If you have already built release 0.9.9 from the github master branch, pull the changes and rebuild.</p>
-<p>28 June 2020</p>
-<p><strong>ddcui</strong> release 0.1.2 is an emergency bug fix release.</p>
-<ul>
-<li>Combo boxes for simple Non-Continous features were empty instead of showing the currently selected value and list of allowed values.</li>
-</ul>
-<p>24 June 2020 </p>
-<p><strong>ddcutil</strong> release 0.9.9 contains two changes of general interest: </p>
-<ul>
-<li>A new command line option, <strong><em>--less-sleep</em></strong> eliminates many of the delays between the time that <strong>ddcutil</strong> receives a DDC response from a display
-and sends the next request, improving performance.
-<!-- - User Defined Features are now supported. --></li>
-<li>Support for AMD's old proprietary <strong>fglrx</strong> driver has been dropped.</li>
-</ul>
-<p>The <strong>libddcutil</strong> shared libray has non-upwardly compatible changes.  For details, see <a href="../c_api_99/">Shared Library Changes for Release 0.9.9</a>.</p>
-<p><strong>ddcui</strong> release 0.1.1 adds additional features and has numerous changes in the "fit and finish" category.  In particular:</p>
-<ul>
-<li>Command line options for starting <strong><em>ddcui</em></strong>, corresponding to settings in the <strong><em>Option</em></strong> dialogs, and (if multiple monitors) 
-  the initlal monitor selected.</li>
-<li>The <strong><em>Feature Selection Dialog</em></strong>, along with command line option <strong><em>--custom-feature-set</em></strong>, 
-enable the user to specify the VCP features to be shown.</li>
-<li>Better handling of error conditions</li>
-<li>Better <strong>Help</strong> text</li>
-</ul>
-<p><strong>ddcui</strong> release 0.1.1 requires ddcutil 0.9.9.</p>
-<p>For general information about the graphical user interface, see <a href="../ddcui_main/">ddcui</a>.</p>
-<p>For a complete list of <strong>ddcutil</strong> changes and bug fixes, see <a href="../release_notes/">Release Notes</a>.<br />
-For <strong>ddcui</strong> changes and bug fixes, see <a href="../ddcui_release_notes/">ddcui Release Notes</a>.<br />
-Prior announcements can be found <a href="./">here</a>.</p>
-<p>Lastly, this website has been extensively revised to reflect the current state of <strong>ddcutil</strong> and <strong>ddcui</strong>.</p>
-<p><strong>Note:</strong> Prebuilt packages are now available for <strong>ddcutil</strong> 0.9.9.  </p>
 <p>06 December 2019</p>
 <p><strong><em>ddcutil</em></strong> release 0.9.8 contains two changes of general interest:<br />
 - A new command line option, <strong><em>--sleep-multiplier</em></strong>, adjusts the time <strong>ddcutil</strong> pauses between sending a request to the monitor

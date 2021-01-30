@@ -154,8 +154,6 @@
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="../nvidia/">Special Nvidia Driver Settings</a>
                     </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../adl/">AMD fglrx Driver</a>
-                    </li>
                     <li class="toctree-l1"><a class="reference internal" href="../virtual_machines/">Virtual Machines</a>
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="../raspberry/">Raspberry Pi</a>
@@ -181,8 +179,6 @@
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="../c_api_99/">C API Changes for Release 0.9.9</a>
                     </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../c_api_100/">C API Changes for Release 1.0.0</a>
-                    </li>
                     <li class="toctree-l1"><a class="reference internal" href="../python_api/">Python API Overview</a>
                     </li>
                 </ul>
@@ -191,6 +187,10 @@
                     <li class="toctree-l1"><a class="reference internal" href="../mccs_background/">Monitor Control Command Set</a>
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="../ddc_vs_i2c/">DDC vs I2C</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../displayport/">DDC and DisplayPort</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../bibliography/">References</a>
                     </li>
                 </ul>
                 <p class="caption"><span class="caption-text">Additional Topics</span></p>
@@ -202,8 +202,6 @@
                     <li class="toctree-l1"><a class="reference internal" href="../ddccontrol/">Comparison with ddccontrol</a>
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="../ddc_null_response/">DDC Null Message</a>
-                    </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../bibliography/">References</a>
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="../acknowledgements/">Acknowledgements</a>
                     </li>
@@ -226,6 +224,11 @@
                     <li class="toctree-l1"><a class="reference internal" href="../building_ddcui/">Building ddcui</a>
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="../ddcui_release_notes/">ddcui Release Notes</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">Futuere Features</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../udf/">User Defined Features</a>
                     </li>
                 </ul>
       </div>
@@ -275,13 +278,12 @@ support DDC/CI, whether DDC/CI comminication is actually enabled is controlled b
 The item is typically found in a submenu named something like "Other Settings"</p>
 <h3 id="video-driver">Video Driver</h3>
 <p>The video driver must support I2C bus communication.   All major open source drivers (nouveau, radeon, admdgpu, i915) support 
-I2C bus communication, as do the Nvidia and old AMD fglrx proprietary drivers.  </p>
+I2C bus communication, as does the Nvidia proprietary driver.  </p>
 <p>If using Nvidia's proprietary video driver, special settings may be necessary.  See <a href="../nvidia/">Special Nvidia Driver Settings</a></p>
 <p>For the Rapberry Pi, see the section <a href="../raspberry/">Raspberry Pi</a>.</p>
 <h3 id="ensure-that-the-devi2c-n-devices-exist">Ensure that the /dev/i2c-N devices exist</h3>
-<p>Typically, the I2C buses are exposed as devices named /dev/i2c-N.  (The one exception is the older proprietary AMD fglrx driver, 
-which instead provides an API for I2C communication.)
-If using an open source video driver, kernel module i2c-dev must be loaded to create the /dev/i2c-N devices.  See <a href="../kernel_module/">Kernel Module Configuration</a></p>
+<p>Typically, the I2C buses are exposed as devices named /dev/i2c-N. 
+Kernel module i2c-dev must be loaded to create the /dev/i2c-N devices.  See <a href="../kernel_module/">Kernel Module Configuration</a></p>
 <h3 id="grant-readwrite-permission-for-the-devi2c-n-devices-representing-monitors">Grant read/write permission for the /dev/i2c-N devices representing monitors</h3>
 <p><strong>ddcutil</strong> users require read/write permission to /dev/i2c-N devices.  With varying complexity, this can be effected in several ways.</p>
 <ul>

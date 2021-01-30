@@ -146,8 +146,6 @@
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="../nvidia/">Special Nvidia Driver Settings</a>
                     </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../adl/">AMD fglrx Driver</a>
-                    </li>
                     <li class="toctree-l1"><a class="reference internal" href="../virtual_machines/">Virtual Machines</a>
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="../raspberry/">Raspberry Pi</a>
@@ -173,8 +171,6 @@
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="../c_api_99/">C API Changes for Release 0.9.9</a>
                     </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../c_api_100/">C API Changes for Release 1.0.0</a>
-                    </li>
                     <li class="toctree-l1"><a class="reference internal" href="../python_api/">Python API Overview</a>
                     </li>
                 </ul>
@@ -183,6 +179,10 @@
                     <li class="toctree-l1"><a class="reference internal" href="../mccs_background/">Monitor Control Command Set</a>
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="../ddc_vs_i2c/">DDC vs I2C</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../displayport/">DDC and DisplayPort</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../bibliography/">References</a>
                     </li>
                 </ul>
                 <p class="caption"><span class="caption-text">Additional Topics</span></p>
@@ -194,8 +194,6 @@
                     <li class="toctree-l1"><a class="reference internal" href="../ddccontrol/">Comparison with ddccontrol</a>
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="../ddc_null_response/">DDC Null Message</a>
-                    </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../bibliography/">References</a>
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="../acknowledgements/">Acknowledgements</a>
                     </li>
@@ -218,6 +216,11 @@
                     <li class="toctree-l1"><a class="reference internal" href="../building_ddcui/">Building ddcui</a>
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="../ddcui_release_notes/">ddcui Release Notes</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">Futuere Features</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../udf/">User Defined Features</a>
                     </li>
                 </ul>
       </div>
@@ -262,7 +265,7 @@
                 <p>Secondary commands explore the <strong>ddcutil</strong> environment for diagnostic purposes, or perform other specialized functions.</p>
 <h3 id="command-environment">Command: environment<a name="environment"></a></h3>
 <p>Explores aspects of the system relevant to DDC communication (other than USB).  Normal output provides information that may be helpful to the user
-in diagnosing things that need to be changed to enable <strong><em>ddcutil</em></strong> to execute.  Option <strong><em>--verbose</em></strong> adds additionaly information
+in diagnosing things that need to be changed to enable <strong><em>ddcutil</em></strong> to execute.  Option <strong><em>--verbose</em></strong> adds additional information
 that is helpful for remotely diagnosing <strong>ddcutil</strong> problems.</p>
 <h3 id="command-usbenvironment">Command: usbenvironment<a name="usbenvironment"></a></h3>
 <p>Explores USB related aspects of the <strong>ddcutil</strong> execution environment.  See <a href="../usb/">USB Connected Monitors</a>.</p>

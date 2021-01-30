@@ -158,8 +158,6 @@
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="../nvidia/">Special Nvidia Driver Settings</a>
                     </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../adl/">AMD fglrx Driver</a>
-                    </li>
                     <li class="toctree-l1"><a class="reference internal" href="../virtual_machines/">Virtual Machines</a>
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="../raspberry/">Raspberry Pi</a>
@@ -185,8 +183,6 @@
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="../c_api_99/">C API Changes for Release 0.9.9</a>
                     </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../c_api_100/">C API Changes for Release 1.0.0</a>
-                    </li>
                     <li class="toctree-l1"><a class="reference internal" href="../python_api/">Python API Overview</a>
                     </li>
                 </ul>
@@ -195,6 +191,10 @@
                     <li class="toctree-l1"><a class="reference internal" href="../mccs_background/">Monitor Control Command Set</a>
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="../ddc_vs_i2c/">DDC vs I2C</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../displayport/">DDC and DisplayPort</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../bibliography/">References</a>
                     </li>
                 </ul>
                 <p class="caption"><span class="caption-text">Additional Topics</span></p>
@@ -206,8 +206,6 @@
                     <li class="toctree-l1"><a class="reference internal" href="../ddccontrol/">Comparison with ddccontrol</a>
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="../ddc_null_response/">DDC Null Message</a>
-                    </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../bibliography/">References</a>
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="../acknowledgements/">Acknowledgements</a>
                     </li>
@@ -230,6 +228,11 @@
                     <li class="toctree-l1"><a class="reference internal" href="../building_ddcui/">Building ddcui</a>
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="../ddcui_release_notes/">ddcui Release Notes</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">Futuere Features</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../udf/">User Defined Features</a>
                     </li>
                 </ul>
       </div>
@@ -297,30 +300,30 @@ The most useful are: </p>
 </thead>
 <tbody>
 <tr>
-<td>KNOWN</td>
-<td>feature codes defined in MCCS</td>
+<td><strong><em>KNOWN</em></strong></td>
+<td>&nbsp;feature codes defined in MCCS</td>
 </tr>
 <tr>
-<td>SCAN</td>
-<td>scan all feature codes x00..xff</td>
+<td><strong><em>SCAN</em></strong></td>
+<td>&nbsp;scan all feature codes x00..xff</td>
 </tr>
 <tr>
-<td>COLOR</td>
-<td>color related features</td>
+<td><strong><em>COLOR</em></strong></td>
+<td>&nbsp;color related features</td>
 </tr>
 <tr>
-<td>PROFILE</td>
-<td>features saved by dumpvcp (subset of COLOR)</td>
+<td><strong><em>PROFILE</em></strong></td>
+<td>&nbsp;features saved by dumpvcp (subset of COLOR)</td>
 </tr>
 <tr>
-<td>TABLE</td>
-<td>features of type Table</td>
+<td><strong><em>TABLE</em></strong></td>
+<td>&nbsp;features of type Table</td>
 </tr>
 </tbody>
 </table>
 <p><br>
 For example:</p>
-<pre><code># ddcutil getvcp known
+<pre><code>$ ddcutil getvcp known
 </code></pre>
 
 <p>There many more feature groups.  Most were created to help analyze the Monitor Control Command Set specification, and are not of general interest.

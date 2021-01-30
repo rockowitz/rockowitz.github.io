@@ -146,8 +146,6 @@
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="../nvidia/">Special Nvidia Driver Settings</a>
                     </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../adl/">AMD fglrx Driver</a>
-                    </li>
                     <li class="toctree-l1"><a class="reference internal" href="../virtual_machines/">Virtual Machines</a>
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="../raspberry/">Raspberry Pi</a>
@@ -173,8 +171,6 @@
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="../c_api_99/">C API Changes for Release 0.9.9</a>
                     </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../c_api_100/">C API Changes for Release 1.0.0</a>
-                    </li>
                     <li class="toctree-l1"><a class="reference internal" href="../python_api/">Python API Overview</a>
                     </li>
                 </ul>
@@ -183,6 +179,10 @@
                     <li class="toctree-l1"><a class="reference internal" href="../mccs_background/">Monitor Control Command Set</a>
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="../ddc_vs_i2c/">DDC vs I2C</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../displayport/">DDC and DisplayPort</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../bibliography/">References</a>
                     </li>
                 </ul>
                 <p class="caption"><span class="caption-text">Additional Topics</span></p>
@@ -194,8 +194,6 @@
                     <li class="toctree-l1"><a class="reference internal" href="../ddccontrol/">Comparison with ddccontrol</a>
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="../ddc_null_response/">DDC Null Message</a>
-                    </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../bibliography/">References</a>
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="../acknowledgements/">Acknowledgements</a>
                     </li>
@@ -218,6 +216,11 @@
                     <li class="toctree-l1"><a class="reference internal" href="../building_ddcui/">Building ddcui</a>
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="../ddcui_release_notes/">ddcui Release Notes</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">Futuere Features</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../udf/">User Defined Features</a>
                     </li>
                 </ul>
       </div>
@@ -264,10 +267,21 @@
             <div class="section">
               
                 <h3 id="command-scs">Command <strong>scs</strong></h3>
-<p>Syntax:  scs &lt;display-selection-optiongs&gt; scs</p>
-<p>Sends a DDC <strong><em>Save Current Settings</em></strong> request to the display. Some displays implement this request, others do not.  (See the output of <strong>ddcutil capabilities</strong>.)</p>
-<p>Saves the current monitor settings to the display's nonvolatile storage.</p>
-<p>In actuality, this command has not been observed to have any effect, but is was simple to implement and people can experiment with it if interested.</p>
+<p>Syntax:  <strong>scs</strong> &lt;display-selection-options&gt;</p>
+<p>Sends a DDC <strong><em>Save Current Settings</em></strong> request to the display, which saves the current monitor settings to the display's nonvolatile storage.</p>
+<p>Some displays implement this request, others do not. (See the output of <strong>ddcutil capabilities</strong>.)
+Even for most that do, the command has no apparent effect.</p>
+<p>However, the command is required when settomg a featuer value for at least some Iiyama monitors.  Users of models 
+<a href="https://www.monitor_notes#iiyama-pl2942h">PL2492H</a> 
+and <a href="https://www.ddcutil.com/monitor_notes#iiyama-pl2792q">PL2792Q</a> 
+have reported that <strong><em>setvcp</em></strong> commands do not actually change the value unless immediately followed by a <strong><em>scs</em></strong> command.  In that case, the <strong><em>setvcp</em></strong> command should
+use the <strong><em>--noverify</em></strong> option.  Otherwise, <strong><em>setvcp</em></strong> internally performs a <strong>getvcp</strong> operation to check that the new value has actually been set, but retrieves the old value because <strong>scs</strong> has not occurred.  </p>
+<p>For example: </p>
+<pre><code>$ setvcp 10 85             # verifcation fails, the value is unchanged
+$ setvcp 10 85 --noverify
+$ scs
+$ getvcp 10                # works after scs
+</code></pre>
               
             </div>
           </div>
