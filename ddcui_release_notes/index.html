@@ -169,6 +169,8 @@
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="../c_api_99/">C API Changes for Release 0.9.9</a>
                     </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../c_api_100/">C API Changes for Release 1.0.0</a>
+                    </li>
                     <li class="toctree-l1"><a class="reference internal" href="../python_api/">Python API Overview</a>
                     </li>
                 </ul>
@@ -273,6 +275,113 @@
             <div class="section">
               
                 <h2 id="ddcui-release-notes">ddcui Release Notes</h2>
+<!--
+### 0.2.0
+
+15 February 2021
+
+The release number has been bumped to 0.0.0 reflecting the fact that, while far from compliete, 
+**ddcui** is suitable for wide use.
+
+
+Handle situation where the observed value of a NC feature is not in the expected set. 
+
+These changes address the following problem.  It is possible that
+    some value occurs that is not in the capabilities/MCCS list.
+    We want to still show that value in the combo box even if another
+    value is subsequently selected.  The solution is complicated by
+    the fact that rescan causes the feature widgets to be recreated.
+    So this widget uses both itself and the associated FeatureValue
+    instance to maintain this lisf of observed values.
+
+
+"Force use NC value names" option in menu
+
+--force-latest-nc-value-names coommand line option
+
+
+
+    - use FeatureValueNCWidget instead of FeatureValueBytesWidget if
+        the feature appears to be of type NC, i.e. the monitor's capability
+            string contains VCP values for the feature
+
+new feature value widget to handle cont features with reserved values
+
+
+
+
+
+
+Desktop and App store integration
+
+ddcui.desktop
+
+ddcui_appdata.xml  or is it ddcui.appdata.xml 
+
+icons  /usr/share/icons
+
+
+icon in /usr/share/pixmaps  (GNOME classis only looks in pixmaps)
+
+
+
+### 0.1.4 
+
+01 December 2020
+
+#### Enhanced handling for Non-Continuous Features 
+
+
+It is possible that a feature value is not in the list reported by the capaiblities string
+and/or ??? the MCCS feature specification. 
+Observed features are noted so that they continue to be shown in the combo bax as a possible value, 
+even if another value is subsequently selected.
+
+
+The solution is complicated by
+the fact that rescan causes the feature widgets to be recreated.
+So this widget uses both itself and the associated FeatureValue
+instance to maintain this lisf of observed values.
+
+
+
+
+    options 
+    Force NC value names option
+
+cmd line option --force-latest-nc-value-names 
+
+
+
+#### Desktop Integration
+
+ ddcui.appdata.xml 
+ ddcui.desktop
+
+
+ "make install" install ddcui.desktop, ddcui.appdata.xml, icons
+
+ icons
+    CMakeLists.txt: install icon in /usr/share/pixmaps as well as /usr/share/icons
+
+    GNOME classic only looks in pixmaps
+
+#### Other
+
+
+      - use FeatureValueNCWidget instead of FeatureValueBytesWidget if
+        the feature appears to be of type NC, i.e. the monitor's capability
+            string contains VCP values for the feature
+
+
+special handling for features:
+      - use ValueSimpleContWidget for features x8f (Audio Treble), x91 (Audio Bass), x93 (Audio Balance)
+      - use ValueSpecialWidgetX62 for feature x62 (Audio speaker volume)
+
+   new class ValueSpecialWidgetX62 for handling feature x62, Audio Volume, as specified in MCCS 3.0 and 2.2
+
+-->
+
 <h3 id="012">0.1.2</h3>
 <p>29 June 2020</p>
 <p>Bug fixes: </p>

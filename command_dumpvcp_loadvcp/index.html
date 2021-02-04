@@ -171,6 +171,8 @@
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="../c_api_99/">C API Changes for Release 0.9.9</a>
                     </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../c_api_100/">C API Changes for Release 1.0.0</a>
+                    </li>
                     <li class="toctree-l1"><a class="reference internal" href="../python_api/">Python API Overview</a>
                     </li>
                 </ul>
@@ -269,13 +271,16 @@
                 <h3 id="commands-dumpvcp-and-loadvcp">Commands <strong><em>dumpvcp</em></strong> and <strong><em>loadvcp</em></strong></h3>
 <p>These commands save and restore the current settings of color management related VCP features, i.e. those in group PROFILE.</p>
 <p>Syntax: <strong>dumpvcp</strong> &lt;display-selection-options&gt; dumpvcp [&lt;file name&gt;]</p>
-<p>If no file name is specified on <strong><em>dumpvcp</em></strong>, output is written to <strong><em>stdout</em></strong>.</p>
-<p>VCP Feature values are written in the format described for the <strong><em>getvcp</em></strong> (--terse)[command_getvcp.md#getvcp_terse] option.</p>
+<p>If no file name is specified on <strong>dumpvcp*<em>, output is written to directory $HOME/.local/share/ddcutil.
+VCP Feature values are written in the format described for the </em></strong>getvcp*** (--terse)[command_getvcp.md#getvcp_terse] option.</p>
 <p>Syntax: <strong>loadvcp</strong> &lt;display-selection-options&gt; &lt;file-name&gt;</p>
 <p>Normally, the display to which the settings are to be applied is taken from the VCP file. In rare cases, this will be insufficient to identify the display, in which the the display selection options are required.  If specified, the display selected must be consistent with the identifiers stored
 in the VCP file.</p>
 <h3 id="option-noverify">Option: <strong>--noverify</strong></h3>
 <p>See <a href="../command_setvcp/#setvcp_noverify"><strong>setvcp</strong> option --noverify</a></p>
+<h3 id="option-mccs-ltvcp-version">Option: <strong>--mccs &amp;ltvcp version&gt;</strong><a name="option_dumpload_mccs"></a></h3>
+<p>When executing <strong>dumpvcp</strong>, emit output as per the specified MCCS (aka VCP) version, instead of the VCP version obtained from feature xDF (VCP Version).
+This can affect whether a feature value is output as type TABLE.</p>
 <h3 id="option-verbose">Option: <strong>--verbose</strong></h3>
 <p>Display informational messages regarding verification.</p>
               

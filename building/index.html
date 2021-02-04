@@ -187,6 +187,8 @@
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="../c_api_99/">C API Changes for Release 0.9.9</a>
                     </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../c_api_100/">C API Changes for Release 1.0.0</a>
+                    </li>
                     <li class="toctree-l1"><a class="reference internal" href="../python_api/">Python API Overview</a>
                     </li>
                 </ul>
@@ -280,7 +282,7 @@
               
                 <h2 id="building-from-source">Building From Source</h2>
 <h3 id="building-from-tarball">Building from tarball</h3>
-<p><strong>ddcutil</strong> can be built from its <a href="../tarballs/ddcutil-0.9.9.tar.gz">tarball</a> in the usual way.
+<p><strong>ddcutil</strong> can be built from its <a href="../tarballs/ddcutil-1.0.0.tar.gz">tarball</a> in the usual way.
 Unpack the tar file, change to its directory, and issue the commands: </p>
 <pre><code># ./configure
 # make
@@ -290,32 +292,18 @@ Unpack the tar file, change to its directory, and issue the commands: </p>
 <h3 id="configure-options"><strong>configure</strong> options</h3>
 <p>The <strong>configure</strong> script has several custom options.  Some reflect features under development, or tools used for development.
 The publicly supported options are:</p>
-<table>
-<thead>
-<tr>
-<th>Option</th>
-<th>Purpose</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><strong><em>--enable-usb</em></strong></td>
-<td>Build with support for USB connected monitors.  Setting --disable-usb reduces size and package requirements. (Default is --enable-usb.)</td>
-</tr>
-<tr>
-<td><strong><em>--enable-drm</em></strong></td>
-<td>Build with DRM support, used for enhanced diagnostics.  Setting --disable-drm reduces size and package requirements. (Default is --enable-drm.)</td>
-</tr>
-<tr>
-<td><strong>--enable-lib</strong>*</td>
-<td>Build the shared library. (Default is --enable-lib.)</td>
-</tr>
-<tr>
-<td><strong><em>--enable-x11</em></strong></td>
-<td>Build using X11 services, used for enhanced diagnostics.  Setting --disable-x11 allows for use on systems lacking X11.  (Default is --enable-x11.)</td>
-</tr>
-</tbody>
-</table>
+<p>|Option                  | Default |      Purpose
+|------------------------|--------------
+| <strong><em>--enable-usb</em></strong>     | yes     | Build with support for USB connected monitors.  Setting --disable-usb reduces size and package requirements. (Default is --enable-usb.) 
+| <strong><em>--enable-drm</em></strong>     | yes     | Build with DRM support, used for enhanced diagnostics.  Setting --disable-drm reduces size and package requirements. (Default is --enable-drm.)
+| <strong><em>--enable-lib</em></strong>     | yes     | Build the shared library. (Default is --enable-lib.)
+| <strong><em>--enable-x11</em></strong>     | yes     | Build using X11 services, used for enhanced diagnostics.  Setting --disable-x11 allows for use on systems lacking X11.  (Default is --enable-x11.)
+| <strong><em>--enable-asan</em></strong>    | no      | Build for execution with the Google Address Space Sanitizer.
+| <strong><em>--enable-envcmds</em></strong> | yes     | Controls whether commands <strong>environment*<em> and <strong>usbenvironment</strong> are included.
+| </em></strong>--enable-udev***    | yes     | Controls whether udev is used. </p>
+<p>Notes:<br />
+- Option <strong><em>--disable-envcmds</em></strong> forces <strong><em>--disable-drm</em></strong>, and <strong><em>--disable-x11</em></strong> <br />
+- Option <strong><em>--enable-targetbsd</em></strong> forces <strong><em>--disable-envcmds</em></strong>, <strong><em>--disable-udev</em></strong>, and <strong><em>--disable-usb</em></strong></p>
 <h3 id="required-packages">Required packages</h3>
 <p>Because of the variation among distributions, only general guidelines can be 
 given for ddcutil prerequisites.  Ultimately, you'll have to try to build ddcutil and see what breaks.</p>
