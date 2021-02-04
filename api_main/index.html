@@ -276,7 +276,8 @@
 - <a href="../c_api_93/">C API Changes for Release 0.9.3</a><br />
 - <a href="../c_api_95/">C API Changes for Release 0.9.5</a> <br />
 - <a href="../c_api_98/">C API Changes for Release 0.9.8</a><br />
-- <a href="../c_api_99/">C API Changes for Release 0.9.8</a>  </p>
+- <a href="../c_api_99/">C API Changes for Release 0.9.9</a>
+- <a href="../c_api_100/">C API Changes for Release 1.0.0</a>  </p>
 <h3 id="naming">Naming</h3>
 <p>Symbol names begin with "ddca_" or "DDCA_" (for <strong>DDC</strong>util <strong>A</strong>pi).</p>
 <h3 id="installation">Installation</h3>
@@ -308,31 +309,14 @@ They are normally installed to /usr/include or /usr/local/include. </p>
 </tr>
 </tbody>
 </table>
-<p>The API is exposed using shared library libddcutil.so. Note that the command line version of <strong>ddcutil</strong>
+<p><br>
+The API is exposed using shared library libddcutil.so. Note that the command line version of <strong>ddcutil</strong>
 does not itself use the shared library, but instead links all services statically.</p>
 <p>Installation (make install, package install) installs a Package Config file (ddcutil.pc). </p>
 <p>Installation also saves a cmake file (FindDDCUtil.cmake) in directory /usr/share/ddcutil/data 
 (or /usr/local/share/ddcutil/data if appropriate).  To use this file, copy it to 
 /usr/share/cmake/Modules.</p>
-<p><strong>configure</strong> options relating to the C API:  </p>
-<table>
-<thead>
-<tr>
-<th>&nbsp; Option</th>
-<th>&nbsp; Function</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>&nbsp;<strong>--enable-lib</strong></td>
-<td>&nbsp; Build shared library. Required for the C API</td>
-</tr>
-<tr>
-<td><br></td>
-<td></td>
-</tr>
-</tbody>
-</table>
+<p><br></p>
 <h3 id="documentation">Documentation</h3>
 <p>C API documentation:<br />
 - The header files contain extensive documentation. <br />
