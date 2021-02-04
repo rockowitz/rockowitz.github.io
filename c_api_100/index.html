@@ -271,46 +271,49 @@
                 <h2 id="shared-library-changes-for-release-100">Shared Library Changes for Release 1.0.0</h2>
 <h3 id="overview">Overview</h3>
 <p>This release contains a handful of changes, which affect backward compatibility. 
-Consequently, the <strong>libddcutil*<em> SONAME is now libddcutil.so.4. 
-In conformance with Debian practice, the package name is </em></strong>libddcutil4***.</p>
+Consequently, the <strong><em>libddcutil</em></strong> SONAME is now libddcutil.so.4. 
+In conformance with Debian practice, the package name is <strong><em>libddcutil4</em></strong>.</p>
 <h3 id="api-changes">API Changes</h3>
 <table>
 <thead>
 <tr>
 <th>Structs and Enums</th>
-<th>Change</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>enum DDCA_Output_Level</td>
-<td>add value DDCA_OL_VV (very vebose)</td>
-</tr>
-<tr>
-<td>struct DDCA_Feature_Metadata</td>
-<td>add field latest_sl_values</td>
-</tr>
-</tbody>
-</table>
-<table>
-<thead>
-<tr>
-<th>Modified Functions</th>
 <th>Comments</th>
 </tr>
 </thead>
 <tbody>
 <tr>
+<td>enum DDCA_Output_Level</td>
+<td>&nbsp;add value DDCA_OL_VV (very vebose)</td>
+</tr>
+<tr>
+<td>struct DDCA_Feature_Metadata</td>
+<td>&nbsp;add field latest_sl_values</td>
+</tr>
+<tr>
+<td><br></td>
+<td></td>
+</tr>
+<tr>
+<td>Modified Functions</td>
+<td>Comments</td>
+</tr>
+<tr>
+<td>--------------------------------------</td>
+<td>------------------</td>
+</tr>
+<tr>
 <td>ddca_create_adlno_display_identifier</td>
-<td>removed</td>
+<td>&nbsp;removed</td>
 </tr>
 <tr>
 <td>ddca_set_sleep_multiplier()</td>
-<td>returns prior value</td>
+<td>&nbsp;returns prior value</td>
 </tr>
 </tbody>
 </table>
-<p>The Doxygen documentation in ddcutil_c_api.h has been extensively updated.</p>
+<p><br>
+The Doxygen documentation in ddcutil_c_api.h has been extensively updated.</p>
               
             </div>
           </div>

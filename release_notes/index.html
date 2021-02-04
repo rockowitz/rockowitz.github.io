@@ -537,7 +537,7 @@
                 <h2 id="release-notes">Release Notes</h2>
 <p>For <strong>ddcui</strong> release notes, see <a href="../ddcui_release_notes/"><strong>ddcui</strong> Release Notes</a>.</p>
 <h3 id="100">1.0.0</h3>
-<p>01 February 2021</p>
+<p>03 February 2021</p>
 <h3 id="user-defined-features">User Defined Features</h3>
 <p><strong><em>ddcutil</em></strong>, for some time now, has implementated user supplied feature definitions. This facility is now formally available. 
 A feature definition file for a monitor model specifies feature definitions that add to or override those in the MCCS spec. It can also optionally force the MCCS version of the monitor. A user supplied feature definition can, for example, specify a monitor's actual values for a Non-Continuous feature such as x60 (Input Source), or define a feature in the manufacturer supplied range xE0..XFF. The facility is enabled by option <strong><em>--udf</em></strong>. The default is currently <strong><em>--noudf</em></strong>.  See page <a href="../udf/">User Defined Features</a> for details.</p>
@@ -699,7 +699,7 @@ For example, "--maxtries "., 15, 0""  changes only the write-read maxtries value
 </ul>
 <h3 id="building-ddcutil">Building <strong>ddcutil</strong></h3>
 <p>Some <strong><em>.configure</em></strong> options have been added, primarily in support of an as yet incomplete FreeBSD implementation. 
-(Development suspended until FreeBSD's video drivers expose the I2C bus.)</p>
+(Development is suspended until FreeBSD's video drivers expose the I2C bus.)</p>
 <table>
 <thead>
 <tr>

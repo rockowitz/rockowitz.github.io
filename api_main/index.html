@@ -276,9 +276,7 @@
 - <a href="../c_api_93/">C API Changes for Release 0.9.3</a><br />
 - <a href="../c_api_95/">C API Changes for Release 0.9.5</a> <br />
 - <a href="../c_api_98/">C API Changes for Release 0.9.8</a><br />
-- <a href="../python_api/">Python API</a> </p>
-<p>If you are using the API, please contact <strong>ddcutil</strong>'s author (rockowitz@minsoft.com&gt;), both because 
-your input on the API would be helpful and also so I can alert you of upcoming changes. </p>
+- <a href="../c_api_99/">C API Changes for Release 0.9.8</a>  </p>
 <h3 id="naming">Naming</h3>
 <p>Symbol names begin with "ddca_" or "DDCA_" (for <strong>DDC</strong>util <strong>A</strong>pi).</p>
 <h3 id="installation">Installation</h3>
@@ -287,31 +285,30 @@ They are normally installed to /usr/include or /usr/local/include. </p>
 <table>
 <thead>
 <tr>
-<th>Header File Name</th>
-<th>Contains</th>
+<th>&nbsp; Header File Name</th>
+<th>&nbsp; Contains</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>ddcutil_types.h</td>
-<td>typedefs, structs, enums, etc.</td>
+<td>&nbsp;ddcutil_types.h</td>
+<td>&nbsp;typedefs, structs, enums, etc.</td>
 </tr>
 <tr>
-<td>ddcutil_c_api.h</td>
-<td>API functions</td>
+<td>&nbsp;ddcutil_c_api.h</td>
+<td>&nbsp;API functions</td>
 </tr>
 <tr>
-<td>ddcutil_status_codes.h</td>
-<td><strong>ddcutil</strong> specific status codes</td>
+<td>&nbsp;ddcutil_status_codes.h</td>
+<td>&nbsp;<strong>ddcutil</strong> specific status codes</td>
 </tr>
 <tr>
-<td>ddcutil_macros.h</td>
-<td>macros to specify <strong>ddcutil</strong> version at compile time</td>
+<td>&nbsp;ddcutil_macros.h</td>
+<td>&nbsp;macros to specify <strong>ddcutil</strong> version at compile time</td>
 </tr>
 </tbody>
 </table>
-<p>The API is exposed using shared library libddcutil.so.  The API is subject to change, and will not 
-be SONAME versioned until release 1.0.  Note that the command line version of <strong>ddcutil</strong>
+<p>The API is exposed using shared library libddcutil.so. Note that the command line version of <strong>ddcutil</strong>
 does not itself use the shared library, but instead links all services statically.</p>
 <p>Installation (make install, package install) installs a Package Config file (ddcutil.pc). </p>
 <p>Installation also saves a cmake file (FindDDCUtil.cmake) in directory /usr/share/ddcutil/data 
@@ -321,14 +318,18 @@ does not itself use the shared library, but instead links all services staticall
 <table>
 <thead>
 <tr>
-<th>Option</th>
-<th>Function</th>
+<th>&nbsp; Option</th>
+<th>&nbsp; Function</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td><strong>--enable-lib</strong></td>
-<td>Build shared library. Required for the C API</td>
+<td>&nbsp;<strong>--enable-lib</strong></td>
+<td>&nbsp; Build shared library. Required for the C API</td>
+</tr>
+<tr>
+<td><br></td>
+<td></td>
 </tr>
 </tbody>
 </table>
@@ -341,42 +342,42 @@ does not itself use the shared library, but instead links all services staticall
 <table>
 <thead>
 <tr>
-<th>Source file</th>
-<th>Contents</th>
+<th>&nbsp; Source file</th>
+<th>&nbsp; Contents</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>demo_capabilities.c</td>
-<td>Query monitor capabilities string</td>
+<td>&nbsp;demo_capabilities.c</td>
+<td>&nbsp; Query monitor capabilities string</td>
 </tr>
 <tr>
-<td>demo_display_selection.c</td>
-<td>Select display</td>
+<td>&nbsp;demo_display_selection.c</td>
+<td>&nbsp; Select display</td>
 </tr>
 <tr>
-<td>demo_feature_list.c</td>
-<td>Using DDCA_Feature_List</td>
+<td>&nbsp;demo_feature_list.c</td>
+<td>&nbsp; Using DDCA_Feature_List</td>
 </tr>
 <tr>
-<td>demo_get_set_vcp.c</td>
-<td>Read and write VCP feature values</td>
+<td>&nbsp;demo_get_set_vcp.c</td>
+<td>&nbsp; Read and write VCP feature values</td>
 </tr>
 <tr>
-<td>demo_global_settings.c</td>
-<td>Query and change global settings</td>
+<td>&nbsp;demo_global_settings.c</td>
+<td>&nbsp; Query and change global settings</td>
 </tr>
 <tr>
-<td>demo_profile_features.c</td>
-<td>Save and restore color profile related features</td>
+<td>&nbsp;demo_profile_features.c</td>
+<td>&nbsp; Save and restore color profile related features</td>
 </tr>
 <tr>
-<td>demo_redirection.c</td>
-<td>Capture program output</td>
+<td>&nbsp;demo_redirection.c</td>
+<td>&nbsp; Capture program output</td>
 </tr>
 <tr>
-<td>demo_vcpinfo.c</td>
-<td>Query VCP feature metadata</td>
+<td>&nbsp;demo_vcpinfo.c</td>
+<td>&nbsp; Query VCP feature metadata</td>
 </tr>
 </tbody>
 </table>
