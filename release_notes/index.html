@@ -700,7 +700,7 @@ For example, "--maxtries "., 15, 0""  changes only the write-read maxtries value
 <li>More definitively identify LVDS laptop displays. </li>
 </ul>
 <h3 id="building-ddcutil">Building <strong>ddcutil</strong></h3>
-<p>Some <strong><em>.configure</em></strong> options have been added, primarily in support of an as yet incomplete FreeBSD implementation. 
+<p>Some <strong><em>configure</em></strong> options have been added, primarily in support of an as yet incomplete FreeBSD implementation. 
 (Development is suspended until FreeBSD's video drivers expose the I2C bus.)</p>
 <table>
 <thead>
@@ -756,7 +756,7 @@ reverse enginering Picture-by-Picture mode on a Phillips 499P9.</li>
 <li>github user <a href="https://github.com/parkerlreed">parkerlreed</a> helped diagnose deviations from the specification of feature x60
 on an Acer ED320QR. </li>
 </ul>
-<p>And also a shout out to [Andrey Rahmatullin(https://wiki.debian.org/AndreyRahmatullin) who sponsors <strong>ddcutil</strong> on Debian and
+<p>And also a shout out to <a href="https://wiki.debian.org/AndreyRahmatullin">Andrey Rahmatullin</a> who sponsors <strong>ddcutil</strong> on Debian and
 has help bring its packaging up to Debian standards.</p>
 <h3 id="099">0.9.9</h3>
 <p>13 June 2020</p>
@@ -808,7 +808,7 @@ This has been implemented as a POSSIBLE way to address occasional reports of <st
  <strong>ddcutiil</strong> calls blocking behind it.   This may become the default in future releases.</p>
 <h4 id="support-for-fglrx-removed">Support for <strong>fglrx</strong> removed</h4>
 <p><strong><em>ddcutil</em></strong> no longer supports AMD's old proprietary display driver <strong><em>fglrx</em></strong>.  Command line option <strong><em>--adl</em></strong> is no longer recognized.
-<strong><em>.configure</em></strong> option <strong><em>--with-adl</em></strong> has been removed.</p>
+<strong><em>configure</em></strong> option <strong><em>--with-adl</em></strong> has been removed.</p>
 <h4 id="miscellaneous">Miscellaneous</h4>
 <ul>
 <li>
@@ -882,7 +882,7 @@ recovery from multiple DDC Null Messages.</p>
 <ul>
 <li>
 <p>As noted above, <strong><em>ddcutil</em></strong> no longer supports AMD's old proprietary video driver <strong><em>fglrx</em></strong>.
-<strong><em>.configure</em></strong> option <strong><em>--with-adl</em></strong> no longer exists.</p>
+<strong><em>configure</em></strong> option <strong><em>--with-adl</em></strong> no longer exists.</p>
 </li>
 <li>
 <p>Reflecting changes to how the PCI and USB hardware ID tables are packaged,  <strong>ddcutil</strong> now prioritizes <strong>pci.ids</strong> and <strong>usb.ids</strong>
