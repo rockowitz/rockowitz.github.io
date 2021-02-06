@@ -218,6 +218,8 @@
     </li>
     <li class="toctree-l2"><a class="reference internal" href="#lg-27md5kl-ultrafine">LG 27MD5KL UltraFine</a>
     </li>
+    <li class="toctree-l2"><a class="reference internal" href="#lg-29um69g">LG 29UM69G</a>
+    </li>
     <li class="toctree-l2"><a class="reference internal" href="#lg-23ea73">LG 23EA73</a>
     </li>
     <li class="toctree-l2"><a class="reference internal" href="#lg-hdr-4k">LG HDR 4K</a>
@@ -803,6 +805,22 @@ feature must be supported as of MCCS 2.0. </p>
 <p>The following features unknown to MCCS are not listed in the capabilities string, but return a value for
 <strong>getvcp</strong>: xD1, xD3,  xD5, xDD</p>
 <p>This monitor also supports USB access to the Virtual Display Panel, but the only feature supported through this interface is 0x10 (brightness).</p>
+<h3 id="lg-29um69g">LG 29UM69G</h3>
+<p>VCP Version:    2.1 
+Manufacture year: 2019<br />
+Controller manufacturer: RealTek  controller number: mh=0x00, ml=0xff, sh=0x00<br />
+Firmware version: 3.24
+EDID version: 1.3 </p>
+<p>EDID model name is  "LG Ultrawide".  No ASCII "serial number".  (Binary serial number not checked)</p>
+<p>Malformed capabilities string.  (The "cmds" segment is named "UM69cmds")</p>
+<p>Users report that it does not support DDC on the DisplayPort input.  (See issue <a href="https://github.com/rockowitz/ddcutil/issues/100">LG 29UM69G fails switching input</a>) on github. </p>
+<pre><code>After more than four month of back and forth with german support I've got this:
+
+Our Korean software development takes note of reports of this kind, but this does not lead to customer feedback. we do not see any need for further action here.
+
+At first they where denying that DDC was even supported, when I've pointed them to the manual and spec sheet then they insisted that it only applied to the OSD. Finally they escalated it.
+I've explained in detail what my problem is, asked if there is a firmware update or an undocumented ddc feature.... and all I got is a not very nice "Don't bother us again!"
+</code></pre>
 <h3 id="lg-23ea73">LG 23EA73</h3>
 <p>Never sets the Unsupported Feature bit in replying to a GETVCP request for an unsupported feature. 
 Instead retuns a success response with all response bytes = 0. </p>
