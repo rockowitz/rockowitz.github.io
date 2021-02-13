@@ -278,10 +278,10 @@ name to group </em><strong>i2c</strong>*: </p>
 
 <p>Then add your userid to group <strong><em>i2c</em></strong> as above.</p>
 <p>A sample udev rule for giving group <strong><em>i2c</em></strong> RW permission on the /dev/i2c devices 
-can be found in distributed file <strong>45-ddcutils-i2c.rules</strong>.  Its exact location varies by distribution, but 
+can be found in distributed file <strong>45-ddcutil-i2c.rules</strong>.  Its exact location varies by distribution, but 
 commonly the file is found in directory /usr/share/ddcutil/data.  The file can be copied to 
 /etc/udev/rules.d, but do check that this rule does not conflict with others in that directory.</p>
-<pre><code>$ sudo cp /usr/share/ddcutil/data/45-ddcutils-i2c.rules /etc/udev/rules.d
+<pre><code>$ sudo cp /usr/share/ddcutil/data/45-ddcutil-i2c.rules /etc/udev/rules.d
 </code></pre>
 
 <p>For testing, it may be simpler to give everyone permission to write to 
