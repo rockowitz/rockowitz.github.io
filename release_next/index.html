@@ -7,9 +7,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
   <meta name="author" content="Sanford Rockowitz">
-  <link rel="canonical" href="https://www.ddcutil.com/usb_permissions/">
+  <link rel="canonical" href="https://www.ddcutil.com/release_next/">
   <link rel="shortcut icon" href="../img/favicon.ico">
-  <title>USB Device Permissions - ddcutil Documentation</title>
+  <title>Preliminary Notes for Release 1.1.0 - ddcutil Documentation</title>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
 
   <link rel="stylesheet" href="../css/theme.css" />
@@ -18,9 +18,9 @@
   
   <script>
     // Current page data
-    var mkdocs_page_name = "USB Device Permissions";
-    var mkdocs_page_input_path = "usb_permissions.md";
-    var mkdocs_page_url = "/usb_permissions/";
+    var mkdocs_page_name = "Preliminary Notes for Release 1.1.0";
+    var mkdocs_page_input_path = "release_next.md";
+    var mkdocs_page_url = "/release_next/";
   </script>
   
   <script src="../js/jquery-2.1.1.min.js" defer></script>
@@ -127,7 +127,7 @@
                     </li>
                 </ul>
                 <p class="caption"><span class="caption-text">Installation and Configuration</span></p>
-                <ul class="current">
+                <ul>
                     <li class="toctree-l1"><a class="reference internal" href="../install/">Install ddcutil From Prebuilt Packages</a>
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="../building/">Building From Source</a>
@@ -138,9 +138,7 @@
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="../i2c_permissions/">I2C Device Permissions</a>
                     </li>
-                    <li class="toctree-l1 current"><a class="reference internal current" href="./">USB Device Permissions</a>
-    <ul class="current">
-    </ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../usb_permissions/">USB Device Permissions</a>
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="../kernel_module/">Kernel Module Configuration</a>
                     </li>
@@ -201,12 +199,24 @@
                     </li>
                 </ul>
                 <p class="caption"><span class="caption-text">Release History</span></p>
-                <ul>
+                <ul class="current">
                     <li class="toctree-l1"><a class="reference internal" href="../releases/">Releases</a>
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="../release_notes/">Release Notes</a>
                     </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../release_next/">Preliminary Notes for Release 1.1.0</a>
+                    <li class="toctree-l1 current"><a class="reference internal current" href="./">Preliminary Notes for Release 1.1.0</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#docking-station-connected-displays">Docking station connected displays</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#configuration-file-ddcutilrc">Configuration file ddcutilrc</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#persistent-capabilities">Persistent capabilities</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#miscellaneous">Miscellaneous</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#building-ddcutil">Building ddcutil</a>
+    </li>
+    </ul>
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="../prior_announcements/">Announcement History</a>
                     </li>
@@ -248,14 +258,14 @@
     
       
         
-          <li>Installation and Configuration &raquo;</li>
+          <li>Release History &raquo;</li>
         
       
     
-    <li>USB Device Permissions</li>
+    <li>Preliminary Notes for Release 1.1.0</li>
     <li class="wy-breadcrumbs-aside">
       
-        <a href="https://github.com/rockowitz/ddcutil/edit/master/docs/usb_permissions.md"
+        <a href="https://github.com/rockowitz/ddcutil/edit/master/docs/release_next.md"
           class="icon icon-github"> Edit on GitHub</a>
       
     </li>
@@ -266,50 +276,116 @@
           <div role="main">
             <div class="section">
               
-                <h2 id="usb-device-permissions">USB Device Permissions<a name="usb_permissions"></a></h2>
-<p>If using a monitor that transmits MCCS over USB, i.e. a monitor that provides access to its Virtual Control Panel over USB, <strong>ddcutil</strong> requires read/write access to device
-/dev/usb/hiddev<strong>N</strong>, where <strong>N</strong> is the number for the device representing the monitor's USB connection.</p>
-<p><strong>ddcutil</strong> has to be careful when accessing the /dev/usb/hiddev* devices, as some of these 
-can represent USB attached input devices such as keyboards or mice. </p>
-<p>Distributed file <strong>45-ddcutil-usb.rules</strong> shows a couple ways to give <strong>ddcutil</strong> the required 
-access.  All but one of the command lines in that file should commented out.
-This file can be edited and copied to 
-/etc/udev/rules.d, but do check that the rules in this file do not conflict with others in that directory.</p>
-<pre><code>$ sudo cp /usr/share/ddcutil/data/etc/udev/rules.d/45-ddcutils-usb.rules /etc/udev/rules.d
+                <h2 id="preliminary-notes-for-release-110-dev">Preliminary Notes for Release 1.1.0-dev</h2>
+<p>Reflecting the extent of changes, development release 1.0.2 has been 
+renumbered 1.1.0.<br />
+This page previews significant changes in the release.</p>
+<h3 id="docking-station-connected-displays">Docking station connected displays</h3>
+<p>At long last, Linux kernel release 5.10 implemented DDC communication 
+over DisplayPort Multi-Stream Transport.  Most commonly, this is seen with displays 
+connected to docking stations.  For several years now, all docking
+station connected displays, even those using HDMI or DVI connections, internally
+rely on a DisplayPort MST connection between the computer and the 
+docking station. </p>
+<p>The kernel changes were made in the Direct Rendering Mode (DRM)
+subsytem.  The Intel i915 and AMD amdgpu drivers, which are implemented as 
+part of DRM, have been tested and (mostly) work. Other drivers  part of the kernel
+DRM component, e.g. nouveau, should also work but have not been tested.
+Nvidia's proprietary driver uses it own proprietary DRM implementation and still 
+does not support DDC communication over MST.  </p>
+<p>Unfortunately there are problems with the DRM code, which ddcutil can sometimes work around.</p>
+<p>Sometimes the display's EDID cannot be read on I2C slave port 50.  As a result, 
+ddcutil does not even report the existence of a display connected to the /dev/i2c device.
+<strong>ddcutil*<em> attempt to work around this by trying to read the EDID multiple times with both 128 and 256 block
+sizes. Depending on the monitor, usually one or the other will work, but sometimes neither do.<br />
+Option </em></strong>-read-edid-size***, which was introduced in release 1.0.1, can force the block size
+to 128 or 256.</p>
+<p>This problem can be unrecoverable when the computer suspends and resumes, requiring reboot.</p>
+<p>On the other hand, the same monitor may appear at two different /dev/i2c devices, only one of which 
+supports DDC.  Curiously the EDID read failures are associated with the /dev/i2c device that supports DDC. 
+<strong>ddcutil attempts* to detect which /dev/i2c device should be used for monitor
+communication, and the </strong>detect** command reports the other as a "Phantom Display" instead of an
+"Invalid Display".  (Thank you laur89 for the wonderfully apt term.)</p>
+<p>My sincere thanks to github users laur89 and boscard for their considerable help in diagnosing this situation. </p>
+<h3 id="configuration-file-ddcutilrc">Configuration file <strong>ddcutilrc</strong></h3>
+<p><strong>ddcutil</strong>'s command options have proliferated, often to address problems specific to a 
+small number of users. To simplify their use, they can now be specified in a configuration file.</p>
+<p><strong>ddcutil</strong> first looks for file <strong>ddcutil/ddcutilrc</strong> in the XDG_CONFIG_HOME directory, 
+and then on the XDG_CONFIG_DIRS search path.  By default, this will be 
+$HOME/.config/ddcutil/ddcutilrc</p>
+<p><strong>ddcutilrc*<em> is a standard style INI file, with sections </em></strong>[global]<strong><em>, </em></strong>[ddcutil]<strong><em>. </em></strong>[ddcui]<strong><em>, and </em></strong>[libddcutil]***.</p>
+<p>It has the following sections: </p>
+<table>
+<thead>
+<tr>
+<th>Section name</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>[global]</td>
+<td>&nbsp; Always apply</td>
+</tr>
+<tr>
+<td>[ddcutil]</td>
+<td>&nbsp; Applies to command <strong>ddcutil</strong></td>
+</tr>
+<tr>
+<td>[ddcui]</td>
+<td>&nbsp; Applies to command <strong>ddcui</strong></td>
+</tr>
+<tr>
+<td>[libddcutil]</td>
+<td>&nbsp; Used to configure shared library <strong>libddcutil</strong></td>
+</tr>
+</tbody>
+</table>
+<p>Within each section, key <strong><em>options</em></strong> specifies an option string. </p>
+<p>Command options for monitor or feature selection cannot be specified.</p>
+<p>For <strong>ddcutil</strong> and <strong>ddcui</strong>, the options string obtained from the 
+configuration file is used to prefix the command line options. </p>
+<p>For <strong>libddcutil</strong>, the option string is read directly when the shared 
+library is initialized. </p>
+<p>For example: </p>
+<pre><code># This is a comment line
+
+[global]
+; Combined with all other options strings
+options : --edid-read-size 256
+
+[ddcutil]
+   * This is a comment too
+   options : --sleep-multiplier .5 --maxtries &quot;3,5,3&quot;
+
+[libddcutil]
+   * And this is a comment.  Leading spaces in a line are ignored
+   options: --noverify
 </code></pre>
 
-<p>The following rule gives all users access to the Virtual Control Panel of an Apple Cinema Display by specifying its 
-USB device user id (aka uid) and product id (aka pid):</p>
-<pre><code>SUBSYSTEM==&quot;usbmisc&quot;, ATTRS{idVendor}==&quot;05ac&quot;, ATTRS{idProduct}==&quot;9223&quot;,  MODE=&quot;0666&quot; 
-</code></pre>
-
-<p>This line would of course have to edited for your monitor.  One way to find its uid/pid is the 
-<strong>lsusb</strong> command. </p>
-<p>A more robust way to set proper device permissions is to call <strong>ddcutil</strong> from a udev rule 
-to test whether a device is a HID compliant monitor: </p>
-<pre><code>SUBSYSTEM==&quot;usbmisc&quot;,  KERNEL==&quot;hiddev*&quot;, PROGRAM=&quot;/usr/bin/ddcutil chkusbmon $env{DEVNAME} -v&quot;, MODE=&quot;0660&quot;, GROUP=&quot;video&quot;
-</code></pre>
-
-<p>Note that the path to the ddcutil executable will have be edited to the location where ddcutil is installed on your system. 
-(For details on command <strong>ddcutil chkusbmon</strong>, see <a href="../usb/#command_chkusbmon">here</a>.</p>
-<p>The -v option produces informational messages.  These are lost when the rule is normally executed by
-udev, but can be helpful when rules are tested using the <strong>udevadm test</strong> command. </p>
-<p>Bear in mind when looking at alternative udev rules is that a device can be be identified in several different ways, 
-two of which are shown above.  Pick one that best works for you.</p>
-<p>The following section from the udev documentation 
-(<a href="https://www.kernel.org/pub/linux/utils/kernel/hotplug/udev/udev.html">https://www.kernel.org/pub/linux/utils/kernel/hotplug/udev/udev.html</a>) 
-may be helpful:</p>
-<blockquote>
-<p>The udev rules are read from the files located in the system rules directory 
-/usr/lib/udev/rules.d, the volatile runtime directory /run/udev/rules.d and 
-the local administration directory /etc/udev/rules.d. All rules files are 
-collectively sorted and processed in lexical order, regardless of the directories 
-in which they live. However, files with identical file names replace each other. 
-Files in /etc have the highest priority, files in /run take precedence over files 
-with the same name in /lib. This can be used to override a system-supplied rules 
-file with a local file if needed; a symlink in /etc with the same name as a rules 
-file in /lib, pointing to /dev/null, disables the rules file entirely.</p>
-</blockquote>
+<p>Section names and keys are case insensitive</p>
+<h3 id="persistent-capabilities">Persistent capabilities</h3>
+<p><strong>capabilities</strong> is the most expensive <strong>ddcutil</strong> command in terms 
+of elapsed time, and also the most prone to failure on marginal I2C host/monitor 
+connections due the large number of I2C requests involved.</p>
+<p>On the other hand, the capabilities string is constant for a monitor model.</p>
+<p><strong>ddcutil</strong> now caches capaiblities strings, significantly speeding up execution. </p>
+<p>This feature is controlled by options <strong><em>--enable-capabilities-cache</em></strong> and <strong><em>--disable-capabilities-cache</em></strong>.
+The default is currently <strong><em>--disable-capabilities-cache</em></strong>, as there are some edge cases not addressed by the current
+implementation. </p>
+<p>The cache is located in file <strong>ddcutil/capabilities</strong> of the XDG cache directory. 
+Typically this is $HOME/.config/ddcutil/capabilities</p>
+<h3 id="miscellaneous">Miscellaneous</h3>
+<ul>
+<li>Warn the user at <strong>ddcutil</strong> startup if module <strong>i2c-dev</strong> is neither loaded nor built into the kernel.
+This should help new users properly configure their systems.  </li>
+<li>More detailed output on the <strong>detect*<em> command, particularly with option </em></strong>--verbose***.  </li>
+<li><strong><em>environment --verbose</em></strong> has more extensive diagnostics, particulary of /sys </li>
+</ul>
+<h3 id="building-ddcutil">Building <strong>ddcutil</strong></h3>
+<p><strong>configure*<em> option </em></strong>--disable-usb<strong><em> now implies </em></strong>--disable-udev***. 
+This addresses a build failure reported by Amon Sha.</p>
+<p>laur89, boscard, pajaitken</p>
               
             </div>
           </div>
@@ -317,10 +393,10 @@ file in /lib, pointing to /dev/null, disables the rules file entirely.</p>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../kernel_module/" class="btn btn-neutral float-right" title="Kernel Module Configuration">Next <span class="icon icon-circle-arrow-right"></span></a>
+        <a href="../prior_announcements/" class="btn btn-neutral float-right" title="Announcement History">Next <span class="icon icon-circle-arrow-right"></span></a>
       
       
-        <a href="../i2c_permissions/" class="btn btn-neutral" title="I2C Device Permissions"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../release_notes/" class="btn btn-neutral" title="Release Notes"><span class="icon icon-circle-arrow-left"></span> Previous</a>
       
     </div>
   
@@ -348,10 +424,10 @@ file in /lib, pointing to /dev/null, disables the rules file entirely.</p>
           <a href="https://github.com/rockowitz/ddcutil/" class="fa fa-github" style="float: left; color: #fcfcfc"> GitHub</a>
       
       
-        <span><a href="../i2c_permissions/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+        <span><a href="../release_notes/" style="color: #fcfcfc;">&laquo; Previous</a></span>
       
       
-        <span style="margin-left: 15px"><a href="../kernel_module/" style="color: #fcfcfc">Next &raquo;</a></span>
+        <span style="margin-left: 15px"><a href="../prior_announcements/" style="color: #fcfcfc">Next &raquo;</a></span>
       
     </span>
 </div>

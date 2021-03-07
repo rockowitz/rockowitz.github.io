@@ -7,9 +7,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
   <meta name="author" content="Sanford Rockowitz">
-  <link rel="canonical" href="https://www.ddcutil.com/usb_permissions/">
+  <link rel="canonical" href="https://www.ddcutil.com/changlog/">
   <link rel="shortcut icon" href="../img/favicon.ico">
-  <title>USB Device Permissions - ddcutil Documentation</title>
+  <title>Changelog - ddcutil Documentation</title>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
 
   <link rel="stylesheet" href="../css/theme.css" />
@@ -18,9 +18,9 @@
   
   <script>
     // Current page data
-    var mkdocs_page_name = "USB Device Permissions";
-    var mkdocs_page_input_path = "usb_permissions.md";
-    var mkdocs_page_url = "/usb_permissions/";
+    var mkdocs_page_name = "Changelog";
+    var mkdocs_page_input_path = "changlog.md";
+    var mkdocs_page_url = "/changlog/";
   </script>
   
   <script src="../js/jquery-2.1.1.min.js" defer></script>
@@ -127,7 +127,7 @@
                     </li>
                 </ul>
                 <p class="caption"><span class="caption-text">Installation and Configuration</span></p>
-                <ul class="current">
+                <ul>
                     <li class="toctree-l1"><a class="reference internal" href="../install/">Install ddcutil From Prebuilt Packages</a>
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="../building/">Building From Source</a>
@@ -138,9 +138,7 @@
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="../i2c_permissions/">I2C Device Permissions</a>
                     </li>
-                    <li class="toctree-l1 current"><a class="reference internal current" href="./">USB Device Permissions</a>
-    <ul class="current">
-    </ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../usb_permissions/">USB Device Permissions</a>
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="../kernel_module/">Kernel Module Configuration</a>
                     </li>
@@ -247,15 +245,11 @@
     <li><a href="..">Docs</a> &raquo;</li>
     
       
-        
-          <li>Installation and Configuration &raquo;</li>
-        
-      
     
-    <li>USB Device Permissions</li>
+    <li>Changelog</li>
     <li class="wy-breadcrumbs-aside">
       
-        <a href="https://github.com/rockowitz/ddcutil/edit/master/docs/usb_permissions.md"
+        <a href="https://github.com/rockowitz/ddcutil/edit/master/docs/changlog.md"
           class="icon icon-github"> Edit on GitHub</a>
       
     </li>
@@ -266,63 +260,40 @@
           <div role="main">
             <div class="section">
               
-                <h2 id="usb-device-permissions">USB Device Permissions<a name="usb_permissions"></a></h2>
-<p>If using a monitor that transmits MCCS over USB, i.e. a monitor that provides access to its Virtual Control Panel over USB, <strong>ddcutil</strong> requires read/write access to device
-/dev/usb/hiddev<strong>N</strong>, where <strong>N</strong> is the number for the device representing the monitor's USB connection.</p>
-<p><strong>ddcutil</strong> has to be careful when accessing the /dev/usb/hiddev* devices, as some of these 
-can represent USB attached input devices such as keyboards or mice. </p>
-<p>Distributed file <strong>45-ddcutil-usb.rules</strong> shows a couple ways to give <strong>ddcutil</strong> the required 
-access.  All but one of the command lines in that file should commented out.
-This file can be edited and copied to 
-/etc/udev/rules.d, but do check that the rules in this file do not conflict with others in that directory.</p>
-<pre><code>$ sudo cp /usr/share/ddcutil/data/etc/udev/rules.d/45-ddcutils-usb.rules /etc/udev/rules.d
-</code></pre>
-
-<p>The following rule gives all users access to the Virtual Control Panel of an Apple Cinema Display by specifying its 
-USB device user id (aka uid) and product id (aka pid):</p>
-<pre><code>SUBSYSTEM==&quot;usbmisc&quot;, ATTRS{idVendor}==&quot;05ac&quot;, ATTRS{idProduct}==&quot;9223&quot;,  MODE=&quot;0666&quot; 
-</code></pre>
-
-<p>This line would of course have to edited for your monitor.  One way to find its uid/pid is the 
-<strong>lsusb</strong> command. </p>
-<p>A more robust way to set proper device permissions is to call <strong>ddcutil</strong> from a udev rule 
-to test whether a device is a HID compliant monitor: </p>
-<pre><code>SUBSYSTEM==&quot;usbmisc&quot;,  KERNEL==&quot;hiddev*&quot;, PROGRAM=&quot;/usr/bin/ddcutil chkusbmon $env{DEVNAME} -v&quot;, MODE=&quot;0660&quot;, GROUP=&quot;video&quot;
-</code></pre>
-
-<p>Note that the path to the ddcutil executable will have be edited to the location where ddcutil is installed on your system. 
-(For details on command <strong>ddcutil chkusbmon</strong>, see <a href="../usb/#command_chkusbmon">here</a>.</p>
-<p>The -v option produces informational messages.  These are lost when the rule is normally executed by
-udev, but can be helpful when rules are tested using the <strong>udevadm test</strong> command. </p>
-<p>Bear in mind when looking at alternative udev rules is that a device can be be identified in several different ways, 
-two of which are shown above.  Pick one that best works for you.</p>
-<p>The following section from the udev documentation 
-(<a href="https://www.kernel.org/pub/linux/utils/kernel/hotplug/udev/udev.html">https://www.kernel.org/pub/linux/utils/kernel/hotplug/udev/udev.html</a>) 
-may be helpful:</p>
-<blockquote>
-<p>The udev rules are read from the files located in the system rules directory 
-/usr/lib/udev/rules.d, the volatile runtime directory /run/udev/rules.d and 
-the local administration directory /etc/udev/rules.d. All rules files are 
-collectively sorted and processed in lexical order, regardless of the directories 
-in which they live. However, files with identical file names replace each other. 
-Files in /etc have the highest priority, files in /run take precedence over files 
-with the same name in /lib. This can be used to override a system-supplied rules 
-file with a local file if needed; a symlink in /etc with the same name as a rules 
-file in /lib, pointing to /dev/null, disables the rules file entirely.</p>
-</blockquote>
+                <h1 id="changelog">Changelog</h1>
+<h2 id="110-2021-03-05">[1.1.0] 2021-03-05</h2>
+<p>For details, see <a href="https://www.ddcutil.com/release_notes">ddcutil Relase Notes</a></p>
+<h3 id="added">Added</h3>
+<ul>
+<li>Configuration file <strong>ddcutilrc</strong>, which is located nn the XDG config path.   </li>
+<li>Cache configuration strings to improve performance of the <strong>capabilities*<em> command.<br />
+  Controlled by option </em></strong>--enable-capabilities-cache<strong><em>  </em></strong>--disable-capabilities-cache*** ??  </li>
+<li>Workarounds for quirks in DRM video drivers (e.g. i915, ARM) when displays are connected to 
+  a docking station. For example, the same monitor can appear at two different /dev/i2c devices,
+  but only one supports DDC/CI.  If possible these are reported as a "Phantom Display" instead of 
+  an "Invalid Display".</li>
+<li>Check at startup that driver i2c-dev is loaded or built in.</li>
+</ul>
+<h3 id="changed">Changed</h3>
+<ul>
+<li>By default, files generated by <strong>dumpvcp</strong> are saved in the $XDG_DATA_HOME directory.</li>
+<li><strong>environment --verbose</strong> has more detailed reporting of the relevant sections of /sys</li>
+<li>Additional functions are traceable using option <strong><em>--trcfunc</em></strong></li>
+<li>Additional information on <strong>detect --verbose</strong>.</li>
+<li>More extensive <strong>environment</strong> command output.</li>
+<li>Workarounds for quirks querying EDID</li>
+</ul>
+<h3 id="fixed">Fixed</h3>
+<ul>
+<li>Regard IO operations setting errno EBUSY as recoverable, suggest use of --force-slave-address. </li>
+<li>Better recovery from conflict with driver ddc???, manifested as Linux errno EBUSY.</li>
+<li>Build failure for combined configure option --disable-usb with --enable-envcmds   </li>
+</ul>
+<h3 id="removed">Removed</h3>
               
             </div>
           </div>
           <footer>
-  
-    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-      
-        <a href="../kernel_module/" class="btn btn-neutral float-right" title="Kernel Module Configuration">Next <span class="icon icon-circle-arrow-right"></span></a>
-      
-      
-        <a href="../i2c_permissions/" class="btn btn-neutral" title="I2C Device Permissions"><span class="icon icon-circle-arrow-left"></span> Previous</a>
-      
-    </div>
   
 
   <hr/>
@@ -348,10 +319,6 @@ file in /lib, pointing to /dev/null, disables the rules file entirely.</p>
           <a href="https://github.com/rockowitz/ddcutil/" class="fa fa-github" style="float: left; color: #fcfcfc"> GitHub</a>
       
       
-        <span><a href="../i2c_permissions/" style="color: #fcfcfc;">&laquo; Previous</a></span>
-      
-      
-        <span style="margin-left: 15px"><a href="../kernel_module/" style="color: #fcfcfc">Next &raquo;</a></span>
       
     </span>
 </div>
