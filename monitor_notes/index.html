@@ -830,17 +830,15 @@ EDID version: 1.3 </p>
      Has 1 HDMI, 1 DisplayPort, 1 USB-C Alt DP
 </code></pre>
 <p>Users report that it does not support DDC on the DisplayPort input.  (See issue <a href="https://github.com/rockowitz/ddcutil/issues/100">LG 29UM69G fails switching input</a>) on github. </p>
-<p>Github user mbastian resports: </p>
-<pre><code>After more than four month of back and forth with german support I've got this:
-
-Our Korean software development takes note of reports of this kind, but this does not lead to customer feedback. we do not see any need for further action here.
-
-At first they where denying that DDC was even supported, when I've pointed them to the manual and spec sheet then they insisted that it only applied to the OSD. Finally they escalated it.
-I've explained in detail what my problem is, asked if there is a firmware update or an undocumented ddc feature.... and all I got is a not very nice "Don't bother us again!"
-</code></pre>
+<p>Github user mbastian resported: </p>
+<p>After more than four months of back and forth with German support I've got this:</p>
+<p>Our Korean software development takes note of reports of this kind, but this does not lead to customer feedback.
+Wwe do not see any need for further action here.</p>
+<p>At first they where denying that DDC was even supported, when I've pointed them to the manual and spec sheet then they insisted that it only applied to the OSD. Finally they escalated it.
+I've explained in detail what my problem is, asked if there is a firmware update or an undocumented ddc feature.... and all I got is a not very nice "Don't bother us again!"</p>
 <h3 id="lg-27bn88u-27ul850-27gn950-b-29um69g-34wk500-p-34wn80c-b-34um88p-38wn95c">LG 27BN88U  27UL850  27GN950-B 29UM69G 34Wk500-P 34WN80C-B 34UM88P 38WN95C</h3>
-<p>Users of all these recent LG displays report similar problems with VCP feature X60 (Input Source).</p>
-<p><strong><em>getvcp 60</em></strong> always returns x00, which is not a valid value  <br />
+<p>Users of all these recent LG displays report similar problems with VCP feature X60 (Input Source).
+<strong><em>getvcp 60</em></strong> always returns x00, which is not a valid value. 
 <strong><em>setvcp 60</em></strong> flashes the screen, sometimes opens the OSD, never sets the value</p>
 <h3 id="lg-27ud88-29ums7p">LG 27UD88  29UMS7P</h3>
 <p>Users report this monitors do support featrue x60 </p>
