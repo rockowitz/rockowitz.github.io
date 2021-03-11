@@ -298,7 +298,7 @@ does not support DDC communication over MST.  </p>
 ddcutil does not report the existence of a display connected to the /dev/i2c device.
 <strong><em>ddcutil</em></strong> attempt to work around this by trying to read the EDID multiple times with both 128 and 256 block
 sizes. Depending on the monitor, usually one or the other will work, but sometimes neither do.<br />
-Option <strong><em>-read-edid-size</em></strong>, which was introduced in release 1.0.1, can force the block size
+Option <strong><em>--edid-read-size</em></strong>, which was introduced in release 1.0.1, can force the block size
 to 128 or 256.</p>
 <p>This problem can be unrecoverable when the computer suspends and resumes, requiring reboot.</p>
 <p>On the other hand, the same monitor may appear as two different /dev/i2c devices, only one of which 
@@ -380,7 +380,7 @@ connections due the large number of I2C requests involved.</p>
 <p>This feature is controlled by options <strong><em>--enable-capabilities-cache</em></strong> and <strong><em>--disable-capabilities-cache</em></strong>.
 The default is currently <strong><em>--disable-capabilities-cache</em></strong>, as there are some edge cases not yet addressed</p>
 <p>The cache is located in file <strong>ddcutil/capabilities</strong> of the XDG cache directory. 
-Typically this is $HOME/.config/ddcutil/capabilities.  This file can safely be erased if the 
+Typically this is $HOME/.cache/ddcutil/capabilities.  This file can safely be erased if the 
 stored capabilities string should become corrupted in some way. </p>
 <h3 id="miscellaneous">Miscellaneous</h3>
 <ul>
