@@ -214,11 +214,17 @@
     </li>
     <li class="toctree-l2"><a class="reference internal" href="#lg-22mp48d-p">LG 22MP48D-P</a>
     </li>
+    <li class="toctree-l2"><a class="reference internal" href="#lg-23ea73">LG 23EA73</a>
+    </li>
     <li class="toctree-l2"><a class="reference internal" href="#lg-27mu67">LG 27MU67</a>
     </li>
     <li class="toctree-l2"><a class="reference internal" href="#lg-27md5kl-ultrafine">LG 27MD5KL UltraFine</a>
     </li>
-    <li class="toctree-l2"><a class="reference internal" href="#lg-23ea73">LG 23EA73</a>
+    <li class="toctree-l2"><a class="reference internal" href="#lg-29um69g">LG 29UM69G</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#lg-27bn88u-27ul850-27gn950-b-29um69g-34wk500-p-34wn80c-b-34um88p-38wn95c">LG 27BN88U  27UL850  27GN950-B 29UM69G 34Wk500-P 34WN80C-B 34UM88P 38WN95C</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#lg-27ud88-29ums7p">LG 27UD88  29UMS7P</a>
     </li>
     <li class="toctree-l2"><a class="reference internal" href="#lg-hdr-4k">LG HDR 4K</a>
     </li>
@@ -778,6 +784,9 @@ Firmware version: 5.0  </p>
 <p>EDID model name is generic "LG IPS FULLHD"</p>
 <p>Never sets the Unsupported Feature bit in replying to a GETVCP request for an unsupported feature. 
 Instead retuns a success response with all response bytes = 0. </p>
+<h3 id="lg-23ea73">LG 23EA73</h3>
+<p>Never sets the Unsupported Feature bit in replying to a GETVCP request for an unsupported feature. 
+Instead retuns a success response with all response bytes = 0. </p>
 <h3 id="lg-27mu67">LG 27MU67</h3>
 <p>VCP Version:             2.1<br />
 Manufacture year:        2015<br />
@@ -805,41 +814,36 @@ feature must be supported as of MCCS 2.0. </p>
 <p>The following features unknown to MCCS are not listed in the capabilities string, but return a value for
 <strong>getvcp</strong>: xD1, xD3,  xD5, xDD</p>
 <p>This monitor also supports USB access to the Virtual Display Panel, but the only feature supported through this interface is 0x10 (brightness).</p>
-<!--
-### LG 29UM69G
-
-VCP Version:    2.1 
-Manufacture year: 2019  
-Controller manufacturer: RealTek  controller number: mh=0x00, ml=0xff, sh=0x00  
+<h3 id="lg-29um69g">LG 29UM69G</h3>
+<p>VCP Version:    2.1 
+Manufacture year: 2019<br />
+Controller manufacturer: RealTek  controller number: mh=0x00, ml=0xff, sh=0x00<br />
 Firmware version: 3.24
-EDID version: 1.3 
+EDID version: 1.3 </p>
+<p>EDID model name is  "LG Ultrawide".  No ASCII "serial number".  (Binary serial number not checked)</p>
+<p>Malformed capabilities string.  (The "cmds" segment is named "UM69cmds")</p>
+<pre><code>  Values (  parsed):
+     0f: DisplayPort-1
+     10: DisplayPort-2
+     11: HDMI-1
 
-EDID model name is  "LG Ultrawide".  No ASCII "serial number".  (Binary serial number not checked)
+     Has 1 HDMI, 1 DisplayPort, 1 USB-C Alt DP
+</code></pre>
+<p>Users report that it does not support DDC on the DisplayPort input.  (See issue <a href="https://github.com/rockowitz/ddcutil/issues/100">LG 29UM69G fails switching input</a>) on github. </p>
+<p>Github user mbastian resports: </p>
+<pre><code>After more than four month of back and forth with german support I've got this:
 
-Malformed capabilities string.  (The "cmds" segment is named "UM69cmds")
+Our Korean software development takes note of reports of this kind, but this does not lead to customer feedback. we do not see any need for further action here.
 
-      Values (  parsed):
-         0f: DisplayPort-1
-         10: DisplayPort-2
-         11: HDMI-1
-
-         Has 1 HDMI, 1 DisplayPort, 1 USB-C Alt DP
-
-Users report that it does not support DDC on the DisplayPort input.  (See issue [LG 29UM69G fails switching input](https://github.com/rockowitz/ddcutil/issues/100)) on github. 
-
-
-
-    After more than four month of back and forth with german support I've got this:
-
-    Our Korean software development takes note of reports of this kind, but this does not lead to customer feedback. we do not see any need for further action here.
-
-    At first they where denying that DDC was even supported, when I've pointed them to the manual and spec sheet then they insisted that it only applied to the OSD. Finally they escalated it.
-    I've explained in detail what my problem is, asked if there is a firmware update or an undocumented ddc feature.... and all I got is a not very nice "Don't bother us again!"
--->
-
-<h3 id="lg-23ea73">LG 23EA73</h3>
-<p>Never sets the Unsupported Feature bit in replying to a GETVCP request for an unsupported feature. 
-Instead retuns a success response with all response bytes = 0. </p>
+At first they where denying that DDC was even supported, when I've pointed them to the manual and spec sheet then they insisted that it only applied to the OSD. Finally they escalated it.
+I've explained in detail what my problem is, asked if there is a firmware update or an undocumented ddc feature.... and all I got is a not very nice "Don't bother us again!"
+</code></pre>
+<h3 id="lg-27bn88u-27ul850-27gn950-b-29um69g-34wk500-p-34wn80c-b-34um88p-38wn95c">LG 27BN88U  27UL850  27GN950-B 29UM69G 34Wk500-P 34WN80C-B 34UM88P 38WN95C</h3>
+<p>Users of all these recent LG displays report similar problems with VCP feature X60 (Input Source).</p>
+<p><strong><em>getvcp 60</em></strong> always returns x00, which is not a valid value  <br />
+<strong><em>setvcp 60</em></strong> flashes the screen, sometimes opens the OSD, never sets the value</p>
+<h3 id="lg-27ud88-29ums7p">LG 27UD88  29UMS7P</h3>
+<p>Users report this monitors do support featrue x60 </p>
 <h3 id="lg-hdr-4k">LG HDR 4K</h3>
 <p>No model name string in EDID.  The binary model number is set (x7702 = 30471) </p>
 <p>No ASCII serial number in EDID.  Binary serial number is present</p>
