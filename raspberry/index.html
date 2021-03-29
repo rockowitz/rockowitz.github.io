@@ -274,17 +274,14 @@
               
                 <h2 id="raspberry-pi">Raspberry Pi</h2>
 <h3 id="raspberry-pi-4">Raspberry Pi 4</h3>
-<p>As of firmware 5.10, the HDMI interface on the Raspberry Pi 4 supports I2C.  As a result, <strong>ddcutil</strong> works on the Pi 4.  The following steps will enable <strong>ddcutil</strong>. </p>
+<p>As of firmware 5.10, the HDMI interface on the Raspberry Pi 4 supports I2C.  The following steps will enable <strong>ddcutil</strong>. </p>
 <ul>
-<li>Ensure you are at least on firmware 5.10, which is now mainstream.  If necessary, execute: </li>
-</ul>
-<pre><code>$ sudo apt update &amp;&amp; sudo apt upgrade
-</code></pre>
-
-<ul>
+<li>Ensure you are at least on firmware 5.10, which is now mainstream.  If necessary, execute: 
+<br>
+<code>$ sudo apt update &amp;&amp; sudo apt upgrade</code></li>
 <li>In /boot/config/txt, look for the <strong><em>[Pi4]</em></strong> section and replace <strong><em>dtoverlay=vc4-fkms-v3d</em></strong> with <strong><em>dtoverlay=vc4-kms-v3d</em></strong></li>
-<li>In /etc/modules, add i2c_dev</li>
-<li>Reboot</li>
+<li>In /etc/modules, add i2c_dev  </li>
+<li>Reboot  </li>
 <li>If you have not yet installed ddcutil: <code>$ sudo apt install ddcutil</code></li>
 <li>The I2C buses for the two HDMI ports will be /dev/i2c-11 and /dev/i2c-12. Note that bus names will be /dev/i2c-12 and /dev/i2c-13 if 
 <code>dtparam=i2c_vc_on</code> is also present in config.txt.</li>
