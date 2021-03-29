@@ -372,9 +372,9 @@ options : --edid-read-size 256
 
 <p>Section names and keys are case insensitive</p>
 <h3 id="persistent-capabilities">Persistent capabilities</h3>
-<p><strong>capabilities</strong> is the most expensive <strong>ddcutil</strong> command in terms 
-of elapsed time, and also the most prone to failure on marginal I2C host/monitor 
-connections due the large number of I2C requests involved.</p>
+<p><strong>capabilities</strong> is the most expensive <strong>ddcutil</strong> command in 
+elapsed time.  It is also the most prone to failure on marginal I2C host/monitor 
+connections, due the large number of I2C requests involved.</p>
 <p>On the other hand, the capabilities string is constant for a monitor model.
 <strong>ddcutil</strong> now caches capaiblities strings, significantly speeding up execution. </p>
 <p>This feature is controlled by options <strong><em>--enable-capabilities-cache</em></strong> and <strong><em>--disable-capabilities-cache</em></strong>.
@@ -388,6 +388,8 @@ stored capabilities string should become corrupted in some way. </p>
 This should help new users properly configure their systems.  </li>
 <li>More detailed output on the <strong><em>detect</em></strong> command, particularly with option <strong><em>--verbose</em></strong>.  </li>
 <li><strong><em>environment --verbose</em></strong> has more extensive diagnostics, particulary of /sys </li>
+<li>Avoid corrupting the state of AMD Navi4 gpus, e.g. RX 6000 series, by not examining SMU I2C buses on the 
+video adapter.</li>
 </ul>
 <h3 id="building-ddcutil">Building <strong>ddcutil</strong></h3>
 <p><strong><em>configure</em></strong> option <strong><em>--disable-usb</em></strong> now implies <strong><em>--disable-udev</em></strong>. 
