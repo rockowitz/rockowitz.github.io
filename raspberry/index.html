@@ -283,7 +283,7 @@
 <li>In /etc/modules, add i2c_dev  </li>
 <li>Reboot  </li>
 <li>If you have not yet installed ddcutil: <code>$ sudo apt install ddcutil</code></li>
-<li>The I2C buses for the two HDMI ports will be /dev/i2c-11 and /dev/i2c-12. Note that bus names will be /dev/i2c-12 and /dev/i2c-13 if 
+<li>The I2C buses for the two HDMI ports are normally /dev/i2c-11 and /dev/i2c-12. However, the bus names will be /dev/i2c-12 and /dev/i2c-13 if 
 <code>dtparam=i2c_vc_on</code> is also present in config.txt.</li>
 </ul>
 <p>Thank you Robert Alexa for updating the status of <strong>ddcutil</strong> on the Pi 4 and providing the above instructions. For a long thread on the problem of I2C support
