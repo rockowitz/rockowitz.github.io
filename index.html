@@ -274,34 +274,15 @@
               
                 <h1 id="ddcutil">ddcutil</h1>
 <h2 id="announcements">Announcements</h2>
-<p>08 February 2021</p>
-<p><strong>ddcutil</strong> release 1.0.1 addresses the situation wherein a display connected through a docking station is not detected 
-when the i915 video driver is used.  (I2C support for docking station connected displays, and more generally displays using 
-DisplayPort Multi Stream Transport. was recently implemented for i915 and amdgpu drivers in Kernel 5.10. Initial <strong>ddcutil</strong>
-code for this situation did not adequately work around problems in the driver implementation.</p>
-<p>03 February 2021</p>
-<p><strong>ddcutil</strong> release 1.0.0 marks a milestone.  It is time to regard <strong>ddcutil</strong> as having reached production status.  There of course remain features to add, and the codebase warrants cleanup, but the feature set has been stable for some time. Bug reports are infrequent, and reflect unusual situations. </p>
-<p>There are two enhancements of general interest:</p>
+<p>05 April 2021</p>
+<p><strong>ddcutil</strong> release 1.1.0 contains the following changes of general interest:</p>
 <ul>
-<li><a href="udf/">User Defined Features</a>, which have existed for some time, are now formally available.  </li>
-<li>Option <strong><em>--mccs</em></strong> now applies to <strong>getvcp</strong>, <strong>setvcp</strong>, and <strong>dumpvcp</strong> as well as <strong>vcpinfo</strong>. </li>
+<li>Configuration file <strong>ddcutilrc</strong>, located on the XDG config path (normally $HOME/.config/ddcutil/ddcutilrc)  is processed by both <strong>ddcutil</strong> and <strong>libddcutil</strong>. </li>
+<li>Monitor capabilities strings are cached to improve performance of the <strong>capabilities</strong> command.</li>
+<li>Partial workarounds for problems in DRM video drivers (e.g. i915, AMDGPU) when monitors are connected to a docking station. The monitor may not be detected (because no EDID is reported), or the monitor may appear as two different /dev/i2c devices. </li>
+<li>When probing /dev/i2c devices for monitors, <strong>ddcutil</strong> could put AMD Navi2 devices (e.g.  RX6000 series) into an inconsistent state. This is because the devices expose an I2C devices for the SMU.  Display detection is modified to avoid probing these devices. </li>
 </ul>
-<p>The remaining changes in this release, while extensive, are likely of little interest to most users.  The most notable changes are:</p>
-<ul>
-<li><strong><em>ddcutil</em></strong> no longer by default checks for monitors exposing the Virtual Control Panel over USB.  Such monitors have proven rare, and messages about lack of permission to read /dev/usb/hiddev devices can be be needless confusing.  Command option <strong><em>--enable-usb</em></strong> will activate handling of USB connected monitors.  </li>
-<li>The <strong>detect</strong> commands provides additional information about the monitors found.  </li>
-<li>The <strong>capabilities</strong> command better handles malformed capabilities strings.  </li>
-<li><strong>getvcp</strong> has special handling for features x62 (audio volume), x87 (audio treble), x91 (audio bass), and x93 (audio balance). In MCCS 2.2 and 3.0, these otherwise continuous VCP 
-features have special reserved values.  </li>
-<li>Parsing <strong>setvcp</strong> command arguments was incorrect when multiple features are changed on a single <strong>setvcp</strong> command.  </li>
-</ul>
-<p>The shared library API has minor, but not upwardly compatible, changes.  The current library SONAME is libddcutil.so.1, and the library package is libddcutil4. 
-<!--
-- **ddcutil** installation includes the files required for inclusion in app stores such as **KDE Discover** and **Gnome Software**.<br />-->
-<!--
-**ddcui** release 0.2.0 requires libddcutil from **ddcutil** 1.0.0.
-For general information about the graphical user interface, see <a href="ddcui_main.md">ddcui</a>.
---></p>
+<p>The <strong>libddcutil</strong> shared library is unchanged. Its SONAME remains "libddcutil.so.4", and the package name is <strong>libddcutil4</strong>.</p>
 <p>For a complete list of <strong>ddcutil</strong> changes and bug fixes, see <a href="release_notes/">Release Notes</a>.
 <!--
 For **ddcui** changes and bug fixes, see <a href="ddcui_release_notes.md">ddcui Release Notes</a>.
@@ -424,6 +405,6 @@ The source is hosted on <a href="http://www.github.com/rockowitz/ddcuui">Github<
 </html>
 
 <!--
-MkDocs version : 1.1
-Build Date UTC : 2021-04-05 15:00:58
+MkDocs version : 1.1.2
+Build Date UTC : 2021-04-06 04:29:55.405457+00:00
 -->

@@ -281,6 +281,29 @@
             <div class="section">
               
                 <h2 id="prior-announcements">Prior Announcements</h2>
+<p>08 February 2021</p>
+<p><strong>ddcutil</strong> release 1.0.1 addresses the situation wherein a display connected through a docking station is not detected 
+when the i915 video driver is used.  (I2C support for docking station connected displays, and more generally displays using 
+DisplayPort Multi Stream Transport. was recently implemented for i915 and amdgpu drivers in Kernel 5.10. Initial <strong>ddcutil</strong>
+code for this situation did not adequately work around problems in the driver implementation.</p>
+<p>03 February 2021</p>
+<p><strong>ddcutil</strong> release 1.0.0 marks a milestone.  It is time to regard <strong>ddcutil</strong> as having reached production status.  There of course remain features to add, and the codebase warrants cleanup, but the feature set has been stable for some time. Bug reports are infrequent, and reflect unusual situations. </p>
+<p>There are two enhancements of general interest:</p>
+<ul>
+<li><a href="../udf/">User Defined Features</a>, which have existed for some time, are now formally available.  </li>
+<li>Option <strong><em>--mccs</em></strong> now applies to <strong>getvcp</strong>, <strong>setvcp</strong>, and <strong>dumpvcp</strong> as well as <strong>vcpinfo</strong>. </li>
+</ul>
+<p>The remaining changes in this release, while extensive, are likely of little interest to most users.  The most notable changes are:</p>
+<ul>
+<li><strong><em>ddcutil</em></strong> no longer by default checks for monitors exposing the Virtual Control Panel over USB.  Such monitors have proven rare, and messages about lack of permission to read /dev/usb/hiddev devices can be be needless confusing.  Command option <strong><em>--enable-usb</em></strong> will activate handling of USB connected monitors.  </li>
+<li>The <strong>detect</strong> commands provides additional information about the monitors found.  </li>
+<li>The <strong>capabilities</strong> command better handles malformed capabilities strings.  </li>
+<li><strong>getvcp</strong> has special handling for features x62 (audio volume), x87 (audio treble), x91 (audio bass), and x93 (audio balance). In MCCS 2.2 and 3.0, these otherwise continuous VCP 
+features have special reserved values.  </li>
+<li>Parsing <strong>setvcp</strong> command arguments was incorrect when multiple features are changed on a single <strong>setvcp</strong> command.  </li>
+</ul>
+<p>The shared library API has minor, but not upwardly compatible, changes.  The current library SONAME is libddcutil.so.4, and the library package is libddcutil4. </p>
+<p>Prior announcements can be found <a href="./">here</a>.</p>
 <p>09 July 2020</p>
 <p>Branch master on github was out of sync with the <a href="../tarballs/ddcutil-0.9.9.tar.gz">reference tarball</a> and prebuilt packages on <a href="https://launchpad.net/~rockowitz/+archive/ubuntu/ddcutil">launchpad</a>,
 <a href="https://copr.fedorainfracloud.org/coprs/rockowitz/ddcutil/">COPR</a>, and the <a href="http://download.opensuse.org/repositories/home:/rockowitz/">openSUSE Build Service</a>. The missing changes have been pushed to the master branch. If you have already built release 0.9.9 from the github master branch, pull the changes and rebuild.</p>

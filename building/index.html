@@ -284,7 +284,7 @@
               
                 <h2 id="building-from-source">Building From Source</h2>
 <h3 id="building-from-tarball">Building from tarball</h3>
-<p><strong>ddcutil</strong> can be built from its <a href="../tarballs/ddcutil-1.0.1.tar.gz">tarball</a> in the usual way.
+<p><strong>ddcutil</strong> can be built from its <a href="../tarballs/ddcutil-1.1.0.tar.gz">tarball</a> in the usual way.
 Unpack the tar file, change to its directory, and issue the commands: </p>
 <pre><code># ./configure
 # make
@@ -312,11 +312,12 @@ given for ddcutil prerequisites.  Ultimately, you'll have to try to build ddcuti
 <p>ddcutil requires the following packages for both building and execution:</p>
 <ul>
 <li>i2c-tools</li>
-<li>glib-2.0  (Note: glib-2.0 can be packaged with different names, e.g. libglib2.0-0, and may entail installing multiple packages.)</li>
+<li>glib-2.0  (Note: glib-2.0 can be packaged with different names, e.g. libglib2.0-0, and may entail installing multiple packages.)
+  Minimum version: 2.32</li>
 <li>libgudev  (e.g. libgudev1)</li>
-<li>libusb-1.0 (e.g. libusb-1.0-0) </li>
+<li>libusb-1.0 (e.g. libusb-1.0-0) Minimum version 1.0.15 </li>
 <li>libudev (e.g. libudev1)</li>
-<li>libdrm2 </li>
+<li>libdrm2  Minimum version: 2.4.16</li>
 <li>libxrandr2</li>
 <li>hwdata</li>
 </ul>
@@ -352,8 +353,8 @@ is not found but it seems to be installed, it's likely that the associated devel
 <p>Building <strong>ddcutil</strong> from git requires that the <em>autotools</em> related packages be installed.<br />
 The exact packages vary from distribution to distribution.   On Ubuntu, these include:</p>
 <ul>
-<li>autoconf  </li>
-<li>automake  </li>
+<li>autoconf, Minimum version: 2.50</li>
+<li>automake, Minimum version: 1.13</li>
 <li>autotools-dev  </li>
 <li>libtool  </li>
 <li>m4  </li>
