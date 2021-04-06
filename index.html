@@ -277,7 +277,7 @@
 <li>Configuration file <strong>ddcutilrc</strong>, located on the XDG config path (normally $HOME/.config/ddcutil/ddcutilrc)  is processed by both <strong>ddcutil</strong> and <strong>libddcutil</strong>. </li>
 <li>Monitor capabilities strings are cached to improve performance of the <strong>capabilities</strong> command.</li>
 <li>Partial workarounds for problems in DRM video drivers (e.g. i915, AMDGPU) when monitors are connected to a docking station. The monitor may not be detected (because no EDID is reported), or the monitor may appear as two different /dev/i2c devices. </li>
-<li>When probing /dev/i2c devices for monitors, <strong>ddcutil</strong> could put AMD Navi2 devices (e.g.  RX6000 series) into an inconsistent state. This is because the devices expose an I2C devices for the SMU.  Display detection is modified to avoid probing these devices. </li>
+<li>When probing /dev/i2c devices for monitors, <strong>ddcutil</strong> could put AMD Navi2 devices (e.g.  RX6000 series) into an inconsistent state. This is because the driver exposes an I2C devices for the SMU.  Display detection is modified to avoid probing these devices. </li>
 </ul>
 <p>The <strong>libddcutil</strong> shared library is unchanged. Its SONAME remains "libddcutil.so.4", and the package name is <strong>libddcutil4</strong>.</p>
 <p>For a complete list of <strong>ddcutil</strong> changes and bug fixes, see <a href="release_notes/">Release Notes</a>.
@@ -403,5 +403,5 @@ The source is hosted on <a href="http://www.github.com/rockowitz/ddcuui">Github<
 
 <!--
 MkDocs version : 1.1.2
-Build Date UTC : 2021-04-06 04:33:27.960805+00:00
+Build Date UTC : 2021-04-06 04:37:07.157851+00:00
 -->
