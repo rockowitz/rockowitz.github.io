@@ -192,6 +192,8 @@
     </li>
     <li class="toctree-l2"><a class="reference internal" href="#eizo-ev2785">Eizo EV2785</a>
     </li>
+    <li class="toctree-l2"><a class="reference internal" href="#electriq-244mkhdr">Electriq 244MKHDR</a>
+    </li>
     <li class="toctree-l2"><a class="reference internal" href="#gateway-diamondtron-vx920">Gateway Diamondtron VX920</a>
     </li>
     <li class="toctree-l2"><a class="reference internal" href="#hanns-g-hi221d">Hanns G Hi221D</a>
@@ -647,6 +649,18 @@ will appear to succeed, but will have no effect.  (In sRGB mode, Brightness can 
 <p>Reports EDID ad I2c bus address x.50.  Does not support DDC/CI (bus address x37).</p>
 <p>Uses USB for monitor control, but uses manufacturer-defined usage pages for communication, i.e. does not support the
 <strong><em>USB Monitor Control Class Specification</em></strong>.</p>
+<p><a name=electriq_244KMHDR></p>
+<h3 id="electriq-244mkhdr">Electriq 244MKHDR</h3>
+<p>VCP version:  2.2 <br />
+Controller manufacturer and model:  Realtek 0.1<br />
+Firmware version: 0.1    </p>
+<p>This is a marketer rebrand of a monitor created by some Chinese company, possibly Meirun.  The 3 character manufacturer id "WAM" is not registered.</p>
+<p>The serial number reported is "demoset-1", </p>
+<p>The values reported by the monitor for features x10 (brightness) and x12 (contrast) are not those shown in the OSD. For details, see
+<a href="https://github.com/rockowitz/ddcutil/issues/200">ddcutil issue 200: Electriq 24 inch monitor - brightness works but getvcp range doesn't match OSD range</a>.</p>
+<p>Feature x60 (input source) reports invalid value x00 as the current input. </p>
+<p>Feature xCA (OSD/Button Control) reports that the OSD is disabled, even though it is enabled.</p>
+<p><a name="gateway_vx920"></p>
 <h3 id="gateway-diamondtron-vx920">Gateway Diamondtron VX920</h3>
 <p>VCP version:  Unspecified, implies 1.0 <br />
 Controller manufacturer and model:   Unknown (VCP feature code C8 unsupported)   <br />
