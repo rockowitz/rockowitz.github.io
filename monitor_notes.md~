@@ -298,7 +298,7 @@ Uses USB for monitor control, but uses manufacturer-defined usage pages for comm
 ***USB Monitor Control Class Specification***.
 
 
-<a name=electriq_244KMHDR>
+<a name="electriq_244KMHDR">
 ### Electriq 244MKHDR
 
 VCP version:  2.2   
