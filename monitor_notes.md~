@@ -298,6 +298,28 @@ Uses USB for monitor control, but uses manufacturer-defined usage pages for comm
 ***USB Monitor Control Class Specification***.
 
 
+<a name=electriq_244KMHDR>
+### Electriq 244MKHDR
+
+VCP version:  2.2   
+Controller manufacturer and model:  Realtek 0.1  
+Firmware version: 0.1    
+
+This is a marketer rebrand of a monitor created by some Chinese company, possibly Meirun.  The 3 character manufacturer id "WAM" is not registered.
+
+The serial number reported is "demoset-1", 
+
+The values reported by the monitor for features x10 (brightness) and x12 (contrast) are not those shown in the OSD. For details, see
+[ddcutil issue 200: Electriq 24 inch monitor - brightness works but getvcp range doesn't match OSD range](https://github.com/rockowitz/ddcutil/issues/200).
+
+
+Feature x60 (input source) reports invalid value x00 as the current input. 
+
+Feature xCA (OSD/Button Control) reports that the OSD is disabled, even though it is enabled.
+
+
+
+<a name="gateway_vx920">
 ### Gateway Diamondtron VX920
 
 VCP version:  Unspecified, implies 1.0   
