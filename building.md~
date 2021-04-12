@@ -2,28 +2,34 @@
 
 ### Building from tarball
 
-**ddcutil** can be built from its [tarball](tarballs/ddcutil-0.9.9.tar.gz) in the usual way.
+
+**ddcutil** can be built from its [tarball](tarballs/ddcutil-1.1.0.tar.gz) in the usual way.
 Unpack the tar file, change to its directory, and issue the commands: 
 ~~~
 # ./configure
 # make
 # sudo make install
 ~~~
-Note that additional steps are required to build **ddcutil** with *ADL* support.
-See [ADL support](adl.md).
 
 ### **configure** options 
 
 The **configure** script has several custom options.  Some reflect features under development, or tools used for development.
 The publicly supported options are:
 
-|Option                 | Purpose
-|-----------------------|--------------
-|--with-adl <directory> | Build with support for ADL connected monitors. See below
-|--enable-usb           | Build with support for USB connected monitors.  Setting --disable-usb reduces size and package requirements. (Default is --enable-usb.) 
-|--enable-drm           | Build with DRM support, used for enhanced diagnostics.  Setting --disable-drm reduces size and package requirements. (Default is --enable-drm.)
-|--enable-lib           | Build with shared libraries.  Needed for API support.  (Default is --enable-lib.)
-|--enable-x11           | Build using X11 services, used for enhanced diagnostics.  Setting --disable-x11 allows for use on systems lacking X11.  (Default is --enable-x11.)
+|Option                  | Default |      Purpose |
+|------------------------|---------|-----|
+| ***--enable-usb***     | yes     | Build with support for USB connected monitors.  Setting --disable-usb reduces size and package requirements. (Default is --enable-usb.) 
+| ***--enable-drm***     | yes     | Build with DRM support, used for enhanced diagnostics.  Setting --disable-drm reduces size and package requirements. (Default is --enable-drm.)
+| ***--enable-lib***     | yes     | Build the shared library. (Default is --enable-lib.)
+| ***--enable-x11***     | yes     | Build using X11 services, used for enhanced diagnostics.  Setting --disable-x11 allows for use on systems lacking X11.  (Default is --enable-x11.)
+| ***--enable-asan***    | no      | Build for execution with the Google Address Space Sanitizer.
+| ***--enable-envcmds*** | yes     | Controls whether commands **environment** and **usbenvironment** are included.
+| ***--enable-udev***    | yes     | Controls whether udev is used. 
+
+Notes:  
+- Option ***--disable-envcmds*** forces ***--disable-drm***, and ***--disable-x11***   
+- Option ***--enable-targetbsd*** forces ***--disable-envcmds***, ***--disable-udev***, and ***--disable-usb***
+
 
 
 ### Required packages
@@ -35,10 +41,11 @@ ddcutil requires the following packages for both building and execution:
 
 - i2c-tools
 - glib-2.0  (Note: glib-2.0 can be packaged with different names, e.g. libglib2.0-0, and may entail installing multiple packages.)
+  Minimum version: 2.32
 - libgudev  (e.g. libgudev1)
-- libusb-1.0 (e.g. libusb-1.0-0) 
+- libusb-1.0 (e.g. libusb-1.0-0) Minimum version 1.0.15 
 - libudev (e.g. libudev1)
-- libdrm2 
+- libdrm2  Minimum version: 2.4.16
 - libxrandr2
 - hwdata
 
@@ -69,6 +76,8 @@ Building requires that the core build files be installed (e.g. the files listed 
 
 - pkg-config
 
+
+
 ### Building from git
 
 The git repository for **ddcutil** is [here](http://www.github.com/rockowitz/ddcutil)
@@ -76,8 +85,8 @@ The git repository for **ddcutil** is [here](http://www.github.com/rockowitz/ddc
 - Building **ddcutil** from git requires that the *autotools* related packages be installed.  
 The exact packages vary from distribution to distribution.   On Ubuntu, these include:
 
-    - autoconf  
-    - automake  
+    - autoconf, Minimum version: 2.50
+    - automake, Minimum version: 1.13
     - autotools-dev  
     - libtool  
     - m4  
@@ -108,12 +117,10 @@ In order to be available, command **ldconfig** must be run and it must find the 
 automatically calls **ldconfig** after installing the library. For **ldconfig** to find the file, directory /usr/local/lib should be 
 in a file in /etc/ld.so.conf.d.  This is the case in Ubuntu.
 
-For further details, see: [shared_lib_config](Shared Library Configuration)
+For further details, see: [Shared Library Configuration](shared_lib_config.md)
 
 ### Common issues:
 
-- Building with support for the AMD proprietary video driver (fglrx) requires that *configure* be executed using 
-the *-with-adl-headers* argument.  See [ADL support](adl.md).  
 - If you see a message "required file './ltmain.sh.' not found", run *libtoolize*
   (See https://www.gnu.org/software/automake/manual/html_node/Error-required-file-ltmain_002esh-not-found.html)  
 - May get the following warning when running automake
@@ -121,7 +128,8 @@ the *-with-adl-headers* argument.  See [ADL support](adl.md).
 src/Makefile.am:38: warning: compiling 'cmdline/cmd_parser_aux.c' in subdir requires 'AM_PROG_CC_C_O' in 'configure.ac'
 ~~~
 This is an autotools versioning issue.  It appears that this warning can be ignored.  
-- (need notes on other warnings that can be ignored) 
+
+TO DO: add notes on other warnings that can be ignored 
 
 
 ### Development configuration options. 

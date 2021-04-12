@@ -291,15 +291,52 @@ Unpack the tar file, change to its directory, and issue the commands: </p>
 <h3 id="configure-options"><strong>configure</strong> options</h3>
 <p>The <strong>configure</strong> script has several custom options.  Some reflect features under development, or tools used for development.
 The publicly supported options are:</p>
-<p>|Option                  | Default |      Purpose
-|------------------------|--------------
-| <strong><em>--enable-usb</em></strong>     | yes     | Build with support for USB connected monitors.  Setting --disable-usb reduces size and package requirements. (Default is --enable-usb.) 
-| <strong><em>--enable-drm</em></strong>     | yes     | Build with DRM support, used for enhanced diagnostics.  Setting --disable-drm reduces size and package requirements. (Default is --enable-drm.)
-| <strong><em>--enable-lib</em></strong>     | yes     | Build the shared library. (Default is --enable-lib.)
-| <strong><em>--enable-x11</em></strong>     | yes     | Build using X11 services, used for enhanced diagnostics.  Setting --disable-x11 allows for use on systems lacking X11.  (Default is --enable-x11.)
-| <strong><em>--enable-asan</em></strong>    | no      | Build for execution with the Google Address Space Sanitizer.
-| <strong><em>--enable-envcmds</em></strong> | yes     | Controls whether commands <strong>environment*<em> and <strong>usbenvironment</strong> are included.
-| </em></strong>--enable-udev***    | yes     | Controls whether udev is used. </p>
+<table>
+<thead>
+<tr>
+<th>Option</th>
+<th>Default</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong><em>--enable-usb</em></strong></td>
+<td>yes</td>
+<td>Build with support for USB connected monitors.  Setting --disable-usb reduces size and package requirements. (Default is --enable-usb.)</td>
+</tr>
+<tr>
+<td><strong><em>--enable-drm</em></strong></td>
+<td>yes</td>
+<td>Build with DRM support, used for enhanced diagnostics.  Setting --disable-drm reduces size and package requirements. (Default is --enable-drm.)</td>
+</tr>
+<tr>
+<td><strong><em>--enable-lib</em></strong></td>
+<td>yes</td>
+<td>Build the shared library. (Default is --enable-lib.)</td>
+</tr>
+<tr>
+<td><strong><em>--enable-x11</em></strong></td>
+<td>yes</td>
+<td>Build using X11 services, used for enhanced diagnostics.  Setting --disable-x11 allows for use on systems lacking X11.  (Default is --enable-x11.)</td>
+</tr>
+<tr>
+<td><strong><em>--enable-asan</em></strong></td>
+<td>no</td>
+<td>Build for execution with the Google Address Space Sanitizer.</td>
+</tr>
+<tr>
+<td><strong><em>--enable-envcmds</em></strong></td>
+<td>yes</td>
+<td>Controls whether commands <strong>environment</strong> and <strong>usbenvironment</strong> are included.</td>
+</tr>
+<tr>
+<td><strong><em>--enable-udev</em></strong></td>
+<td>yes</td>
+<td>Controls whether udev is used.</td>
+</tr>
+</tbody>
+</table>
 <p>Notes:<br />
 - Option <strong><em>--disable-envcmds</em></strong> forces <strong><em>--disable-drm</em></strong>, and <strong><em>--disable-x11</em></strong> <br />
 - Option <strong><em>--enable-targetbsd</em></strong> forces <strong><em>--disable-envcmds</em></strong>, <strong><em>--disable-udev</em></strong>, and <strong><em>--disable-usb</em></strong></p>
