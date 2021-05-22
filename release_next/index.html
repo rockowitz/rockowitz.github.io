@@ -257,123 +257,35 @@
           <div role="main">
             <div class="section">
               
-                <h2 id="preliminary-notes-for-release-110-dev">Preliminary Notes for Release 1.1.0-dev</h2>
-<p>Reflecting the extent of changes, development release 1.0.2 has been 
-renumbered 1.1.0.<br />
-This page previews significant changes in the release.</p>
-<h3 id="docking-station-connected-displays">Docking station connected displays</h3>
-<p>At long last, Linux kernel release 5.10 implemented DDC communication 
-over DisplayPort Multi-Stream Transport.  Most commonly, this is seen with displays 
-connected to docking stations.  For several years now, all docking
-station connected displays, even those using HDMI or DVI connections, internally
-rely on a DisplayPort MST connection between the computer and the 
-docking station. </p>
-<p>The kernel changes were made in the Direct Rendering Mode (DRM)
-subsytem.  The Intel i915 and AMD amdgpu drivers, which are implemented as 
-part of DRM, have been tested and (mostly) work. Other drivers  part of the kernel
-DRM component, e.g. nouveau, should also work but have not been tested.
-Nvidia's proprietary driver uses it own proprietary DRM implementation and still 
-does not support DDC communication over MST.  </p>
-<p>Unfortunately there are problems with the DRM code, which ddcutil can sometimes work around.</p>
-<p>Sometimes the display's EDID cannot be read on I2C slave address x50.  As a result, 
-ddcutil does not report the existence of a display connected to the /dev/i2c device.
-<strong><em>ddcutil</em></strong> attempt to work around this by trying to read the EDID multiple times with both 128 and 256 block
-sizes. Depending on the monitor, usually one or the other will work, but sometimes neither do.<br />
-Option <strong><em>--edid-read-size</em></strong>, which was introduced in release 1.0.1, can force the block size
-to 128 or 256.</p>
-<p>This problem can be unrecoverable when the computer suspends and resumes, requiring reboot.</p>
-<p>On the other hand, the same monitor may appear as two different /dev/i2c devices, only one of which 
-supports DDC.  Curiously EDID read failures are associated with the /dev/i2c device that supports DDC. 
-<strong>ddcutil</strong> attempts to detect which /dev/i2c device should be used for monitor
-communication, and the <strong>detect</strong> command reports the other as a "Phantom Display" instead of an
-"Invalid Display".  (Thank you laur89 for the wonderfully apt term.)</p>
-<p>My sincere thanks to github users laur89 and boscard for their considerable help in diagnosing this situation and testing solutions.</p>
-<h3 id="configuration-file-ddcutilrc">Configuration file <strong>ddcutilrc</strong></h3>
-<p><strong>ddcutil</strong>'s command options have proliferated, often to address problems specific to a 
-small number of users. To simplify their use, they can now be specified in a configuration file.</p>
-<p><strong>ddcutil</strong> first looks for file <strong>ddcutil/ddcutilrc</strong> in the XDG_CONFIG_HOME directory, 
-and then on the XDG_CONFIG_DIRS search path.  By default, this will be 
-$HOME/.config/ddcutil/ddcutilrc</p>
-<p><strong><em>ddcutilrc</em></strong> is a standard style INI file,
-It has the following sections: </p>
-<table>
-<thead>
-<tr>
-<th>Section name</th>
-<th>Purpose</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>[global]</td>
-<td>&nbsp; Always apply</td>
-</tr>
-<tr>
-<td>[ddcutil]</td>
-<td>&nbsp; Applies to command <strong>ddcutil</strong></td>
-</tr>
-<tr>
-<td>[ddcui]</td>
-<td>&nbsp; Applies to command <strong>ddcui</strong></td>
-</tr>
-<tr>
-<td>[libddcutil]</td>
-<td>&nbsp; Used to configure shared library <strong>libddcutil</strong></td>
-</tr>
-<tr>
-<td><br></td>
-<td></td>
-</tr>
-<tr>
-<td>Within each section, key <strong><em>options</em></strong> specifies an option string.</td>
-<td></td>
-</tr>
-</tbody>
-</table>
-<p>Command options for monitor or feature selection cannot be specified.</p>
-<p>For <strong>ddcutil</strong> and <strong>ddcui</strong>, the options string obtained from the 
-configuration file is used to prefix the command line options. </p>
-<p>For <strong>libddcutil</strong>, the option string is read directly when the shared 
-library is initialized. </p>
-<p>For example: </p>
-<pre><code># This is a comment line
-
-[global]
-; Combined with all other options strings
-options : --edid-read-size 256
-
-[ddcutil]
-   * This is a comment too
-   options : --sleep-multiplier .5 --maxtries &quot;3,5,3&quot;
-
-[libddcutil]
-   ; And this is a comment.  Leading spaces in a line are ignored
-   options: --noverify
-</code></pre>
-<p>Section names and keys are case insensitive</p>
-<h3 id="persistent-capabilities">Persistent capabilities</h3>
-<p><strong>capabilities</strong> is the most expensive <strong>ddcutil</strong> command in 
-elapsed time.  It is also the most prone to failure on marginal I2C host/monitor 
-connections, due the large number of I2C requests involved.</p>
-<p>On the other hand, the capabilities string is constant for a monitor model.
-<strong>ddcutil</strong> now caches capaiblities strings, significantly speeding up execution. </p>
-<p>This feature is controlled by options <strong><em>--enable-capabilities-cache</em></strong> and <strong><em>--disable-capabilities-cache</em></strong>.
-The default is currently <strong><em>--disable-capabilities-cache</em></strong>, as there are some edge cases not yet addressed</p>
-<p>The cache is located in file <strong>ddcutil/capabilities</strong> of the XDG cache directory. 
-Typically this is $HOME/.cache/ddcutil/capabilities.  This file can safely be erased if the 
-stored capabilities string should become corrupted in some way. </p>
-<h3 id="miscellaneous">Miscellaneous</h3>
-<ul>
-<li>Warn the user at <strong>ddcutil</strong> startup if module <strong>i2c-dev</strong> is neither loaded nor built into the kernel.
-This should help new users properly configure their systems.  </li>
-<li>More detailed output on the <strong><em>detect</em></strong> command, particularly with option <strong><em>--verbose</em></strong>.  </li>
-<li><strong><em>environment --verbose</em></strong> has more extensive diagnostics, particulary of /sys </li>
-<li>Avoid corrupting the state of AMD Navi4 gpus, e.g. RX 6000 series, by not examining SMU I2C buses on the 
-video adapter.</li>
-</ul>
-<h3 id="building-ddcutil">Building <strong>ddcutil</strong></h3>
-<p><strong><em>configure</em></strong> option <strong><em>--disable-usb</em></strong> now implies <strong><em>--disable-udev</em></strong>. 
-This addresses a build failure reported by Amon Sha.</p>
+                <h2 id="preliminary-notes-for-release-111-dev">Preliminary Notes for Release 1.1.1-dev</h2>
+<p>don't forget to update CHANGELOG.md</p>
+<p>This page previews significant changes in the next release.</p>
+<h3 id="_1"></h3>
+<p>api change: </p>
+<p>ddca_set_trace_groups() now adds to whatever trace groups are currently active</p>
+<p>Additional validation of DDCA_Display_Ref</p>
+<p>write to syslog</p>
+<p>libddcutil only option 
+optional libddcutil trace file, option --libddcutil-trace-file </p>
+<p>relative file names in $HOME/.local/share/ddcutil </p>
+<p>if relative, name resolved per XDG spec, normally ...</p>
+<p>ddca_ddcautil_version_string() 
+- include suffix </p>
+<p>syslog: 
+- writes start and termination msgs, 
+- logs severe errors</p>
+<p>ddcutil_macros.h: </p>
+<p>add definition fo DDCUTIL_VSUFFIX</p>
+<p>configure.ac: 
+- some cleanup and rationalization 
+- </p>
+<p>make many assert statements in libddcutil TRACE_ASSERT() </p>
+<p>environment --verbose </p>
+<p>adds EDID read using get-edid|parse-edid</p>
+<h2 id="preliminary-notes-for-ddcui-release-020">Preliminary notes for <strong>ddcui</strong> release 0.2.0</h2>
+<p>installs icons
+ddcui.desktop
+ddcui.appdata.xml</p>
               
             </div>
           </div>
