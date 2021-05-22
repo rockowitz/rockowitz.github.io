@@ -303,7 +303,6 @@ its bus number/device number pair (option <strong><em>--usb</em></strong>) or hi
 <p>For example: </p>
 <pre><code>ddcutil --usb 3.5 ...
 </code></pre>
-
 <p>selects the monitor at USB bus number 3, device number 5.  </p>
 <h4 id="option-hiddev">Option --hiddev<a name="option_hiddev"></a></h4>
 <p>USB connected monitors can also be specfied by their hiddev device number, which specifies the /dev file 
@@ -313,11 +312,9 @@ by which they are accessed. That is, <strong>--hiddev 2</strong> refers to /dev/
 <p>It uses Read-Only access to check that a USB device is of class User Interface Device, but is not a keyboard or mouse.   </p>
 <pre><code>ddcutil chkusbmon ***hiddev device name***
 </code></pre>
-
 <p>e.g. </p>
 <pre><code>ddcutil chkusbmon /dev/usb/hiddev3 
 </code></pre>
-
 <p>Returns 0 if a device represents a USB attached monitor, non-zero if not.  See <a href="../i2c_permissions/">Device Permissions</a></p>
 <h3 id="command-ddcutil-usbenvironment">Command <strong>ddcutil usbenvironment</strong><a name="command_usbenv"></a></h3>
 <p>Explores the system's USB environment as an aid to diagnosing USB device detection and communication issues.</p>

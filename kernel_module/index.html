@@ -269,16 +269,13 @@ On some distributions, it is built into the Linux kernel.  If not, it must be lo
 <p>To see if i2c-dev is built into the kernel, issue the following command: </p>
 <pre><code>grep i2c-dev.ko  /lib/modules/`uname -r`/modules.builtin
 </code></pre>
-
 <p>If i2c-dev is not built in, add the line "i2c_dev" to /etc/modules or a file containing the single line:</p>
 <pre><code>i2c_dev
 </code></pre>
-
 <p>to directory /etc/modules-load.d</p>
 <!--
 (TODO: Do instructions need to take into account SysV init vs systemd?)
 -->
-
 <p>From the freedesktop.org systemd doc: </p>
 <blockquote>
 <p>systemd-modules-load.service(8) reads files from the [following]directories

@@ -294,7 +294,6 @@ FEATURE_CODE xFB Another Feature
 FEATURE_CODE 0xfa a feature with code staring with 0x
     ATTRS C RO 
 </code></pre>
-
 <p>The first 3 lines identify the monitor model, using a 3 character manufacturer id, the model name, 
 and the product number, as given in the EDID.
 The feature definition applies to any monitor that matches those identifiers. 
@@ -332,7 +331,6 @@ FEATURE_CODE 60 Input Source
   VALUE x06 HDMI-2
   VALUE x0f DisplayPort
 </code></pre>
-
 <h3 id="feature-definition-search-path">Feature Definition Search Path</h3>
 <p>Feature definition files are saved in the user's <strong><em>ddcutil</em></strong> data directory, $HOME/.local/share/ddcutil. 
 More generally, <strong><em>ddcutil</em></strong> searches for feature definition files using environment variables <strong><em>$XDG_DATA_HOME</em></strong> and <strong><em>$XDG_DATA_DIRS</em></strong>, per the <a href="https://specifications.freedesktop.org/basedir-spec/basedir-spec-latest.html">XDG Base Directory Specification</a>.</p>

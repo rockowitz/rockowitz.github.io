@@ -290,11 +290,9 @@ The multiplication factor is a floating point number.
 For example,  </p>
 <pre><code>--sleep-multiplier .5 
 </code></pre>
-
 <p>causes 40 ms waits to become 20 ms, and </p>
 <pre><code>--sleep-multiplier 4
 </code></pre>
-
 <p>causes 40 ms waits to beome 160 ms. </p>
 <p>Note that <strong><em>ddcutil</em></strong> may automatically increase wait times when peforming retries.  Option <strong><em>--sleep-multiplier</em></strong> applies to the inital wait time.</p>
 <p>Option <strong><em>--sleep-multiplier</em></strong> can significantly speed up <strong>ddcutil</strong> execution - some monitors have been seen to operate properly with a sleep-multiplier as low as .1, </p>
@@ -331,12 +329,10 @@ try counts to 3 for write-only exchanges, 6 for write-read exchanges, and 9
 for multi-part exchanges.</p>
 <pre><code>--maxtries(3,6,9) 
 </code></pre>
-
 <p>A blank value leaves the corresponding try count unchanged.   The following 
 example changes only the maximum write-read try count:</p>
 <pre><code>--maxtries(,7,) 
 </code></pre>
-
 <p>The higest value to which a maximum try count can be set, is 15.</p>
 <h3 id="additional-peformance-related-options">Additional Peformance Related Options</h3>
 <p>Additional performance related options exist but are experimental.  See the <a href="../release_notes/">Release Notes</a>.</p>

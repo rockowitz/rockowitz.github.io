@@ -2,9 +2,103 @@
 
 For **ddcui** release notes, see [**ddcui** Release Notes](ddcui_release_notes.md).
 
+### 1.1.0
+
+05 April 2021
+
+
+### Docking station connected displays
+
+At long last, Linux kernel release 5.10 implemented DDC communication 
+over DisplayPort Multi-Stream Transport.  Most commonly, this is seen with displays 
+connected to docking stations.  For several years now, all docking
+station connected displays, even those using HDMI or DVI connections, internally
+rely on a DisplayPort MST connection between the computer and the 
+docking station. 
+
+The kernel changes were made in the Direct Rendering Mode (DRM)
+subsytem.  The Intel i915 and AMD amdgpu drivers, which are implemented as 
+part of DRM, have been tested and (mostly) work. Other drivers  part of the kernel
+DRM component, e.g. nouveau, should also work but have not been tested.
+Nvidia's proprietary driver uses it own proprietary DRM implementation and still 
+does not support DDC communication over MST.  
+
+Unfortunately there are problems with the DRM code, which ddcutil can only sometimes work around.
+
+Sometimes the display's EDID cannot be read on I2C slave address x50.  As a result, 
+ddcutil does not report the existence of a display connected to the /dev/i2c device.
+***ddcutil*** attempt to work around this by trying to read the EDID multiple times with both 128 and 256 block
+sizes. Depending on the monitor, usually one or the other will work, but sometimes neither do.  
+Option ***--edid-read-size***, which was introduced in release 1.0.1, can force the block size
+to 128 or 256.
+
+This problem can be unrecoverable when the computer suspends and resumes, requiring reboot.
+
+On the other hand, the same monitor may appear as two different /dev/i2c devices, only one of which 
+supports DDC.  Curiously EDID read failures are associated with the /dev/i2c device that supports DDC. 
+**ddcutil** attempts to detect which /dev/i2c device should be used for monitor
+communication, and the **detect** command reports the other as a "Phantom Display" instead of an
+"Invalid Display".  (Thank you laur89 for the wonderfully apt term.)
+
+My sincere thanks to github users laur89 and boscard for their considerable help in diagnosing this situation and testing (partial) solutions.
+
+### Configuration file **ddcutilrc**
+
+**ddcutil**'s command options have proliferated, often to address problems specific to a 
+small number of users. To simplify their use, they can now be specified in a configuration file.
+
+For details, see [Configuration File](config_file.md)
+
+
+### Persistent capabilities
+
+**capabilities** is the most expensive **ddcutil** command in 
+elapsed time.  It is also the most prone to failure on marginal I2C host/monitor 
+connections, due the large number of I2C requests involved.
+
+On the other hand, the capabilities string is constant for a monitor model.
+**ddcutil** now caches capaiblities strings, significantly speeding up execution of the **capabilities** command.
+
+This feature is controlled by options ***--enable-capabilities-cache*** and ***--disable-capabilities-cache***.
+The default is  ***--enable-capabilities-cache***.  ***--disable-capabilities-cache*** may be needed as there are some edge cases not yet addressed
+
+The cache is located in file **ddcutil/capabilities** of the XDG cache directory. 
+Typically this is $HOME/.cache/ddcutil/capabilities.  This file can safely be erased if the 
+stored capabilities string should become corrupted in some way. 
+
+### Miscellaneous
+
+- Warn the user at **ddcutil** startup if module **i2c-dev** is neither loaded nor built into the kernel.
+This should help new users properly configure their systems.  
+- More detailed output on the ***detect*** command, particularly with option ***--verbose***.  
+- ***environment --verbose*** has more extensive diagnostics, particulary of /sys 
+- Avoid corrupting the state of AMD Navi4 gpus, e.g. RX 6000 series, by not examining SMU I2C buses on the 
+video adapter.
+
+### Building **ddcutil**
+
+***configure*** option ***--disable-usb*** now implies ***--disable-udev***. 
+This addresses a build failure reported by Amon Sha.
+
+
+### 1.0.1
+
+08 February 2021
+
+This bug fix release addresses the situation wherein a display connected through a docking station was not detecteed 
+when the i915 video driver is used.  (I2C support for docking station connected displays, and more generally displays using 
+DisplayPort Multi Stream Transport. was recently implemented for i915 and amdgpu drivers in Kernel 5.10. Initial **ddcutil**
+code for this situation did not adequately work around problems in the driver implementation,  with the result that the EDID
+was not read in certain contexts.
+
+### Option ***--edid-read-size***
+
+Command line option ***--edid-read-size***, introduced in release 1.0.0, is no longer needed.  **ddcutil** not attempts
+both 128 and 256 byte reads to fetch the EDID.
+
 ### 1.0.0
 
-01 January 2020
+03 February 2021
 
 ### User Defined Features
 
@@ -90,7 +184,12 @@ where:
 
 - Better handle fatal errors instead of continuing in an infinite loop
 
-### New option ***--no-x52-fifo***
+### Command **environment**
+
+- If option ***--verbose*** is specified, the /sys file system is probed far more extensively. This change also 
+applies to command ***interrogate***, which incorporates ***environment --verbose***.
+
+### Option ***--no-x52-fifo***
 
 Features x02 (new control value) and feature x52 (active control) are used together to report
 feature values changed using the On Screen Display (OSD). 
@@ -108,17 +207,13 @@ returns x00, just always returns the same feature id. This option forces the
 **watch** command to treat all monitors as having the VCP 2.0/2.1 behavior.
 
 
-### Command **environment**
-
-- If option ***--verbose*** is specified, the /sys file system is probed far more extensively. This change also 
-applies to command ***interrogate***, which incorporates ***environment --verbose***.
 
 ### Option ***--mccs &lt;vcp version>***
 
 Option ***--mccs*** now applies to commands **getvcp**, **setvcp**, and **dumpvcp** in addition to **vcpinfo**.
 See documentation of the individual commands for details.
 
-### New Option ***--per-thread-stats***
+### Option ***--per-thread-stats***
 
 Option ***---per-thread-stats*** causes ***--stats*** output to include per thread statistics. 
 
@@ -136,7 +231,13 @@ TO CONSIDER: --per-thread-stats as an alternative to --stats
 Option ***--sleep-less***, now also known as ***--enable-sleep-less*** is now the default.  This eliminates some sleeps after reading DDC packets,
 and does not appear to affect stability.  Option ***--disable-sleep-less*** restores the prior behavior. 
 
+### Option ***--edid-read-size  &lt;128|256>***
 
+This option is a work-around for a problem seen with the i915 driver and docking stations. The EDID is read successfully every other time.
+Older EDIDs are 128 bytes in length, newer ones are 256 bytes. 
+Strangely forcing ***ddcutil*** to read 128 bytes resolves this problem.
+
+<!--
 ### Desktop Integration
 
 If a repository containing **ddcutil** is enabled, **ddcutil** is installable by the **KDE Discover** application explorer (plasma-discover)
@@ -147,7 +248,7 @@ To provide for this, **ddcutil** installs the following files:
 - Icon files are installed in the /usr/share/icons/hicolor tree  
 - For backward compatibility, icon file /usr/share/pixmaps/ddcutil.png is installed.  
 - /usr/share/metainfo/ddcutil.appdata.xml
-
+-->
 <!--
 TODO: Notes on problems with app stores
 -->
@@ -157,7 +258,8 @@ TODO: Notes on problems with app stores
 
 - Fix trace message corruption when both ***--thread-id*** (***--tid***) and ***--timestamp*** (***--ts***) are both specified.   
 - If any tracing is enabled, report the **ddcutil** starting and ending clock times.  
-- More functions can be individually traced using ***--trcfunc***.
+- More functions can be individually traced using ***--trcfunc***.  
+- Check during command parsing that functions specified by --trcfunc are in fact individually traceable.  
 - Option ***--nodetect*** is eliminated. It was reduncant since using the ***--bus*** 
 option forces display detection to be skipped, and this is the only context in which 
 option ***--nodetect*** was recognized.   
@@ -165,13 +267,17 @@ option ***--nodetect*** was recognized.
 - Correct ***--help*** output to indiate that "0" or "." in a ***--maxtries*** value string 
 leaves the value of a try type unchanged.  This was incorrectly documented as "." or "".
 For example, "--maxtries "., 15, 0""  changes only the write-read maxtries value. 
-- At startup, check that module i2c-dev is either loaded or built in. 
+- At startup, check that module i2c-dev is either loaded or built in.   
+- An unsupported feature is no longer regarded as a DDC data error (reported by option ***--ddc***).  
+- Reduce the number of error messages written to **stderr** instead of **stdout**.  
+- Bring the **README.md** file up to date.
+- More definitively identify LVDS laptop displays. 
 
 
 ### Building **ddcutil**
 
-Some ***.configure*** options have been added, primarily in support of an as yet incomplete FreeBSD implementation. 
-(Development suspended until FreeBSD's video drivers expose the I2C bus.)
+Some ***configure*** options have been added, primarily in support of an as yet incomplete FreeBSD implementation. 
+(Development is suspended until FreeBSD's video drivers expose the I2C bus.)
 
 | Option             | Default | Description 
 |--------------------|---------|-----------------
@@ -180,14 +286,18 @@ Some ***.configure*** options have been added, primarily in support of an as yet
 | --enable-udev      | yes     | Controls whether udev is used. 
 | --enable-targetbsd | no      | Build for FreeBSD. 
 
+<br>
 Notes:  
 - Option ***--disable-envcmds*** forces ***--disable-drm***, and ***--disable-x11***   
 - Option ***--enable-targetbsd*** forces ***--disable-envcmds***, ***--disable-udev***, and ***--disable-usb***
 
 Option-***-with-adl-headers*** has been removed.
 
-The ***.gitignore*** file has been simplified with the expectation that repository-specific files to be
-ignored will be specified in .git/info/exclude.
+**configure** help messages for options that are not intended for public use are now marked "(Developer only)".
+
+Use of the **.gitignore** file has been simplified.  It now identifies only files that should be ignored by 
+any clone of the github ddcutil repository.  Users should now list files specific to their copy of the repository
+in the file **.git/info/exclude**, which is not tracked. 
 
 
 
@@ -196,6 +306,20 @@ ignored will be specified in .git/info/exclude.
 The SONAME for **libddcutil** is now libddcutil.so.4.
 For details on changes, see [Shared Library Changes for Release 1.0.0](c_api_100.md).
 
+### Acknowledgements 
+
+Thank you to the many users who have not not only submitted problem reports but
+have helped remotely diagnose **ddcutil** issues.  In particular: 
+
+- github users [suuuehgi](https://github.com/suuuehgi) and [laurisriple](https://github.com/lauritsriple) provided extensive help
+diagnosing problems with the i915 driver and docking stations.
+- [PJ Aitken](https://github.com/pjaitken) has put considerable effor into
+reverse enginering Picture-by-Picture mode on a Phillips 499P9.
+- github user [parkerlreed](https://github.com/parkerlreed) helped diagnose deviations from the specification of feature x60
+on an Acer ED320QR. 
+ 
+And also a shout out to [Andrey Rahmatullin](https://wiki.debian.org/AndreyRahmatullin) who sponsors **ddcutil** on Debian and
+has help bring its packaging up to Debian standards.
 
 ### 0.9.9
 
@@ -268,7 +392,7 @@ This has been implemented as a POSSIBLE way to address occasional reports of **d
 #### Support for **fglrx** removed
 
 ***ddcutil*** no longer supports AMD's old proprietary display driver ***fglrx***.  Command line option ***--adl*** is no longer recognized.
-***.configure*** option ***--with-adl*** has been removed.
+***configure*** option ***--with-adl*** has been removed.
 
 
 
@@ -331,7 +455,7 @@ If you encounter such a message, please report the circumstances in which it occ
 ### Building ddcutil
 
 - As noted above, ***ddcutil*** no longer supports AMD's old proprietary video driver ***fglrx***.
-***.configure*** option ***--with-adl*** no longer exists.
+***configure*** option ***--with-adl*** no longer exists.
 
 - Reflecting changes to how the PCI and USB hardware ID tables are packaged,  **ddcutil** now prioritizes **pci.ids** and **usb.ids**
 files in directory /usr/share/misc over those in /usr/share/hwdata.

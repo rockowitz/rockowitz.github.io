@@ -279,11 +279,9 @@ all settable values are integer values in the range 0..255, i.e. a single byte.<
 $ ddcutil setvcp 10 0x32
 $ ddcutil sdtvcp 73 x5304
 </code></pre>
-
 <p>Multiple <strong><em>feature</em></strong>/<strong><em>new-value</em></strong> pairs can be given on a single <strong>setvcp</strong> command.  For example: </p>
 <pre><code>$ ddcutil setvcp 10 50 12 75
 </code></pre>
-
 <p>It is possible to specify a relative instead of absolute value for a continuous feature by putting " + " or " - " between the feature id and value.</p>
 <ul>
 <li><strong>The plus or minus signs must surrounded by spaces to indicate a relative value operation.</strong>  </li>
@@ -294,7 +292,6 @@ $ ddcutil sdtvcp 73 x5304
 <pre><code>$ ddcutil setvcp 10 + 5
 $ ddcutil setvcp 10 - 5
 </code></pre>
-
 <h4 id="option-noverify">Option: <strong><em>--noverify</em></strong><a name="option_noverify"></a></h4>
 <p>When <strong>ddcutil</strong> sends a <strong>Set VCP Feature</strong> packet to a display, it receives an acknowlegement at the I2C level that the request packet was received.
 There have been occasional reports that the <strong>setvcp</strong> command appeared to succeed, but the new value was not set.</p>

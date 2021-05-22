@@ -365,18 +365,15 @@ output as purely informational.  (See <a href="../command_capabilities/">capabil
        01: VGA-1
        03: DVI-1 
 </code></pre>
-
 <p>The capabilities string reported by a monitor is often incorrect. While the <strong><em>ddcutil capabilities</em></strong> command parses and
 reports the string, this is solely informational. </p>
 <p>The only way to know for sure if a monitor supports a VCP Feature Code is by testing using the <strong><em>getvcp</em></strong> and <strong><em>setvcp</em></strong> commands. </p>
 <p>The following command will attempt to read all VCP codes that <strong>ddcutil</strong> understands, other than those that are write-only: </p>
 <pre><code>ddcutil getvcp known
 </code></pre>
-
 <p>To attempt to read all possible VCP codes, whether understood by <strong>ddcutil</strong> or not, except for those that are known to be write-only: </p>
 <pre><code>ddcutil getvcp scan
 </code></pre>
-
 <p>To see all the values defined for a non-continuous (NC) feature code, i.e. one with discrete values, use the <strong><em>vcpinfo</em></strong> command with the 
 <strong><em>--verbose</em></strong> option.  For example, to see all the values defined in the <strong>Monitor Control Command Specification</strong> for VCP feature x60 (Input Source): </p>
 <pre><code># ddcutil vcpinfo 60 --verbose
@@ -410,7 +407,6 @@ VCP code 60: Input Source
       0x11: HDMI-1
       0x12: HDMI-2
 </code></pre>
-
 <p>In practice, any given monitor will implement only a few of the NC values, and some monitors will implement undocumented values. 
 The only way to know for sure is by testing. </p>
 <h3 id="ddcutil-detect-verbose-reports-that-both-i2c-address-x50-edid-and-x37-ddc-are-responsive-but-ddc-communication-fails"><strong><em>ddcutil detect --verbose</em></strong> reports that both I2C address x50 (EDID) and x37 (DDC) are responsive, but DDC communication fails.</h3>

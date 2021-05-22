@@ -1136,12 +1136,12 @@ in favor of <strong>DDCA_MCCS_Version_Spec</strong>)<br />
 </table>
 <p>Naming patterns: <br />
 - Functions that always return the same value generally do not include "<strong><em>_get_</em></strong>" in their names,
-e.g. <strong>ddca_ddcutil_version()*<em>, <strong>ddca_max_max_tries()</strong> <br />
-- In the case of "overloaded" functions, "</em></strong>_by_<strong><em>" is usually used to distinguish variants,
-e.g. </em>*ddca_get_feature_metadata_by_vspec()</strong>, <strong>ddca_get_feature_metadata_by_dref()*<em>, <strong>get_feature_metadata_by_display()</strong><br />
+e.g. <strong>ddca_ddcutil_version()</strong>, <strong>ddca_max_max_tries()</strong> <br />
+- In the case of "overloaded" functions, "<strong><em>_by_</em></strong>" is usually used to distinguish variants,
+e.g. <strong>ddca_get_feature_metadata_by_vspec()</strong>, <strong>ddca_get_feature_metadata_by_dref()</strong>, <strong>get_feature_metadata_by_display()</strong><br />
 - However, in the case where there the result depends on a single input value from which the result
-is extracted, "</em></strong>_from_<strong><em>" is used,
-e.g. </em>*ddca_mmk_from_dref()</strong>, <strong>ddca_mmk_from_dh()</strong> </p>
+is extracted, "<strong><em>_from_</em></strong>" is used,
+e.g. <strong>ddca_mmk_from_dref()</strong>, <strong>ddca_mmk_from_dh()</strong> </p>
 <h4 id="get-and-set-vcp-feature-values">Get and Set VCP Feature Values</h4>
 <p><strong>DDCA_Any_Vcp_Value</strong> vs <strong>DDCA_Non_Table_Vcp_Value</strong></p>
 <p>The API provides functions for getting, setting, and otherwise processing VCP values in 3 forms, 

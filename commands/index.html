@@ -337,14 +337,12 @@
 <p><br>
 A <strong><em>feature code</em></strong> is specified as a hexadecimal  number, with or without a leading "x". For example, 
 to the current brightness value:</p>
-<pre><code class="bash">$ddcutil getvcp 10
+<pre><code class="language-bash">$ddcutil getvcp 10
 </code></pre>
-
 <p>A <strong><em>feature-group</em></strong> is a named set of features.  For example:</p>
-<pre><code class="bash">$ ddcutil getvcp all
+<pre><code class="language-bash">$ ddcutil getvcp all
 $ ddcutil getvcp color
 </code></pre>
-
 <p><br>
 If more than one monitor is attached, the desired monitor can be specified 
 using any of several options.  The most useful are: </p>
@@ -353,7 +351,6 @@ using any of several options.  The most useful are: </p>
 <p>To see a list of all attached monitors and their associated identifiers:</p>
 <pre><code>$ ddcutil detect
 </code></pre>
-
 <p>These sections document <strong>ddcutil</strong> commands and options in detail: </p>
 <ul>
 <li><a href="../command_detail/">Command Detail</a></li>
@@ -361,10 +358,9 @@ using any of several options.  The most useful are: </p>
 </ul>
 <p>The  <strong><em>--help</em></strong> option provides a summary of commands and options, as does 
 the man page: </p>
-<pre><code class="bash">$ ddcutil --help
+<pre><code class="language-bash">$ ddcutil --help
 $ man 1 ddcutil
 </code></pre>
-
 <p>Command examples: </p>
 <ul>
 <li><a href="../detect_verbose_output/">ddcutil detect</a></li>

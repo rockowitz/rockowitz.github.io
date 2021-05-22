@@ -571,7 +571,7 @@ does not support DDC communication over MST.  </p>
 <p>Unfortunately there are problems with the DRM code, which ddcutil can only sometimes work around.</p>
 <p>Sometimes the display's EDID cannot be read on I2C slave address x50.  As a result, 
 ddcutil does not report the existence of a display connected to the /dev/i2c device.
-<strong><em>ddcutil</em></strong> attempt to work around this by trying to read the EDID multiple times with both 128 and 256 block
+<strong><em>ddcutil</em></strong> attempts to work around this by trying to read the EDID multiple times with both 128 and 256 block
 sizes. Depending on the monitor, usually one or the other will work, but sometimes neither do.<br />
 Option <strong><em>--edid-read-size</em></strong>, which was introduced in release 1.0.1, can force the block size
 to 128 or 256.</p>
@@ -672,7 +672,7 @@ relative feature value.  The "+" or "-" in relative values must be surrounded by
 </ul>
 <!--
 The syntax for specifying relative values has been relaxed.  Spaces are no longer required around "+" or "-".
-For example, the following all specify relative values:
+For example, the following all specify relative values: 
 
 <pre><code>$ ddcutil setvcp 10 + 5
 $ ddcutil setvcp 10-5
@@ -732,7 +732,7 @@ See documentation of the individual commands for details.</p>
 <p>By default, the <strong><em>--stats</em></strong> option does not display per thread statistics. These statistics 
 are generally meaninful only in the shared library context, and their display is simply TMI<sup>TM</sup>.</p>
 <!--
-<sup>&#x2122;</sup> <sup>.
+<sup>&#x2122;</sup> <sup>. 
 
 TO CONSIDER: --per-thread-stats as an alternative to --stats
 -->
@@ -756,7 +756,6 @@ To provide for this, **ddcutil** installs the following files:
 - For backward compatibility, icon file /usr/share/pixmaps/ddcutil.png is installed.  
 - /usr/share/metainfo/ddcutil.appdata.xml
 -->
-
 <!--
 TODO: Notes on problems with app stores
 -->
@@ -846,14 +845,12 @@ has help bring its packaging up to Debian standards.</p>
 
 User supplied feature definitions are now supported.  For details see [User Defined Features](udf.md).
 -->
-
 <h4 id="execution-statistics">Execution Statistics</h4>
 <p>Additional per-thread statistics are shown when <strong><em>--verbose</em></strong> is specified along with <strong><em>--stats</em></strong>. </p>
 <p>Statistics output has become voluminous.  New  group <strong><em>ELAPSED</em></strong> (alternatively <strong><em>TIME</em></strong>) shows only the elapsed execution time.
 For example</p>
 <pre><code>$ ddcutil detect --stats elapsed
 </code></pre>
-
 <p>Statistics now seperately reports multi-part read and multi-part write tries.  This reflects how statistics are implementated, allowing for <strong><em>Table</em></strong> features.
 As a practival matter, no monitor has ever been seen that implements features of type <strong><em>Table</em></strong>, so the 
 multi-part write statistics will always be zero.</p>
@@ -921,7 +918,6 @@ This is presently purely for informational purposes.</p>
 </ul>
 <pre><code>$ddcutil setvcp 10 + 5 12 - 3
 </code></pre>
-
 <p>This frankly not very useful corner case had not been taken into account 
 when relative <strong><em>setvcp</em></strong> values were implemented.  Well, now it is.</p>
 <ul>
@@ -930,7 +926,6 @@ when relative <strong><em>setvcp</em></strong> values were implemented.  Well, n
 </ul>
 <pre><code>$ ddcutil detect --sleep-multiplier 200      # WRONG
 </code></pre>
-
 <ul>
 <li>
 <p>Verification is always disabled if setting VCP feature xDF (Power Mode) to 5.
@@ -957,7 +952,6 @@ recovery from multiple DDC Null Messages.</p>
 <pre><code>$ ddcutil getvcp 10
 (ddc_wright_read_with_retry) ddc_write_read() succeeded after 3 Null Messages
 </code></pre>
-
 <p>If you encounter such a message, please report the circumstances in which it occurred.</p>
 <h3 id="building-ddcutil_2">Building ddcutil</h3>
 <ul>
@@ -989,11 +983,9 @@ Option <strong><em>--sleep-multiplier</em></strong> applies a floating point mul
 For example,  </p>
 <pre><code>--sleep-multiplier .5 
 </code></pre>
-
 <p>causes 40 ms waits to become 20 ms, and </p>
 <pre><code>--sleep-multiplier 4
 </code></pre>
-
 <p>causes 40 ms waits to beome 160 ms. </p>
 <p>Note that <strong><em>ddcutil</em></strong> may automatically increase wait times when peforming retries.  Option <strong><em>--sleep-multiplier</em></strong> applies to the inital wait time.</p>
 <p>Option <strong><em>--sleep-multiplier</em></strong> can significantly speed up <strong>ddcutil</strong> execution - some monitors have been seen to operate properly with a sleep-multiplier as low as .1, </p>
@@ -1002,11 +994,9 @@ For example,  </p>
 <p>If option <strong><em>--thread-id</em></strong> (alternatively <strong><em>--tid</em></strong>) is specified, trace messages are prefixed with the thread id number, e.g.</p>
 <pre><code>[  27044](ddc_get_nontable_vcp_value    ) dh=Display_Handle[i2c: fd=3, busno=5], Reading feature 0x00
 </code></pre>
-
 <p>if option <strong><em>--timestamp</em></strong> (alternatively <strong><em>--ts</em></strong>) is specified, trace messages are prefixed with the number of seconds since the start of program execution, e.g. </p>
 <pre><code>[  1.827](ddc_get_vcp_value             ) Starting. Reading feature 0x00, dh=Display_Handle[i2c: fd=3, busno=9], dh-&gt;fd=3
 </code></pre>
-
 <p>If both options are specified, then both thread id and timestamp are shown. </p>
 <h4 id="mouse-corruption-during-display-detection">Mouse corruption during display detection</h4>
 <p>When examining USB devices to determine if they support the <strong><em>USB Monitor Control Class Specification</em></strong>, it was possible to hang USB connected mice. This change peforms a pre-check to ignore mice and keyboards.  It affects:<br />
@@ -1161,7 +1151,7 @@ See <a href="../c_api_93/">API Changes in Release 9.3</a> for details.</p>
 <h3 id="092">0.9.2</h3>
 <p>01 September 2018</p>
 <h4 id="command-ddcutil-detect">Command <strong><em>ddcutil detect</em></strong></h4>
-<p><strong>Eliminate the **<em>Supports DDC:</em></strong> line.**</p>
+<p><strong>Eliminate the </strong><em>Supports DDC:</em><strong> line.</strong></p>
 <p>The output of this line reflects the result of a simple test for slave address x37 at the I2C layer.
 During display detection, <strong>ddcutil</strong> also attempts a real DDC exchange at the higher, DDC layer of code, 
 and relies on this result to determine whether the monitor supports DDC.  The simple x37 test is vestigial and has no effect on program logic.
@@ -1219,7 +1209,6 @@ e.g. the following commands increase or decrease the value of the brightness fea
 <pre><code>$ ddcutil setvcp 10 + 5
 $ ddcutil setvcp 10 - 5
 </code></pre>
-
 <p>Note that parsing requires that "+" and "-" be surrounded by spaces.</p>
 <ul>
 <li>
@@ -1236,9 +1225,9 @@ The <strong><em>--no-table</em></strong> (formerly <strong><em>--notable</em></s
 </ul>
 <p>Note that <strong><em>--no-table</em></strong> does not apply for subsets TABLE or LUT.   </p>
 <p>For subsets SCAN and MANUFACTURER,  the effect of <strong><em>--show-table</em></strong>/<strong><em>--no-table</em></strong> on 
-manufacturer-specific feature codes (xe0..xff) is more complicated. <strong>ddcutil*<em> 
+manufacturer-specific feature codes (xe0..xff) is more complicated. <strong>ddcutil</strong> 
 has no information about the feature characteristics of manufacturer-specific codes.  Normally, it attempts only a non-table read.<br />
-However, if both </em></strong>--verbose<strong><em> and </em></strong>--show-table*** are in effect, then a table read is attempted as well as a non-table read. </p>
+However, if both <strong><em>--verbose</em></strong> and <strong><em>--show-table</em></strong> are in effect, then a table read is attempted as well as a non-table read. </p>
 <h5 id="reporting-unsupported-features">Reporting Unsupported Features</h5>
 <p>The interpretation of <strong><em>--show-unsupported</em></strong> has been tweaked.  This option applies to command <strong><em>getvcp</em></strong>.  (The <strong><em>probe</em></strong>
 command always reports unsupported features.) 
@@ -1248,17 +1237,15 @@ command always reports unsupported features.)
 - Option <strong><em>--show-unsupported</em></strong> was specified.</p>
 <p>Option <strong><em>--show-unsupported</em></strong> is no longer automatically set for feature set <strong><em>ALL</em></strong>, which is now simply a synonym for <strong><em>KNOWN</em></strong>.</p>
 <h5 id="options-rw-ro-wo">Options <strong><em>--rw</em></strong>, <strong><em>--ro</em></strong>, <strong><em>--wo</em></strong></h5>
-<p>Options <strong><em>--rw</em></strong> and <strong><em>--ro</em></strong> apply to both the <strong>getvcp*<em> and <strong>vcpinfo</strong> commands.  Option </em></strong>--wo<strong><em> applies only to </em>*vcpinfo</strong>. </p>
+<p>Options <strong><em>--rw</em></strong> and <strong><em>--ro</em></strong> apply to both the <strong>getvcp</strong> and <strong>vcpinfo</strong> commands.  Option <strong><em>--wo</em></strong> applies only to <strong>vcpinfo</strong>. </p>
 <p>If specified, features shown are restricted to those that are read-write, read-only, or write-only. </p>
 <p>For example: </p>
 <pre><code>$ ddcutil getvcp all --ro
 </code></pre>
-
 <h5 id="option-mccs">Option <strong><em>--mccs</em></strong></h5>
 <p>Filters the information returned by <strong>vcpinfo</strong> to that for the specified MCCS version.  For example, </p>
 <pre><code>$ ddcutil vcpinfo --mccs 2.1
 </code></pre>
-
 <ul>
 <li>Feature selection for <strong>ddcutil vcpinfo table</strong> is not properly version sensitive.<br />
   -- take version from monitor selection if specified    (VERIFY)<br />
@@ -1364,7 +1351,6 @@ which uses <strong>DDCA_Any_Vcp_Value</strong>.</li>
 features.  The 2 byte current and max values must be calculated from the appropriate pairs of single byte values, e.g.</p>
 <pre><code>cur_val = sh &lt;&lt; 8 | sl
 </code></pre>
-
 <ul>
 <li>
 <h4 id="eliminate-use-of-longjmp">Eliminate use of longjmp</h4>
@@ -1393,8 +1379,8 @@ features.  The 2 byte current and max values must be calculated from the appropr
 <p>16 November 2017</p>
 <p>This release contains a large number of minor enhancements and bug fixes.  Most significant
 are those related to alternative environments, such as Raspberry Pi systems.</p>
-<p>Those running <strong>ddcutil*<em> on a 32 bit system, either i386 or Raspberry Pi, should
-upgrade to address a segfault in the </em></strong>environment*** command.
+<p>Those running <strong>ddcutil</strong> on a 32 bit system, either i386 or Raspberry Pi, should
+upgrade to address a segfault in the <strong><em>environment</em></strong> command.
 Otherwise, there is no need to upgrade to this release unless you are experiencing problems. </p>
 <h4 id="changes-to-facilitate-scripting">Changes to facilitate scripting</h4>
 <ul>
@@ -1407,8 +1393,8 @@ Otherwise, there is no need to upgrade to this release unless you are experienci
 <li>Add a changelog file, normally installed in file /usr/share/doc/ddcutil/Changelog.</li>
 <li>Rename NEWS file to NEWS.md</li>
 <li>Add <strong><em>configure</em></strong> option <strong><em>--enable-x11</em></strong>/<strong><em>--disable-x11</em></strong>.  The default is <strong><em>--enable-x11</em></strong>. 
-If <strong><em>--disable-x11</em></strong> is specified, <strong>ddcutil*<em> is built without X11 related code, which is 
-used only for diagnostics within the </em></strong>environment*** command.</li>
+If <strong><em>--disable-x11</em></strong> is specified, <strong>ddcutil</strong> is built without X11 related code, which is 
+used only for diagnostics within the <strong><em>environment</em></strong> command.</li>
 <li>Directory <strong><em>package</em></strong> has been removed from the <strong>ddcutil</strong> git tree and is no longer included
 in the tarball.  This more cleanly separates "downstream" from "upstream" activities.
 Packagers for Linux distributions should contact if this creates problems.</li>
@@ -1448,7 +1434,7 @@ was seen only in 32 bit versions of <strong>ddcutil</strong>.</li>
 <li><strong><em>interrogate</em></strong>, <strong><em>environment</em></strong> and <strong><em>usbenvironment</em></strong> now redirect all stderr output to stdout for easier capture</li>
 <li>Added command line options <strong><em>-trcfile</em></strong> and <strong><em>-trcfunc</em></strong> to enable tracing by file name and function name.</li>
 <li>Added configuration option <strong><em>--enable-x11</em></strong> controlling whether X11 related diagnostics are included in the <strong><em>environment</em></strong>
-and <strong><em>interrogate</em></strong> commands, allowing <strong>ddcutil*<em> to build in embedded environments that lack X11.  The default is </em></strong>yes***.</li>
+and <strong><em>interrogate</em></strong> commands, allowing <strong>ddcutil</strong> to build in embedded environments that lack X11.  The default is <strong><em>yes</em></strong>.</li>
 <li>Verbose EDID decription, e.g. on command <strong><em>detect --verbose</em></strong>, now reports EDID byte 24 (x14), the supported features bitmap.
 This is purely informational.</li>
 <li>Ongoing work to make functions thread safe. </li>
@@ -1563,7 +1549,6 @@ This may become the default in future releases.</p>
 <p>Option <strong>--hiddev <number></strong> specifies a USB monitor connection by its hiddev device number.  For example:</p>
 <pre><code>--hiddev 3
 </code></pre>
-
 <p>refers to device /dev/usb/hiddev3.  There is no single letter 
 specifier for this option.</p>
 <p>Option <strong>--brief</strong> is now a synonym for <strong>--terse</strong></p>
@@ -1925,7 +1910,7 @@ avoids eror in case there is nothing to erase (i.e. build hasn't happened)</li>
 <li>If enabled (the default), command <strong>ddcutil environment --verbose</strong> includes additional tests that use
 DRM services to better analyze disrepancies observed in the field between the EDID read directly from the monitor and that reported by X11.</li>
 <li>Option <strong><em>--enable-drm</em></strong> requires that a recent version (&gt;= 2.4.67) of the development package for libdrm2 (libdrm-dev or libdrm-devel depending on Linux distribution) be
-installed when building <strong>ddcutil*<em>.  If a sufficently recent version is not detected, <strong>configure</strong> issues a warning and reverts to </em></strong>--disable-drm***.</li>
+installed when building <strong>ddcutil</strong>.  If a sufficently recent version is not detected, <strong>configure</strong> issues a warning and reverts to <strong><em>--disable-drm</em></strong>.</li>
 <li>If minimizing executable size is important, set <strong><em>--disable-drm</em></strong>, as DRM services are used only for diagnostics.</li>
 </ul>
 </li>
@@ -1940,7 +1925,7 @@ installed when building <strong>ddcutil*<em>.  If a sufficently recent version i
 <p>Maintenance release.</p>
 <ul>
 <li>Fixes a critical bug in release 0.7.1 where insufficient privileges on a /dev/i2c-n device causes program termination.</li>
-<li><strong>ddcutil interrogate*<em> always executes with </em></strong>--set-slave-address*** in effect</li>
+<li><strong>ddcutil interrogate</strong> always executes with <strong><em>--set-slave-address</em></strong> in effect</li>
 <li>Minor improvements to <strong>ddcutil environment</strong> and <strong>ddcutil interrogate</strong> output</li>
 <li>Minor improvements to <strong>ddcutil detect --verbose</strong></li>
 <li>Add explanations for additional <strong><em>errno</em></strong> values</li>
@@ -1956,7 +1941,7 @@ This is intended as a possible workaround for situations where monitors on an I2
 provide useful information as to the source of problems.  See <a href="../debug_options/#slave">Option --force</a></li>
 <li>Fix the cause of a segfault when displaying  statistics for option <strong><em>--stats errors</em></strong> or simply <strong><em>--stats</em></strong>, or on 
 the <strong>interrogate</strong> command.</li>
-<li><strong>make install*<em> will not install C header files unless configuration option </em></strong>--enable-lib*** is set.</li>
+<li><strong>make install</strong> will not install C header files unless configuration option <strong><em>--enable-lib</em></strong> is set.</li>
 <li>Fix the cause of a Makefile error when trying to strip dependency information from <strong>libddctuil.la</strong> during <strong>make install</strong>.</li>
 <li>Extensive rework of Autotools files for future support of Python 3 as well as Python 2.  This work is incomplete.</li>
 <li>Emit diagnostic messages to aid in debugging certain situations seen only in the field.</li>

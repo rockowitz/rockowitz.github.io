@@ -272,7 +272,6 @@ or more bytes failed.)  Others have reported similar problems. </p>
 following to the "Device" section for the Nvidia driver resolves the problem for some cards:</p>
 <pre><code> Option     &quot;RegistryDwords&quot;  &quot;RMUseSwI2c=0x01; RMI2cSpeed=100&quot;
 </code></pre>
-
 <p>A file for making this change is 90-nvidia_i2c.conf.  Its exact location varies by where a distribution installs an application's data files. Commonly it can be found in directory /usr/share/ddcutil/data.  </p>
 <pre><code>Section &quot;Device&quot;
    Driver &quot;nvidia&quot;
@@ -282,7 +281,6 @@ following to the "Device" section for the Nvidia driver resolves the problem for
    # per https://devtalk.nvidia.com/default/topic/572292/-solved-does-gddccontrol-work-for-anyone-here-nvidia-i2c-monitor-display-ddc/#4309293
 EndSection
 </code></pre>
-
 <p>Copy this file to /etc/X11/xorg.conf.d.  You will have to restart X11 for this change to take effect.  It's probably simplest to reboot.</p>
 <p>Note: This file works if there is no /etc/X11/xorg.conf file.  If you do have an 
 xorg.conf file the Identifier field will likely require modification.</p>
@@ -294,14 +292,12 @@ user arcnmx reported:</p>
 </blockquote>
 <pre><code>options nvidia NVreg_RegistryDwords=RMUseSwI2c=0x01;RMI2cSpeed=100
 </code></pre>
-
 <blockquote>
 <p>To confirm that the settings are working: </p>
 </blockquote>
 <pre><code>    $ grep RegistryDwords /proc/driver/nvidia/params
     RegistryDwords: &quot;RMUseSwI2c=0x01;RMI2cSpeed=100&quot;
 </code></pre>
-
 <blockquote>
 <p>This makes DDC over HDMI work with my Pascal card and fixes the "invalid EDID" errors at least, and also doesn't require starting X to use it, should help with wayland, etc. </p>
 </blockquote>

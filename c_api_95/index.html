@@ -453,8 +453,8 @@ the client using an API call to select the desired behavior.  Comments on this d
 </tr>
 </tbody>
 </table>
-<p>Functions that free internal library data structures take an opaque pointer as an argument.  These functions return a <strong>DDCA_Status*<em>.  They return 
-</em></strong>DDCRC_ARG<strong><em> if the pointer is invalid.  If the pointer is NULL, the function does nothing and </em></strong>DDCRC_OK*** is returned. Depending on the function, additional status codes are possible.  Whether or not memory is actually freed is a hidden implementation detail, as some opaque pointers reference persistent internal data structures.    </p>
+<p>Functions that free internal library data structures take an opaque pointer as an argument.  These functions return a <strong>DDCA_Status</strong>.  They return 
+<strong><em>DDCRC_ARG</em></strong> if the pointer is invalid.  If the pointer is NULL, the function does nothing and <strong><em>DDCRC_OK</em></strong> is returned. Depending on the function, additional status codes are possible.  Whether or not memory is actually freed is a hidden implementation detail, as some opaque pointers reference persistent internal data structures.    </p>
 <table>
 <thead>
 <tr>
@@ -471,18 +471,18 @@ the client using an API call to select the desired behavior.  Comments on this d
 </tbody>
 </table>
 <p>Additional Notes: </p>
-<p>If a function that creates a resource (e.g. <strong>ddca_create_busno_display_identifier()*<em>) returns other than </em></strong>DDCRC_OK*** (0), then the resource is not created and need not be freed.</p>
+<p>If a function that creates a resource (e.g. <strong>ddca_create_busno_display_identifier()</strong>) returns other than <strong><em>DDCRC_OK</em></strong> (0), then the resource is not created and need not be freed.</p>
 <p>In general, the order in which the <strong><em>ddca_free_</em></strong> functions are called does not matter.  </p>
 <!--
 The one exception is that a **DDCA_Display_Ref** should not be freed if it is associated with an open **DDCA_Display_Handle**.   A call to **ddca_free_display_ref()** when the display reference is referenced by an open display handle returns ***DDCRC_LOCKED***. 
 -->
 
-<p>The <strong>ddca_free_*<em> functions are not idempotent.  Attempting to free an already freed opaque resource will likely return </em></strong>DDCA_ARG***, but may result in a segfault.  Attempting to free an already freed client side resource will also likely result in a segfault.</p>
+<p>The <strong>ddca_free_</strong> functions are not idempotent.  Attempting to free an already freed opaque resource will likely return <strong><em>DDCA_ARG</em></strong>, but may result in a segfault.  Attempting to free an already freed client side resource will also likely result in a segfault.</p>
 <h3 id="newly-deprecated-functions">Newly Deprecated Functions</h3>
 <p>API function <strong>ddca_get_formatted_vcp_value()</strong> is marked as deprecated and will be removed in a future release.  It does not support user defined data types.</p>
 <h3 id="previously-deprecated-functions-deleted">Previously Deprecated Functions Deleted</h3>
 <p>The following functions and type definitions, along with related constants, were deprecated in Release 0.9.0.
-They have now been deleted from files <strong>ddcutil_c_api.h*<em> and **ddcutil_types.h</em></strong>.  </p>
+They have now been deleted from files <strong>ddcutil_c_api.h</strong> and <strong>ddcutil_types.h</strong>*.  </p>
 <table>
 <thead>
 <tr>

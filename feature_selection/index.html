@@ -289,7 +289,6 @@ $ ddcutil vcpinfo x10
 $ ddcutil getvcp 0x10
 
 </code></pre>
-
 <p>The <strong><em>feature-group</em></strong> argument to <strong>getvcp</strong> and <strong>vcpinfo</strong> is a named collection of features.<br />
 The most useful are: </p>
 <table>
@@ -326,7 +325,6 @@ The most useful are: </p>
 For example:</p>
 <pre><code>$ ddcutil getvcp known
 </code></pre>
-
 <p>There many more feature groups.  Most were created to help analyze the Monitor Control Command Set specification, and are not of general interest.
 For a complete list of feature groups, use the <strong>--help</strong> option. </p>
 <p>The following options subset a <strong><em>feature-group</em></strong>: </p>
@@ -338,9 +336,9 @@ This is the default.</p>
 <p>Include table type feature codes in all contexts.</p>
 <h3 id="option-show-table_1">Option: <strong><em>--show-table</em></strong></h3>
 <p>Features of type <strong><em>Table</em></strong> exist only in Monitor Control Command Spec Version 3.0, which no known monitor has implemented.
-Performing <strong>getvcp*<em> on a feature of type </em></strong>Table<strong><em> which does not exist is costly in terms of elapsed time.  Therefore, 
-</em></strong>Table<strong><em> type features are excluded from all feature groups except for group </em></strong>SCAN<strong><em>, which tries to read every possible
-feature code except for those known to be write-only, and group </em></strong>TABLE***, as that would be nonsensical.</p>
+Performing <strong>getvcp</strong> on a feature of type <strong><em>Table</em></strong> which does not exist is costly in terms of elapsed time.  Therefore, 
+<strong><em>Table</em></strong> type features are excluded from all feature groups except for group <strong><em>SCAN</em></strong>, which tries to read every possible
+feature code except for those known to be write-only, and group <strong><em>TABLE</em></strong>, as that would be nonsensical.</p>
 <p>This option causes such features to be included in all feature groups.</p>
 <h3 id="option-rw">Option: --rw <a name='rw'></a></h3>
 <p>Include only feature codes that are read-write.</p>

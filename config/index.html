@@ -298,7 +298,6 @@ Kernel module i2c-dev must be loaded to create the /dev/i2c-N devices.  See <a h
 <p>Add a file with the following line to /etc/udev/rules.d</p>
 <pre><code>SUBSYSTEM==&quot;i2c-dev&quot;,KERNEL==&quot;i2c-[0-9]*&quot;, MODE=&quot;0666&quot;
 </code></pre>
-
 <ul>
 <li>If /dev/i2c-N devices are already assigned to group i2c, add users to that group. </li>
 </ul>
@@ -307,7 +306,6 @@ file /lib/udev/rules/60-i2c-tools.rules is installed.</p>
 <p>Add the users who will run <strong>ddcutil</strong> to that group. </p>
 <pre><code>usermod -G i2c -a &lt;yourname&gt;
 </code></pre>
-
 <ul>
 <li>Create group i2c to manage access.</li>
 </ul>

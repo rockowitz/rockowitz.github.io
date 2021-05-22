@@ -313,8 +313,10 @@ features have special reserved values.  </li>
 <p><strong>ddcutil</strong> release 0.9.9 contains two changes of general interest: </p>
 <ul>
 <li>A new command line option, <strong><em>--less-sleep</em></strong> eliminates many of the delays between the time that <strong>ddcutil</strong> receives a DDC response from a display
-and sends the next request, improving performance.
-<!-- - User Defined Features are now supported. --></li>
+and sends the next request, improving performance.</li>
+</ul>
+<!-- - User Defined Features are now supported. -->
+<ul>
 <li>Support for AMD's old proprietary <strong>fglrx</strong> driver has been dropped.</li>
 </ul>
 <p>The <strong>libddcutil</strong> shared libray has non-upwardly compatible changes.  For details, see <a href="../c_api_99/">Shared Library Changes for Release 0.9.9</a>.</p>
@@ -366,7 +368,7 @@ Prior announcements can be found <a href="./">here</a>.</p>
 Prior announcements can be found <a href="./">here</a>.</p>
 <p><strong>ddcui</strong> release 0.0.4 reflects changes to the <strong>ddcutil</strong> API. </p>
 <p>25 December 2018</p>
-<p><strong>ddcutil*<em> release 0.9.4 fixes a bug that caused the </em></strong>capabilities*** command to fail, and addresses the
+<p><strong>ddcutil</strong> release 0.9.4 fixes a bug that caused the <strong><em>capabilities</em></strong> command to fail, and addresses the
 failure to build from source for the <a href="https://en.wikipedia.org/wiki/x32_ABI">x32 ABI</a>.</p>
 <p>For a complete list of changes and bug fixes, see <a href="../release_notes/">Release Notes</a>.
 Prior announcements can be found <a href="./">here</a>.</p>
@@ -400,14 +402,13 @@ e.g. the following commands increase or decrease the value of the brightness fea
 <pre><code>$ ddcutil setvcp 10 + 5
 $ ddcutil setvcp 10 - 5
 </code></pre>
-
 <p>Note that parsing requires that "+" and "-" be surrounded by spaces.</p>
 <ul>
-<li>Table type features are by default not included in most feature groups specified on <strong>getvcp*<em>, e.g. </em></strong>getvcp known<strong><em>.
-Features of type Table are rare.  The DDC/CI spec does not provide a clean way for </em>*getvcp</strong> to determine that a table 
-feature does not exist.  As a result, <strong>getvcp*<em> typically has to exceed its retry count before giving up.
-(Exclusion of table features does not occur if a feature is explicitly specified by its hex code, or for feature group </em></strong>TABLE<strong><em>.)<br />
-The </em></strong>--no-table<strong><em> (formerly </em></strong>--notable<strong><em>) and </em></strong>-show-table*** options explicitly control this behavior.</li>
+<li>Table type features are by default not included in most feature groups specified on <strong>getvcp</strong>, e.g. <strong><em>getvcp known</em></strong>.
+Features of type Table are rare.  The DDC/CI spec does not provide a clean way for <strong>getvcp</strong> to determine that a table 
+feature does not exist.  As a result, <strong>getvcp</strong> typically has to exceed its retry count before giving up.
+(Exclusion of table features does not occur if a feature is explicitly specified by its hex code, or for feature group <strong><em>TABLE</em></strong>.)<br />
+The <strong><em>--no-table</em></strong> (formerly <strong><em>--notable</em></strong>) and <strong><em>-show-table</em></strong> options explicitly control this behavior.</li>
 </ul>
 <p>For a complete list of changes and bug fixes, see <a href="../release_notes/">Release Notes</a>.
 Prior announcements can be found <a href="./">here</a>.</p>
@@ -473,9 +474,9 @@ with files from the test system.  Symptoms of this corruption include</p>
 <ul>
 <li>Command <strong>ddcutil detect --verbose</strong> shows additional information.</li>
 <li>Command <strong>ddcutil environment --verbose</strong> implements additional diagnostic tests.</li>
-<li><strong>configure*<em> option </em></strong>--enable-drm<strong><em> controls whether DRM is used to enhance the diagnostics of command </em>*ddcutil environment --verbose</strong>.
-If <strong><em>enable-drm=yes</em></strong>, package libdrm-dev or libdrm-devel (depending on Linux distribution) must be installed to build <strong>ddcutil*<em>.
-Setting </em></strong>--enable-drm=no*** affects only diagnostic output, not normal execution.</li>
+<li><strong>configure</strong> option <strong><em>--enable-drm</em></strong> controls whether DRM is used to enhance the diagnostics of command <strong>ddcutil environment --verbose</strong>.
+If <strong><em>enable-drm=yes</em></strong>, package libdrm-dev or libdrm-devel (depending on Linux distribution) must be installed to build <strong>ddcutil</strong>.
+Setting <strong><em>--enable-drm=no</em></strong> affects only diagnostic output, not normal execution.</li>
 </ul>
 <p>For a complete list of changes and bug fixes, see <a href="../release_notes/">Release Notes</a>.
 Prior annoucnements can be found <a href="./">here</a>.</p>
@@ -484,7 +485,7 @@ Prior annoucnements can be found <a href="./">here</a>.</p>
 <p>Maintenance release.</p>
 <ul>
 <li>Fixes a critical bug in release 0.7.1 where insufficient privileges on a /dev/i2c-n device causes program termination.</li>
-<li><strong>ddcutil interrogate*<em> always executes with </em></strong>--set-slave-address*** in effect</li>
+<li><strong>ddcutil interrogate</strong> always executes with <strong><em>--set-slave-address</em></strong> in effect</li>
 <li>Minor improvements to <strong>ddcutil environment</strong> and <strong>ddcutil interrogate</strong> output</li>
 <li>Minor improvements to <strong>ddcutil detect --verbose</strong></li>
 <li>Add explanations for additional <strong><em>errno</em></strong> values</li>

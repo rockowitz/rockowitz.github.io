@@ -274,19 +274,16 @@ This file can be edited and copied to
 /etc/udev/rules.d, but do check that the rules in this file do not conflict with others in that directory.</p>
 <pre><code>$ sudo cp /usr/share/ddcutil/data/etc/udev/rules.d/45-ddcutils-usb.rules /etc/udev/rules.d
 </code></pre>
-
 <p>The following rule gives all users access to the Virtual Control Panel of an Apple Cinema Display by specifying its 
 USB device user id (aka uid) and product id (aka pid):</p>
 <pre><code>SUBSYSTEM==&quot;usbmisc&quot;, ATTRS{idVendor}==&quot;05ac&quot;, ATTRS{idProduct}==&quot;9223&quot;,  MODE=&quot;0666&quot; 
 </code></pre>
-
 <p>This line would of course have to edited for your monitor.  One way to find its uid/pid is the 
 <strong>lsusb</strong> command. </p>
 <p>A more robust way to set proper device permissions is to call <strong>ddcutil</strong> from a udev rule 
 to test whether a device is a HID compliant monitor: </p>
 <pre><code>SUBSYSTEM==&quot;usbmisc&quot;,  KERNEL==&quot;hiddev*&quot;, PROGRAM=&quot;/usr/bin/ddcutil chkusbmon $env{DEVNAME} -v&quot;, MODE=&quot;0660&quot;, GROUP=&quot;video&quot;
 </code></pre>
-
 <p>Note that the path to the ddcutil executable will have be edited to the location where ddcutil is installed on your system. 
 (For details on command <strong>ddcutil chkusbmon</strong>, see <a href="../usb/#command_chkusbmon">here</a>.</p>
 <p>The -v option produces informational messages.  These are lost when the rule is normally executed by

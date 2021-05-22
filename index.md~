@@ -4,34 +4,23 @@ ddcutil
 
 ##Announcements
 
-21 June 2020 
+05 April 2021
 
-**ddcutil** release 0.9.9 contains two changes of general interest: 
+**ddcutil** release 1.1.0 contains the following changes of general interest:
 
-- A new command line option, ***--less-sleep*** eliminates many of the delays between the time that **ddcutil** receives a DDC response from a display
-and sends the next request, improving performance.
-<!-- - User Defined Features are now supported. -->
-- Support for AMD's old proprietary **fglrx** driver has been dropped.
+- Configuration file **ddcutilrc**, located on the XDG config path (normally $HOME/.config/ddcutil/ddcutilrc)  is processed by both **ddcutil** and **libddcutil**. 
+- Monitor capabilities strings are cached to improve performance of the **capabilities** command.
+- Partial workarounds for problems in DRM video drivers (e.g. i915, AMDGPU) when monitors are connected to a docking station. The monitor may not be detected (because no EDID is reported), or the monitor may appear as two different /dev/i2c devices. 
+- When probing /dev/i2c devices for monitors, **ddcutil** could put AMD Navi2 devices (e.g.  RX6000 series) into an inconsistent state. This is because the driver exposes an I2C devices for the SMU.  Display detection is modified to avoid probing these devices. 
 
-The **libddcutil** shared libray has non-upwardly compatible changes.  For details, see [Shared Library Changes for Release 0.9.9](c_api_99.md).
+The **libddcutil** shared library is unchanged. Its SONAME remains "libddcutil.so.4", and the package name is **libddcutil4**.
 
-**ddcui** release 0.1.1 adds additional features and has numerous changes in the "fit and finish" category.  In particular:
-
-- Command line options for starting ***ddcui***, corresponding to settings in the ***Option*** dialogs, and (if multiple monitors) 
-  the initlal monitor selected.
-- The ***Feature Selection Dialog***, along with command line option ***--custom-feature-set***, 
-enable the user to specify the VCP features to be shown.
-- Better handling of error conditions
-- Better **Help** text
-
-**ddcui** release 0.1.1 requires ddcutil 0.9.9.
-
-For general information about the graphical user interface, see [ddcui](ddcui_main.md).
-
-For a complete list of changes and bug fixes, see [Release Notes](release_notes.md).
+For a complete list of **ddcutil** changes and bug fixes, see [Release Notes](release_notes.md).
+<!--
+For **ddcui** changes and bug fixes, see [ddcui Release Notes](ddcui_release_notes.md).
+-->
 Prior announcements can be found [here](prior_announcements.md).
 
-Lastly, this website has been extensively revised to reflect the current state of **ddcutil** and **ddcui**.
 
 ##Introduction
 

@@ -268,15 +268,13 @@
 <p>When posting questions regarding <strong>ddcutil</strong> configuration, please execute the following command as root, capture its output in a file, and submit the output as an attachement.</p>
 <pre><code>$ ddcutil interrogate
 </code></pre>
-
-<p>Note: <strong><em>interrogate</em></strong> is a convenience command  that wraps <strong><em>detect --verbose</em></strong>, <strong><em>environment --verbose</em></strong>, and (for each detected monitor) <strong>probe*<em>.
-There is no need to submit output of the individual commands if </em></strong>interrogate*** is executed.</p>
+<p>Note: <strong><em>interrogate</em></strong> is a convenience command  that wraps <strong><em>detect --verbose</em></strong>, <strong><em>environment --verbose</em></strong>, and (for each detected monitor) <strong>probe</strong>.
+There is no need to submit output of the individual commands if <strong><em>interrogate</em></strong> is executed.</p>
 <p>Before running <strong><em>interrogate</em></strong> or <strong><em>environment</em></strong>, ensure that Linux command <strong><em>i2cdectect</em></strong> (typically found in package <strong><em>i2c-tools</em></strong>) is installed.  <strong><em>i2cdetect</em></strong> provides an indepenent check of whether the DDC slave address (x37) is active on an I2C bus, and is used by <strong><em>interrogate</em></strong> or <strong><em>environment</em></strong> if available.</p>
 <p>Because monitors that use USB for MCCS communication are rare, the extensive USB diagnostics are separated out into
 a separate command, <strong><em>usbenvironment</em></strong>, which is not packaged by <strong><em>interrogate</em></strong>.</p>
 <pre><code>$ ddcutil usbenvironment --verbose
 </code></pre>
-
 <p>See also:
 - <a href="../secondary_commands/#interrogate">interrogate command</a>
 - <a href="../secondary_commands/#environment">environment command</a>

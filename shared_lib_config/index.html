@@ -276,7 +276,6 @@ are installed in the default system production locations.  On Fedora, for exampl
 run <strong>ldconfig</strong> after installation to rebuild the shared library cache (normally file /etc/ld.so.conf) to make the shared libraries available.</p>
 <pre><code>$ sudo ldconfig
 </code></pre>
-
 <p>When installing from a .tar file, or building and installing from source, the situation is more complicated.  As the saying goes, your mileage may vary.</p>
 <p>Include files, shared libraries, and pkg-config files are installed in distriibution specific local directories.
 (This can be altered by the <strong><em>--prefix</em></strong> and other options to  <strong>configure</strong>, 
@@ -292,28 +291,23 @@ necessary is to execute <strong>ldconfig</strong>. </p>
 <p>If the shared libraries are not found, the following command shows the library search path: </p>
 <pre><code>$ ld --verbose | grep SEARCH_DIR | tr -s ' ;' \\012
 </code></pre>
-
 <p>To check if the linker can locate all the libraries required by a program, use the <strong>ldd</strong> command.  For example (assuming you're 
 in the directory containing <strong>ddcui</strong>, which uses <strong>libddcutil</strong>)::</p>
 <pre><code>ldd ddcui
 </code></pre>
-
 <p>To add a directory to search, set environment variable <strong>LD_LIBRARY_PATH</strong> prior to executing a program that requires the shared library.
 For example:</p>
 <pre><code>$ export LD_LIBRARY_PATH=shared_library_directory:$LD_LIBRARY_PATH
 $ ./ddcui
 </code></pre>
-
 <p>To permanently add the local library directory to the search path, create a .conf file in directory <strong>/etc/ld.conf.d</strong> that specifies the local library directory, or if appropriate add the library directory name to an existing .conf file.</p>
 <h3 id="locating-include-files">Locating include files</h3>
 <p>To see the default include file path: </p>
 <pre><code>$ gcc -xc++ -E -v 
 </code></pre>
-
 <p>If the local include directory is not in the default include path, you can add it to the default include directories, e.g.</p>
 <pre><code>$ export INCLUDE=/usr/local/include
 </code></pre>
-
 <p>Alternatively, you can rely on pkg-config to set the required directory at compile time.</p>
 <h3 id="pkgconfig-files">PKGCONFIG files</h3>
 <p>If <strong>pkg-config</strong> is called as part of building <strong>Makefile</strong>, e.g. from autoconf/automake, cmake, or qmake, then the ddcutil pkg-config file <strong>ddcutil.pkg</strong> specifies the required include files, libraries, and library directories.  </p>
@@ -322,7 +316,6 @@ the local directory in which ddcutil.pc is installed is in the distribution-spec
 <p>To see the the default search path: </p>
 <pre><code>$ pkg-config --variable pc_path pkg-config
 </code></pre>
-
 <p>To add a local directory to the <strong>pkg-config</strong> search path, set environment variable PKG_CONFIG_PATH.  Note that
 this affects <strong>pkg-config</strong> when run by configure, cmake, qmake etc.  Examples:</p>
 <pre><code>$ export PKG_CONFIG_PATH=/usr/local/lib/pkgconfig

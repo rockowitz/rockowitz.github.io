@@ -288,7 +288,7 @@ improving startup time.  </p>
 As a practical matter, searching for USB displays has a negligable effect on execution time. This option may be useful if there is a problem with USB display detection.</p>
 <p>The output varies by verbosity. </p>
 <p>Normal output: </p>
-<pre><code class="bash">$ ddcutil detect
+<pre><code class="language-bash">$ ddcutil detect
 Display 1&lt;
    I2C bus:             /dev/i2c-7   
    EDID synopsis:  
@@ -330,10 +330,9 @@ Display 4
    VCP version:         2.1
 
 </code></pre>
-
 <h4 id="option-brief-terse">Option: <strong><em>--brief</em></strong>, <strong><em>--terse</em></strong></h4>
 <p>Presents a summary report of each detected display, in an easily machine readable form. </p>
-<pre><code class="bash">$ ddcutil detect --brief
+<pre><code class="language-bash">$ ddcutil detect --brief
 Display 1
    I2C bus:             /dev/i2c-7
    Monitor:             ACR:Acer X243W:LAG040064310
@@ -351,10 +350,9 @@ Display 4
    Monitor:             DEL:DELL U3011:PH5NY2CIANXL
 
 </code></pre>
-
 <h4 id="option-verbose">Option:  <strong><em>--verbose </em></strong></h4>
 <p>Show additional information, including the EDID. </p>
-<pre><code class="bash">$ ddcutil detect --verbose
+<pre><code class="language-bash">$ ddcutil detect --verbose
 Display 1
    I2C bus:             /dev/i2c-7
       I2C address 0x50 (EDID) responsive: true 

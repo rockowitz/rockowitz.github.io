@@ -298,11 +298,9 @@ and discussions on the Web. </p>
 <p>At least on The Raspberry Pi 2 or 3, the I2C bus for the HDMI connection is /dev/i2c-2.  To enable it, the following line is required in the <strong>config.txt</strong> file: </p>
 <pre><code>dtparam=i2c2_iknowwhatimdoing
 </code></pre>
-
-<p>Alternatively, the experimental OpenGL <strong>vc4-kms-v3d driver*<em> enables /dev/i2c-2 automatically.   In that case, the above </em></strong>i2c2_iknowwhatimdoing*** setting is not needed, though this may possibly change:</p>
+<p>Alternatively, the experimental OpenGL <strong>vc4-kms-v3d driver</strong> enables /dev/i2c-2 automatically.   In that case, the above <strong><em>i2c2_iknowwhatimdoing</em></strong> setting is not needed, though this may possibly change:</p>
 <pre><code>dtoverlay=vc4-kms-v3d
 </code></pre>
-
 <p>Also, ensure that i2c_dev is listed in /etc/modules, /etc/modules.conf, or a file in /etc/modules-load.d, as appropriate for your system.</p>
 <p>Prebuilt <strong>ddcutil</strong> packages for the Raspberry Pi are available for many distributions.
 See <a href="https://repology.org/metapackage/ddcutil/versions">Repology</a> for pointers.
@@ -312,7 +310,6 @@ If there is no prebuilt version for your environment, or the prebuilt version is
 <pre><code># Won't work!
 dtparam=i2c2
 </code></pre>
-
 <p>The parameter name was chosen as a caution.  From the <a href="https://github.com/raspberrypi/linux/commit/c6f0998f61b279d47e210b90d645643a6fe7932b">commit</a> that added the option: </p>
 <blockquote>
 <p>The third I2C bus (I2C2) is normally reserved for HDMI use. Careless use of this bus can break an attached display - use with caution.</p>

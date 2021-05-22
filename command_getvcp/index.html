@@ -295,9 +295,8 @@ are shown.  Output takes the form:</p>
 </pre>
 
 <p>For example:</p>
-<pre><code class="bash">VCP 10 C 50 100
+<pre><code class="language-bash">VCP 10 C 50 100
 </code></pre>
-
 <p>For a simple non-continuous VCP feature, i.e. one for which only the SL response byte is 
 significant, the value is reported in hex.   Output takes the form:  </p>
 <pre>
@@ -305,9 +304,8 @@ significant, the value is reported in hex.   Output takes the form:  </p>
 </pre>
 
 <p>For example:</p>
-<pre><code class="bash">VCP 60 SNC x03
+<pre><code class="language-bash">VCP 60 SNC x03
 </code></pre>
-
 <p>Complex non-continuous VCP features are ones for which more then 1 response byte is 
 significant.  In that case all 4 bytes are reported in hex.  Output takes the form:</p>
 <pre>
@@ -315,18 +313,16 @@ significant.  In that case all 4 bytes are reported in hex.  Output takes the fo
 </pre>
 
 <p>For example:</p>
-<pre><code class="bash">VCP DF CND xff xff x02 x00
+<pre><code class="language-bash">VCP DF CND xff xff x02 x00
 </code></pre>
-
 <p>Table VCP features report the value as hexidecimal string.  Output takes the form:</p>
 <pre>
 &nbsp;&nbsp;<em>VCP</em> feature-code <em>T</em> hex-string
 </pre>
 
 <p>For example:</p>
-<pre><code class="bash">VCP 73 T x01020304
+<pre><code class="language-bash">VCP 73 T x01020304
 </code></pre>
-
 <p>Finally, if a feature is not supported or some other error occurs, this may be reported
 or there may simply be no output.  It is always reported for single feature <strong><em>getvcp</em></strong> requests. 
 It is normally not reported if the request specifies a feature group, which defines a set of features. but see <strong><em>--show-unsupported</em></strong>. 
@@ -336,9 +332,8 @@ If reported, output takes the form:</p>
 </pre>
 
 <p>For example:</p>
-<pre><code class="bash">VCP 84 ERR
+<pre><code class="language-bash">VCP 84 ERR
 </code></pre>
-
 <h4 id="option-verbose">Option: <strong><em>--verbose</em></strong></h4>
 <p>The internal representation (bytes MH, ML, SH, SL) is shown.  Unsupported features are always reported.</p>
 <h4 id="option-show-unsupported">Option: <strong><em>--show-unsupported</em></strong></h4>
