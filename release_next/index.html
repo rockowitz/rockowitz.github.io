@@ -317,11 +317,12 @@ to both the libddcutil trace log and the system log.</p>
 <h2 id="preliminary-notes-for-ddcui-release-020">Preliminary Notes for <strong>ddcui</strong> Release 0.2.0</h2>
 <p>This is a major update to <strong>ddcui</strong>, containing enhanced features,
 many "fit and finish" changes, and extensive internal rework.</p>
-<p>It requires the latest version of libddcutil, which is libddcutil5, ddcutil 1.2.0  libddcutil.so.5</p>
+<p>It requires the current version of libddcutil, libddcutil.so.4.1.0, which is built from source package ddcutil 1.2.0.
+As an installation package, this is normally available as libddcutil4.rpm, libddcutil4.deb, etc.</p>
 <h3 id="configuration-file">Configuration file</h3>
-<p><strong>ddcui</strong> uses the configuration file <strong>ddcutilrc</strong> in two different ways. 
+<p><strong>ddcui</strong> uses the configuration file <strong>ddcutilrc</strong> in two different ways. <br />
 - Sections [ddcui] and [global] specify options passed to ddcui. They are prepended to the 
-string entered by the user that is passed to the <strong>ddcui</strong> command processor.
+string entered by the user that is passed to the <strong>ddcui</strong> command processor.<br />
 - Sections [libddcutil] and [global] specify options passed to libddcutil. This is now the 
 supported method for passing options to the shared library. </p>
 <p>For details on the configuration file, see section <a href="../config_file/">Config File</a> in the 
