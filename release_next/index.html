@@ -286,241 +286,178 @@ definition of XDG_DATA_HOME in the XDG specification.  Typically this is $HOME/.
 <td>ddca_get_extended_version_string</td>
 <td>&nbsp;Version string with optional suffix, e.g. "1.1.2-rc2"</td>
 </tr>
-<tr>
-<td><br></td>
-<td></td>
-</tr>
-<tr>
-<td>Note: By comparison, <strong><em>ddca_set_trace_groups()</em></strong> replaces the existing trace group definition.</td>
-<td></td>
-</tr>
 </tbody>
 </table>
-<table>
-<thead>
-<tr>
-<th>New Macro</th>
-<th>Comments</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>DDCUTIL_VSUFFIX</td>
-<td>&nbsp;version suffix if it exists</td>
-</tr>
-<tr>
-<td><br></td>
-<td></td>
-</tr>
-<tr>
-<td>### Miscellaneous</td>
-<td></td>
-</tr>
-</tbody>
-</table>
-<ul>
-<li>
-<p>Additional checks are performed on DDCA_Display_Ref function arguments.  </p>
-</li>
-<li>
-<p>If programs <strong>get-edid</strong> and <strong>parse-edid</strong> are installed, command <strong>ddcutil environment --verbose</strong> uses them
-for an addiional EDID check</p>
-</li>
-<li>
-<p><strong><em>assert{}</em></strong> statements are used in libddcutil for situations that 
+<p><br>
+Note: By comparison, <strong><em>ddca_set_trace_groups()</em></strong> replaces the existing trace group definition. </p>
+<p>
+New Macro | Comments
+-----------|-------------------
+DDCUTIL_VSUFFIX |&nbsp;version suffix if it exists
+
+<br>
+### Miscellaneous
+
+- Additional checks are performed on DDCA_Display_Ref function arguments.  
+
+- If programs **get-edid** and **parse-edid** are installed, command **ddcutil environment --verbose** uses them
+for an addiional EDID check
+
+- ***assert{}*** statements are used in libddcutil for situations that 
 should be logically impossible.  To aid in remote problem diagnosis, many of these statements have been 
 replaced by macro TRACE_ASSERT(), which additionally writes a messsage
-to both the libddcutil trace log and the system log.</p>
-</li>
-</ul>
-<h2 id="preliminary-notes-for-ddcui-release-020">Preliminary Notes for <strong>ddcui</strong> Release 0.2.0</h2>
-<p>This is a major update to <strong>ddcui</strong>, containing enhanced features,
-many "fit and finish" changes, and extensive internal rework.</p>
-<p>It requires the current version of libddcutil, libddcutil.so.4.1.0, which is built from source package ddcutil 1.2.0.
-As a distribution installation package, this is normally available as libddcutil4.rpm, libddcutil4.deb, etc.</p>
-<h3 id="configuration-file">Configuration file</h3>
-<p><strong>ddcui</strong> uses the configuration file <strong>ddcutilrc</strong> in two different ways. <br />
+to both the libddcutil trace log and the system log.
+
+
+
+## Preliminary Notes for **ddcui** Release 0.2.0
+
+This is a major update to **ddcui**, containing enhanced features,
+many "fit and finish" changes, and extensive internal rework.
+
+It requires the current version of libddcutil, libddcutil.so.4.1.0, which is built from source package ddcutil 1.2.0.
+As a distribution installation package, this is normally available as libddcutil4.rpm, libddcutil4.deb, etc.
+
+### Configuration file
+
+**ddcui** uses the configuration file **ddcutilrc** in two different ways.   
 - Sections [ddcui] and [global] specify options passed to ddcui. They are prepended to the 
-string entered by the user that is passed to the <strong>ddcui</strong> command processor.<br />
-- Sections [libddcutil] and [global] specify options passed to <strong>libddcutil</strong>. This is now the 
-preferred method for passing options to the shared library. </p>
-<p>For details on the configuration file, see section <a href="../config_file/">Config File</a> in the 
-general <strong>ddcutil</strong> documentation </p>
-<p>Previously, several <strong>ddcui</strong> options were created simply pass a value through
-to <strong>libddcutil</strong>.  Instead of specifying these options on the ddcui command line, include them in the [libddcutil] 
-section of the configuration file.  The use of these <strong>ddcui</strong> options is deprecated. 
-Some are removed in this version and some or all will be removed in a future release.</p>
-<p>Command line options removed in <strong>ddcui</strong> 0.2.0.  Use the configuration file instead.</p>
-<table>
-<thead>
-<tr>
-<th>Removed Option</th>
-<th>&nbsp;Purpose</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>--sleep-multiplier</td>
-<td>&nbsp; adjust sleep duration while waiting for a DDC response</td>
-</tr>
-<tr>
-<td>--sleep-less, -less-sleep</td>
-<td>&nbsp;Do not perform sleep in certain circumstances</td>
-</tr>
-<tr>
-<td>--no-sleep-less</td>
-<td>&nbsp;Always peform seleep</td>
-</tr>
-</tbody>
-</table>
-<p>Options subject to future removal:</p>
-<table>
-<thead>
-<tr>
-<th>Option</th>
-<th>&nbsp;Purpose</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>--ddc</td>
-<td>&nbsp;  report DDC data errors</td>
-</tr>
-<tr>
-<td>--udf, --noudf</td>
-<td>&nbsp;  enable or disable user defined features</td>
-</tr>
-<tr>
-<td>--maxtries</td>
-<td>&nbsp;  adjust the number of retries for DDC operations</td>
-</tr>
-<tr>
-<td>--stats ??</td>
-<td>&nbsp;  report statistics to the terminal at program termination</td>
-</tr>
-</tbody>
-</table>
-<p>--excp         | &nbsp; report internal exceptionss to terminal
---trace        | &nbsp; specify a <strong>libddcutil</strong> trace group 
---trcfunc      | &nbsp; specify a <strong>libddcutil</strong> function to be traced 
---trcfile      | &nbsp; specify a <strong>libddcutil</strong> file to be traced</p>
-<p>Note that the following options are both passed to <strong>libddcutil</strong> also recognized by the <strong>ddcui</strong> client.
-The are not deprecated.  </p>
-<table>
-<thead>
-<tr>
-<th>Option</th>
-<th>&nbsp;Purpose</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>--ts, -=timestamp</td>
-<td>&nbsp;Prefix trace messages with timestamp</td>
-</tr>
-<tr>
-<td>--tid, --threadid</td>
-<td>&nbsp;Prefix trace messages with thread id</td>
-</tr>
-</tbody>
-</table>
-<h3 id="desktop-integation">Desktop Integation</h3>
-<ul>
-<li>Install ddcui.desktop in /usr/share/applications  </li>
-<li>Install ddcui.appdata.xml in /usr/share/metainfo  </li>
-<li>Install icons in /usr/share/icons/hicolor, /usr/share/pixmaps</li>
-</ul>
-<h4 id="semi-continuous-values">Semi-Continuous Values</h4>
-<p>As of MCCS specification 3.0 and 2.2, several features have both a set of reserved 
+string entered by the user that is passed to the **ddcui** command processor.  
+- Sections [libddcutil] and [global] specify options passed to **libddcutil**. This is now the 
+preferred method for passing options to the shared library. 
+
+For details on the configuration file, see section [Config File](config_file.md) in the 
+general **ddcutil** documentation 
+
+Previously, several **ddcui** options were created simply pass a value through
+to **libddcutil**.  Instead of specifying these options on the ddcui command line, include them in the [libddcutil] 
+section of the configuration file.  The use of these **ddcui** options is deprecated. 
+Some are removed in this version and some or all will be removed in a future release.
+
+Command line options removed in **ddcui** 0.2.0.  Use the configuration file instead.
+
+Removed Option |&nbsp;Purpose
+----------------------|-------------------------------
+--sleep-multiplier |&nbsp; adjust sleep duration while waiting for a DDC response
+--sleep-less, -less-sleep | &nbsp;Do not perform sleep in certain circumstances
+--no-sleep-less           | &nbsp;Always peform seleep
+
+
+Options subject to future removal:
+
+Option |&nbsp;Purpose
+----------------------|-------------------------------
+--ddc          | &nbsp;  report DDC data errors 
+--udf, --noudf | &nbsp;  enable or disable user defined features 
+--maxtries     | &nbsp;  adjust the number of retries for DDC operations
+--stats ??     | &nbsp;  report statistics to the terminal at program termination
+
+--excp         | &nbsp; report internal exceptionss to terminal
+--trace        | &nbsp; specify a **libddcutil** trace group 
+--trcfunc      | &nbsp; specify a **libddcutil** function to be traced 
+--trcfile      | &nbsp; specify a **libddcutil** file to be traced
+
+Note that the following options are both passed to **libddcutil** also recognized by the **ddcui** client.
+The are not deprecated.  
+
+Option              |&nbsp;Purpose
+--------------------|-------------------------------
+--ts, -=timestamp   |&nbsp;Prefix trace messages with timestamp
+--tid, --threadid   |&nbsp;Prefix trace messages with thread id
+
+
+### Desktop Integation 
+
+ - Install ddcui.desktop in /usr/share/applications  
+ - Install ddcui.appdata.xml in /usr/share/metainfo  
+ - Install icons in /usr/share/icons/hicolor, /usr/share/pixmaps
+
+
+#### Semi-Continuous Values
+
+As of MCCS specification 3.0 and 2.2, several features have both a set of reserved 
 values and with a continuous range.  I've dubbed them "semi-continuous".  A special widget now exists to represent these features.
 The widget has both a combo box for the reserved values
-and a slider/spinbox combination for the continuous range. </p>
-<p>The features affected are: </p>
-<table>
-<thead>
-<tr>
-<th>Feature</th>
-<th>Comment</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Feature x62 (Audio Volume)</td>
-<td>&nbsp; MCCS 2.2 and 3.0 only</td>
-</tr>
-<tr>
-<td>Feature x87 (Audio Treble)</td>
-<td>&nbsp; MCCS 2.2 and 3.0 only</td>
-</tr>
-<tr>
-<td>X91 (Audio Bass)</td>
-<td>&nbsp; MCCS 2.2 and 3.0 only</td>
-</tr>
-<tr>
-<td>x93 (Audio Balance)</td>
-<td>&nbsp; MCCS 2.2 and 3.0 only</td>
-</tr>
-</tbody>
-</table>
-<h3 id="online-help">Online Help</h3>
-<p>Online help is extensively changed</p>
-<ul>
-<li>All help buttons now provide relevant help  </li>
-<li>The main help screen (accessed from Help-&gt;Contents) now links to other help screens.  </li>
-<li>Fomatting of help screens is more consistent  </li>
-<li>Where appropriate, it is possible to navigate backward and forward among screens.</li>
-</ul>
-<p>Dialog boxes and help screens are more consistent in style.</p>
-<h3 id="options-menu">Options Menu</h3>
-<ul>
-<li>Rename Options menu entry User Interface Options -&gt; User Interface for cosnsitency</li>
-<li>Rename  dialog Other Options to NC Feature Value</li>
-</ul>
-<h3 id="nc-feature-handling">NC Feature Handling</h3>
-<p>Two mechanisms have been implemented to address the problem of a NC feature values 
+and a slider/spinbox combination for the continuous range. 
+
+The features affected are: 
+
+Feature | Comment
+------------|----------
+Feature x62 (Audio Volume)  |&nbsp; MCCS 2.2 and 3.0 only
+Feature x87 (Audio Treble) | &nbsp; MCCS 2.2 and 3.0 only
+X91 (Audio Bass)           | &nbsp; MCCS 2.2 and 3.0 only
+x93 (Audio Balance)        | &nbsp; MCCS 2.2 and 3.0 only
+
+
+### Online Help
+
+Online help is extensively changed
+
+- All help buttons now provide relevant help  
+- The main help screen (accessed from Help->Contents) now links to other help screens.  
+- Fomatting of help screens is more consistent  
+- Where appropriate, it is possible to navigate backward and forward among screens.
+
+Dialog boxes and help screens are more consistent in style.
+
+### Options Menu
+- Rename Options menu entry User Interface Options -> User Interface for cosnsitency
+- Rename  dialog Other Options to NC Feature Value
+
+### NC Feature Handling
+
+Two mechanisms have been implemented to address the problem of a NC feature values 
 returned by the monitor that is not defined in the MCCS spec or the 
-capabilities string.</p>
-<ul>
-<li>
-<p>Sometimes the value is undefined for the monitor's MCCS version, but is defined
-in a later version. If dialog box option <strong><em>NC Feature Values -&gt;Use Latest NC Values</em></strong> is checked, 
-<strong>ddcui</strong> will use the value list for the most recent MCCS version that defines the 
-feature, invariably 2.2.  Option <strong><em>--use-latest-nc-values</em></strong> can be specified on the command line. </p>
-</li>
-<li>
-<p>If the monitor returns an unrecognzied value, we want to still show that value 
+capabilities string.
+
+- Sometimes the value is undefined for the monitor's MCCS version, but is defined
+in a later version. If dialog box option ***NC Feature Values ->Use Latest NC Values*** is checked, 
+**ddcui** will use the value list for the most recent MCCS version that defines the 
+feature, invariably 2.2.  Option ***--use-latest-nc-values*** can be specified on the command line. 
+
+- If the monitor returns an unrecognzied value, we want to still show that value 
 in the combo box even if another value is selected. This change remembers unrecognized value that have been seen.
-This memorization does not persist across <strong>ddcui</strong> calls. </p>
-</li>
-</ul>
-<p>Even with these enhancements, unrecognized NC feature values are probably better handled
-using a user supplied feature definition.  See <a href="../udf/">User Defined Features</a></p>
-<p>NC values handling
+This memorization does not persist across **ddcui** calls. 
+
+Even with these enhancements, unrecognized NC feature values are probably better handled
+using a user supplied feature definition.  See [User Defined Features](udf.md)
+
+
+NC values handling
 - if unexpected value occurs, it remains in the drop down menu
 - Use Latest NC values: 
    if Both or MCCS, uses the latest values 
    if Capabilities, used as text for listed capabilities
-   in both cases, if an unobserved value is detected the value is taken from latest</p>
-<p>"use latest NC" option applies to values as well as names</p>
-<pre><code>- for MCCS, affects both values and names
-- for Capabilites, affects names
-</code></pre>
-<h3 id="building-ddcui">Building <strong>ddcui</strong></h3>
-<ul>
-<li>File <strong><em>.gitignore</em></strong> has been pruned of entries that do not apply to all git <strong>ddcui</strong> repos.
+   in both cases, if an unobserved value is detected the value is taken from latest
+
+
+
+"use latest NC" option applies to values as well as names
+
+    - for MCCS, affects both values and names
+    - for Capabilites, affects names
+
+
+
+
+### Building **ddcui** 
+
+- File ***.gitignore*** has been pruned of entries that do not apply to all git **ddcui** repos.
 Locally-specific files to be ignored should be listed in file .git/info/exdclude, 
-which is not under git control.</li>
-</ul>
-<h3 id="miscellaneous">Miscellaneous</h3>
-<ul>
-<li>The monitor icon previously used by <strong>ddcui</strong> was replaced by one taken from the Oxygen theme, avoiding any
-question as to its provenance under an open source license. </li>
-<li>Option <strong><em>--stats</em></strong> reports execution statistics to the terminal when ddcui terminates 
-normally. </li>
-<li>Option <strong>--version</strong> reports the <strong>libddcutil</strong> and <strong>Qt</strong> versions that were used 
-for building the programs, and the versions being executed.</li>
-<li>Key press events are recognized for most, though not all, menu options.</li>
-</ul>
+which is not under git control.
+
+
+
+### Miscellaneous
+
+- The monitor icon previously used by **ddcui** was replaced by one taken from the Oxygen theme, avoiding any
+question as to its provenance under an open source license. 
+- Option ***--stats*** reports execution statistics to the terminal when ddcui terminates 
+normally. 
+- Option **--version** reports the **libddcutil** and **Qt** versions that were used 
+for building the programs, and the versions being executed.
+- Key press events are recognized for most, though not all, menu options.
               
             </div>
           </div>
