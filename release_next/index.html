@@ -256,56 +256,64 @@
             <div class="section">
               
                 <h2 id="preliminary-notes-for-ddcutil-release-111">Preliminary Notes for <strong>ddcutil</strong> Release 1.1.1</h2>
-<p><strong><em>don't forget to update CHANGELOG.md!</em></strong></p>
-<p>The changes in release 1.1.1 largely apply only to the shared library <strong>libddcutil</strong>.
+<p>The changes in release 1.1.1 largely affect only shared library <strong>libddcutil</strong>.
 Users of the command line program <strong>ddcutil</strong> do not need to update. </p>
 <h3 id="logging">Logging</h3>
-<p>Major events written to the system log.  These include starting, stopping, internally detected errors. </p>
-<p>Useful for contexts where there is no terminal to write to, e.g. PowerDevile in KDE.</p>
-<p>Option <strong><em>--libddcutil-trace-file</em></strong>.  Note that this option is applicable to libddcutil only.
-It should be specified in the <strong><em>[libddcutil]</em></strong> section of the ddcutil configuration file.
-   File name can be absolute or relative.  If relative, 
-resolved using the definition of XDG_DATA_HOME the XDG specfication.
-Typically this is $HOME/.local/share/ddcutil.
-relative file names in $HOME/.local/share/ddcutil </p>
-<p>syslog: 
-- writes start and termination msgs, 
-- logs severe errors</p>
+<p>Two forms of logging now exist for the shared library.
+These were implemented to address situations where this is no terminal to write to, e.g. PowerDevil in KDE Plasma.</p>
+<h4 id="libddcutil-trace-file"><strong>libddcutil</strong> trace file</h4>
+<p><strong>ddcutil</strong> can redirect all output that it would normally write to the terminal to a trace file instead. 
+The file is specified using option <strong><em>--libddcutil-trace-file</em></strong>.  This option can be only
+be specified in the <strong><em>[libddcutil]</em></strong> section of the <strong>ddcutil</strong> configuration file, <strong>ddcutilrc</strong>.
+(It does not apply to either <strong>ddcutil</strong> or <strong>ddcui</strong>.) </p>
+<p>The file name given can be either absolute or relative. If relative, the directory is resolved as per the
+specification of XDG_DATA_HOME in the XDG specification.  Typically this is $HOME/.local/share/ddcutil.</p>
+<h4 id="syslog">Syslog</h4>
+<p>Major events are written to the system log.  These include starting, stopping, and severe internal errors.</p>
 <h3 id="api-changes">API changes</h3>
-<p>[TO CLEAN UP CODE, THEN EDIT]</p>
 <table>
 <thead>
 <tr>
-<th>Function</th>
+<th>New Function</th>
 <th>Comments</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td></td>
-<td></td>
+<td>ddca_add_trace_groups</td>
+<td>&nbsp;Add to the set of traced groups</td>
+</tr>
+<tr>
+<td>ddca_get_extended_version_string</td>
+<td>&nbsp;Version string with optional suffix, e.g. "1.1.2-rc2"</td>
 </tr>
 </tbody>
 </table>
-<p>set_trace_groups() 
-add_trace_groups | new function</p>
-<p>ddca_set_trace_groups() now adds to whatever trace groups are currently active</p>
-<p>n. set_trace_groups() replaces the existing trace group definition. </p>
-<p>additional validation of DDCA_Display_Ref handle </p>
-<p>ddca_ddcautil_version_string()</p>
-<p>ddcutil_macros.h: </p>
-<p>add definition fo DDCUTIL_VSUFFIX</p>
-<ul>
-<li>include suffix </li>
-</ul>
+<p>Note: By comparison, <strong><em>ddca_set_trace_groups()</em></strong> replaces the existing trace group definition. </p>
+<table>
+<thead>
+<tr>
+<th>New Macro</th>
+<th>Comments</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>DDCUTIL_VSUFFIX</td>
+<td>&nbsp;version suffix if it exists</td>
+</tr>
+</tbody>
+</table>
 <h3 id="miscellaneous">Miscellaneous</h3>
 <p>configure.ac: 
-- some cleanup and rationalization 
-- </p>
+- some cleanup and rationalization </p>
 <ul>
 <li>
-<p>Command <strong>ddcutil environment --verbose</strong> calls <strong>get-edid|parse-edid</strong>
-as an addiional check</p>
+<p>Additional checks are performed on DDCA_Display_Ref function arguments.  </p>
+</li>
+<li>
+<p>If programs <strong>get-edid</strong> and <strong>parse-edid</strong> are installed, command <strong>ddcutil environment --verbose</strong> uses them
+for an addiional EDID check</p>
 </li>
 <li>
 <p><strong><em>assert{}</em></strong> statements are used in libddcutil for situations that 
@@ -315,7 +323,7 @@ to both the libddcutil trace log and the system log.</p>
 </li>
 </ul>
 <h2 id="preliminary-notes-for-ddcui-release-020">Preliminary Notes for <strong>ddcui</strong> Release 0.2.0</h2>
-<p>This is a major update to <strong>ddcui</strong>, containing enhanced features,
+<p>This is a major update to <strong>ddcui</strong>, containing enhanced features,at
 many "fit and finish" changes, and extensive internal rework.</p>
 <p>It requires the current version of libddcutil, libddcutil.so.4.1.0, which is built from source package ddcutil 1.2.0.
 As an installation package, this is normally available as libddcutil4.rpm, libddcutil4.deb, etc.</p>
@@ -425,9 +433,14 @@ This memorization does not persist across <strong>ddcui</strong> calls. </p>
 using a user supplied feature definition.  See <a href="../udf/">User Defined Features</a></p>
 <h3 id="building-ddcui">Building <strong>ddcui</strong></h3>
 <ul>
-<li>File .gitignore has been pruned of entries that do not apply to all git <strong>ddcui</strong> repos.
+<li>
+<p>File .gitignore has been pruned of entries that do not apply to all git <strong>ddcui</strong> repos.
 Locally-specific files to be ignored should be specified in file .git/info/exdclude, 
-which is not under git control.</li>
+which is not under git control.</p>
+</li>
+<li>
+<p>CmakeLists.txt and ddcui.pro both been updated</p>
+</li>
 </ul>
 <h3 id="miscellaneous_1">Miscellaneous</h3>
 <ul>
@@ -440,6 +453,41 @@ for building the programs, and the versions being executed.</li>
 <li>Key press events are recognized for most, though not all, menu options.</li>
 <li>Files <strong><em>ddcui.desktop</em></strong>, <strong><em>ddcui.appdata.xml</em></strong> and icon files are installed in the appropriate system directories.</li>
 </ul>
+<h2 id="preliminary-note-for-release-020">Preliminary Note for Release 0.2.0</h2>
+<h3 id="configuration-file-ddcutilrc">Configuration File <strong>ddcutilrc</strong></h3>
+<p>See <a href="ddcui_release_next">ddcutil release notes</a>#??</p>
+<h3 id="help">Help</h3>
+<h3 id="building">Building</h3>
+<p>NC values handling
+- if unexpected value occurs, it remains in the drop down menu
+- Use Latest NC values: 
+   if Both or MCCS, uses the latest values 
+   if Capabilities, used as text for listed capabilities
+   in both cases, if an unobserved value is detected the value is taken from latest</p>
+<pre><code>These changes address the following problem.  It is possible that
+some value occurs that is not in the capabilities/MCCS list.
+We want to still show that value in the combo box even if another
+value is subsequently selected.  The solution is complicated by
+the fact that rescan causes the feature widgets to be recreated.
+So this widget uses both itself and the associated FeatureValue
+instance to maintain this lisf of observed values.
+
+value_nc_widget.cpp/h:
+- add member variable _observedValues to record all the values
+  set of the lifetime of the widget
+- constructor
+  - give each instance an id number to aid in debugging
+- setFeatureValue(), setCurrentShSl(), loadComboBox2():
+  - combine local observed values, those from FeatureValue instance,
+    and value being set to create list to be loaded in combo box
+</code></pre>
+<p>"use latest NC" option applies to values as well as names</p>
+<pre><code>- for MCCS, affects both values and names
+- for Capabilites, affects names
+- rename variables for clarity
+</code></pre>
+<h3 id="appdataxml-ddcuidesktop-icons-9">appdata.xml, ddcui.desktop, icons 9</h3>
+<p>Handle features combine a combo box for dedicated values with a slider/spinbox for a continuous range. </p>
               
             </div>
           </div>
