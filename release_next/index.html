@@ -305,10 +305,10 @@ DDCUTIL_VSUFFIX |&nbsp;version suffix (may be "")</p>
 for an addiional EDID check</p>
 </li>
 <li>
-<p><strong><em>assert{}</em></strong> statements are used in libddcutil for situations that 
+<p><strong><em>assert{}</em></strong> statements are used in <strong>libddcutil</strong> for situations that 
 should be logically impossible.  To aid in remote problem diagnosis, many of these statements have been 
 replaced by macro TRACE_ASSERT(), which additionally writes a messsage
-to both the libddcutil trace log and the system log.</p>
+to both the <strong>libddcutil</strong> trace log and the system log.</p>
 </li>
 </ul>
 <h2 id="preliminary-notes-for-ddcui-release-020">Preliminary Notes for <strong>ddcui</strong> Release 0.2.0</h2>
@@ -395,7 +395,8 @@ Options subject to future removal:</p>
 </tr>
 </tbody>
 </table>
-<p>Note that the following options are both passed to <strong>libddcutil</strong> also recognized by the <strong>ddcui</strong> client.
+<p><br>
+Note that the following options are both passed to <strong>libddcutil</strong> also recognized by the <strong>ddcui</strong> client.
 The are not deprecated.  </p>
 <table>
 <thead>
@@ -415,86 +416,95 @@ The are not deprecated.  </p>
 </tr>
 </tbody>
 </table>
-<p>
-### Desktop Integation 
-
- - Install ddcui.desktop in /usr/share/applications  
- - Install ddcui.appdata.xml in /usr/share/metainfo  
- - Install icons in /usr/share/icons/hicolor, /usr/share/pixmaps
-
-
-#### Semi-Continuous Values
-
-As of MCCS specification 3.0 and 2.2, several features have both a set of reserved 
+<p><br></p>
+<h3 id="desktop-integation">Desktop Integation</h3>
+<ul>
+<li>Install ddcui.desktop in /usr/share/applications  </li>
+<li>Install ddcui.appdata.xml in /usr/share/metainfo  </li>
+<li>Install icons in /usr/share/icons/hicolor, /usr/share/pixmaps</li>
+</ul>
+<h4 id="semi-continuous-values">Semi-Continuous Values</h4>
+<p>As of MCCS specification 3.0 and 2.2, several features have both a set of reserved 
 values and with a continuous range.  I've dubbed them "semi-continuous".  A special widget now exists to represent these features.
 The widget has both a combo box for the reserved values
-and a slider/spinbox combination for the continuous range. 
-
-The features affected are: 
-
-Feature | Comment
-------------|----------
-Feature x62 (Audio Volume)  |&nbsp; MCCS 2.2 and 3.0 only
-Feature x87 (Audio Treble) | &nbsp; MCCS 2.2 and 3.0 only
-X91 (Audio Bass)           | &nbsp; MCCS 2.2 and 3.0 only
-x93 (Audio Balance)        | &nbsp; MCCS 2.2 and 3.0 only
-
-
-### Online Help
-
-Online help is extensively changed
-
-- All help buttons now provide relevant help  
-- The main help screen (accessed from Help->Contents) now links to other help screens.  
-- Fomatting of help screens is more consistent  
-- Where appropriate, it is possible to navigate backward and forward among screens.
-
-Dialog boxes and help screens are more consistent in style.
-
-### Options Menu
-- Rename Options menu entry User Interface Options -> User Interface for cosnsitency
-- Rename  dialog Other Options to NC Feature Value
-
-### NC Feature Handling
-
-Two mechanisms have been implemented to address the problem of a NC feature value
+and a slider/spinbox combination for the continuous range. </p>
+<p>The features affected are: </p>
+<table>
+<thead>
+<tr>
+<th>Feature</th>
+<th>Comment</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Feature x62 (Audio Volume)</td>
+<td>&nbsp; MCCS 2.2 and 3.0 only</td>
+</tr>
+<tr>
+<td>Feature x87 (Audio Treble)</td>
+<td>&nbsp; MCCS 2.2 and 3.0 only</td>
+</tr>
+<tr>
+<td>X91 (Audio Bass)</td>
+<td>&nbsp; MCCS 2.2 and 3.0 only</td>
+</tr>
+<tr>
+<td>x93 (Audio Balance)</td>
+<td>&nbsp; MCCS 2.2 and 3.0 only</td>
+</tr>
+</tbody>
+</table>
+<h3 id="online-help">Online Help</h3>
+<p>Online help is extensively changed</p>
+<ul>
+<li>All help buttons now provide relevant help  </li>
+<li>The main help screen (accessed from Help-&gt;Contents) now links to other help screens.  </li>
+<li>Fomatting of help screens is more consistent  </li>
+<li>Where appropriate, it is possible to navigate backward and forward among screens.</li>
+</ul>
+<p>Dialog boxes and help screens are more consistent in style.</p>
+<h3 id="options-menu">Options Menu</h3>
+<ul>
+<li>Rename Options menu entry User Interface Options -&gt; User Interface for cosnsitency</li>
+<li>Rename  dialog Other Options to NC Feature Value</li>
+</ul>
+<h3 id="nc-feature-handling">NC Feature Handling</h3>
+<p>Two mechanisms have been implemented to address the problem of a NC feature value
 returned by the monitor that is not defined in the MCCS spec or the 
-capabilities string.
-
-- Sometimes the value is undefined for the monitor's MCCS version, but is defined
-in a later version. If dialog box option ***NC Feature Values ->Use Latest NC Values*** is checked, 
-**ddcui** will use the value list for the most recent MCCS version that defines the 
-feature, invariably 2.2.  Option ***--use-latest-nc-values*** can be specified on the command line.
-
-Note that if the source of NC values is either ***Both*** or ***MCCS***, this option causes the values
-and names to be taken from the latest MCCS release.  If the source of values is ***Capabilities***, the names
-for any values specified in the capabilities string are taken from the latest MCCS release.
-
-- If the monitor returns an unrecognized value, we want to still show that value 
+capabilities string.</p>
+<ul>
+<li>Sometimes the value is undefined for the monitor's MCCS version, but is defined
+in a later version. If dialog box option <strong><em>NC Feature Values -&gt;Use Latest NC Values</em></strong> is checked, 
+<strong>ddcui</strong> will use the value list for the most recent MCCS version that defines the 
+feature, invariably 2.2.  Option <strong><em>--use-latest-nc-values</em></strong> can be specified on the command line.</li>
+</ul>
+<p>Note that if the source of NC values is either <strong><em>Both</em></strong> or <strong><em>MCCS</em></strong>, this option causes the values
+and names to be taken from the latest MCCS release.  If the source of values is <strong><em>Capabilities</em></strong>, the names
+for any values specified in the capabilities string are taken from the latest MCCS release.</p>
+<ul>
+<li>If the monitor returns an unrecognized value, we want to still show that value 
 in the drop down menu after a different value is selected. This change remembers unrecognized values that have been seen.
-This memorization does not persist across **ddcui** calls. 
-
-Even with these enhancements, unrecognized NC feature values are probably better handled
-using a user supplied feature definition.  See [User Defined Features](udf.md)
-
-
-### Building **ddcui** 
-
-- File ***.gitignore*** has been pruned of entries that are not common to all git **ddcui** repos.
+This memorization does not persist across <strong>ddcui</strong> calls. </li>
+</ul>
+<p>Even with these enhancements, unrecognized NC feature values are probably better handled
+using a user supplied feature definition.  See <a href="../udf/">User Defined Features</a></p>
+<h3 id="building-ddcui">Building <strong>ddcui</strong></h3>
+<ul>
+<li>File <strong><em>.gitignore</em></strong> has been pruned of entries that are not common to all git <strong>ddcui</strong> repos.
 Locally-specific files to be ignored should be listed in file .git/info/exclude, 
-which is not under git control.
-
-
-
-### Miscellaneous
-
-- The monitor icon previously used by **ddcui** was replaced by one taken from the Oxygen theme, avoiding any
-question as to its provenance under an open source license. 
-- Option ***--stats*** reports execution statistics to the terminal when ddcui terminates 
-normally. 
-- Option **--version** reports the **libddcutil** and **Qt** versions that were used 
-for building the programs, and the versions being executed.
-- Key press events are recognized for most, though not all, menu options.
+which is not under git control.</li>
+</ul>
+<h3 id="miscellaneous_1">Miscellaneous</h3>
+<ul>
+<li>The monitor icon previously used by <strong>ddcui</strong> was replaced by one taken from the Oxygen theme, avoiding any
+question as to its provenance under an open source license. </li>
+<li>Option <strong><em>--stats</em></strong> reports execution statistics to the terminal when ddcui terminates 
+normally. </li>
+<li>Option <strong>--version</strong> reports the <strong>libddcutil</strong> and <strong>Qt</strong> versions that were used 
+for building the programs, and the versions being executed.</li>
+<li>Key press events are recognized for most, though not all, menu options.</li>
+</ul>
               
             </div>
           </div>
