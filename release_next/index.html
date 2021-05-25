@@ -340,9 +340,9 @@ Removed Option |&nbsp;Purpose
 ----------------------|-------------------------------
 --sleep-multiplier |&nbsp; adjust sleep duration while waiting for a DDC response
 --sleep-less, -less-sleep | &nbsp;Do not perform sleep in certain circumstances
---no-sleep-less           | &nbsp;Always peform seleep
+--no-sleep-less           | &nbsp;Always peform sleep
 
-
+<br>
 Options subject to future removal:
 
 Option |&nbsp;Purpose
@@ -351,7 +351,6 @@ Option |&nbsp;Purpose
 --udf, --noudf | &nbsp;  enable or disable user defined features 
 --maxtries     | &nbsp;  adjust the number of retries for DDC operations
 --stats ??     | &nbsp;  report statistics to the terminal at program termination
-
 --excp         | &nbsp; report internal exceptionss to terminal
 --trace        | &nbsp; specify a **libddcutil** trace group 
 --trcfunc      | &nbsp; specify a **libddcutil** function to be traced 
@@ -365,7 +364,7 @@ Option              |&nbsp;Purpose
 --ts, -=timestamp   |&nbsp;Prefix trace messages with timestamp
 --tid, --threadid   |&nbsp;Prefix trace messages with thread id
 
-
+<p>
 ### Desktop Integation 
 
  - Install ddcui.desktop in /usr/share/applications  
@@ -407,44 +406,31 @@ Dialog boxes and help screens are more consistent in style.
 
 ### NC Feature Handling
 
-Two mechanisms have been implemented to address the problem of a NC feature values 
+Two mechanisms have been implemented to address the problem of a NC feature value
 returned by the monitor that is not defined in the MCCS spec or the 
 capabilities string.
 
 - Sometimes the value is undefined for the monitor's MCCS version, but is defined
 in a later version. If dialog box option ***NC Feature Values ->Use Latest NC Values*** is checked, 
 **ddcui** will use the value list for the most recent MCCS version that defines the 
-feature, invariably 2.2.  Option ***--use-latest-nc-values*** can be specified on the command line. 
+feature, invariably 2.2.  Option ***--use-latest-nc-values*** can be specified on the command line.
 
-- If the monitor returns an unrecognzied value, we want to still show that value 
-in the combo box even if another value is selected. This change remembers unrecognized value that have been seen.
+Note that if the source of NC values is either ***Both*** or ***MCCS***, this option causes the values
+and names to be taken from the latest MCCS release.  If the source of values is ***Capabilities***, the names
+for any values specified in the capabilities string are taken from the latest MCCS release.
+
+- If the monitor returns an unrecognized value, we want to still show that value 
+in the drop down menu after a different value is selected. This change remembers unrecognized values that have been seen.
 This memorization does not persist across **ddcui** calls. 
 
 Even with these enhancements, unrecognized NC feature values are probably better handled
 using a user supplied feature definition.  See [User Defined Features](udf.md)
 
 
-NC values handling
-- if unexpected value occurs, it remains in the drop down menu
-- Use Latest NC values: 
-   if Both or MCCS, uses the latest values 
-   if Capabilities, used as text for listed capabilities
-   in both cases, if an unobserved value is detected the value is taken from latest
-
-
-
-"use latest NC" option applies to values as well as names
-
-    - for MCCS, affects both values and names
-    - for Capabilites, affects names
-
-
-
-
 ### Building **ddcui** 
 
-- File ***.gitignore*** has been pruned of entries that do not apply to all git **ddcui** repos.
-Locally-specific files to be ignored should be listed in file .git/info/exdclude, 
+- File ***.gitignore*** has been pruned of entries that are not common to all git **ddcui** repos.
+Locally-specific files to be ignored should be listed in file .git/info/exclude, 
 which is not under git control.
 
 
