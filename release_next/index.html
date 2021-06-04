@@ -258,6 +258,8 @@
                 <h2 id="preliminary-notes-for-ddcutil-release-111">Preliminary Notes for <strong>ddcutil</strong> Release 1.1.1</h2>
 <p>The changes in release 1.1.1 largely affect only shared library <strong>libddcutil</strong>.
 Users of the command line program <strong>ddcutil</strong> do not need to update. </p>
+<p>Options --enable-capabilities-cache is now the default</p>
+<p>The shared library name has been incremented to libddcutil.so.4.1.0 </p>
 <h3 id="logging">Logging</h3>
 <p>Two forms of logging now exist for the shared library.
 These were implemented to address situations where there is no terminal to which to write, e.g. PowerDevil in KDE Plasma.</p>
@@ -286,6 +288,18 @@ definition of XDG_DATA_HOME in the XDG specification.  Typically this is $HOME/.
 <td>ddca_get_extended_version_string</td>
 <td>&nbsp;Version string with optional suffix, e.g. "1.1.2-rc2"</td>
 </tr>
+<tr>
+<td>ddca_redetect_displays</td>
+<td>&nbsp;</td>
+</tr>
+<tr>
+<td>ddca_get_display_refs</td>
+<td>&nbsp;</td>
+</tr>
+<tr>
+<td>ddca_get_display_info</td>
+<td>&nbsp;</td>
+</tr>
 </tbody>
 </table>
 <p><br>
@@ -298,7 +312,7 @@ DDCUTIL_VSUFFIX |&nbsp;version suffix (may be "")</p>
 <h3 id="miscellaneous">Miscellaneous</h3>
 <ul>
 <li>
-<p>Additional checks are performed on DDCA_Display_Ref function arguments.  </p>
+<p>Additional checks are performed on DDCA_Display_Ref and DDCA_Display_Handle() function arguments.  </p>
 </li>
 <li>
 <p>If programs <strong>get-edid</strong> and <strong>parse-edid</strong> are installed, command <strong>ddcutil environment --verbose</strong> uses them
@@ -339,7 +353,7 @@ Some are removed in this version and some or all will be removed in a future rel
 <tbody>
 <tr>
 <td>--sleep-multiplier</td>
-<td>&nbsp; adjust sleep duration while waiting for a DDC response</td>
+<td>&nbsp;Adjust sleep duration while waiting for a DDC response</td>
 </tr>
 <tr>
 <td>--sleep-less, -less-sleep</td>
@@ -348,6 +362,22 @@ Some are removed in this version and some or all will be removed in a future rel
 <tr>
 <td>--no-sleep-less</td>
 <td>&nbsp;Always peform sleep</td>
+</tr>
+<tr>
+<td>--udf</td>
+<td>&nbsp;Enable user defined features</td>
+</tr>
+<tr>
+<td>--noudf</td>
+<td>&nbsp;Disable user defined features</td>
+</tr>
+<tr>
+<td>--nousb</td>
+<td>&nbsp;Disable support for MCCS communication over USB</td>
+</tr>
+<tr>
+<td>--maxtries</td>
+<td>&nsbp;Adjust the number of retries for DDC operationas</td>
 </tr>
 </tbody>
 </table>
@@ -363,41 +393,33 @@ Options subject to future removal:</p>
 <tbody>
 <tr>
 <td>--ddc</td>
-<td>&nbsp;  report DDC data errors</td>
-</tr>
-<tr>
-<td>--udf, --noudf</td>
-<td>&nbsp;  enable or disable user defined features</td>
-</tr>
-<tr>
-<td>--maxtries</td>
-<td>&nbsp;  adjust the number of retries for DDC operations</td>
+<td>&nbsp; Report DDC data errors</td>
 </tr>
 <tr>
 <td>--stats ??</td>
-<td>&nbsp;  report statistics to the terminal at program termination</td>
+<td>&nbsp; Report statistics to the terminal at program termination</td>
 </tr>
 <tr>
 <td>--excp</td>
-<td>&nbsp; report internal exceptionss to terminal</td>
+<td>&nbsp; Report internal exceptionss to terminal</td>
 </tr>
 <tr>
 <td>--trace</td>
-<td>&nbsp; specify a <strong>libddcutil</strong> trace group</td>
+<td>&nbsp; Specify a <strong>libddcutil</strong> trace group</td>
 </tr>
 <tr>
 <td>--trcfunc</td>
-<td>&nbsp; specify a <strong>libddcutil</strong> function to be traced</td>
+<td>&nbsp; Specify a <strong>libddcutil</strong> function to be traced</td>
 </tr>
 <tr>
 <td>--trcfile</td>
-<td>&nbsp; specify a <strong>libddcutil</strong> file to be traced</td>
+<td>&nbsp; Specify a <strong>libddcutil</strong> file to be traced</td>
 </tr>
 </tbody>
 </table>
 <p><br>
-Note that the following options are both passed to <strong>libddcutil</strong> also recognized by the <strong>ddcui</strong> client.
-The are not deprecated.  </p>
+Note that the following options are both passed to <strong>libddcutil</strong> and also recognized by the <strong>ddcui</strong> client.
+They are not deprecated.  </p>
 <table>
 <thead>
 <tr>
@@ -475,6 +497,7 @@ and a slider/spinbox combination for the continuous range. </p>
 <li>Where appropriate, it is possible to navigate backward and forward among screens.</li>
 </ul>
 <p>Dialog boxes and help screens are more consistent in style.</p>
+<p>Development related command line options are documnented only buy options --help-development and --help-all</p>
 <h3 id="options-menu">Options Menu</h3>
 <ul>
 <li>Rename Options menu entry User Interface Options -&gt; User Interface for cosnsitency</li>
@@ -502,6 +525,7 @@ This memorization does not persist across <strong>ddcui</strong> calls. </li>
 using a user supplied feature definition.  See <a href="../udf/">User Defined Features</a></p>
 <h3 id="building-ddcui">Building <strong>ddcui</strong></h3>
 <ul>
+<li>Building using qmake is no longer supported.  File ddcui.pro has been removed from git.  Use cmake.  </li>
 <li>File <strong><em>.gitignore</em></strong> has been pruned of entries that are not common to all git <strong>ddcui</strong> repos.
 Locally-specific files to be ignored should be listed in file .git/info/exclude, 
 which is not under git control.</li>
