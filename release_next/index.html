@@ -10,6 +10,8 @@
   <link rel="canonical" href="https://www.ddcutil.com/release_next/">
   <link rel="shortcut icon" href="../img/favicon.ico">
   <title>Release next - ddcutil Documentation</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
+
   <link rel="stylesheet" href="../css/theme.css" />
   <link rel="stylesheet" href="../css/theme_extra.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css" />
@@ -268,7 +270,7 @@ These were implemented to address situations where there is no terminal to which
 The file is specified using option <strong><em>--libddcutil-trace-file</em></strong>.  This option can be only
 be specified in the <strong><em>[libddcutil]</em></strong> section of the <strong>ddcutil</strong> configuration file, <strong>ddcutilrc</strong>.</p>
 <p>The file name given can be either absolute or relative. If relative, the directory is resolved as per the
-definition of XDG_DATA_HOME in the XDG specification.  Typically this is $HOME/.local/share/ddcutil.</p>
+definition of XDG_STATE_HOME in the XDG specification.  Typically this is $HOME/.local/state/ddcutil.</p>
 <h4 id="syslog">Syslog</h4>
 <p>Major events are written to the system log.  These include starting, stopping, and severe internal errors.</p>
 <h3 id="api-changes">API changes</h3>
@@ -290,21 +292,26 @@ definition of XDG_DATA_HOME in the XDG specification.  Typically this is $HOME/.
 </tr>
 <tr>
 <td>ddca_redetect_displays</td>
-<td>&nbsp;</td>
+<td>&nbsp;Redetect displays</td>
 </tr>
 <tr>
 <td>ddca_get_display_refs</td>
-<td>&nbsp;</td>
+<td>&nbsp;Returns a null-terminated list of valid DDCA_Display_Refs</td>
 </tr>
 <tr>
 <td>ddca_get_display_info</td>
-<td>&nbsp;</td>
+<td>&nbsp;Returns DDCA_Display_Info for a DDCA_Display_Ref</td>
 </tr>
 </tbody>
 </table>
 <p><br>
-Note: By comparison, the existing API function <strong><em>ddca_set_trace_groups()</em></strong> replaces the existing trace group definition.</p>
-<p><br>
+Notes: 
+- The existing API function <strong><em>ddca_set_trace_groups()</em></strong> replaces the existing set of trace groups,
+while <strong><em>ddca_add_trace_groups() adds to the current set.
+- Calling </em></strong>ddca_get_display_refs()<strong><em> followed by 
+</em></strong>ddcau_get_display_info() calls for each display is preferred over <strong><em>ddca_get_display_info_list2()</em></strong>.
+Experience has shown that it leads to cleaner client code.</p>
+<p><br> 
 New Macro       | Comments
 ----------------|-------------------
 DDCUTIL_VSUFFIX |&nbsp;version suffix (may be "")</p>
@@ -324,11 +331,23 @@ should be logically impossible.  To aid in remote problem diagnosis, many of the
 replaced by macro TRACE_ASSERT(), which additionally writes a messsage
 to both the <strong>libddcutil</strong> trace log and the system log.</p>
 </li>
+<li>
+<p>Fix for github issue #178: Error detecting i2c-dev kernel module.  The checks now use library libkmod 
+  (which is the basis for commands modinfo, lsmod, etc.).</p>
+</li>
+<li>
+<p>Extend sysfs diagnostics in <strong>ddcutil environment --verbose</strong> to better analyze problems in DisplayPort 
+  Multi-Stream Transport, in which a display appears as 2 different /dev/i2c devices.</p>
+</li>
+<li>
+<p><strong>ddcutil environment --verbose</strong> now includes all the information of <strong>ddcutil detect --verbose</strong>.<br />
+  There is no need to submit the latter along with the former in issue reports.</p>
+</li>
 </ul>
 <h2 id="preliminary-notes-for-ddcui-release-020">Preliminary Notes for <strong>ddcui</strong> Release 0.2.0</h2>
 <p>This is a major update to <strong>ddcui</strong>, containing enhanced features,
 many "fit and finish" changes, and extensive internal rework.</p>
-<p>It requires the current version of libddcutil, libddcutil.so.4.1.0, which is built from source package ddcutil 1.2.0.
+<p>It requires the current version of libddcutil, libddcutil.so.4.1.0, which is built from source package ddcutil 1.1.1
 As a distribution installation package, this is normally available as libddcutil4.rpm, libddcutil4.deb, etc.</p>
 <h3 id="configuration-file">Configuration file</h3>
 <p><strong>ddcui</strong> uses the configuration file <strong>ddcutilrc</strong> in two different ways. <br />
@@ -338,7 +357,7 @@ string entered by the user that is passed to the <strong>ddcui</strong> command 
 preferred method for passing options to the shared library. </p>
 <p>For details on the configuration file, see section <a href="../config_file/">Config File</a> in the 
 general <strong>ddcutil</strong> documentation </p>
-<p>Previously, several <strong>ddcui</strong> options were created simply pass a value through
+<p>Previously, several <strong>ddcui</strong> options were created simply to pass a value through
 to <strong>libddcutil</strong>.  Instead of specifying these options on the ddcui command line, include them in the [libddcutil] 
 section of the configuration file.  The use of these <strong>ddcui</strong> options is deprecated. 
 Some are removed in this version and some or all will be removed in a future release.</p>
@@ -358,6 +377,10 @@ Some are removed in this version and some or all will be removed in a future rel
 <tr>
 <td>--sleep-less, -less-sleep</td>
 <td>&nbsp;Do not perform sleep in certain circumstances</td>
+</tr>
+<tr>
+<td>--dsa, --dynamic-sleep-adjustment</td>
+<td>&mbsp;Perform dynamic sleep adjustment</td>
 </tr>
 <tr>
 <td>--no-sleep-less</td>
@@ -445,7 +468,10 @@ They are not deprecated.  </p>
 <li>Install ddcui.appdata.xml in /usr/share/metainfo  </li>
 <li>Install icons in /usr/share/icons/hicolor, /usr/share/pixmaps</li>
 </ul>
-<h4 id="semi-continuous-values">Semi-Continuous Values</h4>
+<h3 id="actions-redetect-displays">Actions -&gt; Redetect Displays</h3>
+<p>This new action causes displays to be redetected.  It can be used if displays are connected or disconnected.</p>
+<p><br></p>
+<h3 id="semi-continuous-values">Semi-Continuous Values</h3>
 <p>As of MCCS specification 3.0 and 2.2, several features have both a set of reserved 
 values and with a continuous range.  I've dubbed them "semi-continuous".  A special widget now exists to represent these features.
 The widget has both a combo box for the reserved values
