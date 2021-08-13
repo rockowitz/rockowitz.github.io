@@ -10,8 +10,6 @@
   <link rel="canonical" href="https://www.ddcutil.com/release_next/">
   <link rel="shortcut icon" href="../img/favicon.ico">
   <title>Release next - ddcutil Documentation</title>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
-
   <link rel="stylesheet" href="../css/theme.css" />
   <link rel="stylesheet" href="../css/theme_extra.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css" />
@@ -257,94 +255,7 @@
           <div role="main">
             <div class="section">
               
-                <h2 id="preliminary-notes-for-ddcutil-release-111">Preliminary Notes for <strong>ddcutil</strong> Release 1.1.1</h2>
-<p>The changes in release 1.1.1 largely affect only shared library <strong>libddcutil</strong>.
-Users of the command line program <strong>ddcutil</strong> do not need to update. </p>
-<p>Options --enable-capabilities-cache is now the default</p>
-<p>The shared library name has been incremented to libddcutil.so.4.1.0 </p>
-<h3 id="logging">Logging</h3>
-<p>Two forms of logging now exist for the shared library.
-These were implemented to address situations where there is no terminal to which to write, e.g. PowerDevil in KDE Plasma.</p>
-<h4 id="libddcutil-trace-file"><strong>libddcutil</strong> trace file</h4>
-<p><strong>libddcutil</strong> can redirect all output that it would normally write to the terminal to a trace file instead. 
-The file is specified using option <strong><em>--libddcutil-trace-file</em></strong>.  This option can be only
-be specified in the <strong><em>[libddcutil]</em></strong> section of the <strong>ddcutil</strong> configuration file, <strong>ddcutilrc</strong>.</p>
-<p>The file name given can be either absolute or relative. If relative, the directory is resolved as per the
-definition of XDG_STATE_HOME in the XDG specification.  Typically this is $HOME/.local/state/ddcutil.</p>
-<h4 id="syslog">Syslog</h4>
-<p>Major events are written to the system log.  These include starting, stopping, and severe internal errors.</p>
-<h3 id="api-changes">API changes</h3>
-<table>
-<thead>
-<tr>
-<th>New Function</th>
-<th>Comments</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>ddca_add_trace_groups</td>
-<td>&nbsp;Add to the set of traced groups</td>
-</tr>
-<tr>
-<td>ddca_get_extended_version_string</td>
-<td>&nbsp;Version string with optional suffix, e.g. "1.1.2-rc2"</td>
-</tr>
-<tr>
-<td>ddca_redetect_displays</td>
-<td>&nbsp;Redetect displays</td>
-</tr>
-<tr>
-<td>ddca_get_display_refs</td>
-<td>&nbsp;Returns a null-terminated list of valid DDCA_Display_Refs</td>
-</tr>
-<tr>
-<td>ddca_get_display_info</td>
-<td>&nbsp;Returns DDCA_Display_Info for a DDCA_Display_Ref</td>
-</tr>
-</tbody>
-</table>
-<p><br>
-Notes: 
-- The existing API function <strong><em>ddca_set_trace_groups()</em></strong> replaces the existing set of trace groups,
-while <strong><em>ddca_add_trace_groups() adds to the current set.
-- Calling </em></strong>ddca_get_display_refs()<strong><em> followed by 
-</em></strong>ddcau_get_display_info() calls for each display is preferred over <strong><em>ddca_get_display_info_list2()</em></strong>.
-Experience has shown that it leads to cleaner client code.</p>
-<p><br> 
-New Macro       | Comments
-----------------|-------------------
-DDCUTIL_VSUFFIX |&nbsp;version suffix (may be "")</p>
-<p><br></p>
-<h3 id="miscellaneous">Miscellaneous</h3>
-<ul>
-<li>
-<p>Additional checks are performed on DDCA_Display_Ref and DDCA_Display_Handle() function arguments.  </p>
-</li>
-<li>
-<p>If programs <strong>get-edid</strong> and <strong>parse-edid</strong> are installed, command <strong>ddcutil environment --verbose</strong> uses them
-for an addiional EDID check</p>
-</li>
-<li>
-<p><strong><em>assert{}</em></strong> statements are used in <strong>libddcutil</strong> for situations that 
-should be logically impossible.  To aid in remote problem diagnosis, many of these statements have been 
-replaced by macro TRACE_ASSERT(), which additionally writes a messsage
-to both the <strong>libddcutil</strong> trace log and the system log.</p>
-</li>
-<li>
-<p>Fix for github issue #178: Error detecting i2c-dev kernel module.  The checks now use library libkmod 
-  (which is the basis for commands modinfo, lsmod, etc.).</p>
-</li>
-<li>
-<p>Extend sysfs diagnostics in <strong>ddcutil environment --verbose</strong> to better analyze problems in DisplayPort 
-  Multi-Stream Transport, in which a display appears as 2 different /dev/i2c devices.</p>
-</li>
-<li>
-<p><strong>ddcutil environment --verbose</strong> now includes all the information of <strong>ddcutil detect --verbose</strong>.<br />
-  There is no need to submit the latter along with the former in issue reports.</p>
-</li>
-</ul>
-<h2 id="preliminary-notes-for-ddcui-release-020">Preliminary Notes for <strong>ddcui</strong> Release 0.2.0</h2>
+                <h2 id="preliminary-notes-for-ddcui-release-020">Preliminary Notes for <strong>ddcui</strong> Release 0.2.0</h2>
 <p>This is a major update to <strong>ddcui</strong>, containing enhanced features,
 many "fit and finish" changes, and extensive internal rework.</p>
 <p>It requires the current version of libddcutil, libddcutil.so.4.1.0, which is built from source package ddcutil 1.1.1
@@ -556,7 +467,7 @@ using a user supplied feature definition.  See <a href="../udf/">User Defined Fe
 Locally-specific files to be ignored should be listed in file .git/info/exclude, 
 which is not under git control.</li>
 </ul>
-<h3 id="miscellaneous_1">Miscellaneous</h3>
+<h3 id="miscellaneous">Miscellaneous</h3>
 <ul>
 <li>The monitor icon previously used by <strong>ddcui</strong> was replaced by one taken from the Oxygen theme, avoiding any
 question as to its provenance under an open source license. </li>
