@@ -10,6 +10,8 @@
   <link rel="canonical" href="https://www.ddcutil.com/faq/">
   <link rel="shortcut icon" href="../img/favicon.ico">
   <title>Frequently Asked Questions - ddcutil Documentation</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
+
   <link rel="stylesheet" href="../css/theme.css" />
   <link rel="stylesheet" href="../css/theme_extra.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css" />
@@ -220,6 +222,8 @@
     <li class="toctree-l2"><a class="reference internal" href="#the-monitor-supports-dynamic-contrast-range-dcr-setvcp-for-feature-x10-brightness-does-not-change-the-value">The monitor supports Dynamic Contrast Range (DCR). setvcp for feature x10 (brightness) does not change the value</a>
     </li>
     <li class="toctree-l2"><a class="reference internal" href="#the-new-value-for-feature-x10-is-different-from-the-value-specified-on-setvcp">The new value for feature x10 is different from the value specified on setvcp</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#ddcutil-hangs-on-radeon-rx-5xxx-and-6xxx-cards-navi-and-navi2-gpu">ddcutil hangs on Radeon RX 5xxx and 6xxx cards (Navi and Navi2 GPU)</a>
     </li>
     </ul>
                     </li>
@@ -445,6 +449,21 @@ when DCR is enabled. This has been reported with both Lenovo and Benq monitors.<
 This appears to be the result of integer to floating point to integer conversion in the monitor.</p>
 <p>At least one monitor (Dell 2407wfp) does not allow setting brightness less than 30.  <strong>setvcp</strong> values
 in the range 0..50 are mapped to to 30..50. </p>
+<h3 id="ddcutil-hangs-on-radeon-rx-5xxx-and-6xxx-cards-navi-and-navi2-gpu">ddcutil hangs on Radeon RX 5xxx and 6xxx cards (Navi and Navi2 GPU)</h3>
+<p>There have been multiple reports of <strong>ddcutil</strong> command failures on Radeon cards with the Navi and Navi2 GPUs 
+(RX 5xxx and RX 6xxx cards).</p>
+<p>In some cases <strong>ddcutil</strong> hangs.  (See for example issues  (Stop poking AMDGPU SMU I2C #193) [https://github.com/rockowitz/ddcutil/issues/194], 
+(Screen freeze when changing brightness #223)[https://github.com/rockowitz/ddcutil/issues/223]). 
+The SMU related hang should have been fixed as of kernel 5.14.4.  <strong>ddcutil</strong> has had a workaround since release 1.1.0. </p>
+<p>In other cases, the monitor's EDID is simply not detected.</p>
+<p>If your kernel version is 5.14.4 or later, I suggest you file a bug report at the <a href="https://gitlab.freedesktop.org/drm/amd/-/issues">amd driver issue list</a>.  </p>
+<p>Include: 
+- drm output 
+- the kernel log file (/var/log/kernel on Ubuntu)
+- output of the following commands</p>
+<pre><code>$ sudo ps -aux | grep ddcutil
+$ sudo awk ' {print FILENAME &quot;: &quot; $0 } '  /sys/bus/i2c/devices/*/name
+</code></pre>
 <h2 id="questions-about-building-ddcutil">Questions about building <strong>ddcutil</strong></h2>
 <h3 id="configure-complains-that-a-required-package-does-not-exist-but-it-is-installed-on-my-system"><strong><em>configure</em></strong> complains that a required package does not exist, but it is installed on my system.</h3>
 <p>When building <strong>ddcutil</strong>, error messages from pkg-config (which is called by configure) can be misleading.
