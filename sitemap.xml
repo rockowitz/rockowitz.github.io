@@ -1,267 +1,267 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"><url>
      <loc>https://www.ddcutil.com/</loc>
-     <lastmod>2021-10-06</lastmod>
+     <lastmod>2021-10-17</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
      <loc>https://www.ddcutil.com/commands/</loc>
-     <lastmod>2021-10-06</lastmod>
+     <lastmod>2021-10-17</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
      <loc>https://www.ddcutil.com/cmd_output/</loc>
-     <lastmod>2021-10-06</lastmod>
+     <lastmod>2021-10-17</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
      <loc>https://www.ddcutil.com/detect_verbose_output/</loc>
-     <lastmod>2021-10-06</lastmod>
+     <lastmod>2021-10-17</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
      <loc>https://www.ddcutil.com/getvcp_known_u3011_output/</loc>
-     <lastmod>2021-10-06</lastmod>
+     <lastmod>2021-10-17</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
      <loc>https://www.ddcutil.com/vcpinfo_output/</loc>
-     <lastmod>2021-10-06</lastmod>
+     <lastmod>2021-10-17</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
      <loc>https://www.ddcutil.com/cap_u3011_verbose_output/</loc>
-     <lastmod>2021-10-06</lastmod>
+     <lastmod>2021-10-17</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
      <loc>https://www.ddcutil.com/command_detail/</loc>
-     <lastmod>2021-10-06</lastmod>
+     <lastmod>2021-10-17</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
      <loc>https://www.ddcutil.com/command_detect/</loc>
-     <lastmod>2021-10-06</lastmod>
+     <lastmod>2021-10-17</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
      <loc>https://www.ddcutil.com/command_capabilities/</loc>
-     <lastmod>2021-10-06</lastmod>
+     <lastmod>2021-10-17</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
      <loc>https://www.ddcutil.com/command_getvcp/</loc>
-     <lastmod>2021-10-06</lastmod>
+     <lastmod>2021-10-17</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
      <loc>https://www.ddcutil.com/command_setvcp/</loc>
-     <lastmod>2021-10-06</lastmod>
+     <lastmod>2021-10-17</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
      <loc>https://www.ddcutil.com/command_vcpinfo/</loc>
-     <lastmod>2021-10-06</lastmod>
+     <lastmod>2021-10-17</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
      <loc>https://www.ddcutil.com/command_dumpvcp_loadvcp/</loc>
-     <lastmod>2021-10-06</lastmod>
+     <lastmod>2021-10-17</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
      <loc>https://www.ddcutil.com/command_scs/</loc>
-     <lastmod>2021-10-06</lastmod>
+     <lastmod>2021-10-17</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
      <loc>https://www.ddcutil.com/secondary_commands/</loc>
-     <lastmod>2021-10-06</lastmod>
+     <lastmod>2021-10-17</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
      <loc>https://www.ddcutil.com/options_main/</loc>
-     <lastmod>2021-10-06</lastmod>
+     <lastmod>2021-10-17</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
      <loc>https://www.ddcutil.com/display_selection/</loc>
-     <lastmod>2021-10-06</lastmod>
+     <lastmod>2021-10-17</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
      <loc>https://www.ddcutil.com/feature_selection/</loc>
-     <lastmod>2021-10-06</lastmod>
+     <lastmod>2021-10-17</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
      <loc>https://www.ddcutil.com/performance_options/</loc>
-     <lastmod>2021-10-06</lastmod>
+     <lastmod>2021-10-17</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
      <loc>https://www.ddcutil.com/instrumentation_options/</loc>
-     <lastmod>2021-10-06</lastmod>
+     <lastmod>2021-10-17</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
      <loc>https://www.ddcutil.com/output_control_options/</loc>
-     <lastmod>2021-10-06</lastmod>
+     <lastmod>2021-10-17</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
      <loc>https://www.ddcutil.com/other_options/</loc>
-     <lastmod>2021-10-06</lastmod>
+     <lastmod>2021-10-17</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
      <loc>https://www.ddcutil.com/debug_options/</loc>
-     <lastmod>2021-10-06</lastmod>
+     <lastmod>2021-10-17</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
      <loc>https://www.ddcutil.com/table_features/</loc>
-     <lastmod>2021-10-06</lastmod>
+     <lastmod>2021-10-17</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
      <loc>https://www.ddcutil.com/usb/</loc>
-     <lastmod>2021-10-06</lastmod>
+     <lastmod>2021-10-17</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
      <loc>https://www.ddcutil.com/colormgt/</loc>
-     <lastmod>2021-10-06</lastmod>
+     <lastmod>2021-10-17</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
      <loc>https://www.ddcutil.com/udf/</loc>
-     <lastmod>2021-10-06</lastmod>
+     <lastmod>2021-10-17</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
      <loc>https://www.ddcutil.com/config_file/</loc>
-     <lastmod>2021-10-06</lastmod>
+     <lastmod>2021-10-17</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
      <loc>https://www.ddcutil.com/install/</loc>
-     <lastmod>2021-10-06</lastmod>
+     <lastmod>2021-10-17</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
      <loc>https://www.ddcutil.com/building/</loc>
-     <lastmod>2021-10-06</lastmod>
+     <lastmod>2021-10-17</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
      <loc>https://www.ddcutil.com/shared_lib_config/</loc>
-     <lastmod>2021-10-06</lastmod>
+     <lastmod>2021-10-17</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
      <loc>https://www.ddcutil.com/config/</loc>
-     <lastmod>2021-10-06</lastmod>
+     <lastmod>2021-10-17</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
      <loc>https://www.ddcutil.com/i2c_permissions/</loc>
-     <lastmod>2021-10-06</lastmod>
+     <lastmod>2021-10-17</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
      <loc>https://www.ddcutil.com/usb_permissions/</loc>
-     <lastmod>2021-10-06</lastmod>
+     <lastmod>2021-10-17</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
      <loc>https://www.ddcutil.com/kernel_module/</loc>
-     <lastmod>2021-10-06</lastmod>
+     <lastmod>2021-10-17</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
      <loc>https://www.ddcutil.com/nvidia/</loc>
-     <lastmod>2021-10-06</lastmod>
+     <lastmod>2021-10-17</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
      <loc>https://www.ddcutil.com/virtual_machines/</loc>
-     <lastmod>2021-10-06</lastmod>
+     <lastmod>2021-10-17</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
      <loc>https://www.ddcutil.com/raspberry/</loc>
-     <lastmod>2021-10-06</lastmod>
+     <lastmod>2021-10-17</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
      <loc>https://www.ddcutil.com/monitor_notes/</loc>
-     <lastmod>2021-10-06</lastmod>
+     <lastmod>2021-10-17</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
      <loc>https://www.ddcutil.com/quirks/</loc>
-     <lastmod>2021-10-06</lastmod>
+     <lastmod>2021-10-17</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
      <loc>https://www.ddcutil.com/api_main/</loc>
-     <lastmod>2021-10-06</lastmod>
+     <lastmod>2021-10-17</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
      <loc>https://www.ddcutil.com/c_api_90/</loc>
-     <lastmod>2021-10-06</lastmod>
+     <lastmod>2021-10-17</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
      <loc>https://www.ddcutil.com/c_api_93/</loc>
-     <lastmod>2021-10-06</lastmod>
+     <lastmod>2021-10-17</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
      <loc>https://www.ddcutil.com/c_api_95/</loc>
-     <lastmod>2021-10-06</lastmod>
+     <lastmod>2021-10-17</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
      <loc>https://www.ddcutil.com/c_api_96/</loc>
-     <lastmod>2021-10-06</lastmod>
+     <lastmod>2021-10-17</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
      <loc>https://www.ddcutil.com/c_api_98/</loc>
-     <lastmod>2021-10-06</lastmod>
+     <lastmod>2021-10-17</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
      <loc>https://www.ddcutil.com/c_api_99/</loc>
-     <lastmod>2021-10-06</lastmod>
+     <lastmod>2021-10-17</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
      <loc>https://www.ddcutil.com/c_api_100/</loc>
-     <lastmod>2021-10-06</lastmod>
+     <lastmod>2021-10-17</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
      <loc>https://www.ddcutil.com/python_api/</loc>
-     <lastmod>2021-10-06</lastmod>
+     <lastmod>2021-10-17</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
      <loc>https://www.ddcutil.com/mccs_background/</loc>
-     <lastmod>2021-10-06</lastmod>
+     <lastmod>2021-10-17</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
      <loc>https://www.ddcutil.com/ddc_vs_i2c/</loc>
-     <lastmod>2021-10-06</lastmod>
+     <lastmod>2021-10-17</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
      <loc>https://www.ddcutil.com/displayport/</loc>
-     <lastmod>2021-10-06</lastmod>
+     <lastmod>2021-10-17</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
      <loc>https://www.ddcutil.com/bibliography/</loc>
-     <lastmod>2021-10-06</lastmod>
+     <lastmod>2021-10-17</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
      <loc>https://www.ddcutil.com/faq/</loc>
-     <lastmod>2021-10-06</lastmod>
+     <lastmod>2021-10-17</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
      <loc>https://www.ddcutil.com/tech_support/</loc>
-     <lastmod>2021-10-06</lastmod>
+     <lastmod>2021-10-17</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
      <loc>https://www.ddcutil.com/ddccontrol/</loc>
-     <lastmod>2021-10-06</lastmod>
+     <lastmod>2021-10-17</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
      <loc>https://www.ddcutil.com/ddc_null_response/</loc>
-     <lastmod>2021-10-06</lastmod>
+     <lastmod>2021-10-17</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
      <loc>https://www.ddcutil.com/acknowledgements/</loc>
-     <lastmod>2021-10-06</lastmod>
+     <lastmod>2021-10-17</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
      <loc>https://www.ddcutil.com/releases/</loc>
-     <lastmod>2021-10-06</lastmod>
+     <lastmod>2021-10-17</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
      <loc>https://www.ddcutil.com/release_notes/</loc>
-     <lastmod>2021-10-06</lastmod>
+     <lastmod>2021-10-17</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
      <loc>https://www.ddcutil.com/prior_announcements/</loc>
-     <lastmod>2021-10-06</lastmod>
+     <lastmod>2021-10-17</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
      <loc>https://www.ddcutil.com/ddcui_main/</loc>
-     <lastmod>2021-10-06</lastmod>
+     <lastmod>2021-10-17</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
      <loc>https://www.ddcutil.com/ddcui_options/</loc>
-     <lastmod>2021-10-06</lastmod>
+     <lastmod>2021-10-17</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
      <loc>https://www.ddcutil.com/building_ddcui/</loc>
-     <lastmod>2021-10-06</lastmod>
+     <lastmod>2021-10-17</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
      <loc>https://www.ddcutil.com/ddcui_release_notes/</loc>
-     <lastmod>2021-10-06</lastmod>
+     <lastmod>2021-10-17</lastmod>
      <changefreq>daily</changefreq>
     </url>
 </urlset>

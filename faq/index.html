@@ -450,8 +450,8 @@ in the range 0..50 are mapped to to 30..50. </p>
 <h3 id="ddcutil-hangs-on-radeon-rx-5xxx-and-6xxx-cards-navi-and-navi2-gpu">ddcutil hangs on Radeon RX 5xxx and 6xxx cards (Navi and Navi2 GPU)</h3>
 <p>There have been multiple reports of <strong>ddcutil</strong> command failures on Radeon cards with the Navi and Navi2 GPUs 
 (RX 5xxx and RX 6xxx cards).</p>
-<p>In some cases <strong>ddcutil</strong> hangs.  (See for example issues  (Stop poking AMDGPU SMU I2C #193) [https://github.com/rockowitz/ddcutil/issues/194], 
-(Screen freeze when changing brightness #223)[https://github.com/rockowitz/ddcutil/issues/223]). 
+<p>In some cases <strong>ddcutil</strong> hangs.  (See for example issues  <a href="ttps://github.com/rockowitz/ddcutil/issues/194">Stop poking AMDGPU SMU I2C #194</a>, 
+<a href="https://github.com/rockowitz/ddcutil/issues/223">Screen freeze when changing brightness #223</a>).. 
 The SMU related hang should have been fixed as of kernel 5.14.4.  <strong>ddcutil</strong> has had a workaround since release 1.1.0. </p>
 <p>In other cases, the monitor's EDID is simply not detected.</p>
 <p>If your kernel version is 5.14.4 or later, I suggest you file a bug report at the <a href="https://gitlab.freedesktop.org/drm/amd/-/issues">amd driver issue list</a>.  </p>

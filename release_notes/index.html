@@ -583,16 +583,16 @@ Users of the command line program <strong>ddcutil</strong> do not need to update
 for an addiional EDID check</li>
 <li>Extend sysfs diagnostics in <strong>ddcutil environment --verbose</strong> to better analyze problems in DisplayPort 
   Multi-Stream Transport, in which a display appears as 2 different /dev/i2c devices.</li>
-<li><strong>ddcutil environment --verbose</strong> now includes all the information of <strong>ddcutil detect --verbose</strong>.<br />
+<li><strong>ddcutil environment --verbose</strong> now includes all the information of <strong>ddcutil detect --verbose</strong>.
   There is no need to submit the latter along with the former in issue reports.</li>
 </ul>
 <h4 id="libddcutil-trace-file"><strong>libddcutil</strong> trace file</h4>
 <p><strong>libddcutil</strong> can redirect all output that it would normally be sent to the terminal to a trace file instead. 
 The file is specified using option <strong><em>--libddcutil-trace-file</em></strong>.  This option can be only
-be specified in the <strong><em>[libddcutil]</em></strong> section of the <strong>ddcutil</strong> configuration file, <strong>ddcutilrc</strong>.</p>
-<p>The file name given can be either absolute or relative. If relative, the directory is resolved as per the
-definition of XDG_STATE_HOME in the XDG specification.  Typically this is $HOME/.local/state/ddcutil.</p>
-<p>This allows for tracing in 
+be specified in the <strong><em>[libddcutil]</em></strong> section of the <strong>ddcutil</strong> configuration file, <strong>ddcutilrc</strong>.
+The file name given can be either absolute or relative. If relative, the directory is resolved as per the
+definition of XDG_STATE_HOME in the XDG specification.  Typically this is $HOME/.local/state/ddcutil.
+This allows for tracing in 
 situations where there is no terminal to which to write, e.g. PowerDevil in KDE Plasma.</p>
 <h3 id="api-changes">API changes</h3>
 <table>
@@ -626,12 +626,14 @@ situations where there is no terminal to which to write, e.g. PowerDevil in KDE 
 </tbody>
 </table>
 <p><br>
-Notes: 
-- The existing API function <strong><em>ddca_set_trace_groups()</em></strong> replaces the existing set of trace groups,
-while <strong><em>ddca_add_trace_groups() adds to the current set.
-- Calling </em></strong>ddca_get_display_refs()<strong><em> followed by 
-</em></strong>ddcau_get_display_info() calls for each display is preferred over <strong><em>ddca_get_display_info_list2()</em></strong>.
-Experience has shown that it leads to cleaner client code.</p>
+Notes: </p>
+<ul>
+<li>The existing API function <strong><em>ddca_set_trace_groups()</em></strong> replaces the existing set of trace groups,
+while ***ddca_add_trace_groups() adds to the current set.</li>
+<li>Calling <strong><em>ddca_get_display_refs()</em></strong> followed by 
+<strong><em>ddcau_get_display_info() calls for each display is preferred over </em></strong>ddca_get_display_info_list2()***.
+Experience has shown that it leads to cleaner client code.</li>
+</ul>
 <p><br></p>
 <table>
 <thead>
@@ -651,7 +653,7 @@ Experience has shown that it leads to cleaner client code.</p>
 <h3 id="miscellaneous-libddcutil-changes">Miscellaneous <strong>libddcutil</strong> changes</h3>
 <ul>
 <li>
-<p>The shared library name has been incremented to libddcutil.so.4.1.0 </p>
+<p>The shared library name is now libddcutil.so.4.1.0 </p>
 </li>
 <li>
 <p>Additional checks are performed on DDCA_Display_Ref and DDCA_Display_Handle() function arguments.  </p>
