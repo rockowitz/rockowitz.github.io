@@ -219,6 +219,26 @@
                     </li>
                     <li class="toctree-l1 current"><a class="reference internal current" href="./">ddcui Release Notes</a>
     <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#020-31-october-2021">0.2.0 31 October 2021</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#enhanced-feature-representation">Enhanced Feature Representation</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#enhanced-handling-for-non-continuous-features">Enhanced handling for Non-Continuous Features</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#desktop-integration">Desktop Integration</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#configuration-file">Configuration File</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#invocation">Invocation</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#redetect-monitors">Redetect Monitors</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#general-user-interface">General User Interface</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#building-ddcui">Building ddcui</a>
+    </li>
     <li class="toctree-l2"><a class="reference internal" href="#012">0.1.2</a>
     </li>
     <li class="toctree-l2"><a class="reference internal" href="#011">0.1.1</a>
@@ -272,113 +292,94 @@
             <div class="section">
               
                 <h2 id="ddcui-release-notes">ddcui Release Notes</h2>
-<!--
-### 0.2.0
-
-15 February 2021
-
-The release number has been bumped to 0.0.0 reflecting the fact that, while far from compliete, 
-**ddcui** is suitable for wide use.
-
-
-Handle situation where the observed value of a NC feature is not in the expected set. 
-
-These changes address the following problem.  It is possible that
+<h3 id="020-31-october-2021">0.2.0 31 October 2021</h3>
+<p>These are preliminary notes for release 0.2.0, which is currently available 
+on github branch 0.2.0-dev.</p>
+<p>While far from compliete, this release should be suitable for wide use.
+The code base has been extensively reworked. This page summarizes user visible changes.</p>
+<h3 id="enhanced-feature-representation">Enhanced Feature Representation</h3>
+<p>special handling for features:
+      - use ValueSimpleContWidget for features x8f (Audio Treble), x91 (Audio Bass), x93 (Audio Balance)
+      - use ValueSpecialWidgetX62 for feature x62 (Audio speaker volume)</p>
+<p>new class ValueSpecialWidgetX62 for handling feature x62, Audio Volume, as specified in MCCS 3.0 and 2.2</p>
+<ul>
+<li>
+<p>Support VCP features, e.g. x63 (Audio Balance), that have both a continuous 
+  range. and a set of special values. The widget for these features has both a
+  slider/spinbox for  the continuous range, and a combo-box for the special values.</p>
+</li>
+<li>
+<p>Special handling for the case when the monitor reports an unrecognized value for a Non-Continuous 
+  feature, i.e. a value that is not in the capabilities string or the Monitor Control 
+  Command Set specification for.</p>
+</li>
+<li>
+<p>When  obtaining the value id and names for a feature, <strong>ddcui</strong> normally uses the 
+    values and names specified for the monitor's MCCS version.  Sometimes monitors 
+    use feature values defined in a later version. The <strong><em>Use Latest MCCS Values</em></strong> 
+    checkbox in the <strong>NC Feature Values</strong> dialog specifies that the NC value table 
+    for the highest applicable MCCS version be used.  This can also be specified by 
+    command line option <strong><em>--force-latest-nc_value-names</em></strong>.</p>
+</li>
+<li>Handle the case where a monitor reports a NC value that is not in 
+    the MCCS or capabilities list.</li>
+</ul>
+<p>Handle situation where the observed value of a NC feature is not in the expected set. </p>
+<p>These changes address the following problem.  It is possible that
     some value occurs that is not in the capabilities/MCCS list.
     We want to still show that value in the combo box even if another
     value is subsequently selected.  The solution is complicated by
     the fact that rescan causes the feature widgets to be recreated.
-    So this widget uses both itself and the associated FeatureValue
-    instance to maintain this lisf of observed values.
-
-
-"Force use NC value names" option in menu
-
---force-latest-nc-value-names coommand line option
-
-
-
-    - use FeatureValueNCWidget instead of FeatureValueBytesWidget if
-        the feature appears to be of type NC, i.e. the monitor's capability
-            string contains VCP values for the feature
-
-new feature value widget to handle cont features with reserved values
-
-
-
-
-
-
-Desktop and App store integration
-
-ddcui.desktop
-
-ddcui_appdata.xml  or is it ddcui.appdata.xml 
-
-icons  /usr/share/icons
-
-
-icon in /usr/share/pixmaps  (GNOME classis only looks in pixmaps)
-
-
-
-### 0.1.4 
-
-01 December 2020
-
-#### Enhanced handling for Non-Continuous Features 
-
-
-It is possible that a feature value is not in the list reported by the capaiblities string
+    So this widget uses both itself and the associated FeatureValue</p>
+<h4 id="enhanced-handling-for-non-continuous-features">Enhanced handling for Non-Continuous Features</h4>
+<p>It is possible that a feature value is not in the list reported by the capaiblities string
 and/or ??? the MCCS feature specification. 
 Observed features are noted so that they continue to be shown in the combo bax as a possible value, 
-even if another value is subsequently selected.
-
-
-The solution is complicated by
-the fact that rescan causes the feature widgets to be recreated.
-So this widget uses both itself and the associated FeatureValue
-instance to maintain this lisf of observed values.
-
-
-
-
-    options 
-    Force NC value names option
-
-cmd line option --force-latest-nc-value-names 
-
-
-
-#### Desktop Integration
-
- ddcui.appdata.xml 
- ddcui.desktop
-
-
- "make install" install ddcui.desktop, ddcui.appdata.xml, icons
-
- icons
-    CMakeLists.txt: install icon in /usr/share/pixmaps as well as /usr/share/icons
-
-    GNOME classic only looks in pixmaps
-
-#### Other
-
-
-      - use FeatureValueNCWidget instead of FeatureValueBytesWidget if
-        the feature appears to be of type NC, i.e. the monitor's capability
-            string contains VCP values for the feature
-
-
-special handling for features:
-      - use ValueSimpleContWidget for features x8f (Audio Treble), x91 (Audio Bass), x93 (Audio Balance)
-      - use ValueSpecialWidgetX62 for feature x62 (Audio speaker volume)
-
-   new class ValueSpecialWidgetX62 for handling feature x62, Audio Volume, as specified in MCCS 3.0 and 2.2
-
--->
-
+even if another value is subsequently selected.</p>
+<pre><code>instance to maintain this lisf of observed values.
+</code></pre>
+<p>"Force use NC value names" option in menu</p>
+<p>--force-latest-nc-value-names coommand line option</p>
+<pre><code>options 
+Force NC value names option
+</code></pre>
+<h3 id="desktop-integration">Desktop Integration</h3>
+<ul>
+<li>Install ddcui.desktop in /usr/share/applications</li>
+<li>Install icons in /usr/share/icons/hicolor. An icon is also installed in /usr/share/pixmaps
+     as Gnome Classic only looks in the latter directory.</li>
+<li>Install ddcui.appdata.xml in /usr/share/metainfo</li>
+<li>Use icon "video-display" from Oxygen theme as these already 
+     exist under xxx license.</li>
+</ul>
+<h3 id="configuration-file">Configuration File</h3>
+<ul>
+<li>Configuration file, typically $HOME/.config/ddcutil/ddcutilrc, which is shared
+  with <strong>ddcutil</strong> and <strong>libddcutil</strong>.   See page <a href="config_file">Configuration File</a>. </li>
+</ul>
+<h3 id="invocation">Invocation</h3>
+<ul>
+<li>Command line options affecting only libddcutil that can be specified instead
+  in configuration file ddcutilrc: --udf, --no-udf, --nousb, --maxtries, 
+  --sleep-multiplier, --sleep-less, --less-sleep, --no-less-sleep, 
+  --dynamic-sleep-adjustment </li>
+<li>Command line option <strong><em>--help</em></strong> does not report development related options.
+  Use <strong><em>--help-development</em></strong> or <strong><em>--help-all</em></strong> to see them.</li>
+</ul>
+<h3 id="redetect-monitors">Redetect Monitors</h3>
+<ul>
+<li>Menubar option Actions-&gt;Redetect Monitors tells libddcutil to redetect displays. </li>
+</ul>
+<h3 id="general-user-interface">General User Interface</h3>
+<ul>
+<li>Rename the "Other Options" dialog to "NC Feature Values"</li>
+<li>Revise and extend help screen content</li>
+<li>User interface cleanup</li>
+</ul>
+<h3 id="building-ddcui">Building <strong>ddcui</strong></h3>
+<ul>
+<li>qmake is no longer supported, use cmake</li>
+</ul>
 <h3 id="012">0.1.2</h3>
 <p>29 June 2020</p>
 <p>Bug fixes: </p>

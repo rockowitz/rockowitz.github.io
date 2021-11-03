@@ -463,6 +463,7 @@ The SMU related hang should have been fixed as of kernel 5.14.4.  <strong>ddcuti
 $ sudo awk ' {print FILENAME &quot;: &quot; $0 } '  /sys/bus/i2c/devices/*/name
 </code></pre>
 <h2 id="questions-about-building-ddcutil">Questions about building <strong>ddcutil</strong></h2>
+<p><a name="missing_package"></a></p>
 <h3 id="configure-complains-that-a-required-package-does-not-exist-but-it-is-installed-on-my-system"><strong><em>configure</em></strong> complains that a required package does not exist, but it is installed on my system.</h3>
 <p>When building <strong>ddcutil</strong>, error messages from pkg-config (which is called by configure) can be misleading.
 If configure complains that a package is not found but it seems to be installed, it's likely that what's 
