@@ -206,6 +206,14 @@
                     </li>
                     <li class="toctree-l1 current"><a class="reference internal current" href="./">Release Notes</a>
     <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#121">1.2.1</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#option-settings">Option -settings</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#tracing">Tracing</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#fixes">Fixes</a>
+    </li>
     <li class="toctree-l2"><a class="reference internal" href="#120">1.2.0</a>
     </li>
     <li class="toctree-l2"><a class="reference internal" href="#general-changes">General Changes</a>
@@ -294,7 +302,7 @@
     </li>
     <li class="toctree-l3"><a class="reference internal" href="#miscellaneous_1">Miscellaneous</a>
     </li>
-    <li class="toctree-l3"><a class="reference internal" href="#tracing">Tracing</a>
+    <li class="toctree-l3"><a class="reference internal" href="#tracing_1">Tracing</a>
     </li>
         </ul>
     </li>
@@ -356,7 +364,7 @@
     </li>
     <li class="toctree-l3"><a class="reference internal" href="#user-supplied-feature-definitions">User Supplied Feature Definitions</a>
     </li>
-    <li class="toctree-l3"><a class="reference internal" href="#tracing_1">Tracing</a>
+    <li class="toctree-l3"><a class="reference internal" href="#tracing_2">Tracing</a>
     </li>
     <li class="toctree-l3"><a class="reference internal" href="#api-changes_4">API Changes</a>
     </li>
@@ -374,7 +382,7 @@
     </li>
     <li class="toctree-l3"><a class="reference internal" href="#usb-connected-displays">USB connected displays</a>
     </li>
-    <li class="toctree-l3"><a class="reference internal" href="#tracing_2">Tracing</a>
+    <li class="toctree-l3"><a class="reference internal" href="#tracing_3">Tracing</a>
     </li>
     <li class="toctree-l3"><a class="reference internal" href="#building-ddcutil_3">Building ddcutil</a>
     </li>
@@ -565,6 +573,28 @@
               
                 <h2 id="release-notes">Release Notes</h2>
 <p>For <strong>ddcui</strong> release notes, see <a href="../ddcui_release_notes/"><strong>ddcui</strong> Release Notes</a>.</p>
+<h3 id="121">1.2.1</h3>
+<p>These are preliminary notes for upcoming relase 1.2.1. </p>
+<h3 id="option-settings">Option <strong><em>-settings</em></strong></h3>
+<p>Until now, details of the current configuration and option settings have been shown
+at the start of any command when <strong><em>--verbose</em></strong> is in effect. This information 
+has become increasing large and distracting. Instead, this information is now
+reported only when option <strong><em>--settings</em></strong> is specified. </p>
+<h3 id="tracing">Tracing</h3>
+<ul>
+<li>Option <strong><em>--syslog</em></strong> sends trace and debug messages to the system log in addition 
+  to the trace location.</li>
+<li>Option <strong><em>--wall-timestamp--</em></strong> or <strong><em>--wts</em></strong> preface trace and debug messages with
+  the current wall time. </li>
+</ul>
+<h3 id="fixes">Fixes</h3>
+<ul>
+<li>Build would fail when <strong>configure</strong> option <strong><em>---enable x11=no</em></strong> was specified.</li>
+<li>API functions <strong>ddca_open_display()</strong> and <strong>ddca_open_display2()</strong> now always return 
+  <strong>DDCRC_ALREADY_OPEN</strong> if the display is already open in the current thread.
+  Previously an assert failure would occur under certain circumstances.</li>
+<li>Numerous memory leaks in <strong>libddcutil</strong> have been plugged.</li>
+</ul>
 <h3 id="120">1.2.0</h3>
 <p>05 October 2021</p>
 <p>Most visible changes in release 1.2.0 affect only shared library <strong>libddcutil</strong>.
@@ -1047,7 +1077,7 @@ Verification can never succeed. </p>
 feature xCC.  Thank you Simon Alling.</p>
 </li>
 </ul>
-<h4 id="tracing">Tracing</h4>
+<h4 id="tracing_1">Tracing</h4>
 <ul>
 <li>
 <p>Trace group <strong><em>RETRY</em></strong> has been added. This subset of trace group <strong><em>DDCIO</em></strong> reports only 
@@ -1226,7 +1256,7 @@ The following feature group has been added:</p>
 </tr>
 </tbody>
 </table>
-<h4 id="tracing_1">Tracing</h4>
+<h4 id="tracing_2">Tracing</h4>
 <p>Added trace groups: </p>
 <table>
 <thead>
@@ -1288,7 +1318,7 @@ but VCP feature code xC8 is unsupported.</li>
 <li>When reading a USB report, regard errno EINVAL as an expected indication that no 
 value is found rather than an unexpected status code.</li>
 </ul>
-<h4 id="tracing_2">Tracing</h4>
+<h4 id="tracing_3">Tracing</h4>
 <ul>
 <li>Fix the cause of a segfault when tracing a write-only DDC exchange (i.e. setting a VCP value)</li>
 <li>Disable debug messages regarding device id table initialization  in the <strong><em>environment</em></strong> command.</li>
