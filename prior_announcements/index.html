@@ -276,6 +276,20 @@
             <div class="section">
               
                 <h2 id="prior-announcements">Prior Announcements</h2>
+<p>05 April 2021</p>
+<p><strong>ddcutil</strong> release 1.1.0 contains the following changes of general interest:</p>
+<ul>
+<li>Configuration file <strong>ddcutilrc</strong>, located on the XDG config path (normally $HOME/.config/ddcutil/ddcutilrc)  is processed by both <strong>ddcutil</strong> and <strong>libddcutil</strong>. </li>
+<li>Monitor capabilities strings are cached to improve performance of the <strong>capabilities</strong> command.</li>
+<li>Partial workarounds for problems in DRM video drivers (e.g. i915, AMDGPU) when monitors are connected to a docking station. The monitor may not be detected (because no EDID is reported), or the monitor may appear as two different /dev/i2c devices. </li>
+<li>When probing /dev/i2c devices for monitors, <strong>ddcutil</strong> could put AMD Navi2 devices (e.g.  RX6000 series) into an inconsistent state. This is because the driver exposes an I2C device for the SMU.  Display detection is modified to avoid probing these devices. </li>
+</ul>
+<p>The interface exposed by shared library <strong>libddcutil</strong> is unchanged. Its SONAME remains "libddcutil.so.4", and the package name is <strong>libddcutil4</strong>.</p>
+<p>For a complete list of <strong>ddcutil</strong> changes and bug fixes, see <a href="../release_notes/">Release Notes</a>.</p>
+<!--
+For **ddcui** changes and bug fixes, see [ddcui Release Notes](ddcui_release_notes.md).
+-->
+<p>Prior announcements can be found <a href="./">here</a>.</p>
 <p>08 February 2021</p>
 <p><strong>ddcutil</strong> release 1.0.1 addresses the situation wherein a display connected through a docking station is not detected 
 when the i915 video driver is used.  (I2C support for docking station connected displays, and more generally displays using 
