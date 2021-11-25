@@ -219,7 +219,7 @@
                     </li>
                     <li class="toctree-l1 current"><a class="reference internal current" href="./">ddcui Release Notes</a>
     <ul class="current">
-    <li class="toctree-l2"><a class="reference internal" href="#020-24-november-2021">0.2.0 24 November 2021</a>
+    <li class="toctree-l2"><a class="reference internal" href="#release-020">Release 0.2.0</a>
     </li>
     <li class="toctree-l2"><a class="reference internal" href="#enhanced-feature-representation">Enhanced Feature Representation</a>
     </li>
@@ -237,9 +237,9 @@
     </li>
     <li class="toctree-l2"><a class="reference internal" href="#building-ddcui">Building ddcui</a>
     </li>
-    <li class="toctree-l2"><a class="reference internal" href="#012">0.1.2</a>
+    <li class="toctree-l2"><a class="reference internal" href="#release-012">Release 0.1.2</a>
     </li>
-    <li class="toctree-l2"><a class="reference internal" href="#011">0.1.1</a>
+    <li class="toctree-l2"><a class="reference internal" href="#release-011">Release 0.1.1</a>
         <ul>
     <li class="toctree-l3"><a class="reference internal" href="#command-line-options">Command Line Options</a>
     </li>
@@ -290,28 +290,21 @@
             <div class="section">
               
                 <h2 id="ddcui-release-notes">ddcui Release Notes</h2>
-<h3 id="020-24-november-2021">0.2.0 24 November 2021</h3>
+<h3 id="release-020">Release 0.2.0</h3>
+<p>24 November 2021</p>
 <p>While far from compliete, this release should be suitable for wide use.
 The code base has been extensively reworked. This page summarizes user visible changes since release 0.1.2. </p>
 <h3 id="enhanced-feature-representation">Enhanced Feature Representation</h3>
 <ul>
-<li>Support VCP features, e.g. x63 (Audio Balance), that have both a continuous 
-  range. and a set of special values. The widget for these features has both a
-  slider/spinbox for  the continuous range, and a combo-box for the special values.</li>
+<li>In MCCS 2.2 and 3.0, featues can have both a set of special values and a continuous range.
+  and a set of special values. These include x62 (Audio Volume), x63 (Audio Balance) , x87 (Audio Tebble), X91 (Audio Bass), and x93 (Audio Balance).
+  The widget for these features has both a slider/spinbox for the continuous range and a combo-box for the special values.</li>
 </ul>
-<!--
-special handling for features:
-      - use ValueSimpleContWidget for features x8f (Audio Treble), x91 (Audio Bass), x93 (Audio Balance)
-      - use ValueSpecialWidgetX62 for feature x62 (Audio speaker volume)
-
-   new class ValueSpecialWidgetX62 for handling feature x62, Audio Volume, as specified in MCCS 3.0 and 2.2
--->
-
 <h3 id="non-continuous-feature-values">Non-Continuous Feature Values</h3>
 <p>There are three interrelated mechanisms for addressing unexpected values for a simple Non-Continuous feature.</p>
 <ul>
 <li>
-<p>The monitor may report<br />
+<p>The monitor may report a
   feature value that is not listed in the capabilities string or the Monitor Control 
   Command Set. In this situation that value is still listed in the 
   combo box even if another value is subsequently selected. </p>
@@ -325,7 +318,7 @@ special handling for features:
   command line option <strong><em>--force-latest-nc_value-names</em></strong>.</p>
 </li>
 <li>
-<p>Supply a User Defined Feature definition.  See<a href="../udf/">User Defined Features</a>.</p>
+<p>Supply a User Defined Feature definition.  See<a href="udf">User Defined Features</a>.</p>
 </li>
 </ul>
 <h3 id="redetect-monitors">Redetect Monitors</h3>
@@ -369,13 +362,13 @@ have been removed from the command line, as these can now be be specified instea
 <ul>
 <li>qmake is no longer supported, use cmake</li>
 </ul>
-<h3 id="012">0.1.2</h3>
+<h3 id="release-012">Release 0.1.2</h3>
 <p>29 June 2020</p>
 <p>Bug fixes: </p>
 <ul>
 <li>The combo boxes for simple <strong><em>Non-Continuous</em></strong> values appeared empty instead of showing the current value and list of allowed values.</li>
 </ul>
-<h3 id="011">0.1.1</h3>
+<h3 id="release-011">Release 0.1.1</h3>
 <p>24 June 2020</p>
 <h4 id="command-line-options">Command Line Options</h4>
 <p>Several command line options have been added. See <a href="../ddcui_options/">Command Line Options</a></p>
