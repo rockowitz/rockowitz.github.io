@@ -296,17 +296,16 @@
 The code base has been extensively reworked. This page summarizes user visible changes since release 0.1.2. </p>
 <h3 id="enhanced-feature-representation">Enhanced Feature Representation</h3>
 <ul>
-<li>In MCCS 2.2 and 3.0, featues can have both a set of special values and a continuous range.
-  and a set of special values. These include x62 (Audio Volume), x63 (Audio Balance) , x87 (Audio Tebble), X91 (Audio Bass), and x93 (Audio Balance).
+<li>In MCCS 2.2 and 3.0, some features have both a set of special values and a continuous range.
+  These include x62 (Audio Volume), x63 (Audio Balance) , x87 (Audio Tebble), X91 (Audio Bass), and x93 (Audio Balance).
   The widget for these features has both a slider/spinbox for the continuous range and a combo-box for the special values.</li>
 </ul>
 <h3 id="non-continuous-feature-values">Non-Continuous Feature Values</h3>
 <p>There are three interrelated mechanisms for addressing unexpected values for a simple Non-Continuous feature.</p>
 <ul>
 <li>
-<p>The monitor may report a
-  feature value that is not listed in the capabilities string or the Monitor Control 
-  Command Set. In this situation that value is still listed in the 
+<p>The monitor may report a feature value that is not listed in the capabilities 
+  string or the Monitor Control Command Set. In this situation that value is still listed in the 
   combo box even if another value is subsequently selected. </p>
 </li>
 <li>
@@ -318,13 +317,14 @@ The code base has been extensively reworked. This page summarizes user visible c
   command line option <strong><em>--force-latest-nc-value-names</em></strong>.</p>
 </li>
 <li>
-<p>Supply a User Defined Feature definition.  See<a href="udf">User Defined Features</a>.</p>
+<p>Supply a User Defined Feature definition.  See <a href="udf">User Defined Features</a>.</p>
 </li>
 </ul>
 <h3 id="redetect-monitors">Redetect Monitors</h3>
 <ul>
 <li>For situations where a display is attached or detached, 
-  Menubar option <strong><em>Actions-&gt;Redetect Monitors</em></strong> can be used to redetect displays. </li>
+  Menubar option <strong><em>Actions-&gt;Redetect Monitors</em></strong> can be used to redetect displays.
+  In a future release, the plan is for this to happen automatically.</li>
 </ul>
 <h3 id="miscellaneous-user-interface-changes">Miscellaneous User Interface Changes</h3>
 <ul>
@@ -338,8 +338,8 @@ The code base has been extensively reworked. This page summarizes user visible c
 <li>Install icons in /usr/share/icons/hicolor. An icon is also installed in /usr/share/pixmaps
   as Gnome Classic only looks in the latter directory.</li>
 <li>Install ddcui.appdata.xml in /usr/share/metainfo</li>
-<li>Use icon "video-display" from Oxygen theme as these already 
-  exist under an open source license.</li>
+<li>Use icon "video-display" from Oxygen theme as it already 
+  exists under an open source license.</li>
 </ul>
 <h3 id="configuration-file">Configuration File</h3>
 <ul>
@@ -350,9 +350,9 @@ The code base has been extensively reworked. This page summarizes user visible c
 </ul>
 <h3 id="invocation">Invocation</h3>
 <ul>
-<li>Several command line options that are simply passed to <strong>libddcutil</strong><br />
+<li>Several command line options that are simply passed to <strong>libddcutil</strong>
 have been removed from the command line, as these can now be be specified instead
-  in configuration file ddcutilrc.   These include <strong><em>--udf</em></strong>, <strong><em>--no-udf</em></strong>, <strong><em>--nousb</em></strong>, <strong><em>--maxtries</em></strong>, 
+  in configuration file <strong>ddcutilrc</strong>.   These include <strong><em>--udf</em></strong>, <strong><em>--no-udf</em></strong>, <strong><em>--nousb</em></strong>, <strong><em>--maxtries</em></strong>, 
   --<strong><em>sleep-multiplier</em></strong>, <strong><em>--sleep-less</em></strong>, <strong><em>--less-sleep</em></strong>, <strong><em>--no-less-sleep</em></strong>, 
   <strong><em>--dynamic-sleep-adjustment</em></strong>. </li>
 <li>Command line option <strong><em>--help</em></strong> does not report development related options.
