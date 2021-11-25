@@ -291,7 +291,7 @@
               
                 <h2 id="ddcui-release-notes">ddcui Release Notes</h2>
 <h3 id="release-020">Release 0.2.0</h3>
-<p>24 November 2021</p>
+<p>25 November 2021</p>
 <p>While far from complete, this release should be suitable for general use.
 The code base has been extensively reworked. This section summarizes user visible changes since release 0.1.2. </p>
 <h3 id="enhanced-feature-representation">Enhanced Feature Representation</h3>
@@ -305,7 +305,7 @@ The code base has been extensively reworked. This section summarizes user visibl
 <ul>
 <li>
 <p>The monitor may report a feature value that is not listed in the capabilities 
-  string or the Monitor Control Command Set. In this situation that value is still listed in the 
+  string or the Monitor Control Command Set. In this situation the value is still listed in the 
   combo box even if another value is subsequently selected. </p>
 </li>
 <li>
@@ -350,9 +350,10 @@ The code base has been extensively reworked. This section summarizes user visibl
 </ul>
 <h3 id="invocation">Invocation</h3>
 <ul>
-<li>Several command line options that are simply passed to <strong>libddcutil</strong>
-have been removed from the command line, as these can now be be specified instead
-  in configuration file <strong>ddcutilrc</strong>.   These include <strong><em>--udf</em></strong>, <strong><em>--no-udf</em></strong>, <strong><em>--nousb</em></strong>, <strong><em>--maxtries</em></strong>, 
+<li>Several command line options that were simply passed to <strong>libddcutil</strong>
+  have been removed from the command line, as they can now be be specified instead
+  in the <strong><em>[libddcutil</em></strong> section of configuration file <strong>ddcutilrc</strong>.
+  These include <strong><em>--udf</em></strong>, <strong><em>--no-udf</em></strong>, <strong><em>--nousb</em></strong>, <strong><em>--maxtries</em></strong>, 
   --<strong><em>sleep-multiplier</em></strong>, <strong><em>--sleep-less</em></strong>, <strong><em>--less-sleep</em></strong>, <strong><em>--no-less-sleep</em></strong>, 
   <strong><em>--dynamic-sleep-adjustment</em></strong>. </li>
 <li>Command line option <strong><em>--help</em></strong> does not report development related options.
