@@ -116,9 +116,11 @@
     </li>
     <li class="toctree-l3"><a class="reference internal" href="#option-trcfunc-function-name">Option: --trcfunc &lt;function name&gt;</a>
     </li>
-    <li class="toctree-l3"><a class="reference internal" href="#option-trcfile">Option: --trcfile  &lt;</a>
+    <li class="toctree-l3"><a class="reference internal" href="#option-trcfile-file-name">Option: --trcfile  &lt;file name&gt;</a>
     </li>
     <li class="toctree-l3"><a class="reference internal" href="#option-timestamp-ts">Option: --timestamp, --ts</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#option-wall-timestamp-wts">Option: --wall-timestamp, --wts</a>
     </li>
     <li class="toctree-l3"><a class="reference internal" href="#option-thread_id-tid">Option: --thread_id, --tid</a>
     </li>
@@ -283,13 +285,15 @@ This option enables trace messages for a group.</p>
 <h4 id="option-trcfunc-function-name">Option: <strong><em>--trcfunc &lt;function name&gt;</em></strong></h4>
 <p>Enable trace messages in a particular function.  </p>
 <p>Can be specified more than once to trace multiple functions.</p>
-<h4 id="option-trcfile">Option: <strong><em>--trcfile  &lt;<file name></em></strong></h4>
+<h4 id="option-trcfile-file-name">Option: <strong><em>--trcfile  &lt;file name&gt;</em></strong></h4>
 <p>Enable trace messages in a single file.  The argument is a simple file name, e.g. "ddc_services.c".</p>
 <p>Can be specified more than once to trace multiple files.</p>
 <h4 id="option-timestamp-ts">Option: <strong><em>--timestamp</em></strong>, <strong><em>--ts</em></strong></h4>
-<p>Preface trace messages with the number of seconds since <strong>ddcutil</strong> startup </p>
+<p>Prefix trace messages with the number of seconds since <strong>ddcutil</strong> startup </p>
+<h4 id="option-wall-timestamp-wts">Option: <strong><em>--wall-timestamp</em></strong>, <strong><em>--wts</em></strong></h4>
+<p>Prefix trace messages with the current clock time. </p>
 <h4 id="option-thread_id-tid">Option: <strong><em>--thread_id</em></strong>, <strong><em>--tid</em></strong></h4>
-<p>Preface trace messages with the a thread id number.  This is the Linux thread id.</p>
+<p>Prefix trace messages with the a thread id number.  This is the Linux thread id.</p>
 <h3 id="other-debug-options">Other Debug Options</h3>
 <h4 id="option-force">Option: <strong><em>--force</em></strong></h4>
 <p>Override some checks.  Usually fatal.</p>
