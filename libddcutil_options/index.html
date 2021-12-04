@@ -267,16 +267,17 @@
               
                 <h2 id="libddcutil-options"><strong>libddcutil</strong> options</h2>
 <p>Using the <a href="../config_file/">configuration file</a>, it is possible to pass options directly to shared library <strong>ddcutil</strong>. 
-The option string is read directly from the configuration file when <strong>libddcutil</strong> is initialized.
+The option string is read and processed when <strong>libddcutil</strong> is initialized.
 (Bear in mind that the shared library is not used by the command line program <strong>ddcutil</strong>.
 Specifying <strong>libddcutil</strong> options in this context has no effect.)</p>
 <p>Generally speaking, any <strong>ddcutil</strong> option, other than those for display and feature selection, can be passed to <strong>libddcutil</strong>. </p>
 <p>In addition, the following option is recognized only by <strong>libddcutil.</strong>: </p>
 <h3 id="option-libddcutil-trace-file">Option <strong><em>--libddcutil-trace-file</em></strong></h3>
-<p><strong>libddcutil</strong> crea redirect all output that would normally be sent to the terminal to a trace file instead.
-Option <strong><em>--libddcutil-trace-file</em></strong> specifies the file name. The file name specified can be either absolute or relative.
+<p><strong>libddcutil</strong> can redirect all output that would normally be sent to the terminal to a trace file instead,
+allowng for tracing when there is no terminal to which to write. 
+This option specifies the file name. The file name specified can be either absolute or relative.
 If relative, the directory is resolved as per the definition of XDG_STATE_HOME in the XDG desktop specification.
-Typically, this is $HOME/.local/state/ddcutil.  This allows for tracing when there is no terminal to which to write. </p>
+Typically, this is $HOME/.local/state/ddcutil.</p>
               
             </div>
           </div>

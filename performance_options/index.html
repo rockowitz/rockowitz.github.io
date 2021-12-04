@@ -116,6 +116,8 @@
     </li>
     <li class="toctree-l3"><a class="reference internal" href="#option-maxtries">Option: --maxtries</a>
     </li>
+    <li class="toctree-l3"><a class="reference internal" href="#options-enable-capabilities-cache-disable-capabilities-cache">Options --enable-capabilities-cache, --disable-capabilities-cache</a>
+    </li>
     <li class="toctree-l3"><a class="reference internal" href="#additional-peformance-related-options">Additional Peformance Related Options</a>
     </li>
     </ul>
@@ -334,7 +336,8 @@ example changes only the maximum write-read try count:</p>
 <pre><code>--maxtries(,7,) 
 </code></pre>
 <p>The higest value to which a maximum try count can be set, is 15.</p>
-<p>Options <strong><em>--enable-capabilities-cache</em></strong> and <strong><em>--disable-capabilities-cache</em></strong> control whether monitors'
+<h3 id="options-enable-capabilities-cache-disable-capabilities-cache">Options <strong><em>--enable-capabilities-cache</em></strong>, <strong><em>--disable-capabilities-cache</em></strong></h3>
+<p>These options control whether monitors'
 capabilities strings are cached to improve performance.  The default is <strong><em>--enable-capabilities-cache</em></strong>. 
 The strings are saved in file <strong>ddcutil/capabilities</strong> within the XDG_CACHE_HOME directory.
 Typically this is <strong>$HOME/.cache/ddcutil/capabilities</strong>.</p>
