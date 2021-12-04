@@ -175,6 +175,8 @@
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="../c_api_100/">C API Changes for Release 1.0.0</a>
                     </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../c_api_120/">C API Changes for Release 1.2.0</a>
+                    </li>
                     <li class="toctree-l1"><a class="reference internal" href="../python_api/">Python API Overview</a>
                     </li>
                 </ul>
@@ -222,13 +224,9 @@
     </li>
     <li class="toctree-l2"><a class="reference internal" href="#environment-command">environment command</a>
         <ul>
-    <li class="toctree-l3"><a class="reference internal" href="#libddcutil-trace-file">libddcutil trace file</a>
+    <li class="toctree-l3"><a class="reference internal" href="#libddcutil-changes">libddcutil Changes</a>
     </li>
         </ul>
-    </li>
-    <li class="toctree-l2"><a class="reference internal" href="#api-changes">API changes</a>
-    </li>
-    <li class="toctree-l2"><a class="reference internal" href="#miscellaneous-libddcutil-changes">Miscellaneous libddcutil changes</a>
     </li>
     <li class="toctree-l2"><a class="reference internal" href="#110">1.1.0</a>
     </li>
@@ -326,7 +324,7 @@
     </li>
     <li class="toctree-l3"><a class="reference internal" href="#miscellaneous_2">Miscellaneous</a>
     </li>
-    <li class="toctree-l3"><a class="reference internal" href="#api-changes_1">API Changes</a>
+    <li class="toctree-l3"><a class="reference internal" href="#api-changes">API Changes</a>
     </li>
         </ul>
     </li>
@@ -336,7 +334,7 @@
         <ul>
     <li class="toctree-l3"><a class="reference internal" href="#command-line-option-nousb">Command line option --nousb.</a>
     </li>
-    <li class="toctree-l3"><a class="reference internal" href="#api-changes_2">API Changes</a>
+    <li class="toctree-l3"><a class="reference internal" href="#api-changes_1">API Changes</a>
     </li>
         </ul>
     </li>
@@ -354,7 +352,7 @@
     </li>
     <li class="toctree-l3"><a class="reference internal" href="#miscellaneous_3">Miscellaneous</a>
     </li>
-    <li class="toctree-l3"><a class="reference internal" href="#api-changes_3">API Changes</a>
+    <li class="toctree-l3"><a class="reference internal" href="#api-changes_2">API Changes</a>
     </li>
         </ul>
     </li>
@@ -368,7 +366,7 @@
     </li>
     <li class="toctree-l3"><a class="reference internal" href="#tracing_2">Tracing</a>
     </li>
-    <li class="toctree-l3"><a class="reference internal" href="#api-changes_4">API Changes</a>
+    <li class="toctree-l3"><a class="reference internal" href="#api-changes_3">API Changes</a>
     </li>
     <li class="toctree-l3"><a class="reference internal" href="#miscellaneous_4">Miscellaneous</a>
     </li>
@@ -414,7 +412,7 @@
     </li>
     <li class="toctree-l3"><a class="reference internal" href="#building-ddcutil_4">Building ddcutil</a>
     </li>
-    <li class="toctree-l3"><a class="reference internal" href="#api-changes_5">API Changes</a>
+    <li class="toctree-l3"><a class="reference internal" href="#api-changes_4">API Changes</a>
     </li>
         </ul>
     </li>
@@ -618,83 +616,8 @@ for an addiional EDID check</li>
 <li><strong>ddcutil environment --verbose</strong> now includes all the information of <strong>ddcutil detect --verbose</strong>.
   There is no need to submit the latter along with the former in issue reports.</li>
 </ul>
-<h4 id="libddcutil-trace-file"><strong>libddcutil</strong> trace file</h4>
-<p><strong>libddcutil</strong> can redirect all output that it would normally be sent to the terminal to a trace file instead. 
-The file is specified using option <strong><em>--libddcutil-trace-file</em></strong>.  This option can be only
-be specified in the <strong><em>[libddcutil]</em></strong> section of the <strong>ddcutil</strong> configuration file, <strong>ddcutilrc</strong>.
-The file name given can be either absolute or relative. If relative, the directory is resolved as per the
-definition of XDG_STATE_HOME in the XDG specification.  Typically this is $HOME/.local/state/ddcutil.
-This allows for tracing in 
-situations where there is no terminal to which to write, e.g. PowerDevil in KDE Plasma.</p>
-<h3 id="api-changes">API changes</h3>
-<table>
-<thead>
-<tr>
-<th>New Function</th>
-<th>Comments</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>ddca_add_trace_groups</td>
-<td>&nbsp;Add to the set of traced groups</td>
-</tr>
-<tr>
-<td>ddca_get_extended_version_string</td>
-<td>&nbsp;Version string with optional suffix, e.g. "1.1.2-rc2"</td>
-</tr>
-<tr>
-<td>ddca_redetect_displays</td>
-<td>&nbsp;Redetect displays</td>
-</tr>
-<tr>
-<td>ddca_get_display_refs</td>
-<td>&nbsp;Returns a null-terminated list of valid DDCA_Display_Refs</td>
-</tr>
-<tr>
-<td>ddca_get_display_info</td>
-<td>&nbsp;Returns DDCA_Display_Info for a DDCA_Display_Ref</td>
-</tr>
-</tbody>
-</table>
-<p><br>
-Notes: </p>
-<ul>
-<li>The existing API function <strong><em>ddca_set_trace_groups()</em></strong> replaces the existing set of trace groups,
-whereas <strong><em>ddca_add_trace_groups()</em></strong> adds to the current set.</li>
-<li>Calling <strong><em>ddca_get_display_refs()</em></strong> followed by 
-<strong><em>ddcau_get_display_info()</em></strong> calls for each display is preferred over <strong><em>ddca_get_display_info_list2()</em></strong>.
-Experience has shown that it leads to cleaner client code.</li>
-</ul>
-<p><br></p>
-<table>
-<thead>
-<tr>
-<th>New Macro</th>
-<th>Comments</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>DDCUTIL_VSUFFIX</td>
-<td>&nbsp;version suffix (may be "")</td>
-</tr>
-</tbody>
-</table>
-<p><br></p>
-<h3 id="miscellaneous-libddcutil-changes">Miscellaneous <strong>libddcutil</strong> changes</h3>
-<ul>
-<li>
-<p>The shared library name is now libddcutil.so.4.1.0 </p>
-</li>
-<li>
-<p>Additional checks are performed on <strong>DDCA_Display_Ref</strong> and <strong>DDCA_Display_Handle</strong> function arguments.  </p>
-</li>
-<li><strong><em>assert{}</em></strong> statements are used in <strong>libddcutil</strong> for situations that 
-should be logically impossible.  To aid in remote problem diagnosis, many of these statements have been 
-replaced by macro TRACE_ASSERT(), which additionally writes a messsage
-to both the <strong>libddcutil</strong> trace log and the system log.</li>
-</ul>
+<h4 id="libddcutil-changes"><strong>libddcutil</strong> Changes</h4>
+<p>See <a href="../c_api_120/">Shared Library Changes for Release 1.2.0</a></p>
 <h3 id="110">1.1.0</h3>
 <p>05 April 2021</p>
 <h3 id="docking-station-connected-displays">Docking station connected displays</h3>
@@ -809,7 +732,7 @@ In MCCS 3.0 and 2.2, these features have special reserved values along with a ra
 <h3 id="command-setvcp">Command <strong>setvcp</strong></h3>
 <ul>
 <li>The parsing of <strong>setvcp</strong> arguments has been rewritten to correctly allow for more than 1 relative values. </li>
-<li>A command such as "setvcp 10 +15" was was incorrectly being interpreted as indicating a 
+<li>A command such as "setvcp 10 +15" was incorrectly being interpreted as indicating a 
 relative feature value.  The "+" or "-" in relative values must be surrounded by spaces.</li>
 </ul>
 <!--
@@ -1153,7 +1076,7 @@ people needlessly trying to diagnose a DDC/CI communication failure.</p>
 <h4 id="miscellaneous_2">Miscellaneous</h4>
 <p>Improve the output for feature x14 (Color Preset) to take into account the MH byte, which is defined in MCCS 3.0 and 2.2. 
 ( Unfortunately, observed behavior on at least one MCCS 2.2 monitor, an HP Z22i, does not match the spec.)</p>
-<h4 id="api-changes_1">API Changes</h4>
+<h4 id="api-changes">API Changes</h4>
 <p>See <a href="../c_api_98/">Shared Library Changes for Release 0.9.8</a> for details.</p>
 <h3 id="097">0.9.7</h3>
 <p>04 September 2019</p>
@@ -1171,7 +1094,7 @@ the <strong>USB Monitor Control Class Specification</strong>, i.e. one that uses
 <p>There has been a user report that <strong>ddcutil</strong> sometimes freezes the trackpoint in a Lenovo keyboard with trackpoint (specifically Lenovo SK-8855) during display detection.  The option provides a work around.</p>
 <p>Note that USB display detection is rarely required, 
 as most monitors do not use USB to communicate settings.  However, USB display detection is much, much faster than normal I2C display detection, so disabling it has a negligable effect on <strong>ddcutil</strong> execution time</p>
-<h4 id="api-changes_2">API Changes</h4>
+<h4 id="api-changes_1">API Changes</h4>
 <p>See <a href="../c_api_96/">API Changes in Release 0.9.6</a> for details.</p>
 <h3 id="095">0.9.5</h3>
 <p>24 February 2019</p>
@@ -1198,7 +1121,7 @@ failure with Linux errno <strong>EIO</strong>.  <strong>ddcutil</strong> now int
 This special handling currently applies only to the Dell AW3418DW.</p>
 <h4 id="miscellaneous_3">Miscellaneous</h4>
 <p>Update file README.md and make it more usable as the github overview file.</p>
-<h4 id="api-changes_3">API Changes</h4>
+<h4 id="api-changes_2">API Changes</h4>
 <p>See <a href="../c_api_95/">API Changes in Release 0.9.5</a> for details.</p>
 <h3 id="094">0.9.4</h3>
 <p>25 December 2018</p>
@@ -1285,7 +1208,7 @@ The following feature group has been added:</p>
 <p><br>
 Because of the volume of output, 
 trace group "DDC" has been split into DDC and DDCIO, with the latter containing low level DDC services.</p>
-<h4 id="api-changes_4">API Changes</h4>
+<h4 id="api-changes_3">API Changes</h4>
 <p>The C API has had a few changes to support user supplied feature definitions and reflecting experience gained from work on the Qt C++ GUI interface.
 See <a href="../c_api_93/">API Changes in Release 9.3</a> for details.</p>
 <h4 id="miscellaneous_4">Miscellaneous</h4>
@@ -1455,7 +1378,7 @@ system header files. It was flagging perfectly valid code as problematic, and ca
 generally by making buffers larger.
 (All such warnings had flagged situations that never would result in buffer overflow.)</li>
 </ul>
-<h4 id="api-changes_5">API Changes</h4>
+<h4 id="api-changes_4">API Changes</h4>
 <p>The C API has been extensively revised reflecting experience gained from work on a Qt C++ GUI interface.
 See <a href="../c_api_90/">API Changes in Release 9.0</a> for details.</p>
 <p>Work on Python API has been suspended.  Proof of concept implementations exist in the source tree for implementations using GObject API. 

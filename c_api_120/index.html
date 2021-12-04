@@ -7,18 +7,18 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
   <meta name="author" content="Sanford Rockowitz">
-  <link rel="canonical" href="https://www.ddcutil.com/libddcutil_options/">
+  <link rel="canonical" href="https://www.ddcutil.com/c_api_120/">
   <link rel="shortcut icon" href="../img/favicon.ico">
-  <title>libddcutil Options - ddcutil Documentation</title>
+  <title>C API Changes for Release 1.2.0 - ddcutil Documentation</title>
   <link rel="stylesheet" href="../css/theme.css" />
   <link rel="stylesheet" href="../css/theme_extra.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css" />
   
   <script>
     // Current page data
-    var mkdocs_page_name = "libddcutil Options";
-    var mkdocs_page_input_path = "libddcutil_options.md";
-    var mkdocs_page_url = "/libddcutil_options/";
+    var mkdocs_page_name = "C API Changes for Release 1.2.0";
+    var mkdocs_page_input_path = "c_api_120.md";
+    var mkdocs_page_url = "/c_api_120/";
   </script>
   
   <script src="../js/jquery-2.1.1.min.js" defer></script>
@@ -73,7 +73,7 @@
                     </li>
                 </ul>
                 <p class="caption"><span class="caption-text">Command Detail</span></p>
-                <ul class="current">
+                <ul>
                     <li class="toctree-l1"><a class="reference internal" href="#">Primary Commands</a>
     <ul>
                 <li class="toctree-l2"><a class="reference internal" href="../command_detect/">detect</a>
@@ -114,11 +114,7 @@
                 </li>
     </ul>
                     </li>
-                    <li class="toctree-l1 current"><a class="reference internal current" href="./">libddcutil Options</a>
-    <ul class="current">
-    <li class="toctree-l2"><a class="reference internal" href="#option-libddcutil-trace-file">Option --libddcutil-trace-file</a>
-    </li>
-    </ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../libddcutil_options/">libddcutil Options</a>
                     </li>
                 </ul>
                 <p class="caption"><span class="caption-text">Specific Facilities</span></p>
@@ -162,7 +158,7 @@
                     </li>
                 </ul>
                 <p class="caption"><span class="caption-text">API</span></p>
-                <ul>
+                <ul class="current">
                     <li class="toctree-l1"><a class="reference internal" href="../api_main/">C API</a>
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="../c_api_90/">C API Changes for Release 0.9.0</a>
@@ -179,7 +175,13 @@
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="../c_api_100/">C API Changes for Release 1.0.0</a>
                     </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../c_api_120/">C API Changes for Release 1.2.0</a>
+                    <li class="toctree-l1 current"><a class="reference internal current" href="./">C API Changes for Release 1.2.0</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#overview">Overview</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#api-changes">API Changes</a>
+    </li>
+    </ul>
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="../python_api/">Python API Overview</a>
                     </li>
@@ -249,14 +251,14 @@
     
       
         
-          <li>Command Detail &raquo;</li>
+          <li>API &raquo;</li>
         
       
     
-    <li>libddcutil Options</li>
+    <li>C API Changes for Release 1.2.0</li>
     <li class="wy-breadcrumbs-aside">
       
-        <a href="https://github.com/rockowitz/ddcutil/edit/master/docs/libddcutil_options.md"
+        <a href="https://github.com/rockowitz/ddcutil/edit/master/docs/c_api_120.md"
           class="icon icon-github"> Edit on GitHub</a>
       
     </li>
@@ -267,19 +269,52 @@
           <div role="main">
             <div class="section">
               
-                <h2 id="libddcutil-options"><strong>libddcutil</strong> options</h2>
-<p>Using the <a href="../config_file/">configuration file</a>, it is possible to pass options directly to shared library <strong>ddcutil</strong>. 
-The option string is read and processed when <strong>libddcutil</strong> is initialized.
-(Bear in mind that the shared library is not used by the command line program <strong>ddcutil</strong>.
-Specifying <strong>libddcutil</strong> options in this context has no effect.)</p>
-<p>Generally speaking, any <strong>ddcutil</strong> option, other than those for display and feature selection, can be passed to <strong>libddcutil</strong>. </p>
-<p>In addition, the following option is recognized only by <strong>libddcutil.</strong>: </p>
-<h3 id="option-libddcutil-trace-file">Option <strong><em>--libddcutil-trace-file</em></strong></h3>
-<p><strong>libddcutil</strong> can redirect all output that would normally be sent to the terminal to a trace file instead,
-allowng for tracing when there is no terminal to which to write. 
-This option specifies the file name. The file name specified can be either absolute or relative.
-If relative, the directory is resolved as per the definition of XDG_STATE_HOME in the XDG desktop specification.
-Typically, this is $HOME/.local/state/ddcutil.</p>
+                <h2 id="shared-library-changes-for-release-100">Shared Library Changes for Release 1.0.0</h2>
+<h3 id="overview">Overview</h3>
+<p>This release contains a handful of changes, which affect backward compatibility. 
+Consequently, the <strong><em>libddcutil</em></strong> SONAME is now libddcutil.so.4. 
+In conformance with Debian practice, the package name is <strong><em>libddcutil4</em></strong>.</p>
+<h3 id="api-changes">API Changes</h3>
+<table>
+<thead>
+<tr>
+<th>Structs and Enums</th>
+<th>Comments</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>enum DDCA_Output_Level</td>
+<td>&nbsp;add value DDCA_OL_VV (very vebose)</td>
+</tr>
+<tr>
+<td>struct DDCA_Feature_Metadata</td>
+<td>&nbsp;add field latest_sl_values</td>
+</tr>
+<tr>
+<td><br></td>
+<td></td>
+</tr>
+<tr>
+<td>Modified Functions</td>
+<td>Comments</td>
+</tr>
+<tr>
+<td>--------------------------------------</td>
+<td>------------------</td>
+</tr>
+<tr>
+<td>ddca_create_adlno_display_identifier</td>
+<td>&nbsp;removed</td>
+</tr>
+<tr>
+<td>ddca_set_sleep_multiplier()</td>
+<td>&nbsp;returns prior value</td>
+</tr>
+</tbody>
+</table>
+<p><br>
+The Doxygen documentation in ddcutil_c_api.h has been extensively updated.</p>
               
             </div>
           </div>
@@ -287,10 +322,10 @@ Typically, this is $HOME/.local/state/ddcutil.</p>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../table_features/" class="btn btn-neutral float-right" title="Table Type Features">Next <span class="icon icon-circle-arrow-right"></span></a>
+        <a href="../python_api/" class="btn btn-neutral float-right" title="Python API Overview">Next <span class="icon icon-circle-arrow-right"></span></a>
       
       
-        <a href="../debug_options/" class="btn btn-neutral" title="Debugging Options"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../c_api_100/" class="btn btn-neutral" title="C API Changes for Release 1.0.0"><span class="icon icon-circle-arrow-left"></span> Previous</a>
       
     </div>
   
@@ -318,10 +353,10 @@ Typically, this is $HOME/.local/state/ddcutil.</p>
           <a href="https://github.com/rockowitz/ddcutil/" class="fa fa-github" style="float: left; color: #fcfcfc"> GitHub</a>
       
       
-        <span><a href="../debug_options/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+        <span><a href="../c_api_100/" style="color: #fcfcfc;">&laquo; Previous</a></span>
       
       
-        <span style="margin-left: 15px"><a href="../table_features/" style="color: #fcfcfc">Next &raquo;</a></span>
+        <span style="margin-left: 15px"><a href="../python_api/" style="color: #fcfcfc">Next &raquo;</a></span>
       
     </span>
 </div>
