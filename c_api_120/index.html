@@ -178,8 +178,14 @@
                     <li class="toctree-l1 current"><a class="reference internal current" href="./">C API Changes for Release 1.2.0</a>
     <ul class="current">
     <li class="toctree-l2"><a class="reference internal" href="#overview">Overview</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#libddcutil-trace-file">libddcutil trace file</a>
     </li>
-    <li class="toctree-l2"><a class="reference internal" href="#api-changes">API Changes</a>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#api-changes">API changes</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#miscellaneous-libddcutil-changes">Miscellaneous libddcutil changes</a>
     </li>
     </ul>
                     </li>
@@ -269,52 +275,88 @@
           <div role="main">
             <div class="section">
               
-                <h2 id="shared-library-changes-for-release-100">Shared Library Changes for Release 1.0.0</h2>
+                <h2 id="shared-library-changes-for-release-120">Shared Library Changes for Release 1.2.0</h2>
 <h3 id="overview">Overview</h3>
 <p>This release contains a handful of changes, which affect backward compatibility. 
 Consequently, the <strong><em>libddcutil</em></strong> SONAME is now libddcutil.so.4. 
 In conformance with Debian practice, the package name is <strong><em>libddcutil4</em></strong>.</p>
-<h3 id="api-changes">API Changes</h3>
+<h4 id="libddcutil-trace-file"><strong>libddcutil</strong> trace file</h4>
+<p><strong>libddcutil</strong> can redirect all output that it would normally be sent to the terminal to a trace file instead. 
+The file is specified using option <strong><em>--libddcutil-trace-file</em></strong>.  This option can be only
+be specified in the <strong><em>[libddcutil]</em></strong> section of the <strong>ddcutil</strong> configuration file, <strong>ddcutilrc</strong>.
+The file name given can be either absolute or relative. If relative, the directory is resolved as per the
+definition of XDG_STATE_HOME in the XDG specification.  Typically this is $HOME/.local/state/ddcutil.
+This allows for tracing in 
+situations where there is no terminal to which to write, e.g. PowerDevil in KDE Plasma.</p>
+<h3 id="api-changes">API changes</h3>
 <table>
 <thead>
 <tr>
-<th>Structs and Enums</th>
+<th>New Function</th>
 <th>Comments</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>enum DDCA_Output_Level</td>
-<td>&nbsp;add value DDCA_OL_VV (very vebose)</td>
+<td>ddca_add_trace_groups</td>
+<td>&nbsp;Add to the set of traced groups</td>
 </tr>
 <tr>
-<td>struct DDCA_Feature_Metadata</td>
-<td>&nbsp;add field latest_sl_values</td>
+<td>ddca_get_extended_version_string</td>
+<td>&nbsp;Version string with optional suffix, e.g. "1.1.2-rc2"</td>
 </tr>
 <tr>
-<td><br></td>
-<td></td>
+<td>ddca_redetect_displays</td>
+<td>&nbsp;Redetect displays</td>
 </tr>
 <tr>
-<td>Modified Functions</td>
-<td>Comments</td>
+<td>ddca_get_display_refs</td>
+<td>&nbsp;Returns a null-terminated list of valid DDCA_Display_Refs</td>
 </tr>
 <tr>
-<td>--------------------------------------</td>
-<td>------------------</td>
-</tr>
-<tr>
-<td>ddca_create_adlno_display_identifier</td>
-<td>&nbsp;removed</td>
-</tr>
-<tr>
-<td>ddca_set_sleep_multiplier()</td>
-<td>&nbsp;returns prior value</td>
+<td>ddca_get_display_info</td>
+<td>&nbsp;Returns DDCA_Display_Info for a DDCA_Display_Ref</td>
 </tr>
 </tbody>
 </table>
 <p><br>
-The Doxygen documentation in ddcutil_c_api.h has been extensively updated.</p>
+Notes: </p>
+<ul>
+<li>The existing API function <strong><em>ddca_set_trace_groups()</em></strong> replaces the existing set of trace groups,
+whereas <strong><em>ddca_add_trace_groups()</em></strong> adds to the current set.</li>
+<li>Calling <strong><em>ddca_get_display_refs()</em></strong> followed by 
+<strong><em>ddcau_get_display_info()</em></strong> calls for each display is preferred over <strong><em>ddca_get_display_info_list2()</em></strong>.
+Experience has shown that it leads to cleaner client code.</li>
+</ul>
+<p><br></p>
+<table>
+<thead>
+<tr>
+<th>New Macro</th>
+<th>Comments</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>DDCUTIL_VSUFFIX</td>
+<td>&nbsp;version suffix (may be "")</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<h3 id="miscellaneous-libddcutil-changes">Miscellaneous <strong>libddcutil</strong> changes</h3>
+<ul>
+<li>
+<p>The shared library name is now libddcutil.so.4.1.0 </p>
+</li>
+<li>
+<p>Additional checks are performed on <strong>DDCA_Display_Ref</strong> and <strong>DDCA_Display_Handle</strong> function arguments.  </p>
+</li>
+<li><strong><em>assert{}</em></strong> statements are used in <strong>libddcutil</strong> for situations that 
+should be logically impossible.  To aid in remote problem diagnosis, many of these statements have been 
+replaced by macro TRACE_ASSERT(), which additionally writes a messsage
+to both the <strong>libddcutil</strong> trace log and the system log.</li>
+</ul>
               
             </div>
           </div>
