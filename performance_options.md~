@@ -1,0 +1,84 @@
+## Performance and Tuning Options
+
+Some of these options increase the risk of DDC/CI communication failures, requiring retries.
+
+
+### Option: ***--sleep-multiplier***
+
+The DDC/CI specification dictates that the host computer wait 40-200 ms (depending on operation) between sending a command to the monitor and reading the response.
+Typically ***ddcutil*** spends approximately 90% of its elapsed time sleeping.  Many monitors respond properly with much shorter waits.  On the other hand, there are monitors that require longer waits to avoid DDC/CI errors.  Option ***--sleep-multiplier*** applies a multiplication factor to the DDC/CI specified sleep times.
+The multiplication factor is a floating point number. 
+For example,  
+~~~
+--sleep-multiplier .5 
+~~~
+causes 40 ms waits to become 20 ms, and 
+~~~
+--sleep-multiplier 4
+~~~
+causes 40 ms waits to beome 160 ms. 
+
+Note that ***ddcutil*** may automatically increase wait times when peforming retries.  Option ***--sleep-multiplier*** applies to the inital wait time.
+
+Option ***--sleep-multiplier*** can significantly speed up **ddcutil** execution - some monitors have been seen to operate properly with a sleep-multiplier as low as .1, 
+
+### Option: ***--less-sleep***, ***--sleep-less***
+
+Do not perform some mandated delays between I2C reads and the next I2C operation.  This markedly improves
+elapsed execution time, at the cost of addional operation retries. This option may become the default in 
+future releases. 
+
+
+### Option: ***--async***
+
+Enable parallel inspection if 3 or more monitors.  See [detect command](command_detect.md#option_async).
+
+
+#### Option: ***--noverify***<a name="setvcp_noverify"></a>
+
+Skip checking that a monitor has properly processed a DDC ***Set VCP Feature*** request packet.
+For details, see [setvcp command](command_setvcp.md#setup_noverify).
+
+
+### Option: ***--maxtries***
+
+**I2C** is an inherently unreliable protocol, requiring retry management.  
+
+There are 3 kinds of exchanges in which retry is possible: 
+
+- write-only exchange.  Bytes are written with no subsequent read.  
+  Used only to set a VCP feature value.  
+- write-read exchange.  A write to the monitor, followed by a read.  
+  Most DDC protocol exchanges are of this form.
+- multi-part exchange.  This is a "meta" exchange, consisting multiple 
+  write-read exchanges. Used to query monitor capabilities, and for 
+  querying and setting Table type VCP features. 
+
+By default, the maximum number of tries for each exchange is:
+
+- write-only exchange:    4
+- write-read exchange:   10
+- multi-part exchange:    8
+
+Option ***--maxtries*** adjusts the maximum try counts.  Its argument
+consists of 3 comma-separated values.  The following example sets the maximum 
+try counts to 3 for write-only exchanges, 6 for write-read exchanges, and 9 
+for multi-part exchanges.
+~~~
+--maxtries(3,6,9) 
+~~~
+A blank value leaves the corresponding try count unchanged.   The following 
+example changes only the maximum write-read try count:
+~~~
+--maxtries(,7,) 
+~~~
+The higest value to which a maximum try count can be set, is 15.
+
+Options ***--enable-capabilities-cache*** and ***--disable-capabilities-cache*** control whether monitors'
+capabilities strings are cached to improve performance.  The default is ***--enable-capabilities-cache***. 
+The strings are saved in file **ddcutil/capabilities** within the XDG_CACHE_HOME directory.
+Typically this is **$HOME/.cache/ddcutil/capabilities**.
+
+### Additional Peformance Related Options
+
+Additional performance related options exist but are experimental.  See the [Release Notes](release_notes.md).

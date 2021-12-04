@@ -7,18 +7,18 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
   <meta name="author" content="Sanford Rockowitz">
-  <link rel="canonical" href="https://www.ddcutil.com/command_scs/">
+  <link rel="canonical" href="https://www.ddcutil.com/libddcutil_options/">
   <link rel="shortcut icon" href="../img/favicon.ico">
-  <title>scs - ddcutil Documentation</title>
+  <title>libddcutil Options - ddcutil Documentation</title>
   <link rel="stylesheet" href="../css/theme.css" />
   <link rel="stylesheet" href="../css/theme_extra.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css" />
   
   <script>
     // Current page data
-    var mkdocs_page_name = "scs";
-    var mkdocs_page_input_path = "command_scs.md";
-    var mkdocs_page_url = "/command_scs/";
+    var mkdocs_page_name = "libddcutil Options";
+    var mkdocs_page_input_path = "libddcutil_options.md";
+    var mkdocs_page_url = "/libddcutil_options/";
   </script>
   
   <script src="../js/jquery-2.1.1.min.js" defer></script>
@@ -74,8 +74,8 @@
                 </ul>
                 <p class="caption"><span class="caption-text">Command Detail</span></p>
                 <ul class="current">
-                    <li class="toctree-l1 current"><a class="reference internal current" href="#">Primary Commands</a>
-    <ul class="current">
+                    <li class="toctree-l1"><a class="reference internal" href="#">Primary Commands</a>
+    <ul>
                 <li class="toctree-l2"><a class="reference internal" href="../command_detect/">detect</a>
                 </li>
                 <li class="toctree-l2"><a class="reference internal" href="../command_capabilities/">capabilities</a>
@@ -88,9 +88,7 @@
                 </li>
                 <li class="toctree-l2"><a class="reference internal" href="../command_dumpvcp_loadvcp/">dumpvcp &amp; loadvcp</a>
                 </li>
-                <li class="toctree-l2 current"><a class="reference internal current" href="./">scs</a>
-    <ul class="current">
-    </ul>
+                <li class="toctree-l2"><a class="reference internal" href="../command_scs/">scs</a>
                 </li>
     </ul>
                     </li>
@@ -116,7 +114,11 @@
                 </li>
     </ul>
                     </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../libddcutil_options/">libddcutil Options</a>
+                    <li class="toctree-l1 current"><a class="reference internal current" href="./">libddcutil Options</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#option-libddcutil-trace-file">Option --libddcutil-trace-file</a>
+    </li>
+    </ul>
                     </li>
                 </ul>
                 <p class="caption"><span class="caption-text">Specific Facilities</span></p>
@@ -245,18 +247,14 @@
     
       
         
-          <li>Primary Commands &raquo;</li>
-        
-      
-        
           <li>Command Detail &raquo;</li>
         
       
     
-    <li>scs</li>
+    <li>libddcutil Options</li>
     <li class="wy-breadcrumbs-aside">
       
-        <a href="https://github.com/rockowitz/ddcutil/edit/master/docs/command_scs.md"
+        <a href="https://github.com/rockowitz/ddcutil/edit/master/docs/libddcutil_options.md"
           class="icon icon-github"> Edit on GitHub</a>
       
     </li>
@@ -267,22 +265,18 @@
           <div role="main">
             <div class="section">
               
-                <h3 id="command-scs">Command <strong>scs</strong></h3>
-<p>Syntax:  <strong>scs</strong> &lt;display-selection-options&gt;</p>
-<p>Sends a DDC <strong><em>Save Current Settings</em></strong> request to the display, which saves the current monitor settings to the display's nonvolatile storage.</p>
-<p>Some displays implement this request, others do not. (See the output of <strong>ddcutil capabilities</strong>.)
-Even for most that do, the command has no apparent effect.</p>
-<p>However, the command is required when settomg a featuer value for at least some Iiyama monitors.  Users of models 
-<a href="https://www.monitor_notes#iiyama-pl2942h">PL2492H</a> 
-and <a href="https://www.ddcutil.com/monitor_notes#iiyama-pl2792q">PL2792Q</a> 
-have reported that <strong><em>setvcp</em></strong> commands do not actually change the value unless immediately followed by a <strong><em>scs</em></strong> command.  In that case, the <strong><em>setvcp</em></strong> command should
-use the <strong><em>--noverify</em></strong> option.  Otherwise, <strong><em>setvcp</em></strong> internally performs a <strong>getvcp</strong> operation to check that the new value has actually been set, but retrieves the old value because <strong>scs</strong> has not occurred.  </p>
-<p>For example: </p>
-<pre><code>$ setvcp 10 85             # verifcation fails, the value is unchanged
-$ setvcp 10 85 --noverify
-$ scs
-$ getvcp 10                # works after scs
-</code></pre>
+                <h2 id="libddcutil-options"><strong>libddcutil</strong> options</h2>
+<p>Using the <a href="../config_file/">configuration file</a>, it is possible to pass options directly to shared library <strong>ddcutil</strong>. 
+The option string is read directly from the configuration file when <strong>libddcutil</strong> is initialized.
+(Bear in mind that the shared library is not used by the command line program <strong>ddcutil</strong>.
+Specifying <strong>libddcutil</strong> options in this context has no effect.)</p>
+<p>Generally speaking, any <strong>ddcutil</strong> option, other than those for display and feature selection, can be passed to <strong>libddcutil</strong>. </p>
+<p>In addition, the following option is recognized only by <strong>libddcutil.</strong>: </p>
+<h3 id="option-libddcutil-trace-file">Option <strong><em>--libddcutil-trace-file</em></strong></h3>
+<p><strong>libddcutil</strong> crea redirect all output that would normally be sent to the terminal to a trace file instead.
+Option <strong><em>--libddcutil-trace-file</em></strong> specifies the file name. The file name specified can be either absolute or relative.
+If relative, the directory is resolved as per the definition of XDG_STATE_HOME in the XDG desktop specification.
+Typically, this is $HOME/.local/state/ddcutil.  This allows for tracing when there is no terminal to which to write. </p>
               
             </div>
           </div>
@@ -290,10 +284,10 @@ $ getvcp 10                # works after scs
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../secondary_commands/" class="btn btn-neutral float-right" title="Secondary Commands">Next <span class="icon icon-circle-arrow-right"></span></a>
+        <a href="../table_features/" class="btn btn-neutral float-right" title="Table Type Features">Next <span class="icon icon-circle-arrow-right"></span></a>
       
       
-        <a href="../command_dumpvcp_loadvcp/" class="btn btn-neutral" title="dumpvcp &amp; loadvcp"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../debug_options/" class="btn btn-neutral" title="Debugging Options"><span class="icon icon-circle-arrow-left"></span> Previous</a>
       
     </div>
   
@@ -321,10 +315,10 @@ $ getvcp 10                # works after scs
           <a href="https://github.com/rockowitz/ddcutil/" class="fa fa-github" style="float: left; color: #fcfcfc"> GitHub</a>
       
       
-        <span><a href="../command_dumpvcp_loadvcp/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+        <span><a href="../debug_options/" style="color: #fcfcfc;">&laquo; Previous</a></span>
       
       
-        <span style="margin-left: 15px"><a href="../secondary_commands/" style="color: #fcfcfc">Next &raquo;</a></span>
+        <span style="margin-left: 15px"><a href="../table_features/" style="color: #fcfcfc">Next &raquo;</a></span>
       
     </span>
 </div>
