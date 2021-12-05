@@ -309,7 +309,7 @@ future releases. </p>
 <h4 id="option-noverify">Option: <strong><em>--noverify</em></strong><a name="setvcp_noverify"></a></h4>
 <p>Skip checking that a monitor has properly processed a DDC <strong><em>Set VCP Feature</em></strong> request packet.
 For details, see <a href="../command_setvcp/#setup_noverify">setvcp command</a>.</p>
-<h3 id="option-maxtries">Option: <strong><em>--maxtries</em></strong></h3>
+<h3 id="option-maxtries">Option: <strong><em>--maxtries</em></strong><a name="option_maxtries"></a></h3>
 <p><strong>I2C</strong> is an inherently unreliable protocol, requiring retry management.  </p>
 <p>There are 3 kinds of exchanges in which retry is possible: </p>
 <ul>
@@ -338,11 +338,16 @@ example changes only the maximum write-read try count:</p>
 <pre><code>--maxtries(,7,) 
 </code></pre>
 <p>The higest value to which a maximum try count can be set, is 15.</p>
-<h3 id="options-enable-capabilities-cache-disable-capabilities-cache">Options <strong><em>--enable-capabilities-cache</em></strong>, <strong><em>--disable-capabilities-cache</em></strong></h3>
-<p>These options control whether monitors'
-capabilities strings are cached to improve performance.  The default is <strong><em>--enable-capabilities-cache</em></strong>. 
-The strings are saved in file <strong>ddcutil/capabilities</strong> within the XDG_CACHE_HOME directory.
-Typically this is <strong>$HOME/.cache/ddcutil/capabilities</strong>.</p>
+<h3 id="options-enable-capabilities-cache-disable-capabilities-cache">Options <strong><em>--enable-capabilities-cache</em></strong>, <strong><em>--disable-capabilities-cache</em></strong><a name="option_enable_capabilities_cache"></a><a name="option_disable_capabilities_cache"></a></h3>
+<p><strong>capabilities</strong> is the most expensive <strong>ddcutil</strong> command in elapsed time.
+It is also the most prone to failure on marginal I2C host/monitor 
+connections, due the large number of I2C requests involved.</p>
+<p>On the other hand, the capabilities string is constant for any given monitor model.</p>
+<p>This feature is controlled by options <strong><em>--enable-capabilities-cache</em></strong> and <strong><em>--disable-capabilities-cache</em></strong>.
+The default is  <strong><em>--enable-capabilities-cache</em></strong>.  Option <strong><em>--disable-capabilities-cache</em></strong> may be needed for certain edge cases.</p>
+<p>The strings are saved in file <strong>ddcutil/capabilities</strong> within the XDG_CACHE_HOME directory.
+Normally this is <strong>$HOME/.cache/ddcutil/capabilities</strong>.
+This file can safely be erased if the stored capabilities string should become corrupted in some way. </p>
 <h3 id="additional-peformance-related-options">Additional Peformance Related Options</h3>
 <p>Additional performance related options exist but are experimental.  See the <a href="../release_notes/">Release Notes</a>.</p>
               

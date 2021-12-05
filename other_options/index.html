@@ -114,13 +114,7 @@
     </li>
     <li class="toctree-l3"><a class="reference internal" href="#option-timeout-i2c-io">Option: --timeout-i2c-io</a>
     </li>
-    <li class="toctree-l3"><a class="reference internal" href="#option-noudef">Option: --noudef</a>
-    </li>
-    <li class="toctree-l3"><a class="reference internal" href="#option-version">Option: --version</a>
-    </li>
-    <li class="toctree-l3"><a class="reference internal" href="#option-settings">Option: --settings</a>
-    </li>
-    <li class="toctree-l3"><a class="reference internal" href="#option-help">Option: --help</a>
+    <li class="toctree-l3"><a class="reference internal" href="#options-enable-udf-disable-udf">Options: --enable-udf, --disable-udf</a>
     </li>
     </ul>
                 </li>
@@ -292,8 +286,11 @@ addresses, potentially impacting the other program.  (Internally, <strong><em>dd
 <p>Causes (most) I2C read calls to eventually time out if they do not return.
 This has been implemented as a POSSIBLE way to address occasional reports of <strong>ddcutil</strong> locking up, with subsequent
  <strong>ddcutiil</strong> calls blocking behind it.   it may become the default in future releases.</p>
-<h4 id="option-noudef">Option: <strong><em>--noudef</em></strong></h4>
-<p>Disable user defined functions. </p>
+<h4 id="options-enable-udf-disable-udf">Options: <strong><em>--enable-udf</em></strong>, <strong><em>--disable-udf</em></strong></h4>
+<p>Enable or disable the user defined feature facility.  The default is <strong><em>--enable-udf</em></strong>. </p>
+<h3 id="option-mccs-vcp-version">Option <strong><em>--mccs &lt;vcp version&gt;</em></strong></h3>
+<p>Option <strong><em>--mccs</em></strong> forces the MCCS version number.  It applies to commands <strong>vcpinfo</strong>, <strong>getvcp</strong>, <strong>setvcp</strong>, and <strong>dumpvcp</strong>.
+See documentation of the individual commands for details.</p>
 <h4 id="option-version">Option: <strong><em>--version</em></strong></h4>
 <p>Displays <strong>ddcutil</strong> version information, then terminates execution.</p>
 <h4 id="option-settings">Option: <strong><em>--settings</em></strong></h4>
