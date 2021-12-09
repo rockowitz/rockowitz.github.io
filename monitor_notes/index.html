@@ -208,6 +208,8 @@
     </li>
     <li class="toctree-l2"><a class="reference internal" href="#hp-zr2740w">HP ZR2740w</a>
     </li>
+    <li class="toctree-l2"><a class="reference internal" href="#hp-z27n-g2">HP ZR27n G2</a>
+    </li>
     <li class="toctree-l2"><a class="reference internal" href="#iiyama-pl2492h">Iiyama PL2492H</a>
     </li>
     <li class="toctree-l2"><a class="reference internal" href="#iiyama-pl2779q">Iiyama PL2779Q</a>
@@ -727,6 +729,10 @@ Manufacture year:          2007  </p>
 <p>VCP version:  2.2  </p>
 <p>Implements only a few VCP codes. </p>
 <p>VCP feature codes 0B and 0C unsupported.</p>
+<h3 id="hp-z27n-g2">HP Z27n G2</h3>
+<p>VCP version:  2.2  </p>
+<p>For VCP code 60 (input source), the second DisplayPort input is value 0x13, instead of the standard 0x10. 0x13 is reported accurately as the value to use in capabilities.</p>
+<p>When using VCP code 60 to switch inputs, the value read by GetVCP only updates once the new source has a valid input signal. Until there is a valid signal, GetVCP continues to report the previously selected input.</p>
 <p><a name="iiyama_pl2492h"></a></p>
 <h3 id="iiyama-pl2492h">Iiyama PL2492H</h3>
 <p>VCP Version:   2.2 (reported by capabilities string), 2.1 (reported by feature xdf)<br />
