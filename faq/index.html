@@ -219,8 +219,6 @@
     </li>
     <li class="toctree-l2"><a class="reference internal" href="#recent-laptops-use-embedded-display-port-edp-panels-which-have-an-i2c-interface-why-doesnt-ddcutil-work">Recent laptops use Embedded Display Port (eDP) panels which have an I2C interface.  Why doesn't ddcutil work?</a>
     </li>
-    <li class="toctree-l2"><a class="reference internal" href="#ddcutil-does-not-work-on-a-raspberry-pi-4">ddcutil does not work on a Raspberry Pi 4</a>
-    </li>
     <li class="toctree-l2"><a class="reference internal" href="#setvcp-does-not-change-the-feature-value">setvcp does not change the feature value</a>
     </li>
     <li class="toctree-l2"><a class="reference internal" href="#the-monitor-supports-dynamic-contrast-range-dcr-setvcp-for-feature-x10-brightness-does-not-change-the-value">The monitor supports Dynamic Contrast Range (DCR). setvcp for feature x10 (brightness) does not change the value</a>
@@ -313,7 +311,7 @@ See <a href="command_environment">enviroment Command</a></p>
 <p>Laptop displays do not support DDC/CI.</p>
 <p><a name="faq_slow"></a></p>
 <h3 id="ddcutil-is-slow"><strong>ddcutil</strong> is slow.</h3>
-<p>Typically, <strong>ddcutil</strong> spends 90% of its elapsed time in pauses mandated by the DDC/CI protocol.</p>
+<p>Typically, <strong>ddcutil</strong> spends 90% of its elapsed time in waits mandated by the DDC/CI protocol.</p>
 <p>Two options can have a big impact on performance:</p>
 <ul>
 <li>
@@ -323,10 +321,10 @@ specified, no other monitor selection option such as <strong><em>--display</em><
 </li>
 <li>
 <p>Option <strong><em>--sleep-multiplier</em></strong>.  This option adjusts the length of time <strong>ddcutil</strong> spends in 
-DDC/CI mandated pauses.  For example, if the DDC/CI protocol specifies a 40 ms wait between the 
+DDC/CI mandated waits.  For example, if the DDC/CI protocol specifies a 40 ms wait between the 
 time a command is sent to the monitor and the time a reply is read, and <strong><em>--sleep-multiplier .2</em></strong> is 
-given, <strong>ddcutil</strong> will only wait (.2<em>40 ms) = 8 ms.  Some monitors have been found to communicate
-successfully with </em><strong>--sleep-multiplier</strong>* values as low as .1. On the other hand, some monitors 
+given, <strong>ddcutil</strong> will only wait (.2 x 40 ms) = 8 ms.  Some monitors have been found to communicate
+successfully with <strong><em>--sleep-multiplier</em></strong> values as low as .1. On the other hand, some monitors 
 with poor DDC/CI implementations perform better if the sleep time is increased by using a value greater
 than 1.</p>
 </li>
@@ -335,11 +333,15 @@ than 1.</p>
 <h3 id="ddcutil-cant-communicate-with-a-monitor-when-its-plugged-into-a-docking-station"><strong>ddcutil</strong> can't communicate with a monitor when it's plugged into a docking station.</h3>
 <p><strong>ddcutil</strong> does work when the monitor is plugged directly into the laptop.
 The problem affects DisplayPort, DVI, and HDMI connectors on the dock.</p>
-<p>This is a problem with newer docking stations that implement DisplayPort Multi Stream Transport.  The drm driver layer
-does not implement I2C writes. </p>
+<p>This is a problem with newer docking stations that implement DisplayPort Multi Stream Transport.  Until kernel release 5.11, the drm driver layer
+did not implement I2C writes. </p>
 <p>For the gory details, see this <a href="https://lists.freedesktop.org/archives/intel-gfx/2017-May/127350.html">thread</a> on the Intel-gfx developers list. </p>
-<p>A <a href="https://cgit.freedesktop.org/drm-misc/commit/drivers/gpu/drm/drm_dp_mst_topology.c?id=adb48b26985686f93f20ca71c16c067d790e7af3">fix for this problem</a> has been developed. It is merged into kernel release 5.11. </p>
 <!--
+
+
+A [fix for this problem](https://cgit.freedesktop.org/drm-misc/commit/drivers/gpu/drm/drm_dp_mst_topology.c?id=adb48b26985686f93f20ca71c16c067d790e7af3) has been developed. It is merged into kernel release 5.11. 
+
+
 <a name="faq_displayport"></a>
 ### DisplayPort communcation fails, but DVI/HDMI work
 
@@ -458,10 +460,14 @@ which block to read.  These blocks generally contain extended timing information
 The check of bus address x30 is purely informational.</p>
 <h3 id="recent-laptops-use-embedded-display-port-edp-panels-which-have-an-i2c-interface-why-doesnt-ddcutil-work">Recent laptops use Embedded Display Port (eDP) panels which have an I2C interface.  Why doesn't <strong>ddcutil</strong> work?</h3>
 <p>The I2C connection on eDP panels implements slave address x50, which allows programs to read the EDID in the expected way.  However, it does not implement slave address x37, i.e. it does not support DDC/CI. </p>
-<p>If eDP panels did implement DDC/CI, ddcutil  would support it.  For each I2C bus that could possibly be associated with a monitor, as part of display detection ddcutil attempts to read the EDID at slave address x50.  If successful, it then attempts to communicate on slave address x37.  If that fails, and display detection is occurring in the context of <strong><em>ddcutil detect --verbose</em></strong>, ddcutil then looks for a possible reason, and checks to see if the display is a laptop.  If so, it then reports that laptops to not support DDC/CI.</p>
-<h3 id="ddcutil-does-not-work-on-a-raspberry-pi-4"><strong>ddcutil</strong> does not work on a Raspberry Pi 4</h3>
-<p>The HDMI related chip has been changed on the Raspberry Pi 4, and drivers have not yet been revised to enable userspace access to /dev/i2c-2.
-For details, see page <a href="/raspberry">Raspberry Pi</a>. </p>
+<p>If eDP panels did implement DDC/CI, <strong>ddcutil</strong>  would support it.  For each I2C bus that could possibly be associated with a monitor, as part of display detection ddcutil attempts to read the EDID at slave address x50.  If successful, it then attempts to communicate on slave address x37.  If that fails, and display detection is occurring in the context of <strong><em>ddcutil detect --verbose</em></strong>, ddcutil then looks for a possible reason, and checks to see if the display is a laptop.  If so, it then reports that laptops to not support DDC/CI.</p>
+<!--
+### **ddcutil** does not work on a Raspberry Pi 4
+
+The HDMI related chip has been changed on the Raspberry Pi 4, and drivers have not yet been revised to enable userspace access to /dev/i2c-2.
+For details, see page [Raspberry Pi](/raspberry). 
+-->
+
 <h3 id="setvcp-does-not-change-the-feature-value"><strong>setvcp</strong> does not change the feature value</h3>
 <p>Several Iilyama monitor models require that command <strong><em>scs</em></strong> (Save Current Settings) be issued immediately after a feature
 value is set.  <strong><em>setvcp</em></strong> must be invoked with the <strong><em>--noverify</em></strong> option, followed immediately by <strong><em>scs</em></strong>.</p>
