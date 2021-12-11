@@ -199,6 +199,8 @@
     </li>
     <li class="toctree-l2"><a class="reference internal" href="#ddcutil-doesnt-work-on-my-laptop">ddcutil doesn't work on my laptop.</a>
     </li>
+    <li class="toctree-l2"><a class="reference internal" href="#but-recent-laptops-use-embedded-display-port-edp-panels-which-have-an-i2c-interface-why-doesnt-ddcutil-work">But recent laptops use Embedded Display Port (eDP) panels which have an I2C interface.  Why doesn't ddcutil work?</a>
+    </li>
     <li class="toctree-l2"><a class="reference internal" href="#ddcutil-is-slow">ddcutil is slow.</a>
     </li>
     <li class="toctree-l2"><a class="reference internal" href="#ddcutil-cant-communicate-with-a-monitor-when-its-plugged-into-a-docking-station">ddcutil can't communicate with a monitor when it's plugged into a docking station.</a>
@@ -216,8 +218,6 @@
     <li class="toctree-l2"><a class="reference internal" href="#the-detect-command-reports-different-edids-depending-on-how-the-monitor-is-connected-to-the-video-card">The detect command reports different EDIDs depending on how the monitor is connected to the video card.</a>
     </li>
     <li class="toctree-l2"><a class="reference internal" href="#the-detect-command-reports-that-i2c-bus-address-x30-edid-block-number-is-inactive">The detect command reports that I2C bus address x30 (EDID block number) is inactive.</a>
-    </li>
-    <li class="toctree-l2"><a class="reference internal" href="#recent-laptops-use-embedded-display-port-edp-panels-which-have-an-i2c-interface-why-doesnt-ddcutil-work">Recent laptops use Embedded Display Port (eDP) panels which have an I2C interface.  Why doesn't ddcutil work?</a>
     </li>
     <li class="toctree-l2"><a class="reference internal" href="#setvcp-does-not-change-the-feature-value">setvcp does not change the feature value</a>
     </li>
@@ -309,6 +309,10 @@
 See <a href="command_environment">enviroment Command</a></p>
 <h3 id="ddcutil-doesnt-work-on-my-laptop"><strong>ddcutil</strong> doesn't work on my laptop.</h3>
 <p>Laptop displays do not support DDC/CI.</p>
+<p><a name="faq_edp"></a></p>
+<h3 id="but-recent-laptops-use-embedded-display-port-edp-panels-which-have-an-i2c-interface-why-doesnt-ddcutil-work">But recent laptops use Embedded Display Port (eDP) panels which have an I2C interface.  Why doesn't <strong>ddcutil</strong> work?</h3>
+<p>The I2C connection on eDP panels implements slave address x50, which allows programs to read the EDID in the expected way.  However, it does not implement slave address x37, i.e. it does not support DDC/CI. </p>
+<p>If eDP panels did implement DDC/CI, <strong>ddcutil</strong>  would support it.  For each I2C bus that could possibly be associated with a monitor, as part of display detection ddcutil attempts to read the EDID at slave address x50.  If successful, it then attempts to communicate on slave address x37.  If that fails, and display detection is occurring in the context of <strong><em>ddcutil detect --verbose</em></strong>, ddcutil then looks for a possible reason, and checks to see if the display is a laptop.  If so, it then reports that laptops to not support DDC/CI.</p>
 <p><a name="faq_slow"></a></p>
 <h3 id="ddcutil-is-slow"><strong>ddcutil</strong> is slow.</h3>
 <p>Typically, <strong>ddcutil</strong> spends 90% of its elapsed time in waits mandated by the DDC/CI protocol.</p>
@@ -458,9 +462,6 @@ The VGA version of the EDID will have timing information.</p>
 which block to read.  These blocks generally contain extended timing information.
 <strong>ddcutil</strong> is interested only in the contents of the first EDID block.
 The check of bus address x30 is purely informational.</p>
-<h3 id="recent-laptops-use-embedded-display-port-edp-panels-which-have-an-i2c-interface-why-doesnt-ddcutil-work">Recent laptops use Embedded Display Port (eDP) panels which have an I2C interface.  Why doesn't <strong>ddcutil</strong> work?</h3>
-<p>The I2C connection on eDP panels implements slave address x50, which allows programs to read the EDID in the expected way.  However, it does not implement slave address x37, i.e. it does not support DDC/CI. </p>
-<p>If eDP panels did implement DDC/CI, <strong>ddcutil</strong>  would support it.  For each I2C bus that could possibly be associated with a monitor, as part of display detection ddcutil attempts to read the EDID at slave address x50.  If successful, it then attempts to communicate on slave address x37.  If that fails, and display detection is occurring in the context of <strong><em>ddcutil detect --verbose</em></strong>, ddcutil then looks for a possible reason, and checks to see if the display is a laptop.  If so, it then reports that laptops to not support DDC/CI.</p>
 <!--
 ### **ddcutil** does not work on a Raspberry Pi 4
 
