@@ -199,6 +199,8 @@
     </li>
     <li class="toctree-l2"><a class="reference internal" href="#ddcutil-doesnt-work-on-my-laptop">ddcutil doesn't work on my laptop.</a>
     </li>
+    <li class="toctree-l2"><a class="reference internal" href="#ddcutil-is-slow">ddcutil is slow.</a>
+    </li>
     <li class="toctree-l2"><a class="reference internal" href="#ddcutil-cant-communicate-with-a-monitor-when-its-plugged-into-a-docking-station">ddcutil can't communicate with a monitor when it's plugged into a docking station.</a>
     </li>
     <li class="toctree-l2"><a class="reference internal" href="#im-using-nvidias-proprietary-driver-ddcutil-doesnt-seem-to-be-be-working">I'm using Nvidia's proprietary driver.  ddcutil doesn't seem to be be working.</a>
@@ -309,6 +311,26 @@
 See <a href="command_environment">enviroment Command</a></p>
 <h3 id="ddcutil-doesnt-work-on-my-laptop"><strong>ddcutil</strong> doesn't work on my laptop.</h3>
 <p>Laptop displays do not support DDC/CI.</p>
+<p><a name="faq_slow"></a></p>
+<h3 id="ddcutil-is-slow"><strong>ddcutil</strong> is slow.</h3>
+<p>Typically, <strong>ddcutil</strong> spends 90% of its elapsed time in pauses mandated by the DDC/CI protocol.</p>
+<p>Two options can have a big impact on performance:</p>
+<ul>
+<li>
+<p>Option <strong><em>--bus</em></strong>.  If the /dev/i2c bus number of the monitor is given, <strong>ddcutil</strong> skips the
+initial phase of searching the /dev/i2c devices for monitors.  Note that if this option is 
+specified, no other monitor selection option such as <strong><em>--display</em></strong> should be specified.</p>
+</li>
+<li>
+<p>Option <strong><em>--sleep-multiplier</em></strong>.  This option adjusts the length of time <strong>ddcutil</strong> spends in 
+DDC/CI mandated pauses.  For example, if the DDC/CI protocol specifies a 40 ms wait between the 
+time a command is sent to the monitor and the time a reply is read, and <strong><em>--sleep-multiplier .2</em></strong> is 
+given, <strong>ddcutil</strong> will only wait (.2<em>40 ms) = 8 ms.  Some monitors have been found to communicate
+successfully with </em><strong>--sleep-multiplier</strong>* values as low as .1. On the other hand, some monitors 
+with poor DDC/CI implementations perform better if the sleep time is increased by using a value greater
+than 1.</p>
+</li>
+</ul>
 <p><a name="docking"></a></p>
 <h3 id="ddcutil-cant-communicate-with-a-monitor-when-its-plugged-into-a-docking-station"><strong>ddcutil</strong> can't communicate with a monitor when it's plugged into a docking station.</h3>
 <p><strong>ddcutil</strong> does work when the monitor is plugged directly into the laptop.
