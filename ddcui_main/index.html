@@ -217,6 +217,8 @@
                 <ul class="current">
                     <li class="toctree-l1 current"><a class="reference internal current" href="./">Overview</a>
     <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#views">Views</a>
+    </li>
     <li class="toctree-l2"><a class="reference internal" href="#source-code-and-prebuilt-packages">Source code and prebuilt packages:</a>
     </li>
     <li class="toctree-l2"><a class="reference internal" href="#unexpected-behavior">Unexpected Behavior</a>
@@ -277,8 +279,23 @@
               
                 <h2 id="ddcui-overview">ddcui Overview</h2>
 <p><strong>ddcui</strong> is a graphical user user interface for <strong>ddcutil</strong>, implemented using Qt.  It is beta quality code, 
-Many features are not yet fully implemented. and many corner cases are as yet unaddressed.</p>
+Some features are not fully implemented. and many corner cases are as yet unaddressed.</p>
 <p>This page collects the beginnings of <strong>ddcui</strong> documentation, which is incomplete but growing. </p>
+<h3 id="views">Views</h3>
+<p>The application has 3 views: Summary, Capabilities, and Features</p>
+<p>The Summary view for a monitor reports basic monitor information.
+This is basically equivalent to the output shown by command <strong>ddcutil detect --verbose</strong>. 
+It exists for every monitor detected, whether or not it supports DDC/CI.</p>
+<p><img alt="ddcui_summary" src="/screenshots/ddcui_summary.png" /></p>
+<p>The Capabilities view for a monitor reports its raw capabilities string, and also
+a parsed interpretation based on the Monitor Control Command Set (MCCS) specification. 
+This is comparable to the output shown by command <strong>ddcutil capabilities --verbose</strong>.
+It exists only for monitors that support DDC/CI. </p>
+<p><img alt="ddcui_capabilities" src="../screenshots/ddcui_capabilities.png" /></p>
+<p>The Features view for a monitor reports the value of every monitor feature.
+Modifyable feature values can also be changed.
+It exists only for monitors that support DDC/CI. </p>
+<p><img alt="ddcui_features" src="/screenshots/ddcui_features.png" title="Features View" /></p>
 <h3 id="source-code-and-prebuilt-packages">Source code and prebuilt packages:</h3>
 <ul>
 <li>Code is available on <a href="https://github.com/rockowitz/ddcui">GitHub</a>.  Some prebuilt packages are available on 
