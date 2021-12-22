@@ -853,11 +853,18 @@ EDID version: 1.3 </p>
 </code></pre>
 <p>Users report that it does not support DDC on the DisplayPort input.  (See issue <a href="https://github.com/rockowitz/ddcutil/issues/100">LG 29UM69G fails switching input</a>) on github. </p>
 <p>Github user mbastian resported: </p>
+<blockquote>
 <p>After more than four months of back and forth with German support I've got this:</p>
 <p>Our Korean software development takes note of reports of this kind, but this does not lead to customer feedback.
 Wwe do not see any need for further action here.</p>
-<p>At first they where denying that DDC was even supported, when I've pointed them to the manual and spec sheet then they insisted that it only applied to the OSD. Finally they escalated it.
+<p>At first they where denying that DDC was even supported, when I've pointed them to the manual and spec sheet then they insisted that it only applied to the OSD.
+Finally they escalated it.
 I've explained in detail what my problem is, asked if there is a firmware update or an undocumented ddc feature.... and all I got is a not very nice "Don't bother us again!"</p>
+</blockquote>
+<p>And Github user AndyKassell reported this response from LG tech support:</p>
+<blockquote>
+<p>We have had a response from our Technical Team and they have advised that our monitors do not support DDC-CI officially. Some models are able to issue some commands such as brightness, contrast etc, but if there are issues with this, it would not be considered a fault as it is not guaranteed to work. I apologise for any frustration this causes. </p>
+</blockquote>
 <h3 id="lg-27bn88u-27ul850-27gn950-b-29um69g-34wk500-p-34wn80c-b-34um88p-38wn95c">LG 27BN88U  27UL850  27GN950-B 29UM69G 34Wk500-P 34WN80C-B 34UM88P 38WN95C</h3>
 <p>Users of all these recent LG displays report similar problems with VCP feature X60 (Input Source).
 <strong><em>getvcp 60</em></strong> always returns x00, which is not a valid value. 
