@@ -7,18 +7,18 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
   <meta name="author" content="Sanford Rockowitz">
-  <link rel="canonical" href="https://www.ddcutil.com/building_ddcui/">
+  <link rel="canonical" href="https://www.ddcutil.com/sniffing/">
   <link rel="shortcut icon" href="../img/favicon.ico">
-  <title>Building ddcui - ddcutil Documentation</title>
+  <title>Reverse Engineering Proprietary DDC Extentions - ddcutil Documentation</title>
   <link rel="stylesheet" href="../css/theme.css" />
   <link rel="stylesheet" href="../css/theme_extra.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css" />
   
   <script>
     // Current page data
-    var mkdocs_page_name = "Building ddcui";
-    var mkdocs_page_input_path = "building_ddcui.md";
-    var mkdocs_page_url = "/building_ddcui/";
+    var mkdocs_page_name = "Reverse Engineering Proprietary DDC Extentions";
+    var mkdocs_page_input_path = "sniffing.md";
+    var mkdocs_page_url = "/sniffing/";
   </script>
   
   <script src="../js/jquery-2.1.1.min.js" defer></script>
@@ -192,7 +192,7 @@
                     </li>
                 </ul>
                 <p class="caption"><span class="caption-text">Additional Topics</span></p>
-                <ul>
+                <ul class="current">
                     <li class="toctree-l1"><a class="reference internal" href="../faq/">Frequently Asked Questions</a>
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="../tech_support/">Technical Support</a>
@@ -201,7 +201,9 @@
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="../ddc_null_response/">DDC Null Message</a>
                     </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../sniffing/">Reverse Engineering Proprietary DDC Extentions</a>
+                    <li class="toctree-l1 current"><a class="reference internal current" href="./">Reverse Engineering Proprietary DDC Extentions</a>
+    <ul class="current">
+    </ul>
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="../acknowledgements/">Acknowledgements</a>
                     </li>
@@ -216,14 +218,12 @@
                     </li>
                 </ul>
                 <p class="caption"><span class="caption-text">ddcui</span></p>
-                <ul class="current">
+                <ul>
                     <li class="toctree-l1"><a class="reference internal" href="../ddcui_main/">Overview</a>
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="../ddcui_options/">Command Line Options</a>
                     </li>
-                    <li class="toctree-l1 current"><a class="reference internal current" href="./">Building ddcui</a>
-    <ul class="current">
-    </ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../building_ddcui/">Building ddcui</a>
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="../ddcui_release_notes/">ddcui Release Notes</a>
                     </li>
@@ -249,14 +249,14 @@
     
       
         
-          <li>ddcui &raquo;</li>
+          <li>Additional Topics &raquo;</li>
         
       
     
-    <li>Building ddcui</li>
+    <li>Reverse Engineering Proprietary DDC Extentions</li>
     <li class="wy-breadcrumbs-aside">
       
-        <a href="https://github.com/rockowitz/ddcutil/edit/master/docs/building_ddcui.md"
+        <a href="https://github.com/rockowitz/ddcutil/edit/master/docs/sniffing.md"
           ></a>
       
     </li>
@@ -267,66 +267,16 @@
           <div role="main">
             <div class="section">
               
-                <h2 id="bulding-ddcui">Bulding <strong>ddcui</strong></h2>
-<h2 id="requirements">Requirements</h2>
-<ul>
-<li><strong>ddcui</strong> 0.2.0 requires version 1.2.0 of ddcutil or later.  If <strong>ddcutil</strong> is installed from pre-built packages, 
-the shared library and development packages must be installed as well as the main ddcutil package. </li>
-<li>A recent version of QT 5.  <strong>ddcui</strong> will not build with versions of Qt older than 5.5. 
-Unless you want to modify the the dialog boxes, or prefer the Qt Creator IDE, Qt Creator is not required. </li>
-</ul>
-<h2 id="building-using-cmake">Building Using CMake</h2>
-<p><strong>ddcui</strong> can be built using CMake.  </p>
-<ul>
-<li>A CMake control file (<strong><em>CMakeLists.txt</em></strong>) is provided.</li>
-<li>To create the Makefile, change to the directory in which you wish to 
-  build <strong>ddcui</strong> and issue the command: </li>
-</ul>
-<pre><code>   cmake &lt;directory containing CMakeLists.txt&gt; 
-</code></pre>
-<ul>
-<li>Using the -S and -B options can ensure that the proper directory is used for the build tree. 
-See the cmake man page for detais.</li>
-</ul>
-<p>Erasing file CMakeCache.txt and directory CMakeFiles from the build directory befure running cmake can avoid perplexing errors
-due to saved state.  This has a negligable effect on cmake performance.</p>
-<h2 id="building-using-qmake">Building Using qmake</h2>
-<p>qmake is no longer supported.</p>
-<!--
-- A qmake control file (***ddcui.pro***) is provided.
-- To create the Makefile, change to the directory in which you wish to 
-  build **ddcui** and issue one of the commands: 
-
-<pre><code>  qmake -qt=qt5 &lt;directory containing ddcui.pro&gt;/ddcui.pro
-  qtchooser -qt=5 -run-tool=qmake &lt;directory containing ddcui.pro&gt;/ddcui.pro
-</code></pre>
-
-
-Note: The command **make install** using the makefile generated by **qmake** always installs files under directory /usr/local. 
-If you need to change the installation prefix, use **Cmake**.
-
--->
-
-<h2 id="using-qtcreator">Using QtCreator</h2>
-<p>User arupda has written up <a href="https://github.com/rockowitz/ddcui/issues/1">notes</a> on building <strong>ddcui</strong> using QtCreator and CMake.
-Note that arupda has modified the source to build with an earlier version of Qt. </p>
-<h2 id="issues">Issues:</h2>
-<ul>
-<li>If ddcutil is installed from the tarball using command <strong><em>make install</em></strong>, the
-PKGCONFIG file ddcutil.pc is installed in a subdirectory of /usr/local.  Depending on Linux distribution, 
-this subdirectory may or may not be in the default PKGCONFIG search path.  For example, on Ubuntu it is in the 
-search path, but on Fedora it is not.  To add the relevant path, issue the command: </li>
-</ul>
-<pre><code>export PKG_CONFIG_PATH=/usr/local/share/pkgconfig
-</code></pre>
-<p>before running <strong><em>qmake</em></strong> or <strong><em>cmake</em></strong>. </p>
-<p>To see the default PKGCONFIG search path, issue the command:</p>
-<pre><code>pkg-config --variable pc_path pkg-config
-</code></pre>
-<p>Generally speaking, if the ddcutil library and development files are installed under directory /usr instead of /usr/local
-tool path adjustments (often distribution specific) will be unnecessary.  This will be the case if the files are installed
-from an rpm or dpkg package, or (if building ddcutil from source), ".configure" is run with argument "--prefix=/usr". </p>
-<p>For additional information, <a href="../shared_lib_config/">Shared Library Configuration</a></p>
+                <h2 id="reverse-engineering-proprietary-ddc-extensions">Reverse Engineering Proprietary DDC Extensions</h2>
+<p>Newer monitors often have features that exceed the capabilities of the Monitor Control Command Set specification.
+Usually, the monitor manufacturer provides a Windows program to control these features. 
+Typically, the program controls the features using VCP feature codes in the Manufacturer reserved range (xE0..xFF), 
+or through extensions to the definition of an existing feature (e.g. X60 - Input Source).  </p>
+<p>Beyond trial and error, the real solution to reverse engineering the DDC command sequences used is to sniff the I2C protocol on the cable connecting the monitor to a computer and see what requests the manufacturer's program is issuing and what responses the monitor is sending. As a practical matter, this needs to be a HDMI or DVI connection. DisplayPort "multiplexes" the I2C signal over its AUX channel, and Type-C carries a version of DisplayPort, so the I2C signal cannot easily be watched in these cases. </p>
+<p>There is at least one inexpensive piece of open-source hardware that can sniff the I2C signal, called <a href="https://www.crowdsupply.com/excamera/i2cdriver">I2CDriver</a>. 
+Documentation is <a href="https://i2cdriver.readthedocs.io/en/latest/">here</a>.<br />
+I have also came across this <a href="https://www.totalphase.com/products/video-dvi/">DVI/DDC breakout cable</a> on <a href="https://www.totalphase.com/offer/accessories-sale-2019">closeout</a>, which saved me an afternoon of soldering. The broken out I2C signal is provided on a 10 pin header, which motherboards use for an extenral COM port connection, To make the final piece of the connection, you could solder the appropriate lines of an old serial ribbon cable onto header leads for the I2C driver board.  (In my case, I was able to jerry-rig the connection using an old COM port ribbon cable with a DB-9 male connector and a DB-9 female chassis connector with pins on the back.) </p>
+<p>The provided Python software shows the captured bits and bytes of the I2C bus.  A simple program could decipher this into the DDC/CI protocol sequences.</p>
               
             </div>
           </div>
@@ -334,10 +284,10 @@ from an rpm or dpkg package, or (if building ddcutil from source), ".configure" 
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../ddcui_release_notes/" class="btn btn-neutral float-right" title="ddcui Release Notes">Next <span class="icon icon-circle-arrow-right"></span></a>
+        <a href="../acknowledgements/" class="btn btn-neutral float-right" title="Acknowledgements">Next <span class="icon icon-circle-arrow-right"></span></a>
       
       
-        <a href="../ddcui_options/" class="btn btn-neutral" title="Command Line Options"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../ddc_null_response/" class="btn btn-neutral" title="DDC Null Message"><span class="icon icon-circle-arrow-left"></span> Previous</a>
       
     </div>
   
@@ -365,10 +315,10 @@ from an rpm or dpkg package, or (if building ddcutil from source), ".configure" 
           <a href="https://github.com/rockowitz/ddcutil/" class="fa fa-github" style="float: left; color: #fcfcfc"> GitHub</a>
       
       
-        <span><a href="../ddcui_options/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+        <span><a href="../ddc_null_response/" style="color: #fcfcfc;">&laquo; Previous</a></span>
       
       
-        <span style="margin-left: 15px"><a href="../ddcui_release_notes/" style="color: #fcfcfc">Next &raquo;</a></span>
+        <span style="margin-left: 15px"><a href="../acknowledgements/" style="color: #fcfcfc">Next &raquo;</a></span>
       
     </span>
 </div>
