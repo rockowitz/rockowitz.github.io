@@ -9,14 +9,14 @@
   <meta name="author" content="Sanford Rockowitz">
   <link rel="canonical" href="https://www.ddcutil.com/sniffing/">
   <link rel="shortcut icon" href="../img/favicon.ico">
-  <title>Reverse Engineering Proprietary DDC Extentions - ddcutil Documentation</title>
+  <title>Reverse Engineering Proprietary DDC Extensions - ddcutil Documentation</title>
   <link rel="stylesheet" href="../css/theme.css" />
   <link rel="stylesheet" href="../css/theme_extra.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css" />
   
   <script>
     // Current page data
-    var mkdocs_page_name = "Reverse Engineering Proprietary DDC Extentions";
+    var mkdocs_page_name = "Reverse Engineering Proprietary DDC Extensions";
     var mkdocs_page_input_path = "sniffing.md";
     var mkdocs_page_url = "/sniffing/";
   </script>
@@ -201,7 +201,7 @@
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="../ddc_null_response/">DDC Null Message</a>
                     </li>
-                    <li class="toctree-l1 current"><a class="reference internal current" href="./">Reverse Engineering Proprietary DDC Extentions</a>
+                    <li class="toctree-l1 current"><a class="reference internal current" href="./">Reverse Engineering Proprietary DDC Extensions</a>
     <ul class="current">
     </ul>
                     </li>
@@ -253,7 +253,7 @@
         
       
     
-    <li>Reverse Engineering Proprietary DDC Extentions</li>
+    <li>Reverse Engineering Proprietary DDC Extensions</li>
     <li class="wy-breadcrumbs-aside">
       
         <a href="https://github.com/rockowitz/ddcutil/edit/master/docs/sniffing.md"
@@ -274,8 +274,8 @@ Typically, the program controls the features using VCP feature codes in the Manu
 or through extensions to the definition of an existing feature (e.g. X60 - Input Source).  </p>
 <p>Beyond trial and error, the real solution to reverse engineering the DDC command sequences used is to sniff the I2C protocol on the cable connecting the monitor to a computer and see what requests the manufacturer's program is issuing and what responses the monitor is sending. As a practical matter, this needs to be a HDMI or DVI connection. DisplayPort "multiplexes" the I2C signal over its AUX channel, and Type-C carries a version of DisplayPort, so the I2C signal cannot easily be watched in these cases. </p>
 <p>There is at least one inexpensive piece of open-source hardware that can sniff the I2C signal, called <a href="https://www.crowdsupply.com/excamera/i2cdriver">I2CDriver</a>. 
-Documentation is <a href="https://i2cdriver.readthedocs.io/en/latest/">here</a>.<br />
-I have also came across this <a href="https://www.totalphase.com/products/video-dvi/">DVI/DDC breakout cable</a> on <a href="https://www.totalphase.com/offer/accessories-sale-2019">closeout</a>, which saved me an afternoon of soldering. The broken out I2C signal is provided on a 10 pin header, which motherboards use for an extenral COM port connection, To make the final piece of the connection, you could solder the appropriate lines of an old serial ribbon cable onto header leads for the I2C driver board.  (In my case, I was able to jerry-rig the connection using an old COM port ribbon cable with a DB-9 male connector and a DB-9 female chassis connector with pins on the back.) </p>
+Documentation is <a href="https://i2cdriver.readthedocs.io/en/latest/">here</a>.
+I also found this <a href="https://www.totalphase.com/products/video-dvi/">DVI/DDC breakout cable</a> on <a href="https://www.totalphase.com/offer/accessories-sale-2019">closeout</a>, which saved me an afternoon of soldering. The broken out I2C signal is provided on a 10 pin header (the kind which motherboards use for an extenral COM port connection). To make the final piece of the connection, you could solder the appropriate lines of an old serial ribbon cable onto header leads for the I2C driver board.  (In my case, I was able to jerry-rig the connection using an old COM port ribbon cable with a DB-9 male connector and a DB-9 female chassis connector with pins on the back.) </p>
 <p>The provided Python software shows the captured bits and bytes of the I2C bus.  A simple program could decipher this into the DDC/CI protocol sequences.</p>
               
             </div>
