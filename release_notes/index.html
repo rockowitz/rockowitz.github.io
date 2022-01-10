@@ -584,7 +584,7 @@
 <h3 id="provisional-notes-for-upcoming-release-122">Provisional Notes for Upcoming Release 1.2.2</h3>
 <h3 id="device-busy-ebusy-errors">Device Busy (EBUSY) Errors</h3>
 <p>This release improves the handling of and messages regarding DDC communication failures
-with errno EBUSY. In particular, this error occurs when dirver ddcci is loaded.</p>
+with errno EBUSY. In particular, this error occurs when driver ddcci is loaded.</p>
 <ul>
 <li>Command <strong>detect</strong>: If DDC communication fails with error EBUSY, report the
   display as "Busy" instead of "Invalid" and suggest use of option <strong><em>--force-slave-address</em></strong>.</li>
@@ -594,14 +594,15 @@ with errno EBUSY. In particular, this error occurs when dirver ddcci is loaded.<
 </ul>
 <h3 id="building-and-porting">Building and Porting</h3>
 <ul>
-<li>
-<p>When building <strong>ddcutil</strong>, allow for linking a static library if <strong>configure</strong>
-option <strong><em>--enable-static</em></strong> is set. By default, static libraries are not built.</p>
-</li>
-<li>
-<p>Disable proof of concept code that spawns a separate thread in <strong>libdcutil</strong>
-that watches for display changes.</p>
-</li>
+<li>When building <strong>ddcutil</strong>, allow for linking a static library if <strong>configure</strong>
+option <strong><em>--enable-static</em></strong> is set. By default, static libraries are not built.</li>
+</ul>
+<!--
+- Disable proof of concept code that spawns a separate thread in **libdcutil**
+that watches for display changes.
+-->
+
+<ul>
 <li>
 <p>Calls to function <strong>__assert_fail()</strong> have been replaced with <strong>exit()</strong> in
 traced assertions.  <strong>__assert_fail</strong> is part of the Linux implementation of <strong>assert()</strong>, 
