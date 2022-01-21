@@ -218,13 +218,17 @@
     </li>
     <li class="toctree-l2"><a class="reference internal" href="#building-and-porting">Building and Porting</a>
     </li>
+    <li class="toctree-l2"><a class="reference internal" href="#miscellaneous-changes">Miscellaneous Changes</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#fixes">Fixes</a>
+    </li>
     <li class="toctree-l2"><a class="reference internal" href="#121">1.2.1</a>
     </li>
     <li class="toctree-l2"><a class="reference internal" href="#option-settings">Option -settings</a>
     </li>
     <li class="toctree-l2"><a class="reference internal" href="#tracing">Tracing</a>
     </li>
-    <li class="toctree-l2"><a class="reference internal" href="#fixes">Fixes</a>
+    <li class="toctree-l2"><a class="reference internal" href="#fixes_1">Fixes</a>
     </li>
     <li class="toctree-l2"><a class="reference internal" href="#120">1.2.0</a>
     </li>
@@ -596,21 +600,25 @@ with errno EBUSY. In particular, this error occurs when driver ddcci is loaded.<
 <ul>
 <li>When building <strong>ddcutil</strong>, allow for linking a static library if <strong>configure</strong>
 option <strong><em>--enable-static</em></strong> is set. By default, static libraries are not built.</li>
+<li>Calls to function <strong>__assert_fail()</strong> have been replaced with <strong>exit()</strong> in
+traced assertions.  <strong>__assert_fail</strong> is part of the Linux implementation of <strong>assert()</strong>, 
+but is not in the C specification.
+This change simplifies porting of <strong>ddcutil</strong> to environments lacking this function. </li>
+<li>Avoid compilation warnings when assertions are disabled (NDEBUG is defined).</li>
 </ul>
 <!--
 - Disable proof of concept code that spawns a separate thread in **libdcutil**
 that watches for display changes.
 -->
+
+<h3 id="miscellaneous-changes">Miscellaneous Changes</h3>
 <ul>
-<li>
-<p>Calls to function <strong>__assert_fail()</strong> have been replaced with <strong>exit()</strong> in
-traced assertions.  <strong>__assert_fail</strong> is part of the Linux implementation of <strong>assert()</strong>, 
-but is not in the C specification.
-This changes simplifies porting of <strong>ddcutil</strong> to environments lacking this function. </p>
-</li>
-<li>
-<p>Avoid compilation warnings when assertions are disabled (NDEBUG is defined).</p>
-</li>
+<li>Command <strong>detect</strong> reports additional EDID detail for option <strong><em>verbose</em></strong>.
+  This information, including EDID version and color related detail, has no effect on <strong>ddcutil</strong> execution but may be of general interest to some users.</li>
+</ul>
+<h3 id="fixes">Fixes</h3>
+<ul>
+<li>Only write messages to the system log regarding <strong>ddcutil</strong> starting and termination if option <strong><em>--syslog</em></strong> is specified.</li>
 </ul>
 <h3 id="121">1.2.1</h3>
 <p>02 December 2021</p>
@@ -626,7 +634,7 @@ reported only when option <strong><em>--settings</em></strong> is specified. </p
 <li>Option <strong><em>--wall-timestamp--</em></strong> or <strong><em>--wts</em></strong> preface trace and debug messages with
   the current wall time. </li>
 </ul>
-<h3 id="fixes">Fixes</h3>
+<h3 id="fixes_1">Fixes</h3>
 <ul>
 <li>Build would fail when <strong>configure</strong> option <strong><em>---enable x11=no</em></strong> was specified.</li>
 <li>API functions <strong>ddca_open_display()</strong> and <strong>ddca_open_display2()</strong> now always return 
