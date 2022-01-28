@@ -227,6 +227,8 @@
     </li>
     <li class="toctree-l2"><a class="reference internal" href="#ddcutil-hangs-on-radeon-rx-5xxx-and-6xxx-cards-navi-and-navi2-gpu">ddcutil hangs on Radeon RX 5xxx and 6xxx cards (Navi and Navi2 GPU)</a>
     </li>
+    <li class="toctree-l2"><a class="reference internal" href="#does-ddcutil-work-in-containers">Does ddcutil work in containers?</a>
+    </li>
     </ul>
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="../tech_support/">Technical Support</a>
@@ -496,6 +498,19 @@ The SMU related hang should have been fixed as of kernel 5.14.4.  <strong>ddcuti
 - output of the following commands</p>
 <pre><code>$ sudo ps -aux | grep ddcutil
 $ sudo awk ' {print FILENAME &quot;: &quot; $0 } '  /sys/bus/i2c/devices/*/name
+</code></pre>
+<p><a name="docker_container"></a></p>
+<h3 id="does-ddcutil-work-in-containers">Does <strong>ddcutil</strong> work in containers?</h3>
+<p>User Nikolay Dandanov has reported success running ddcutil in a Docker container: </p>
+<p>I built a new image based on Arch Linux using the following simple <code>Dockerfile</code>:</p>
+<pre><code class="language-Dockerfile">FROM archlinux:latest
+
+RUN pacman --noconfirm -Syu &amp;&amp; \
+    pacman --noconfirm -S ddcutil &amp;&amp; \
+    rm -rf ~/.cache/*
+</code></pre>
+<p>I then ran the container and also mapped all <code>i2c</code> devices (otherwise, these were not available in the container):</p>
+<pre><code class="language-bash">docker run $(for dev in `ls /dev/i2c*`; do echo &quot;--device $dev &quot;; done) -it --name ddcutil ddcutil:v0.0.1
 </code></pre>
 <h2 id="questions-about-building-ddcutil">Questions about building <strong>ddcutil</strong></h2>
 <p><a name="missing_package"></a></p>
