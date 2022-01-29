@@ -226,6 +226,14 @@
                     <li class="toctree-l1 current"><a class="reference internal current" href="./">ddcui Release Notes</a>
     <ul class="current">
     <li class="toctree-l2"><a class="reference internal" href="#preliminary-notes-for-release-021">Preliminary Notes for Release 0.2.1</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#handling-ebusy-errors">Handling EBUSY Errors</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#cmakeliststxt-cleanup">CMakeLists.txt Cleanup</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#option-removed-use-latest-feature-values">Option Removed: Use Latest Feature Values</a>
+    </li>
+        </ul>
     </li>
     <li class="toctree-l2"><a class="reference internal" href="#release-020">Release 0.2.0</a>
     </li>
@@ -299,10 +307,11 @@
               
                 <h2 id="ddcui-release-notes">ddcui Release Notes</h2>
 <h3 id="preliminary-notes-for-release-021">Preliminary Notes for Release 0.2.1</h3>
+<h4 id="handling-ebusy-errors">Handling EBUSY Errors</h4>
 <p>New command line option <strong><em>--force-slave-address</em></strong>.  Its meaning for <strong>ddcui</strong> is the same as for 
 program <strong>ddcutil</strong>.  For details, see See <a href="../other_options/#option-force-slave-address">Option: --force-slave-address</a>
-and section <a href="../release_notes/#device-busy-ebusy-errors">Device Busy (EBUSY) Errors</a>. </p>
-<p>CMakeLists.txt has been cleaned up.</p>
+and section <a href="release_notes.md/#device-busy-ebusy-errors">Device Busy (EBUSY) Errors</a>. </p>
+<h4 id="cmakeliststxt-cleanup">CMakeLists.txt Cleanup</h4>
 <ul>
 <li>The minimum required version of CMake is set to 3.10.
 The CMakeLists.txt script is known to work in Ubuntu 18.04, which has CMake 13.10. 
@@ -310,23 +319,26 @@ It may work for earlier CMake versions; the cmake_minimum_required() statement
 can be edited to allow execution,</li>
 <li>Most messages from the script, issued using the message() statement. are defined to have message level VERBOSE.
 By default, these are not shown, reducing output clutter. 
-Using cmake command line option <strong><em>--log-level=verbose</em></strong> will cause them to be shown. 
-However, message level <strong><em>verbose</em></strong> did not exist prior to release 3.15.<br />
-In that case the messages are unconditionally issued.</li>
+Using cmake command line option <strong><em>--log-level=verbose</em></strong> will cause them to be shown.
+However, message level <strong><em>verbose</em></strong> did not exist prior to release 3.15. In that case
+the messages are unconditionally issued.</li>
 <li>If ccache is installed, cmake command line option <strong><em>--use-cache</em></strong> controls whether
 ccache is used to reduce build time.  The default is <strong><em>--use-cache=yes</em></strong>.</li>
 <li>Better support for CMAKE_BUILD_TYPE. The default is <strong><em>-DCMAKE_BUILD_TYPE=DEBUG</em></strong>.</li>
 </ul>
+<h4 id="option-removed-use-latest-feature-values">Option Removed: Use Latest Feature Values</h4>
 <p>Option "Use Latest Feature Values" in the NC Feature Values dialog, and corresponding
 command line option <strong><em>--use-latest-nc-values</em></strong> have been removed. This option 
 told <strong>ddcui</strong> to use the NC values for the most recent MCCS specification, as 
 opposed to the MCCS version that the monitor reports. This option was hard to 
 explain and convoluted to implement.  The <a href="../udf/">User Defined Features</a> facility makes it
 unnecessary, since that facility can be used to define the NC values for a monitor feature.</p>
-<p>Miscellaneous:
-- Disable selecting the Capabilities and Feature views for a monitor if it doesn't support DDC/CI,
-  or the capabilities string cannot be read.
-- Disable all view selection if no monitor is detected.</p>
+<p>Miscellaneous:</p>
+<ul>
+<li>Disable selecting the Capabilities and Feature views for a monitor if it doesn't support DDC/CI,
+  or the capabilities string cannot be read.</li>
+<li>Disable all view selection if no monitor is detected.</li>
+</ul>
 <h3 id="release-020">Release 0.2.0</h3>
 <p>25 November 2021</p>
 <p>While far from complete, this release should be suitable for general use.
