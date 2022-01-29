@@ -302,24 +302,26 @@
 <p>New command line option <strong><em>--force-slave-address</em></strong>.  Its meaning for <strong>ddcui</strong> is the same as for 
 program <strong>ddcutil</strong>.  For details, see See <a href="../other_options/#option-force-slave-address">Option: --force-slave-address</a>
 and section <a href="release_notes.md/#device-busy-ebusy-errors">Device Busy (EBUSY) Errors</a>. </p>
-<p>CMakeLists.txt has been cleaned up. 
-- The minimum required version of CMake is set to 3.10.
+<p>CMakeLists.txt has been cleaned up.</p>
+<ul>
+<li>The minimum required version of CMake is set to 3.10.
 The CMakeLists.txt script is known to work in Ubuntu 18.04, which has CMake 13.10. 
 It may work for earlier CMake versions; the cmake_minimum_required() statement 
-can be edited to allow execution,
-- Most messages from the script, issued using the message() statement. are defined to have message level VERBOSE.
+can be edited to allow execution,</li>
+<li>Most messages from the script, issued using the message() statement. are defined to have message level VERBOSE.
 By default, these are not shown, reducing output clutter. 
 Using cmake command line option <strong><em>--log-level=verbose</em></strong> will cause them to be shown. 
 However, message level <strong><em>verbose</em></strong> did not exist prior to release 3.15.<br />
-In that case the messages are unconditionally issued.
-- If ccache is installed, cmake command line option <strong><em>--use-cache</em></strong> controls whether
-ccache is used to reduce build time.  The default is <strong><em>--use-cache=yes</em></strong>.
-- Better support for CMAKE_BUILD_TYPE. The default is <strong><em>-DCMAKE_BUILD_TYPE=DEBUG</em></strong>.</p>
+In that case the messages are unconditionally issued.</li>
+<li>If ccache is installed, cmake command line option <strong><em>--use-cache</em></strong> controls whether
+ccache is used to reduce build time.  The default is <strong><em>--use-cache=yes</em></strong>.</li>
+<li>Better support for CMAKE_BUILD_TYPE. The default is <strong><em>-DCMAKE_BUILD_TYPE=DEBUG</em></strong>.</li>
+</ul>
 <p>Option "Use Latest Feature Values" in the NC Feature Values dialog, and corresponding
 command line option <strong><em>--use-latest-nc-values</em></strong> have been removed. This option 
-caused <strong>ddcui</strong> to use the NC values for the most recent MCCS specification, as 
+told <strong>ddcui</strong> to use the NC values for the most recent MCCS specification, as 
 opposed to the MCCS version that the monitor reports. This option was hard to 
-explain and convoluted to implement.  The User Defined Features facility makes it
+explain and convoluted to implement.  The <a href="../udf/">User Defined Features</a> facility makes it
 unnecessary, since that facility can be used to define the NC values for a monitor feature.</p>
 <p>Miscellaneous:
 - Disable selecting the Capabilities and Feature views for a monitor if it doesn't support DDC/CI,
