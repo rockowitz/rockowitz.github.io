@@ -311,9 +311,10 @@
 <h3 id="release-021">Release 0.2.1</h3>
 <p>02 February 2022</p>
 <h4 id="handling-ebusy-errors">Handling EBUSY Errors</h4>
-<p>New command line option <strong><em>--force-slave-address</em></strong>.  Its meaning for <strong>ddcui</strong> is the same as for 
-program <strong>ddcutil</strong>.  For details, see See <a href="../other_options/#option-force-slave-address">Option: --force-slave-address</a>
-and <a href="../release_notes/">Device Busy Errors</a>. </p>
+<p>New command line option <strong><em>--force-slave-address</em></strong> enables <strong>ddcui</strong> to take control of DDC communication with a display
+from a conflicting program, notably display driver ddcci.
+For details, see <a href="../other_options/#option-force-slave-address">Option: --force-slave-address</a>
+and <a href="../release_notes/">Device Busy Errors</a> in the main <strong>ddcutil</strong> documentation.</p>
 <h4 id="cmakeliststxt-cleanup">CMakeLists.txt Cleanup</h4>
 <ul>
 <li>The minimum required version of CMake is set to 3.10.
