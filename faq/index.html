@@ -10,6 +10,8 @@
   <link rel="canonical" href="https://www.ddcutil.com/faq/">
   <link rel="shortcut icon" href="../img/favicon.ico">
   <title>Frequently Asked Questions - ddcutil Documentation</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
+
   <link rel="stylesheet" href="../css/theme.css" />
   <link rel="stylesheet" href="../css/theme_extra.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css" />
@@ -502,13 +504,15 @@ $ sudo awk ' {print FILENAME &quot;: &quot; $0 } '  /sys/bus/i2c/devices/*/name
 <p><a name="docker_container"></a></p>
 <h3 id="does-ddcutil-work-in-containers">Does <strong>ddcutil</strong> work in containers?</h3>
 <p>User Nikolay Dandanov has reported success running ddcutil in a Docker container: </p>
-<p>I built a new image based on Arch Linux using the following simple <code>Dockerfile</code>:</p>
+<p>I defined a new Arch Linux image for Docker using the following simple <code>Dockerfile</code>:</p>
 <pre><code class="language-Dockerfile">FROM archlinux:latest
 
 RUN pacman --noconfirm -Syu &amp;&amp; \
     pacman --noconfirm -S ddcutil &amp;&amp; \
     rm -rf ~/.cache/*
 </code></pre>
+<p>I saved this to a file named <code>Dockerfile</code> and built a Docker image using
+~~~docker build -t ddcutil:v0.0.1~~~.</p>
 <p>I then ran the container and also mapped all <code>i2c</code> devices (otherwise, these were not available in the container):</p>
 <pre><code class="language-bash">docker run $(for dev in `ls /dev/i2c*`; do echo &quot;--device $dev &quot;; done) -it --name ddcutil ddcutil:v0.0.1
 </code></pre>
