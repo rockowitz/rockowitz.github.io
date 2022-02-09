@@ -296,30 +296,44 @@ Kernel module i2c-dev must be loaded to create the /dev/i2c-N devices.  See <a h
 <p>Run <strong>ddcutil</strong> as root.  </p>
 </li>
 <li>
-<p>Grant everyone RW access to the /dev/i2c devices.  </p>
+<p>Grant everyone RW access to the /dev/i2c devices for the current boot.</p>
+</li>
+<li>
+<p>Assign the /dev/i2c devices to a group (normally i2c) and assign users who will run <strong>ddcutil</strong> to that group.
+  For details, see <a href="../i2c_permissions/">I2C Device Permissions</a>.</p>
 </li>
 </ul>
-<p>Add a file with the following line to /etc/udev/rules.d</p>
+<!--
+Add a file with the following line to /etc/udev/rules.d:
+
+
 <pre><code>SUBSYSTEM==&quot;i2c-dev&quot;,KERNEL==&quot;i2c-[0-9]*&quot;, MODE=&quot;0666&quot;
 </code></pre>
-<ul>
-<li>If /dev/i2c-N devices are already assigned to group i2c, add users to that group. </li>
-</ul>
-<p>This is the case, for example, if package i2c-tools has been installed on a Debian derived distribution (e.g. Ubuntu).  In that case,
-file /lib/udev/rules/60-i2c-tools.rules is installed.</p>
-<p>Add the users who will run <strong>ddcutil</strong> to that group. </p>
+
+
+- If /dev/i2c-N devices are already assigned to group i2c, add users to that group. 
+
+This is the case, for example, if package i2c-tools has been installed on a Debian derived distribution (e.g. Ubuntu).  In that case,
+file /lib/udev/rules/60-i2c-tools.rules is installed.
+
+Add the users who will run **ddcutil** to that group. 
+
+
 <pre><code>usermod -G i2c -a &lt;yourname&gt;
 </code></pre>
-<ul>
-<li>Create group i2c to manage access.</li>
-</ul>
-<p>The most general case entails creating group i2c, creating a UDEV rule assigning /dev/i2c-N devices to group i2c, and adding users to group i2c.  See section </p>
-<p>For a full discussion, see <a href="../i2c_permissions/">Device Permissions</a>.</p>
+
+
+- Create group i2c to manage access.
+
+The most general case entails creating group i2c, creating a UDEV rule assigning /dev/i2c-N devices to group i2c, and adding users to group i2c. 
+
+-->
+
 <ul>
 <li>USB connected monitors</li>
 </ul>
 <p>For details about USB device permissions for those monitors using USB instead of I2C to communicate the Monitor Control Command Set, 
-see see <a href="../i2c_permissions/">Device Permissions</a>.</p>
+see <a href="../i2c_permissions/">Device Permissions</a>.</p>
 <h2 id="installation-diagnostics">Installation Diagnostics</h2>
 <p>If ddcutil installs successfully but execution fails, command <code>ddcutil environment</code>
 can be used to probe the I2C environment and may provide clues as to the problem.
