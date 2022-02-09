@@ -290,7 +290,7 @@ I2C bus communication, as does the Nvidia proprietary driver.  </p>
 <p>Typically, the I2C buses are exposed as devices named /dev/i2c-N. 
 Kernel module i2c-dev must be loaded to create the /dev/i2c-N devices.  See <a href="../kernel_module/">Kernel Module Configuration</a></p>
 <h3 id="grant-readwrite-permission-for-the-devi2c-n-devices-representing-monitors">Grant read/write permission for the /dev/i2c-N devices representing monitors</h3>
-<p><strong>ddcutil</strong> users require read/write permission to /dev/i2c-N devices.  With varying complexity, this can be effected in several ways.</p>
+<p><strong>ddcutil</strong> users require read/write permission to /dev/i2c-N devices.  With varying complexity, this can be effected in many ways.</p>
 <ul>
 <li>
 <p>Run <strong>ddcutil</strong> as root.  </p>
@@ -298,10 +298,12 @@ Kernel module i2c-dev must be loaded to create the /dev/i2c-N devices.  See <a h
 <li>
 <p>Grant everyone RW access to the /dev/i2c devices for the current boot.</p>
 </li>
-<li>
-<p>Assign the /dev/i2c devices to a group (normally i2c) and assign users who will run <strong>ddcutil</strong> to that group.
-  For details, see <a href="../i2c_permissions/">I2C Device Permissions</a>.</p>
-</li>
+</ul>
+<pre><code>$ sudo chmod a+rw /dev/i2c-*
+</code></pre>
+<ul>
+<li>Assign the /dev/i2c devices to a group (normally i2c) and assign users who will run <strong>ddcutil</strong> to that group.
+  For details, see <a href="../i2c_permissions/">I2C Device Permissions</a>.</li>
 </ul>
 <!--
 Add a file with the following line to /etc/udev/rules.d:
