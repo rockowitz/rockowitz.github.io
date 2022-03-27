@@ -7,18 +7,18 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
   <meta name="author" content="Sanford Rockowitz">
-  <link rel="canonical" href="https://www.ddcutil.com/command_vcpinfo/">
+  <link rel="canonical" href="https://www.ddcutil.com/amdgpu/">
   <link rel="shortcut icon" href="../img/favicon.ico">
-  <title>vcpinfo - ddcutil Documentation</title>
+  <title>Amdgpu - ddcutil Documentation</title>
   <link rel="stylesheet" href="../css/theme.css" />
   <link rel="stylesheet" href="../css/theme_extra.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css" />
   
   <script>
     // Current page data
-    var mkdocs_page_name = "vcpinfo";
-    var mkdocs_page_input_path = "command_vcpinfo.md";
-    var mkdocs_page_url = "/command_vcpinfo/";
+    var mkdocs_page_name = "Amdgpu";
+    var mkdocs_page_input_path = "amdgpu.md";
+    var mkdocs_page_url = "/amdgpu/";
   </script>
   
   <script src="../js/jquery-2.1.1.min.js" defer></script>
@@ -73,9 +73,9 @@
                     </li>
                 </ul>
                 <p class="caption"><span class="caption-text">Command Detail</span></p>
-                <ul class="current">
-                    <li class="toctree-l1 current"><a class="reference internal current" href="#">Primary Commands</a>
-    <ul class="current">
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="#">Primary Commands</a>
+    <ul>
                 <li class="toctree-l2"><a class="reference internal" href="../command_detect/">detect</a>
                 </li>
                 <li class="toctree-l2"><a class="reference internal" href="../command_capabilities/">capabilities</a>
@@ -84,15 +84,7 @@
                 </li>
                 <li class="toctree-l2"><a class="reference internal" href="../command_setvcp/">setvcp</a>
                 </li>
-                <li class="toctree-l2 current"><a class="reference internal current" href="./">vcpinfo</a>
-    <ul class="current">
-    <li class="toctree-l3"><a class="reference internal" href="#option-verbose">Option: --verbose</a>
-    </li>
-    <li class="toctree-l3"><a class="reference internal" href="#o-option-brief">O Option: --brief</a>
-    </li>
-    <li class="toctree-l3"><a class="reference internal" href="#option-mccs">Option --mccs</a>
-    </li>
-    </ul>
+                <li class="toctree-l2"><a class="reference internal" href="../command_vcpinfo/">vcpinfo</a>
                 </li>
                 <li class="toctree-l2"><a class="reference internal" href="../command_dumpvcp_loadvcp/">dumpvcp &amp; loadvcp</a>
                 </li>
@@ -263,19 +255,11 @@
     <li><a href="..">Docs</a> &raquo;</li>
     
       
-        
-          <li>Primary Commands &raquo;</li>
-        
-      
-        
-          <li>Command Detail &raquo;</li>
-        
-      
     
-    <li>vcpinfo</li>
+    <li>Amdgpu</li>
     <li class="wy-breadcrumbs-aside">
       
-        <a href="https://github.com/rockowitz/ddcutil/edit/master/docs/command_vcpinfo.md"
+        <a href="https://github.com/rockowitz/ddcutil/edit/master/docs/amdgpu.md"
           ></a>
       
     </li>
@@ -286,51 +270,48 @@
           <div role="main">
             <div class="section">
               
-                <h3 id="command-vcpinfo">Command <strong>vcpinfo</strong></h3>
-<p>Syntax: <strong>vcpinfo</strong> &lt;display-selection-options&gt; &lt;other options&gt; &lt;feature-code-or-group&gt; </p>
-<p>This command reports <strong>ddcutil</strong>'s internal table of MCCS definitions.</p>
-<p>Monitor selection options are detailed <a href="../display_selection/">here</a>.</p>
-<p>Feature code/group specification is detailed <a href="../feature_selection/">here</a></p>
-<p>If no feature code or group is specified, <strong><em>ALL</em></strong> is assumed.</p>
-<p>If there is no definition for a particular feature code, nothing is output. </p>
-<p>(TO DO: should issue error message if a specific code is given, as opposed to a group, and no definition is found for the feature.)</p>
-<p>Normal output for a feature definition includes:</p>
+                <h2 id="notes-on-driver-amdgpu">Notes on driver amdgpu</a name="amdgpu"></a></h2>
+<p>on RX580 - Ellesmere
+kernel 5.13</p>
+<p>amdgpu.dc
+- 0 - disable Display Core
+- 1 - enable  Display Core
+default = -1, enable/disable based on asic </p>
 <ul>
-<li>Feature code</li>
-<li>Feature name</li>
-<li>Feature description (will indicate if the feature name varies by MCCS version)</li>
-<li>MCCS versions in which the feature is defined</li>
-<li>Feature groups that include the feature</li>
-<li>MCCS Specification Groups (TO DO: move to verbose output)</li>
-<li>Feature attributes: RW/RO/WO and type, which may vary by MCCS version</li>
+<li>insert list </li>
 </ul>
-<h4 id="option-verbose">Option: <strong><em>--verbose</em></strong></h4>
-<p>In addition to normal output, reports:</p>
-<ul>
-<li>For simple non-continuous features, the values defined in the MCCS specification and their names (per version).</li>
-<li>MCCS specification groups.  These are the sections of the MCCS specification in which the feature code appears.
-(For some features, the specification group varies by MCCS version.)  This field is entirely informational. It was impleented to aid in comparing <strong>dddcutil</strong>'s
-feature code definitions with the specification. </li>
-</ul>
-<h4 id="o-option-brief">O Option: <strong><em>--brief</em></strong></h4>
-<p>Outputs just a single line containig the feature code and name.  Useful to just get a table of ids. </p>
-<h4 id="option-mccs">Option <strong><em>--mccs</em></strong><a name="option_vcpinfo_mccs"></a></h4>
-<p>Filters the information returned by <strong>vcpinfo</strong> to that for the specified MCCS version.  For example, </p>
-<pre><code>$ ddcutil vcpinfo --mccs 2.1
-</code></pre>
+<p>amdgpu.hw_i2c
+- applies only if Display Core disabled
+- 0 (default) disable
+- 1 enable</p>
+<p>3 cases: 
+case 1: display core disabled and hw_i2c=0
+DVI, HDMI: AMDGPU i2c bit bus 0xNN
+DP:        Card0-DP-1</p>
+<p>case 2: display core disabled and hw_i2c=1</p>
+<p>DVI, HDMI:  AMDGPU i2c hw bus 0xNN
+DP:         Card0-DP-1</p>
+<p>DVI and HDMI fail</p>
+<p>Case 3: display core enabled
+DVI, HDMI: AMDGPU DM i2c hw bus 0x9N
+DP:        AMDGPU DM aux hw bus N</p>
+<p>Message sources: 
+AMDGPU DM aux hw bus N    drivers/gpu/drm/amd/display/amdgpu_dm/amdgpu_dm_mst_types.c</p>
+<p>AMDGPU i2c hw bus 0xNN    drivers/gpu/drm/amd/amdgpu/amdgpu_i2c.c
+AMDGPU i2c bit bus 0xNN   same</p>
+<p>If display core enabled: </p>
+<p>line "Display Core initialized" found in syslog 
+or "Display Core failed to initialize"</p>
+<p>drivers/gpu/drm/amd/display/amdgpu_dm/amdgpu_dm.c
+                    display/dc/core/dc.c</p>
+<p>egrep -e "Kernel command line|Display Core"  /var/log/syslog</p>
+<p>if dc=0, hw_i2c=0</p>
+<p>/sys/bus/i2c/devices/i2c-N/name 
+for DVI and </p>
               
             </div>
           </div>
           <footer>
-  
-    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-      
-        <a href="../command_dumpvcp_loadvcp/" class="btn btn-neutral float-right" title="dumpvcp &amp; loadvcp">Next <span class="icon icon-circle-arrow-right"></span></a>
-      
-      
-        <a href="../command_setvcp/" class="btn btn-neutral" title="setvcp"><span class="icon icon-circle-arrow-left"></span> Previous</a>
-      
-    </div>
   
 
   <hr/>
@@ -356,10 +337,6 @@ feature code definitions with the specification. </li>
           <a href="https://github.com/rockowitz/ddcutil/" class="fa fa-github" style="float: left; color: #fcfcfc"> GitHub</a>
       
       
-        <span><a href="../command_setvcp/" style="color: #fcfcfc;">&laquo; Previous</a></span>
-      
-      
-        <span style="margin-left: 15px"><a href="../command_dumpvcp_loadvcp/" style="color: #fcfcfc">Next &raquo;</a></span>
       
     </span>
 </div>

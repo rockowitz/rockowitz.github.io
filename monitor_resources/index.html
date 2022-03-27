@@ -7,18 +7,18 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
   <meta name="author" content="Sanford Rockowitz">
-  <link rel="canonical" href="https://www.ddcutil.com/command_vcpinfo/">
+  <link rel="canonical" href="https://www.ddcutil.com/monitor_resources/">
   <link rel="shortcut icon" href="../img/favicon.ico">
-  <title>vcpinfo - ddcutil Documentation</title>
+  <title>Monitor Specifications - ddcutil Documentation</title>
   <link rel="stylesheet" href="../css/theme.css" />
   <link rel="stylesheet" href="../css/theme_extra.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css" />
   
   <script>
     // Current page data
-    var mkdocs_page_name = "vcpinfo";
-    var mkdocs_page_input_path = "command_vcpinfo.md";
-    var mkdocs_page_url = "/command_vcpinfo/";
+    var mkdocs_page_name = "Monitor Specifications";
+    var mkdocs_page_input_path = "monitor_resources.md";
+    var mkdocs_page_url = "/monitor_resources/";
   </script>
   
   <script src="../js/jquery-2.1.1.min.js" defer></script>
@@ -73,9 +73,9 @@
                     </li>
                 </ul>
                 <p class="caption"><span class="caption-text">Command Detail</span></p>
-                <ul class="current">
-                    <li class="toctree-l1 current"><a class="reference internal current" href="#">Primary Commands</a>
-    <ul class="current">
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="#">Primary Commands</a>
+    <ul>
                 <li class="toctree-l2"><a class="reference internal" href="../command_detect/">detect</a>
                 </li>
                 <li class="toctree-l2"><a class="reference internal" href="../command_capabilities/">capabilities</a>
@@ -84,15 +84,7 @@
                 </li>
                 <li class="toctree-l2"><a class="reference internal" href="../command_setvcp/">setvcp</a>
                 </li>
-                <li class="toctree-l2 current"><a class="reference internal current" href="./">vcpinfo</a>
-    <ul class="current">
-    <li class="toctree-l3"><a class="reference internal" href="#option-verbose">Option: --verbose</a>
-    </li>
-    <li class="toctree-l3"><a class="reference internal" href="#o-option-brief">O Option: --brief</a>
-    </li>
-    <li class="toctree-l3"><a class="reference internal" href="#option-mccs">Option --mccs</a>
-    </li>
-    </ul>
+                <li class="toctree-l2"><a class="reference internal" href="../command_vcpinfo/">vcpinfo</a>
                 </li>
                 <li class="toctree-l2"><a class="reference internal" href="../command_dumpvcp_loadvcp/">dumpvcp &amp; loadvcp</a>
                 </li>
@@ -228,8 +220,10 @@
                     </li>
                 </ul>
                 <p class="caption"><span class="caption-text">Related Resources</span></p>
-                <ul>
-                    <li class="toctree-l1"><a class="reference internal" href="../monitor_resources/">Monitor Specifications</a>
+                <ul class="current">
+                    <li class="toctree-l1 current"><a class="reference internal current" href="./">Monitor Specifications</a>
+    <ul class="current">
+    </ul>
                     </li>
                 </ul>
                 <p class="caption"><span class="caption-text">ddcui</span></p>
@@ -264,18 +258,14 @@
     
       
         
-          <li>Primary Commands &raquo;</li>
-        
-      
-        
-          <li>Command Detail &raquo;</li>
+          <li>Related Resources &raquo;</li>
         
       
     
-    <li>vcpinfo</li>
+    <li>Monitor Specifications</li>
     <li class="wy-breadcrumbs-aside">
       
-        <a href="https://github.com/rockowitz/ddcutil/edit/master/docs/command_vcpinfo.md"
+        <a href="https://github.com/rockowitz/ddcutil/edit/master/docs/monitor_resources.md"
           ></a>
       
     </li>
@@ -286,38 +276,12 @@
           <div role="main">
             <div class="section">
               
-                <h3 id="command-vcpinfo">Command <strong>vcpinfo</strong></h3>
-<p>Syntax: <strong>vcpinfo</strong> &lt;display-selection-options&gt; &lt;other options&gt; &lt;feature-code-or-group&gt; </p>
-<p>This command reports <strong>ddcutil</strong>'s internal table of MCCS definitions.</p>
-<p>Monitor selection options are detailed <a href="../display_selection/">here</a>.</p>
-<p>Feature code/group specification is detailed <a href="../feature_selection/">here</a></p>
-<p>If no feature code or group is specified, <strong><em>ALL</em></strong> is assumed.</p>
-<p>If there is no definition for a particular feature code, nothing is output. </p>
-<p>(TO DO: should issue error message if a specific code is given, as opposed to a group, and no definition is found for the feature.)</p>
-<p>Normal output for a feature definition includes:</p>
-<ul>
-<li>Feature code</li>
-<li>Feature name</li>
-<li>Feature description (will indicate if the feature name varies by MCCS version)</li>
-<li>MCCS versions in which the feature is defined</li>
-<li>Feature groups that include the feature</li>
-<li>MCCS Specification Groups (TO DO: move to verbose output)</li>
-<li>Feature attributes: RW/RO/WO and type, which may vary by MCCS version</li>
-</ul>
-<h4 id="option-verbose">Option: <strong><em>--verbose</em></strong></h4>
-<p>In addition to normal output, reports:</p>
-<ul>
-<li>For simple non-continuous features, the values defined in the MCCS specification and their names (per version).</li>
-<li>MCCS specification groups.  These are the sections of the MCCS specification in which the feature code appears.
-(For some features, the specification group varies by MCCS version.)  This field is entirely informational. It was impleented to aid in comparing <strong>dddcutil</strong>'s
-feature code definitions with the specification. </li>
-</ul>
-<h4 id="o-option-brief">O Option: <strong><em>--brief</em></strong></h4>
-<p>Outputs just a single line containig the feature code and name.  Useful to just get a table of ids. </p>
-<h4 id="option-mccs">Option <strong><em>--mccs</em></strong><a name="option_vcpinfo_mccs"></a></h4>
-<p>Filters the information returned by <strong>vcpinfo</strong> to that for the specified MCCS version.  For example, </p>
-<pre><code>$ ddcutil vcpinfo --mccs 2.1
-</code></pre>
+                <h2 id="monitor-specifications">Monitor Specifications</h2>
+<p>Some useful sites for finding monitor specifications.</p>
+<p><a href="https://www.displaydb.com">DisplayDB</a></p>
+<p><a href="https://www.displayspecifications.com/">DisplaySpecifications</a> Specifications, comparisons, and user reviews</p>
+<p><a href="https://tftcentral.co.uk/">TFT Central</a> News, Reviews, Profiles and monitor calibration database, Monitor panel part database</p>
+<p><a href="https://www.panelook.com/modelsearch.php?op=advancedsearch">Panelook.com</a></p>
               
             </div>
           </div>
@@ -325,10 +289,10 @@ feature code definitions with the specification. </li>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../command_dumpvcp_loadvcp/" class="btn btn-neutral float-right" title="dumpvcp &amp; loadvcp">Next <span class="icon icon-circle-arrow-right"></span></a>
+        <a href="../ddcui_main/" class="btn btn-neutral float-right" title="Overview">Next <span class="icon icon-circle-arrow-right"></span></a>
       
       
-        <a href="../command_setvcp/" class="btn btn-neutral" title="setvcp"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../prior_announcements/" class="btn btn-neutral" title="Announcement History"><span class="icon icon-circle-arrow-left"></span> Previous</a>
       
     </div>
   
@@ -356,10 +320,10 @@ feature code definitions with the specification. </li>
           <a href="https://github.com/rockowitz/ddcutil/" class="fa fa-github" style="float: left; color: #fcfcfc"> GitHub</a>
       
       
-        <span><a href="../command_setvcp/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+        <span><a href="../prior_announcements/" style="color: #fcfcfc;">&laquo; Previous</a></span>
       
       
-        <span style="margin-left: 15px"><a href="../command_dumpvcp_loadvcp/" style="color: #fcfcfc">Next &raquo;</a></span>
+        <span style="margin-left: 15px"><a href="../ddcui_main/" style="color: #fcfcfc">Next &raquo;</a></span>
       
     </span>
 </div>
