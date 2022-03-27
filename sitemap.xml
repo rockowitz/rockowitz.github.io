@@ -268,10 +268,6 @@
      <lastmod>2022-03-27</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
-     <loc>https://www.ddcutil.com/monitor_resources/</loc>
-     <lastmod>2022-03-27</lastmod>
-     <changefreq>daily</changefreq>
-    </url><url>
      <loc>https://www.ddcutil.com/ddcui_main/</loc>
      <lastmod>2022-03-27</lastmod>
      <changefreq>daily</changefreq>
@@ -285,6 +281,10 @@
      <changefreq>daily</changefreq>
     </url><url>
      <loc>https://www.ddcutil.com/ddcui_release_notes/</loc>
+     <lastmod>2022-03-27</lastmod>
+     <changefreq>daily</changefreq>
+    </url><url>
+     <loc>https://www.ddcutil.com/monitor_resources/</loc>
      <lastmod>2022-03-27</lastmod>
      <changefreq>daily</changefreq>
     </url>
