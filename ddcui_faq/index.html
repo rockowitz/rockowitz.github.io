@@ -7,18 +7,18 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
   <meta name="author" content="Sanford Rockowitz">
-  <link rel="canonical" href="https://www.ddcutil.com/libddcutil_options/">
+  <link rel="canonical" href="https://www.ddcutil.com/ddcui_faq/">
   <link rel="shortcut icon" href="../img/favicon.ico">
-  <title>libddcutil Options - ddcutil Documentation</title>
+  <title>ddcui Frequently Asked Questions - ddcutil Documentation</title>
   <link rel="stylesheet" href="../css/theme.css" />
   <link rel="stylesheet" href="../css/theme_extra.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css" />
   
   <script>
     // Current page data
-    var mkdocs_page_name = "libddcutil Options";
-    var mkdocs_page_input_path = "libddcutil_options.md";
-    var mkdocs_page_url = "/libddcutil_options/";
+    var mkdocs_page_name = "ddcui Frequently Asked Questions";
+    var mkdocs_page_input_path = "ddcui_faq.md";
+    var mkdocs_page_url = "/ddcui_faq/";
   </script>
   
   <script src="../js/jquery-2.1.1.min.js" defer></script>
@@ -73,7 +73,7 @@
                     </li>
                 </ul>
                 <p class="caption"><span class="caption-text">Command Detail</span></p>
-                <ul class="current">
+                <ul>
                     <li class="toctree-l1"><a class="reference internal" href="#">Primary Commands</a>
     <ul>
                 <li class="toctree-l2"><a class="reference internal" href="../command_detect/">detect</a>
@@ -114,11 +114,7 @@
                 </li>
     </ul>
                     </li>
-                    <li class="toctree-l1 current"><a class="reference internal current" href="./">libddcutil Options</a>
-    <ul class="current">
-    <li class="toctree-l2"><a class="reference internal" href="#option-libddcutil-trace-file">Option --libddcutil-trace-file</a>
-    </li>
-    </ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../libddcutil_options/">libddcutil Options</a>
                     </li>
                 </ul>
                 <p class="caption"><span class="caption-text">Specific Facilities</span></p>
@@ -224,7 +220,7 @@
                     </li>
                 </ul>
                 <p class="caption"><span class="caption-text">ddcui</span></p>
-                <ul>
+                <ul class="current">
                     <li class="toctree-l1"><a class="reference internal" href="../ddcui_main/">Overview</a>
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="../ddcui_options/">Command Line Options</a>
@@ -233,7 +229,11 @@
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="../ddcui_release_notes/">ddcui Release Notes</a>
                     </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../ddcui_faq/">ddcui Frequently Asked Questions</a>
+                    <li class="toctree-l1 current"><a class="reference internal current" href="./">ddcui Frequently Asked Questions</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#console-message-qtqpaxcb-qxcbconnection-xcb-error-3-badwindow">Console message qt.qpa.xcb: QXcbConnection: XCB error: 3 (BadWindow)</a>
+    </li>
+    </ul>
                     </li>
                 </ul>
                 <p class="caption"><span class="caption-text">Related Resources</span></p>
@@ -262,14 +262,14 @@
     
       
         
-          <li>Command Detail &raquo;</li>
+          <li>ddcui &raquo;</li>
         
       
     
-    <li>libddcutil Options</li>
+    <li>ddcui Frequently Asked Questions</li>
     <li class="wy-breadcrumbs-aside">
       
-        <a href="https://github.com/rockowitz/ddcutil/edit/master/docs/libddcutil_options.md"
+        <a href="https://github.com/rockowitz/ddcutil/edit/master/docs/ddcui_faq.md"
           ></a>
       
     </li>
@@ -280,19 +280,11 @@
           <div role="main">
             <div class="section">
               
-                <h2 id="libddcutil-options"><strong>libddcutil</strong> options</h2>
-<p>Using the <a href="../config_file/">configuration file</a>, it is possible to pass options directly to shared library <strong>ddcutil</strong>. 
-The option string is read and processed when <strong>libddcutil</strong> is initialized.
-(Bear in mind that the shared library is not used by the command line program <strong>ddcutil</strong>.
-Specifying <strong>libddcutil</strong> options in this context has no effect.)</p>
-<p>Generally speaking, any <strong>ddcutil</strong> option, other than those for display and feature selection, can be passed to <strong>libddcutil</strong>. </p>
-<p>In addition, the following option is recognized only by <strong>libddcutil.</strong>: </p>
-<h3 id="option-libddcutil-trace-file">Option <strong><em>--libddcutil-trace-file</em></strong></h3>
-<p><strong>libddcutil</strong> can redirect all output that would normally be sent to the terminal to a trace file instead,
-allowng for tracing when there is no terminal to which to write. 
-This option specifies the file name. The file name specified can be either absolute or relative.
-If relative, the directory is resolved as per the definition of XDG_STATE_HOME in the XDG desktop specification.
-Typically, this is $HOME/.local/state/ddcutil.</p>
+                <h2 id="ddcui-frequently-asked-questions">ddcui Frequently Asked Questions</h2>
+<p>See also the main <a href="../faq/">ddcutil Frequently Asked Questions</a>.</p>
+<p><a name="ddcui_faq_xcb_error"></a></p>
+<h3 id="console-message-qtqpaxcb-qxcbconnection-xcb-error-3-badwindow">Console message <strong><em>qt.qpa.xcb: QXcbConnection: XCB error: 3 (BadWindow)</em></strong></h3>
+<p>This warning message can occur when closing a dialog box, such as <strong><em>Feature Selection</em></strong>.   It is a <a href="https://bugreports.qt.io/browse/QTBUG-56893&gt;known bug">known bug</a> in Qt.  The message can be ignored.</p>
               
             </div>
           </div>
@@ -300,10 +292,10 @@ Typically, this is $HOME/.local/state/ddcutil.</p>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../table_features/" class="btn btn-neutral float-right" title="Table Type Features">Next <span class="icon icon-circle-arrow-right"></span></a>
+        <a href="../monitor_resources/" class="btn btn-neutral float-right" title="Monitor Specifications">Next <span class="icon icon-circle-arrow-right"></span></a>
       
       
-        <a href="../debug_options/" class="btn btn-neutral" title="Debugging Options"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../ddcui_release_notes/" class="btn btn-neutral" title="ddcui Release Notes"><span class="icon icon-circle-arrow-left"></span> Previous</a>
       
     </div>
   
@@ -331,10 +323,10 @@ Typically, this is $HOME/.local/state/ddcutil.</p>
           <a href="https://github.com/rockowitz/ddcutil/" class="fa fa-github" style="float: left; color: #fcfcfc"> GitHub</a>
       
       
-        <span><a href="../debug_options/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+        <span><a href="../ddcui_release_notes/" style="color: #fcfcfc;">&laquo; Previous</a></span>
       
       
-        <span style="margin-left: 15px"><a href="../table_features/" style="color: #fcfcfc">Next &raquo;</a></span>
+        <span style="margin-left: 15px"><a href="../monitor_resources/" style="color: #fcfcfc">Next &raquo;</a></span>
       
     </span>
 </div>
