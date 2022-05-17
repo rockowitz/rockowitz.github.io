@@ -525,6 +525,12 @@ RUN pacman --noconfirm -Syu &amp;&amp; \
 <p>I then ran the container and also mapped all <code>i2c</code> devices (otherwise, these were not available in the container):</p>
 <pre><code class="language-bash">docker run $(for dev in `ls /dev/i2c*`; do echo &quot;--device $dev &quot;; done) -it --name ddcutil ddcutil:v0.0.1
 </code></pre>
+<!--
+### setvcp of feature x60 (Input Source) fails with the message "Feature x60 does not support verifiation"
+
+Use the ***--noverify*** option. The problem with trying to verify the changed value of feature x60 is that once the input device changes it's most likely that trying to read the current value from the original input device will fail. Therefore automatic verification does not take place for this feature.
+-->
+
 <h2 id="questions-about-building-ddcutil">Questions about building <strong>ddcutil</strong></h2>
 <p><a name="missing_package"></a></p>
 <h3 id="configure-complains-that-a-required-package-does-not-exist-but-it-is-installed-on-my-system"><strong><em>configure</em></strong> complains that a required package does not exist, but it is installed on my system.</h3>
