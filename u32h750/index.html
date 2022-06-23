@@ -281,32 +281,25 @@ Value         |
   x08         | 9300
   x0b         | User 1
   x0c         | User 2</p>
-<table>
-<thead>
-<tr>
-<th>Settable Values</th>
-<th>MCCS</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>x01</td>
-<td>sRGB</td>
-</tr>
-</tbody>
-</table>
+<p>Values Settable |  MCCS           | 
+Using DDC       |
+----------------|-----------------|
+x01             |  sRGB</p>
 <p>Value</p>
 <h3 id="feature-x-display-mode">Feature x?? Display Mode</h3>
 <p>Capabilities |</p>
 <p>Only observed value: x18</p>
 <h3 id="color-tone">Color Tone</h3>
 <p>Select      |  Sets  |
-OSD menu    |  x14   | MCCS name
-------------|--------|---------- 
-Cool 1   |
-Cool 2   |</p>
-<p>Warm 1
-Warm 2</p>
+OSD menu    |  x14   | MCCS name         R  G  B  | Notes
+------------|--------|----------------|--------------------
+Cool 2      | x00    | (unrecognized) |  5 24 50  | x00 is a listed value in capabilities
+Cool 1      | x01    | sRGB           | 10 33 50  |
+Normal      | x02    | Display Native | 50 50 50  |
+Warm 1      | x03    | 4000           | 50 38 20  |
+Warm 2      | x04    | 5000           | 50 23  0  |
+Custom      | x05    | 6500           |           | restores most recent RGB values, any values can be set</p>
+<p>changing RGB values sets Color Tone to Custom</p>
 <h3 id="gamma-tone-menu">Gamma Tone menu</h3>
 <p>Changing has no observed effect on Feature values </p>
 <p>Feature x72 Gamma not supported</p>

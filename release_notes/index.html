@@ -216,9 +216,33 @@
                     </li>
                     <li class="toctree-l1 current"><a class="reference internal current" href="./">Release Notes</a>
     <ul class="current">
-    <li class="toctree-l2"><a class="reference internal" href="#122">1.2.2</a>
+    <li class="toctree-l2"><a class="reference internal" href="#preliminary-note-for-relesae-130">Preliminary Note for Relesae 1.3.0</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#_1"></a>
     </li>
     <li class="toctree-l2"><a class="reference internal" href="#device-busy-ebusy-errors">Device Busy (EBUSY) Errors</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#better-report-user-configuration-issues">Better Report User Configuration Issues</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#command-detect">Command detect</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#commands-getvcp-vcpinfo">Commands getvcp, vcpinfo</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#command-environment">Command environment:</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#better-handle-malformed-edids">Better handle malformed EDIDs</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#option-stats">Option --stats:</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#performance-options">Performance Options</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#miscellaneous-bug-fixes">Miscellaneous Bug Fixes</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#libddcutil">libddcutil</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#122">1.2.2</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#device-busy-ebusy-errors_1">Device Busy (EBUSY) Errors</a>
     </li>
     <li class="toctree-l2"><a class="reference internal" href="#building-and-porting">Building and Porting</a>
     </li>
@@ -266,7 +290,7 @@
     </li>
     <li class="toctree-l2"><a class="reference internal" href="#usb">USB</a>
         <ul>
-    <li class="toctree-l3"><a class="reference internal" href="#command-detect">Command detect</a>
+    <li class="toctree-l3"><a class="reference internal" href="#command-detect_1">Command detect</a>
     </li>
         </ul>
     </li>
@@ -280,7 +304,7 @@
     </li>
     <li class="toctree-l2"><a class="reference internal" href="#command-watch">Command watch</a>
     </li>
-    <li class="toctree-l2"><a class="reference internal" href="#command-environment">Command environment</a>
+    <li class="toctree-l2"><a class="reference internal" href="#command-environment_1">Command environment</a>
     </li>
     <li class="toctree-l2"><a class="reference internal" href="#option-no-x52-fifo">Option --no-x52-fifo</a>
     </li>
@@ -596,9 +620,87 @@
               
                 <h2 id="release-notes">Release Notes</h2>
 <p>For <strong>ddcui</strong> release notes, see <a href="../ddcui_release_notes/"><strong>ddcui</strong> Release Notes</a>.</p>
+<h3 id="preliminary-note-for-relesae-130">Preliminary Note for Relesae 1.3.0</h3>
+<p>01 July 2022 (Estimated)</p>
+<h3 id="_1"></h3>
+<p>There have been a handful of reports of monitors for which setting a feature value, most commonly
+in the manufacturer reserved range, puts the monitor into some difficult to recover state.
+A warning is issued at startup for those monitors.  Currently the only monitor in the warning list is 
+Xaomi model "Mi Monitor". </p>
+<h3 id="device-busy-ebusy-errors">Device Busy (EBUSY) Errors</h3>
+<p>Driver i2c-dev provides both a low level ioctl() interface and a higher level read()/write() 
+interface for I2C communication.  <strong>ddcutil</strong> now uses the ioctl() interface (almost) exclusively. 
+This eliminates the possbility of EBUSY errors from driver i2c-dev, which occur only when the read()/write() interface
+is used. As a result, option <strong><em>-force-slave-address</em></strong> no longer has any effect.
+In principle, EBUSY errors are still possible from within individual video drivers invoked by i2c-dev, but this has never been observed.</p>
+<h3 id="better-report-user-configuration-issues">Better Report User Configuration Issues</h3>
+<ul>
+<li>More user friendly messages at startup regarding /dev/i2c buses that cannont
+  be opened.  If the problem is inadequate permissions (EACCES), the user is 
+  directed to www.ddcutil.com/permissions.</li>
+<li>Report at startup if required device driver i2c-dev is not built into the kernel
+  and has not been loaded.</li>
+</ul>
+<h3 id="command-detect">Command <strong>detect</strong></h3>
+<ul>
+<li>Option <strong><em>--verbose</em></strong> produces addtional information: </li>
+<li>The product code is reported in hex as well as decimal</li>
+<li>The EDID source field is set to <strong>I2C</strong> in the normal case where the EDID
+     is read directly from slave address X50.  Alternative values include 
+     <strong>USB</strong>, <strong>X11</strong>, and <strong>SYSFS</strong>.</li>
+</ul>
+<h3 id="commands-getvcp-vcpinfo">Commands <strong>getvcp</strong>, <strong>vcpinfo</strong></h3>
+<ul>
+<li>Allow specification of multiple feature codes, for example 
+    <strong><em>ddcutil getvcp 10 12</em></strong> , <strong><em>ddcutil vcpinfo 14 16 18 1a</em></strong></li>
+</ul>
+<h3 id="command-environment">Command <strong>environment</strong>:</h3>
+<ul>
+<li>Scanning of /sys by option <strong><em>--verbose</em></strong> has been improved.</li>
+</ul>
+<h3 id="better-handle-malformed-edids">Better handle malformed EDIDs</h3>
+<ul>
+<li>Trailing blanks on model and serial number are stripped.  This affects 
+    commands <strong>detect --terse</strong>, <strong>loadvcp</strong> and <strong>dumpvcp</strong>, and also the 
+    file names of user defined features.</li>
+</ul>
+<h3 id="option-stats">Option <strong><em>--stats</em></strong>:</h3>
+<ul>
+<li>I2C ioctl() calls for reading and writing are now reported as type IE_IOCTL_WRITE
+    and IE_IOCTL_READ rather than IE_OTHER.</li>
+<li>IE_WRITE_READ stats are no longer reported, as they are redundant.</li>
+</ul>
+<h3 id="performance-options">Performance Options</h3>
+<ul>
+<li>Option <strong><em>--dca</em></strong>: The Dynamic Sleep Adjustment algorithm was rewritten to 
+  more sensibly increment sleep times after before each retry.</li>
+<li>Sleeps immediately after opening a /dev/i2c device and after completion of a
+  read operation are completely eliminated. The sleep-suppression related 
+  uptions, <strong><em>--sleep-less</em></strong>, <strong><em>--less-sleep, </em></strong>--enable-sleep-suppression<strong><em>,
+  and </em></strong>--disable-sleep-suppression*** no longer have any effect.</li>
+</ul>
+<h3 id="miscellaneous-bug-fixes">Miscellaneous Bug Fixes</h3>
+<ul>
+<li>The sleep multiplier value was not respected for new API threads.</li>
+<li>User Defined Features: Keyword <strong>NC</strong> set the incorrect flag in a feature
+  descriptor.</li>
+<li>Fixed a segfault in <strong>ddcutil</strong> initialization because of unexpected
+  contents in sysfs.</li>
+<li>Double count I2C writes in stats. </li>
+</ul>
+<h3 id="libddcutil">libddcutil</h3>
+<ul>
+<li>Fixed a segfault that occurred at shared library startup.  The fault was in a 
+  trace message for function ddc_start_watch_displays() which watches for
+  displays that are added or removed.</li>
+<li>Deprecated API functions have no effect:<ul>
+<li>ddca_enable_force_slave_address(), ddca_is_force_slave_address_enabled()</li>
+</ul>
+</li>
+</ul>
 <h3 id="122">1.2.2</h3>
 <p>28 January 2022</p>
-<h3 id="device-busy-ebusy-errors">Device Busy (EBUSY) Errors</h3>
+<h3 id="device-busy-ebusy-errors_1">Device Busy (EBUSY) Errors</h3>
 <p>This release improves the handling of and messages regarding DDC communication failures
 with errno EBUSY. In particular, this error occurs when driver ddcci is loaded.</p>
 <ul>
@@ -754,7 +856,7 @@ A feature definition file for a monitor model specifies feature definitions that
 monitor's <strong><em>Virtual Control Panel</em></strong>.  Such monitors are rare, and the error messages that occur when<br />
 permissions have not been granted on /dev/usb/hiddev devices can be confusuing.  USB display detection 
 can be enabled using command line option <strong><em>--enable-usb</em></strong>.  The default is <strong><em>--disable-usb</em></strong>. </p>
-<h4 id="command-detect">Command <strong>detect</strong></h4>
+<h4 id="command-detect_1">Command <strong>detect</strong></h4>
 <ul>
 <li>If no displays are found, add a message suggesting <strong><em>ddcutil environment</em></strong>  </li>
 <li>Always show the product code and binary serial number  </li>
@@ -832,7 +934,7 @@ the value of feature 10 to 15.
 <ul>
 <li>Better handle fatal errors instead of continuing in an infinite loop</li>
 </ul>
-<h3 id="command-environment">Command <strong>environment</strong></h3>
+<h3 id="command-environment_1">Command <strong>environment</strong></h3>
 <ul>
 <li>If option <strong><em>--verbose</em></strong> is specified, the /sys file system is probed far more extensively. This change also 
 applies to command <strong><em>interrogate</em></strong>, which incorporates <strong><em>environment --verbose</em></strong>.</li>
