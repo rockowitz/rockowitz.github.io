@@ -285,31 +285,98 @@
                 <h2 id="notes-on-driver-amdgpu">Notes on Driver amdgpu</a name="amdgpu"></a></h2>
 <p>Based on <a href="https://www.kernel.org/doc/html/v4.20/gpu/amdgpu.html">Linux GPU driver documentation for amdgpu</a></p>
 <h3 id="kernel-option-amdgpudc-display-core">Kernel option amdgpu.dc (Display Core)</h3>
-<p>amdgpu.dc
-- 0, disable Display Core
-- 1, enable  Display Core
-default = -1, enable/disable based on asic </p>
-<ul>
-<li>insert list </li>
-</ul>
+<p>Disable/Enable Display Core driver for debugging (1 = enable, 0 = disable). The default is -1 (automatic for each asic).</p>
+<table>
+<thead>
+<tr>
+<th>amdgpu.dc value</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>disable Display Core</td>
+</tr>
+<tr>
+<td>1</td>
+<td>enable  Display Core</td>
+</tr>
+<tr>
+<td>default = -1</td>
+<td>enable/disable based on asic</td>
+</tr>
+</tbody>
+</table>
+<p>TODO: insert list of GPUs supporting DC</p>
 <h2 id="kernal-option-amdgpuhw_i2c">Kernal option amdgpu.hw_i2c</h2>
 <p>To enable hw i2c engine. Only affects non-DC display handling. The default is 0 (Disabled).</p>
-<p>amdgpu.hw_i2c
-- applies only if Display Core disabled
-- 0 (default) disable
-- 1 enable</p>
+<p>amdgpu.hw_i2c (applies only if Display Core disabled)</p>
+<pre><code>      |
+</code></pre>
+<p>----------|----------
+0 (default) | disable
+1  |enable</p>
 <p>Tested on RX580 (Ellesmere), Kernel 5.13</p>
-<p>Name found in /sys/bus/i2c/devices/i2c-N/name </p>
+<p>Name in /sys/bus/i2c/devices/i2c-N/name </p>
 <p>Case 1: Display Core disabled and hw_i2c=0</p>
-<p>DVI, HDMI: AMDGPU i2c bit bus 0xNN
-DP:        CardM-DP-N, e.g. Card0-DP-1</p>
+<table>
+<thead>
+<tr>
+<th>Connector</th>
+<th>Name</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>DVI, HDMI</td>
+<td>AMDGPU i2c bit bus 0xNN</td>
+</tr>
+<tr>
+<td>DP:</td>
+<td>CardM-DP-N, e.g. Card0-DP-1</td>
+</tr>
+</tbody>
+</table>
 <p>Case 2: Display Core disabled and hw_i2c=1</p>
-<p>DVI, HDMI:  AMDGPU i2c hw bus 0xNN
-DP:         CardM-DP-N, e.g. Card0-DP-1</p>
+<table>
+<thead>
+<tr>
+<th>Connector</th>
+<th>Name</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>DVI, HDMI</td>
+<td>AMDGPU i2c hw bus 0xNN</td>
+</tr>
+<tr>
+<td>DP:</td>
+<td>CardM-DP-N, e.g. Card0-DP-1</td>
+</tr>
+</tbody>
+</table>
 <p>I2C communication fails on DVI and HDMI</p>
 <p>Case 3: Display Core enabled</p>
-<p>DVI, HDMI: AMDGPU DM i2c hw bus 0x9N
-DP:        AMDGPU DM aux hw bus N</p>
+<table>
+<thead>
+<tr>
+<th>Connector</th>
+<th>Name</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>DVI, HDMI</td>
+<td>AMDGPU DM i2c hw bus 0x9N</td>
+</tr>
+<tr>
+<td>DP:</td>
+<td>AMDGPU DM aux hw bus N</td>
+</tr>
+</tbody>
+</table>
 <table>
 <thead>
 <tr>
@@ -328,7 +395,7 @@ DP:        AMDGPU DM aux hw bus N</p>
 </tr>
 <tr>
 <td>AMDGPU i2c bit bus 0xNN</td>
-<td>same</td>
+<td>drivers/gpu/drm/amd/amdgpu/amdgpu_i2c.c</td>
 </tr>
 </tbody>
 </table>
