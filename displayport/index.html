@@ -293,7 +293,7 @@ using a simple DVI&lt;-&gt;HDMI cable.</p>
 <p>DisplayPort, on ther other hand, uses its own protocol for video.  It also has a secondary Auxilliary (AUX) channel (and pins) for non-video communication.  DisplayPort does not have the I2C SLA/SLC pins. Instead, the logical I2C signals are converted at each end into messages on the AUX channel. Put another way, 
 DDC is implemented using  the AUX channel, but the AUX channel itself is not DDC. 
 The "multiplexing" of I2C over the AUX channel is transparent to all but the lowest level of I2C software at each end.</p>
-<p>In is possible to connect the DisplayPort output on a host to a DVI or HDMI input on a monitor using an "active", or sometimes a "passive", adapter. </p>
+<p>It is possible to connect the DisplayPort output on a host to a DVI or HDMI input on a monitor using an "active", or sometimes a "passive", adapter. </p>
 <p>Most active adapters connect a DisplayPort output on the host to a DVI or HDMI input on the monitor. An active adapter converts the DisplayPort video
 signal to the TDMS video signal used by DVI or HDMI. It also converts the I2C signals on the AUX channel to and from the physical SDA and SCL signals on 
 the DVI/HDMI connector.  To the host, it appears that it is communicating with a DisplayPort input on the monitor. To the monitor it appears that 
