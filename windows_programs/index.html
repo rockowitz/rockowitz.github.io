@@ -7,18 +7,18 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
   <meta name="author" content="Sanford Rockowitz">
-  <link rel="canonical" href="https://www.ddcutil.com/nvidia/">
+  <link rel="canonical" href="https://www.ddcutil.com/windows_programs/">
   <link rel="shortcut icon" href="../img/favicon.ico">
-  <title>Special Nvidia Driver Settings - ddcutil Documentation</title>
+  <title>Windows Utilities for Monitor Control - ddcutil Documentation</title>
   <link rel="stylesheet" href="../css/theme.css" />
   <link rel="stylesheet" href="../css/theme_extra.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css" />
   
   <script>
     // Current page data
-    var mkdocs_page_name = "Special Nvidia Driver Settings";
-    var mkdocs_page_input_path = "nvidia.md";
-    var mkdocs_page_url = "/nvidia/";
+    var mkdocs_page_name = "Windows Utilities for Monitor Control";
+    var mkdocs_page_input_path = "windows_programs.md";
+    var mkdocs_page_url = "/windows_programs/";
   </script>
   
   <script src="../js/jquery-2.1.1.min.js" defer></script>
@@ -131,7 +131,7 @@
                     </li>
                 </ul>
                 <p class="caption"><span class="caption-text">Installation and Configuration</span></p>
-                <ul class="current">
+                <ul>
                     <li class="toctree-l1"><a class="reference internal" href="../install_config_main/">Installation and Configuration</a>
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="../config_steps/">Post-Installation Checklist</a>
@@ -150,9 +150,7 @@
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="../kernel_module/">Kernel Module Configuration</a>
                     </li>
-                    <li class="toctree-l1 current"><a class="reference internal current" href="./">Special Nvidia Driver Settings</a>
-    <ul class="current">
-    </ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../nvidia/">Special Nvidia Driver Settings</a>
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="../amdgpu/">Notes on driver amdgpu</a>
                     </li>
@@ -237,10 +235,12 @@
                     </li>
                 </ul>
                 <p class="caption"><span class="caption-text">Related Resources</span></p>
-                <ul>
+                <ul class="current">
                     <li class="toctree-l1"><a class="reference internal" href="../monitor_resources/">Monitor Specifications</a>
                     </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../windows_programs/">Windows Utilities for Monitor Control</a>
+                    <li class="toctree-l1 current"><a class="reference internal current" href="./">Windows Utilities for Monitor Control</a>
+    <ul class="current">
+    </ul>
                     </li>
                 </ul>
       </div>
@@ -264,14 +264,14 @@
     
       
         
-          <li>Installation and Configuration &raquo;</li>
+          <li>Related Resources &raquo;</li>
         
       
     
-    <li>Special Nvidia Driver Settings</li>
+    <li>Windows Utilities for Monitor Control</li>
     <li class="wy-breadcrumbs-aside">
       
-        <a href="https://github.com/rockowitz/ddcutil/edit/master/docs/nvidia.md"
+        <a href="https://github.com/rockowitz/ddcutil/edit/master/docs/windows_programs.md"
           ></a>
       
     </li>
@@ -282,44 +282,12 @@
           <div role="main">
             <div class="section">
               
-                <h2 id="special-nvidia-driver-settings">Special Nvidia Driver Settings</h2>
-<p>When using Nvidia's proprietary driver, I2C communication fails on some cards. </p>
-<p>It works on several older Nvidia cards I have, but failed with my more recent 
-GTX660Ti. (Specfically, I2C reads of 1 or 2 bytes succeeded, but reads of 3 
-or more bytes failed.)  Others have reported similar problems. </p>
-<p>Per <a href="https://devtalk.nvidia.com/default/topic/572292/linux/-solved-does-gddccontrol-work-for-anyone-here-nvidia-i2c-monitor-display-ddc/3">this discussion</a>, adding the 
-following to the "Device" section for the Nvidia driver resolves the problem for some cards:</p>
-<pre><code> Option     &quot;RegistryDwords&quot;  &quot;RMUseSwI2c=0x01; RMI2cSpeed=100&quot;
-</code></pre>
-<p>A file for making this change is 90-nvidia_i2c.conf.  Its exact location varies by where a distribution installs an application's data files. Commonly it can be found in directory /usr/share/ddcutil/data.  </p>
-<pre><code>Section &quot;Device&quot;
-   Driver &quot;nvidia&quot;
-   Identifier &quot;Dev0&quot;
-   Option     &quot;RegistryDwords&quot;  &quot;RMUseSwI2c=0x01; RMI2cSpeed=100&quot;
-   # solves problem of i2c errors with nvidia driver
-   # per https://devtalk.nvidia.com/default/topic/572292/-solved-does-gddccontrol-work-for-anyone-here-nvidia-i2c-monitor-display-ddc/#4309293
-EndSection
-</code></pre>
-<p>Copy this file to /etc/X11/xorg.conf.d.  You will have to restart X11 for this change to take effect.  It's probably simplest to reboot.</p>
-<p>Note: This file works if there is no /etc/X11/xorg.conf file.  If you do have an 
-xorg.conf file the Identifier field will likely require modification.</p>
-<p>This does not, however, appear to be a universal solution.  It does not work with some cards. </p>
-<p>In a <a href="https://devtalk.nvidia.com/default/topic/572292/linux/gddccontrol-issues-with-nvidia-drivers-i2c-monitor-display-ddc-dp-hdmi-failing/post/5239597/#5239597">related post on Nvidia's site</a>, 
-user arcnmx reported:</p>
-<blockquote>
-<p>I hadn't seen it suggested yet, so for anyone using KMS/nvidia-drm or otherwise loading the nvidia kernel module early on who can't get the xorg.conf setting to fix DDC on newer cards, I've had to add the following to modprobe.conf or modprobe.d/whatever.conf instead:</p>
-</blockquote>
-<pre><code>options nvidia NVreg_RegistryDwords=RMUseSwI2c=0x01;RMI2cSpeed=100
-</code></pre>
-<blockquote>
-<p>To confirm that the settings are working: </p>
-</blockquote>
-<pre><code>    $ grep RegistryDwords /proc/driver/nvidia/params
-    RegistryDwords: &quot;RMUseSwI2c=0x01;RMI2cSpeed=100&quot;
-</code></pre>
-<blockquote>
-<p>This makes DDC over HDMI work with my Pascal card and fixes the "invalid EDID" errors at least, and also doesn't require starting X to use it, should help with wayland, etc. </p>
-</blockquote>
+                <h2 id="windows-utilities-for-monitor-control">Windows Utilities for Monitor Control</h2>
+<ul>
+<li>ClickmonDDC</li>
+<li><a href="https://www.nirsoft.net/utils/control_my_monitor.html">Nirsoft Control My Monitor</a></li>
+<li><a href="https://entechtaiwan.com/lib/softmccs.shtm">EnTech softMCCS</a></li>
+</ul>
               
             </div>
           </div>
@@ -327,10 +295,8 @@ user arcnmx reported:</p>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../amdgpu/" class="btn btn-neutral float-right" title="Notes on driver amdgpu">Next <span class="icon icon-circle-arrow-right"></span></a>
       
-      
-        <a href="../kernel_module/" class="btn btn-neutral" title="Kernel Module Configuration"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../monitor_resources/" class="btn btn-neutral" title="Monitor Specifications"><span class="icon icon-circle-arrow-left"></span> Previous</a>
       
     </div>
   
@@ -358,10 +324,8 @@ user arcnmx reported:</p>
           <a href="https://github.com/rockowitz/ddcutil/" class="fa fa-github" style="float: left; color: #fcfcfc"> GitHub</a>
       
       
-        <span><a href="../kernel_module/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+        <span><a href="../monitor_resources/" style="color: #fcfcfc;">&laquo; Previous</a></span>
       
-      
-        <span style="margin-left: 15px"><a href="../amdgpu/" style="color: #fcfcfc">Next &raquo;</a></span>
       
     </span>
 </div>
