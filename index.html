@@ -10,11 +10,9 @@
   <link rel="canonical" href="https://www.ddcutil.com/">
   <link rel="shortcut icon" href="img/favicon.ico">
   <title>ddcutil Documentation</title>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
-
   <link rel="stylesheet" href="css/theme.css" />
   <link rel="stylesheet" href="css/theme_extra.css" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css" />
   
   <script>
     // Current page data
@@ -25,8 +23,9 @@
   
   <script src="js/jquery-2.1.1.min.js" defer></script>
   <script src="js/modernizr-2.8.3.min.js" defer></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
   <script>hljs.initHighlightingOnLoad();</script> 
+  
 </head>
 
 <body class="wy-body-for-nav" role="document">
@@ -40,7 +39,7 @@
         <a href="." class="icon icon-home"> ddcutil Documentation</a>
         <div role="search">
   <form id ="rtd-search-form" class="wy-form" action="./search.html" method="get">
-      <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+    <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
   </form>
 </div>
       </div>
@@ -286,7 +285,6 @@
   
   <hr/>
 </div>
-
           <div role="main">
             <div class="section">
               
@@ -301,15 +299,17 @@ claim to the display.</p>
 <p>For a detailed description of <strong>ddcui</strong> changes and bug fixes in this release, see <a href="ddcui_release_notes/">ddcui Release Notes</a>.</p>
 <p>Prebuilt packages for several Linux distributions and mmachine architectures can be found in 
 the <a href="install/">ususal locations</a>.</p>
-<p>28 January 2022</p>
-<p><strong>ddcutil</strong> release 1.2.2 contains one set of changes of interest to general users: </p>
+<p>23 July 2022</p>
+<p><strong>ddcutil</strong> release 1.3.0 contains the following changes of interest to general users: </p>
 <ul>
-<li>Handling of DDC communication failures due to conflict with other programs is improved.
-In particular, conflict occurs when device driver ddcci is loaded. Among the changes:</li>
-<li>If <strong>ddcutil detect</strong> fails to communicate with a monitor and Linux errno EBUSY is reported, 
-  it reports the monitor as "Busy" instead of "Invalid" and suggests the use of option <strong><em>--force-slave-address</em></strong>. </li>
-<li>Messages regarding EBUSY errors are always written to the system log.</li>
-<li>API functions <strong>ddca_enable_force_slave_address()</strong> and <strong>ddca_is_force_slave_address_enabled()</strong> have been added.</li>
+<li>Option <strong><em>--force-slave-address</em></strong> no longer has any effect.
+Driver i2c-dev provides both a low level ioctl() interface and a higher level read()/write() 
+interface for I2C communication.  <strong>ddcutil</strong> now uses the ioctl() interface (almost) exclusively. 
+This eliminates the possbility of EBUSY errors from driver i2c-dev, which occur only when the read()/write() interface is used.</li>
+<li>Better reporting of user configuration issues at startup.</li>
+<li>Commands <strong>getvcp</strong> and <strong>vcpinfo</strong> can now take multiple features as arguments, for example <strong>ddcutil getvcp 10 12</strong>.</li>
+<li>The sleep-suppression related options, <strong><em>--sleep-less</em></strong>, <strong><em>--less-sleep, </em></strong>--enable-sleep-suppression<strong><em>,
+  and </em></strong>--disable-sleep-suppression*** no longer have any effect.</li>
 </ul>
 <p>For a detailed description of <strong>ddcutil</strong> changes and bug fixes, see <a href="release_notes/">Release Notes</a>.</p>
 <p>Prebuilt packages for several Linux distributions and mmachine architectures can be found in 
@@ -412,20 +412,17 @@ The source is hosted on <a href="http://www.github.com/rockowitz/ddcui">Github</
   </div>
 
   <div class="rst-versions" role="note" aria-label="versions">
-  <span class="rst-current-version" data-toggle="rst-current-version">
-    
-        <span>
-          <a href="https://github.com/rockowitz/ddcutil/" class="fa fa-github" style="color: #fcfcfc"> GitHub</a>
-        </span>
-    
-    
-    
-      <span><a href="commands/" style="color: #fcfcfc">Next &raquo;</a></span>
-    
-  </span>
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+          <a href="https://github.com/rockowitz/ddcutil/" class="fa fa-github" style="float: left; color: #fcfcfc"> GitHub</a>
+      
+      
+      
+        <span style="margin-left: 15px"><a href="commands/" style="color: #fcfcfc">Next &raquo;</a></span>
+      
+    </span>
 </div>
     <script>var base_url = '.';</script>
-    <script src="js/theme_extra.js" defer></script>
     <script src="js/theme.js" defer></script>
       <script src="search/main.js" defer></script>
     <script defer>
@@ -438,6 +435,6 @@ The source is hosted on <a href="http://www.github.com/rockowitz/ddcui">Github</
 </html>
 
 <!--
-MkDocs version : 1.2.3
-Build Date UTC : 2022-07-23 10:40:15.046255+00:00
+MkDocs version : 1.1.2
+Build Date UTC : 2022-07-23 19:31:21.877938+00:00
 -->
