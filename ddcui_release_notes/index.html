@@ -344,8 +344,8 @@
 <h4 id="general-user-interface-changes">General User Interface Changes</h4>
 <ul>
 <li>CTL-Q terminates <strong>ddcui</strong> (does not apply within dialog boxes)</li>
-<li>Errors opening /dev/i2c and /dev/usb/hiddev devices are reporting using a message box
-  instead of to the terminal. These errors are typically lack of permissions (Linux error EACCESS).</li>
+<li>Errors opening /dev/i2c and /dev/usb/hiddev devices are reported using a message box
+  instead of to the terminal. These errors typically  reflect lack of permissions (Linux error EACCESS).</li>
 <li>Optionally requiring the control key to be pressed when changing feature values now applies
   to all changes, not just those made using sliders. (The option is set using command line
   option <strong><em>--require-control-key</em></strong> or the UI Options dialog box.).</li>
@@ -355,7 +355,7 @@
 <ul>
 <li>For simple NC values, do not include the SH field in validation when changing a value.
   It has been observed that there exist monitors (e.g. Dell U4320) for which the high 
-  order byte of feature x60 (Input Source) can be non-zero.)</li>
+  order byte of feature x60 (Input Source) can be non-zero.</li>
 </ul>
 <h4 id="ebusy-errors">EBUSY Errors</h4>
 <ul>
