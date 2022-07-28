@@ -631,7 +631,9 @@
 in the manufacturer reserved range, puts the monitor into some difficult to recover state.
 A warning is issued at startup for those monitors.  Currently the only monitor in the warning list is 
 Xaomi model "Mi Monitor". </p>
+<p><a name="release_1.3.0_ebusy"></p>
 <h3 id="device-busy-ebusy-errors">Device Busy (EBUSY) Errors</h3>
+<p></a></p>
 <p>Driver i2c-dev provides both a low level ioctl() interface and a higher level read()/write() 
 interface for I2C communication.  <strong>ddcutil</strong> now uses the ioctl() interface (almost) exclusively. 
 This eliminates the possbility of EBUSY errors from driver i2c-dev, which occur only when the read()/write() interface

@@ -231,6 +231,22 @@
                     </li>
                     <li class="toctree-l1 current"><a class="reference internal current" href="./">ddcui Release Notes</a>
     <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#preliminary-notes-for-release-030">Preliminary Notes for Release 0.3.0</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#general-user-interface-changes">General User Interface Changes</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#feature-value-handling">Feature Value Handling</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#ebusy-errors">EBUSY Errors</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#release-022">Release 0.2.2</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#critical-bug-fix">Critical Bug Fix</a>
+    </li>
+        </ul>
+    </li>
     <li class="toctree-l2"><a class="reference internal" href="#release-021">Release 0.2.1</a>
         <ul>
     <li class="toctree-l3"><a class="reference internal" href="#handling-ebusy-errors">Handling EBUSY Errors</a>
@@ -323,6 +339,35 @@
             <div class="section">
               
                 <h2 id="ddcui-release-notes">ddcui Release Notes</h2>
+<h3 id="preliminary-notes-for-release-030">Preliminary Notes for Release 0.3.0</h3>
+<p>28 July 2022</p>
+<h4 id="general-user-interface-changes">General User Interface Changes</h4>
+<ul>
+<li>CTL-Q terminates <strong>ddcui</strong> (does not apply within dialog boxes)</li>
+<li>Errors opening /dev/i2c and /dev/usb/hiddev devices are reporting using a message box
+  instead of to the terminal. These errors are typically lack of permissions (Linux error EACCESS).</li>
+<li>Optionally requiring the control key to be pressed when changing feature values now applies
+  to all changes, not just those made using sliders. (The option is set using command line
+  option <strong><em>--require-control-key</em></strong> or the UI Options dialog box.).</li>
+<li>The tab key was not jumping to the OK and Cancel buttons in option dialogs.</li>
+</ul>
+<h4 id="feature-value-handling">Feature Value Handling</h4>
+<ul>
+<li>For simple NC values, do not include the SH field in validation when changing a value.
+  It has been observed that there exist monitors (e.g. Dell U4320) for which the high 
+  order byte of feature x60 (Input Source) can be non-zero.)</li>
+</ul>
+<h4 id="ebusy-errors">EBUSY Errors</h4>
+<ul>
+<li>As of <strong>libddcutil</strong> release 1.3.0, shared library libddcutil has been modified to avoid the code path in driver i2c-dev that can generate EBUSY errors.
+  Options <strong><em>--force-slave-address</em></strong> and <strong><em>--disable-force-slave-address</em></strong>, introduced in Release 0.2.1, are deprecated and no longer have any effect. 
+  For details see <a href="../release_notes/#release_1.3.0_ebusy">ddcutil 1.3.0 Release Notes</a> in the main <strong>ddcutil</strong> documentation.</li>
+</ul>
+<h3 id="release-022">Release 0.2.2</h3>
+<p>22 February 2022</p>
+<h4 id="critical-bug-fix">Critical Bug Fix</h4>
+<p>Fix an erroneous assert() statement that could cause a compilation failure or segfault in
+the handling of features X62 (Speaker Volume). </p>
 <h3 id="release-021">Release 0.2.1</h3>
 <p>02 February 2022</p>
 <h4 id="handling-ebusy-errors">Handling EBUSY Errors</h4>
