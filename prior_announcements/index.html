@@ -297,6 +297,22 @@
             <div class="section">
               
                 <h2 id="prior-announcements">Prior Announcements</h2>
+<p>02 February 2022</p>
+<p><strong>ddcui</strong> release 0.2.1 better handles DDC communication failures resulting from conflict with other programs.
+Like <strong>dddcutil</strong> 1.2.2, <strong>ddcui</strong> command line option <strong><em>-force-slave-address</em></strong> allows <strong>ddcui</strong> to override the other program's
+claim to the display.</p>
+<p>For a detailed description of <strong>ddcui</strong> changes and bug fixes in this release, see <a href="../ddcui_release_notes/">ddcui Release Notes</a>.</p>
+<p>28 January 2022</p>
+<p><strong>ddcutil</strong> release 1.2.2 contains one set of changes of interest to general users: </p>
+<ul>
+<li>Handling of DDC communication failures due to conflict with other programs is improved.
+In particular, conflict occurs when device driver ddcci is loaded. Among the changes:</li>
+<li>If <strong>ddcutil detect</strong> fails to communicate with a monitor and Linux errno EBUSY is reported, 
+  it reports the monitor as "Busy" instead of "Invalid" and suggests the use of option <strong><em>--force-slave-address</em></strong>. </li>
+<li>Messages regarding EBUSY errors are always written to the system log.</li>
+<li>API functions <strong>ddca_enable_force_slave_address()</strong> and <strong>ddca_is_force_slave_address_enabled()</strong> have been added.</li>
+</ul>
+<p>For a detailed description of <strong>ddcutil</strong> changes and bug fixes, see <a href="../release_notes/">Release Notes</a>.</p>
 <p>02 December 2021</p>
 <p><strong>ddcutil</strong> release 1.2.1 contains one change of interest to general users: </p>
 <ul>
