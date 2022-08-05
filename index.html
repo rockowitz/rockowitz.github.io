@@ -314,8 +314,8 @@ interface for I2C communication.  <strong>ddcutil</strong> now uses the ioctl() 
 This eliminates the possbility of EBUSY errors from driver i2c-dev, which occur only when the read()/write() interface is used.</li>
 <li>Better reporting of user configuration issues at startup.</li>
 <li>Commands <strong>getvcp</strong> and <strong>vcpinfo</strong> can now take multiple features as arguments, for example <strong>ddcutil getvcp 10 12</strong>.</li>
-<li>The sleep-suppression related options, <strong><em>--sleep-less</em></strong>, <strong><em>--less-sleep, </em></strong>--enable-sleep-suppression<strong><em>,
-  and </em></strong>--disable-sleep-suppression*** no longer have any effect.</li>
+<li>The sleep-suppression related options, <strong><em>--sleep-less</em></strong>, <strong><em>--less-sleep</em></strong>, <strong><em>--enable-sleep-suppression</em></strong>,
+  and <strong><em>--disable-sleep-suppression</em></strong> no longer have any effect.</li>
 </ul>
 <p>For a detailed description of <strong>ddcutil</strong> changes and bug fixes, see <a href="release_notes/">Release Notes</a>.</p>
 <p>Prebuilt packages for several Linux distributions and mmachine architectures can be found in 
@@ -443,5 +443,5 @@ The source is hosted on <a href="http://www.github.com/rockowitz/ddcui">Github</
 
 <!--
 MkDocs version : 1.1.2
-Build Date UTC : 2022-08-05 04:36:18.852248+00:00
+Build Date UTC : 2022-08-05 04:38:44.161686+00:00
 -->
