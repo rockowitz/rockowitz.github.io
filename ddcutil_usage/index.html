@@ -3,18 +3,18 @@
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="author" content="Sanford Rockowitz" /><link rel="canonical" href="https://www.ddcutil.com/bibliography/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="author" content="Sanford Rockowitz" /><link rel="canonical" href="https://www.ddcutil.com/ddcutil_usage/" />
       <link rel="shortcut icon" href="../img/favicon.ico" />
-    <title>References - ddcutil Documentation</title>
+    <title>ddcutil usage - ddcutil Documentation</title>
     <link rel="stylesheet" href="../css/theme.css" />
     <link rel="stylesheet" href="../css/theme_extra.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
     
       <script>
         // Current page data
-        var mkdocs_page_name = "References";
-        var mkdocs_page_input_path = "bibliography.md";
-        var mkdocs_page_url = "/bibliography/";
+        var mkdocs_page_name = "ddcutil usage";
+        var mkdocs_page_input_path = "ddcutil_usage.md";
+        var mkdocs_page_url = "/ddcutil_usage/";
       </script>
     
     <script src="../js/jquery-3.6.0.min.js" defer></script>
@@ -182,18 +182,14 @@
                   </li>
               </ul>
               <p class="caption"><span class="caption-text">Background</span></p>
-              <ul class="current">
+              <ul>
                   <li class="toctree-l1"><a class="reference internal" href="../mccs_background/">Monitor Control Command Set</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../ddc_vs_i2c/">DDC vs I2C</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../displayport/">DDC and DisplayPort</a>
                   </li>
-                  <li class="toctree-l1 current"><a class="reference internal current" href="./">References</a>
-    <ul class="current">
-    <li class="toctree-l2"><a class="reference internal" href="#i2c">I2C</a>
-    </li>
-    </ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../bibliography/">References</a>
                   </li>
               </ul>
               <p class="caption"><span class="caption-text">Additional Topics</span></p>
@@ -236,12 +232,18 @@
                   </li>
               </ul>
               <p class="caption"><span class="caption-text">Related Resources</span></p>
-              <ul>
+              <ul class="current">
                   <li class="toctree-l1"><a class="reference internal" href="../monitor_resources/">Monitor Specifications</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../windows_programs/">Windows Utilities for Monitor Control</a>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../ddcutil_usage/">ddcutil usage</a>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="./">ddcutil usage</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#apis">APIs</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#applications">Applications</a>
+    </li>
+    </ul>
                   </li>
               </ul>
               <ul>
@@ -262,9 +264,9 @@
         <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
   <ul class="wy-breadcrumbs">
     <li><a href=".." class="icon icon-home" alt="Docs"></a> &raquo;</li>
-          <li>Background &raquo;</li><li>References</li>
+          <li>Related Resources &raquo;</li><li>ddcutil usage</li>
     <li class="wy-breadcrumbs-aside">
-        <a href="https://github.com/rockowitz/ddcutil/edit/master/docs/bibliography.md"
+        <a href="https://github.com/rockowitz/ddcutil/edit/master/docs/ddcutil_usage.md"
           ></a>
     </li>
   </ul>
@@ -274,151 +276,21 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
             <div class="section" itemprop="articleBody">
               
-                <h2 id="reference-documents">Reference Documents</h2>
-<!--   WRONG
-.. index::
-  :single: bibliography
--->
-
-<p>Searching for DDC documentation can be confusing. The DDC protocol evolved, being part of Access Bus at one
-point, and shed various pieces, e.g. EDID, into separate specifications along the way.
-See the <a href="https://en.wikipedia.org/wiki/Display_Data_Channel">Wikipedia DDC page</a> for an overview of how it morphed. </p>
-<p>VESA Standards</p>
+                <h2 id="ddcutil-usage">ddcutil Usage</h2>
+<h3 id="apis">APIs</h3>
 <ul>
-<li>
-<p>VESA Display Data Channel Command Interface Standard, Version 1. August 14, 1998. This is a predecessor to the current standard, DDC/CI 1.1.  The contents of this document sometimes clarify the current specification, but should not be regarded as definitive.</p>
-</li>
-<li>
-<p><a href="https://vesa.org/vesa-standards/">VESA Access.bus Specificaions Version 3.0, September 1995</a>. Another predecessor specification.</p>
-</li>
-<li>
-<p><a href="https://vesa.org/vesa-standards/">VESA Display Data Channel Command Interface (DDC/CI) Standard Version 1.1, October 29, 2004</a> 
-  Also available <a href="https://milek7.pl/ddcbacklight/ddcci.pdf">here</a></p>
-</li>
-<li>
-<p>VESA Monitor Control Command Set (MCCS) Standard Version 1, September 11, 1998.</p>
-</li>
-<li>
-<p>VESA Monitor Control Command Set (MCCS) Standard Version 2, October 17, 2003</p>
-</li>
-<li>
-<p>VESA Monitor Control Command Set (MCCS) Standard Version 2.1, May 28, 2005 </p>
-</li>
-<li>
-<p>VESA Monitor Control Command Set (MCCS) Standard Version 3, July 27, 2006.  MCCS 3.0 proved too great a departure from Version 2.1 and did not gain acceptance.</p>
-</li>
-<li>
-<p><a href="https://vesa.org/vesa-standards/">VESA Monitor Control Command Set (MCCS) Update Document for MCCS Standard Version 3, March 20, 2007</a></p>
-</li>
-<li>
-<p>VESA Monitor Control Command Set (MCCS) Standard Version 2.2, January 19, 2009. MCCS 2.2 incorporated features from Version 3.0, but is upwardly compatible with 2.1</p>
-</li>
-<li>
-<p><a href="https://vesa.org/vesa-standards/">VESA Monitor Control Command Set (MCCS) Standard Version 2.2a, July 13, 2011</a>. The most recent standard.</p>
-</li>
-<li>
-<p><a href="https://vesa.org/vesa-standards/">VESA Enhanced Extended Display Identification Data Standard (E-EDID Standard), Relase A, Revision 1, February 9, 2000</a></p>
-</li>
-<li>
-<p><a href="https://vesa.org/vesa-standards/">VESA Enhanced Display Data Channel (EDDC) Standard, Version 1.2, December 26, 2007</a></p>
-</li>
-<li>
-<p><a href="https://vesa.org/vesa-standards/">VESA Enhanced Display Data Channel (E-DDC) Standard, Version 1.3, 11 September 2017</a></p>
-</li>
-<li>
-<p><a href="https://vesa.org/vesa-standards/">VESA DisplayID Standard, Version 2.0, 11 September 2017</a></p>
-</li>
-<li>
-<p><a href="https://vesa.org/vesa-standards/">DisplayID v2.0 Errata E6, Published 3/15/20</a></p>
-</li>
-<li>
-<p><a href="https://vesa.org/vesa-standards/standards-faq/">VESA Standards FAQ</a></p>
-</li>
+<li><a href="https://crates.io/keywords/ddcutil">Rust Crates</a></li>
 </ul>
-<p>USB Implementers Forum Standards</p>
+<h3 id="applications">Applications</h3>
 <ul>
-<li>
-<p><a href="https://usb.org/document-library/device-class-definition-hid-111">USB Device Class Definition for Human Interface Devices Version 1.11, June 27, 2001</a></p>
-</li>
-<li>
-<p><a href="https://usb.org/document-library/hid-usage-tables-112">USB HID Usage Table Version 1.12, October 28,2004</a></p>
-</li>
-<li>
-<p><a href="https://usb.org/document-library/hid-usage-tables-122">USB HID Usage Table Version 1.22, April 6,2021</a></p>
-</li>
-<li>
-<p><a href="https://usb.org/sites/default/files/usbmon10.pdf">USB Monitor Control Class Specification Revision 1.0, January 5, 1998</a>]</p>
-</li>
-</ul>
-<p>Many standards can be found <a href="https://glenwing.github.io/docs">here</a></p>
-<h3 id="i2c">I2C<a name="i2c"></a></h3>
-<p>As background, I2C is a low level, slow speed specification of a 2 wire protocol for sending and receiving bytes. DDC/CI is layered on top of that protocol, describing particular sequences of bytes that are communicated between a master device (the host computer) and a slave device (a monitor) at address x37 on an I2C bus. By analogy,
-DDC is as a subclass of superclass I2C, that is DDC obeys the
-rules of I2C, but is more specific.  For example, only certain byte sequences are legal. SMBUS is another protocol based on I2C.  </p>
-<p><strong><em>ddcutil</em></strong> reads from and writes to the userspace <strong>/dev-i2c</strong>* devices which present a file system like abstraction of an I2C bus.  It leaves
-the bit-banging to the video device drivers, e.g. amdgpu, nouveau. </p>
-<p>One source of confusion in DDC documentation is the specification of slave adddresses on the I2C bus.  Sometimes you'll see the DDC address documented as x37, other times as the pair x6e/x6f. Leaving aside the implementation of 10 bit I2C bus addresses (uncommon), I2C slave addresses are encoded in a single byte. The high order 7 bits are used for the address per se.  The low order bit is 0 for a write operation, 1 for a read operation. Much of the VESA documenation regards the entire 8 bit value as an address, which means address x37 becomes the pair x6e/x6f.  Similarly, the 7 bit address for the EDID is x50; regarded as an 8 bit address, the EDID address becomes xA0/xA1. <strong><em>ddcutil</em></strong> specifies I2C slave addresses in 7 bit form, as do utilities such as <strong><em>i2cdetect</em></strong>, <strong><em>i2cget</em></strong>, and <strong><em>i2cset</em></strong>.</p>
-<p>The following specifications and articles provide backgroud information about the I2C bus. </p>
-<ul>
-<li><a href="http://www.ti.com/lit/an/slva704/slva704.pdf">Understanding the I<sup>2</sup>C Bus, Texas Instruments Application Report, SLVA702, June 2015</a></li>
-<li><a href="https://luxielectronics.com/attachments/File/HDCP_and_EDID_Demystified.pdf">HDCP and EDID Demystified</a></li>
-<li><a href="https://www.pololu.com/file/0J435/UM10204.pdf">I2C-bus specification and user manual, Rev 6 - 4 April 2014</a></li>
-<li><a href="https://i2c.info">I<sup>2</sup>C Info -I<sup>2</sup>C Bus, Interface and Protocol</a></li>
-<li><a href="https://i2c.info/i2c-bus-specification">I<sup>2</sup>C Bus Specification</a></li>
-<li><a href="https://deepbluembedded.com/i2c-communication-protocol-tutorial-pic/">I2C Communication Protocol Tutorial</a></li>
-<li><a href="https://www.i2c-bus.org/">I2C - What's That?</a></li>
-<li><a href="https://www.i2c-bus.org/i2c-primer">I2C Primer</a></li>
-<li><a href="https://en.wikipedia.org/wiki/I2C">Wikipedia</a></li>
-<li><a href="https://www.totalphase.com/support/articles/200349176-7-bit-8-bit-and-10-bit-I2C-Slave-Addressing">7-bit, 8-bit, and 10-bit I2C Slave Addressing</a></li>
-<li><a href="https://electronics.stackexchange.com/questions/151413/how-to-display-i2c-address-in-hex">StackExchange thread on the confusion in I2C slave address representation</a></li>
-<li><a href="https://www.slideshare.net/shudhanshu29/i2c-protocol-94259889">I2C Protocol Lecture Notes, Sudhanshu Janwadkar</a></li>
-<li><a href="https://www.kernel.org/doc/html/latest/i2c/index.html#introduction">Linux kernel documentation</a></li>
-<li><a href="https://www.robot-electronics.co.uk/i2c-tutorial">Using the I2C Bus, Robot Electronics</a></li>
-<li><a href="http://ww1.microchip.com/downloads/en/AppNotes/an617.pdf">Definitions and Differences between I2C, Access.bus, and SMBUS</a>Nazir Azzam, SMSC, Hauppage, NY</li>
-<li><a href="https://www.nxp.com/docs/en/user-guide/UM10204.pdf">I2C-bus specification and user manual, Rev 6 - 4 April 2014</a> Paywalled</li>
-<li><a href="https://www.nxp.com/products/interfaces/ic-spi-i3c-interface-devices:MC_41735">I<sup>2</sup>C, SPI, I3C Interface Devices</a></li>
-</ul>
-<p>SMBus is a related standard.  The following report can help in understanding I2C. </p>
-<ul>
-<li><a href="https://www.ti.com/lit/an/slua475/slua475.pdf">SMBus Made Simple, Texas Instruments</a></li>
-</ul>
-<!--
-*** Cabling<a name=cabling"></a>
-
-Users sometimes encounter problems with I2C communication over DisplayPort. The following articles may be of help.
--->
-
-<p>Wikipedia has several high quality pages on related specifications:  They may be helpful when trying to figure out why DDC communication is not working: </p>
-<ul>
-<li><a href="https://en.wikipedia.org/wiki/DisplayPort#Dual-mode">DisplayPort</a></li>
-<li><a href="https://en.wikipedia.org/wiki/HDMI">HDMI</a></li>
-<li><a href="https://en.wikipedia.org/wiki/Thunderbolt_(interface)">Thunderbolt</a></li>
-<li><a href="https://en.wikipedia.org/wiki/USB-C">USB-C</a>. See in particular section <a href="https://en.wikipedia.org/wiki/USB-C#Hardware_support">Hardware Support</a> for a discussion of <strong><em>USB-C Alternate Mode</em></strong></li>
-</ul>
-<p>Documentation on DP &lt;-&gt; HDMI/DVI conversion:</p>
-<ul>
-<li><a href="https://www.dell.com/support/kbdoc/en-hn/000125170/hdmi-to-displayport-dp-conversion-information">Dell HDMI to DisplayPort Conversion Information</a></li>
-<li><a href="https://www.barco.com/en/news/displayport-to-hdmi-conversion-should-i-use-an-active-or-passive-adapter">Barco DisplayPort to HDMI Conversion: should I use an active or passive adapter</a></li>
-<li><a href="https://dancharblog.wordpress.com/2014/10/07/displayport-hdmi-dongles-active-vs-passive-re-visited/">DisplayPort-&gt;HDMI dongles/adapters - active vs passive revisited</a></li>
-<li><a href="https://blog.tripplite.com/whats-the-difference-between-passive-and-active-displayport-adapters">Tripp-Lite What's the Difference Between Passive and Active DisplayPort Adapters</a></li>
-</ul>
-<p>Linux I2C Documentation:</p>
-<ul>
-<li><a href="https://i2c.wiki.kernel.org/index.php/Main_Page">Linux I2C Subsystem</a> Not kept up</li>
-</ul>
-<p>Linux Video Driver Documentation:</p>
-<p>These links may have to be updated to the current kernel version.</p>
-<ul>
-<li><a href="https://www.kernel.org/doc/html/v4.20/gpu/index.html">Linux GPU Driver Developer's Guide</a></li>
-<li><a href="https://www.kernel.org/doc/html/v4.20/gpu/drivers.html">GPU Driver Documentation</a></li>
-<li><a href="https://www.kernel.org/doc/html/v4.20/gpu/amdgpu.html">amdgpu Module Parameters</a></li>
+<li><a href="www.github.com/digitaltrails/vdu_controls">VDU Controls</a></li>
 </ul>
               
             </div>
           </div><footer>
     <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
-        <a href="../displayport/" class="btn btn-neutral float-left" title="DDC and DisplayPort"><span class="icon icon-circle-arrow-left"></span> Previous</a>
-        <a href="../articles/" class="btn btn-neutral float-right" title="Articles about ddcutil">Next <span class="icon icon-circle-arrow-right"></span></a>
+        <a href="../windows_programs/" class="btn btn-neutral float-left" title="Windows Utilities for Monitor Control"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../technotes/" class="btn btn-neutral float-right" title="Technical Notes">Next <span class="icon icon-circle-arrow-right"></span></a>
     </div>
 
   <hr/>
@@ -445,10 +317,10 @@ Users sometimes encounter problems with I2C communication over DisplayPort. The 
         </span>
     
     
-      <span><a href="../displayport/" style="color: #fcfcfc">&laquo; Previous</a></span>
+      <span><a href="../windows_programs/" style="color: #fcfcfc">&laquo; Previous</a></span>
     
     
-      <span><a href="../articles/" style="color: #fcfcfc">Next &raquo;</a></span>
+      <span><a href="../technotes/" style="color: #fcfcfc">Next &raquo;</a></span>
     
   </span>
 </div>
