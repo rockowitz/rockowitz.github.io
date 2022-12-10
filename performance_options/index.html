@@ -315,26 +315,26 @@ future releases. </p>
 For details, see <a href="../command_setvcp/#setup_noverify">setvcp command</a>.</p>
 <h3 id="option-maxtries">Option: <strong><em>--maxtries</em></strong><a name="option_maxtries"></a></h3>
 <p><strong>I2C</strong> is an inherently unreliable protocol, requiring retry management.  </p>
-<p>There are 3 kinds of exchanges in which retry is possible: </p>
+<p>There are 3 kinds of operations in which retry is possible: </p>
 <ul>
-<li>write-only exchange.  Bytes are written with no subsequent read.<br />
+<li>Write-only operation.  A request packet is written to the monitor with no subsequent read.<br />
   Used only to set a VCP feature value, and to execute command <strong>scs</strong> (Save Current Settings).</li>
-<li>write-read exchange.  A write to the monitor, followed by a read.<br />
-  Most DDC protocol exchanges are of this form.</li>
-<li>multi-part exchange.  This is a "meta" exchange, consisting of multiple 
-  write-read exchanges. Used to query monitor capabilities, and for 
+<li>Write-read operation.  A request packet is written to the monitor, followed by a packet read.<br />
+  Most DDC protocol operations are of this form.</li>
+<li>Multi-part operation.  This is a "meta" operation, consisting of multiple 
+  write-read or write-only operations. Used to query monitor capabilities, and for 
   querying and setting Table type VCP features. </li>
 </ul>
-<p>By default, the maximum number of tries for each exchange typo is:</p>
+<p>By default, the maximum number of tries for each operation type is:</p>
 <ul>
-<li>write-only exchange:    4</li>
-<li>write-read exchange:   10</li>
-<li>multi-part exchange:    8</li>
+<li>write-only operation:    4</li>
+<li>write-read operation:   10</li>
+<li>multi-part operation:    8</li>
 </ul>
 <p>Option <strong><em>--maxtries</em></strong> adjusts the maximum try counts.  Its argument
 consists of 3 comma-separated values.  The following example sets the maximum 
-try counts to 3 for write-only exchanges, 6 for write-read exchanges, and 9 
-for multi-part exchanges.</p>
+try counts to 3 for write-only operations, 6 for write-read operations, and 9 
+for multi-part operations.</p>
 <pre><code>--maxtries(3,6,9) 
 </code></pre>
 <p>A value of "0" or "." leaves the corresponding try count unchanged.   The following 
