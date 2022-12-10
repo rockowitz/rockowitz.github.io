@@ -319,8 +319,8 @@ For details, see <a href="../command_setvcp/#setup_noverify">setvcp command</a>.
 <ul>
 <li>Write-only operation.  A request packet is written to the monitor with no subsequent read.<br />
   Used only to set a VCP feature value, and to execute command <strong>scs</strong> (Save Current Settings).</li>
-<li>Write-read operation.  A request packet is written to the monitor, followed by a packet read.<br />
-  Most DDC protocol operations are of this form.</li>
+<li>Write-read operation.  A request packet is written to the monitor, followed by a reading a response packet.
+  Most DDC protocol operations are of this type.</li>
 <li>Multi-part operation.  This is a "meta" operation, consisting of multiple 
   write-read or write-only operations. Used to query monitor capabilities, and for 
   querying and setting Table type VCP features. </li>
