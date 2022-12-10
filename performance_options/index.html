@@ -318,14 +318,14 @@ For details, see <a href="../command_setvcp/#setup_noverify">setvcp command</a>.
 <p>There are 3 kinds of exchanges in which retry is possible: </p>
 <ul>
 <li>write-only exchange.  Bytes are written with no subsequent read.<br />
-  Used only to set a VCP feature value.  </li>
+  Used only to set a VCP feature value, and to execute command <strong>scs</strong> (Save Current Settings).</li>
 <li>write-read exchange.  A write to the monitor, followed by a read.<br />
   Most DDC protocol exchanges are of this form.</li>
-<li>multi-part exchange.  This is a "meta" exchange, consisting multiple 
+<li>multi-part exchange.  This is a "meta" exchange, consisting of multiple 
   write-read exchanges. Used to query monitor capabilities, and for 
   querying and setting Table type VCP features. </li>
 </ul>
-<p>By default, the maximum number of tries for each exchange is:</p>
+<p>By default, the maximum number of tries for each exchange typo is:</p>
 <ul>
 <li>write-only exchange:    4</li>
 <li>write-read exchange:   10</li>
@@ -337,9 +337,9 @@ try counts to 3 for write-only exchanges, 6 for write-read exchanges, and 9
 for multi-part exchanges.</p>
 <pre><code>--maxtries(3,6,9) 
 </code></pre>
-<p>A blank value leaves the corresponding try count unchanged.   The following 
+<p>A value of "0" or "." leaves the corresponding try count unchanged.   The following 
 example changes only the maximum write-read try count:</p>
-<pre><code>--maxtries(,7,) 
+<pre><code>--maxtries(0,7,.) 
 </code></pre>
 <p>The higest value to which a maximum try count can be set, is 15.</p>
 <h3 id="options-enable-capabilities-cache-disable-capabilities-cache">Options <strong><em>--enable-capabilities-cache</em></strong>, <strong><em>--disable-capabilities-cache</em></strong><a name="option_enable_capabilities_cache"></a><a name="option_disable_capabilities_cache"></a></h3>
