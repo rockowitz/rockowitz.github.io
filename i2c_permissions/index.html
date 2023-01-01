@@ -280,7 +280,7 @@
 <p><strong>ddcutil</strong> requires read/write access to /dev/i2c devices, or more precisely all /dev/i2c devices associated with video cards. It can, of course, be run as root.</p>
 <p>(For USB devices, see <a href="../usb_permissions/">USB Device Permissions</a>).</p>
 <h3 id="granting-i2c-device-permissions-on-debian-ubuntu-etc">Granting I2C Device Permissions on Debian, Ubuntu, etc.</h3>
-<p>On Debian, Ubuntu, and likely other Debian derived distributions, most of the work has alrady been done.
+<p>On Debian, Ubuntu, and likely other Debian derived distributions, most of the work has already been done.
 Package ddcutil requires package i2c-tools. Installation of package i2c-tools creates group <strong><em>i2c</em></strong> (if it does not alreay exist), and assigns that group to the
 /dev/i2c devices using a udev rule. </p>
 <p>All that is necessary is to add users who will use <strong>ddcutil</strong> to group <strong><em>i2c</em></strong>: </p>
