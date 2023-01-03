@@ -636,26 +636,26 @@
 <p>Release 1.3.0 simplified coding by exclusively using the ioctl() interface in driver i2c-dev as opposed to the write()/read() file io interface.
 This had the additional benefit of making option <strong><em>--force-slave-address</em></strong> irrelevant.
 Unfortunately, this change exposed an error in how the proprietary Nvidia driver is coded.  Because of this error, all reads and writes using ioctl() fail.</p>
-<p>Therefore, the ability to use the write()/read() intead of ioctl() for writing and reading has been restored. By default, the file io interface is used for the nvidia driver.  The ioctl interface is used for all other drivers.  The initial IO mechanism used can be forced by new options <strong><em>--use-file-io</em></strong> and <strong><em>--use-ioctl-io</em></strong>. Note that these options are really only for testing purposes.  <strong>ddcutil</strong> will revert to using the file io interface when an error is detected using the ioctl interface, and there should be no benefit to using the file io interface with other than the nvidia driver.
+<p>Therefore, the ability to use the write()/read() intead of ioctl() for writing and reading has been restored. By default, the file io interface is used for the nvidia driver.  The ioctl interface is used for all other drivers.  The initial IO mechanism used can be forced by new options <strong><em>--use-file-io</em></strong> and <strong><em>--use-ioctl-io</em></strong>, but these options are really only for testing purposes.  <strong>ddcutil</strong> will revert to using the file io interface when an error is detected using the ioctl interface, and there should be no benefit to using the file io interface with other than the nvidia driver.
 Note, however, that when using the file io interface, option <strong><em>--force-slave-address</em></strong> is once again relevant for handling EBUSY errors.</p>
 <h3 id="i2c-device-permissions-simplified">I2C Device Permissions Simplified</h3>
 <p>Until now, the recommended way give-non root users access to the I2C devices is as outlined on the existing <a href="http://www.ddcutil.com/i2c_permissions/">I2C Device Permissions</a> page. In short, all /dev/i2c devices are assigned to group i2c, and have read/write access to those devices. This happens automatically in ddcutil packages for Debian and derived distributions such as Ubuntu, because package ddcutil depends on package i2c-tools. All that remains is for ddcutil users to be added to group i2c.</p>
-<p>Branch 1.4.0-dev simplifies permissions by adding a udev rule that uses the uaccess tag to give the logged on user read/write access to all /dev/i2c devices associated with video adapters. 
+<p>Release 1.4.0 simplifies permissions by adding a udev rule that uses the uaccess tag to give the logged on user read/write access to all /dev/i2c devices associated with video adapters. 
 (See <a href="https://github.com/rockowitz/ddcutil/issues/275">issue 275</a>). 
 Installing package ddcutil installs file /usr/lib/udev/rules.d/60-ddcutil.rules (or /usr/local/lib/udev/rules.d/60-ddcutil.rules). 
 If building from source without actually installing ddcutil, you can copy file data/usr/lib/udev/rules.d/60-ddcutil.rules to directory /etc/udev/rules.d.</p>
 <h3 id="building-ddcutil">Building ddcutil</h3>
 <ul>
 <li>New configure options: <strong><em>--enable-syslog/--disable-syslog</em></strong> control whether messages are 
-written to the system log.  This can pose problems if executing in a container.  The default is 
+written to the system log, which can pose problems if executing in a container.  The default is 
 <strong><em>--enable-syslog</em></strong>.</li>
-<li>configure.ac: Only invoke deprecated macro AC_PROG_CC_99 if autoconf version &lt; 2.70</li>
 <li>Compiler option <strong><em>-WError</em></strong> is only used when building a development version of ddcutil, e.g. 1.4.0-dev. 
 If <strong><em>-WError</em></strong> is specified, compilation can fail on a system other than the development system, 
 having different compiler warnings enabled.</li>
+<li>configure.ac: Only invoke deprecated macro AC_PROG_CC_99 if autoconf version &lt; 2.70</li>
 </ul>
 <h3 id="suppress-sleeps">Suppress sleeps</h3>
-<p>Option <strong><em>--sleep-multiplier</em></strong> and API functions <strong>ddca_set_default_sleep_multiplier_value()</strong> and <strong>ddca_set_sleep_multplier_value()</strong> now accept 0 as an argument, which disables sleeps.  This is intended for calling programs what wish to control sleep time themselves.</p>
+<p>Option <strong><em>--sleep-multiplier</em></strong> and API functions <strong>ddca_set_default_sleep_multiplier_value()</strong> and <strong>ddca_set_sleep_multplier_value()</strong> now accept 0 as an argument, which disables sleeps.  This is intended for calling programs that wish to control sleep time themselves.</p>
 <h3 id="multiple-monitors-having-the-same-edid">Multiple monitors having the same EDID</h3>
 <p>It is rare, but possible, to have multiple monitors with identical EDIDs. For example, the ASUS PG329Q has neither a character or a binay serial number in its EDID, and a user had a pair of monitors built in the same week, so the EDIDs were identical. </p>
 <ul>
