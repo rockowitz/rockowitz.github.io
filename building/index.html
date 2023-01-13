@@ -310,7 +310,7 @@
               
                 <h2 id="building-from-source">Building From Source</h2>
 <h3 id="building-from-tarball">Building from tarball</h3>
-<p><strong>ddcutil</strong> can be built from its <a href="../tarballs/ddcutil-1.3.2.tar.gz">tarball</a> in the usual way.
+<p><strong>ddcutil</strong> can be built from its <a href="../tarballs/ddcutil-1.4.0.tar.gz">tarball</a> in the usual way.
 Unpack the tar file, change to its directory, and issue the commands: </p>
 <pre><code># ./configure
 # make
@@ -363,6 +363,11 @@ The publicly supported options are:</p>
 <td>yes</td>
 <td>Controls whether udev is used.</td>
 </tr>
+<tr>
+<td><strong><em>--enable-syslog</em></strong></td>
+<td>yes</td>
+<td>Controls whether messaes are written to the system log (Default is --enable-syslog.)</td>
+</tr>
 </tbody>
 </table>
 <p>Notes:<br />
@@ -408,6 +413,9 @@ is not found but it seems to be installed, it's likely that the associated devel
 <ul>
 <li>pkg-config</li>
 </ul>
+<p>Wnen <strong>make install</strong> is used, files are normally written to subdirectories of /usr/local.  Some distributions include these
+subdirectories in the relevant paths, others do not.  In particular, it may be necessary to copy source file
+/data/usr/lib/udev/rules.d/60-ddcutil.rules to directory /etc/udev/rules.d. </p>
 <h3 id="building-from-git">Building from git</h3>
 <p>The git repository for <strong>ddcutil</strong> is <a href="http://www.github.com/rockowitz/ddcutil">here</a></p>
 <ul>

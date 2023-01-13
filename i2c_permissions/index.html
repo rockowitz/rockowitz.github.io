@@ -147,9 +147,7 @@
                     </li>
                     <li class="toctree-l1 current"><a class="reference internal current" href="./">I2C Device Permissions</a>
     <ul class="current">
-    <li class="toctree-l2"><a class="reference internal" href="#granting-i2c-device-permissions-on-debian-ubuntu-etc">Granting I2C Device Permissions on Debian, Ubuntu, etc.</a>
-    </li>
-    <li class="toctree-l2"><a class="reference internal" href="#granting-i2c-device-permissions-general-case">Granting I2C Device Permissions, General Case</a>
+    <li class="toctree-l2"><a class="reference internal" href="#granting-i2c-device-permissions-on-versions-prior-to-140">Granting I2C Device Permissions on versions prior to 1.4.0</a>
     </li>
     </ul>
                     </li>
@@ -299,14 +297,15 @@
                 <h2 id="i2c-device-permissions">I2C Device Permissions<a name="i2c_permissions"></a></h2>
 <p><strong>ddcutil</strong> requires read/write access to /dev/i2c devices, or more precisely all /dev/i2c devices associated with video cards. It can, of course, be run as root.</p>
 <p>(For USB devices, see <a href="../usb_permissions/">USB Device Permissions</a>).</p>
-<h3 id="granting-i2c-device-permissions-on-debian-ubuntu-etc">Granting I2C Device Permissions on Debian, Ubuntu, etc.</h3>
+<p>As of release 1.4.0, <strong>ddcutil</strong> installs udev rule 60-ddcutil.rules that grants read/write access to the logged on user.</p>
+<h3 id="granting-i2c-device-permissions-on-versions-prior-to-140">Granting I2C Device Permissions on versions prior to 1.4.0</h3>
 <p>On Debian, Ubuntu, and likely other Debian derived distributions, most of the work has already been done.
 Package ddcutil requires package i2c-tools. Installation of package i2c-tools creates group <strong><em>i2c</em></strong> (if it does not alreay exist), and assigns that group to the
 /dev/i2c devices using a udev rule. </p>
 <p>All that is necessary is to add users who will use <strong>ddcutil</strong> to group <strong><em>i2c</em></strong>: </p>
 <pre><code>$ sudo usermod &lt;user-name&gt; -aG i2c
 </code></pre>
-<h3 id="granting-i2c-device-permissions-general-case">Granting I2C Device Permissions, General Case</h3>
+<p>On other than Debian derived distributions, additional steps may be necessary. </p>
 <p>If group <strong><em>i2c</em></strong> does not already exist, the following command will create it: </p>
 <pre><code>$ sudo groupadd --system i2c
 </code></pre>

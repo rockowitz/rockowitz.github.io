@@ -300,46 +300,22 @@
               
                 <h1 id="ddcutil-and-ddcui">ddcutil and ddcui</h1>
 <h2 id="announcements">Announcements</h2>
-<p>27 September 2022</p>
-<p>Depending on how it was built, the proprietary nvidia driver can be incompatible with <strong>ddcutil</strong> 1.3.0 and 1.3.2.
-The effect is that no monitors are detected. Users encountering this problem should revert to using release 1.2.2, 
-or can use the latest development branch on github.  For details, see this github <a href="https://github.com/rockowitz/ddcutil/issues/282">issue</a>.
-Thank you to github user <a href="https://github.com/KeyofBlueS">KeyOfBlueS</a> for extensive and expert help in reporting and diagnosing this problem.</p>
-<p>04 September 2022</p>
-<p><strong>ddcutil</strong> release 1.3.2 modifies tarball creation to eliminate garbage and otherwise unneeded files.
-Users of release 1.3.0 need not upgrade.</p>
-<p>05 August 2022</p>
-<p><strong>ddcui</strong> release 0.3.0 contains the following changes of interest to general users;</p>
+<p>13 January 2023</p>
+<p><strong>ddcutil</strong> release 1.4.0 contains the following changes of general interest:</p>
 <ul>
-<li>CTL-Q terminates <strong>ddcui</strong> (does not apply within dialog boxes)</li>
-<li>Errors opening /dev/i2c and /dev/usb/hiddev devices are reported using a message box
-  instead of being written to the terminal. These errors typically  reflect lack of permissions (Linux error EACCESS).</li>
-<li>Optionally requiring the control key to be pressed when changing feature values now applies
-  to all changes, not just those made using sliders. (The option is set using command line
-  option <strong><em>--require-control-key</em></strong> or the UI Options dialog box.).</li>
-<li>Options <strong><em>--force-slave-address</em></strong> and <strong><em>--disable-force-slave-address</em></strong>, introduced in Release 0.2.1, are deprecated and no longer have any effect.</li>
-</ul>
-<p>For a detailed description of <strong>ddcui</strong> changes and bug fixes in this release, see <a href="ddcui_release_notes/">ddcui Release Notes</a>.</p>
-<p>Prebuilt packages for several Linux distributions and mmachine architectures can be found in 
-the <a href="install/">ususal locations</a>.</p>
-<p>Prior announcements can be found <a href="prior_announcements/">here</a>.</p>
-<p>23 July 2022</p>
-<p><strong>ddcutil</strong> release 1.3.0 contains the following changes of interest to general users: </p>
-<ul>
-<li>Option <strong><em>--force-slave-address</em></strong> no longer has any effect.
-Driver i2c-dev provides both a low level ioctl() interface and a higher level read()/write() 
-interface for I2C communication.  <strong>ddcutil</strong> now uses the ioctl() interface (almost) exclusively. 
-This eliminates the possbility of EBUSY errors from driver i2c-dev, which occur only when the read()/write() interface is used.</li>
-<li>Better reporting of user configuration issues at startup.</li>
-<li>Commands <strong>getvcp</strong> and <strong>vcpinfo</strong> can now take multiple features as arguments, for example <strong>ddcutil getvcp 10 12</strong>.</li>
-<li>The sleep-suppression related options, <strong><em>--sleep-less</em></strong>, <strong><em>--less-sleep</em></strong>, <strong><em>--enable-sleep-suppression</em></strong>,
-  and <strong><em>--disable-sleep-suppression</em></strong> no longer have any effect.</li>
+<li><strong>ddcutil</strong> installation now installs a udev rule that gives the logged on user read/write access to I2C 
+  devices associated with video monitors. Use of group <strong>i2c</strong> for granting permission to non-root users is,
+  in general, no longer needed.</li>
+<li>Use of driver i2c-dev's file io interface (read()/write()), removed in telease 1.3.0, has been restored. 
+  When i2c-dev's ioctl() interface is used the the Nvidia proprietary driver, and depending on how the 
+  driver was built, it is possible for display detection to fail. The read()/write() interface is now used for the 
+  Nvidia driver, and in this case option <strong><em>--force-slave-address</em></strong> may be needed to handle EBUSY errors.
+  For all other video drivers, the ioctl() interface ise used and <strong><em>--force-slave-address</em></strong> has no effect.</li>
 </ul>
 <p>For a detailed description of <strong>ddcutil</strong> changes and bug fixes, see <a href="release_notes/">Release Notes</a>.</p>
 <p>Prebuilt packages for several Linux distributions and mmachine architectures can be found in 
 the <a href="install/">ususal locations</a>.</p>
-<p>14 June 2022</p>
-<p><strong>ddcui</strong> 0.2.1 (along with <strong>ddcutil</strong> 1.2.2) is now available in the Debain Testing distribution (Bookworm). </p>
+<p>Prior announcements can be found <a href="prior_announcements/">here</a>.</p>
 <h2 id="introduction">Introduction</h2>
 <p><strong>ddcutil</strong> is a Linux program for managing monitor settings, such as brightness, color levels, and input source.
 Generally speaking, any setting that can be changed by pressing buttons on the monitor can be modified by <strong>ddcutil</strong>.</p>
@@ -465,5 +441,5 @@ The source is hosted on <a href="http://www.github.com/rockowitz/ddcui">Github</
 
 <!--
 MkDocs version : 1.2.3
-Build Date UTC : 2023-01-13 05:49:29.684581+00:00
+Build Date UTC : 2023-01-13 14:03:15.951744+00:00
 -->
