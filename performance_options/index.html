@@ -107,8 +107,6 @@
     <ul class="current">
     <li class="toctree-l3"><a class="reference internal" href="#option-sleep-multiplier">Option: --sleep-multiplier</a>
     </li>
-    <li class="toctree-l3"><a class="reference internal" href="#option-less-sleep-sleep-less">Option: --less-sleep, --sleep-less</a>
-    </li>
     <li class="toctree-l3"><a class="reference internal" href="#option-async">Option: --async</a>
         <ul>
     <li class="toctree-l4"><a class="reference internal" href="#option-noverify">Option: --noverify</a>
@@ -327,10 +325,6 @@ For example,  </p>
 <p>causes 40 ms waits to beome 160 ms. </p>
 <p>Note that <strong><em>ddcutil</em></strong> may automatically increase wait times when peforming retries.  Option <strong><em>--sleep-multiplier</em></strong> applies to the inital wait time.</p>
 <p>Option <strong><em>--sleep-multiplier</em></strong> can significantly speed up <strong>ddcutil</strong> execution - some monitors have been seen to operate properly with a sleep-multiplier as low as .1, </p>
-<h3 id="option-less-sleep-sleep-less">Option: <strong><em>--less-sleep</em></strong>, <strong><em>--sleep-less</em></strong></h3>
-<p>Do not perform some mandated delays between I2C reads and the next I2C operation.  This markedly improves
-elapsed execution time, at the cost of addional operation retries. This option may become the default in 
-future releases. </p>
 <h3 id="option-async">Option: <strong><em>--async</em></strong></h3>
 <p>Enable parallel inspection if 3 or more monitors.  See <a href="../command_detect/#option_async">detect command</a>.</p>
 <h4 id="option-noverify">Option: <strong><em>--noverify</em></strong><a name="setvcp_noverify"></a></h4>

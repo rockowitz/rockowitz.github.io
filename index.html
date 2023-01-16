@@ -300,6 +300,10 @@
               
                 <h1 id="ddcutil-and-ddcui">ddcutil and ddcui</h1>
 <h2 id="announcements">Announcements</h2>
+<p>17 January 2023</p>
+<p><strong>ddcutil</strong> release 1.4.1 fixes a critical bug in release 1.4.0.  The default sleep-multiplier value was 0 instead of 1.  As a result,
+commands that did not have an explcit <strong><em>--sleep-multiplier</em></strong> option would fail.  All users of release 1.4.0 should upgrade.
+Thank you to github users copysiper (Oleg Tsvetkov) and fionnb for their help in quickly identifying and resolving this bug.</p>
 <p>13 January 2023</p>
 <p><strong>ddcutil</strong> release 1.4.0 contains the following changes of general interest:</p>
 <ul>
@@ -441,5 +445,5 @@ The source is hosted on <a href="http://www.github.com/rockowitz/ddcui">Github</
 
 <!--
 MkDocs version : 1.2.3
-Build Date UTC : 2023-01-13 14:03:15.951744+00:00
+Build Date UTC : 2023-01-16 21:02:12.380002+00:00
 -->

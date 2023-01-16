@@ -221,7 +221,9 @@
                     </li>
                     <li class="toctree-l1 current"><a class="reference internal current" href="./">Release Notes</a>
     <ul class="current">
-    <li class="toctree-l2"><a class="reference internal" href="#preliminary-notes-for-upcoming-release-140">Preliminary Notes for Upcoming Release 1.4.0</a>
+    <li class="toctree-l2"><a class="reference internal" href="#141">1.4.1</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#140">1.4.0</a>
     </li>
     <li class="toctree-l2"><a class="reference internal" href="#nvidia-proprietary-driver-workaround">Nvidia Proprietary Driver Workaround</a>
     </li>
@@ -652,8 +654,13 @@
               
                 <h2 id="release-notes">Release Notes</h2>
 <p>For <strong>ddcui</strong> release notes, see <a href="../ddcui_release_notes/"><strong>ddcui</strong> Release Notes</a>.</p>
-<h3 id="preliminary-notes-for-upcoming-release-140">Preliminary Notes for Upcoming Release 1.4.0</h3>
-<p>These notes apply to github branch 1.4.0-dev. </p>
+<h3 id="141">1.4.1</h3>
+<p>16 January 2023</p>
+<p>Release 1.4.1 fixes a critical bug in release 1.4.0 affecting both command line program <strong>ddcutil</strong> and shared library <strong>libddcutil</strong>.<br />
+The default sleep-multiplier value was 0 instead of 1.  As a result,
+commands that did not have an explcit <strong><em>--sleep-multiplier</em></strong> option would fail.  All users of relese 1.4.0 should upgrade.</p>
+<h3 id="140">1.4.0</h3>
+<p>13 January 2023</p>
 <h3 id="nvidia-proprietary-driver-workaround">Nvidia Proprietary Driver Workaround</h3>
 <p>Release 1.3.0 simplified coding by exclusively using the ioctl() interface in driver i2c-dev as opposed to the write()/read() file io interface.
 This had the additional benefit of making option <strong><em>--force-slave-address</em></strong> irrelevant.
