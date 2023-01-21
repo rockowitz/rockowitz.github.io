@@ -176,7 +176,13 @@
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../c_api_100/">C API Changes for Release 1.0.0</a>
                   </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../c_api_110/">C API Changes for Release 1.1.0</a>
+                  </li>
                   <li class="toctree-l1"><a class="reference internal" href="../c_api_120/">C API Changes for Release 1.2.0</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../c_api_130/">C API Changes for Release 1.3.0</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../c_api_140/">C API Changes for Release 1.4.0</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../python_api/">Python API Overview</a>
                   </li>
@@ -645,7 +651,7 @@ Thank you to github users copysiper (Oleg Tsvetkov) and fionnb for their help in
 <h3 id="nvidia-proprietary-driver-workaround">Nvidia Proprietary Driver Workaround</h3>
 <p>Release 1.3.0 simplified coding by exclusively using the ioctl() interface in driver i2c-dev as opposed to the write()/read() file io interface.
 This had the additional benefit of making option <strong><em>--force-slave-address</em></strong> irrelevant.
-Unfortunately, this change exposed an error in how the proprietary Nvidia driver is coded.  Because of this error, all reads and writes using ioctl() fail.</p>
+Unfortunately, this change exposed an error in how the proprietary Nvidia driver is coded.  Because of this error, depending on the version of header file i2c.h used when the driver is built, all reads and writes using ioctl() fail.</p>
 <p>Therefore, the ability to use the write()/read() intead of ioctl() for writing and reading has been restored. By default, the file io interface is used for the nvidia driver.  The ioctl interface is used for all other drivers.  The initial IO mechanism used can be forced by new options <strong><em>--use-file-io</em></strong> and <strong><em>--use-ioctl-io</em></strong>, but these options are really only for testing purposes.  <strong>ddcutil</strong> will revert to using the file io interface when an error is detected using the ioctl interface, and there should be no benefit to using the file io interface with other than the nvidia driver.
 Note, however, that when using the file io interface, option <strong><em>--force-slave-address</em></strong> is once again relevant for handling EBUSY errors.</p>
 <h3 id="i2c-device-permissions-simplified">I2C Device Permissions Simplified</h3>

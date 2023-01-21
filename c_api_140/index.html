@@ -3,18 +3,18 @@
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="author" content="Sanford Rockowitz" /><link rel="canonical" href="https://www.ddcutil.com/python_api/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="author" content="Sanford Rockowitz" /><link rel="canonical" href="https://www.ddcutil.com/c_api_140/" />
       <link rel="shortcut icon" href="../img/favicon.ico" />
-    <title>Python API Overview - ddcutil Documentation</title>
+    <title>C API Changes for Release 1.4.0 - ddcutil Documentation</title>
     <link rel="stylesheet" href="../css/theme.css" />
     <link rel="stylesheet" href="../css/theme_extra.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
     
       <script>
         // Current page data
-        var mkdocs_page_name = "Python API Overview";
-        var mkdocs_page_input_path = "python_api.md";
-        var mkdocs_page_url = "/python_api/";
+        var mkdocs_page_name = "C API Changes for Release 1.4.0";
+        var mkdocs_page_input_path = "c_api_140.md";
+        var mkdocs_page_url = "/c_api_140/";
       </script>
     
     <script src="../js/jquery-3.6.0.min.js" defer></script>
@@ -182,15 +182,19 @@
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../c_api_130/">C API Changes for Release 1.3.0</a>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../c_api_140/">C API Changes for Release 1.4.0</a>
-                  </li>
-                  <li class="toctree-l1 current"><a class="reference internal current" href="./">Python API Overview</a>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="./">C API Changes for Release 1.4.0</a>
     <ul class="current">
-    <li class="toctree-l2"><a class="reference internal" href="#swig-api">SWIG API</a>
+    <li class="toctree-l2"><a class="reference internal" href="#overview">Overview</a>
     </li>
-    <li class="toctree-l2"><a class="reference internal" href="#gobject-api">GObject API</a>
+    <li class="toctree-l2"><a class="reference internal" href="#api-changes">API changes</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#miscellaneous">Miscellaneous</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#build-changes">Build changes</a>
     </li>
     </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../python_api/">Python API Overview</a>
                   </li>
               </ul>
               <p class="caption"><span class="caption-text">Background</span></p>
@@ -270,9 +274,9 @@
         <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
   <ul class="wy-breadcrumbs">
     <li><a href=".." class="icon icon-home" alt="Docs"></a> &raquo;</li>
-          <li>API &raquo;</li><li>Python API Overview</li>
+          <li>API &raquo;</li><li>C API Changes for Release 1.4.0</li>
     <li class="wy-breadcrumbs-aside">
-        <a href="https://github.com/rockowitz/ddcutil/edit/master/docs/python_api.md"
+        <a href="https://github.com/rockowitz/ddcutil/edit/master/docs/c_api_140.md"
           ></a>
     </li>
   </ul>
@@ -282,33 +286,70 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
             <div class="section" itemprop="articleBody">
               
-                <h2 id="python-api">Python API</h2>
-<p>Proof of concept implementations exist using GObject introspection, SWIG, Cython, and CFFI.  However, work
-on a Python API has been suspended.  The following are old comments on the implementations. </p>
-<h3 id="swig-api">SWIG API</h3>
-<p>Symbol names begin with "ddcs_" or "DDCS_" (for <strong>DDC</strong>util <strong>S</strong>wig).</p>
-<p>Generated files:<br />
-- _ddc_swig.so<br />
-- ddc_swig.py </p>
-<p>Normally installed to ${pkgexecdir}/dist-packages   ?? </p>
-<p>Issue: 
-Depending on $(prefix) value, <strong>make install</strong> will install these files to ... 
-If installed to /usr/local... python will not mormally  see these files.  Directory ... must be added to the Python path. 
-This can be done in one several ways: <br />
-- Modify PYTHONPATH globally.    See generatd fragment src/swig/...<br />
-- Modify PYTHONPATH for a single Python invocation.   See generated script src/swig/...<br />
-- Modify PTYHONPATH within a Python script.  See commented out lines in sample script src/swig/test_swig.py </p>
-<p>For a fuller discussion on modifying  PYTHONPATH, see <a href="http://ask.xmodulo.com/change-syspath-pythonpath-python.html">http://ask.xmodulo.com/change-syspath-pythonpath-python.html</a>.</p>
-<h3 id="gobject-api">GObject API</h3>
-<p>A vestigial proof of concept for implementing scripting language support using <strong>GObject</strong> instrospection remains in 
-subidrectory src/gobject_api, pending removal from the source tree.  Building this code is controlled by configuration options 
-<strong>--enable-gobject-api</strong> and <strong>--enable-introspection</strong>.  These options should be left disabled.</p>
+                <h2 id="shared-library-changes-for-releases-140">Shared Library Changes for Releases 1.4.0</h2>
+<h3 id="overview">Overview</h3>
+<p>This release contains a handful of changes, none of which affect backward compatibility. 
+Consequently, the <strong><em>libddcutil</em></strong> SONAME is remains libddcutil.so.4.
+The full shared library names is libddcutil.so.4.3.0. 
+In conformance with Debian practice, the package name is <strong><em>libddcutil4</em></strong>.</p>
+<h3 id="api-changes">API changes</h3>
+<table>
+<thead>
+<tr>
+<th>Changed Function</th>
+<th>Comments</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ddca_set_sleep_multiplier()</td>
+<td>&nbsp;allow 0 as valid value, return -1 for invalid value</td>
+</tr>
+<tr>
+<td>ddca_set_default_sleep_multiplier()</td>
+<td>&nbsp;same</td>
+</tr>
+<tr>
+<td>ddca_enable_force_slave_address()</td>
+<td>&nbsp;Re-enabled</td>
+</tr>
+<tr>
+<td>ddca_is_force_slave_address_enabled()</td>
+<td>&nbsp;Re-enabled</td>
+</tr>
+</tbody>
+</table>
+<p><br>
+Notes: </p>
+<ul>
+<li>The use of 0 as a sleep-multiplier value is very unlikely to work.
+  It is permitted to allow for some unexpected API use.</li>
+<li>ddca_enable_force_slave_address() affects only use of the i2c-dev 
+  write()/read() interface.</li>
+</ul>
+<p><br></p>
+<h3 id="miscellaneous">Miscellaneous</h3>
+<ul>
+<li>Write additional error and trace messages to system log</li>
+<li>Whether any messages are written to the system log is controlled by 
+  <strong>configure</strong> options <strong><em>--enable-syslog</em></strong>, <strong><em>--disable-syslog</em></strong>. 
+  (The default is <strong><em>--enable-syslog</em></strong>.)</li>
+</ul>
+<h3 id="build-changes">Build changes</h3>
+<ul>
+<li>Only use compiler option -Werror for non-production releases, 
+  i.e. when the version extension field is non-blank, e.g. "dev".
+  If -Werror is specified, compilation can fail on a system other
+  than the development system with a different set of warnings enabled.</li>
+<li>New configure option --enable-syslog/--disable-syslog controls whether messages are written to the system log. 
+  The default is --enable-syslog.</li>
+</ul>
               
             </div>
           </div><footer>
     <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
-        <a href="../c_api_140/" class="btn btn-neutral float-left" title="C API Changes for Release 1.4.0"><span class="icon icon-circle-arrow-left"></span> Previous</a>
-        <a href="../mccs_background/" class="btn btn-neutral float-right" title="Monitor Control Command Set">Next <span class="icon icon-circle-arrow-right"></span></a>
+        <a href="../c_api_130/" class="btn btn-neutral float-left" title="C API Changes for Release 1.3.0"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../python_api/" class="btn btn-neutral float-right" title="Python API Overview">Next <span class="icon icon-circle-arrow-right"></span></a>
     </div>
 
   <hr/>
@@ -335,10 +376,10 @@ subidrectory src/gobject_api, pending removal from the source tree.  Building th
         </span>
     
     
-      <span><a href="../c_api_140/" style="color: #fcfcfc">&laquo; Previous</a></span>
+      <span><a href="../c_api_130/" style="color: #fcfcfc">&laquo; Previous</a></span>
     
     
-      <span><a href="../mccs_background/" style="color: #fcfcfc">Next &raquo;</a></span>
+      <span><a href="../python_api/" style="color: #fcfcfc">Next &raquo;</a></span>
     
   </span>
 </div>
