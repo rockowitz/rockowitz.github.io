@@ -288,6 +288,7 @@
 <h3 id="overview">Overview</h3>
 <p>This release contains a handful of changes, but none affect backward compatibility. 
 Consequently, the <strong><em>libddcutil</em></strong> SONAME (libddcutil.so.4) is unchanged.
+The full library name is libddcuti.so.4.3.0
 In conformance with Debian practice, the package name is <strong><em>libddcutil4</em></strong>.</p>
 <h3 id="api-changes">API changes</h3>
 <table>
@@ -299,23 +300,31 @@ In conformance with Debian practice, the package name is <strong><em>libddcutil4
 </thead>
 <tbody>
 <tr>
-<td>ddca_enable_sleep_suppression   :&nbsp;a no-op</td>
-<td></td>
+<td>ddca_enable_sleep_suppression</td>
+<td>&nbsp;now a no-op, returns false</td>
 </tr>
 <tr>
 <td>ddca_is_sleep_suppression_enabled</td>
-<td>&nbsp;always returns true</td>
+<td>&nbsp;always returns false</td>
+</tr>
+<tr>
+<td>ddca_force_slave_address</td>
+<td>&nbsp;now a non-op, returns false</td>
+</tr>
+<tr>
+<td>ddca_is_force_slave_address_enabled</td>
+<td>&nbsp;always returns false</td>
 </tr>
 </tbody>
 </table>
-<p>ddca_force_slave_address()       |&nbsp;now a non-op       <br />
-ddca_is_force_slave_address_enabled()|&nbsp;always returns ?  </p>
 <p><br>
 Notes:</p>
 <ul>
-<li>Function <strong>ddca_enable_sleep_suppression()</strong> only affected eliminating sleeps in certain particular 
-  situations in which the DDC/CI specification is ambiguous and the use of sleeps proven unnecessary. </li>
-<li>Function <strong>ddca_force_slave_address()</strong> has meaning only when using the i2c-dev write()/read() interface.</li>
+<li>Function <strong>ddca_enable_sleep_suppression()</strong> only eliminated sleeps in certain particular 
+  situations where the DDC/CI specification is ambiguous.  The use of sleeps in these cases has proven unnecessary. </li>
+<li>Function <strong>ddca_force_slave_address()</strong> had meaning only when using the i2c-dev write()/read() interface.
+  <strong>libddcutil</strong> now uses the ioctl() interface exclusively.  (But note that use of the write()/read() interface
+  was renabled in release 1.4.0.)</li>
 </ul>
 <table>
 <thead>
@@ -327,20 +336,14 @@ Notes:</p>
 <tbody>
 <tr>
 <td>report_active_display</td>
-<td>reports DRM connector, conflicting drivers</td>
+<td>&nbsp;reports DRM connector, conflicting drivers</td>
 </tr>
 </tbody>
 </table>
 <p><br></p>
 <h3 id="miscellaneous-libddcutil-changes">Miscellaneous <strong>libddcutil</strong> changes</h3>
 <ul>
-<li>
-<p>library initialization recognizes environment variable DDCUTIL_DEBUG_LIBINIT</p>
-</li>
-<li>
-<p>file configure.ac:</p>
-</li>
-<li>Required glib version bumped to 2.40</li>
+<li>library initialization recognizes environment variable DDCUTIL_DEBUG_LIBINIT</li>
 </ul>
               
             </div>

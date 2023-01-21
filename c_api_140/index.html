@@ -315,21 +315,15 @@ In conformance with Debian practice, the package name is <strong><em>libddcutil4
 <td>ddca_is_force_slave_address_enabled()</td>
 <td>&nbsp;Re-enabled</td>
 </tr>
-<tr>
-<td><br></td>
-<td></td>
-</tr>
-<tr>
-<td>Notes:</td>
-<td></td>
-</tr>
 </tbody>
 </table>
+<p><br>
+Notes: </p>
 <ul>
 <li>The use of 0 as a sleep-multiplier value is very unlikely to work.
   It is permitted to allow for some unexpected API use.</li>
-<li>ddca_enable_force_slave_address() affects only use of the i2c-dev 
-  write()/read() interface.
+<li>ddca_enable_force_slave_address() affects only the i2c-dev 
+  write()/read() interface, not the ioctl() interface.
 <br></li>
 </ul>
 <h3 id="miscellaneous">Miscellaneous</h3>
