@@ -300,19 +300,19 @@ In conformance with Debian practice, the package name is <strong><em>libddcutil4
 </thead>
 <tbody>
 <tr>
-<td>ddca_set_sleep_multiplier()</td>
-<td>&nbsp;allow 0 as valid value, return -1 for invalid value</td>
+<td>ddca_set_sleep_multiplier</td>
+<td>&nbsp;allow 0 as valid value, return -1.0 for invalid value</td>
 </tr>
 <tr>
-<td>ddca_set_default_sleep_multiplier()</td>
-<td>&nbsp;same</td>
+<td>ddca_set_default_sleep_multiplier</td>
+<td>&nbsp;allow 0 as valid value, return -1.0 for invalid value</td>
 </tr>
 <tr>
-<td>ddca_enable_force_slave_address()</td>
+<td>ddca_enable_force_slave_address</td>
 <td>&nbsp;Re-enabled</td>
 </tr>
 <tr>
-<td>ddca_is_force_slave_address_enabled()</td>
+<td>ddca_is_force_slave_address_enabled</td>
 <td>&nbsp;Re-enabled</td>
 </tr>
 </tbody>
@@ -320,16 +320,16 @@ In conformance with Debian practice, the package name is <strong><em>libddcutil4
 <p><br>
 Notes: </p>
 <ul>
+<li>ddca_enable_force_slave_address() affects only the i2c-dev 
+  write()/read() interface, not the ioctl() interface.</li>
 <li>The use of 0 as a sleep-multiplier value is very unlikely to work.
   It is permitted to allow for some unexpected API use.</li>
-<li>ddca_enable_force_slave_address() affects only the i2c-dev 
-  write()/read() interface, not the ioctl() interface.
-<br></li>
 </ul>
+<p><br></p>
 <h3 id="miscellaneous">Miscellaneous</h3>
 <ul>
 <li>Write additional error and trace messages to system log
-  (Whether any messages are acutally written to the system log is controlled by 
+  (Whether any messages are actually written to the system log is controlled by 
   <strong>configure</strong> options <strong><em>--enable-syslog</em></strong>, <strong><em>--disable-syslog</em></strong>. 
   (The default is <strong><em>--enable-syslog</em></strong>.)</li>
 </ul>

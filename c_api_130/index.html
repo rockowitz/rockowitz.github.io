@@ -186,7 +186,7 @@
     </li>
     <li class="toctree-l2"><a class="reference internal" href="#api-changes">API changes</a>
     </li>
-    <li class="toctree-l2"><a class="reference internal" href="#miscellaneous-libddcutil-changes">Miscellaneous libddcutil changes</a>
+    <li class="toctree-l2"><a class="reference internal" href="#miscellaneous-changes">Miscellaneous Changes</a>
     </li>
     </ul>
                   </li>
@@ -286,7 +286,7 @@
               
                 <h2 id="shared-library-changes-for-release-130">Shared Library Changes for Release 1.3.0</h2>
 <h3 id="overview">Overview</h3>
-<p>This release contains a handful of changes, but none affect backward compatibility. 
+<p>This release contains a handful of changes, none of which affect backward compatibility. 
 Consequently, the <strong><em>libddcutil</em></strong> SONAME (libddcutil.so.4) is unchanged.
 The full library name is libddcuti.so.4.3.0
 In conformance with Debian practice, the package name is <strong><em>libddcutil4</em></strong>.</p>
@@ -335,13 +335,15 @@ Notes:</p>
 </thead>
 <tbody>
 <tr>
-<td>report_active_display</td>
-<td>&nbsp;reports DRM connector, conflicting drivers</td>
+<td>ddca_report_active_displays</td>
+<td>&nbsp;show additional information</td>
 </tr>
 </tbody>
 </table>
-<p><br></p>
-<h3 id="miscellaneous-libddcutil-changes">Miscellaneous <strong>libddcutil</strong> changes</h3>
+<p>Notes:
+ddca_report_active_displays() shows additional information about DRM connection, conflicting drivers.
+<br></p>
+<h3 id="miscellaneous-changes">Miscellaneous Changes</h3>
 <ul>
 <li>library initialization recognizes environment variable DDCUTIL_DEBUG_LIBINIT</li>
 </ul>

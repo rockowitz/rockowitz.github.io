@@ -292,6 +292,7 @@
 <h3 id="overview">Overview</h3>
 <p>This release contains a handful of changes, which affect backward compatibility. 
 Consequently, the <strong><em>libddcutil</em></strong> SONAME is now libddcutil.so.4. 
+The shared library name is <strong>libddcutil.4.3.0</strong>.
 In conformance with Debian practice, the package name is <strong><em>libddcutil4</em></strong>.</p>
 <h4 id="libddcutil-trace-file"><strong>libddcutil</strong> trace file</h4>
 <p><strong>libddcutil</strong> can redirect all output that it would normally be sent to the terminal to a trace file instead. 
@@ -302,10 +303,24 @@ definition of XDG_STATE_HOME in the XDG specification.  Typically this is $HOME/
 This allows for tracing in 
 situations where there is no terminal to which to write, e.g. PowerDevil in KDE Plasma.</p>
 <h3 id="api-changes">API changes</h3>
-<p>Structs and Enums             |
-------------------------------|----------------
-enum DDCA_OUTPUT_LEVEL        | add value DDCA_OL_VV
-type DDCA_TRACE_OPTIONS       | add value DDCA_TRCOPT_WALLTIME (release 1.2.1)</p>
+<table>
+<thead>
+<tr>
+<th>Structs and Enums</th>
+<th>Comments</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>enum DDCA_OUTPUT_LEVEL</td>
+<td>&nbsp;add value DDCA_OL_VV</td>
+</tr>
+<tr>
+<td>type DDCA_TRACE_OPTIONS</td>
+<td>&nbsp;add value DDCA_TRCOPT_WALLTIME (release 1.2.1)</td>
+</tr>
+</tbody>
+</table>
 <table>
 <thead>
 <tr>
@@ -340,7 +355,7 @@ type DDCA_TRACE_OPTIONS       | add value DDCA_TRCOPT_WALLTIME (release 1.2.1)</
 Notes: </p>
 <ul>
 <li>The existing API function <strong><em>ddca_set_trace_groups()</em></strong> replaces the existing set of trace groups,
-whereas <strong><em>ddca_add_trace_groups()</em></strong> adds to the current set.</li>
+whereas new API function <strong><em>ddca_add_trace_groups()</em></strong> adds to the current set.</li>
 <li>Calling <strong><em>ddca_get_display_refs()</em></strong> followed by 
 <strong><em>ddcau_get_display_info()</em></strong> calls for each display is preferred over <strong><em>ddca_get_display_info_list2()</em></strong>.
 Experience has shown that it leads to cleaner client code.</li>
@@ -359,34 +374,14 @@ Experience has shown that it leads to cleaner client code.</li>
 </tr>
 </tbody>
 </table>
-<p>Removed Function           |
---------------------------|-------------------------
-ddca_enabled_force_slave_address() |    from api_base.c<br />
-ddca_is_force_slave_enabled() | </p>
 <p><br></p>
-<table>
-<thead>
-<tr>
-<th>New Macro</th>
-<th>Comments</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>DDCUTIL_VSUFFIX</td>
-<td>&nbsp;version suffix (may be "")</td>
-</tr>
-</tbody>
-</table>
+<p>New Macro       | Comments 
+----------------|-------------------|
+DDCUTIL_VSUFFIX |&nbsp;version suffix (may be "") </p>
 <p><br></p>
 <h3 id="miscellaneous-libddcutil-changes">Miscellaneous <strong>libddcutil</strong> changes</h3>
 <ul>
-<li>
-<p>The shared library name is now libddcutil.so.4.1.0 </p>
-</li>
-<li>
-<p>Additional checks are performed on <strong>DDCA_Display_Ref</strong> and <strong>DDCA_Display_Handle</strong> function arguments.  </p>
-</li>
+<li>Additional checks are performed on <strong>DDCA_Display_Ref</strong> and <strong>DDCA_Display_Handle</strong> function arguments.  </li>
 <li><strong><em>assert{}</em></strong> statements are used in <strong>libddcutil</strong> for situations that 
 should be logically impossible.  To aid in remote problem diagnosis, many of these statements have been 
 replaced by macro TRACE_ASSERT(), which additionally writes a messsage
