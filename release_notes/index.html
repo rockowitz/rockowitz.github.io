@@ -162,6 +162,8 @@
               <ul>
                   <li class="toctree-l1"><a class="reference internal" href="../api_main/">C API</a>
                   </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../libddcutil_release_notes/">Shared Library Release Notes</a>
+                  </li>
                   <li class="toctree-l1"><a class="reference internal" href="../c_api_90/">C API Changes for Release 0.9.0</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../c_api_93/">C API Changes for Release 0.9.3</a>
@@ -275,6 +277,8 @@
     </li>
     <li class="toctree-l2"><a class="reference internal" href="#fixes">Fixes</a>
     </li>
+    <li class="toctree-l2"><a class="reference internal" href="#libddcutil-changes_1">libddcutil Changes</a>
+    </li>
     <li class="toctree-l2"><a class="reference internal" href="#121">1.2.1</a>
     </li>
     <li class="toctree-l2"><a class="reference internal" href="#option-settings">Option -settings</a>
@@ -289,7 +293,7 @@
     </li>
     <li class="toctree-l2"><a class="reference internal" href="#environment-command">environment command</a>
         <ul>
-    <li class="toctree-l3"><a class="reference internal" href="#libddcutil-changes_1">libddcutil Changes</a>
+    <li class="toctree-l3"><a class="reference internal" href="#libddcutil-changes_2">libddcutil Changes</a>
     </li>
         </ul>
     </li>
@@ -666,6 +670,7 @@ Thank you to github user digitaltrails (Michael Hamilton) for suggesting this ch
 <li><strong>ddca_set_default_sleep_multiplier_value()</strong>, <strong>ddca_set_sleep_multiplier_value()</strong>: Accept 0 as a valid argument.</li>
 <li><strong>ddca_enable_force_slave_address()</strong>.  This function was made a NO-OP in release 1.3.0.  It is once again has effect. </li>
 </ul>
+<p>For details on <strong>libddcutil</strong> changes, see <a href="../c_api_140/">Shared Library Changes for Release 1.4.0</a>.</p>
 <h3 id="building-ddcutil">Building ddcutil</h3>
 <ul>
 <li>New configure options: <strong><em>--enable-syslog/--disable-syslog</em></strong> control whether messages are 
@@ -778,6 +783,7 @@ In principle, EBUSY errors are still possible from within individual video drive
 </ul>
 </li>
 </ul>
+<p>For details on <strong>libddcutil</strong> changes, see <a href="../c_api_130/">Shared Library Changes for Release 1.3.0</a>.</p>
 <h3 id="122">1.2.2</h3>
 <p>28 January 2022</p>
 <h3 id="device-busy-ebusy-errors_1">Device Busy (EBUSY) Errors</h3>
@@ -815,6 +821,8 @@ that watches for display changes.
 <ul>
 <li>Only write messages to the system log regarding <strong>ddcutil</strong> starting and termination if option <strong><em>--syslog</em></strong> is specified.</li>
 </ul>
+<h3 id="libddcutil-changes_1"><strong>libddcutil</strong> Changes</h3>
+<p>For details on <strong>libddcutil</strong> changes on releases 1.2.0/1.2.1/1.2.2, see <a href="../c_api_120/">Shared Library Changes for Release 1.2.0</a>.</p>
 <h3 id="121">1.2.1</h3>
 <p>02 December 2021</p>
 <h3 id="option-settings">Option <strong><em>-settings</em></strong></h3>
@@ -858,7 +866,7 @@ for an addiional EDID check</li>
 <li><strong>ddcutil environment --verbose</strong> now includes all the information of <strong>ddcutil detect --verbose</strong>.
   There is no need to submit the latter along with the former in issue reports.</li>
 </ul>
-<h4 id="libddcutil-changes_1"><strong>libddcutil</strong> Changes</h4>
+<h4 id="libddcutil-changes_2"><strong>libddcutil</strong> Changes</h4>
 <p>See <a href="../c_api_120/">Shared Library Changes for Release 1.2.0</a></p>
 <h3 id="110">1.1.0</h3>
 <p>05 April 2021</p>

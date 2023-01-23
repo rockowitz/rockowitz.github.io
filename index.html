@@ -174,6 +174,8 @@
               <ul>
                   <li class="toctree-l1"><a class="reference internal" href="api_main/">C API</a>
                   </li>
+                  <li class="toctree-l1"><a class="reference internal" href="libddcutil_release_notes/">Shared Library Release Notes</a>
+                  </li>
                   <li class="toctree-l1"><a class="reference internal" href="c_api_90/">C API Changes for Release 0.9.0</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="c_api_93/">C API Changes for Release 0.9.3</a>
@@ -299,7 +301,7 @@ Thanks to github users copysiper (Oleg Tsvetkov) and fionnb for their help in qu
 <li><strong>ddcutil</strong> installation now installs a udev rule that gives the logged on user read/write access to I2C 
   devices associated with video monitors. Use of group <strong>i2c</strong> for granting permission to non-root users is,
   in general, no longer needed.</li>
-<li>Use of driver i2c-dev's file io interface (read()/write()), removed in telease 1.3.0, has been restored. 
+<li>Use of driver i2c-dev's file io interface (read()/write()), removed in release 1.3.0, has been restored. 
   When i2c-dev's ioctl() interface is used the the Nvidia proprietary driver, and depending on how the 
   driver was built, it is possible for display detection to fail. The read()/write() interface is now used for the 
   Nvidia driver, and in this case option <strong><em>--force-slave-address</em></strong> may be needed to handle EBUSY errors.
@@ -427,5 +429,5 @@ The source is hosted on <a href="http://www.github.com/rockowitz/ddcui">Github</
 
 <!--
 MkDocs version : 1.3.0
-Build Date UTC : 2023-01-22 17:49:56.873641+00:00
+Build Date UTC : 2023-01-23 04:20:53.802606+00:00
 -->

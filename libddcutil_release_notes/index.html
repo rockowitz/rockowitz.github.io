@@ -3,18 +3,18 @@
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="author" content="Sanford Rockowitz" /><link rel="canonical" href="https://www.ddcutil.com/config_file/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="author" content="Sanford Rockowitz" /><link rel="canonical" href="https://www.ddcutil.com/libddcutil_release_notes/" />
       <link rel="shortcut icon" href="../img/favicon.ico" />
-    <title>Configuration File - ddcutil Documentation</title>
+    <title>Shared Library Release Notes - ddcutil Documentation</title>
     <link rel="stylesheet" href="../css/theme.css" />
     <link rel="stylesheet" href="../css/theme_extra.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
     
       <script>
         // Current page data
-        var mkdocs_page_name = "Configuration File";
-        var mkdocs_page_input_path = "config_file.md";
-        var mkdocs_page_url = "/config_file/";
+        var mkdocs_page_name = "Shared Library Release Notes";
+        var mkdocs_page_input_path = "libddcutil_release_notes.md";
+        var mkdocs_page_url = "/libddcutil_release_notes/";
       </script>
     
     <script src="../js/jquery-3.6.0.min.js" defer></script>
@@ -113,7 +113,7 @@
                   </li>
               </ul>
               <p class="caption"><span class="caption-text">Specific Facilities</span></p>
-              <ul class="current">
+              <ul>
                   <li class="toctree-l1"><a class="reference internal" href="../table_features/">Table Type Features</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../usb/">USB Connected Monitors</a>
@@ -122,9 +122,7 @@
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../udf/">User Defined Features</a>
                   </li>
-                  <li class="toctree-l1 current"><a class="reference internal current" href="./">Configuration File</a>
-    <ul class="current">
-    </ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../config_file/">Configuration File</a>
                   </li>
               </ul>
               <p class="caption"><span class="caption-text">Installation and Configuration</span></p>
@@ -161,10 +159,12 @@
                   </li>
               </ul>
               <p class="caption"><span class="caption-text">API</span></p>
-              <ul>
+              <ul class="current">
                   <li class="toctree-l1"><a class="reference internal" href="../api_main/">C API</a>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../libddcutil_release_notes/">Shared Library Release Notes</a>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="./">Shared Library Release Notes</a>
+    <ul class="current">
+    </ul>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../c_api_90/">C API Changes for Release 0.9.0</a>
                   </li>
@@ -268,9 +268,9 @@
         <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
   <ul class="wy-breadcrumbs">
     <li><a href=".." class="icon icon-home" alt="Docs"></a> &raquo;</li>
-          <li>Specific Facilities &raquo;</li><li>Configuration File</li>
+          <li>API &raquo;</li><li>Shared Library Release Notes</li>
     <li class="wy-breadcrumbs-aside">
-        <a href="https://github.com/rockowitz/ddcutil/edit/master/docs/config_file.md"
+        <a href="https://github.com/rockowitz/ddcutil/edit/master/docs/libddcutil_release_notes.md"
           ></a>
     </li>
   </ul>
@@ -280,70 +280,24 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
             <div class="section" itemprop="articleBody">
               
-                <h2 id="configuration-file">Configuration File<a name="permissions_file"></a></h2>
-<p>Most <strong>ddcutil</strong> command line options, other than those for display or feature selection,
-can be specified in a configuration file.  Options can also be specified for <strong>libddcutil</strong> 
-and <strong>ddcui</strong>.</p>
-<p><strong>ddcutil</strong> first looks for file <strong>ddcutil/ddcutilrc</strong> in the XDG_CONFIG_HOME directory, 
-and then on the XDG_CONFIG_DIRS search path.  Normally this will be 
-$HOME/.config/ddcutil/ddcutilrc</p>
-<p><strong><em>ddcutilrc</em></strong> is a standard style INI file,
-It has the following sections: </p>
-<table>
-<thead>
-<tr>
-<th>Section name</th>
-<th>Purpose</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>[global]</td>
-<td>&nbsp; Always apply</td>
-</tr>
-<tr>
-<td>[ddcutil]</td>
-<td>&nbsp; Applies to command <strong>ddcutil</strong></td>
-</tr>
-<tr>
-<td>[ddcui]</td>
-<td>&nbsp; Applies to command <strong>ddcui</strong></td>
-</tr>
-<tr>
-<td>[libddcutil]</td>
-<td>&nbsp; Used to configure shared library <strong>libddcutil</strong></td>
-</tr>
-</tbody>
-</table>
-<p><br></p>
-<p>Within each section, key <strong><em>options</em></strong> specifies an option string. </p>
-<p>Command options for monitor or feature selection cannot be specified.</p>
-<p>For <strong>ddcutil</strong> and <strong>ddcui</strong>, the options string obtained from the 
-configuration file is used to prefix the command line options. </p>
-<p>For <strong>libddcutil</strong>, the option string is read directly when the shared 
-library is initialized. </p>
-<p>For example: </p>
-<pre><code># This is a comment line
-
-[global]
-; Combined with all other options strings
-options : --edid-read-size 256
-
-[ddcutil]
-   * This is a comment too
-   options : --sleep-multiplier .5 --maxtries &quot;3,5,3&quot;
-
-[libddcutil]
-   ; And this is a comment.  Leading spaces in a line are ignored
-   options: --noverify
-</code></pre>
-<p>Section names and keys are case insensitive</p>
+                <h1 id="shared-library-release-notes">Shared Library Release Notes</h1>
+<p>For detailed release notes for shared library <strong>libddcutil</strong>, including API changes, see:
+- <a href="../c_api_90/">C API Changes for Release 0.9.0</a><br />
+- <a href="../c_api_93/">C API Changes for Release 0.9.3</a><br />
+- <a href="../c_api_95/">C API Changes for Release 0.9.5</a> <br />
+- <a href="../c_api_98/">C API Changes for Release 0.9.8</a> 
+- <a href="../c_api_99/">C API Changes for Release 0.9.9</a>
+- <a href="../c_api_100/">C API Changes for Release 1.0.0</a>
+- <a href="../c_api_110/">C API Changes for Release 1.1.0</a>
+- <a href="../c_api_120/">C API Changes for Release 1.2.0</a>
+- <a href="../c_api_130/">C API Changes for Release 1.3.0</a>
+- <a href="../c_api_140/">C API Changes for Release 1.4.0</a></p>
               
             </div>
           </div><footer>
     <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
-        <a href="../udf/" class="btn btn-neutral float-left" title="User Defined Features"><span class="icon icon-circle-arrow-left"></span> Previous</a>
-        <a href="../install_config_main/" class="btn btn-neutral float-right" title="Installation and Configuration">Next <span class="icon icon-circle-arrow-right"></span></a>
+        <a href="../api_main/" class="btn btn-neutral float-left" title="C API"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../c_api_90/" class="btn btn-neutral float-right" title="C API Changes for Release 0.9.0">Next <span class="icon icon-circle-arrow-right"></span></a>
     </div>
 
   <hr/>
@@ -370,10 +324,10 @@ options : --edid-read-size 256
         </span>
     
     
-      <span><a href="../udf/" style="color: #fcfcfc">&laquo; Previous</a></span>
+      <span><a href="../api_main/" style="color: #fcfcfc">&laquo; Previous</a></span>
     
     
-      <span><a href="../install_config_main/" style="color: #fcfcfc">Next &raquo;</a></span>
+      <span><a href="../c_api_90/" style="color: #fcfcfc">Next &raquo;</a></span>
     
   </span>
 </div>
