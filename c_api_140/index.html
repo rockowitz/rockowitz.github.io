@@ -322,7 +322,7 @@ In conformance with Debian practice, the package name is <strong><em>libddcutil4
 <p><br>
 Notes: </p>
 <ul>
-<li>ddca_enable_force_slave_address() affects only the i2c-dev 
+<li><strong>ddca_enable_force_slave_address()</strong> affects only the i2c-dev 
   write()/read() interface, not the ioctl() interface.</li>
 <li>The use of 0 as a sleep-multiplier value is very unlikely to work.
   It is permitted to allow for some unexpected API use.</li>
@@ -330,10 +330,10 @@ Notes: </p>
 <p><br></p>
 <h3 id="miscellaneous">Miscellaneous</h3>
 <ul>
-<li>Write additional error and trace messages to system log
+<li>Write additional error and trace messages to system log.
   (Whether any messages are actually written to the system log is controlled by 
   <strong>configure</strong> options <strong><em>--enable-syslog</em></strong>, <strong><em>--disable-syslog</em></strong>. 
-  (The default is <strong><em>--enable-syslog</em></strong>.)</li>
+  The default is <strong><em>--enable-syslog</em></strong>.)</li>
 </ul>
               
             </div>
