@@ -178,7 +178,7 @@
     </li>
     <li class="toctree-l2"><a class="reference internal" href="#api-changes">API Changes</a>
     </li>
-    <li class="toctree-l2"><a class="reference internal" href="#libddcutil-developmment-package">libddcutil Developmment Package</a>
+    <li class="toctree-l2"><a class="reference internal" href="#libddcutil-development-package">libddcutil Development Package</a>
     </li>
     </ul>
                   </li>
@@ -300,22 +300,23 @@ In conformance with Debian practice, the package name is now <strong><em>libddcu
 <tbody>
 <tr>
 <td>enum DDCA_Trace_Group</td>
-<td>added value DDCA_TRC_SLEEP to trace sleep operations</td>
+<td>&nbsp; added value DDCA_TRC_SLEEP to trace sleep operations</td>
 </tr>
 <tr>
 <td>enum DDCA_Trace_Options</td>
-<td>added DDCA_TRCOPT_TIMESTAMP: trace messages should show timestamps</td>
+<td>&nbsp; added DDCA_TRCOPT_TIMESTAMP: trace messages should show timestamps</td>
 </tr>
 <tr>
 <td>enum DDCA_Trace_Options</td>
-<td>added DDCA_TRCOPT_THREAD_ID  trace messages should show thread id</td>
+<td>&nbsp; added DDCA_TRCOPT_THREAD_ID  trace messages should show thread id</td>
 </tr>
 <tr>
 <td>struct DDCA_Feature_Metadata</td>
-<td>added field vcp_version</td>
+<td>&nbsp; added field vcp_version</td>
 </tr>
 </tbody>
 </table>
+<p><br></p>
 <p>Note: The change to struct <strong>DDCA_Feature_Metadata</strong> is not backward ABI compatible, resulting in the 
 SONAME bump.</p>
 <table>
@@ -328,24 +329,24 @@ SONAME bump.</p>
 <tbody>
 <tr>
 <td>ddca_get_global_sleep_multiplier()</td>
-<td>set sleep multiplication factor</td>
+<td>&nbsp; set sleep multiplication factor</td>
 </tr>
 <tr>
 <td>ddca_set_glolbal_sleep_multiplier()</td>
-<td>get sleep multiplication factor</td>
+<td>&nbsp; get sleep multiplication factor</td>
 </tr>
 <tr>
 <td>ddca_set_trace_options()</td>
-<td>set trace message options</td>
+<td>&nbsp; set trace message options</td>
 </tr>
 <tr>
 <td>ddca_dbgrpt_feature_metadata()</td>
-<td>convenience function for clients</td>
+<td>&nbsp; convenience function for clients</td>
 </tr>
 </tbody>
 </table>
 <p><br></p>
-<h4 id="libddcutil-developmment-package"><strong>libddcutil</strong> Developmment Package</h4>
+<h4 id="libddcutil-development-package"><strong>libddcutil</strong> Development Package</h4>
 <p>The <strong>libddcutil</strong> development package, named <strong>libddcutil-dev</strong> on some platforms and <strong>libddcutil-devel</strong> on
 others, has the following changes. <br />
 - Package config file <strong><em>ddcutil.pc</em></strong> is now installed in directory /usr/share/pkgconfig.  Previously it was 
