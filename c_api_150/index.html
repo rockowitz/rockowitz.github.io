@@ -290,11 +290,13 @@ In conformance with Debian practice, the package name is <strong><em>libddcutil4
 <p>Library initialization has been reworked extensively to move operations 
 that can fail and other aspects that should be under control of the library user
 into a new function <strong>ddca_init()</strong>.</p>
-<p>This function: 
-- controls whether messages are written to the system log
-- optionally processes options obtained from the <strong>ddcutil</strong> configuration file
-- processes additional options passed as a string
-- sets error information for ddca_get_error_detail()</p>
+<p>This function:</p>
+<ul>
+<li>controls whether messages are written to the system log</li>
+<li>optionally processes options obtained from the <strong>ddcutil</strong> configuration file</li>
+<li>processes additional options passed as a string</li>
+<li>sets error information for ddca_get_error_detail()</li>
+</ul>
 <p>If this function is not called by the user program, any API function that relies on its 
 processing invokes <strong>ddca_init()</strong> using arguments such that it never fails, e.g. 
 the configuration file is not processed.</p>
@@ -313,32 +315,13 @@ the configuration file is not processed.</p>
 </tr>
 </tbody>
 </table>
-<table>
-<thead>
-<tr>
-<th>Changed Function</th>
-<th>Comments</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>ddca_set_sleep_multiplier</td>
-<td>&nbsp;operates on the display, if any, open in the current thread</td>
-</tr>
-<tr>
-<td>ddca_get_sleep_multiplier</td>
-<td>&nbsp;returns the value for the display, if any, open in the current thread</td>
-</tr>
-<tr>
-<td>ddca_set_default_sleep_multiplier</td>
-<td>&nbsp;affects any newly detected displays</td>
-</tr>
-<tr>
-<td>ddca_get_display_list</td>
-<td>&nbsp;returns status code, sets error detail</td>
-</tr>
-</tbody>
-</table>
+<p><br>
+Changed Function                    | Comments
+------------------------------------|----------
+ddca_set_sleep_multiplier           |&nbsp;operates on the display, if any, open in the current thread
+ddca_get_sleep_multiplier           |&nbsp;returns the value for the display, if any, open in the current thread
+ddca_set_default_sleep_multiplier   |&nbsp;affects any newly detected displays
+ddca_get_display_list               |&nbsp;returns status code, sets error detail</p>
 <!-- 
 
 For reference
