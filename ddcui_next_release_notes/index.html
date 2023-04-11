@@ -3,18 +3,18 @@
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="author" content="Sanford Rockowitz" /><link rel="canonical" href="https://www.ddcutil.com/command_getvcp/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="author" content="Sanford Rockowitz" /><link rel="canonical" href="https://www.ddcutil.com/ddcui_next_release_notes/" />
       <link rel="shortcut icon" href="../img/favicon.ico" />
-    <title>getvcp - ddcutil Documentation</title>
+    <title>Ddcui next release notes - ddcutil Documentation</title>
     <link rel="stylesheet" href="../css/theme.css" />
     <link rel="stylesheet" href="../css/theme_extra.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
     
       <script>
         // Current page data
-        var mkdocs_page_name = "getvcp";
-        var mkdocs_page_input_path = "command_getvcp.md";
-        var mkdocs_page_url = "/command_getvcp/";
+        var mkdocs_page_name = "Ddcui next release notes";
+        var mkdocs_page_input_path = "ddcui_next_release_notes.md";
+        var mkdocs_page_url = "/ddcui_next_release_notes/";
       </script>
     
     <script src="../js/jquery-3.6.0.min.js" defer></script>
@@ -68,22 +68,14 @@
                 </li>
               </ul>
               <p class="caption"><span class="caption-text">Command Detail</span></p>
-              <ul class="current">
-                  <li class="toctree-l1 current"><a class="reference internal current" href="#">Primary Commands</a>
-    <ul class="current">
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="#">Primary Commands</a>
+    <ul>
                 <li class="toctree-l2"><a class="reference internal" href="../command_detect/">detect</a>
                 </li>
                 <li class="toctree-l2"><a class="reference internal" href="../command_capabilities/">capabilities</a>
                 </li>
-                <li class="toctree-l2 current"><a class="reference internal current" href="./">getvcp</a>
-    <ul class="current">
-    <li class="toctree-l3"><a class="reference internal" href="#option-terse-brief">Option: --terse, --brief</a>
-    </li>
-    <li class="toctree-l3"><a class="reference internal" href="#option-verbose">Option: --verbose</a>
-    </li>
-    <li class="toctree-l3"><a class="reference internal" href="#option-show-unsupported">Option: --show-unsupported</a>
-    </li>
-    </ul>
+                <li class="toctree-l2"><a class="reference internal" href="../command_getvcp/">getvcp</a>
                 </li>
                 <li class="toctree-l2"><a class="reference internal" href="../command_setvcp/">setvcp</a>
                 </li>
@@ -277,11 +269,9 @@
       <div class="wy-nav-content">
         <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
   <ul class="wy-breadcrumbs">
-    <li><a href=".." class="icon icon-home" alt="Docs"></a> &raquo;</li>
-          <li>Command Detail &raquo;</li>
-          <li>Primary Commands &raquo;</li><li>getvcp</li>
+    <li><a href=".." class="icon icon-home" alt="Docs"></a> &raquo;</li><li>Ddcui next release notes</li>
     <li class="wy-breadcrumbs-aside">
-        <a href="https://github.com/rockowitz/ddcutil/edit/master/docs/command_getvcp.md"
+        <a href="https://github.com/rockowitz/ddcutil/edit/master/docs/ddcui_next_release_notes.md"
           ></a>
     </li>
   </ul>
@@ -291,82 +281,35 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
             <div class="section" itemprop="articleBody">
               
-                <h3 id="command-getvcp">Command <strong>getvcp</strong></h3>
-<p>Syntax: <strong>getvcp</strong> &lt;display-selection-options&gt; &lt;other options&gt; &lt;feature-code-or-group&gt; </p>
-<p>Monitor selection options are detailed <a href="../display_selection/">here</a>.</p>
-<p>Feature code/group specification is detailed <a href="../feature_selection/">here</a>.</p>
-<p>If a feature group has been specified, there is normally no message if a feature is unsupported.
-This rule is not absolute.  For some feature-groups it is appropriate to always report that a 
-feature is unsupported. This is also affected by the <strong><em>--show-unsupported</em></strong> option described below.</p>
-<p><a id="getvcp_terse"></a></p>
-<h4 id="option-terse-brief">Option: <strong><em>--terse</em></strong>, <strong><em>--brief</em></strong></h4>
-<p>If <strong><em>--terse</em></strong> is specified on a getvcp command, output is in a format this is easily machine readable.
-This format is also used by <a href="../command_dumpvcp_loadvcp/">dumpvcp</a>.  </p>
-<p>The format depends on the feature type. 
-In keeping with <strong>ddcutil</strong> 
-practice, VCP feature codes are shown without a leading hex indicator even though they are 
-hexidecimal values.</p>
-<p>For a continuous VCP feature, both the current value (in decimal) and maximum value (in decimal) 
-are shown.  Output takes the form:</p>
-<pre>
-&nbsp;&nbsp;<em>VCP</em> feature-code <em>C</em> cur-value-decimal max-value-decimal
-</pre>
-
-<p>For example:</p>
-<pre><code class="language-bash">VCP 10 C 50 100
+                <p>Preliminary Notes for the Next <strong>ddcui</strong> Release</p>
+<h3 id="github-branch-031-dev">Github Branch 0.3.1-dev</h3>
+<p>Requires libddcutil.so.4.x.x from ddcutil 1.5.0-dev or later.</p>
+<p>Additional options: </p>
+<ul>
+<li>
+<p><strong><em>--disable-syslog</em></strong>. Normally, <strong>ddcui</strong> and <strong>libddcutil</strong> write important messages to the system log.
+This option disables that behavior.</p>
+</li>
+<li>
+<p><strong><em>--libopts "options"</em></strong>. Passes an option string to the shared library.  This string is appended to 
+the option string obtained from the <strong>ddcutil</strong> configuration file, $HOME/.config/ddcutil/ddcutilrc.</p>
+</li>
+</ul>
+<p>Removed options: </p>
+<p>Several command line options existed to pass options to the shared library.  These can now be passed using 
+option <strong><em>--libopts</em></strong>. and have been eliminated: </p>
+<ul>
+<li><strong><em>--nousb</em></strong></li>
+</ul>
+<p>Building <strong>ddcui</strong>: </p>
+<p>cmake option DDCUTIL_PROJECT_DIR specifies the root directory of project <strong>ddcutil</strong>.  This allows for 
+building <strong>ddcui</strong> using the latest development version of <strong>libddcutil</strong> without having to install it. </p>
+<p>e.g. </p>
+<pre><code>cmake -DDDCUTIL_PROJECT_DIR=/my/ddcutil/project/dir
 </code></pre>
-<p>For a simple non-continuous VCP feature, i.e. one for which only the SL response byte is 
-significant, the value is reported in hex.   Output takes the form:  </p>
-<pre>
-&nbsp;&nbsp;<em>VCP</em> feature-code <em>SNC</em> hex-value
-</pre>
-
-<p>For example:</p>
-<pre><code class="language-bash">VCP 60 SNC x03
-</code></pre>
-<p>Complex non-continuous VCP features are ones for which more then 1 response byte is 
-significant.  In that case all 4 bytes are reported in hex.  Output takes the form:</p>
-<pre>
-&nbsp;&nbsp;<em>VCP</em> feature-code <em>CNC</em> mh-hex ml-hex sh-hex sl-hex
-</pre>
-
-<p>For example:</p>
-<pre><code class="language-bash">VCP DF CND xff xff x02 x00
-</code></pre>
-<p>Table VCP features report the value as hexidecimal string.  Output takes the form:</p>
-<pre>
-&nbsp;&nbsp;<em>VCP</em> feature-code <em>T</em> hex-string
-</pre>
-
-<p>For example:</p>
-<pre><code class="language-bash">VCP 73 T x01020304
-</code></pre>
-<p>Finally, if a feature is not supported or some other error occurs, this may be reported
-or there may simply be no output.  It is always reported for single feature <strong><em>getvcp</em></strong> requests. 
-It is normally not reported if the request specifies a feature group, which defines a set of features. but see <strong><em>--show-unsupported</em></strong>. 
-If reported, output takes the form:</p>
-<pre>
-&nbsp;&nbsp;<em>VCP</em> feature-code <em>ERR</em>
-</pre>
-
-<p>For example:</p>
-<pre><code class="language-bash">VCP 84 ERR
-</code></pre>
-<h4 id="option-verbose">Option: <strong><em>--verbose</em></strong></h4>
-<p>The internal representation (bytes MH, ML, SH, SL) is shown.  Unsupported features are always reported.</p>
-<h4 id="option-show-unsupported">Option: <strong><em>--show-unsupported</em></strong></h4>
-<p>If querying a single feature, <strong><em>getvcp</em></strong> reports an error if the feature is unsupported or 
-some other error occurs.  If querying a feature group, e.g. COLOR, output for invalid features is suppressd unless <strong><em>--verbose</em></strong> is specified.
-The <strong><em>--show-unsupported</em></strong> option forces error messages in all cases. </p>
-<h3 id="option-mccs-vcp-version">Option: <strong><em>--mccs &lt;vcp-version&gt;</em></strong><a name="option_getvcp_mccs"></a></h3>
-<p>Interprets the feature value as per the specified VCP (aka MCCS) version, instead of using the VCP version obtained from VCP feature xDF.</p>
               
             </div>
           </div><footer>
-    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
-        <a href="../command_capabilities/" class="btn btn-neutral float-left" title="capabilities"><span class="icon icon-circle-arrow-left"></span> Previous</a>
-        <a href="../command_setvcp/" class="btn btn-neutral float-right" title="setvcp">Next <span class="icon icon-circle-arrow-right"></span></a>
-    </div>
 
   <hr/>
 
@@ -392,10 +335,6 @@ The <strong><em>--show-unsupported</em></strong> option forces error messages in
         </span>
     
     
-      <span><a href="../command_capabilities/" style="color: #fcfcfc">&laquo; Previous</a></span>
-    
-    
-      <span><a href="../command_setvcp/" style="color: #fcfcfc">Next &raquo;</a></span>
     
   </span>
 </div>

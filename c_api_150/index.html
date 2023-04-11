@@ -240,6 +240,8 @@
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../ddcui_release_notes/">ddcui Release Notes</a>
                   </li>
+                  <li class="toctree-l1"><a class="" href="../next_ddcui_release_notes.md">Preliminary Notes for the Next ddcui Release</a>
+                  </li>
                   <li class="toctree-l1"><a class="reference internal" href="../ddcui_faq/">ddcui Frequently Asked Questions</a>
                   </li>
               </ul>
@@ -313,6 +315,10 @@ the configuration file is not processed.</p>
 <td>ddca_init</td>
 <td>&nbsp;perform library initialization</td>
 </tr>
+<tr>
+<td>ddca_add_traced_api_call</td>
+<td>&bsp;turn on call stack tracking for a function</td>
+</tr>
 </tbody>
 </table>
 <p><br></p>
@@ -339,6 +345,10 @@ the configuration file is not processed.</p>
 <tr>
 <td>ddca_get_display_list</td>
 <td>&nbsp;returns status code, sets error detail</td>
+</tr>
+<tr>
+<td>ddca_add_traced_function</td>
+<td>&nbsp;returns true if function is traceable, false of not</td>
 </tr>
 </tbody>
 </table>
