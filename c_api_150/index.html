@@ -292,13 +292,11 @@ In conformance with Debian practice, the package name is <strong><em>libddcutil4
 <p>Library initialization has been reworked extensively to move operations 
 that can fail and other aspects that should be under control of the library user
 into a new function <strong>ddca_init()</strong>.</p>
-<p>This function:</p>
-<ul>
-<li>controls whether messages are written to the system log</li>
-<li>optionally processes options obtained from the <strong>ddcutil</strong> configuration file</li>
-<li>processes additional options passed as a string</li>
-<li>sets error information for ddca_get_error_detail()</li>
-</ul>
+<p>This function 
+- controls whether messages are written to the system log
+- optionally processes options obtained from the <strong>ddcutil</strong> configuration file
+- processes additional options passed as a string
+- sets error information for ddca_get_error_detail()</p>
 <p>If this function is not called by the user program, any API function that relies on its 
 processing invokes <strong>ddca_init()</strong> using arguments such that it never fails, e.g. 
 the configuration file is not processed.</p>
@@ -343,6 +341,10 @@ the configuration file is not processed.</p>
 <td>&nbsp;affects any newly detected displays</td>
 </tr>
 <tr>
+<td>ddca_get_default_sleep_multiplier</td>
+<td>&nbsp;get value for newly detected displays</td>
+</tr>
+<tr>
 <td>ddca_get_display_list</td>
 <td>&nbsp;returns status code, sets error detail</td>
 </tr>
@@ -352,6 +354,18 @@ the configuration file is not processed.</p>
 </tr>
 </tbody>
 </table>
+<h3 id="options">Options</h3>
+<p>These options apply only to <strong>libddcutil</strong>, not to <strong>ddcutil</strong>.  They can be specified in configuration
+file $HOME/.config/ddcutil/ddcutilrc, or in the libopts string passed to <strong>ddca_init()</strong>.</p>
+<ul>
+<li>
+<p>Option <strong><em>--trcapi <api function name></em></strong>:  Trace the specified API function and its called functions.</p>
+</li>
+<li>
+<p>Option <strong><em>--profile-api</em></strong>: Collect performance statistics for API functions the perform display IO, 
+  and report them when the shared library is terminated.</p>
+</li>
+</ul>
 <!-- 
 
 For reference

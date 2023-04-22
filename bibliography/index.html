@@ -402,10 +402,11 @@ Users sometimes encounter problems with I2C communication over DisplayPort. The 
 
 <p>Wikipedia has several high quality pages on related specifications:  They may be helpful when trying to figure out why DDC communication is not working: </p>
 <ul>
-<li><a href="https://en.wikipedia.org/wiki/DisplayPort#Dual-mode">DisplayPort</a></li>
+<li><a href="https://en.wikipedia.org/wiki/DisplayPort">DisplayPort</a></li>
 <li><a href="https://en.wikipedia.org/wiki/HDMI">HDMI</a></li>
 <li><a href="https://en.wikipedia.org/wiki/Thunderbolt_(interface)">Thunderbolt</a></li>
 <li><a href="https://en.wikipedia.org/wiki/USB-C">USB-C</a>. See in particular section <a href="https://en.wikipedia.org/wiki/USB-C#Hardware_support">Hardware Support</a> for a discussion of <strong><em>USB-C Alternate Mode</em></strong></li>
+<li><a href="https://en.wikipedia.org/wiki/Display_Data_Channel">Display Data Channel</a> Has a useful summary of the relationships, evolution, and deprecation among releated standards, </li>
 </ul>
 <p>Documentation on DP &lt;-&gt; HDMI/DVI conversion:</p>
 <ul>
@@ -428,10 +429,25 @@ Type C Connectors</p>
   Compliance Program Manager, September 27-28, 2016</li>
 <li><a href="http://www.vesa.org/wp-content/uploads/2014/09/DP-Alt-Mode-Overview-for-VESA-v1.pdf">VESA DisplayPort Alt Mode for USB Type-C Standard Feature Summary, Sept 22, 2014</a>  PowerPoint presentation</li>
 <li><a href="https://www.hdmi.org/spec/typec">HDMI Alt Mode USB Type-C</a> A technical description of the spec that had essentially no adoption.  Includes pin usage.</li>
-<li><a href="https://arstechnica.com/gadgets/2023/01/hdmi-to-usb-c-spec-axed-as-displayport-alt-mode-reigns-supreme/">RIP HDMI Alt Mode, we hardly new ye</a> Ars Technica, 1/12/2023</li>
-<li><a href="https://forum.xda-developers.com/t/enable-desktop-mode-hdmi-alt-mode-in-kernel-bootloader-or-with-custom-rom.4398501/">Enable Desktop Mode (HDMI Alt Mode) in kernel/bootloader or with custom ROM</a>
-  xda.developers.com forum discussion.  A discussion of why you (usually) can't get video output from a cell phone Type-C connector. Note that the mention of "HDMI Alt Mode" in the title is misleading.
+<li><a href="https://arstechnica.com/gadgets/2023/01/hdmi-to-usb-c-spec-axed-as-displayport-alt-mode-reigns-supreme/">RIP HDMI Alt Mode, we hardly new ye</a> Ars Technica, 1/12/2023
   Type-C HDMI alt mode never saw adoption.  What exist are Type-C DisplayPort alt mode cables, etc. that have circuitry to convert the DisplayPort signal to HDMI.</li>
+<li><a href="https://www.techspot.com/news/97262-hdmi-licensing-administrator-obscure-hdmi-alt-mode-specs.html">HDMI licensing administrator says the obscure HDMI Alt Mode specs are dead</a> Another article
+  pointing out that USB-C HDMI Alt Mode devices don't exist.  What exist are Alt-Mode DisplayPort cables/connectors, which convert DisplayPort to HDMI. That is, the device with the Type-C connector
+  emits DisplayPort signaling, not HDMI signaling.  The DisplayPort to HDMI conversion is performed by circuitry in the cable/connector.</li>
+<li>
+<p><a href="https://forum.xda-developers.com/t/enable-desktop-mode-hdmi-alt-mode-in-kernel-bootloader-or-with-custom-rom.4398501/">Enable Desktop Mode (HDMI Alt Mode) in kernel/bootloader or with custom ROM</a>
+  xda.developers.com forum discussion.  A discussion of why you (usually) can't get video output from a cell phone Type-C connector. Note that the mention of "HDMI Alt Mode" in the title is misleading.</p>
+</li>
+<li>
+<p><a href="https://www.amd.com/system/files/documents/display-connector-tech-sheet.pdf">Nature Understands the Need for Multiple Views</a> AMD Connector Technical Sheet describing support for USB-C DisplayPort Alt Mode</p>
+</li>
+</ul>
+<p>DisplayLink</p>
+<p>A proprietary method of sending video over USB-C.  Not to be confused with DisplayPort. Does not support DDC/CI.</p>
+<p><a href="https://kb.plugable.com/docking-stations-and-video/chipset-modal">DisplayLink vs Alt Mode Video Output</a></p>
+<p>Monitor Firmware</p>
+<ul>
+<li><a href="https://github.com/RedBalloonShenanigans/MonitorDarkly">MonitorDarkly</a></li>
 </ul>
 <p>Linux I2C Documentation:</p>
 <ul>

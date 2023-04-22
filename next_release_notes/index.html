@@ -288,12 +288,8 @@
               
                 <h2 id="preliminary-notes-for-the-next-ddcutil-release">Preliminary Notes for the Next <strong>ddcutil</strong> Release]</h2>
 <h3 id="150-dev">1.5.0-dev</h3>
-<p><strong>ddcutil</strong> installation installs files /usr/lib/modules-load.d/ddcutil.conf
-  and /usr/lib/modules-load.d#libddcutil.conf to ensure that kernel module 
-  i2c-dev is loaded at boot time if it is not built into the kernel. There are
-  two files so that when split up into distribution packages, each of the 
-  command line <strong>ddcutil</strong> package and the shared library <strong>libddcutil</strong> 
-  package installs a file.  </p>
+<p><strong>ddcutil</strong> installation installs file /usr/lib/modules-load.d/ddcutil.conf
+  to ensure that kernel module i2c-dev is loaded at boot time (if it is not built into the kernel).</p>
 <p>The dynamic sleep algorithm has been completely rewritten to both dynamically increase
 the sleep-multiplier factor (as needed) and decrease the sleep multiplier factor 
 (insofar as possible).  Data is maintained across program executions in file 
@@ -306,7 +302,7 @@ with the specified sleep-multiplier value.</p>
 have been observed to work with this value.  (For implementation of the dynamic
 sleep algorithm, 0 is replaced internally by .01.)</li>
 </ul>
-<p>The testts durng display detection to check for misuse of the DDC Null Message
+<p>The tests durng display detection to check for misuse of the DDC Null Message
 and all zero getvcp response to indicate unsupported features have been made more robust.</p>
 <p>Detailed statistics are now maintained on a per-display instead of per-thread basis.</p>
 <ul>
@@ -315,12 +311,18 @@ and all zero getvcp response to indicate unsupported features have been made mor
 <p>Miscellaneous options changes:</p>
 <ul>
 <li>
+<p>Option <strong><em>--noconfig</em></strong>: Do not process the configuration file.</p>
+</li>
+<li>
 <p><strong>environment --verbose</strong>: Option <strong><em>--quickenv</em></strong> skips some slow tests such as 
   use of program i2cdetect.</p>
 </li>
 <li>
 <p><strong>environment --verbose</strong>: extended sysfs scan for ARM SOC devices to explore how 
    those devices use /sys</p>
+</li>
+<li>
+<p>Option <strong><em>--trccall <function name></em></strong>: Trace the specified function and its called functions.</p>
 </li>
 </ul>
               
