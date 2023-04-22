@@ -5,14 +5,14 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="author" content="Sanford Rockowitz" /><link rel="canonical" href="https://www.ddcutil.com/ddcutil_usage/" />
       <link rel="shortcut icon" href="../img/favicon.ico" />
-    <title>ddcutil usage - ddcutil Documentation</title>
+    <title>Applications using ddcutil - ddcutil Documentation</title>
     <link rel="stylesheet" href="../css/theme.css" />
     <link rel="stylesheet" href="../css/theme_extra.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
     
       <script>
         // Current page data
-        var mkdocs_page_name = "ddcutil usage";
+        var mkdocs_page_name = "Applications using ddcutil";
         var mkdocs_page_input_path = "ddcutil_usage.md";
         var mkdocs_page_url = "/ddcutil_usage/";
       </script>
@@ -218,6 +218,8 @@
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../debugging/">Debugging Notes</a>
                   </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../technotes/">Technical Notes</a>
+                  </li>
               </ul>
               <p class="caption"><span class="caption-text">Release History</span></p>
               <ul>
@@ -251,20 +253,16 @@
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../windows_programs/">Windows Utilities for Monitor Control</a>
                   </li>
-                  <li class="toctree-l1 current"><a class="reference internal current" href="./">ddcutil usage</a>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="./">Applications using ddcutil</a>
     <ul class="current">
-    <li class="toctree-l2"><a class="reference internal" href="#apis">APIs</a>
+    <li class="toctree-l2"><a class="reference internal" href="#applications-using-the-ddcutil-command-line-program">Applications Using the ddcutil command line program</a>
     </li>
-    <li class="toctree-l2"><a class="reference internal" href="#applications">Applications</a>
+    <li class="toctree-l2"><a class="reference internal" href="#applications-using-libddcutil">Applications Using libddcutil</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#apis">APIs</a>
     </li>
     </ul>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../apps_using_ddcutil/">Applications using ddcutil</a>
-                  </li>
-              </ul>
-              <ul>
-                <li class="toctree-l1"><a class="reference internal" href="../technotes/">Technical Notes</a>
-                </li>
               </ul>
       </div>
     </div>
@@ -280,7 +278,7 @@
         <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
   <ul class="wy-breadcrumbs">
     <li><a href=".." class="icon icon-home" alt="Docs"></a> &raquo;</li>
-          <li>Related Resources &raquo;</li><li>ddcutil usage</li>
+          <li>Related Resources &raquo;</li><li>Applications using ddcutil</li>
     <li class="wy-breadcrumbs-aside">
         <a href="https://github.com/rockowitz/ddcutil/edit/master/docs/ddcutil_usage.md"
           ></a>
@@ -293,20 +291,25 @@
             <div class="section" itemprop="articleBody">
               
                 <h2 id="ddcutil-usage">ddcutil Usage</h2>
+<h3 id="applications-using-the-ddcutil-command-line-program">Applications Using the <strong>ddcutil</strong> command line program</h3>
+<ul>
+<li><a href="www.github.com/digitaltrails/vdu_controls">VDU Controls</a></li>
+<li><a href="https://pypi.org/project/ddcrelight/">ddcrelight</a> Controls a yoctopuce light sensor.</li>
+</ul>
+<h3 id="applications-using-libddcutil">Applications Using libddcutil</h3>
+<ul>
+<li>KDE Powerdevil, if macro USE_DDCUTIL is defined</li>
+<li><a href="https://www.github.com/rockowitz/ddcui">ddcui</a></li>
+</ul>
 <h3 id="apis">APIs</h3>
 <ul>
 <li><a href="https://crates.io/keywords/ddcutil">Rust Crates</a></li>
-</ul>
-<h3 id="applications">Applications</h3>
-<ul>
-<li><a href="www.github.com/digitaltrails/vdu_controls">VDU Controls</a></li>
 </ul>
               
             </div>
           </div><footer>
     <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
         <a href="../windows_programs/" class="btn btn-neutral float-left" title="Windows Utilities for Monitor Control"><span class="icon icon-circle-arrow-left"></span> Previous</a>
-        <a href="../apps_using_ddcutil/" class="btn btn-neutral float-right" title="Applications using ddcutil">Next <span class="icon icon-circle-arrow-right"></span></a>
     </div>
 
   <hr/>
@@ -335,8 +338,6 @@
     
       <span><a href="../windows_programs/" style="color: #fcfcfc">&laquo; Previous</a></span>
     
-    
-      <span><a href="../apps_using_ddcutil/" style="color: #fcfcfc">Next &raquo;</a></span>
     
   </span>
 </div>
