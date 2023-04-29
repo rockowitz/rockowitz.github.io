@@ -294,7 +294,7 @@ These are pins 12/15 on a HD15 VGA connector, 6/7 on a DVI connector, and 15/16 
 <p>While more recent versions of HDMI have additional capabilities, e.g. Ethernet, CEC, for video and DDC of monitor communication DVI and HDMI are equivalent, 
 except for bandwidth. It's possible to connect a DVI output on a host to a HDMI input on a monitor, or vice-versa,
 using a simple DVI&lt;-&gt;HDMI cable.</p>
-<p>DisplayPort, on ther other hand, uses its own protocol for video.  It also has a secondary Auxilliary (AUX) channel (and pins) for non-video communication.  DisplayPort does not have the I2C SLA/SLC pins. Instead, the logical I2C signals are converted at each end into messages on the AUX channel. Put another way, 
+<p>DisplayPort, on ther other hand, uses its own packetized protocol for video.  It also has a secondary Auxilliary (AUX) channel (and pins) for non-video communication.  DisplayPort does not have the I2C SLA/SLC pins. Instead, the logical I2C signals are converted at each end into messages on the AUX channel. Put another way, 
 DDC is implemented using  the AUX channel, but the AUX channel itself is not DDC. 
 The "multiplexing" of I2C over the AUX channel is transparent to all but the lowest level of I2C software at each end.</p>
 <p>It is possible to connect the DisplayPort output on a host to a DVI or HDMI input on a monitor using an "active", or sometimes a "passive", adapter. </p>
@@ -310,8 +310,11 @@ much more expensive.  There do not appear to be any adapters that operate in bot
 it shifts to "alternate" mode, treating its DisplayPort connector as if it were a weird DVI/HDMI connector.  It uses TMDS for the video signal, and uses the AUX channel pins as simple SDA/SCL pins.
 A "passive" adapter simply routes wires appropriately, and adjusts voltage levels.</p>
 <p>Host DisplayPort connectors that support dual mode should be marked as such.  The marker is a D with a P inside, and two + signs to the left, one above the other. Most DisplayPort connectors on recent video cards are dual mode. Unfortunately, they are not always marked as such. </p>
-<p>Thunderbolt ports, which use the DisplayPort protocol for video signaling, support DP++ natively.</p>
-<p>Note that here may be limitations on the number of DisplayPort outputs can operate in alternate mode.  In that case, active adapters are required.</p>
+<!--
+Thunderbolt ports, which use the DisplayPort protocol for video signaling, support DP++ natively.
+-->
+
+<p>A video adapter may have a limitations on the number of DisplayPort outputs can operate in dual mode.  In that case, active adapters are required.</p>
 <p>For futher details of DisplayPort, its <a href="https://en.wikipedia.org/wiki/DisplayPort">Wikipedia page</a> is an excellent resource.</p>
               
             </div>
