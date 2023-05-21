@@ -293,17 +293,19 @@
               
                 <h2 id="shared-library-changes-for-the-next-release-draft">Shared Library Changes for the Next Release (Draft)</h2>
 <h3 id="overview">Overview</h3>
-<p>The shared library <strong>libddcutil</strong> is not backwardly compatible.<br />
+<p>The shared library <strong>libddcutil</strong> is not backwardly compatible.
 The SONAME is now libddcutil.so.5. The released library file is libddcutil.so.5.0.0.
 In conformance with Debian practice, the package name is <strong><em>libddcutil5</em></strong>.</p>
 <p>Library initialization has been reworked extensively to move operations 
 that can fail and other aspects that should be under control of the library user
 into a new function <strong>ddca_init()</strong>.</p>
-<p>This function: 
-- controls the level of messages written to the system log
-- optionally processes options obtained from the <strong>ddcutil</strong> configuration file
-- processes additional options passed as a string
-- sets error information for ddca_get_error_detail()</p>
+<p>This function:</p>
+<ul>
+<li>controls the level of messages written to the system log</li>
+<li>optionally processes options obtained from the <strong>ddcutil</strong> configuration file</li>
+<li>processes additional options passed as a string</li>
+<li>sets error information for ddca_get_error_detail()</li>
+</ul>
 <p>If this function is not called by the user program, any API function that relies on its 
 processing invokes <strong>ddca_init()</strong> using arguments such that it never fails, e.g. 
 the configuration file is not processed.</p>
@@ -367,9 +369,9 @@ configuration file and by passing an option string in the ddca_init() arguments,
 several API functions are no longer needed and have been removed: </p>
 <p>Removed Max-Tries Functions         |
 ------------------------------------|-----------------------------------------
-ddca_max_max_tries                  |
-ddca_get_max_tries                  |
-ddca_set_max_tries                  |
+ddca_max_max_tries                  |&nbsp;
+ddca_get_max_tries                  |&nbsp;
+ddca_set_max_tries                  |&nbsp;
 ddca_set_default_sleep_multiplier   |
 ddca_set_global_sleep_multiplier    |
 ddca_set_default_sleep_multiplier   |
