@@ -308,7 +308,8 @@ into a new function <strong>ddca_init()</strong>.</p>
 </ul>
 <p>If this function is not called by the user program, any API function that relies on its 
 processing invokes <strong>ddca_init()</strong> using arguments such that it never fails, e.g. 
-the configuration file is not processed.</p>
+the configuration file is not processed. As a result, most programs that use the 
+shared library will work with just recompilation.</p>
 <h3 id="api-changes">API changes</h3>
 <table>
 <thead>
