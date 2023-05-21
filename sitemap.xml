@@ -226,11 +226,6 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://www.ddcutil.com/debugging/</loc>
-         <lastmod>2023-05-21</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
          <loc>https://www.ddcutil.com/detect_verbose_output/</loc>
          <lastmod>2023-05-21</lastmod>
          <changefreq>daily</changefreq>
