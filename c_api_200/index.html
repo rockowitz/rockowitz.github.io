@@ -3,18 +3,18 @@
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="author" content="Sanford Rockowitz" /><link rel="canonical" href="https://www.ddcutil.com/table_features/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="author" content="Sanford Rockowitz" /><link rel="canonical" href="https://www.ddcutil.com/c_api_200/" />
       <link rel="shortcut icon" href="../img/favicon.ico" />
-    <title>Table Type Features - ddcutil Documentation</title>
+    <title>Shared Library Changes for the Next Release - ddcutil Documentation</title>
     <link rel="stylesheet" href="../css/theme.css" />
     <link rel="stylesheet" href="../css/theme_extra.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
     
       <script>
         // Current page data
-        var mkdocs_page_name = "Table Type Features";
-        var mkdocs_page_input_path = "table_features.md";
-        var mkdocs_page_url = "/table_features/";
+        var mkdocs_page_name = "Shared Library Changes for the Next Release";
+        var mkdocs_page_input_path = "c_api_200.md";
+        var mkdocs_page_url = "/c_api_200/";
       </script>
     
     <script src="../js/jquery-3.6.0.min.js" defer></script>
@@ -113,10 +113,8 @@
                   </li>
               </ul>
               <p class="caption"><span class="caption-text">Specific Facilities</span></p>
-              <ul class="current">
-                  <li class="toctree-l1 current"><a class="reference internal current" href="./">Table Type Features</a>
-    <ul class="current">
-    </ul>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../table_features/">Table Type Features</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../usb/">USB Connected Monitors</a>
                   </li>
@@ -163,7 +161,7 @@
                   </li>
               </ul>
               <p class="caption"><span class="caption-text">API</span></p>
-              <ul>
+              <ul class="current">
                   <li class="toctree-l1"><a class="reference internal" href="../api_main/">C API</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../libddcutil_release_notes/">Shared Library Release Notes</a>
@@ -190,7 +188,17 @@
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../c_api_140/">Shared Library Changes for Release 1.4.0</a>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../c_api_200/">Shared Library Changes for the Next Release</a>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="./">Shared Library Changes for the Next Release</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#overview">Overview</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#api-changes">API changes</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#options">Options</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#miscellaneous">Miscellaneous</a>
+    </li>
+    </ul>
                   </li>
               </ul>
               <p class="caption"><span class="caption-text">Background</span></p>
@@ -272,10 +280,10 @@
         <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
   <ul class="wy-breadcrumbs">
     <li><a href=".." class="icon icon-home" alt="Docs"></a> &raquo;</li>
-          <li>Specific Facilities &raquo;</li>
-      <li>Table Type Features</li>
+          <li>API &raquo;</li>
+      <li>Shared Library Changes for the Next Release</li>
     <li class="wy-breadcrumbs-aside">
-          <a href="https://github.com/rockowitz/ddcutil/edit/master/docs/table_features.md" ></a>
+          <a href="https://github.com/rockowitz/ddcutil/edit/master/docs/c_api_200.md" ></a>
     </li>
   </ul>
   <hr/>
@@ -283,57 +291,124 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
             <div class="section" itemprop="articleBody">
               
-                <h2 id="table-features">Table Features</h2>
-<p>Some VCP features are designated as type Table (T), as opposed to Continuous (C) or Non-Continuous (NC).
-Read and write requests for table features transmit blocks of data.
-In particular, LUT related features are of type Table. </p>
-<p><strong>ddcutil</strong> exposes table feature values as uninterpreted hex strings,
-e.g. </p>
-<pre><code>ddcutil setvcp 60 01020304F1F2FEFF
-</code></pre>
-<p>Table features support is currently implemented over DDC/CI, but has never been tested with an actual monitor. </p>
-<p>To see the list of Table features, issue the command: </p>
-<pre><code>ddcutil vcpinfo table
-</code></pre>
-<p>Note that whether a feature is of type Table can vary with MCCS version.  The <code>ddcutil vcpinfo</code> command tries to
-take this into account.</p>
+                <h2 id="shared-library-changes-for-the-next-release-draft">Shared Library Changes for the Next Release (Draft)</h2>
+<h3 id="overview">Overview</h3>
+<p>The shared library <strong>libddcutil</strong> is not backwardly compatible.<br />
+The SONAME is now libddcutil.so.5. The released library file is libddcutil.so.5.0.0.
+In conformance with Debian practice, the package name is <strong><em>libddcutil5</em></strong>.</p>
+<p>Library initialization has been reworked extensively to move operations 
+that can fail and other aspects that should be under control of the library user
+into a new function <strong>ddca_init()</strong>.</p>
+<p>This function: 
+- controls the level of messages written to the system log
+- optionally processes options obtained from the <strong>ddcutil</strong> configuration file
+- processes additional options passed as a string
+- sets error information for ddca_get_error_detail()</p>
+<p>If this function is not called by the user program, any API function that relies on its 
+processing invokes <strong>ddca_init()</strong> using arguments such that it never fails, e.g. 
+the configuration file is not processed.</p>
+<h3 id="api-changes">API changes</h3>
 <table>
 <thead>
 <tr>
-<th style="text-align: right;">Code</th>
-<th>Feature</th>
-<th>Version Detail</th>
+<th>New Functions</th>
+<th>Comments</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td style="text-align: right;">60</td>
-<td>Select Active Video Source</td>
-<td>Type NC in Versions 2.0 through 2.2</td>
+<td>ddca_init</td>
+<td>&nbsp;perform library initialization</td>
 </tr>
 <tr>
-<td style="text-align: right;">a4</td>
-<td>Control Selected Window Operation</td>
-<td>Type NC in MCCS 2.0, T in 3.0, 2.2</td>
+<td>ddca_library_filename</td>
+<td>&nbsp;returns the fully qualified name of the shared library</td>
 </tr>
 <tr>
-<td style="text-align: right;">b4</td>
-<td>Host time mode</td>
-<td>Type NC in MCCS 2.0, 2.1, T in 3.0, 2.2</td>
-</tr>
-<tr>
-<td style="text-align: right;">d0</td>
-<td>Select Active Output</td>
-<td>Type T in MCCS 3.0, NC otherwise</td>
+<td>ddca_register_display_hotplug_callback</td>
+<td>&nbsp;Registers a function of type DDCA_Display_Hotplug_Func which will be called to inform the client of display hotplug events.</td>
 </tr>
 </tbody>
 </table>
+<p><br></p>
+<table>
+<thead>
+<tr>
+<th>Changed Function</th>
+<th>Comments</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ddca_set_sleep_multiplier</td>
+<td>&nbsp;operates on the display, if any, open in the current thread</td>
+</tr>
+<tr>
+<td>ddca_get_sleep_multiplier</td>
+<td>&nbsp;returns the value for the display, if any, open in the current thread</td>
+</tr>
+<tr>
+<td>ddca_get_display_list</td>
+<td>&nbsp;returns status code, sets error detail</td>
+</tr>
+<tr>
+<td>ddca_add_traced_function</td>
+<td>&nbsp;returns true if function is traceable, false of not</td>
+</tr>
+<tr>
+<td>ddca_report_display_info</td>
+<td>&nbsp;returns DDCA_Status instead of void</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p>With the ability to configure libddcutil operation both by the ddcutil 
+configuration file and by passing an option string in the ddca_init() arguments, 
+several API functions are no longer needed and have been removed: </p>
+<p>Removed Max-Tries Functions         |
+------------------------------------|-----------------------------------------
+ddca_max_max_tries                  |
+ddca_get_max_tries                  |
+ddca_set_max_tries                  |
+ddca_set_default_sleep_multiplier   |
+ddca_set_global_sleep_multiplier    |
+ddca_set_default_sleep_multiplier   |
+ddca_set_global_sleep_multiplier    |</p>
+<p><br></p>
+<p>Removed tracing functions           |
+-----------------------------------|-----------------------------
+ddca_add_trace_function            |
+ddca_add_traced_file |
+ddca_set_trace_groups |
+ddca_add_trace_groups |
+ddca_trace_group_name_to_value |
+ddca_set_trace_options| </p>
+<p><br></p>
+<p>Most per-thread statistics are now instead maintained on a per-display basis.
+The following functions are no longer useful and have been removed
+- ddca_set_thread_description()
+- ddca_append_thread_description()
+- ddca_get_thread_desription() </p>
+<p>Remove previously deprecated functions that had been replaced by more useful versions</p>
+<p>Removed Function            |
+----------------------------|--------------------
+- ddca_open_display()       |&nbsp;Use ddca_open_display2().</p>
+<h3 id="options">Options</h3>
+<p>These options apply only to <strong>libddcutil</strong>, not to <strong>ddcutil</strong>.  They can be specified in configuration
+file $HOME/.config/ddcutil/ddcutilrc, or in the libopts string passed to <strong>ddca_init()</strong>.</p>
+<ul>
+<li>Option <strong><em>--trcapi <api function name></em></strong>:  Trace the specified API function and its called functions.</li>
+<li>Option <strong><em>--profile-api</em></strong>: Collect performance statistics for API functions that perform display IO, 
+  and report them when the shared library is terminated.</li>
+</ul>
+<h3 id="miscellaneous">Miscellaneous</h3>
+<p>Symbols for functions that had previously been removed from ddcutil_c_api.h are no longer exported.</p>
               
             </div>
           </div><footer>
     <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
-        <a href="../libddcutil_options/" class="btn btn-neutral float-left" title="libddcutil Options"><span class="icon icon-circle-arrow-left"></span> Previous</a>
-        <a href="../usb/" class="btn btn-neutral float-right" title="USB Connected Monitors">Next <span class="icon icon-circle-arrow-right"></span></a>
+        <a href="../c_api_140/" class="btn btn-neutral float-left" title="Shared Library Changes for Release 1.4.0"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../mccs_background/" class="btn btn-neutral float-right" title="Monitor Control Command Set">Next <span class="icon icon-circle-arrow-right"></span></a>
     </div>
 
   <hr/>
@@ -360,10 +435,10 @@ take this into account.</p>
         </span>
     
     
-      <span><a href="../libddcutil_options/" style="color: #fcfcfc">&laquo; Previous</a></span>
+      <span><a href="../c_api_140/" style="color: #fcfcfc">&laquo; Previous</a></span>
     
     
-      <span><a href="../usb/" style="color: #fcfcfc">Next &raquo;</a></span>
+      <span><a href="../mccs_background/" style="color: #fcfcfc">Next &raquo;</a></span>
     
   </span>
 </div>

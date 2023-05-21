@@ -3,18 +3,18 @@
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="author" content="Sanford Rockowitz" /><link rel="canonical" href="https://www.ddcutil.com/c_api_150/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="author" content="Sanford Rockowitz" /><link rel="canonical" href="https://www.ddcutil.com/debugging/" />
       <link rel="shortcut icon" href="../img/favicon.ico" />
-    <title>C API Changes for the Next Release - ddcutil Documentation</title>
+    <title>Debugging - ddcutil Documentation</title>
     <link rel="stylesheet" href="../css/theme.css" />
     <link rel="stylesheet" href="../css/theme_extra.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
     
       <script>
         // Current page data
-        var mkdocs_page_name = "C API Changes for the Next Release";
-        var mkdocs_page_input_path = "c_api_150.md";
-        var mkdocs_page_url = "/c_api_150/";
+        var mkdocs_page_name = "Debugging";
+        var mkdocs_page_input_path = "debugging.md";
+        var mkdocs_page_url = "/debugging/";
       </script>
     
     <script src="../js/jquery-3.6.0.min.js" defer></script>
@@ -161,7 +161,7 @@
                   </li>
               </ul>
               <p class="caption"><span class="caption-text">API</span></p>
-              <ul class="current">
+              <ul>
                   <li class="toctree-l1"><a class="reference internal" href="../api_main/">C API</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../libddcutil_release_notes/">Shared Library Release Notes</a>
@@ -184,13 +184,11 @@
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../c_api_120/">C API Changes for Release 1.2.0</a>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../c_api_130/">C API Changes for Release 1.3.0</a>
+                  <li class="toctree-l1"><a class="reference internal" href="../c_api_130/">Shared Library Changes for Release 1.3.0</a>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../c_api_140/">C API Changes for Release 1.4.0</a>
+                  <li class="toctree-l1"><a class="reference internal" href="../c_api_140/">Shared Library Changes for Release 1.4.0</a>
                   </li>
-                  <li class="toctree-l1 current"><a class="reference internal current" href="./">C API Changes for the Next Release</a>
-    <ul class="current">
-    </ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../c_api_200/">Shared Library Changes for the Next Release</a>
                   </li>
               </ul>
               <p class="caption"><span class="caption-text">Background</span></p>
@@ -272,139 +270,20 @@
         <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
   <ul class="wy-breadcrumbs">
     <li><a href=".." class="icon icon-home" alt="Docs"></a> &raquo;</li>
-          <li>API &raquo;</li><li>C API Changes for the Next Release</li>
+      <li>Debugging</li>
     <li class="wy-breadcrumbs-aside">
-        <a href="https://github.com/rockowitz/ddcutil/edit/master/docs/c_api_150.md"
-          ></a>
+          <a href="https://github.com/rockowitz/ddcutil/edit/master/docs/debugging.md" ></a>
     </li>
   </ul>
   <hr/>
 </div>
-
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
             <div class="section" itemprop="articleBody">
               
-                <h3 id="overview">Overview</h3>
-<p>None of the changes in this release affect backward compatibility. 
-Consequently, the <strong><em>libddcutil</em></strong> SONAME is remains libddcutil.so.4.
-The full shared library names is libddcutil.so.4.3.0. 
-In conformance with Debian practice, the package name is <strong><em>libddcutil4</em></strong>.</p>
-<p>Library initialization has been reworked extensively to move operations 
-that can fail and other aspects that should be under control of the library user
-into a new function <strong>ddca_init()</strong>.</p>
-<p>This function 
-- controls whether messages are written to the system log
-- optionally processes options obtained from the <strong>ddcutil</strong> configuration file
-- processes additional options passed as a string
-- sets error information for ddca_get_error_detail()</p>
-<p>If this function is not called by the user program, any API function that relies on its 
-processing invokes <strong>ddca_init()</strong> using arguments such that it never fails, e.g. 
-the configuration file is not processed.</p>
-<h3 id="api-changes">API changes</h3>
-<table>
-<thead>
-<tr>
-<th>New Functions</th>
-<th>Comments</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>ddca_init</td>
-<td>&nbsp;perform library initialization</td>
-</tr>
-<tr>
-<td>ddca_library_filename</td>
-<td>&nbsp;returns the fully qualified name of the shared library</td>
-</tr>
-</tbody>
-</table>
-<p><br></p>
-<table>
-<thead>
-<tr>
-<th>Changed Function</th>
-<th>Comments</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>ddca_set_sleep_multiplier</td>
-<td>&nbsp;operates on the display, if any, open in the current thread</td>
-</tr>
-<tr>
-<td>ddca_get_sleep_multiplier</td>
-<td>&nbsp;returns the value for the display, if any, open in the current thread</td>
-</tr>
-<tr>
-<td>ddca_set_default_sleep_multiplier</td>
-<td>&nbsp;affects any newly detected displays</td>
-</tr>
-<tr>
-<td>ddca_get_default_sleep_multiplier</td>
-<td>&nbsp;get value for newly detected displays</td>
-</tr>
-<tr>
-<td>ddca_get_display_list</td>
-<td>&nbsp;returns status code, sets error detail</td>
-</tr>
-<tr>
-<td>ddca_add_traced_function</td>
-<td>&nbsp;returns true if function is traceable, false of not</td>
-</tr>
-</tbody>
-</table>
-<h3 id="options">Options</h3>
-<p>These options apply only to <strong>libddcutil</strong>, not to <strong>ddcutil</strong>.  They can be specified in configuration
-file $HOME/.config/ddcutil/ddcutilrc, or in the libopts string passed to <strong>ddca_init()</strong>.</p>
-<ul>
-<li>
-<p>Option <strong><em>--trcapi <api function name></em></strong>:  Trace the specified API function and its called functions.</p>
-</li>
-<li>
-<p>Option <strong><em>--profile-api</em></strong>: Collect performance statistics for API functions the perform display IO, 
-  and report them when the shared library is terminated.</p>
-</li>
-</ul>
-<!-- 
-
-For reference
-
-
-### API changes
-
-Changed Function                    | Comments
-------------------------------------|----------
-ddca_set_sleep_multiplier           |&nbsp;allow 0 as valid value, return -1.0 for invalid value
-ddca_set_default_sleep_multiplier   |&nbsp;allow 0 as valid value, return -1.0 for invalid value
-ddca_enable_force_slave_address     |&nbsp;re-enabled
-ddca_is_force_slave_address_enabled |&nbsp;re-enabled
-
-<br>
-Notes: 
-
-- **ddca_enable_force_slave_address()** affects only the i2c-dev 
-  write()/read() interface, not the ioctl() interface.
-- The use of 0 as a sleep-multiplier value is very unlikely to work.
-  It is permitted to allow for some unexpected API use.
-
-<br>
-
-### Miscellaneous 
-
-- Write additional error and trace messages to system log.
-  (Whether any messages are actually written to the system log is controlled by 
-  **configure** options ***--enable-syslog***, ***--disable-syslog***. 
-  The default is ***--enable-syslog***.)
-
-  -->
+                
               
             </div>
           </div><footer>
-    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
-        <a href="../c_api_140/" class="btn btn-neutral float-left" title="C API Changes for Release 1.4.0"><span class="icon icon-circle-arrow-left"></span> Previous</a>
-        <a href="../mccs_background/" class="btn btn-neutral float-right" title="Monitor Control Command Set">Next <span class="icon icon-circle-arrow-right"></span></a>
-    </div>
 
   <hr/>
 
@@ -430,10 +309,6 @@ Notes:
         </span>
     
     
-      <span><a href="../c_api_140/" style="color: #fcfcfc">&laquo; Previous</a></span>
-    
-    
-      <span><a href="../mccs_background/" style="color: #fcfcfc">Next &raquo;</a></span>
     
   </span>
 </div>

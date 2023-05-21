@@ -184,11 +184,11 @@
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../c_api_120/">C API Changes for Release 1.2.0</a>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../c_api_130/">C API Changes for Release 1.3.0</a>
+                  <li class="toctree-l1"><a class="reference internal" href="../c_api_130/">Shared Library Changes for Release 1.3.0</a>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../c_api_140/">C API Changes for Release 1.4.0</a>
+                  <li class="toctree-l1"><a class="reference internal" href="../c_api_140/">Shared Library Changes for Release 1.4.0</a>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../c_api_150/">C API Changes for the Next Release</a>
+                  <li class="toctree-l1"><a class="reference internal" href="../c_api_200/">Shared Library Changes for the Next Release</a>
                   </li>
               </ul>
               <p class="caption"><span class="caption-text">Background</span></p>
@@ -229,7 +229,21 @@
                   </li>
                   <li class="toctree-l1 current"><a class="reference internal current" href="./">Preliminary Notes for the Next Release</a>
     <ul class="current">
-    <li class="toctree-l2"><a class="reference internal" href="#150-dev">1.5.0-dev</a>
+    <li class="toctree-l2"><a class="reference internal" href="#200-dev">2.0.0-dev</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#installation">Installation</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#performance-improvements">Performance Improvements</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#system-logs">System Logs</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#miscellanous-changes">Miscellanous Changes</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#fixed">Fixed</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#development-facilities">Development Facilities</a>
     </li>
     </ul>
                   </li>
@@ -274,56 +288,90 @@
         <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
   <ul class="wy-breadcrumbs">
     <li><a href=".." class="icon icon-home" alt="Docs"></a> &raquo;</li>
-          <li>Release History &raquo;</li><li>Preliminary Notes for the Next Release</li>
+          <li>Release History &raquo;</li>
+      <li>Preliminary Notes for the Next Release</li>
     <li class="wy-breadcrumbs-aside">
-        <a href="https://github.com/rockowitz/ddcutil/edit/master/docs/next_release_notes.md"
-          ></a>
+          <a href="https://github.com/rockowitz/ddcutil/edit/master/docs/next_release_notes.md" ></a>
     </li>
   </ul>
   <hr/>
 </div>
-
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
             <div class="section" itemprop="articleBody">
               
                 <h2 id="preliminary-notes-for-the-next-ddcutil-release">Preliminary Notes for the Next <strong>ddcutil</strong> Release]</h2>
-<h3 id="150-dev">1.5.0-dev</h3>
+<h3 id="200-dev">2.0.0-dev</h3>
+<p>Release 2.0.0 is a major update to <strong>ddcutil</strong>.</p>
+<h4 id="installation">Installation</h4>
 <p><strong>ddcutil</strong> installation installs file /usr/lib/modules-load.d/ddcutil.conf
-  to ensure that kernel module i2c-dev is loaded at boot time (if it is not built into the kernel).</p>
+to ensure that kernel module i2c-dev is loaded at boot time (if it is not built into the kernel).</p>
+<p>Along with the udev rules changes in release 1.4.1, this change means <strong>ddcutil</strong> should just 
+work "out of the box" with no special system configuration. The most signficiant exception is 
+that special settings may still be needed for the proprietary Nvidia driver.</p>
+<h4 id="performance-improvements">Performance Improvements</h4>
+<p><strong>Dynamic Sleep Adjustment</strong> </p>
 <p>The dynamic sleep algorithm has been completely rewritten to both dynamically increase
 the sleep-multiplier factor (as needed) and decrease the sleep multiplier factor 
 (insofar as possible).  Data is maintained across program executions in file 
-$HOME/.cache/ddcutil/stats. Use this algorithm is currently off by default.  It is
-enabled by option <strong><em>--dsa2</em></strong>. If both <strong><em>--sleep-multiplier</em></strong> and <strong><em>--dsa2</em></strong>
-are specified, existing statistics are discarded and the sleep algorithm starts 
-with the specified sleep-multiplier value.</p>
+$HOME/.cache/ddcutil/stats. Use of this algorithm is currently off by default.<br />
+Option
+<strong><em>-dsa</em></strong>, or one of its variants such as <strong><em>--enable-dsa</em></strong> turn it on.
+If both <strong><em>--sleep-multiplier</em></strong> and <strong><em>--dsa</em></strong> are specified, existing statistics are
+discarded and the sleep algorithm restarts calculation with the specified sleep-multiplier value.</p>
 <ul>
 <li>Option <strong><em>--sleep-multiplier</em></strong>:  0 is now allowed as an argument. Some DisplayPort monitors
 have been observed to work with this value.  (For implementation of the dynamic
 sleep algorithm, 0 is replaced internally by .01.)</li>
 </ul>
-<p>The tests durng display detection to check for misuse of the DDC Null Message
-and all zero getvcp response to indicate unsupported features have been made more robust.</p>
-<p>Detailed statistics are now maintained on a per-display instead of per-thread basis.</p>
+<p><strong>Cached display information</strong></p>
+<p>Program startup can be slow because of the display detection process.  This information
+rarely changes.  Information about the detected system configuration is optionally 
+saved in file $HOME/.cache/ddcutil/displays.</p>
+<p>Options <strong><em>--enable-displays-cache</em></strong> and <strong><em>--disable-displays-cache</em></strong> control whether
+this feature is enabled.  The default is currently <strong><em>--disable-displays-cache</em></strong>.</p>
+<h4 id="system-logs">System Logs</h4>
+<p>Writing to the system log has been generalized and in the process simplified.</p>
+<p>Option <strong><em>--syslog <level></em></strong> controls what is written to the system log.
+Recognized levels, in order of increasing verbosity, are NEVER, ERROR, WARN, INFO, and DEBUG.<br />
+This option replaces <strong><em>--enable-syslog</em></strong>, <strong><em>--disable-syslog</em></strong>, and <strong><em>--trace-to-syslog</em></strong>. </p>
+<h4 id="miscellanous-changes">Miscellanous Changes</h4>
 <ul>
-<li>Option <strong><em>--per-display-stats</em></strong> </li>
+<li>The tests durng display detection to check for misuse of the DDC Null Message
+and all zero getvcp response to indicate unsupported features have been made more robust.</li>
+<li>Option <strong><em>--noconfig</em></strong>: Do not process the configuration file.</li>
+<li><strong>environment --verbose</strong>: Option <strong><em>--quickenv</em></strong> skips some slow tests such as 
+  use of program i2cdetect.</li>
+<li><strong>environment --verbose</strong>: extended sysfs scan for ARM SOC devices to explore how 
+   those devices use /sys</li>
+<li>Option <strong><em>--trccall <function name></em></strong>: Trace the specified function and its called functions.</li>
+<li>Option <strong><em>--hh</em></strong>. The number of command line options has become huge. Many 
+  are development related.  Options not of interest to general users are now
+  hidden.  Option <strong><em>--hh</em></strong> exposes them, and implies option <strong><em>--help</em></strong>.</li>
+<li>Option <strong><em>--noconfig</em></strong>. Do not process the configuration file.</li>
+<li><strong>environment --verbose</strong>: Option <strong><em>--quickenv</em></strong> skips some slow tests such as 
+  use of program i2cdetect.</li>
+<li><strong>environment --verbose</strong>: extended sysfs scan for ARM SOC devices to explore how 
+   those devices use /sys</li>
+<li>Option <strong><em>--verbose</em></strong>.  If specified on the command line, the options obtained
+  from the configuration file are reported.</li>
+<li>Detailed statistics are now maintained on a per-display instead of per-thread basis.
+  Option <strong><em>--per-display-stats</em></strong> causes the statistics reported by option <strong><em>--stats</em></strong>
+  to include per-display statistics.</li>
 </ul>
-<p>Miscellaneous options changes:</p>
+<h3 id="fixed">Fixed</h3>
 <ul>
-<li>
-<p>Option <strong><em>--noconfig</em></strong>: Do not process the configuration file.</p>
-</li>
-<li>
-<p><strong>environment --verbose</strong>: Option <strong><em>--quickenv</em></strong> skips some slow tests such as 
-  use of program i2cdetect.</p>
-</li>
-<li>
-<p><strong>environment --verbose</strong>: extended sysfs scan for ARM SOC devices to explore how 
-   those devices use /sys</p>
-</li>
-<li>
-<p>Option <strong><em>--trccall <function name></em></strong>: Trace the specified function and its called functions.</p>
-</li>
+<li>Option <strong><em>--help</em></strong>. Document <strong>ELAPSED</strong> as a recognized statistics class</li>
+</ul>
+<h3 id="development-facilities">Development Facilities</h3>
+<ul>
+<li>Added utility options --f7, --f8, --i2, --s1, --s2, --s3, --s4, --fl1, --fl2
+  These options are intended to be used temporarily during development so as to not 
+  create new options for test purposes.  The current use of the utility 
+  options is reported by option <strong><em>--settings</em></strong>. </li>
+<li>Added utility command C1 for temporary use during development.</li>
+<li>Option <strong><em>--enable-mock-data</em></strong></li>
+<li>Option <strong><em>--trccall</em></strong>. Traces the call stack starting with the specified 
+  function.  This option applies only to functions for which tracing has been enabled.</li>
 </ul>
               
             </div>
