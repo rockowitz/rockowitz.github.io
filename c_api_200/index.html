@@ -297,19 +297,33 @@
 The SONAME is now libddcutil.so.5. The released library file is libddcutil.so.5.0.0.
 In conformance with Debian practice, the package name is <strong><em>libddcutil5</em></strong>.</p>
 <p>Library initialization has been reworked extensively to move operations 
-that can fail and other aspects that should be under control of the library user
+that can fail, along with various settings that should be under control of the library user,
 into a new function <strong>ddca_init()</strong>.</p>
 <p>This function:</p>
 <ul>
-<li>controls the level of messages written to the system log</li>
-<li>optionally processes options obtained from the <strong>ddcutil</strong> configuration file</li>
-<li>processes additional options passed as a string</li>
+<li>controls the level of messages written to the system log  </li>
+<li>optionally processes options obtained from the <strong>ddcutil</strong> configuration file  </li>
+<li>processes additional options passed as a string  </li>
 <li>sets error information for ddca_get_error_detail()</li>
 </ul>
 <p>If this function is not called by the user program, any API function that relies on its 
 processing invokes <strong>ddca_init()</strong> using arguments such that it never fails, e.g. 
 the configuration file is not processed.</p>
 <h3 id="api-changes">API changes</h3>
+<table>
+<thead>
+<tr>
+<th>New typedefs</th>
+<th>Comments</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>DDCA_Syslog_Level</td>
+<td>nbsp;minimum severity of msgs written to the system log</td>
+</tr>
+</tbody>
+</table>
 <table>
 <thead>
 <tr>
@@ -367,34 +381,102 @@ the configuration file is not processed.</p>
 <p>With the ability to configure libddcutil operation both by the ddcutil 
 configuration file and by passing an option string in the ddca_init() arguments, 
 several API functions are no longer needed and have been removed: </p>
-<p>Removed Max-Tries Functions         |
-------------------------------------|-----------------------------------------
-ddca_max_max_tries                  |&nbsp;
-ddca_get_max_tries                  |&nbsp;
-ddca_set_max_tries                  |&nbsp;
-ddca_set_default_sleep_multiplier   |
-ddca_set_global_sleep_multiplier    |
-ddca_set_default_sleep_multiplier   |
-ddca_set_global_sleep_multiplier    |</p>
+<table>
+<thead>
+<tr>
+<th>Removed Max-Tries Functions</th>
+<th>&nbsp;Equivalent Option</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ddca_max_max_tries</td>
+<td>&nbsp;No option equivalent</td>
+</tr>
+<tr>
+<td>ddca_get_max_tries</td>
+<td>&nbsp;No option equivalent</td>
+</tr>
+<tr>
+<td>ddca_set_max_tries</td>
+<td>&nbsp;Use option <strong><em>--maxtries</em></strong></td>
+</tr>
+<tr>
+<td>ddca_set_default_sleep_multiplier</td>
+<td>&nbsp;Use option <strong><em>--sleep-multiplier</em></strong></td>
+</tr>
+<tr>
+<td>ddca_set_global_sleep_multiplier</td>
+<td>&nbsp;Use option <strong><em>--sleep-multiplier</em></strong></td>
+</tr>
+<tr>
+<td>ddca_get_default_sleep_multiplier</td>
+<td>&nbsp;No option equivalent</td>
+</tr>
+<tr>
+<td>ddca_set_global_sleep_multiplier</td>
+<td>&nbsp;No option equivalent</td>
+</tr>
+</tbody>
+</table>
 <p><br></p>
-<p>Removed tracing functions           |
------------------------------------|-----------------------------
-ddca_add_trace_function            |
-ddca_add_traced_file |
-ddca_set_trace_groups |
-ddca_add_trace_groups |
-ddca_trace_group_name_to_value |
-ddca_set_trace_options| </p>
+<table>
+<thead>
+<tr>
+<th>Removed tracing functions:</th>
+<th>Equivalent option</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ddca_add_trace_function</td>
+<td>&nbsp;Use option <strong><em>--trcfunc</em></strong></td>
+</tr>
+<tr>
+<td>ddca_add_traced_file</td>
+<td>&nbsp;Use option <strong><em>--trcfile</em></strong></td>
+</tr>
+<tr>
+<td>ddca_set_trace_groups</td>
+<td>&nbsp;Use option <strong><em>--trace</em></strong></td>
+</tr>
+<tr>
+<td>ddca_add_trace_groups</td>
+<td>&nbsp;Use Option <strong><em>--trace</em></strong></td>
+</tr>
+<tr>
+<td>ddca_trace_group_name_to_value</td>
+<td>&nbsp;Not needed</td>
+</tr>
+<tr>
+<td>ddca_set_trace_options</td>
+<td>&nbsp; TO FILL IN</td>
+</tr>
+</tbody>
+</table>
 <p><br></p>
 <p>Most per-thread statistics are now instead maintained on a per-display basis.
-The following functions are no longer useful and have been removed
-- ddca_set_thread_description()
-- ddca_append_thread_description()
-- ddca_get_thread_desription() </p>
+The following functions are no longer useful and have been removed:</p>
+<ul>
+<li>ddca_set_thread_description()  </li>
+<li>ddca_append_thread_description()  </li>
+<li>ddca_get_thread_desription()   </li>
+</ul>
 <p>Remove previously deprecated functions that had been replaced by more useful versions</p>
-<p>Removed Function            |
-----------------------------|--------------------
-- ddca_open_display()       |&nbsp;Use ddca_open_display2().</p>
+<table>
+<thead>
+<tr>
+<th>Removed Function</th>
+<th>&nbsp;Alternative</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>- ddca_open_display()</td>
+<td>&nbsp;Use ddca_open_display2().</td>
+</tr>
+</tbody>
+</table>
 <h3 id="options">Options</h3>
 <p>These options apply only to <strong>libddcutil</strong>, not to <strong>ddcutil</strong>.  They can be specified in configuration
 file $HOME/.config/ddcutil/ddcutilrc, or in the libopts string passed to <strong>ddca_init()</strong>.</p>
