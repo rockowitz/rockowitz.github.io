@@ -296,6 +296,8 @@
 <p>The shared library <strong>libddcutil</strong> is not backwardly compatible.
 The SONAME is now libddcutil.so.5. The released library file is libddcutil.so.5.0.0.
 In conformance with Debian practice, the package name is <strong><em>libddcutil5</em></strong>.</p>
+<p>To support programs that that use the old shared library, libddcuti.so.4 will continue
+to be published as <strong>libddcutil4</strong>.</p>
 <p>Library initialization has been reworked extensively to move operations 
 that can fail, along with various settings that should be under control of the library user,
 into a new function <strong>ddca_init()</strong>.</p>
