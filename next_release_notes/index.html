@@ -166,23 +166,23 @@
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../libddcutil_release_notes/">Shared Library Release Notes</a>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../c_api_90/">C API Changes for Release 0.9.0</a>
+                  <li class="toctree-l1"><a class="reference internal" href="../c_api_90/">Shared Library Changes for Release 0.9.0</a>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../c_api_93/">C API Changes for Release 0.9.3</a>
+                  <li class="toctree-l1"><a class="reference internal" href="../c_api_93/">Shared Library Changes for Release 0.9.3</a>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../c_api_95/">C API Changes for Release 0.9.5</a>
+                  <li class="toctree-l1"><a class="reference internal" href="../c_api_95/">Shared Library Changes for Release 0.9.5</a>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../c_api_96/">C API Changes for Release 0.9.6</a>
+                  <li class="toctree-l1"><a class="reference internal" href="../c_api_96/">Shared Library Changes for Release 0.9.6</a>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../c_api_98/">C API Changes for Release 0.9.8</a>
+                  <li class="toctree-l1"><a class="reference internal" href="../c_api_98/">Shared Library Changes for Release 0.9.8</a>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../c_api_99/">C API Changes for Release 0.9.9</a>
+                  <li class="toctree-l1"><a class="reference internal" href="../c_api_99/">Shared Library Changes for Release 0.9.9</a>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../c_api_100/">C API Changes for Release 1.0.0</a>
+                  <li class="toctree-l1"><a class="reference internal" href="../c_api_100/">Shared Library Changes for Release 1.0.0</a>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../c_api_110/">C API Changes for Release 1.1.0</a>
+                  <li class="toctree-l1"><a class="reference internal" href="../c_api_110/">Shared Library Changes for Release 1.1.0</a>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../c_api_120/">C API Changes for Release 1.2.0</a>
+                  <li class="toctree-l1"><a class="reference internal" href="../c_api_120/">Shared Library Changes for Release 1.2.0</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../c_api_130/">Shared Library Changes for Release 1.3.0</a>
                   </li>
@@ -327,7 +327,7 @@ this feature is enabled.  The default is currently <strong><em>--disable-display
 <h4 id="system-logs">System Logs</h4>
 <p>Writing to the system log has been generalized and in the process simplified.</p>
 <p>Option <strong><em>--syslog LEVEL</em></strong> controls what is written to the system log.
-Recognized levels, in order of increasing verbosity, are NEVER, ERROR, WARN, INFO, and DEBUG.
+Recognized levels, in order of increasing verbosity, are NEVER, ERROR, WARN, NOTICE, INFO, VERBOSE, and DEBUG.
 This option replaces <strong><em>--enable-syslog</em></strong>, <strong><em>--disable-syslog</em></strong>, and <strong><em>--trace-to-syslog</em></strong>. </p>
 <h4 id="miscellanous-changes">Miscellanous Changes</h4>
 <ul>
@@ -354,9 +354,7 @@ and all zero getvcp response to indicate unsupported features have been made mor
 </ul>
 <h3 id="development-facilities">Development Facilities</h3>
 <ul>
-<li>Added utility options --f7, --f8, --i2, --s1, --s2, --s3, --s4, --fl1, --fl2
-  These options are intended to be used temporarily during development so as to not 
-  create new options for test purposes.  The current use of the utility 
+<li>Added termporary use options --f7, --f8, --i2, --s1, --s2, --s3, --s4, --fl1, --fl2
   options is reported by option <strong><em>--settings</em></strong>. </li>
 <li>Added utility command C1 for temporary use during development.</li>
 <li>Option <strong><em>--enable-mock-data</em></strong></li>
