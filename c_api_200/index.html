@@ -192,9 +192,11 @@
     <ul class="current">
     <li class="toctree-l2"><a class="reference internal" href="#overview">Overview</a>
     </li>
-    <li class="toctree-l2"><a class="reference internal" href="#api-changes">API changes</a>
+    <li class="toctree-l2"><a class="reference internal" href="#library-initialization">Library Initialization</a>
     </li>
-    <li class="toctree-l2"><a class="reference internal" href="#options">Options</a>
+    <li class="toctree-l2"><a class="reference internal" href="#execution-options">Execution Options</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#api-changes">API changes</a>
     </li>
     <li class="toctree-l2"><a class="reference internal" href="#miscellaneous">Miscellaneous</a>
     </li>
@@ -297,7 +299,14 @@
 The SONAME is now libddcutil.so.5. The released library file is libddcutil.so.5.0.0.
 In conformance with Debian practice, the package name is <strong><em>libddcutil5</em></strong>.</p>
 <p>To support programs that that use the old shared library, libddcuti.so.4 will continue
-to be published as <strong>libddcutil4</strong>.</p>
+to be published as package <strong>libddcutil4</strong>.</p>
+<p>Because necessary changes required incrementing the major version of the shared
+library, is provided an opportunity to remove a large number of functions that 
+were deprecated, made unnecessary by the ability to pass command line options
+to <strong>libddcutil</strong>, or otherwise cluttering the API and ABI.  In practice, most
+existing programs will at most require recompilation to use the new version of
+the shared library.</p>
+<h3 id="library-initialization">Library Initialization</h3>
 <p>Library initialization has been reworked extensively to move operations 
 that can fail, along with various settings that should be under control of the library user,
 into a new function <strong>ddca_init()</strong>.</p>
@@ -312,6 +321,14 @@ into a new function <strong>ddca_init()</strong>.</p>
 processing invokes <strong>ddca_init()</strong> using arguments such that it never fails, e.g. 
 the configuration file is not processed. As a result, most programs that use the 
 shared library will work with just recompilation.</p>
+<h3 id="execution-options">Execution Options</h3>
+<p>These options apply only to <strong>libddcutil</strong>, not to <strong>ddcutil</strong>.  They can be specified in configuration
+file $HOME/.config/ddcutil/ddcutilrc, or in the libopts string passed to <strong>ddca_init()</strong>.</p>
+<ul>
+<li>Option <strong><em>--trcapi <api function name></em></strong>:  Trace the specified API function and its called functions.</li>
+<li>Option <strong><em>--profile-api</em></strong>: Collect performance statistics for API functions that perform display IO, 
+  and report them when the shared library is terminated.</li>
+</ul>
 <h3 id="api-changes">API changes</h3>
 <table>
 <thead>
@@ -322,8 +339,12 @@ shared library will work with just recompilation.</p>
 </thead>
 <tbody>
 <tr>
+<td>DDCA_Init_Options }&nbsp;enumm of <strong>ddca_init()</strong> options</td>
+<td></td>
+</tr>
+<tr>
 <td>DDCA_Syslog_Level</td>
-<td>&nbsp;minimum severity of msgs written to the system log</td>
+<td>&nbsp;enum of <strong>ddcutil</strong> severity levels for msgs written to the system log</td>
 </tr>
 <tr>
 <td>DDCA_HotplugFunc</td>
@@ -345,12 +366,20 @@ shared library will work with just recompilation.</p>
 <td>&nbsp;perform library initialization</td>
 </tr>
 <tr>
-<td>ddca_library_filename</td>
+<td>ddca_libddcutil_filename</td>
 <td>&nbsp;returns the fully qualified name of the shared library</td>
+</tr>
+<tr>
+<td>ddca_syslog_level_from_name</td>
+<td>&nbsp;given its symbolic name, return a DDCA_Syslog_Level value</td>
 </tr>
 <tr>
 <td>ddca_register_display_hotplug_callback</td>
 <td>&nbsp;Registers a function of type DDCA_Display_Hotplug_Func which will be called to inform the client of display hotplug events.</td>
+</tr>
+<tr>
+<td>ddca_unregister_display_hotplub_callback</td>
+<td>&nbsp;Unregister a callback</td>
 </tr>
 </tbody>
 </table>
@@ -358,7 +387,7 @@ shared library will work with just recompilation.</p>
 <table>
 <thead>
 <tr>
-<th>Changed Function</th>
+<th>Changed Functions</th>
 <th>Comments</th>
 </tr>
 </thead>
@@ -382,6 +411,10 @@ shared library will work with just recompilation.</p>
 <tr>
 <td>ddca_report_display_info</td>
 <td>&nbsp;returns DDCA_Status instead of void</td>
+</tr>
+<tr>
+<td>ddca_show_stats</td>
+<td>&nbsp;optionally report per-display stats, not per-thread stats</td>
 </tr>
 </tbody>
 </table>
@@ -409,21 +442,31 @@ several API functions are no longer needed and have been removed: </p>
 <td>ddca_set_max_tries</td>
 <td>&nbsp;Use option <strong><em>--maxtries</em></strong></td>
 </tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Removed Sleep-MUltiplier functions</th>
+<th>Comments</th>
+</tr>
+</thead>
+<tbody>
 <tr>
 <td>ddca_set_default_sleep_multiplier</td>
 <td>&nbsp;Use option <strong><em>--sleep-multiplier</em></strong></td>
 </tr>
 <tr>
 <td>ddca_set_global_sleep_multiplier</td>
-<td>&nbsp;Use option <strong><em>--sleep-multiplier</em></strong></td>
+<td>&nbsp;previously deprecated</td>
+</tr>
+<tr>
+<td>ddca_get_global_sleep_multiplier</td>
+<td>&nbsp;No option equivalent</td>
 </tr>
 <tr>
 <td>ddca_get_default_sleep_multiplier</td>
-<td>&nbsp;No option equivalent</td>
-</tr>
-<tr>
-<td>ddca_set_global_sleep_multiplier</td>
-<td>&nbsp;No option equivalent</td>
+<td>&nbsp;Previously deprecated</td>
 </tr>
 </tbody>
 </table>
@@ -431,8 +474,23 @@ several API functions are no longer needed and have been removed: </p>
 <table>
 <thead>
 <tr>
-<th>Removed Tracing functions</th>
-<th>Equivalent option</th>
+<th>Removed Tracing Typedefs</th>
+<th>Comments</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>DDCA_Trace_Options</td>
+<td>&nbsp;used by ddca_set-trace_options()</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<table>
+<thead>
+<tr>
+<th>Removed Tracing Functions</th>
+<th>Comments</th>
 </tr>
 </thead>
 <tbody>
@@ -450,7 +508,7 @@ several API functions are no longer needed and have been removed: </p>
 </tr>
 <tr>
 <td>ddca_add_trace_groups</td>
-<td>&nbsp;Use Option <strong><em>--trace</em></strong></td>
+<td>&nbsp;Use option <strong><em>--trace</em></strong></td>
 </tr>
 <tr>
 <td>ddca_trace_group_name_to_value</td>
@@ -458,42 +516,60 @@ several API functions are no longer needed and have been removed: </p>
 </tr>
 <tr>
 <td>ddca_set_trace_options</td>
-<td>&nbsp; TO FILL IN</td>
+<td>&nbsp;Use options --thread-id --timestamp, --wall-timestamp</td>
 </tr>
 </tbody>
 </table>
 <p><br></p>
 <p>Most per-thread statistics are now instead maintained on a per-display basis.
 The following functions are no longer useful and have been removed:</p>
-<ul>
-<li>ddca_set_thread_description()  </li>
-<li>ddca_append_thread_description()  </li>
-<li>ddca_get_thread_desription()   </li>
-</ul>
+<p><br></p>
+<table>
+<thead>
+<tr>
+<th>Removed Per-Thread Functions</th>
+<th>Comments</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ddca_set_thread_description</td>
+<td>&nbsp;No longer useful</td>
+</tr>
+<tr>
+<td>ddca_append_thread_description</td>
+<td>&nbsp;No longer useful</td>
+</tr>
+<tr>
+<td>ddca_get_thread_desription</td>
+<td>&nbsp;No longer useful</td>
+</tr>
+</tbody>
+</table>
 <p>Remove previously deprecated functions that had been replaced by more useful versions</p>
 <table>
 <thead>
 <tr>
 <th>Removed Function</th>
-<th>&nbsp;Alternative</th>
+<th>&nbsp;Comments</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>- ddca_open_display()</td>
-<td>&nbsp;Use ddca_open_display2().</td>
+<td>ddca_get_feature_name_by_dref</td>
+<td>&nbsp;Had been replaced by ddca_get_feature_metadata_by_dref()</td>
+</tr>
+<tr>
+<td>ddca_get_formatted_vcp_value</td>
+<td>&nbsp;Did not support user defined features</td>
+</tr>
+<tr>
+<td>ddca_open_display</td>
+<td>&nbsp;Had been replaced by ddca_open_display2().</td>
 </tr>
 </tbody>
 </table>
 <p><br></p>
-<h3 id="options">Options</h3>
-<p>These options apply only to <strong>libddcutil</strong>, not to <strong>ddcutil</strong>.  They can be specified in configuration
-file $HOME/.config/ddcutil/ddcutilrc, or in the libopts string passed to <strong>ddca_init()</strong>.</p>
-<ul>
-<li>Option <strong><em>--trcapi <api function name></em></strong>:  Trace the specified API function and its called functions.</li>
-<li>Option <strong><em>--profile-api</em></strong>: Collect performance statistics for API functions that perform display IO, 
-  and report them when the shared library is terminated.</li>
-</ul>
 <h3 id="miscellaneous">Miscellaneous</h3>
 <p>Symbols for functions that had previously been removed from ddcutil_c_api.h are no longer exported.</p>
               

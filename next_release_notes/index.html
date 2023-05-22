@@ -237,7 +237,7 @@
     </li>
     <li class="toctree-l2"><a class="reference internal" href="#miscellanous-changes">Miscellanous Changes</a>
     </li>
-    <li class="toctree-l2"><a class="reference internal" href="#fixed">Fixed</a>
+    <li class="toctree-l2"><a class="reference internal" href="#building">Building</a>
     </li>
     <li class="toctree-l2"><a class="reference internal" href="#development-facilities">Development Facilities</a>
     </li>
@@ -296,8 +296,9 @@
             <div class="section" itemprop="articleBody">
               
                 <h2 id="preliminary-notes-for-the-next-ddcutil-release">Preliminary Notes for the Next <strong>ddcutil</strong> Release</h2>
+<p>Release 2.0.0 is a major update to <strong>ddcutil</strong>, containing significant performance improvements.
+The version of the shared library is not backwards compatible.</p>
 <p>For notes on changes to the shared library, see <a href="../c_api_200/">Shared Library Changes for the Next Release (Draft)</a></p>
-<p>Release 2.0.0 is a major update to <strong>ddcutil</strong>.</p>
 <h4 id="installation">Installation</h4>
 <p><strong>ddcutil</strong> installation installs file /usr/lib/modules-load.d/ddcutil.conf
 to ensure that kernel module i2c-dev is loaded at boot time (if it is not built into the kernel).</p>
@@ -313,10 +314,6 @@ $HOME/.cache/ddcutil/stats. Use of this algorithm is currently off by default.
 Option <strong><em>-dsa</em></strong>, or one of its variants such as <strong><em>--enable-dsa</em></strong> turn it on.
 If both <strong><em>--sleep-multiplier</em></strong> and <strong><em>--dsa</em></strong> are specified, existing statistics are
 discarded and the sleep algorithm restarts calculation with the specified sleep-multiplier value.</p>
-<ul>
-<li>Option <strong><em>--sleep-multiplier</em></strong>:  0 is now allowed as an argument. Some DisplayPort monitors
-have been observed to work with this value.</li>
-</ul>
 <p><strong>Cached Display Information</strong></p>
 <p>Program startup can be slow because of the display detection process.  This information
 rarely changes.  Information about the detected system configuration is optionally 
@@ -330,14 +327,17 @@ Recognized levels, in order of increasing verbosity, are NEVER, ERROR, WARN, NOT
 This option replaces <strong><em>--enable-syslog</em></strong>, <strong><em>--disable-syslog</em></strong>, and <strong><em>--trace-to-syslog</em></strong>. </p>
 <h4 id="miscellanous-changes">Miscellanous Changes</h4>
 <ul>
+<li>Option <strong><em>--sleep-multiplier 0</em></strong> is now allowed. Some DisplayPort monitors
+  have been observed to work with this value.</li>
 <li>The tests durng display detection to check for misuse of the DDC Null Message
-and all zero getvcp response to indicate unsupported features have been made more robust.</li>
+  or an all zero getvcp response to indicate unsupported features have been made more robust.</li>
 <li>Option <strong><em>--noconfig</em></strong>: Do not process the configuration file.</li>
 <li><strong>environment --verbose</strong>: Option <strong><em>--quickenv</em></strong> skips some slow tests such as 
   use of program i2cdetect.</li>
 <li><strong>environment --verbose</strong>: extended sysfs scan for ARM SOC devices to explore how 
    those devices use /sys</li>
-<li>Option <strong><em>--trccall <function name></em></strong>: Trace the specified function and its called functions.</li>
+<li>Option <strong><em>--trccall &lt;function name&gt;</em></strong>: Trace the specified function and its called functions.
+  (This option reports only functions for which tracing has been enabled.)</li>
 <li>Option <strong><em>--hh</em></strong>. The number of command line options has become huge. Many 
   are development related.  Options not of interest to general users are now
   hidden.  Option <strong><em>--hh</em></strong> exposes them, and implies option <strong><em>--help</em></strong>.</li>
@@ -346,19 +346,21 @@ and all zero getvcp response to indicate unsupported features have been made mor
 <li>Detailed statistics are now maintained on a per-display instead of per-thread basis.
   Option <strong><em>--per-display-stats</em></strong> causes the statistics reported by option <strong><em>--stats</em></strong>
   to include per-display statistics.</li>
-</ul>
-<h3 id="fixed">Fixed</h3>
-<ul>
 <li>Option <strong><em>--help</em></strong>. Document <strong>ELAPSED</strong> as a recognized statistics class</li>
+</ul>
+<h3 id="building">Building</h3>
+<ul>
+<li>configure option <strong>-enable-syslog</strong>/<strong>--disable-syslog</strong> has been removed.
+  Command line option <strong>--syslog never</strong> disables all writes to the system log.</li>
+<li>Shared library libkmod is no longer required.</li>
+<li>Shared library libjansson is now required.</li>
 </ul>
 <h3 id="development-facilities">Development Facilities</h3>
 <ul>
-<li>Added termporary use options --f7, --f8, --i2, --s1, --s2, --s3, --s4, --fl1, --fl2
-  options is reported by option <strong><em>--settings</em></strong>. </li>
+<li>Added termporary use options --f7, --f8, --i2, --s1, --s2, --s3, --s4, --fl1, --fl2.
+  The current meaning of these options is reported by option <strong><em>--settings</em></strong>. </li>
 <li>Added utility command C1 for temporary use during development.</li>
-<li>Option <strong><em>--enable-mock-data</em></strong></li>
-<li>Option <strong><em>--trccall</em></strong>. Traces the call stack starting with the specified 
-  function.  This option applies only to functions for which tracing has been enabled.</li>
+<li>Added option <strong><em>--enable-mock-data</em></strong></li>
 </ul>
               
             </div>
