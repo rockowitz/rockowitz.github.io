@@ -301,7 +301,7 @@ In conformance with Debian practice, the package name is <strong><em>libddcutil5
 <p>To support programs that that use the old shared library, libddcuti.so.4 will continue
 to be published as package <strong>libddcutil4</strong>.</p>
 <p>Because necessary changes required incrementing the major version of the shared
-library, is provided an opportunity to remove a large number of functions that 
+library, it provided an opportunity to remove a large number of functions that 
 were deprecated, made unnecessary by the ability to pass command line options
 to <strong>libddcutil</strong>, or otherwise cluttering the API and ABI.  In practice, most
 existing programs will at most require recompilation to use the new version of
@@ -339,8 +339,8 @@ file $HOME/.config/ddcutil/ddcutilrc, or in the libopts string passed to <strong
 </thead>
 <tbody>
 <tr>
-<td>DDCA_Init_Options }&nbsp;enumm of <strong>ddca_init()</strong> options</td>
-<td></td>
+<td>DDCA_Init_Options</td>
+<td>&nbsp;enum of <strong>ddca_init()</strong> options</td>
 </tr>
 <tr>
 <td>DDCA_Syslog_Level</td>
@@ -363,22 +363,22 @@ file $HOME/.config/ddcutil/ddcutilrc, or in the libopts string passed to <strong
 <tbody>
 <tr>
 <td>ddca_init</td>
-<td>&nbsp;perform library initialization</td>
+<td>&nbsp;Perform library initialization</td>
 </tr>
 <tr>
 <td>ddca_libddcutil_filename</td>
-<td>&nbsp;returns the fully qualified name of the shared library</td>
+<td>&nbsp;Returns the fully qualified name of the shared library</td>
 </tr>
 <tr>
 <td>ddca_syslog_level_from_name</td>
-<td>&nbsp;given its symbolic name, return a DDCA_Syslog_Level value</td>
+<td>&nbsp;Given its symbolic name, return a DDCA_Syslog_Level value</td>
 </tr>
 <tr>
 <td>ddca_register_display_hotplug_callback</td>
 <td>&nbsp;Registers a function of type DDCA_Display_Hotplug_Func which will be called to inform the client of display hotplug events.</td>
 </tr>
 <tr>
-<td>ddca_unregister_display_hotplub_callback</td>
+<td>ddca_unregister_display_hotplug_callback</td>
 <td>&nbsp;Unregister a callback</td>
 </tr>
 </tbody>
@@ -394,34 +394,31 @@ file $HOME/.config/ddcutil/ddcutilrc, or in the libopts string passed to <strong
 <tbody>
 <tr>
 <td>ddca_set_sleep_multiplier</td>
-<td>&nbsp;operates on the display, if any, open in the current thread</td>
+<td>&nbsp;Operates on the display, if any, open in the current thread</td>
 </tr>
 <tr>
 <td>ddca_get_sleep_multiplier</td>
-<td>&nbsp;returns the value for the display, if any, open in the current thread</td>
+<td>&nbsp;Returns the value for the display, if any, open in the current thread</td>
 </tr>
 <tr>
 <td>ddca_get_display_list</td>
-<td>&nbsp;returns status code, sets error detail</td>
-</tr>
-<tr>
-<td>ddca_add_traced_function</td>
-<td>&nbsp;returns true if function is traceable, false of not</td>
+<td>&nbsp;Returns status code, sets error detail</td>
 </tr>
 <tr>
 <td>ddca_report_display_info</td>
-<td>&nbsp;returns DDCA_Status instead of void</td>
+<td>&nbsp;Returns DDCA_Status instead of void</td>
 </tr>
 <tr>
 <td>ddca_show_stats</td>
-<td>&nbsp;optionally report per-display stats, not per-thread stats</td>
+<td>&nbsp;Optionally report per-display stats, not per-thread stats</td>
 </tr>
 </tbody>
 </table>
 <p><br></p>
 <p>With the ability to configure libddcutil operation both by the ddcutil 
 configuration file and by passing an option string in the <strong>ddca_init()</strong> arguments, 
-several API functions are no longer needed and have been removed: </p>
+many API functions are no longer needed and have been removed.
+These are unlikely to have been used by any existing clients other than <strong>ddcui</strong>.</p>
 <table>
 <thead>
 <tr>
@@ -444,10 +441,11 @@ several API functions are no longer needed and have been removed: </p>
 </tr>
 </tbody>
 </table>
+<p><br></p>
 <table>
 <thead>
 <tr>
-<th>Removed Sleep-MUltiplier functions</th>
+<th>Removed Sleep-Multiplier Functions</th>
 <th>Comments</th>
 </tr>
 </thead>
@@ -457,15 +455,15 @@ several API functions are no longer needed and have been removed: </p>
 <td>&nbsp;Use option <strong><em>--sleep-multiplier</em></strong></td>
 </tr>
 <tr>
-<td>ddca_set_global_sleep_multiplier</td>
-<td>&nbsp;previously deprecated</td>
-</tr>
-<tr>
-<td>ddca_get_global_sleep_multiplier</td>
+<td>ddca_get_default_sleep_multiplier</td>
 <td>&nbsp;No option equivalent</td>
 </tr>
 <tr>
-<td>ddca_get_default_sleep_multiplier</td>
+<td>ddca_set_global_sleep_multiplier</td>
+<td>&nbsp;Previously deprecated</td>
+</tr>
+<tr>
+<td>ddca_get_global_sleep_multiplier</td>
 <td>&nbsp;Previously deprecated</td>
 </tr>
 </tbody>
@@ -495,7 +493,7 @@ several API functions are no longer needed and have been removed: </p>
 </thead>
 <tbody>
 <tr>
-<td>ddca_add_trace_function</td>
+<td>ddca_add_traced_function</td>
 <td>&nbsp;Use option <strong><em>--trcfunc</em></strong></td>
 </tr>
 <tr>
@@ -523,7 +521,6 @@ several API functions are no longer needed and have been removed: </p>
 <p><br></p>
 <p>Most per-thread statistics are now instead maintained on a per-display basis.
 The following functions are no longer useful and have been removed:</p>
-<p><br></p>
 <table>
 <thead>
 <tr>
@@ -546,6 +543,7 @@ The following functions are no longer useful and have been removed:</p>
 </tr>
 </tbody>
 </table>
+<p><br></p>
 <p>Remove previously deprecated functions that had been replaced by more useful versions</p>
 <table>
 <thead>

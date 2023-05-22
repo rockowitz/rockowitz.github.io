@@ -310,19 +310,19 @@ that special settings may still be needed for the proprietary Nvidia driver.</p>
 <p>The dynamic sleep algorithm has been completely rewritten to both dynamically increase
 the sleep-multiplier factor (as needed) and decrease the sleep multiplier factor 
 (insofar as possible).  Data is maintained across program executions in file 
-$HOME/.cache/ddcutil/stats. Use of this algorithm is currently off by default.
+$HOME/.cache/ddcutil/stats.
 Option <strong><em>-dsa</em></strong>, or one of its variants such as <strong><em>--enable-dsa</em></strong> turn it on.
 If both <strong><em>--sleep-multiplier</em></strong> and <strong><em>--dsa</em></strong> are specified, existing statistics are
 discarded and the sleep algorithm restarts calculation with the specified sleep-multiplier value.</p>
 <p><strong>Cached Display Information</strong></p>
-<p>Program startup can be slow because of the display detection process.  This information
+<p>Program startup can be slow because of the many sleeps required by the display detection process.  This information
 rarely changes.  Information about the detected system configuration is optionally 
 saved in file $HOME/.cache/ddcutil/displays.</p>
 <p>Options <strong><em>--enable-displays-cache</em></strong> and <strong><em>--disable-displays-cache</em></strong> control whether
-this feature is enabled.  The default is currently <strong><em>--disable-displays-cache</em></strong>.</p>
+this feature is enabled.</p>
 <h4 id="system-logs">System Logs</h4>
 <p>Writing to the system log has been generalized and in the process simplified.</p>
-<p>Option <strong><em>--syslog LEVEL</em></strong> controls what is written to the system log.
+<p>Option <strong><em>--syslog &lt;level&gt;</em></strong> controls what is written to the system log.
 Recognized levels, in order of increasing verbosity, are NEVER, ERROR, WARN, NOTICE, INFO, VERBOSE, and DEBUG.
 This option replaces <strong><em>--enable-syslog</em></strong>, <strong><em>--disable-syslog</em></strong>, and <strong><em>--trace-to-syslog</em></strong>. </p>
 <h4 id="miscellanous-changes">Miscellanous Changes</h4>
