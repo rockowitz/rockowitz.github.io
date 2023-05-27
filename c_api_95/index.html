@@ -316,19 +316,20 @@ There is never a need to free a display reference.</p>
 <tbody>
 <tr>
 <td>ddca_get_display_ref()</td>
-<td>Renamed from ddca_create_display_ref()</td>
+<td>&nbsp; Renamed from ddca_create_display_ref()</td>
 </tr>
 <tr>
 <td>ddca_create_display_ref()</td>
-<td>Marked as deprecated</td>
+<td>&nbsp; Marked as deprecated</td>
 </tr>
 <tr>
 <td>ddca_free_display_ref()</td>
-<td>Marked as deprecated, unnecessary</td>
+<td>&nbsp; Marked as deprecated, unnecessary</td>
 </tr>
 </tbody>
 </table>
-<p>Thanks to J&uuml;rgen Altfeld for his questions about this and other aspects of the API
+<p><br></p>
+<p>Thank you to J&uuml;rgen Altfeld for his questions about this and other aspects of the API
 that have helped make it more consistent and hopefully easier to use.</p>
 <h3 id="thread-error-detail">Thread Error Detail</h3>
 <p>All API functions that return a <strong>DDCA_Status</strong> value now clear the thread error detail during function initialization.  Therefore, a call to
@@ -358,6 +359,7 @@ that have helped make it more consistent and hopefully easier to use.</p>
 </tr>
 </tbody>
 </table>
+<p><br></p>
 <h3 id="miscellaneous">Miscellaneous</h3>
 <p>Move definitions of <strong>DDCA_Build_Option_Flags</strong> and <strong>DDCA_Capture_Option_Flags</strong> from <strong>ddcutil_c_api.h</strong> to <strong>ddcutil_types.h</strong>, to facilitate creation of a C++ API, as requested by J&uuml;rgen Altfeld. </p>
 <p>Some API functions returned <strong><em>DDCRC_ARG</em></strong> when passed an invalid parameter, others returned <strong><em>-EINVAL</em></strong>.
@@ -389,6 +391,7 @@ All now return <strong><em>DDCRC_ARG</em></strong>.</p>
 </tr>
 </tbody>
 </table>
+<p><br></p>
 <p>API functions can no longer return <strong><em>DDCRC_UNINITIALIZED</em></strong> as initializion is guaranteed when the shared library is loaded</p>
 <p>The following functions now return "const char *" instead of "char *" to emphasize that they return pointers into internal 
 <strong>ddcutil</strong> data structures that should not be freed.  Note that this is a non-upwardly compatible API change that may 
@@ -423,6 +426,7 @@ require client changes.</p>
 </tr>
 </tbody>
 </table>
+<p><br></p>
 <h3 id="precondition-failure">Precondition Failure</h3>
 <p>API function precondition failures reflect an error in the calling client program.
 How best to deal with them?  Multiple design principles apply here.  Unfortunately,
@@ -513,7 +517,7 @@ They have now been deleted from files <strong>ddcutil_c_api.h</strong> and <stro
 <tbody>
 <tr>
 <td>DDCA_MCCS_Version_Id</td>
-<td>use DDCA_MCCS_Version_Spec</td>
+<td>&nbsp; use DDCA_MCCS_Version_Spec</td>
 </tr>
 <tr>
 <td>ddca_get_mccs_version_id_name()</td>
@@ -525,30 +529,31 @@ They have now been deleted from files <strong>ddcutil_c_api.h</strong> and <stro
 </tr>
 <tr>
 <td>ddca_get_display_info_list()</td>
-<td>use ddca_get_display_info_list2()</td>
+<td>&nbsp; use ddca_get_display_info_list2()</td>
 </tr>
 <tr>
 <td>ddca_get_simple_feature_value_name_by_display()</td>
-<td>obtain from DDCA_Feature_Metadata</td>
+<td>&nbsp; obtain from DDCA_Feature_Metadata</td>
 </tr>
 <tr>
 <td>ddca_get_edid_by_dref()</td>
-<td>obtain from DDCA_Feature_Metadata</td>
+<td>&nbsp; obtain from DDCA_Feature_Metadata</td>
 </tr>
 <tr>
 <td>ddca_open_display()</td>
-<td>use ddca_open_display2()</td>
+<td>&nbsp; use ddca_open_display2()</td>
 </tr>
 <tr>
 <td>ddca_set_simple_nc_vcp_value()</td>
-<td>use ddca_set_non_table_vcp_value()</td>
+<td>&nbsp; use ddca_set_non_table_vcp_value()</td>
 </tr>
 <tr>
 <td>ddca_set_continuous_vcp_value()</td>
-<td>use ddca_set_non_table_vcp_value()</td>
+<td>&nbsp; use ddca_set_non_table_vcp_value()</td>
 </tr>
 </tbody>
 </table>
+<p><br></p>
 <h3 id="sample-programs">Sample Programs</h3>
 <p>The sample client programs have been modified to reflect the API changes.</p>
 <p>Fixed an incorrect printf() format string in sample program demo_get_set_vcp.c.  Reported by J&uuml;rgen Altfeld.</p>
