@@ -376,40 +376,40 @@ See the <a href="https://en.wikipedia.org/wiki/Display_Data_Channel">Wikipedia D
 </ul>
 <p>Many standards can be found <a href="https://glenwing.github.io/docs">here</a></p>
 <h3 id="i2c">I<sup>2</sup>C<a name="i2c"></a></h3>
-<p>As background, I2C is a low level, slow speed specification of a 2 wire protocol for sending and receiving bytes. DDC/CI is layered on top of that protocol, describing particular sequences of bytes that are communicated between a master device (the host computer) and a slave device (a monitor) at address x37 on an I2C bus. By analogy,
-DDC is as a subclass of superclass I2C, that is DDC obeys the
-rules of I2C, but is more specific.  For example, only certain byte sequences are legal. SMBUS is another protocol based on I2C.  </p>
-<p><strong><em>ddcutil</em></strong> reads from and writes to the userspace <strong>/dev-i2c</strong>* devices which present a file system like abstraction of an I2C bus.  It leaves
+<p>As background, I<sup>2</sup>C is a low level, slow speed specification of a 2 wire protocol for sending and receiving bytes. DDC/CI is layered on top of that protocol, describing particular sequences of bytes that are communicated between a master device (the host computer) and a slave device (a monitor) at address x37 on an I<sup>2</sup>C bus. By analogy,
+DDC is as a subclass of superclass I<sup>2</sup>C, that is DDC obeys the
+rules of I<sup>2</sup>C, but is more specific.  For example, only certain byte sequences are legal. SMBUS is another protocol based on I<sup>2</sup>C.  </p>
+<p><strong><em>ddcutil</em></strong> reads from and writes to the userspace <strong>/dev-i2c</strong>* devices which present a file system like abstraction of an I<sup>2</sup>C bus.  It leaves
 the bit-banging to the video device drivers, e.g. amdgpu, nouveau. </p>
-<p>One source of confusion in DDC documentation is the specification of slave adddresses on the I2C bus.  Sometimes you'll see the DDC address documented as x37, other times as the pair x6e/x6f. Leaving aside the implementation of 10 bit I2C bus addresses (uncommon), I2C slave addresses are encoded in a single byte. The high order 7 bits are used for the address per se.  The low order bit is 0 for a write operation, 1 for a read operation. Much of the VESA documenation regards the entire 8 bit value as an address, which means address x37 becomes the pair x6e/x6f.  Similarly, the 7 bit address for the EDID is x50; regarded as an 8 bit address, the EDID address becomes xA0/xA1. <strong><em>ddcutil</em></strong> specifies I2C slave addresses in 7 bit form, as do utilities such as <strong><em>i2cdetect</em></strong>, <strong><em>i2cget</em></strong>, and <strong><em>i2cset</em></strong>.</p>
-<p>The following specifications and articles provide backgroud information about the I2C bus. </p>
+<p>One source of confusion in DDC documentation is the specification of slave adddresses on the I<sup>2</sup>C bus.  Sometimes you'll see the DDC address documented as x37, other times as the pair x6e/x6f. Leaving aside the implementation of 10 bit I<sup>2</sup>C bus addresses (uncommon), I<sup>2</sup>C slave addresses are encoded in a single byte. The high order 7 bits are used for the address per se.  The low order bit is 0 for a write operation, 1 for a read operation. Much of the VESA documenation regards the entire 8 bit value as an address, which means address x37 becomes the pair x6e/x6f.  Similarly, the 7 bit address for the EDID is x50; regarded as an 8 bit address, the EDID address becomes xA0/xA1. <strong><em>ddcutil</em></strong> specifies I<sup>2</sup>C slave addresses in 7 bit form, as do utilities such as <strong><em>i2cdetect</em></strong>, <strong><em>i2cget</em></strong>, and <strong><em>i2cset</em></strong>.</p>
+<p>The following specifications and articles provide backgroud information about the I<sup>2</sup>C bus. </p>
 <ul>
 <li><a href="http://www.ti.com/lit/an/slva704/slva704.pdf">Understanding the I<sup>2</sup>C Bus, Texas Instruments Application Report, SLVA702, June 2015</a></li>
 <li><a href="https://luxielectronics.com/attachments/File/HDCP_and_EDID_Demystified.pdf">HDCP and EDID Demystified</a></li>
-<li><a href="https://www.pololu.com/file/0J435/UM10204.pdf">I2C-bus specification and user manual, Rev 6 - 4 April 2014</a></li>
+<li><a href="https://www.pololu.com/file/0J435/UM10204.pdf">I<sup>2</sup>C-bus specification and user manual, Rev 6 - 4 April 2014</a></li>
 <li><a href="https://i2c.info">I<sup>2</sup>C Info -I<sup>2</sup>C Bus, Interface and Protocol</a></li>
 <li><a href="https://i2c.info/i2c-bus-specification">I<sup>2</sup>C Bus Specification</a></li>
-<li><a href="https://deepbluembedded.com/i2c-communication-protocol-tutorial-pic/">I2C Communication Protocol Tutorial</a></li>
-<li><a href="https://www.i2c-bus.org/">I2C - What's That?</a></li>
-<li><a href="https://www.i2c-bus.org/i2c-primer">I2C Primer</a></li>
-<li><a href="https://en.wikipedia.org/wiki/I2C">Wikipedia</a></li>
-<li><a href="https://www.totalphase.com/support/articles/200349176-7-bit-8-bit-and-10-bit-I2C-Slave-Addressing">7-bit, 8-bit, and 10-bit I2C Slave Addressing</a></li>
-<li><a href="https://electronics.stackexchange.com/questions/151413/how-to-display-i2c-address-in-hex">StackExchange thread on the confusion in I2C slave address representation</a></li>
-<li><a href="https://www.slideshare.net/shudhanshu29/i2c-protocol-94259889">I2C Protocol Lecture Notes, Sudhanshu Janwadkar</a></li>
+<li><a href="https://deepbluembedded.com/i2c-communication-protocol-tutorial-pic/">I<sup>2</sup>C Communication Protocol Tutorial</a></li>
+<li><a href="https://www.i2c-bus.org/">I<sup>2</sup>C - What's That?</a></li>
+<li><a href="https://www.i2c-bus.org/i2c-primer">I<sup>2</sup>C Primer</a></li>
+<li><a href="https://en.wikipedia.org/wiki/I&lt;sup&gt;2&lt;/sup&gt;C">Wikipedia</a></li>
+<li><a href="https://www.totalphase.com/support/articles/200349176-7-bit-8-bit-and-10-bit-I&lt;sup&gt;2&lt;/sup&gt;C-Slave-Addressing">7-bit, 8-bit, and 10-bit I<sup>2</sup>C Slave Addressing</a></li>
+<li><a href="https://electronics.stackexchange.com/questions/151413/how-to-display-i2c-address-in-hex">StackExchange thread on the confusion in I<sup>2</sup>C slave address representation</a></li>
+<li><a href="https://www.slideshare.net/shudhanshu29/i2c-protocol-94259889">I<sup>2</sup>C Protocol Lecture Notes, Sudhanshu Janwadkar</a></li>
 <li><a href="https://www.kernel.org/doc/html/latest/i2c/index.html#introduction">Linux kernel documentation</a></li>
-<li><a href="https://www.robot-electronics.co.uk/i2c-tutorial">Using the I2C Bus, Robot Electronics</a></li>
-<li><a href="http://ww1.microchip.com/downloads/en/AppNotes/an617.pdf">Definitions and Differences between I2C, Access.bus, and SMBUS</a>Nazir Azzam, SMSC, Hauppage, NY</li>
-<li><a href="https://www.nxp.com/docs/en/user-guide/UM10204.pdf">I2C-bus specification and user manual, Rev 6 - 4 April 2014</a> Paywalled</li>
+<li><a href="https://www.robot-electronics.co.uk/i2c-tutorial">Using the I<sup>2</sup>C Bus, Robot Electronics</a></li>
+<li><a href="http://ww1.microchip.com/downloads/en/AppNotes/an617.pdf">Definitions and Differences between I<sup>2</sup>C, Access.bus, and SMBUS</a>Nazir Azzam, SMSC, Hauppage, NY</li>
+<li><a href="https://www.nxp.com/docs/en/user-guide/UM10204.pdf">I<sup>2</sup>C-bus specification and user manual, Rev 6 - 4 April 2014</a> Paywalled</li>
 <li><a href="https://www.nxp.com/products/interfaces/ic-spi-i3c-interface-devices:MC_41735">I<sup>2</sup>C, SPI, I3C Interface Devices</a></li>
 </ul>
-<p>SMBus is a related standard.  The following report can help in understanding I2C. </p>
+<p>SMBus is a related standard.  The following report can help in understanding I<sup>2</sup>C. </p>
 <ul>
 <li><a href="https://www.ti.com/lit/an/slua475/slua475.pdf">SMBus Made Simple, Texas Instruments</a></li>
 </ul>
 <!--
 *** Cabling<a name=cabling"></a>
 
-Users sometimes encounter problems with I2C communication over DisplayPort. The following articles may be of help.
+Users sometimes encounter problems with I<sup>2</sup>C communication over DisplayPort. The following articles may be of help.
 -->
 
 <p>Wikipedia has several high quality pages on related specifications:  They may be helpful when trying to figure out why DDC communication is not working: </p>
@@ -463,7 +463,7 @@ Type C Connectors</p>
 Some pages of particular interest: </p>
 </li>
 <li>
-<p><a href="https://www.kernel.org/doc/html/latest/i2c/index.html">Linux I2C Subsystem</a> </p>
+<p><a href="https://www.kernel.org/doc/html/latest/i2c/index.html">Linux I<sup>2</sup>C Subsystem</a> </p>
 </li>
 <li><a href="https://www.kernel.org/doc/html/latest/gpu/index.html">Linux GPU Driver Developer's Guide</a></li>
 <li><a href="https://www.kernel.org/doc/html/latest/gpu/drivers.html">GPU Driver Documentation</a></li>
