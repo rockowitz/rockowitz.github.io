@@ -283,14 +283,14 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
             <div class="section" itemprop="articleBody">
               
-                <h2 id="ddc-vs-i2c">DDC vs I2C</h2>
-<p>The relationship between DDC and I2C is a source of confusion.  Making matters worse, the terms are often used interchangably.
+                <h2 id="ddc-vs-i2c">DDC vs I<sup>2</sup>C</h2>
+<p>The relationship between DDC and I<sup>2</sup>C is a source of confusion.  Making matters worse, the terms are often used interchangably.
 This section attempts to clarify the relationship.</p>
-<p>I2C is a low level, slow speed specification of a 2 wire protocol for sending and receiving bytes. DDC/CI is layered on top of that protocol, describing particular sequences of bytes that are communicated between a master device (the host computer) and a slave device (a monitor) at address x37 on an I2C bus. By analogy,
-DDC is as a subclass of superclass I2C, that is DDC obeys the
-rules of I2C, but is more specific.  For example, only certain byte sequences are legal. SMBUS is another protocol based on I2C.  </p>
-<p>For details on I2C, see the <a href="../bibliography/#i2c">References section</a>.</p>
-<p><strong><em>ddcutil</em></strong> reads from and writes to the userspace <strong><em>/dev-i2c</em></strong> devices which present a file system like abstraction of an I2C bus.  It leaves
+<p>I<sup>2</sup>C is a low level, slow speed specification of a 2 wire protocol for sending and receiving bytes. DDC/CI is layered on top of that protocol, describing particular sequences of bytes that are communicated between a master device (the host computer) and a slave device (a monitor) at address x37 on an I<sup>2</sup>C bus. By analogy,
+DDC is as a subclass of superclass I<sup>2</sup>C, that is DDC obeys the
+rules of I<sup>2</sup>C, but is more specific.  For example, only certain byte sequences are legal. SMBUS is another protocol based on I<sup>2</sup>C.  </p>
+<p>For details on I<sup>2</sup>C, see the <a href="../bibliography/#i2c">References section</a>.</p>
+<p><strong><em>ddcutil</em></strong> reads from and writes to the userspace <strong><em>/dev-i2c</em></strong> devices which present a file system like abstraction of an I<sup>2</sup>C bus.  It leaves
 the bit-banging to the video device drivers, e.g. amdgpu, nouveau. </p>
 <p>Some time ago the Monitor Control Command Set (MCCS) specification took on the role of defining the virtual control panel (VCP) feature codes processed by DDC/CI.
 The DDC/CI specification references the MCCS spec. Later, a protocol (the <strong><em>VESA UBS Monitor Control Class Specification</em></strong>) was defined for carrying MCCS over USB, 
