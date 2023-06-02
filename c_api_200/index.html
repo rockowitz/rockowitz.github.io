@@ -412,6 +412,10 @@ file $HOME/.config/ddcutil/ddcutilrc, or in the libopts string passed to <strong
 <td>ddca_show_stats</td>
 <td>&nbsp;Optionally report per-display stats, not per-thread stats</td>
 </tr>
+<tr>
+<td>ddca_get_feature_name()</td>
+<td>&nbsp;Implementation had been removed but the function remained in the API.  This change restores the implementation.</td>
+</tr>
 </tbody>
 </table>
 <p><br></p>
@@ -465,6 +469,25 @@ These are unlikely to have been used by any existing clients other than <strong>
 <tr>
 <td>ddca_get_global_sleep_multiplier</td>
 <td>&nbsp;Previously deprecated</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<table>
+<thead>
+<tr>
+<th>Removed USB Enablement Functions</th>
+<th>Comments</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ddca_enable_usb_display_detection</td>
+<td>&nbsp;Use options <strong><em>--enable-usb</em></strong> / <strong><em>--disable-usb</em></strong></td>
+</tr>
+<tr>
+<td>ddca_is_usb_display_detection_enabled</td>
+<td>&nbsp;No option equivalent</td>
 </tr>
 </tbody>
 </table>
@@ -544,7 +567,7 @@ The following functions are no longer useful and have been removed:</p>
 </tbody>
 </table>
 <p><br></p>
-<p>Remove previously deprecated functions that had been replaced by more useful versions</p>
+<p>Remove previously deprecated functions that had been replaced by more useful alternatives:</p>
 <table>
 <thead>
 <tr>
@@ -569,7 +592,7 @@ The following functions are no longer useful and have been removed:</p>
 </table>
 <p><br></p>
 <h3 id="miscellaneous">Miscellaneous</h3>
-<p>Symbols for functions that had previously been removed from ddcutil_c_api.h are no longer exported.</p>
+<p>Symbols for functions and enums that had previously been removed from ddcutil_c_api.h are no longer exported.</p>
               
             </div>
           </div><footer>

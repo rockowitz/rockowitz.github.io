@@ -3,18 +3,18 @@
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="author" content="Sanford Rockowitz" /><link rel="canonical" href="https://www.ddcutil.com/next_release_notes/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="author" content="Sanford Rockowitz" /><link rel="canonical" href="https://www.ddcutil.com/typec/" />
       <link rel="shortcut icon" href="../img/favicon.ico" />
-    <title>Preliminary Notes for the Next Release - ddcutil Documentation</title>
+    <title>Typec - ddcutil Documentation</title>
     <link rel="stylesheet" href="../css/theme.css" />
     <link rel="stylesheet" href="../css/theme_extra.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
     
       <script>
         // Current page data
-        var mkdocs_page_name = "Preliminary Notes for the Next Release";
-        var mkdocs_page_input_path = "next_release_notes.md";
-        var mkdocs_page_url = "/next_release_notes/";
+        var mkdocs_page_name = "Typec";
+        var mkdocs_page_input_path = "typec.md";
+        var mkdocs_page_url = "/typec/";
       </script>
     
     <script src="../js/jquery-3.6.0.min.js" defer></script>
@@ -222,28 +222,12 @@
                   </li>
               </ul>
               <p class="caption"><span class="caption-text">Release History</span></p>
-              <ul class="current">
+              <ul>
                   <li class="toctree-l1"><a class="reference internal" href="../releases/">Releases</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../release_notes/">Release Notes</a>
                   </li>
-                  <li class="toctree-l1 current"><a class="reference internal current" href="./">Preliminary Notes for the Next Release</a>
-    <ul class="current">
-    <li class="toctree-l2"><a class="reference internal" href="#installation">Installation</a>
-    </li>
-    <li class="toctree-l2"><a class="reference internal" href="#performance-improvements">Performance Improvements</a>
-    </li>
-    <li class="toctree-l2"><a class="reference internal" href="#system-logs">System Logs</a>
-    </li>
-    <li class="toctree-l2"><a class="reference internal" href="#environment-verbose-changes">environment --verbose Changes</a>
-    </li>
-    <li class="toctree-l2"><a class="reference internal" href="#miscellanous-changes">Miscellanous Changes</a>
-    </li>
-    <li class="toctree-l2"><a class="reference internal" href="#building">Building</a>
-    </li>
-    <li class="toctree-l2"><a class="reference internal" href="#development-facilities">Development Facilities</a>
-    </li>
-    </ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../next_release_notes/">Preliminary Notes for the Next Release</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../prior_announcements/">Announcement History</a>
                   </li>
@@ -286,10 +270,9 @@
         <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
   <ul class="wy-breadcrumbs">
     <li><a href=".." class="icon icon-home" alt="Docs"></a> &raquo;</li>
-          <li>Release History &raquo;</li>
-      <li>Preliminary Notes for the Next Release</li>
+      <li>Typec</li>
     <li class="wy-breadcrumbs-aside">
-          <a href="https://github.com/rockowitz/ddcutil/edit/master/docs/next_release_notes.md" ></a>
+          <a href="https://github.com/rockowitz/ddcutil/edit/master/docs/typec.md" ></a>
     </li>
   </ul>
   <hr/>
@@ -297,90 +280,89 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
             <div class="section" itemprop="articleBody">
               
-                <h2 id="preliminary-notes-for-the-next-ddcutil-release">Preliminary Notes for the Next <strong>ddcutil</strong> Release</h2>
-<p>Release 2.0.0 is a major update to <strong>ddcutil</strong>, containing significant performance improvements.
-The version of the shared library is not backwards compatible.</p>
-<p>For notes on changes to the shared library, see <a href="../c_api_200/">Shared Library Changes for the Next Release (Draft)</a></p>
-<h4 id="installation">Installation</h4>
-<p><strong>ddcutil</strong> installation installs file /usr/lib/modules-load.d/ddcutil.conf
-to ensure that kernel module i2c-dev is loaded at boot time (if it is not built into the kernel).</p>
-<p>Along with the udev rules changes in release 1.4.1, this change means <strong>ddcutil</strong> should just 
-work "out of the box" with no special system configuration. The most signficiant exception is 
-that special settings may still be needed for the proprietary Nvidia driver.</p>
-<h4 id="performance-improvements">Performance Improvements</h4>
-<p><strong>Dynamic Sleep Adjustment</strong> </p>
-<p>The dynamic sleep algorithm has been completely rewritten to both dynamically increase
-the sleep-multiplier factor (as needed) and decrease the sleep multiplier factor 
-(insofar as possible).  Data is maintained across program executions in file 
-$HOME/.cache/ddcutil/stats.
-Option <strong><em>-dsa</em></strong>, or one of its variants such as <strong><em>--enable-dsa</em></strong> turn it on.
-If both <strong><em>--sleep-multiplier</em></strong> and <strong><em>--dsa</em></strong> are specified, existing statistics are
-discarded and the sleep algorithm restarts calculation with the specified sleep-multiplier value.</p>
-<p><strong>Cached Display Information</strong></p>
-<p>Program startup can be slow because of the many sleeps required by the display detection process.  This information
-rarely changes.  Information about the detected system configuration is optionally 
-saved in file $HOME/.cache/ddcutil/displays.</p>
-<p>Options <strong><em>--enable-displays-cache</em></strong> and <strong><em>--disable-displays-cache</em></strong> control whether
-this feature is enabled.</p>
-<h4 id="system-logs">System Logs</h4>
-<p>Writing to the system log has been generalized and in the process simplified.</p>
-<p>Option <strong><em>--syslog &lt;level&gt;</em></strong> controls what is written to the system log.
-Recognized levels, in order of increasing verbosity, are NEVER, ERROR, WARN, NOTICE, INFO, VERBOSE, and DEBUG.
-This option replaces <strong><em>--enable-syslog</em></strong>, <strong><em>--disable-syslog</em></strong>, and <strong><em>--trace-to-syslog</em></strong>. 
-The default for <strong>ddcutil</strong> is WARN, and for <strong>libddcutil</strong> is NOTICE.</p>
-<h4 id="environment-verbose-changes"><strong>environment --verbose</strong> Changes</h4>
-<ul>
-<li>Option <strong><em>--quickenv</em></strong> skips some slow tests such as
-  use of program i2cdetect.</li>
-<li>Extended sysfs scan for ARM SOC devices to explore how those devices use /sys</li>
-<li>disable caching</li>
-<li>report contents of cached files</li>
-</ul>
-<h4 id="miscellanous-changes">Miscellanous Changes</h4>
-<ul>
-<li>Option <strong><em>--sleep-multiplier 0</em></strong> is now allowed. Some DisplayPort monitors
-  have been observed to work with this value.</li>
-<li>The tests durng display detection to check for misuse of the DDC Null Message
-  or an all zero getvcp response to indicate unsupported features have been made more robust.</li>
-<li>Option <strong><em>--noconfig</em></strong>: Do not process the configuration file.</li>
-<li>Option <strong><em>--trccall &lt;function name&gt;</em></strong>: Trace the specified function and its called functions.
-  (This option reports only functions for which tracing has been enabled.)</li>
-<li>Option <strong><em>--hh</em></strong>. The number of command line options has become huge. Many 
-  are development related.  Options not of interest to general users are now
-  hidden.  Option <strong><em>--hh</em></strong> exposes them, and implies option <strong><em>--help</em></strong>.</li>
-<li>Option <strong><em>--verbose</em></strong>.  If specified on the command line, the options obtained
-  from the configuration file are reported.</li>
-<li>Detailed statistics are now maintained on a per-display instead of per-thread basis.
-  Option <strong><em>--vstats</em></strong> reports detailed statistics, in particular per-display 
-  statistics.  <strong><em>--vstats</em></strong> takes the same arguments as <strong><em>--stats</em></strong>. </li>
-<li>Option <strong><em>--help</em></strong>. Document <strong>ELAPSED</strong> as a recognized statistics class</li>
-<li>Reading the EDID when using USB to communicate with a monitor's virtual control
-  panel can fail.  Try using a fallback mechanisms to read the EDID for any Eizo displays, 
-  not just those with a specific product id.</li>
-<li>Existing cached capabilities are not erased when ddcutil is called with capabilities
-  caching disabled.</li>
-</ul>
-<h3 id="building">Building</h3>
-<ul>
-<li>configure option <strong>-enable-syslog</strong>/<strong>--disable-syslog</strong> has been removed.
-  Instead, use command line option <strong>--syslog never</strong> at runtime to disable all writes to the system log.</li>
-<li>Shared library libkmod is no longer required.</li>
-<li>Shared library libjansson is now required. Its development package (libjansson-dev on Debian based systems) must be installed.</li>
-</ul>
-<h3 id="development-facilities">Development Facilities</h3>
-<ul>
-<li>Added termporary use options --f7, --f8, --i2, --s1, --s2, --s3, --s4, --fl1, --fl2.
-  The current meaning of these options is reported by option <strong><em>--settings</em></strong>. </li>
-<li>Added utility command C1 for temporary use during development.</li>
-<li>Added option <strong><em>--enable-mock-data</em></strong></li>
-</ul>
+                <h3 id="usb-c-displayport-alt-mode">USB-C DisplayPort Alt Mode</h3>
+<p>USB-C Alt Modes allow for signals other than USB to be carried on the pins of the USB-C connector. In particular, DisplayPort Alt Mode specifies how a DisplayPort signal is carried.</p>
+<p>At its most basic, the Type-C connector becomes just a weird DisplayPort connector that uses several of the pins for DisplayPort signaling. 
+This <a href="https://www.anandtech.com/show/15752/displayport-alt-mode-20-spec-released">Anand Tech article</a> has a nice diagram showing how the pins of the type-C connector are reallocated from use for high speed USB to being used for DisplayPort.
+In particular, the SBU1 and SBU2 pins are assigned to carry the DP-AUX channel.   I<sup>2</sup>C communication, used by DDC/CI, is (one of several) signals that can be "multiplexed" on the AUX channel.   So a Type-C output from a host to a Type-C input on the monitor, or a Type-C output from a host to a DP input on the monitor should just work. </p>
+<p>A Type-C connector cannot implement DisplayPort Dual Mode. It can only emit a DisplayPort signal, not a TDMS DVI or TDMS HDMI signal.  To communicate with a DVI or HDMI monitor input, 
+an Active, not a Passive, adapter is required somewhere in the chain of cables and adapters from the host device to the monitor. Note that a Type-C to HDMI connector of some sort, such as a
+simple dongle or a docking station, will perform Active signal conversion.</p>
+<p>In all tested cases, if a Type-C to monitor connection displays a video signal, the I<sup>2</sup>C connection required by DDC/CI, works, </p>
+<!--
+
+video cad: Radeon WX5700
+driver: AMDGPU
+
+Type C Connector on Video Card
+
+host type C connector <-> TypeC to Type-C cable <-> Type C input on monitor   untested
+
+host type C  <-> TypeC to DP dongle  <-> DP-DP cable <-> DP monitor input                 works
+host type C  <-> TypeC to DP dongle  <-> Startech MST HUB <- DP-DP cable -> DP monitor    works
+
+host type C  <-> TypeC to DP dongle <-> DP-DVI active adapter <-> single link DVI cable <-> monitor DVI input   works
+host type C  <-> TypeC to DP dongle <-> DP-DVI active adapter <-> dual link DVI cable   <-> monitor DVI input   works
+
+host type C  <-> TypeC to DP dongle <-> DP-DVI passive adapter <-> single link DVI cable <-> monitor DVI input   no video
+host type C  <-> TypeC to DP dongle <-> DP-DVI passive adapter <-> dual link DVI cable   <-> monitor DVI input   no video
+
+REDO:
+host type C <-> Type C to DP dongle <-> active DP-DVI <-> DVI-HDMI single link adapter <-> HDMI-HDMI cable <-> HDMI input    works  ? what is this?
+host type C <-> Type C to DP dongle <-> active DP-DVI <-> DVI-HDMI dual link   adapter <-> HDMI-HDMI cable <-> HDMI input    works  ? what is this?
+host type C <-> Type C to DP dongle <-> active DP-DVI <-> DVI-HDMI single link adapter <-> HDMI-HDMI cable <-> HDMI input    fails
+host type C <-> Type C to DP dongle <-> active DP-DVI <-> DVI-HDMI dual link   adapter <-> HDMI-HDMI cable <-> HDMI input    fails
+
+
+host type C <-> pink TypeC-HDMI dongle  <-> HDMI cable <-> HDMI input  ok
+
+host type C <-> TypeC to DP dongle <-> DP-HDMI active cable <-> HDMI input
+host type C <-> TypeC to DP dongle <-> DP-HDMI passive cable <-> HDMI input
+
+
+Mini-DP Connector on Video Card
+
+host mini DP <-> miniDP-DP dongle <-> DP-DP cable <-> monitor DP input   ok
+
+
+host mini DP <-> mini-DP-DVI active dongle <-> DVI single link cable <-> DVI input     reduced video bandwidth, DDC/CI works
+host mini DP <-> mini-DP-DVI active dongle <-> DVI dual link cable   <-> DVI input     ok
+
+host mini-DP <-> mini-DP-DVI passive dongle <-> DVI single link cable <-> DVI input    works
+host mini-DP <-> mini-DP-DVI passive dongle <-> DVI dual link cable   <-> DVI input    works
+
+
+host mini DP <->Startech hub <-> DP-DP cable <-> monitor DP input  works
+host mini DP <->Startech hub <-> DP-DVI active adapter   <-> DVI single link cable <-> DVI input on monitor LP2480zx EDID not found, Z22i ok
+host mini DP <->Startech hub <-> DP-DVI active adapter   <-> DVI dual   link cable <-> DVI input on monitor ok
+host mini DP <->Startech hub <-> DP-DVI passive adapter  <-> DVI single link cable <-> DVI input on monitor low bandwidth, EDID not found on LP2480zx, Z22i ok
+host mini DP <->Startech hub <-> DP-DVI passive adapter  <-> DVI dual   link cable <-> DVI input on monitor ok
+
+host mini DP <->Startech hub <-> DP-HDMI cable <-> HDMI input on monitor
+                                                            Ivankey
+                                                            Rosewill
+                                                            other
+
+
+
+
+
+host mini DP <-> mini-DP-DP dongle <-> DP-DVI active adapter <-> DVI single link cable <-> monitor DVI input   video and DDC/CI work  ok
+host mini DP <-> mini-DP-DP dongle <-> DP-DVI active adapter <-> DVI dual   link cable <-> monitor DVI input   video and DDC/CI work  ok
+
+host mini DP <-> mini-DP-DP dongle <-> DP-DVI passive adapter <-> DVI single link cable <-> monitor DVI input  perhaps video lower resolution, DDC/CI works
+host mini DP <-> mini-DP-DP dongle <-> DP-DVI passive adapter <-> DVI dual   link cable <-> monitor DVI input  perhaps video lower resolution, DDC/CI works 
+
+
+
+host mini DP <-> miniDP-DP dongle 
+host mini DP <-> miniDP-DP dongle <->DP-DVI active adapter <-> DVI-HDMI calble <-> HDMI input
+
+
+-->
               
             </div>
           </div><footer>
-    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
-        <a href="../release_notes/" class="btn btn-neutral float-left" title="Release Notes"><span class="icon icon-circle-arrow-left"></span> Previous</a>
-        <a href="../prior_announcements/" class="btn btn-neutral float-right" title="Announcement History">Next <span class="icon icon-circle-arrow-right"></span></a>
-    </div>
 
   <hr/>
 
@@ -406,10 +388,6 @@ The default for <strong>ddcutil</strong> is WARN, and for <strong>libddcutil</st
         </span>
     
     
-      <span><a href="../release_notes/" style="color: #fcfcfc">&laquo; Previous</a></span>
-    
-    
-      <span><a href="../prior_announcements/" style="color: #fcfcfc">Next &raquo;</a></span>
     
   </span>
 </div>
