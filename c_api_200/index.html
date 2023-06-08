@@ -499,6 +499,37 @@ These are unlikely to have been used by any existing clients other than <strong>
 <table>
 <thead>
 <tr>
+<th>Miscellaneous Removed Functions</th>
+<th>Comments</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ddca_enable_report_ddc_errors</td>
+<td>&nbsp;Use option <strong><em>--ddc</em></strong></td>
+</tr>
+<tr>
+<td>ddca_is_report_ddca_errors_enabled</td>
+<td>&nbsp;No option equivalent</td>
+</tr>
+<tr>
+<td>ddca_enable_error_info</td>
+<td>&nbsp;Use option <strong><em>--excp</em></strong></td>
+</tr>
+<tr>
+<td>ddca_enable_force_slave_address</td>
+<td>&nbsp;Use option <strong><em>--force-slave-address</em></strong></td>
+</tr>
+<tr>
+<td>ddca_is_force_slave_address_enabled</td>
+<td>&nbsp;No option equivalent</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<table>
+<thead>
+<tr>
 <th>Removed Tracing Typedefs</th>
 <th>Comments</th>
 </tr>
@@ -571,7 +602,7 @@ The following functions are no longer useful and have been removed:</p>
 </tbody>
 </table>
 <p><br></p>
-<p>Remove previously deprecated functions that had been replaced by more useful alternatives:</p>
+<p>Remove previously deprecated functions:</p>
 <table>
 <thead>
 <tr>
@@ -591,6 +622,14 @@ The following functions are no longer useful and have been removed:</p>
 <tr>
 <td>ddca_open_display</td>
 <td>&nbsp;Had been replaced by ddca_open_display2</td>
+</tr>
+<tr>
+<td>ddca_create_display_ref</td>
+<td>&nbsp;Use ddca_get_display_ref</td>
+</tr>
+<tr>
+<td>ddca_free_display_ref</td>
+<td>&nbsp;Not needed. Display references are managed by the shared library.</td>
 </tr>
 </tbody>
 </table>
