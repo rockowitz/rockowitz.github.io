@@ -302,8 +302,10 @@
 The version of the shared library is not backwards compatible.</p>
 <p>For notes on changes to the shared library, see <a href="../c_api_200/">Shared Library Changes for the Next Release (Draft)</a></p>
 <h4 id="installation">Installation</h4>
-<p><strong>ddcutil</strong> installation installs file /usr/lib/modules-load.d/ddcutil.conf
+<p><strong>ddcutil</strong> installation creates file /usr/lib/modules-load.d/ddcutil.conf
 to ensure that kernel module i2c-dev is loaded at boot time (if it is not built into the kernel).</p>
+<p>TODO:  /usr/lib/udev/rules.d/60-ddcutil-i2c.rules, 60-ddcutil-usb.rules, 
+/usr/share/data/ddcutil/60-ddcutil...rules</p>
 <p>Along with the udev rules changes in release 1.4.1, this change means <strong>ddcutil</strong> should just 
 work "out of the box" with no special system configuration. The most signficiant exception is 
 that special settings may still be needed for the proprietary Nvidia driver.</p>
@@ -359,6 +361,11 @@ The default for <strong>ddcutil</strong> is WARN, and for <strong>libddcutil</st
   not just those with a specific product id.</li>
 <li>Existing cached capabilities are not erased when ddcutil is called with capabilities
   caching disabled.</li>
+<li>ddca-dfr_check_by_dref(): do not return an error if no user defined feature file
+  is found for the display</li>
+<li>TODO: add options --ignore-hiddev, --ignore-usb-pid-vid</li>
+<li>Improve reporting of /dev/hiddev open failures, to avoid confusion resulting from this 
+  typically benign error.</li>
 </ul>
 <h3 id="building">Building</h3>
 <ul>

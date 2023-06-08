@@ -290,10 +290,10 @@ DDC communication problems.</p>
 <p>I<sup>2</sup>C is a simple serial protocol that uses 2 signaling lines, referred to as SCL and SDA, sometimes referred to as DDC clock and DDC data, along with their associated grounds.
 These are pins 12/15 on a HD15 VGA connector, 6/7 on a DVI connector, and 15/16 on a HDMI connector. </p>
 <p>DVI and HDMI use the same protocol, TMDS (Transition Minimized Differential Signaling) for transmitting video information.   </p>
-<p>While more recent versions of HDMI have additional capabilities, e.g. Ethernet, CEC, for video and DDC of monitor communication DVI and HDMI are equivalent, 
+<p>While more recent versions of HDMI have additional capabilities, e.g. Ethernet and CEC, in terms of video and DDC communication DVI and HDMI are equivalent, 
 except for bandwidth. It's possible to connect a DVI output on a host to a HDMI input on a monitor, or vice-versa,
-using a simple DVI&lt;-&gt;HDMI cable.</p>
-<p>DisplayPort, on ther other hand, uses its own packetized protocol for video.  It also has a secondary Auxilliary (AUX) channel (and pins) for non-video communication.  DisplayPort does not have the I<sup>2</sup>C SLA/SLC pins. Instead, the logical I<sup>2</sup>C signals are converted at each end into messages on the AUX channel. Put another way, 
+using a simple DVI&lt;-&gt;HDMI cable. (High bandwidth communication may require dual-link DVI and associated conversions, but that is tangential to the present discussion.)</p>
+<p>DisplayPort, on ther other hand, uses its own packetized protocol for video.  It also has a secondary Auxilliary (AUX) channel (and pins) for non-video communication.  DisplayPort does not have the I<sup>2</sup>C SCL/SDA pins. Instead, the logical I<sup>2</sup>C signals are converted at each end into messages on the AUX channel. Put another way, 
 DDC is implemented using  the AUX channel, but the AUX channel itself is not DDC. 
 The "multiplexing" of I<sup>2</sup>C over the AUX channel is transparent to all but the lowest level of I<sup>2</sup>C software at each end.</p>
 <p>It is possible to connect the DisplayPort output on a host to a DVI or HDMI input on a monitor using an "active", or sometimes a "passive", adapter. </p>
@@ -306,9 +306,9 @@ much more expensive.  There do not appear to be any adapters that operate in bot
 <p>Active adapters will be labeled "Active".</p>
 <p>If the video adapter implements Display Port Dual Mode, also known as DP++, then it is possible to use a "passive adapter" between the DisplayPort output on the host and the HDMI/DVI input on the monitor.</p>
 <p>When the host detects that its DisplayPort output is connected to a HDMI/DVI monitor input instead of a DisplayPort input, 
-it shifts to "alternate" mode, treating its DisplayPort connector as if it were a weird DVI/HDMI connector.  It uses TMDS for the video signal, and uses the AUX channel pins as simple SDA/SCL pins.
+it shifts to "dual mode", treating its DisplayPort connector as if it were a weird DVI/HDMI connector.  It uses TMDS for the video signal, and uses the AUX channel pins as simple SDA/SCL pins.
 A "passive" adapter simply routes wires appropriately, and adjusts voltage levels.</p>
-<p>Host DisplayPort connectors that support dual mode should be marked as such.  The marker is a D with a P inside, and two + signs to the left, one above the other. Most DisplayPort connectors on recent video cards are dual mode. Unfortunately, they are not always marked as such. </p>
+<p>Host DisplayPort connectors that support dual mode should be marked as such.  The marker is a D with a P inside, and two + signs to the left, one above the other. Most DisplayPort connectors on recent video cards are dual mode. Unfortunately, they are not always marked as such.  On the other hand, it is common for passive adapters to have the DP++ marker on the DisplayPort end.</p>
 <!--
 Thunderbolt ports, which use the DisplayPort protocol for video signaling, support DP++ natively.
 -->
