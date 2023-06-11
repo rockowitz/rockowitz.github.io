@@ -5,14 +5,14 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="author" content="Sanford Rockowitz" /><link rel="canonical" href="https://www.ddcutil.com/typec/" />
       <link rel="shortcut icon" href="../img/favicon.ico" />
-    <title>Typec - ddcutil Documentation</title>
+    <title>USB-C DisplayPort Alt Mode - ddcutil Documentation</title>
     <link rel="stylesheet" href="../css/theme.css" />
     <link rel="stylesheet" href="../css/theme_extra.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
     
       <script>
         // Current page data
-        var mkdocs_page_name = "Typec";
+        var mkdocs_page_name = "USB-C DisplayPort Alt Mode";
         var mkdocs_page_input_path = "typec.md";
         var mkdocs_page_url = "/typec/";
       </script>
@@ -126,7 +126,7 @@
                   </li>
               </ul>
               <p class="caption"><span class="caption-text">Installation and Configuration</span></p>
-              <ul>
+              <ul class="current">
                   <li class="toctree-l1"><a class="reference internal" href="../install_config_main/">Installation and Configuration</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../config_steps/">Post-Installation Checklist</a>
@@ -158,6 +158,10 @@
                   <li class="toctree-l1"><a class="reference internal" href="../monitor_notes/">Notes on Specific Monitors</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../quirks/">Notes on Particular Configurations</a>
+                  </li>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="./">USB-C DisplayPort Alt Mode</a>
+    <ul class="current">
+    </ul>
                   </li>
               </ul>
               <p class="caption"><span class="caption-text">API</span></p>
@@ -270,7 +274,8 @@
         <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
   <ul class="wy-breadcrumbs">
     <li><a href=".." class="icon icon-home" alt="Docs"></a> &raquo;</li>
-      <li>Typec</li>
+          <li>Installation and Configuration &raquo;</li>
+      <li>USB-C DisplayPort Alt Mode</li>
     <li class="wy-breadcrumbs-aside">
           <a href="https://github.com/rockowitz/ddcutil/edit/master/docs/typec.md" ></a>
     </li>
@@ -283,11 +288,16 @@
                 <h3 id="usb-c-displayport-alt-mode">USB-C DisplayPort Alt Mode</h3>
 <p>USB-C Alt Modes allow for signals other than USB to be carried on the pins of the USB-C connector. In particular, DisplayPort Alt Mode specifies how a DisplayPort signal is carried.</p>
 <p>At its most basic, the Type-C connector becomes just a weird DisplayPort connector that uses several of the pins for DisplayPort signaling. 
-This <a href="https://www.anandtech.com/show/15752/displayport-alt-mode-20-spec-released">Anand Tech article</a> has a nice diagram showing how the pins of the type-C connector are reallocated from use for high speed USB to being used for DisplayPort.
-In particular, the SBU1 and SBU2 pins are assigned to carry the DP-AUX channel.   I<sup>2</sup>C communication, used by DDC/CI, is (one of several) signals that can be "multiplexed" on the AUX channel.   So a Type-C output from a host to a Type-C input on the monitor, or a Type-C output from a host to a DP input on the monitor should just work. </p>
-<p>A Type-C connector cannot implement DisplayPort Dual Mode. It can only emit a DisplayPort signal, not a TDMS DVI or TDMS HDMI signal.  To communicate with a DVI or HDMI monitor input, 
-an Active, not a Passive, adapter is required somewhere in the chain of cables and adapters from the host device to the monitor. Note that a Type-C to HDMI connector of some sort, such as a
-simple dongle or a docking station, will perform Active signal conversion.</p>
+This <a href="https://www.anandtech.com/show/15752/displayport-alt-mode-20-spec-released">Anand Tech article</a> has a nice diagram
+showing how the pins of the type-C connector are reallocated from use for high speed USB to being used for DisplayPort.
+In particular, the SBU1 and SBU2 pins are assigned to carry the DP-AUX channel.
+I<sup>2</sup>C communication, used by DDC/CI, is (one of several) signals that can be "multiplexed" on the AUX channel.
+So a Type-C output from a host to a Type-C input on the monitor, or a Type-C output from a host to a DP input on the monitor should just work. </p>
+<p>A Type-C connector cannot implement DisplayPort Dual Mode.
+It can only emit a DisplayPort signal, not a TDMS DVI or TDMS HDMI signal.
+To communicate with a DVI or HDMI monitor input, an Active, not a Passive, adapter is required somewhere in the chain
+of cables and adapters from the host device to the monitor. 
+Note that a Type-C to HDMI connector of some sort, such as a simple dongle or a docking station, will perform Active signal conversion.</p>
 <p>In all tested cases, if a Type-C to monitor connection displays a video signal, the I<sup>2</sup>C connection required by DDC/CI, works, </p>
 <!--
 
@@ -342,16 +352,20 @@ host mini DP <->Startech hub <-> DP-HDMI cable <-> HDMI input on monitor
                                                             Ivankey
                                                             Rosewill
                                                             other
-
-
-
-
-
-host mini DP <-> mini-DP-DP dongle <-> DP-DVI active adapter <-> DVI single link cable <-> monitor DVI input   video and DDC/CI work  ok
-host mini DP <-> mini-DP-DP dongle <-> DP-DVI active adapter <-> DVI dual   link cable <-> monitor DVI input   video and DDC/CI work  ok
+host mini DP <-> mini-DP-DP dongle <-> DP-DVI active adapter <-> DVI single link cable <-> monitor DVI input   
+             HP Z22i  DDC/CI works
+             HP 2480zx single link detect fails
+host mini DP <-> mini-DP-DP dongle <-> DP-DVI active adapter <-> DVI dual   link cable <-> monitor DVI input   
+            HP 2480zx low bandwidth, DDC/CI ok
 
 host mini DP <-> mini-DP-DP dongle <-> DP-DVI passive adapter <-> DVI single link cable <-> monitor DVI input  perhaps video lower resolution, DDC/CI works
+            HP 2480zx single link, low bandwidth, ddcutil detect fails
+            HP Z22i single link, low bandwitch DDC/CI ok
+
 host mini DP <-> mini-DP-DP dongle <-> DP-DVI passive adapter <-> DVI dual   link cable <-> monitor DVI input  perhaps video lower resolution, DDC/CI works 
+            HP 2480zx dual link low bandwidth, DDC/CI ok
+
+
 
 
 
@@ -363,6 +377,10 @@ host mini DP <-> miniDP-DP dongle <->DP-DVI active adapter <-> DVI-HDMI calble <
               
             </div>
           </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../quirks/" class="btn btn-neutral float-left" title="Notes on Particular Configurations"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../api_main/" class="btn btn-neutral float-right" title="C API">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
 
   <hr/>
 
@@ -388,6 +406,10 @@ host mini DP <-> miniDP-DP dongle <->DP-DVI active adapter <-> DVI-HDMI calble <
         </span>
     
     
+      <span><a href="../quirks/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../api_main/" style="color: #fcfcfc">Next &raquo;</a></span>
     
   </span>
 </div>
