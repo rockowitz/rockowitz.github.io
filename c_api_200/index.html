@@ -306,8 +306,9 @@ to be published as package <strong>libddcutil4</strong>.</p>
 library, it provided an opportunity to remove a large number of functions that 
 were deprecated, made unnecessary by the ability to pass command line options
 to <strong>libddcutil</strong>, or otherwise cluttered the API and ABI.  In practice, most
-existing programs will at most require recompilation to use the new version of
-the shared library.</p>
+existing programs will rebuild unchanged with the new version of the shared library.
+However, However, best practice is to use initialization function <strong>ddca_init</strong>.
+It is required in order to read options from the configuration file, </p>
 <h3 id="library-initialization">Library Initialization</h3>
 <p>Library initialization has been reworked extensively to move operations 
 that can fail, along with various settings that should be under control of the library user,
@@ -636,8 +637,39 @@ The following functions are no longer useful and have been removed:</p>
 </tbody>
 </table>
 <p><br></p>
+<p>Remove vestiages to the old AMD proprietary driver.<br />
+Regarding enum changes, while the constant numbers of the remaining values values are 
+unchanged, <strong>switch</strong> statements without a <strong>default</strong> case will fail to compile.</p>
+<table>
+<thead>
+<tr>
+<th>Changed</th>
+<th>&nbsp;Comments</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>enum DDCA_Build_Option_Flags</td>
+<td>&nbsp;Eliminated value DDCA_BUILT_WITH_ADL</td>
+</tr>
+<tr>
+<td>struct DDCA_Adlno</td>
+<td>&nbsp;Eliminated</td>
+</tr>
+<tr>
+<td>enum DDCA_IO_Mode</td>
+<td>&nbsp;Eliminated value DDCA_IO_ADL</td>
+</tr>
+<tr>
+<td>struct DDCA_IO_PATH</td>
+<td>&nbsp;Removed variable adlno from path union</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
 <h3 id="miscellaneous">Miscellaneous</h3>
-<p>Symbols for functions and enums that had previously been removed from ddcutil_c_api.h are no longer exported.</p>
+<p>Symbols for functions and enums that had previously been removed from ddcutil_c_api.h are no longer exported.
+In addition, many internal symbols had "leaked".  These are no longer exported. </p>
               
             </div>
           </div><footer>

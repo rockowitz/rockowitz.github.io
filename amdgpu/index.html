@@ -301,15 +301,15 @@
 <tbody>
 <tr>
 <td>0</td>
-<td>disable Display Core</td>
+<td>&nbsp; disable Display Core</td>
 </tr>
 <tr>
 <td>1</td>
-<td>enable  Display Core</td>
+<td>&nbsp; enable  Display Core</td>
 </tr>
 <tr>
 <td>default = -1</td>
-<td>enable/disable based on asic</td>
+<td>nbsp;enable/disable based on asic</td>
 </tr>
 </tbody>
 </table>
@@ -328,22 +328,16 @@ TODO: insert list of GPUs supporting DC</p>
 <tbody>
 <tr>
 <td>0 (default)</td>
-<td>disable</td>
+<td>&nbsp;disable</td>
 </tr>
 <tr>
 <td>1</td>
-<td>enable</td>
-</tr>
-<tr>
-<td><br></td>
-<td></td>
-</tr>
-<tr>
-<td>Tested on RX580 (Ellesmere), Kernel 5.13</td>
-<td></td>
+<td>&nbsp;enable</td>
 </tr>
 </tbody>
 </table>
+<p><br></p>
+<p>Tested on RX580 (Ellesmere), Kernel 5.13</p>
 <p>Name in /sys/bus/i2c/devices/i2c-N/name </p>
 <p>Case 1: Display Core disabled and hw_i2c=0</p>
 <table>
@@ -356,42 +350,69 @@ TODO: insert list of GPUs supporting DC</p>
 <tbody>
 <tr>
 <td>DVI, HDMI</td>
-<td>AMDGPU i2c bit bus 0xNN</td>
+<td>&nbsp; AMDGPU i2c bit bus 0xNN</td>
 </tr>
 <tr>
-<td>DP:</td>
-<td>CardM-DP-N, e.g. Card0-DP-1</td>
+<td>DP</td>
+<td>&nbsp; CardM-DP-N, e.g. Card0-DP-1</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p>Case 2: Display Core disabled and hw_i2c=1</p>
+<table>
+<thead>
+<tr>
+<th>Connector</th>
+<th>Name</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>DVI, HDMI</td>
+<td>&nbsp;AMDGPU i2c hw bus 0xNN</td>
+</tr>
+<tr>
+<td>DP</td>
+<td>&nbsp;CardM-DP-N, e.g. Card0-DP-1</td>
 </tr>
 </tbody>
 </table>
 <p><br>
-Case 2: Display Core disabled and hw_i2c=1
-
-Connector | Name
-----------|----------
-DVI, HDMI |  AMDGPU i2c hw bus 0xNN
-DP:       |  CardM-DP-N, e.g. Card0-DP-1
-
 I2C communication fails on DVI and HDMI
-
-Case 3: Display Core enabled
-
-Connector | Name
-----------|----------
-DVI, HDMI | AMDGPU DM i2c hw bus 0x9N
-DP:       | AMDGPU DM aux hw bus N
-
+<br></p>
+<p>Case 3: Display Core enabled</p>
+<p><br></p>
+<table>
+<thead>
+<tr>
+<th>Connector</th>
+<th>Name</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>DVI, HDMI</td>
+<td>&nbsp;AMDGPU DM i2c hw bus 0x9N</td>
+</tr>
+<tr>
+<td>DP</td>
+<td>&nbsp;AMDGPU DM aux hw bus N</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
 <p>
 Where is /sys/bus/i2c/devices/i2c-name set?
 <p>
 Message Format           | Message Source
 -------------------------|----------------
-AMDGPU DM aux hw bus N   | drivers/gpu/drm/amd/display/amdgpu_dm/amdgpu_dm_mst_types.c
-AMDGPU i2c hw bus 0xNN   | drivers/gpu/drm/amd/amdgpu/amdgpu_i2c.c
-AMDGPU i2c bit bus 0xNN  |  drivers/gpu/drm/amd/amdgpu/amdgpu_i2c.c
+AMDGPU DM aux hw bus N   |&nbsp;drivers/gpu/drm/amd/display/amdgpu_dm/amdgpu_dm_mst_types.c
+AMDGPU i2c hw bus 0xNN   |&nbsp;drivers/gpu/drm/amd/amdgpu/amdgpu_i2c.c
+AMDGPU i2c bit bus 0xNN  |&nbsp;drivers/gpu/drm/amd/amdgpu/amdgpu_i2c.c
 
 <p>
-If Display Dore is enabled, a line containining either  "Display Core initialized" or "Display Core failed to initialize" is found in the system log.
+If Display Core is enabled, a line containining either  "Display Core initialized" or "Display Core failed to initialize" is found in the system log.
 
 Message source: drivers/gpu/drm/amd/display/amdgpu_dm/amdgpu_dm.c, drivers/gpu/drm/amd/display/dc/core/dc.c
 

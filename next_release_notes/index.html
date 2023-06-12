@@ -305,7 +305,7 @@ The version of the shared library is not backwards compatible.</p>
 <p>For notes on changes to the shared library, see <a href="../c_api_200/">Shared Library Changes for the Next Release (Draft)</a></p>
 <h4 id="installation">Installation</h4>
 <p><strong>ddcutil</strong> installation creates file /usr/lib/modules-load.d/ddcutil.conf
-to ensure that kernel module i2c-dev is loaded at boot time (if it is not built into the kernel).</p>
+to ensure that kernel module i2c-dev is loaded at boot time (if it is not built into the kernel).s</p>
 <p>As of Release 1.4.1, <strong>ddcutil</strong> installation created file /usr/lib/udev/rules.d/60-ddcutil.rules, 
 granting the logged on user read/write access to I<sup>2</sup>C devices associated with video 
 monitors.  This file has been renamed to 60-ddcutil-i2c.rules.  New file 60-ddcutil-usb.rules
@@ -374,10 +374,11 @@ The default for <strong>ddcutil</strong> is WARN, and for <strong>libddcutil</st
   it is conceivable that other such devices exist.  </li>
 <li>Improve reporting of /dev/hiddev open failures, to avoid confusion resulting from this 
   typically benign error.</li>
+<li><strong>ddcui</strong> now uses a separate configuration file, $HOME/.config/ddcutil/ddcuirc.</li>
 </ul>
 <h3 id="building">Building</h3>
 <ul>
-<li>configure option <strong>-enable-syslog</strong>/<strong>--disable-syslog</strong> has been removed.
+<li>configure options <strong>-enable-syslog</strong>/<strong>--disable-syslog</strong> have been removed.
   Instead, use command line option <strong>--syslog never</strong> at runtime to disable all writes to the system log.</li>
 <li>Shared library libkmod is no longer required.</li>
 <li>Shared library libjansson is now required. Its development package (libjansson-dev on Debian based systems) must be installed.</li>

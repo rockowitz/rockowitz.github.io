@@ -287,6 +287,9 @@
               
                 <h3 id="github-branch-040-dev">Github Branch 0.4.0-dev</h3>
 <p>Requires libddcutil.so.5.x.x from ddcutil 2.0.0-dev or later.</p>
+<p><strong>ddcui</strong> now uses a separate configuration file, $HOME/.config/ddcutil/ddcuirc, 
+instead of combining the [global] and [ddcui] sections of <strong>ddcutil</strong> configuration
+file $HOME/.config/ddcutil/ddcutilrc. </p>
 <p>Added options:</p>
 <ul>
 <li>
@@ -301,7 +304,7 @@ configuration file $HOME/.config/ddcutil/ddcutilrc.</p>
 </li>
 <li>
 <p><strong><em>--libopts "options"</em></strong>. Passes an option string to the shared library.  This string is appended to 
-the <strong>libddcutil</strong> option string obtained from the <strong>ddcutil</strong> configuration file.</p>
+the <strong>libddcutil</strong> option string obtained from the <strong>ddcui</strong> configuration file.</p>
 </li>
 </ul>
 <p>Several <strong>ddcui</strong> command line options existed to pass options to the shared library.  These can now be passed using 
