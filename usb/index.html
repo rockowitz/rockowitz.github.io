@@ -298,19 +298,19 @@
             <div class="section" itemprop="articleBody">
               
                 <h2 id="usb-connected-monitors">USB Connected Monitors</h2>
-<p><strong>ddcutil</strong> has support for monitors that implement the Monitor Control Command Set (MCCS) over USB, 
+<p><strong>ddcutil</strong> supports monitors that implement the Monitor Control Command Set (MCCS) over USB, 
 following the <a href="https://usb.org/document-library/device-class-definition-hid-111">USB Device Class Definition for Human Interface Devices (HID)</a>
 ) and the <a href="https://usb.org/sites/default/files/usbmon10.pdf">USB Monitor Control Class Specification</a>.</p>
 <p>Note that some monitors use USB to communicate, but do not follow the specification for MCCS over USB. 
 For example, the HP Dreamcolor 2480zx uses a proprietary, undocumented protocol. </p>
-<p>It bears emphasizing that when <strong>ddcutil</strong> refers to USB connected monitors, it means monitors that communicate
+<p>Also, bears emphasizing that when <strong>ddcutil</strong> refers to USB connected monitors, it means monitors that communicate
 MCCS over USB, <strong>NOT</strong> to monitors that communicate the video signal over USB.</p>
 <p>Limitations: <br />
 - The MCCS over USB specification has no mechanism for querying a capabilities string.  The <strong>ddcutil capabilities</strong> 
 command synthesizes a response based on the feature codes it detects. <br />
 - Table type features are completely unsupported.<br />
 - Apple Thunderbolt displays might work, but are not supported.  Thunderbolt integrates video, USB, and ethernet into a single cable, and 
-appears to require a Thunderbolt capable capable computer, as I can find no adapters that split out all the signals.
+appears to require a Thunderbolt capable computer, as I can find no adapters that split out all the signals.
 Other than actual Macs, these are uncommon.</p>
 <p>On the other hand, MCCS over USB has advantages:<br />
 - Unlike I<sup>2</sup>C, the protocol is inherently reliable.  No retry logic is needed.<br />

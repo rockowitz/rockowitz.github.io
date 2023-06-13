@@ -328,7 +328,7 @@ the <a href="../install/">ususal locations</a>.</p>
 <ul>
 <li>Option <strong><em>--force-slave-address</em></strong> no longer has any effect.
 Driver i2c-dev provides both a low level ioctl() interface and a higher level read()/write() 
-interface for I2C communication.  <strong>ddcutil</strong> now uses the ioctl() interface (almost) exclusively. 
+interface for I<sup>2</sup> communication.  <strong>ddcutil</strong> now uses the ioctl() interface (almost) exclusively. 
 This eliminates the possbility of EBUSY errors from driver i2c-dev, which occur only when the read()/write() interface is used.</li>
 <li>Better reporting of user configuration issues at startup.</li>
 <li>Commands <strong>getvcp</strong> and <strong>vcpinfo</strong> can now take multiple features as arguments, for example <strong>ddcutil getvcp 10 12</strong>.</li>
@@ -390,7 +390,7 @@ For details, see <a href="https://github.com/rockowitz/ddcutil/issues/235">the a
 <li>Configuration file <strong>ddcutilrc</strong>, located on the XDG config path (normally $HOME/.config/ddcutil/ddcutilrc)  is processed by both <strong>ddcutil</strong> and <strong>libddcutil</strong>. </li>
 <li>Monitor capabilities strings are cached to improve performance of the <strong>capabilities</strong> command.</li>
 <li>Partial workarounds for problems in DRM video drivers (e.g. i915, AMDGPU) when monitors are connected to a docking station. The monitor may not be detected (because no EDID is reported), or the monitor may appear as two different /dev/i2c devices. </li>
-<li>When probing /dev/i2c devices for monitors, <strong>ddcutil</strong> could put AMD Navi2 devices (e.g.  RX6000 series) into an inconsistent state. This is because the driver exposes an I2C device for the SMU.  Display detection is modified to avoid probing these devices. </li>
+<li>When probing /dev/i2c devices for monitors, <strong>ddcutil</strong> could put AMD Navi2 devices (e.g.  RX6000 series) into an inconsistent state. This is because the driver exposes an I<sup>2</sup> device for the SMU.  Display detection is modified to avoid probing these devices. </li>
 </ul>
 <p>The interface exposed by shared library <strong>libddcutil</strong> is unchanged. Its SONAME remains "libddcutil.so.4", and the package name is <strong>libddcutil4</strong>.</p>
 <p>For a complete list of <strong>ddcutil</strong> changes and bug fixes, see <a href="../release_notes/">Release Notes</a>.</p>
@@ -400,7 +400,7 @@ For **ddcui** changes and bug fixes, see [ddcui Release Notes](ddcui_release_not
 <p>Prior announcements can be found <a href="./">here</a>.</p>
 <p>08 February 2021</p>
 <p><strong>ddcutil</strong> release 1.0.1 addresses the situation wherein a display connected through a docking station is not detected 
-when the i915 video driver is used.  (I2C support for docking station connected displays, and more generally displays using 
+when the i915 video driver is used.  (I<sup>2</sup> support for docking station connected displays, and more generally displays using 
 DisplayPort Multi Stream Transport. was recently implemented for i915 and amdgpu drivers in Kernel 5.10. Initial <strong>ddcutil</strong>
 code for this situation did not adequately work around problems in the driver implementation.</p>
 <p>03 February 2021</p>
@@ -618,8 +618,8 @@ Prior annoucnements can be found <a href="./">here</a>.</p>
 <p>This release introduces the following features:</p>
 <ul>
 <li>Command option <strong><em>--force-slave-address</em></strong> causes <strong>ddcutil</strong> to attempt to take control of slave addresses
-on the I2C bus even if they are in use by another driver.  This may aid in certain situations where monitors on 
-an I2C bus are not properly detected. See <a href="../other_options/#force_slave">Instrumentation and Tuning</a>)</li>
+on the I<sup>2</sup> bus even if they are in use by another driver.  This may aid in certain situations where monitors on 
+an I<sup>2</sup> bus are not properly detected. See <a href="../other_options/#force_slave">Instrumentation and Tuning</a>)</li>
 </ul>
 <p>For a complete list of changes and bug fixes, see <a href="../release_notes/">Release Notes</a>.
 Prior annoucnements can be found <a href="./">here</a>.</p>
