@@ -300,14 +300,14 @@
 <p>The shared library <strong>libddcutil</strong> is not backwardly compatible.
 The SONAME is now libddcutil.so.5. The released library file is libddcutil.so.5.0.0.
 In conformance with Debian practice, the package name is <strong><em>libddcutil5</em></strong>.</p>
-<p>To support programs that that use the old shared library, libddcuti.so.4 will continue
+<p>To support programs that that use the old shared library, libddcutil.so.4 will continue
 to be published as package <strong>libddcutil4</strong>.</p>
 <p>Because necessary changes required incrementing the major version of the shared
 library, it provided an opportunity to remove a large number of functions that 
 were deprecated, made unnecessary by the ability to pass command line options
 to <strong>libddcutil</strong>, or otherwise cluttered the API and ABI.  In practice, most
 existing programs will rebuild unchanged with the new version of the shared library.
-However, However, best practice is to use initialization function <strong>ddca_init</strong>.
+However, best practice is to use initialization function <strong>ddca_init()</strong>.
 It is required in order to read options from the configuration file, </p>
 <h3 id="library-initialization">Library Initialization</h3>
 <p>Library initialization has been reworked extensively to move operations 
@@ -321,9 +321,8 @@ into a new function <strong>ddca_init()</strong>.</p>
 <li>sets error information for ddca_get_error_detail()</li>
 </ul>
 <p>If this function is not called by the user program, any API function that relies on its 
-processing invokes <strong>ddca_init()</strong> using arguments such that it never fails, e.g. 
-the configuration file is not processed. As a result, most programs that use the 
-shared library will work with just recompilation.</p>
+having executed invokes <strong>ddca_init()</strong> using arguments such that it never fails, e.g. 
+the configuration file is not processed.</p>
 <h3 id="execution-options">Execution Options</h3>
 <p>These new options apply only to <strong>libddcutil</strong>, not to <strong>ddcutil</strong>.  They can be specified in configuration
 file $HOME/.config/ddcutil/ddcutilrc, or in the libopts string passed to <strong>ddca_init()</strong>.</p>
@@ -637,8 +636,8 @@ The following functions are no longer useful and have been removed:</p>
 </tbody>
 </table>
 <p><br></p>
-<p>Remove vestiages to the old AMD proprietary driver.<br />
-Regarding enum changes, while the constant numbers of the remaining values values are 
+<p>Remove vestiages of the old AMD proprietary driver.
+Regarding enum changes, while the constant numbers assigned to the remaining values values are 
 unchanged, <strong>switch</strong> statements without a <strong>default</strong> case will fail to compile.</p>
 <table>
 <thead>

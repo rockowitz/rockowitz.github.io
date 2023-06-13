@@ -299,31 +299,35 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
             <div class="section" itemprop="articleBody">
               
-                <h2 id="preliminary-notes-for-the-next-ddcutil-release">Preliminary Notes for the Next <strong>ddcutil</strong> Release</h2>
+                <h2 id="change-notes-for-the-next-ddcutil-release-draft">Change Notes for the Next <strong>ddcutil</strong> Release (Draft)</h2>
 <p>Release 2.0.0 is a major update to <strong>ddcutil</strong>, containing significant performance improvements.
 The version of the shared library is not backwards compatible.</p>
 <p>For notes on changes to the shared library, see <a href="../c_api_200/">Shared Library Changes for the Next Release (Draft)</a></p>
 <h4 id="installation">Installation</h4>
 <p><strong>ddcutil</strong> installation creates file /usr/lib/modules-load.d/ddcutil.conf
-to ensure that kernel module i2c-dev is loaded at boot time (if it is not built into the kernel).s</p>
+to ensure that kernel module i2c-dev is loaded at boot time (should it not be built into the kernel).</p>
 <p>As of Release 1.4.1, <strong>ddcutil</strong> installation created file /usr/lib/udev/rules.d/60-ddcutil.rules, 
 granting the logged on user read/write access to I<sup>2</sup>C devices associated with video 
 monitors.  This file has been renamed to 60-ddcutil-i2c.rules.  New file 60-ddcutil-usb.rules
-performs a similar task for USB Human Interface Devices that may provide a USB interface to
-the monitor's Virtual Control Panel.   In addition, sample files /usr/share/data/ddcutil/60-ddcutil-i2c.rules 
-and  60-ddcutil-usb.rules provide alternative options for granting permissions.</p>
+performs a similar task for USB Human Interface Devices that may provide an interface to
+the monitor's Virtual Control Panel.   For unusual situations, sample files /usr/share/data/ddcutil/60-ddcutil-i2c.rules 
+and  60-ddcutil-usb.rules provide alternative ways to grant permissions.</p>
 <p>Taken together, these changes mean that <strong>ddcutil</strong> should just 
 work "out of the box" with no special system configuration. The most signficiant exception is 
 the special settings that may still be needed for the proprietary Nvidia driver.</p>
 <h4 id="performance-improvements">Performance Improvements</h4>
+<p>The following options dramatically improve <strong>ddcutil</strong> startup time.  They are enabled by default.
+The effect of <strong><em>--enable-displays-cache</em></strong> will be most noticable on monitors for which 
+<strong><em>--enable-dsa</em></strong> cannot achieve a low sleep-multiplier.</p>
 <p><strong>Dynamic Sleep Adjustment</strong> </p>
 <p>The dynamic sleep algorithm has been completely rewritten to both dynamically increase
 the sleep-multiplier factor (as needed) and decrease the sleep multiplier factor 
 (insofar as possible).  Data is maintained across program executions in file 
 $HOME/.cache/ddcutil/stats.
-Option <strong><em>-dsa</em></strong>, or one of its variants such as <strong><em>--enable-dsa</em></strong> turn it on.
-If both <strong><em>--sleep-multiplier</em></strong> and <strong><em>--dsa</em></strong> are specified, existing statistics are
-discarded and the sleep algorithm restarts calculation with the specified sleep-multiplier value.</p>
+Option <strong><em>-dsa</em></strong>, or one of its variants such as <strong><em>--enable-dsa</em></strong> turn it on.</p>
+<p>If both <strong><em>--sleep-multiplier</em></strong> and <strong><em>--dsa</em></strong> are specified, existing statistics are
+discarded and the sleep algorithm restarts calculation with the specified sleep-multiplier value.
+Therefore <strong><em>--sleep-multiplier</em></strong> should generally not be used along with <strong><em>--dsa</em></strong>.</p>
 <p><strong>Cached Display Information</strong></p>
 <p>Program startup can be slow because of the many sleeps required by the display detection process.  This information
 rarely changes.  Information about the detected system configuration is optionally 
@@ -341,8 +345,7 @@ The default for <strong>ddcutil</strong> is WARN, and for <strong>libddcutil</st
 <li>Option <strong><em>--quickenv</em></strong> skips some slow tests such as
   use of program i2cdetect.</li>
 <li>Extended sysfs scan for ARM SOC devices to explore how those devices use /sys</li>
-<li>disable caching</li>
-<li>report contents of cached files</li>
+<li>Report contents of cached files</li>
 </ul>
 <h4 id="miscellanous-changes">Miscellanous Changes</h4>
 <ul>
@@ -367,7 +370,7 @@ The default for <strong>ddcutil</strong> is WARN, and for <strong>libddcutil</st
   not just those with a specific product id.</li>
 <li>Existing cached capabilities are not erased when ddcutil is called with capabilities
   caching disabled.</li>
-<li>Options <strong><em>--ignore-hiddev</em></strong> and <strong><em>--ignore-usb-pid-vid</em></strong> causes <strong>ddcutil</strong> initialization
+<li>Options <strong><em>--ignore-hiddev</em></strong> and <strong><em>--ignore-usb-pid-vid</em></strong> cause <strong>ddcutil</strong> initialization
   to ignore USB Human Interface devices that could possibly provide standards-conformant USB access to the 
   monitor's Video Control Panel. <strong>ddcutil</strong> already ignores HID devices that are declared as 
   keyboards or mice, as probing such devices can cause system lockups.  The options are provided because 
@@ -378,7 +381,7 @@ The default for <strong>ddcutil</strong> is WARN, and for <strong>libddcutil</st
 </ul>
 <h3 id="building">Building</h3>
 <ul>
-<li>configure options <strong>-enable-syslog</strong>/<strong>--disable-syslog</strong> have been removed.
+<li><strong>configure</strong> options <strong>-enable-syslog</strong>/<strong>--disable-syslog</strong> have been removed.
   Instead, use command line option <strong>--syslog never</strong> at runtime to disable all writes to the system log.</li>
 <li>Shared library libkmod is no longer required.</li>
 <li>Shared library libjansson is now required. Its development package (libjansson-dev on Debian based systems) must be installed.</li>
