@@ -310,7 +310,7 @@ as branches with those names on the github <a href="https://github.com/rockowitz
 and <a href="https://github.com/rockowitz/ddcui">ddcui</a> repositories.</p>
 <p><strong>ddcutil</strong> 2.0.0 is a major release.  It provides significant performance improvements
 by caching information queried from displays across program invocations, and by dynamically
-adjusting the sleep-multiplier time. When installed, it also should now work "out of the box",
+adjusting the sleep-multiplier time. When installed, it also should work "out of the box",
 without the need for post-installation configuration.</p>
 <p>The <strong>libddcutil</strong> API has been both extended and simplified. Because certain important
 changes broke backward compatibility, I took the opportunity for a major API cleanup.
@@ -319,12 +319,10 @@ client programs should build with minimal changes.  The new SONAME is <strong>li
 For backwards compatibility, <strong>libddcutil.so.4</strong> from <strong>ddcutil</strong> 1.4.1 will continue to be 
 available as a separate package.</p>
 <p><strong>ddcui 0.4.0-rc1</strong> is built to work with the updated API in ddcutil 2.0.0-rc1.</p>
-<p>Preliminary release notes are available at
-[Preliminary Notes for the Next ddcutil Release]
-(http://www.ddcutil.com/next_release_notes),
+<p>Draft release notes are available at <a href="http://www.ddcutil.com/next_release_notes/">Preliminary Notes for the Next ddcutil Release</a>,
 <a href="http://www.ddcutil.com/c_api_200/">Shared Library Changes for the Next Release (Preliminary)</a>,
 and <a href="http://www.ddcutil.com/ddcui_next_release_notes/">Preliminary Notes for the Next ddcui Release</a>.
-Changes are summarized in the CHANGELOG.md files in the respective source trees.</p>
+Changes are also summarized in the CHANGELOG.md files in the respective source trees.</p>
 <p>17 January 2023</p>
 <p><strong>ddcutil</strong> release 1.4.1 fixes a critical bug in release 1.4.0.  The default sleep-multiplier value was 0 instead of 1.  As a result,
 commands that did not have an explcit <strong><em>--sleep-multiplier</em></strong> option would fail.  All users of release 1.4.0 should upgrade.
@@ -478,5 +476,5 @@ The source is hosted on <a href="http://www.github.com/rockowitz/ddcui">Github</
 
 <!--
 MkDocs version : 1.4.2
-Build Date UTC : 2023-06-15 09:50:44.012975+00:00
+Build Date UTC : 2023-06-15 10:01:01.039338+00:00
 -->
