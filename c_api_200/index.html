@@ -295,7 +295,7 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
             <div class="section" itemprop="articleBody">
               
-                <h2 id="shared-library-changes-for-the-next-release-draft">Shared Library Changes for the Next Release (Draft)</h2>
+                <h2 id="shared-library-changes-for-the-next-release-preliminary">Shared Library Changes for the Next Release (Preliminary)</h2>
 <h3 id="overview">Overview</h3>
 <p>The shared library <strong>libddcutil</strong> is not backwardly compatible.
 The SONAME is now libddcutil.so.5. The released library file is libddcutil.so.5.0.0.
@@ -306,7 +306,7 @@ to be published as package <strong>libddcutil4</strong>.</p>
 library, it provided an opportunity to remove a large number of functions that 
 were deprecated, made unnecessary by the ability to pass command line options
 to <strong>libddcutil</strong>, or otherwise cluttered the API and ABI.  In practice, most
-existing programs will rebuild unchanged with the new version of the shared library.
+existing programs will require minimal changes to rebuild with the new version of the shared library.
 However, best practice is to use initialization function <strong>ddca_init()</strong>.
 It is required in order to read options from the configuration file, </p>
 <h3 id="library-initialization">Library Initialization</h3>
