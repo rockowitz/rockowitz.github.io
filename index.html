@@ -330,7 +330,7 @@ Thanks to github users copysiper (Oleg Tsvetkov) and fionnb for their help in qu
 <p>13 January 2023</p>
 <p><strong>ddcutil</strong> release 1.4.0 contains the following changes of general interest:</p>
 <ul>
-<li><strong>ddcutil</strong> installation now creates a udev rule file that gives the logged on user read/write access to I<sup>2</sup> 
+<li><strong>ddcutil</strong> installation now creates a udev rule file that gives the logged on user read/write access to I<sup>2</sup>C 
   devices associated with video monitors. Use of group <strong>i2c</strong> for granting permission to non-root users is,
   in general, no longer needed.</li>
 <li>Use of driver i2c-dev's file io interface (read()/write()), removed in release 1.3.0, has been restored. 
@@ -348,17 +348,17 @@ the <a href="install/">usual locations</a>.</p>
 <p><strong>ddcutil</strong> is a Linux program for managing monitor settings, such as brightness, color levels, and input source.
 Generally speaking, any setting that can be changed by pressing buttons on the monitor can be modified by <strong>ddcutil</strong>.</p>
 <p><strong>ddcutil</strong> primarily uses DDC/CI (Display Data Channel Command Interface) to communicate with monitors implementing MCCS 
-(Monitor Control Command Set) over I<sup>2</sup>.  Normally, the video driver for the
-monitor exposes the I<sup>2</sup> channel as devices named /dev/i2c-n.  Alternatively, there is support for monitors (such as Eizo ColorEdge displays) that implement MCCS using a USB connection.  See <a href="usb/">USB Connected Monitors</a>. </p>
+(Monitor Control Command Set) over I<sup>2</sup>C.  Normally, the video driver for the
+monitor exposes the I<sup>2</sup>C channel as devices named /dev/i2c-n.  Alternatively, there is support for monitors (such as Eizo ColorEdge displays) that implement MCCS using a USB connection.  See <a href="usb/">USB Connected Monitors</a>. </p>
 <p>A particular use case for <strong>ddcutil</strong>, and the one that inspired its development, is as part of color profile management. 
 Monitor calibration is relative to the monitor color settings currently in effect, 
 e.g. red gain.  ddcutil allows color related settings to be saved at the time 
 a monitor is calibrated, and then restored when the calibration is applied.</p>
 <p>Restrictions:  </p>
 <ul>
-<li><strong>ddcutil</strong> does not support laptop displays, which are controlled using a special API, not I<sup>2</sup>.   </li>
+<li><strong>ddcutil</strong> does not support laptop displays, which are controlled using a special API, not I<sup>2</sup>C.   </li>
 <li>Generally speaking, <strong>ddcutil</strong> can be built in a virtual machine, but will not run in a VM.  This is
-because the virtual video drivers do not implement I<sup>2</sup>.  However, if the VM is connected to a separate
+because the virtual video drivers do not implement I<sup>2</sup>C.  However, if the VM is connected to a separate
 video card and is running a non-virtualized driver for the card in passthru mode, then <strong>ddcutil</strong> will work.  </li>
 <li>Nvidia's proprietary video driver may require special configuration.  See 
 <a href="nvidia/">Special Nvidia Driver Settings</a>.   </li>
@@ -476,5 +476,5 @@ The source is hosted on <a href="http://www.github.com/rockowitz/ddcui">Github</
 
 <!--
 MkDocs version : 1.4.2
-Build Date UTC : 2023-06-15 11:41:53.505364+00:00
+Build Date UTC : 2023-06-17 11:08:56.284201+00:00
 -->
