@@ -246,6 +246,8 @@
         <ul>
     <li class="toctree-l3"><a class="reference internal" href="#incorrect-values-shown">Incorrect values shown</a>
     </li>
+    <li class="toctree-l3"><a class="reference internal" href="#values-do-not-change">Values do not change</a>
+    </li>
     <li class="toctree-l3"><a class="reference internal" href="#accidentally-changing-a-feature-value">Accidentally changing a feature value</a>
     </li>
         </ul>
@@ -298,8 +300,8 @@
             <div class="section" itemprop="articleBody">
               
                 <h2 id="ddcui-overview">ddcui Overview</h2>
-<p><strong>ddcui</strong> is a graphical user user interface for <strong>ddcutil</strong>, implemented using Qt.  It is beta quality code, 
-Some features are not fully implemented. and various corner cases are as yet unaddressed.</p>
+<p><strong>ddcui</strong> is a graphical user user interface for <strong>ddcutil</strong>, implemented using Qt.  While still 
+considered to be in development, the code has been stable for some time. </p>
 <h3 id="views">Views</h3>
 <p>The application has 3 views: <strong>Summary</strong>, <strong>Capabilities</strong>, and <strong>Features</strong></p>
 <p>The <strong>Summary View</strong> for a monitor reports basic monitor information,
@@ -320,8 +322,8 @@ The view exists only for monitors that support DDC/CI. </p>
 <li>Code is available on <a href="https://github.com/rockowitz/ddcui">GitHub</a>.  Some prebuilt packages are available on 
 <a href="https://copr.fedorainfracloud.org/coprs/rockowitz/ddcutil/">Copr</a> and 
 <a href="https://launchpad.net/~rockowitz/+archive/ubuntu/ddcutil">Launchpad</a>  </li>
-<li>The latest <strong>ddcui</strong> release is <a href="https:/github.com/rockowitz/ddcui/releases/tag/v0.2.0">0.2.0</a>, 
-It requires <strong>ddcutil</strong> <a href="https://github.com/rockowitz/ddcutil/eleases/tag/v1.2.0">release 1.2.0</a> or later.</li>
+<li>The latest <strong>ddcui</strong> release is <a href="https:/github.com/rockowitz/ddcui/releases/tag/v0.4.0">0.4.0</a>, 
+It requires <strong>ddcutil</strong> <a href="https://github.com/rockowitz/ddcutil/eleases/tag/v2.0.0">release 2.0.0</a> or later.</li>
 </ul>
 <p>For instructions on how to build <strong><em>ddcui</em></strong>, see <a href="../building_ddcui/">Building <strong>ddcui</strong></a>. </p>
 <!--
@@ -350,12 +352,16 @@ is unchanged. Again, this is a bug in the monitor's DDC/CI implementation.</li>
 </ul>
 <p>In some, but not all, cases, <strong>ddcui</strong>
 can be resynced with the actual monitor settings using menu item Actions-&gt;Rescan Monitor Values</p>
+<h4 id="values-do-not-change">Values do not change</h4>
+<p>If values for features such as contrast cannot be changed, it is possible that the monitor is in
+a mode such as Cinema that disables changes. Check the on-screen display.  It may be simplest just
+to reset the monitor to factory defaults.</p>
 <h4 id="accidentally-changing-a-feature-value">Accidentally changing a feature value</h4>
 <ul>
 <li>When swiping the mouse or using the mouse wheel to scroll the VCP Features section, it is<br />
 possible to accidentally move a slider
 that changes a continuous feature value.  Optionally, the UI behavior can be 
-altered to require that the control key be held down in order to move a slider.
+altered to require that the control key be held down in order to move change values.
 This behavior is modified using dialog <strong><em>Options-&gt;User Interface Options-&gt;Require control key to move sliders</em></strong>.</li>
 </ul>
 <p>Pages with additional <strong>ddcui</strong> information: <br />
