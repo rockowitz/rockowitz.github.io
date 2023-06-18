@@ -48,12 +48,10 @@
                 <li class="toctree-l1"><a class="reference internal" href="../commands/">Command Overview</a>
                 </li>
               </ul>
-              <ul>
-                <li class="toctree-l1"><a class="reference internal" href="../cmd_output/">Command Examples</a>
-                </li>
-              </ul>
               <p class="caption"><span class="caption-text">Command Examples</span></p>
               <ul class="current">
+                  <li class="toctree-l1"><a class="reference internal" href="../cmd_output/">Command Examples</a>
+                  </li>
                   <li class="toctree-l1"><a class="reference internal" href="../detect_verbose_output/">ddcutil detect example</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../getvcp_known_u3011_output/">ddcutil getvcp example</a>
@@ -65,12 +63,10 @@
     </ul>
                   </li>
               </ul>
-              <ul>
-                <li class="toctree-l1"><a class="reference internal" href="../command_detail/">Command Detail</a>
-                </li>
-              </ul>
               <p class="caption"><span class="caption-text">Command Detail</span></p>
               <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../command_detail/">Command Detail</a>
+                  </li>
                   <li class="toctree-l1"><a class="reference internal" href="#">Primary Commands</a>
     <ul>
                 <li class="toctree-l2"><a class="reference internal" href="../command_detect/">detect</a>
@@ -286,76 +282,62 @@
             <div class="section" itemprop="articleBody">
               
                 <h2 id="ddcutil-capabilities">ddcutil capabilities</h2>
-<p>Below is the result of executing the <strong>ddcutil capabilities</strong> command for a Dell U3011 monitor that <strong>ddcutil</strong> has identified as display number 4.</p>
-<pre><code>$ ddcutil capabilities --display 4 --verbose
-
-Output level:               Verbose
-Reporting DDC data errors:  false
-Trace groups active:        none
-
+<p>Command <strong>ddcutil capabilities --brief</strong> shows the capabilities string reported by the monitor that ddcutil has identified as display number 4:</p>
+<pre><code class="language-text">$ ddcutil capabilities --brief --display 4
 Unparsed capabilities string: (prot(monitor)type(lcd)model(U3011)cmds(01 02 03 07 0C E3 F3)vcp(02 04 05 06 08 10 12 14(01 05 08 0B 0C) 16 18 1A 52 60(01 03 04 0C 0F 11 12) AC AE B2 B6 C6 C8 C9 D6(01 04 05) DC(00 02 03 04 05) DF FD)mccs_ver(2.1)mswhql(1))
+</code></pre>
+<p>WIth the <strong><em>--verbose</em></strong> option, <strong>capaibilities</strong> includes details for each feature, as specified in the Monitor Control Command Set and modified by a feature definition file:</p>
+<pre><code class="language-text">$ src/ddcutil --dis 4 cap --verbose
+Processed feature definition file: /home/rock/.local/share/ddcutil/DEL-DELL_U3011-16485.mccs
+Unparsed capabilities string: (prot(monitor)type(lcd)model(U3011)cmds(01 02 03 07 0C E3 F3)vcp(02 04 05 06 08 10 12 14(01 05 08 0B 0C) 16 18 1A 52 60(01 03 04 0C 0F 11 12) AC AE B2 B6 C6 C8 C9 D6(01 0
+4 05) DC(00 02 03 04 05) DF FD)mccs_ver(2.1)mswhql(1))
+Model: U3011
 MCCS version: 2.1
 Commands:
-  Command: 01 (VCP Request)
-  Command: 02 (VCP Response)
-  Command: 03 (VCP Set)
-  Command: 07 (Timing Request)
-  Command: 0c (Save Settings)
-  Command: e3 (Capabilities Reply)ls 
-  Command: f3 (Capabilities Request)
+   Op Code: 01 (VCP Request)
+   Op Code: 02 (VCP Response)
+   Op Code: 03 (VCP Set)
+   Op Code: 07 (Timing Request)
+   Op Code: 0C (Save Settings)
+   Op Code: E3 (Capabilities Reply)
+   Op Code: F3 (Capabilities Request)
 VCP Features:
-  Feature: 02 (New control value)
-  Feature: 04 (Restore factory defaults)
-  Feature: 05 (Restore factory brightness/contrast defaults)
-  Feature: 06 (Restore factory geometry defaults)
-  Feature: 08 (Restore color defaults)
-  Feature: 10 (Brightness)
-  Feature: 12 (Contrast)
-  Feature: 14 (Select color preset)
-    Values (unparsed): 01 05 08 0B 0C
-    Values (  parsed):
-       01: sRGB
-       05: 6500 K
-       08: 9300 K
-       0b: User 1
-       0c: User 2
-  Feature: 16 (Video gain: Red)
-  Feature: 18 (Video gain: Green)
-  Feature: 1A (Video gain: Blue)
-  Feature: 52 (Active control)
-  Feature: 60 (Input Source)
-    Values (unparsed): 01 03 04 0C 0F 11 12
-    Values (  parsed):
-       01: VGA-1
-       03: DVI-1
-       04: DVI-2
-       0c: Component video (YPrPb/YCrCb) 1
-       0f: DisplayPort-1
-       11: HDMI-1
-       12: HDMI-2
-  Feature: AC (Horizontal frequency)
-  Feature: AE (Vertical frequency)
-  Feature: B2 (Flat panel sub-pixel layout)
-  Feature: B6 (Display technology type)
-  Feature: C6 (Application enable key)
-  Feature: C8 (Display controller type)
-  Feature: C9 (Display firmware level)
-  Feature: D6 (Power mode)
-    Values (unparsed): 01 04 05
-    Values (  parsed):
-       01: DPM: On,  DPMS: Off
-       04: DPM: Off, DPMS: Off
-       05: Write only value to turn off display
-  Feature: DC (Display Mode)
-    Values (unparsed): 00 02 03 04 05
-    Values (  parsed):
-       00: Standard/Default mode
-       02: Mixed
-       03: Movie
-       04: User defined
-       05: Games
-  Feature: DF (VCP Version)
-  Feature: FD (manufacturer specific feature)
+   Feature: 02 (New control value)
+   Feature: 04 (Restore factory defaults)
+   Feature: 05 (Restore factory brightness/contrast defaults)
+   Feature: 06 (Restore factory geometry defaults)
+   Feature: 08 (Restore color defaults)
+   Feature: 10 (Brightness)
+   Feature: 12 (Contrast)
+   Feature: 14 (Select color preset)
+      Values (unparsed): 01 05 08 0B 0C
+      Values (  parsed):
+         01: sRGB
+         05: 6500 K
+         08: 9300 K
+         0b: User 1
+         0c: User 2
+   Feature: 16 (Video gain: Red)
+   Feature: 18 (Video gain: Green)
+   Feature: 1A (Video gain: Blue)
+   Feature: 52 (Active control)
+   Feature: 60 (Input Source)
+      Values (unparsed): 01 03 04 0C 0F 11 12
+      Values (  parsed):
+         01: VGA-1
+         03: DVI-1
+         04: DVI-2
+         0c: Component video (YPrPb/YCrCb) 1
+         0f: DisplayPort-1
+         11: HDMI-1
+         12: HDMI-2
+   Feature: AC (Horizontal frequency)
+   Feature: AE (Vertical frequency)
+   Feature: B2 (Flat panel sub-pixel layout)
+   Feature: B6 (Display technology type)
+   Feature: C6 (Application enable key)
+   Feature: C8 (Display controller type)
+rock@banner:/shared/playproj/i2c$ 
 </code></pre>
               
             </div>
