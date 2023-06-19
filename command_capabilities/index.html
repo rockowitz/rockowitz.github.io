@@ -71,6 +71,10 @@
                 </li>
                 <li class="toctree-l2 current"><a class="reference internal current" href="./">capabilities</a>
     <ul class="current">
+    <li class="toctree-l3"><a class="reference internal" href="#option-terse">Option: --terse</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#option-verbose">Option: --verbose</a>
+    </li>
     </ul>
                 </li>
                 <li class="toctree-l2"><a class="reference internal" href="../command_getvcp/">getvcp</a>
@@ -283,7 +287,7 @@
             <div class="section" itemprop="articleBody">
               
                 <h2 id="command-capabilities">Command capabilities</h2>
-<p>Syntax: <strong>capabilities</strong> &lt;display-selection-options&gt;</p>
+<p>Syntax: <strong>capabilities</strong> &lt;display-selection-options&gt; &lt;general options&gt;</p>
 <p>Reports the monitor's capabilities string.  This string describes, among other things, the VCP Features that the
 monitor supports and, for non-continuous features where appropriate, the allowed values.</p>
 <p>Unfortunately, the capabilities string is unreliable. Therefore <strong>ddcutil</strong> simply presents the string.
@@ -308,9 +312,9 @@ ddcutil simulates a capabilities response by looking at what USB HID reports exi
 </ul>
 <p>Note however, that <strong>ddcui</strong> does make use of the the capabilities string.</p>
 <p>By default the <strong>capabilities</strong> command displays the capabilities string in parsed form. </p>
-<p>Option: <strong><em>--terse</em></strong></p>
+<h4 id="option-terse">Option: <strong><em>--terse</em></strong></h4>
 <p>Display the unparsed capabilities string. </p>
-<p>Option: <strong><em>--verbose</em></strong></p>
+<h4 id="option-verbose">Option: <strong><em>--verbose</em></strong></h4>
 <p>Display both the unparsed string and its parsed form.</p>
               
             </div>

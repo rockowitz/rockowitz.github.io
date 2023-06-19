@@ -71,7 +71,7 @@
     <ul class="current">
     <li class="toctree-l3"><a class="reference internal" href="#option-async">Option --async</a>
     </li>
-    <li class="toctree-l3"><a class="reference internal" href="#option-nousb">Option: --nousb</a>
+    <li class="toctree-l3"><a class="reference internal" href="#option-enable-usb-disable-usb">Option: --enable-usb/--disable-usb</a>
     </li>
     <li class="toctree-l3"><a class="reference internal" href="#option-brief-terse">Option: --brief, --terse</a>
     </li>
@@ -293,17 +293,18 @@
                 <h3 id="command-detect">Command <strong>detect</strong></h3>
 <p>Syntax: <strong>detect</strong> &lt;options&gt;</p>
 <p>Scans the system for displays supporting the Monitor Control Command Set (MCCS), most commonly using DDC/CI but alternatively using USB for communication.
-This command reports the results of the display search, which also is part of most <strong>ddcutil</strong> commands. </p>
+This command reports the results of the display search, which also is performed in the background as part of most <strong>ddcutil</strong> commands. </p>
 <h4 id="option-async">Option <strong><em>--async</em></strong><a name="option_async"></a></h4>
 <p>If there are 3 or more monitors and option <strong><em>--async</em></strong> is specified, initial monitor DDC checks are performed in separate threads.
-improving startup time.  </p>
-<h4 id="option-nousb">Option: <strong><em>--nousb</em></strong></h4>
-<p>This option disables detection of USB connected displays during <strong>ddcutil</strong> startup.  </p>
-<p>USB display support is rarely required, as most monitors use DDC/CI, not USB, for MCCS execution.
-As a practical matter, searching for USB displays has a negligable effect on execution time. This option may be useful if there is a problem with USB display detection.</p>
+marginally improving startup time.  </p>
+<h4 id="option-enable-usb-disable-usb">Option: <strong><em>--enable-usb</em></strong>/<strong><em>--disable-usb</em></strong></h4>
+<p>This pair of options controls whether <strong>ddcutil</strong> searches for displays that use USB for communication.  The default is <strong><em>--disable-usb</em></strong>. </p>
+<p>Although the overhead of searching for USB displays has a negligable effect on <strong>ddcutil</strong> performance, the benign error messages it can produce regarding permissions
+have proven distracting.<br />
+USB display support is rarely required, as most monitors use DDC/CI, not USB, for MCCS communication.</p>
 <p>The output varies by verbosity. </p>
 <p>Normal output: </p>
-<pre><code class="language-bash">$ ddcutil detect
+<pre><code class="language-text">$ ddcutil detect
 Display 1&lt;
    I2C bus:             /dev/i2c-7   
    EDID synopsis:  
@@ -367,7 +368,7 @@ Display 4
 </code></pre>
 <h4 id="option-verbose">Option:  ***--verbose ***</h4>
 <p>Show additional information, including the EDID. </p>
-<pre><code class="language-bash">$ ddcutil detect --verbose
+<pre><code class="language-text">$ ddcutil detect --verbose
 Display 1
    I2C bus:             /dev/i2c-7
       I2C address 0x50 (EDID) responsive: true 

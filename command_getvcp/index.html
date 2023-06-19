@@ -289,9 +289,15 @@
             <div class="section" itemprop="articleBody">
               
                 <h3 id="command-getvcp">Command <strong>getvcp</strong></h3>
-<p>Syntax: <strong>getvcp</strong> &lt;display-selection-options&gt; &lt;other options&gt; &lt;feature-code-or-group&gt; </p>
+<p>Syntax: <strong>getvcp</strong> &lt;display-selection-options&gt; &lt;other options&gt; &lt;feature-codes-or-group&gt; </p>
 <p>Monitor selection options are detailed <a href="../display_selection/">here</a>.</p>
-<p>Feature code/group specification is detailed <a href="../feature_selection/">here</a>.</p>
+<p>Feature code/group specification is detailed <a href="../feature_selection/">here</a>. Briefly, you can 
+specify one or more feature codes or a feature group, but feature codes and groups cannot be combined.
+For example, the folling commands are valid: </p>
+<pre><code class="language-text">$ ddcutil getvcp 10 12
+</code></pre>
+<pre><code>$ ddcutil getvcp color
+</code></pre>
 <p>If a feature group has been specified, there is normally no message if a feature is unsupported.
 This rule is not absolute.  For some feature-groups it is appropriate to always report that a 
 feature is unsupported. This is also affected by the <strong><em>--show-unsupported</em></strong> option described below.</p>
@@ -310,7 +316,7 @@ are shown.  Output takes the form:</p>
 </pre>
 
 <p>For example:</p>
-<pre><code class="language-bash">VCP 10 C 50 100
+<pre><code class="language-text">VCP 10 C 50 100
 </code></pre>
 <p>For a simple non-continuous VCP feature, i.e. one for which only the SL response byte is 
 significant, the value is reported in hex.   Output takes the form:  </p>
@@ -319,7 +325,7 @@ significant, the value is reported in hex.   Output takes the form:  </p>
 </pre>
 
 <p>For example:</p>
-<pre><code class="language-bash">VCP 60 SNC x03
+<pre><code class="language-text">VCP 60 SNC x03
 </code></pre>
 <p>Complex non-continuous VCP features are ones for which more then 1 response byte is 
 significant.  In that case all 4 bytes are reported in hex.  Output takes the form:</p>
