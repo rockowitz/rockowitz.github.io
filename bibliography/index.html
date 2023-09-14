@@ -8,7 +8,7 @@
     <title>References - ddcutil Documentation</title>
     <link rel="stylesheet" href="../css/theme.css" />
     <link rel="stylesheet" href="../css/theme_extra.css" />
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
     
       <script>
         // Current page data
@@ -17,12 +17,11 @@
         var mkdocs_page_url = "/bibliography/";
       </script>
     
-    <script src="../js/jquery-3.6.0.min.js" defer></script>
     <!--[if lt IE 9]>
       <script src="../js/html5shiv.min.js"></script>
     <![endif]-->
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
-      <script>hljs.initHighlightingOnLoad();</script> 
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
 </head>
 
 <body class="wy-body-for-nav" role="document">
@@ -34,7 +33,7 @@
           <a href=".." class="icon icon-home"> ddcutil Documentation
         </a><div role="search">
   <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
-      <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
   </form>
 </div>
       </div>
@@ -271,9 +270,9 @@
       <div class="wy-nav-content">
         <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
   <ul class="wy-breadcrumbs">
-    <li><a href=".." class="icon icon-home" alt="Docs"></a> &raquo;</li>
+    <li><a href=".." class="icon icon-home" aria-label="Docs"></a> &raquo;</li>
           <li>Background &raquo;</li>
-      <li>References</li>
+      <li class="breadcrumb-item active">References</li>
     <li class="wy-breadcrumbs-aside">
           <a href="https://github.com/rockowitz/ddcutil/edit/master/docs/bibliography.md" ></a>
     </li>
@@ -451,6 +450,8 @@ Type C Connectors</p>
 <li><a href="https://www.dell.com/support/kbdoc/en-us/000141328/displayport-over-usb-type-c">DisplayPort over USB-C</a> Dell Knowledge Base Article </li>
 <li><a href="https://superuser.com/questions/1192638/whats-up-with-hdmi-and-displayport-over-usb-c">What's up with DisplayPort over USB C</a> superuser.com, asked 3/2017, last modified 10/2020</li>
 <li><a href="https://superuser.com/questions/1696232/are-all-usb-type-c-to-hdmi-cables-active">Are all USB Type-C-to-HDMI cables active?</a> superuser.com asked 12/2020, last modified 12/2020</li>
+<li><a href="https://dancharblog.wordpress.com/2020/07/20/add-usb-c-with-dp-alt-mode-to-your-desktop-pc/">Add USB-C with DisplayPort-alt-mode to your PC</a> A nice overview of devices for adding a Type-C connector supporting DisplayPort Alt Mode to a PC whose motherboard or video card does not have such a connector.</li>
+<li><a href="https://dancharblog.wordpress.com/2020/05/10/bi-directional-usbc-dp-cables/">Bi-directional DisplayPort-&gt;UDB-C, HDMI-&gt;USB-C, and HDMI-&gt;DP Cables</a> Another nice overview of available hardware from Dan S. Charlton</li>
 </ul>
 <p>DisplayLink</p>
 <p>A proprietary method of sending video over a USB connection.  Not to be confused with DisplayPort. Does not support DDC/CI.</p>
@@ -515,14 +516,15 @@ Some pages of particular interest: </p>
     
   </span>
 </div>
-    <script>var base_url = '..';</script>
-    <script src="../js/theme_extra.js" defer></script>
-    <script src="../js/theme.js" defer></script>
-      <script src="../search/main.js" defer></script>
-    <script defer>
-        window.onload = function () {
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "..";</script>
+    <script src="../js/theme_extra.js"></script>
+    <script src="../js/theme.js"></script>
+      <script src="../search/main.js"></script>
+    <script>
+        jQuery(function () {
             SphinxRtdTheme.Navigation.enable(false);
-        };
+        });
     </script>
 
 </body>

@@ -8,7 +8,7 @@
     <title>Raspberry Pi - ddcutil Documentation</title>
     <link rel="stylesheet" href="../css/theme.css" />
     <link rel="stylesheet" href="../css/theme_extra.css" />
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
     
       <script>
         // Current page data
@@ -17,12 +17,11 @@
         var mkdocs_page_url = "/raspberry/";
       </script>
     
-    <script src="../js/jquery-3.6.0.min.js" defer></script>
     <!--[if lt IE 9]>
       <script src="../js/html5shiv.min.js"></script>
     <![endif]-->
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
-      <script>hljs.initHighlightingOnLoad();</script> 
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
 </head>
 
 <body class="wy-body-for-nav" role="document">
@@ -34,7 +33,7 @@
           <a href=".." class="icon icon-home"> ddcutil Documentation
         </a><div role="search">
   <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
-      <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
   </form>
 </div>
       </div>
@@ -275,9 +274,9 @@
       <div class="wy-nav-content">
         <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
   <ul class="wy-breadcrumbs">
-    <li><a href=".." class="icon icon-home" alt="Docs"></a> &raquo;</li>
+    <li><a href=".." class="icon icon-home" aria-label="Docs"></a> &raquo;</li>
           <li>Installation and Configuration &raquo;</li>
-      <li>Raspberry Pi</li>
+      <li class="breadcrumb-item active">Raspberry Pi</li>
     <li class="wy-breadcrumbs-aside">
           <a href="https://github.com/rockowitz/ddcutil/edit/master/docs/raspberry.md" ></a>
     </li>
@@ -303,6 +302,8 @@
 </ul>
 <p>Thank you Robert Alexa for updating the status of <strong>ddcutil</strong> on the Pi 4 and providing the above instructions. For a long thread on the problem of I2C support
 on the Pi 4, see <a href="https://github.com/raspberrypi/linux/issues/3152#">Raspberry Pi issue #3152</a></p>
+<p>Update 6/2023</p>
+<p>Fresh install of Rasberry Pi OS (64 bit), a spin of Debian 11 (bullseye) with kernel 6.1 on a Raspberry Pi Model B.   Enable I2C in raspi-config, and reboot.  apt install ddcutil, installs 0.9.9</p>
 <h3 id="raspberry-pi-3">Raspberry Pi 3</h3>
 <p>The following instructions for installing <strong>ddcutil</strong> on the Raspberry Pi are a distillation of user feedback, my own experiences with a Raspberry Pi 3 Model B, 
 and discussions on the Web. </p>
@@ -382,14 +383,15 @@ to 5.5 volt. Again, I have not experienced a problem in this regard. </p>
     
   </span>
 </div>
-    <script>var base_url = '..';</script>
-    <script src="../js/theme_extra.js" defer></script>
-    <script src="../js/theme.js" defer></script>
-      <script src="../search/main.js" defer></script>
-    <script defer>
-        window.onload = function () {
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "..";</script>
+    <script src="../js/theme_extra.js"></script>
+    <script src="../js/theme.js"></script>
+      <script src="../search/main.js"></script>
+    <script>
+        jQuery(function () {
             SphinxRtdTheme.Navigation.enable(false);
-        };
+        });
     </script>
 
 </body>
