@@ -8,7 +8,7 @@
     <title>USB Connected Monitors - ddcutil Documentation</title>
     <link rel="stylesheet" href="../css/theme.css" />
     <link rel="stylesheet" href="../css/theme_extra.css" />
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
     
       <script>
         // Current page data
@@ -17,12 +17,11 @@
         var mkdocs_page_url = "/usb/";
       </script>
     
-    <script src="../js/jquery-3.6.0.min.js" defer></script>
     <!--[if lt IE 9]>
       <script src="../js/html5shiv.min.js"></script>
     <![endif]-->
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
-      <script>hljs.initHighlightingOnLoad();</script> 
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
 </head>
 
 <body class="wy-body-for-nav" role="document">
@@ -34,7 +33,7 @@
           <a href=".." class="icon icon-home"> ddcutil Documentation
         </a><div role="search">
   <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
-      <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
   </form>
 </div>
       </div>
@@ -281,9 +280,9 @@
       <div class="wy-nav-content">
         <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
   <ul class="wy-breadcrumbs">
-    <li><a href=".." class="icon icon-home" alt="Docs"></a> &raquo;</li>
+    <li><a href=".." class="icon icon-home" aria-label="Docs"></a> &raquo;</li>
           <li>Specific Facilities &raquo;</li>
-      <li>USB Connected Monitors</li>
+      <li class="breadcrumb-item active">USB Connected Monitors</li>
     <li class="wy-breadcrumbs-aside">
           <a href="https://github.com/rockowitz/ddcutil/edit/master/docs/usb.md" ></a>
     </li>
@@ -314,7 +313,7 @@ Other than actual Macs, these are uncommon.</p>
 <p>Thanks to Ojdrej Zary, whose <a href="https://github.com/ondrej-zary/usbmonctl">usbmonctl</a> was used as the basis for USB support in <strong>ddcutil</strong>.</p>
 <p>If there are multiple monitors, a USB connected monitor can be selected in the usual manner using its display number (option <strong><em>--display</em></strong>), or by
 its bus number/device number pair (option <strong><em>--usb</em></strong>) or hiddev device number (option <strong><em>--hiddev</em></strong>).  </p>
-<p>There are also 2 <strong>ddcutil</strong> commands specific to USB connected monitors, <strong>chkusbmon</strong>, and <strong>usbenvironment</strong></p>
+<p>There are also 2 <strong>ddcutil</strong> commands specific to USB connected monitors, <strong>chkusbmon</strong>, and <strong>usbenvironment</strong>c</p>
 <p>For details on USB device permissions, see <a href="../usb_permissions/">USB Device Permissions</a>.</p>
 <h3 id="options-for-display-selection">Options for Display Selection</h3>
 <h4 id="option-usb">Option: --usb<a name="option_usb"></a></h4>
@@ -380,14 +379,15 @@ by which they are accessed. That is, <strong>--hiddev 2</strong> refers to /dev/
     
   </span>
 </div>
-    <script>var base_url = '..';</script>
-    <script src="../js/theme_extra.js" defer></script>
-    <script src="../js/theme.js" defer></script>
-      <script src="../search/main.js" defer></script>
-    <script defer>
-        window.onload = function () {
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "..";</script>
+    <script src="../js/theme_extra.js"></script>
+    <script src="../js/theme.js"></script>
+      <script src="../search/main.js"></script>
+    <script>
+        jQuery(function () {
             SphinxRtdTheme.Navigation.enable(false);
-        };
+        });
     </script>
 
 </body>
