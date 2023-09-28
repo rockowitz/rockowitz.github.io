@@ -225,7 +225,7 @@
                   </li>
                   <li class="toctree-l1 current"><a class="reference internal current" href="./">Release Notes</a>
     <ul class="current">
-    <li class="toctree-l2"><a class="reference internal" href="#200-27-september-2023">2.0.0 27 September 2023</a>
+    <li class="toctree-l2"><a class="reference internal" href="#200">2.0.0</a>
         <ul>
     <li class="toctree-l3"><a class="reference internal" href="#installation">Installation</a>
     </li>
@@ -664,8 +664,9 @@
             <div class="section" itemprop="articleBody">
               
                 <h2 id="release-notes">Release Notes</h2>
-<p>For <strong>ddcui</strong> release notes, see <a href="../ddcui_release_notes/"><strong>ddcui</strong> Release Notes</a></p>
-<h3 id="200-27-september-2023">2.0.0 27 September 2023</h3>
+<p>For <strong>ddcui</strong> changes, see <a href="../ddcui_release_notes/"><strong>ddcui</strong> Release Notes</a></p>
+<h3 id="200">2.0.0</h3>
+<p>27 September 2023</p>
 <!-- 
 add options --enable/disable-watch-dsplays
 
@@ -701,7 +702,8 @@ The effect of ***--enable-displays-cache*** will be most noticable on monitors f
 the sleep-multiplier factor (as needed) and decrease the sleep multiplier factor 
 (insofar as possible).  Data is maintained across program executions in file 
 $HOME/.cache/ddcutil/stats.
-Option <strong><em>-dsa</em></strong>, or one of its variants such as <strong><em>--enable-dsa</em></strong> turn it on.</p>
+Option <strong><em>-dsa</em></strong>, or one of its variants such as <strong><em>--enable-dsa</em></strong> turn it on (the default).
+Option <strong><em>--disable-dsa</em></strong> turns it off.</p>
 <p>If both <strong><em>--sleep-multiplier</em></strong> and <strong><em>--dsa</em></strong> are specified, existing statistics are
 discarded and the sleep algorithm restarts calculation with the specified sleep-multiplier value.
 Therefore <strong><em>--sleep-multiplier</em></strong> should generally not be used along with <strong><em>--dsa</em></strong>.</p>
@@ -747,8 +749,10 @@ The extended discussion summarized on the wiki page occurred on <a href="https:/
 <h4 id="ddcutil-detect-changes"><strong>ddcutil detect</strong> Changes</h4>
 <ul>
 <li>Option <strong><em>--verbose</em></strong> reports the current dynamic sleep muliplier. </li>
-<li>Improve determination of non-standard ways that unsupported VCP features are reported.</li>
-<li>Improved phantom display deterimnation in DisplayPort Multi-Stream Transport situation. </li>
+<li>Improve determination of non-standard ways that unsupported VCP features are reported, 
+ane report that output may be incorrect if detection of invalid features is unreliable.</li>
+<li>Improved identification of "phantom" displays when a monitor is capable of DisplayPort Multi-Stream Transport passtrhough.</li>
+<li>Warn that output may be inaccurate if the monitor appears to be in a sleep mode.</li>
 </ul>
 <h4 id="miscellanous-changes">Miscellanous Changes</h4>
 <ul>
@@ -784,6 +788,9 @@ The extended discussion summarized on the wiki page occurred on <a href="https:/
 <li>Fix segfaults in cacheing due to $HOME not set.</li>
 <li>Fix segfault in shared library termination.</li>
 <li><strong>ddcui</strong> now uses a separate configuration file, $HOME/.config/ddcutil/ddcuirc.</li>
+<li>If X11 is the display manager, terminate immediately if the monitor is in a DPMS sleep mode.
+  For Wayland, the best that can be done at present is to detect if an individual monitor is in a DPMS sleep mode.
+  In that case, or the case of no display manager, DPMS status is determined during display detection.</li>
 </ul>
 <h3 id="building">Building</h3>
 <ul>
