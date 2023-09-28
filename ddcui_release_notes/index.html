@@ -8,7 +8,7 @@
     <title>ddcui Release Notes - ddcutil Documentation</title>
     <link rel="stylesheet" href="../css/theme.css" />
     <link rel="stylesheet" href="../css/theme_extra.css" />
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
     
       <script>
         // Current page data
@@ -17,11 +17,12 @@
         var mkdocs_page_url = "/ddcui_release_notes/";
       </script>
     
+    <script src="../js/jquery-3.6.0.min.js" defer></script>
     <!--[if lt IE 9]>
       <script src="../js/html5shiv.min.js"></script>
     <![endif]-->
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
-      <script>hljs.highlightAll();</script> 
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
+      <script>hljs.initHighlightingOnLoad();</script> 
 </head>
 
 <body class="wy-body-for-nav" role="document">
@@ -33,7 +34,7 @@
           <a href=".." class="icon icon-home"> ddcutil Documentation
         </a><div role="search">
   <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
-      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+      <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
   </form>
 </div>
       </div>
@@ -185,7 +186,7 @@
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../c_api_140/">Shared Library Changes for Release 1.4.0</a>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../c_api_200/">Shared Library Changes for the Next Release</a>
+                  <li class="toctree-l1"><a class="reference internal" href="../c_api_200/">Shared Library Changes for Release 2.0.0</a>
                   </li>
               </ul>
               <p class="caption"><span class="caption-text">Background</span></p>
@@ -224,8 +225,6 @@
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../release_notes/">Release Notes</a>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../next_release_notes/">Preliminary Notes for the Next Release</a>
-                  </li>
                   <li class="toctree-l1"><a class="reference internal" href="../prior_announcements/">Announcement History</a>
                   </li>
               </ul>
@@ -239,6 +238,16 @@
                   </li>
                   <li class="toctree-l1 current"><a class="reference internal current" href="./">ddcui Release Notes</a>
     <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#release-040">Release 0.4.0</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#passing-options-to-ddcui-and-libddcutil">Passing options to ddcui and libddcutil</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#logging">Logging</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#building-ddcui">Building ddcui:</a>
+    </li>
+        </ul>
+    </li>
     <li class="toctree-l2"><a class="reference internal" href="#release-030">Release 0.3.0</a>
         <ul>
     <li class="toctree-l3"><a class="reference internal" href="#general-user-interface-changes">General User Interface Changes</a>
@@ -283,7 +292,7 @@
     </li>
     <li class="toctree-l2"><a class="reference internal" href="#invocation">Invocation</a>
     </li>
-    <li class="toctree-l2"><a class="reference internal" href="#building-ddcui">Building ddcui</a>
+    <li class="toctree-l2"><a class="reference internal" href="#building-ddcui_1">Building ddcui</a>
     </li>
     <li class="toctree-l2"><a class="reference internal" href="#release-012">Release 0.1.2</a>
     </li>
@@ -296,8 +305,6 @@
         </ul>
     </li>
     </ul>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../ddcui_next_release_notes/">Preliminary Notes for the Next ddcui Release</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../ddcui_faq/">ddcui Frequently Asked Questions</a>
                   </li>
@@ -324,9 +331,9 @@
       <div class="wy-nav-content">
         <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
   <ul class="wy-breadcrumbs">
-    <li><a href=".." class="icon icon-home" aria-label="Docs"></a> &raquo;</li>
+    <li><a href=".." class="icon icon-home" alt="Docs"></a> &raquo;</li>
           <li>ddcui &raquo;</li>
-      <li class="breadcrumb-item active">ddcui Release Notes</li>
+      <li>ddcui Release Notes</li>
     <li class="wy-breadcrumbs-aside">
           <a href="https://github.com/rockowitz/ddcutil/edit/master/docs/ddcui_release_notes.md" ></a>
     </li>
@@ -337,8 +344,48 @@
             <div class="section" itemprop="articleBody">
               
                 <h2 id="ddcui-release-notes">ddcui Release Notes</h2>
+<h3 id="release-040">Release 0.4.0</h3>
+<p>27 September 2023</p>
+<p>Requires libddcutil.so.5.x.x from ddcutil 2.0.0-dev or later.</p>
+<h4 id="passing-options-to-ddcui-and-libddcutil">Passing options to ddcui and libddcutil</h4>
+<p><strong>ddcui</strong> now uses a separate configuration file, $HOME/.config/ddcutil/ddcuirc, 
+instead of combining the [global] and [ddcui] sections of <strong>ddcutil</strong> configuration
+file $HOME/.config/ddcutil/ddcutilrc. </p>
+<p>Added options:</p>
+<ul>
+<li>
+<p><strong><em>--noconfig</em></strong>, <strong><em>--disable-config-file</em></strong>. Do not obtain options from 
+configuration file $HOME/.config/ddcutil/ddcuirc.</p>
+</li>
+<li>
+<p><strong><em>--libopts "options"</em></strong>. Passes an option string to the shared library.  This string is appended to 
+the <strong>libddcutil</strong> option string obtained from the <strong>ddcui</strong> configuration file.</p>
+</li>
+</ul>
+<p>Several <strong>ddcui</strong> command line options existed solely to pass options to the shared library.  These can now be passed using 
+option <strong><em>--libopts</em></strong>. and have been eliminated: </p>
+<ul>
+<li><strong><em>--nousb</em></strong></li>
+<li><strong><em>--trace</em></strong></li>
+<li><strong><em>--trcfunc</em></strong></li>
+<li><strong><em>--trcfile</em></strong></li>
+</ul>
+<h4 id="logging">Logging</h4>
+<ul>
+<li><strong><em>--syslog &lt;log level&gt;</em></strong> controls what messages are written to the system log 
+by <strong>ddcui</strong> and <strong>libddcutil</strong>.
+Valid levels are <strong>NEVER</strong>, <strong>ERROR</strong>, <strong>WARNING</strong>, <strong>NOTICE</strong>, <strong>INFO</strong>, and <strong>DEBUG</strong>.
+The default is <strong>NOTICE</strong>.</li>
+</ul>
+<h4 id="building-ddcui">Building <strong>ddcui</strong>:</h4>
+<p>cmake option DDCUTIL_PROJECT_DIR specifies the root directory of project <strong>ddcutil</strong>.  This allows for 
+building <strong>ddcui</strong> using the latest development version of <strong>libddcutil</strong> without having to install it. </p>
+<p>e.g. </p>
+<pre><code>cmake -D DDCUTIL_PROJECT_DIR=/my/ddcutil/project/dir
+</code></pre>
+<!--  options --i1, --i2 -->
+
 <h3 id="release-030">Release 0.3.0</h3>
-<p>For notes on the release currently in devlopment, see <a href="../ddcui_next_release_notes/">Preliminary Notes for the Next <strong>ddcui</strong> Release</a>.</p>
 <p>05 August 2022</p>
 <h4 id="general-user-interface-changes">General User Interface Changes</h4>
 <ul>
@@ -472,7 +519,7 @@ The code base has been extensively reworked. This section summarizes user visibl
 <li>Command line option <strong><em>--help</em></strong> does not report development related options.
   Use <strong><em>--help-development</em></strong> or <strong><em>--help-all</em></strong> to see them.</li>
 </ul>
-<h3 id="building-ddcui">Building <strong>ddcui</strong></h3>
+<h3 id="building-ddcui_1">Building <strong>ddcui</strong></h3>
 <ul>
 <li>qmake is no longer supported. Use cmake.</li>
 </ul>
@@ -502,7 +549,7 @@ For example: </p>
           </div><footer>
     <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
         <a href="../building_ddcui/" class="btn btn-neutral float-left" title="Building ddcui"><span class="icon icon-circle-arrow-left"></span> Previous</a>
-        <a href="../ddcui_next_release_notes/" class="btn btn-neutral float-right" title="Preliminary Notes for the Next ddcui Release">Next <span class="icon icon-circle-arrow-right"></span></a>
+        <a href="../ddcui_faq/" class="btn btn-neutral float-right" title="ddcui Frequently Asked Questions">Next <span class="icon icon-circle-arrow-right"></span></a>
     </div>
 
   <hr/>
@@ -532,19 +579,18 @@ For example: </p>
       <span><a href="../building_ddcui/" style="color: #fcfcfc">&laquo; Previous</a></span>
     
     
-      <span><a href="../ddcui_next_release_notes/" style="color: #fcfcfc">Next &raquo;</a></span>
+      <span><a href="../ddcui_faq/" style="color: #fcfcfc">Next &raquo;</a></span>
     
   </span>
 </div>
-    <script src="../js/jquery-3.6.0.min.js"></script>
-    <script>var base_url = "..";</script>
-    <script src="../js/theme_extra.js"></script>
-    <script src="../js/theme.js"></script>
-      <script src="../search/main.js"></script>
-    <script>
-        jQuery(function () {
+    <script>var base_url = '..';</script>
+    <script src="../js/theme_extra.js" defer></script>
+    <script src="../js/theme.js" defer></script>
+      <script src="../search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
             SphinxRtdTheme.Navigation.enable(false);
-        });
+        };
     </script>
 
 </body>

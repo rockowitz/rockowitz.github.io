@@ -8,7 +8,7 @@
     <title>Announcement History - ddcutil Documentation</title>
     <link rel="stylesheet" href="../css/theme.css" />
     <link rel="stylesheet" href="../css/theme_extra.css" />
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
     
       <script>
         // Current page data
@@ -17,11 +17,12 @@
         var mkdocs_page_url = "/prior_announcements/";
       </script>
     
+    <script src="../js/jquery-3.6.0.min.js" defer></script>
     <!--[if lt IE 9]>
       <script src="../js/html5shiv.min.js"></script>
     <![endif]-->
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
-      <script>hljs.highlightAll();</script> 
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
+      <script>hljs.initHighlightingOnLoad();</script> 
 </head>
 
 <body class="wy-body-for-nav" role="document">
@@ -33,7 +34,7 @@
           <a href=".." class="icon icon-home"> ddcutil Documentation
         </a><div role="search">
   <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
-      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+      <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
   </form>
 </div>
       </div>
@@ -185,7 +186,7 @@
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../c_api_140/">Shared Library Changes for Release 1.4.0</a>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../c_api_200/">Shared Library Changes for the Next Release</a>
+                  <li class="toctree-l1"><a class="reference internal" href="../c_api_200/">Shared Library Changes for Release 2.0.0</a>
                   </li>
               </ul>
               <p class="caption"><span class="caption-text">Background</span></p>
@@ -224,8 +225,6 @@
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../release_notes/">Release Notes</a>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../next_release_notes/">Preliminary Notes for the Next Release</a>
-                  </li>
                   <li class="toctree-l1 current"><a class="reference internal current" href="./">Announcement History</a>
     <ul class="current">
     <li class="toctree-l2"><a class="reference internal" href="#obs">OBS</a>
@@ -255,8 +254,6 @@
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../ddcui_release_notes/">ddcui Release Notes</a>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../ddcui_next_release_notes/">Preliminary Notes for the Next ddcui Release</a>
-                  </li>
                   <li class="toctree-l1"><a class="reference internal" href="../ddcui_faq/">ddcui Frequently Asked Questions</a>
                   </li>
               </ul>
@@ -282,9 +279,9 @@
       <div class="wy-nav-content">
         <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
   <ul class="wy-breadcrumbs">
-    <li><a href=".." class="icon icon-home" aria-label="Docs"></a> &raquo;</li>
+    <li><a href=".." class="icon icon-home" alt="Docs"></a> &raquo;</li>
           <li>Release History &raquo;</li>
-      <li class="breadcrumb-item active">Announcement History</li>
+      <li>Announcement History</li>
     <li class="wy-breadcrumbs-aside">
           <a href="https://github.com/rockowitz/ddcutil/edit/master/docs/prior_announcements.md" ></a>
     </li>
@@ -295,6 +292,43 @@
             <div class="section" itemprop="articleBody">
               
                 <h2 id="prior-announcements">Prior Announcements</h2>
+<p>15 June 2023</p>
+<p>Release candidates <strong>ddcutil 2.0.0-rc1</strong> and <strong>ddcui 0.4.0-rc1</strong> are now available for testing 
+as branches with those names on the github <a href="https://github.com/rockowitz/ddcutil">ddcutil</a> 
+and <a href="https://github.com/rockowitz/ddcui">ddcui</a> repositories.</p>
+<p><strong>ddcutil</strong> 2.0.0 is a major release.  It provides significant performance improvements
+by caching information queried from displays across program invocations, and by dynamically
+adjusting the sleep-multiplier time. It also should work "out of the box",
+without the need for post-installation configuration.</p>
+<p>The <strong>libddcutil</strong> API has been both extended and simplified. Because certain important
+changes broke backward compatibility, I took the opportunity for a major API cleanup.
+Unneeded functions were removed, including many that were previously deprecated. Most
+client programs should build with minimal changes.  The new SONAME is <strong>libddcutil.so.5</strong>.
+For backwards compatibility, <strong>libddcutil.so.4</strong> from <strong>ddcutil</strong> 1.4.1 will continue to be 
+available as a separate package.</p>
+<p><strong>ddcui 0.4.0-rc1</strong> is built to work with the updated API in ddcutil 2.0.0-rc1.</p>
+<p>Preliminary release notes are available at <a href="http://www.ddcutil.com/next_release_notes/">Notes for the Next ddcutil Release (Draft)</a>,
+<a href="http://www.ddcutil.com/c_api_200/">Shared Library Changes for the Next Release (Draft)</a>,
+and <a href="http://www.ddcutil.com/ddcui_next_release_notes/">Notes for the Next ddcui Release (Draft)</a>.
+Changes are also summarized in the CHANGELOG.md files in the respective source trees.</p>
+<p>17 January 2023</p>
+<p><strong>ddcutil</strong> release 1.4.1 fixes a critical bug in release 1.4.0.  The default sleep-multiplier value was 0 instead of 1.  As a result,
+commands that did not have an explcit <strong><em>--sleep-multiplier</em></strong> option would fail.  All users of release 1.4.0 should upgrade.
+Thanks to github users copysiper (Oleg Tsvetkov) and fionnb for their help in quickly identifying and resolving this bug.</p>
+<p>13 January 2023</p>
+<p><strong>ddcutil</strong> release 1.4.0 contains the following changes of general interest:</p>
+<ul>
+<li><strong>ddcutil</strong> installation now creates a udev rule file that gives the logged on user read/write access to I<sup>2</sup>C 
+  devices associated with video monitors. Use of group <strong>i2c</strong> for granting permission to non-root users is,
+  in general, no longer needed.</li>
+<li>Use of driver i2c-dev's file io interface (read()/write()), removed in release 1.3.0, has been restored. 
+  When i2c-dev's ioctl() interface is used the the Nvidia proprietary driver, depending on how the 
+  driver was built, it is possible for display detection to fail. If the Nvidia failure is detected, <strong>ddcutil</strong> switches
+  to using the read()/write() interface for the Nvidia driver.
+  In this case option <strong><em>--force-slave-address</em></strong> may be needed to handle EBUSY errors.
+  For all other video drivers, the ioctl() interface is used and <strong><em>--force-slave-address</em></strong> has no effect.</li>
+</ul>
+<p>For a detailed description of <strong>ddcutil</strong> changes and bug fixes, see <a href="../release_notes/">Release Notes</a>.</p>
 <p>27 September 2022</p>
 <p>Depending on how it was built, the proprietary nvidia driver can be incompatible with <strong>ddcutil</strong> 1.3.0 and 1.3.2.
 The effect is that no monitors are detected. Users encountering this problem should revert to using release 1.2.2, 
@@ -648,7 +682,7 @@ to avoid confusion with a commerical datacenter program also named <strong>ddcto
             </div>
           </div><footer>
     <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
-        <a href="../next_release_notes/" class="btn btn-neutral float-left" title="Preliminary Notes for the Next Release"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../release_notes/" class="btn btn-neutral float-left" title="Release Notes"><span class="icon icon-circle-arrow-left"></span> Previous</a>
         <a href="../ddcui_main/" class="btn btn-neutral float-right" title="Overview">Next <span class="icon icon-circle-arrow-right"></span></a>
     </div>
 
@@ -676,22 +710,21 @@ to avoid confusion with a commerical datacenter program also named <strong>ddcto
         </span>
     
     
-      <span><a href="../next_release_notes/" style="color: #fcfcfc">&laquo; Previous</a></span>
+      <span><a href="../release_notes/" style="color: #fcfcfc">&laquo; Previous</a></span>
     
     
       <span><a href="../ddcui_main/" style="color: #fcfcfc">Next &raquo;</a></span>
     
   </span>
 </div>
-    <script src="../js/jquery-3.6.0.min.js"></script>
-    <script>var base_url = "..";</script>
-    <script src="../js/theme_extra.js"></script>
-    <script src="../js/theme.js"></script>
-      <script src="../search/main.js"></script>
-    <script>
-        jQuery(function () {
+    <script>var base_url = '..';</script>
+    <script src="../js/theme_extra.js" defer></script>
+    <script src="../js/theme.js" defer></script>
+      <script src="../search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
             SphinxRtdTheme.Navigation.enable(false);
-        });
+        };
     </script>
 
 </body>
