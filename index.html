@@ -303,7 +303,7 @@ Highlights include: </p>
 <li>
 <p>Most users will find that command <strong>ddcutil</strong> just works "out of the box", without the need for manual configuation. 
 Driver <strong>i2c_dev</strong> is loaded automatically in case it was not already built into the kernel.
-When executing within a GUI (e.g. Gnome, KDE) the logged on user automatically has read-write
+When executing on a system running systemd (i.e. on almost every current Linux distribution) the logged on user automatically has read-write
 access to the /dev/i2c devices associated with monitors, making excution as root or set up of group I2C
 unnecessary. </p>
 </li>
@@ -330,7 +330,7 @@ and <a href="http://www.ddcutil.com/ddcui_next_release_notes/">ddcui Release Not
 Changes are also summarized in the CHANGELOG.md files in the respective source trees.</p>
 <p>Michael Hamilton, developer of <a href="https://github.com/digitaltrails/vdu_controls">VDU Controls</a>, 
 provided invaluable assistance in diagnosing many "edge cases", particularly when
-monitors are turned off/on or go into and out of a DPMS sleep state. It's been a pleasure
+monitors are turned off and on or go into and out of a DPMS sleep state. It's been a pleasure
 to work with him.</p>
 <p>I also want to acknowledge the several people who have been reverse engineering the
 undocumented ways in which input switching is controlled on recent LG monitors.
@@ -471,5 +471,5 @@ The source is hosted on <a href="http://www.github.com/rockowitz/ddcui">Github</
 
 <!--
 MkDocs version : 1.4.2
-Build Date UTC : 2023-09-29 16:37:53.629805+00:00
+Build Date UTC : 2023-09-29 16:44:15.435327+00:00
 -->
