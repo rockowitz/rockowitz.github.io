@@ -89,6 +89,8 @@
                   </li>
                   <li class="toctree-l1 current"><a class="reference internal current" href="#">Command Options</a>
     <ul class="current">
+                <li class="toctree-l2"><a class="reference internal" href="../display_detection/">Display Detection</a>
+                </li>
                 <li class="toctree-l2"><a class="reference internal" href="../display_selection/">Display Selection</a>
                 </li>
                 <li class="toctree-l2"><a class="reference internal" href="../feature_selection/">Feature Selection</a>
@@ -100,10 +102,12 @@
     <li class="toctree-l3"><a class="reference internal" href="#option-ddc">Option: --ddc</a>
     </li>
     <li class="toctree-l3"><a class="reference internal" href="#option-statistics-stats-type">Option: --statistics &nbsp; [&lt;stats-type]</a>
-        <ul>
-    <li class="toctree-l4"><a class="reference internal" href="#per-thread-statistics">Per-thread statistics</a>
     </li>
-        </ul>
+    <li class="toctree-l3"><a class="reference internal" href="#option-vstats">Option: --vstats</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#option-istats">Option ***--istats ***</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#option-syslog-level">Option: --syslog &nbsp; [&lt;level]</a>
     </li>
     </ul>
                 </li>
@@ -111,11 +115,15 @@
                 </li>
                 <li class="toctree-l2"><a class="reference internal" href="../other_options/">Miscellaneous Options</a>
                 </li>
+                <li class="toctree-l2"><a class="" href="../i2c-dev.options.md">i2c-dev Driver Options</a>
+                </li>
                 <li class="toctree-l2"><a class="reference internal" href="../debug_options/">Debugging Options</a>
                 </li>
+                <li class="toctree-l2"><a class="reference internal" href="../libddcutil_options/">libddcutil Options</a>
+                </li>
+                <li class="toctree-l2"><a class="" href="../deprecated_options">Deprecated Options</a>
+                </li>
     </ul>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../libddcutil_options/">libddcutil Options</a>
                   </li>
               </ul>
               <p class="caption"><span class="caption-text">Specific Facilities</span></p>
@@ -333,9 +341,14 @@ For example</p>
 <p>Note: <strong><em>--stats tries</em></strong> seperately reports multi-part read and multi-part write tries.  This reflects how statistics are implementated.
 As a practical matter, no monitor has ever been seen that has features of type <strong><em>Table</em></strong>, so the 
 multi-part write statistics will always be zero.</p>
-<h4 id="per-thread-statistics">Per-thread statistics</h4>
-<p>Statistics are now broken down by thread.  This is primarily of use in the shared library.
-These additional per-thread statistics are shown when <strong><em>--verbose</em></strong> is specified along with <strong><em>--stats</em></strong>. </p>
+<h3 id="option-vstats">Option: <strong><em>--vstats</em></strong></h3>
+<p>Break down statistics by monitor.  Recognizes the same arguments as <strong><em>--stats</em></strong>. </p>
+<h3 id="option-istats">Option ***--istats ***</h3>
+<p>Report internal statistics as well.</p>
+<h3 id="option-syslog-level">Option: <strong><em>--syslog</em></strong> &nbsp; [&lt;level]</h3>
+<p>Writes messages with a <strong>ddcutil</strong> log level at least as severe as the specified level to the system log. </p>
+<p><strong>ddcutil</strong> log levels are **DEBUG, VERBOSE, INFO, NOTICE, WARN, ERROR" and "NEVER"  and roughly correspond to syslog severity levels.</p>
+<p>Log level <strong>NEVER</strong> turns off writing to syslog.</p>
               
             </div>
           </div><footer>

@@ -87,8 +87,10 @@
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../options_main/">Command Options</a>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="#">Command Options</a>
-    <ul>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="#">Command Options</a>
+    <ul class="current">
+                <li class="toctree-l2"><a class="reference internal" href="../display_detection/">Display Detection</a>
+                </li>
                 <li class="toctree-l2"><a class="reference internal" href="../display_selection/">Display Selection</a>
                 </li>
                 <li class="toctree-l2"><a class="reference internal" href="../feature_selection/">Feature Selection</a>
@@ -101,14 +103,24 @@
                 </li>
                 <li class="toctree-l2"><a class="reference internal" href="../other_options/">Miscellaneous Options</a>
                 </li>
+                <li class="toctree-l2"><a class="" href="../i2c-dev.options.md">i2c-dev Driver Options</a>
+                </li>
                 <li class="toctree-l2"><a class="reference internal" href="../debug_options/">Debugging Options</a>
                 </li>
-    </ul>
-                  </li>
-                  <li class="toctree-l1 current"><a class="reference internal current" href="./">libddcutil Options</a>
+                <li class="toctree-l2 current"><a class="reference internal current" href="./">libddcutil Options</a>
     <ul class="current">
-    <li class="toctree-l2"><a class="reference internal" href="#option-libddcutil-trace-file">Option --libddcutil-trace-file</a>
+    <li class="toctree-l3"><a class="reference internal" href="#option-libddcutil-trace-filea-nameoption_libddcutil_trace_file">Option --libddcutil-trace-file&lt;a name="option_libddcutil_trace_file"</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#option-trcapi-function-name">Option: --trcapi &lt;function name&gt;</a>
     </li>
+    <li class="toctree-l4"><a class="reference internal" href="#option-profile-api">Option: --profile-api </a>
+    </li>
+        </ul>
+    </li>
+    </ul>
+                </li>
+                <li class="toctree-l2"><a class="" href="../deprecated_options">Deprecated Options</a>
+                </li>
     </ul>
                   </li>
               </ul>
@@ -269,6 +281,7 @@
   <ul class="wy-breadcrumbs">
     <li><a href=".." class="icon icon-home" alt="Docs"></a> &raquo;</li>
           <li>Command Detail &raquo;</li>
+          <li>Command Options &raquo;</li>
       <li>libddcutil Options</li>
     <li class="wy-breadcrumbs-aside">
           <a href="https://github.com/rockowitz/ddcutil/edit/master/docs/libddcutil_options.md" ></a>
@@ -285,13 +298,18 @@ The option string is read and processed when <strong>libddcutil</strong> is init
 (Bear in mind that the shared library is not used by the command line program <strong>ddcutil</strong>.
 Specifying <strong>libddcutil</strong> options in this context has no effect.)</p>
 <p>Generally speaking, any <strong>ddcutil</strong> option, other than those for display and feature selection, can be passed to <strong>libddcutil</strong>. </p>
-<p>In addition, the following option is recognized only by <strong>libddcutil.</strong>: </p>
-<h3 id="option-libddcutil-trace-file">Option <strong><em>--libddcutil-trace-file</em></strong></h3>
+<p>In addition, the following options are recognized only by <strong>libddcutil.</strong>: </p>
+<h3 id="option-libddcutil-trace-filea-nameoption_libddcutil_trace_file">Option <strong><em>--libddcutil-trace-file</em></strong>&lt;a name="option_libddcutil_trace_file"</a></h3>
 <p><strong>libddcutil</strong> can redirect all output that would normally be sent to the terminal to a trace file instead,
 allowng for tracing when there is no terminal to which to write. 
 This option specifies the file name. The file name specified can be either absolute or relative.
 If relative, the directory is resolved as per the definition of XDG_STATE_HOME in the XDG desktop specification.
 Typically, this is $HOME/.local/state/ddcutil.</p>
+<h4 id="option-trcapi-function-name">Option: <strong><em>--trcapi &lt;function name&gt;</em></strong><a name="option_trcapi"></a></h4>
+<p>Trace an API function and all functions called by that function.  </p>
+<p>Can be specified more than once to trace multiple functions.</p>
+<h4 id="option-profile-api">Option: <strong><em>--profile-api</em></strong> <a name="option_profile_api"></a></h4>
+<p>Report time consumed by API calls.</p>
               
             </div>
           </div><footer>

@@ -89,6 +89,8 @@
                   </li>
                   <li class="toctree-l1 current"><a class="reference internal current" href="#">Command Options</a>
     <ul class="current">
+                <li class="toctree-l2"><a class="reference internal" href="../display_detection/">Display Detection</a>
+                </li>
                 <li class="toctree-l2"><a class="reference internal" href="../display_selection/">Display Selection</a>
                 </li>
                 <li class="toctree-l2"><a class="reference internal" href="../feature_selection/">Feature Selection</a>
@@ -101,13 +103,17 @@
                 </li>
                 <li class="toctree-l2"><a class="reference internal" href="../other_options/">Miscellaneous Options</a>
                 </li>
+                <li class="toctree-l2"><a class="" href="../i2c-dev.options.md">i2c-dev Driver Options</a>
+                </li>
                 <li class="toctree-l2 current"><a class="reference internal current" href="./">Debugging Options</a>
     <ul class="current">
     <li class="toctree-l3"><a class="reference internal" href="#option-trace-trace-group">Option: --trace &lt;trace-group&gt;</a>
     </li>
+    <li class="toctree-l3"><a class="reference internal" href="#option-trcfile-file-name">Option: --trcfile  &lt;file name&gt;</a>
+    </li>
     <li class="toctree-l3"><a class="reference internal" href="#option-trcfunc-function-name">Option: --trcfunc &lt;function name&gt;</a>
     </li>
-    <li class="toctree-l3"><a class="reference internal" href="#option-trcfile-file-name">Option: --trcfile  &lt;file name&gt;</a>
+    <li class="toctree-l3"><a class="reference internal" href="#option-trcfrom-function-name">Option: --trcfrom &lt;function name&gt;</a>
     </li>
     <li class="toctree-l3"><a class="reference internal" href="#option-timestamp-ts">Option: --timestamp, --ts</a>
     </li>
@@ -115,13 +121,15 @@
     </li>
     <li class="toctree-l3"><a class="reference internal" href="#option-thread_id-tid">Option: --thread_id, --tid</a>
     </li>
-    <li class="toctree-l3"><a class="reference internal" href="#option-syslog">Option: --syslog</a>
+    <li class="toctree-l3"><a class="reference internal" href="#option-thread_id-tid_1">Option: --thread_id, --tid</a>
     </li>
     </ul>
                 </li>
+                <li class="toctree-l2"><a class="reference internal" href="../libddcutil_options/">libddcutil Options</a>
+                </li>
+                <li class="toctree-l2"><a class="" href="../deprecated_options">Deprecated Options</a>
+                </li>
     </ul>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../libddcutil_options/">libddcutil Options</a>
                   </li>
               </ul>
               <p class="caption"><span class="caption-text">Specific Facilities</span></p>
@@ -297,27 +305,42 @@
 <p>Each function in the code base, other than utility functions, is assigned to a trace group. 
 This option enables trace messages for a group.</p>
 <p>Can be specified more than once to trace multiple groups.</p>
+<h4 id="option-trcfile-file-name">Option: <strong><em>--trcfile  &lt;file name&gt;</em></strong></h4>
+<p>Enable trace messages in a single file.  The argument is a simple file name, e.g. "ddc_services.c".</p>
+<p>Can be specified more than once to trace multiple files.</p>
 <h4 id="option-trcfunc-function-name">Option: <strong><em>--trcfunc &lt;function name&gt;</em></strong></h4>
 <p>Enable trace messages in a particular function.  </p>
 <p>Can be specified more than once to trace multiple functions.</p>
-<h4 id="option-trcfile-file-name">Option: <strong><em>--trcfile  &lt;file name&gt;</em></strong></h4>
-<p>Enable trace messages in a single file.  The argument is a simple file name, e.g. "ddc_services.c".</p>
+<h4 id="option-trcfrom-function-name">Option: <strong><em>--trcfrom &lt;function name&gt;</em></strong></h4>
+<p>Enable trace messages in a particular function and in all functinons called by that function.</p>
 <p>Can be specified more than once to trace multiple files.</p>
 <h4 id="option-timestamp-ts">Option: <strong><em>--timestamp</em></strong>, <strong><em>--ts</em></strong></h4>
 <p>Prefix trace messages with the number of seconds since <strong>ddcutil</strong> startup </p>
 <h4 id="option-wall-timestamp-wts">Option: <strong><em>--wall-timestamp</em></strong>, <strong><em>--wts</em></strong></h4>
 <p>Prefix trace messages with the current clock time. </p>
 <h4 id="option-thread_id-tid">Option: <strong><em>--thread_id</em></strong>, <strong><em>--tid</em></strong></h4>
-<p>Prefix trace messages with the a thread id number.  This is the Linux thread id.</p>
-<h4 id="option-syslog">Option: <strong><em>--syslog</em></strong></h4>
-<p>Write trace messages to the system log as well as the currently active trace message destination (typically the terminal). </p>
+<p>Prefix trace messages with the the thread number.  This is the Linux thread id.</p>
+<h4 id="option-thread_id-tid_1">Option: <strong><em>--thread_id</em></strong>, <strong><em>--tid</em></strong></h4>
+<p>Prefix trace messages with the the process number.  This is the Linux process id.</p>
+<!--
+#### Option: ***--syslog***
+
+Write trace messages to the system log as well as the currently active trace message destination (typically the terminal). 
+-->
+
 <h3 id="other-debug-options">Other Debug Options</h3>
-<h4 id="option-force">Option: <strong><em>--force</em></strong></h4>
-<p>Override some checks.  Usually fatal.</p>
 <h4 id="option-excp">Option: <strong><em>-excp</em></strong></h4>
 <p>Portions of the <strong>ddcutil</strong> code base use an exception-like mechanism that can record the individual errors that
-contribute to a master error.  If this option is specified, the exceptions are displayed before converting
-them to a single status code.</p>
+contribute to a master error.  If this option is specified, the exceptions are displayed before conversion
+to a single status code.</p>
+<h4 id="option-trace-to_syslog-only">Option: <strong><em>--trace-to_syslog-only</em></strong><a name="option_trace_to_syslog_only"></a></h4>
+<h4 id="option-stats-to-syslog">Option: <strong><em>--stats-to-syslog</em></strong><a name="option_stats_to_syslog"></a></h4>
+<h4 id="option-debug-parse">Option: <strong><em>--debug-parse</em></strong><a name="option_debug_parse"></a></h4>
+<h4 id="option-parse-only">Option: <strong><em>--parse-only</em></strong><a name="option_parse_only"></a></h4>
+<h4 id="option-failsim">Option: <strong><em>--failsim</em></strong><a name="option_failsim"></a></h4>
+<h4 id="option-quickenv">Option: <strong><em>--quickenv</em></strong><a name="option_quickenv"></a></h4>
+<h4 id="option-enable-mock-data">Option: <strong><em>--enable-mock-data</em></strong><a name=option_enable_mock_data></a></h4>
+<h4 id="option-force-null-msg-for-unsupported">Option: <strong><em>--force-null-msg-for-unsupported</em></strong><a name="option_force_null_msg_for_unsupported"></a></h4>
               
             </div>
           </div><footer>

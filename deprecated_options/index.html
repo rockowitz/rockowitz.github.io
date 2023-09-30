@@ -3,18 +3,18 @@
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="author" content="Sanford Rockowitz" /><link rel="canonical" href="https://www.ddcutil.com/install/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="author" content="Sanford Rockowitz" /><link rel="canonical" href="https://www.ddcutil.com/deprecated_options/" />
       <link rel="shortcut icon" href="../img/favicon.ico" />
-    <title>Install ddcutil From Prebuilt Packages - ddcutil Documentation</title>
+    <title>Deprecated options - ddcutil Documentation</title>
     <link rel="stylesheet" href="../css/theme.css" />
     <link rel="stylesheet" href="../css/theme_extra.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
     
       <script>
         // Current page data
-        var mkdocs_page_name = "Install ddcutil From Prebuilt Packages";
-        var mkdocs_page_input_path = "install.md";
-        var mkdocs_page_url = "/install/";
+        var mkdocs_page_name = "Deprecated options";
+        var mkdocs_page_input_path = "deprecated_options.md";
+        var mkdocs_page_url = "/deprecated_options/";
       </script>
     
     <script src="../js/jquery-3.6.0.min.js" defer></script>
@@ -109,7 +109,7 @@
                 </li>
                 <li class="toctree-l2"><a class="reference internal" href="../libddcutil_options/">libddcutil Options</a>
                 </li>
-                <li class="toctree-l2"><a class="" href="../deprecated_options">Deprecated Options</a>
+                <li class="toctree-l2"><a class="" href=".">Deprecated Options</a>
                 </li>
     </ul>
                   </li>
@@ -128,26 +128,12 @@
                   </li>
               </ul>
               <p class="caption"><span class="caption-text">Installation and Configuration</span></p>
-              <ul class="current">
+              <ul>
                   <li class="toctree-l1"><a class="reference internal" href="../install_config_main/">Installation and Configuration</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../config_steps/">Post-Installation Checklist</a>
                   </li>
-                  <li class="toctree-l1 current"><a class="reference internal current" href="./">Install ddcutil From Prebuilt Packages</a>
-    <ul class="current">
-    <li class="toctree-l2"><a class="reference internal" href="#prebuilt-packages-maintained-by-the-ddcutil-project">Prebuilt Packages Maintained by the ddcutil Project</a>
-        <ul>
-    <li class="toctree-l3"><a class="reference internal" href="#opensuse-build-service">openSUSE Build Service</a>
-    </li>
-    <li class="toctree-l3"><a class="reference internal" href="#launchpad">Launchpad</a>
-    </li>
-    <li class="toctree-l3"><a class="reference internal" href="#fedora-copr">Fedora COPR</a>
-    </li>
-        </ul>
-    </li>
-    <li class="toctree-l2"><a class="reference internal" href="#prebuilt-packages-maintained-by-linux-distributions">Prebuilt Packages Maintained by Linux Distributions</a>
-    </li>
-    </ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../install/">Install ddcutil From Prebuilt Packages</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../building/">Building From Source</a>
                   </li>
@@ -284,10 +270,9 @@
         <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
   <ul class="wy-breadcrumbs">
     <li><a href=".." class="icon icon-home" alt="Docs"></a> &raquo;</li>
-          <li>Installation and Configuration &raquo;</li>
-      <li>Install ddcutil From Prebuilt Packages</li>
+      <li>Deprecated options</li>
     <li class="wy-breadcrumbs-aside">
-          <a href="https://github.com/rockowitz/ddcutil/edit/master/docs/install.md" ></a>
+          <a href="https://github.com/rockowitz/ddcutil/edit/master/docs/deprecated_options.md" ></a>
     </li>
   </ul>
   <hr/>
@@ -295,54 +280,13 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
             <div class="section" itemprop="articleBody">
               
-                <h2 id="installing-ddcutil-and-ddcui-from-prebuilt-packages">Installing <strong>ddcutil</strong> and <strong>ddcui</strong> From Prebuilt Packages</h2>
-<p>Prebuilt packages fall into 2 groups, those maintained as part of the <strong>ddcutil</strong> project (upstream), and those in Linux distribution repositories (downstream).</p>
-<p>If no prebuilt package is available for your distribution and architecture, <strong>ddcutil</strong> can be <a href="../building/">built from source</a>.</p>
-<h3 id="prebuilt-packages-maintained-by-the-ddcutil-project">Prebuilt Packages Maintained by the <strong>ddcutil</strong> Project</h3>
-<p>These packages are rebuilt with each <strong>ddcutil</strong> release.</p>
-<h4 id="opensuse-build-service">openSUSE Build Service</h4>
-<p><strong>ddcutil</strong> packages for some Debian, openSUSE, and Ubuntu releases are available for download from the openSUSE Build Service, including official openSUSE builds.</p>
-<p>The graphical user interface, <strong>ddcui</strong> is not available from OBS. </p>
-<p>There's not one clean link for downloading OBS packages, so here are several.  </p>
-<ul>
-<li><a href="http://software.opensuse.org/download.html?project=home%3Arockowitz&amp;package=ddcutil">Add repository and download package ddcutil</a>.
-This is all you will need if just installing the command line version of ddcutil.  </li>
-<li><a href="http://software.opensuse.org/search?utf8=%E2%9C%93&amp;q=ddcutil&amp;search_devel=true&amp;baseproject=ALL">All ddcutil packages</a>
-Packages for both the command line and shared library version of <strong>ddcutil</strong>.  Note that the development package is named 
-<strong>libddcutil-devel</strong> on RPM based distributions (SUSE, Fedora) and <strong>libddcutil-dev</strong> on dpkg based distributions (Debian, Ubuntu).  </li>
-<li><a href="http://download.opensuse.org/repositories/home:/rockowitz/">File system view</a>  </li>
-</ul>
-<h4 id="launchpad">Launchpad</h4>
-<p>The <a href="https://launchpad.net/~rockowitz/+archive/ubuntu/ddcutil"><strong>ddcutil</strong> Launchpad PPA</a>
-contains builds of both <strong>ddcutil</strong> and <strong>ddcui</strong> for recent Ubuntu releases. These builds are also suitable for other recemt Debian derivative distributions.
-Builds exist for the following architectures: amd64, arm64, armhf, i386, ppc64el. </p>
-<p>To use this PPA repository, issue the following commands:</p>
-<pre><code>$ sudo add-apt-repository ppa:rockowitz/ddcutil
-$ sudo apt-get update
-</code></pre>
-<p>Alternatively, you can manually add lines like the following to /etc/apt/sources.list, or to a file in /etc/apt/sources.list.d</p>
-<pre><code>deb http://ppa.launchpad.net/rockowitz/ddcutil/ubuntu cosmic main 
-deb-src http://ppa.launchpad.net/rockowitz/ddcutil/ubuntu cosmic main 
-</code></pre>
-<h4 id="fedora-copr">Fedora COPR</h4>
-<p>Fedora COPR contains <strong>ddcutil</strong> builds for recent Fedora and openSuse releases. It also contains <strong>ddcuti</strong> builds for Fedora.  Builds for both <strong>ddcutil</strong> and <strong>ddcui</strong> are found in repository <a href="https://copr.fedorainfracloud.org/coprs/rockowitz/ddcutil/">rockowitz/ddcutil</a>. </p>
-<p>To use this COPR repository, issue the following command:</p>
-<pre><code>$ sudo dnf copr enable rockowitz/ddcutil
-</code></pre>
-<p>Note: <strong><em>dnf-plugins-core</em></strong> must be installed. </p>
-<p>Alternatively, you can download a repository file found on the <a href="https://copr.fedorainfracloud.org/coprs/rockowitz/ddcutil/">ddcutil copr page</a> and save it in /etc/yum.repos.d. </p>
-<h3 id="prebuilt-packages-maintained-by-linux-distributions">Prebuilt Packages Maintained by Linux Distributions</h3>
-<p><strong>ddcutil</strong> is included in many Linux distribution.  In particular, it is included in Arch, Debian (and hence its derivatives such as Ubuntu), Fedora, Gentoo, Manjaro, openSUSE, and Rapbian.
-For an up to date list of Linux distributions that include <strong>ddcutil</strong>, see the <a href="https://repology.org/metapackage/ddcutil/versions">Repology</a> web site. </p>
-<p>Bear in mind that the version of <strong>ddcutil</strong> found in Linux distributions is often several releases behind the "upstream" release, or may only contain the standalone 
-command-line version. </p>
+                <p>@@@ Deprecated Options</p>
+<p>Some options previously defined no longer have any meaning.
+They are still recognized by the parser so that existing scripts do not fail.</p>
+<h4 id="option-force">Option: <strong><em>--force</em></strong><a name="option_force"></a></h4>
               
             </div>
           </div><footer>
-    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
-        <a href="../config_steps/" class="btn btn-neutral float-left" title="Post-Installation Checklist"><span class="icon icon-circle-arrow-left"></span> Previous</a>
-        <a href="../building/" class="btn btn-neutral float-right" title="Building From Source">Next <span class="icon icon-circle-arrow-right"></span></a>
-    </div>
 
   <hr/>
 
@@ -368,10 +312,6 @@ command-line version. </p>
         </span>
     
     
-      <span><a href="../config_steps/" style="color: #fcfcfc">&laquo; Previous</a></span>
-    
-    
-      <span><a href="../building/" style="color: #fcfcfc">Next &raquo;</a></span>
     
   </span>
 </div>

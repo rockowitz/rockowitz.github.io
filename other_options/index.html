@@ -89,6 +89,8 @@
                   </li>
                   <li class="toctree-l1 current"><a class="reference internal current" href="#">Command Options</a>
     <ul class="current">
+                <li class="toctree-l2"><a class="reference internal" href="../display_detection/">Display Detection</a>
+                </li>
                 <li class="toctree-l2"><a class="reference internal" href="../display_selection/">Display Selection</a>
                 </li>
                 <li class="toctree-l2"><a class="reference internal" href="../feature_selection/">Feature Selection</a>
@@ -101,19 +103,23 @@
                 </li>
                 <li class="toctree-l2 current"><a class="reference internal current" href="./">Miscellaneous Options</a>
     <ul class="current">
-    <li class="toctree-l3"><a class="reference internal" href="#option-force-slave-address">Option: --force-slave-address</a>
+    <li class="toctree-l3"><a class="reference internal" href="#option-hh">Option -hh</a>
     </li>
-    <li class="toctree-l3"><a class="reference internal" href="#option-timeout-i2c-io">Option: --timeout-i2c-io</a>
+    <li class="toctree-l3"><a class="reference internal" href="#option-force-slave-address">Option: --force-slave-address</a>
     </li>
     <li class="toctree-l3"><a class="reference internal" href="#options-enable-udf-disable-udf">Options: --enable-udf, --disable-udf</a>
     </li>
     </ul>
                 </li>
+                <li class="toctree-l2"><a class="" href="../i2c-dev.options.md">i2c-dev Driver Options</a>
+                </li>
                 <li class="toctree-l2"><a class="reference internal" href="../debug_options/">Debugging Options</a>
                 </li>
+                <li class="toctree-l2"><a class="reference internal" href="../libddcutil_options/">libddcutil Options</a>
+                </li>
+                <li class="toctree-l2"><a class="" href="../deprecated_options">Deprecated Options</a>
+                </li>
     </ul>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../libddcutil_options/">libddcutil Options</a>
                   </li>
               </ul>
               <p class="caption"><span class="caption-text">Specific Facilities</span></p>
@@ -285,18 +291,26 @@
             <div class="section" itemprop="articleBody">
               
                 <h3 id="miscellaneous-options">Miscellaneous Options</h3>
+<h4 id="option-hh">Option <strong><em>-hh</em></strong><a name="option_hh"></a></h4>
+<p>The number of command options have become voluminous.  Option <strong><em>--help</em></strong> reports only those that are likely to be of interest to most users.
+If option <strong><em>--hh</em></strong> is specified, then all options recognized by the parser, including ones used for development and debugging, deprecated options
+that currently have no effect but which are recognized so as not to break existing scripts, and alternative option names.</p>
 <h4 id="option-force-slave-address">Option: <strong><em>--force-slave-address</em></strong><a name="force_slave"></a></h4>
 <p>Per the DDC specification, <strong><em>ddcutil</em></strong> reads the EDID over an I2C bus using slave address x50, and performs DDC communication
 using slave address x37.  Occasionally, communication cannot be established because these addresses are marked as busy.
 This option allows <strong><em>ddcutil</em></strong> to take control of those slave
 addresses, potentially impacting the other program.  (Internally, <strong><em>ddcutil</em></strong> uses <strong><em>ioctl(I2C_SLAVE_FORCE)</em></strong> instead of
 <strong><em>ioctl(I2C_SLAVE)</em></strong>.)</p>
-<h4 id="option-timeout-i2c-io">Option: <strong><em>--timeout-i2c-io</em></strong></h4>
-<p>Causes (most) I2C read calls to eventually time out if they do not return.
-This has been implemented as a POSSIBLE way to address occasional reports of <strong>ddcutil</strong> locking up, with subsequent
- <strong>ddcutiil</strong> calls blocking behind it.   it may become the default in future releases.</p>
+<!--
+#### Option: ***--timeout-i2c-io***
+
+Causes (most) I2C read calls to eventually time out if they do not return.
+This has been implemented as a POSSIBLE way to address occasional reports of **ddcutil** locking up, with subsequent
+ **ddcutiil** calls blocking behind it.   it may become the default in future releases.
+-->
+
 <h4 id="options-enable-udf-disable-udf">Options: <strong><em>--enable-udf</em></strong>, <strong><em>--disable-udf</em></strong></h4>
-<p>Enable or disable the user defined feature facility.  The default is <strong><em>--enable-udf</em></strong>. </p>
+<p>Enable or disable the user defined feature facility.  The default is <strong><em>--disable-udf</em></strong>. </p>
 <h3 id="option-mccs-vcp-version">Option <strong><em>--mccs &lt;vcp version&gt;</em></strong></h3>
 <p>Option <strong><em>--mccs</em></strong> forces the MCCS version number.  It applies to commands <strong>vcpinfo</strong>, <strong>getvcp</strong>, <strong>setvcp</strong>, and <strong>dumpvcp</strong>.
 See documentation of the individual commands for details.</p>
@@ -306,6 +320,8 @@ See documentation of the individual commands for details.</p>
 <p>Report current option settings at the start of </p>
 <h4 id="option-help">Option: <strong><em>--help</em></strong></h4>
 <p>Displays command help, then terminates execution.</p>
+<h3 id="option-noconfig">Option: <strong><em>--noconfig</em></strong></h3>
+<p>Do not process the configuration file.</p>
               
             </div>
           </div><footer>
