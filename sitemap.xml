@@ -361,6 +361,11 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
+         <loc>https://www.ddcutil.com/primary_commands/</loc>
+         <lastmod>2023-10-01</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
          <loc>https://www.ddcutil.com/prior_announcements/</loc>
          <lastmod>2023-10-01</lastmod>
          <changefreq>daily</changefreq>
