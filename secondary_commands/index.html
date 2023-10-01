@@ -95,6 +95,10 @@
     </li>
     <li class="toctree-l2"><a class="reference internal" href="#command-chkusbmon">Command: chkusbmon</a>
     </li>
+    <li class="toctree-l2"><a class="reference internal" href="#command-discard-capabilitesdsaall-caches">Command: discard [capabilites|dsa|all] caches</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#command-traceable-functions">Command: traceable-functions</a>
+    </li>
     </ul>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../options_main/">Command Options</a>
@@ -310,6 +314,11 @@ Option <strong><em>--verbose</em></strong> increases the amount of information.<
 For remote problem diagnosis, <strong>ddcutil environment --verbose</strong> is usually sufficient. </p>
 <h3 id="command-chkusbmon">Command: chkusbmon<a name="chkusbmon"></a></h3>
 <p>This command is used by UDEV rules.  It checks if a USB device is a monitor.  See <a href="../usb/#command_chkusbmon">Command ddcutil chkusbmon</a></p>
+<h3 id="command-discard-capabilitesdsaall-caches">Command: discard [capabilites|dsa|all] caches<a name="command_discard_caches"></a></h3>
+<p>Discard cached capabilities strings, cached dynamic sleep data, or both.  If no cache type is specified, <strong>all</strong> is assumed.</p>
+<h3 id="command-traceable-functions">Command: traceable-functions<a name="command_traceable_functions"></a></h3>
+<p>List all functions that can be specified as an argument to option <strong><em>--trcfunc</em></strong>, <strong><em>--trcfrom</em></strong>, or <strong><em>--trcapi</em></strong>. </p>
+<p>Not all functions are enabled for tracing, and of those not all have been registered as valid arguments for these options.</p>
               
             </div>
           </div><footer>
