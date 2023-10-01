@@ -69,13 +69,13 @@
     <ul class="current">
                 <li class="toctree-l2 current"><a class="reference internal current" href="./">detect</a>
     <ul class="current">
-    <li class="toctree-l3"><a class="reference internal" href="#option-async">Option --async</a>
-    </li>
-    <li class="toctree-l3"><a class="reference internal" href="#option-enable-usb-disable-usb">Option: --enable-usb/--disable-usb</a>
-    </li>
     <li class="toctree-l3"><a class="reference internal" href="#option-brief-terse">Option: --brief, --terse</a>
     </li>
     <li class="toctree-l3"><a class="reference internal" href="#option-verbose">Option:  ***--verbose ***</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#options-enable-usb-disable-usb">Options: --enable-usb, --disable-usb</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#option-async">Option --async</a>
     </li>
     </ul>
                 </li>
@@ -296,14 +296,6 @@
 <p>Syntax: <strong>detect</strong> &lt;options&gt;</p>
 <p>Scans the system for displays supporting the Monitor Control Command Set (MCCS), most commonly using DDC/CI but alternatively using USB for communication.
 This command reports the results of the display search, which also is performed in the background as part of most <strong>ddcutil</strong> commands. </p>
-<h4 id="option-async">Option <strong><em>--async</em></strong><a name="option_async"></a></h4>
-<p>If there are 3 or more monitors and option <strong><em>--async</em></strong> is specified, initial monitor DDC checks are performed in separate threads.
-marginally improving startup time.  </p>
-<h4 id="option-enable-usb-disable-usb">Option: <strong><em>--enable-usb</em></strong>/<strong><em>--disable-usb</em></strong></h4>
-<p>This pair of options controls whether <strong>ddcutil</strong> searches for displays that use USB for communication.  The default is <strong><em>--disable-usb</em></strong>. </p>
-<p>Although the overhead of searching for USB displays has a negligable effect on <strong>ddcutil</strong> performance, the benign error messages it can produce regarding permissions
-have proven distracting.<br />
-USB display support is rarely required, as most monitors use DDC/CI, not USB, for MCCS communication.</p>
 <p>The output varies by verbosity. </p>
 <p>Normal output: </p>
 <pre><code class="language-text">$ ddcutil detect
@@ -537,6 +529,13 @@ Display 4
    Firmware version:    1.5
    Monitor returns DDC Null Response for unsupported features: false
 </code></pre>
+<h4 id="options-enable-usb-disable-usb">Options: <strong><em>--enable-usb</em></strong>, <strong><em>--disable-usb</em></strong></h4>
+<p>This pair of options controls whether <strong>ddcutil</strong> searches for displays that use USB for communication.  The default is <strong><em>--disable-usb</em></strong>. </p>
+<p>Although the overhead of searching for USB displays has a negligable effect on <strong>ddcutil</strong> performance, the benign error messages it can produce regarding permissions have proven distracting.
+USB display support is rarely required, as most monitors use DDC/CI, not USB, for MCCS communication.</p>
+<h4 id="option-async">Option <strong><em>--async</em></strong><a name="option_async"></a></h4>
+<p>If there are 3 or more monitors and option <strong><em>--async</em></strong> is specified, initial monitor DDC checks are performed in separate threads.
+marginally improving startup time. (This option may be removed in a future release.)</p>
               
             </div>
           </div><footer>

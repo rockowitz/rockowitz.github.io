@@ -99,19 +99,19 @@
     <ul class="current">
     <li class="toctree-l3"><a class="reference internal" href="#sleep-management">Sleep Management</a>
     </li>
-    <li class="toctree-l3"><a class="reference internal" href="#option-sleep-multipliera-nameoption_sleep_multiplier">Option: --sleep-multiplier&lt;a name="option_sleep_multiplier"</a>
+    <li class="toctree-l3"><a class="reference internal" href="#option-sleep-multiplier">Option: --sleep-multiplier</a>
     </li>
-    <li class="toctree-l3"><a class="reference internal" href="#options-enable-dynamic-sleep-disable_dynamic_sleep">Options: --enable-dynamic-sleep, --disable_dynamic_sleep</a>
+    <li class="toctree-l3"><a class="reference internal" href="#options-enable-dynamic-sleep-disable-dynamic-sleep">Options: --enable-dynamic-sleep, --disable-dynamic-sleep</a>
     </li>
     <li class="toctree-l3"><a class="reference internal" href="#retry-management">Retry Management</a>
     </li>
     <li class="toctree-l3"><a class="reference internal" href="#option-maxtries">Option: --maxtries</a>
     </li>
-    <li class="toctree-l3"><a class="reference internal" href="#options-enable-capabilities-cache-disable-capabilities-cache">Options: --enable-capabilities-cache, --disable-capabilities-cache</a>
+    <li class="toctree-l3"><a class="reference internal" href="#capabilities-caching">Capabilities Caching</a>
     </li>
     <li class="toctree-l3"><a class="reference internal" href="#additional-peformance-related-options">Additional Peformance Related Options</a>
     </li>
-    <li class="toctree-l3"><a class="reference internal" href="#option-discard-caches-capabilitiesdsaall">Option: ***--discard-cache[s] [capabilities|dsa|all]</a>
+    <li class="toctree-l3"><a class="reference internal" href="#option-discard-caches-capabilitiesdsaall">Option: --discard-cache[s] [capabilities|dsa|all]</a>
     </li>
     <li class="toctree-l3"><a class="reference internal" href="#option-async">Option: --async</a>
         <ul>
@@ -307,11 +307,15 @@
             <div class="section" itemprop="articleBody">
               
                 <h2 id="performance-and-tuning-options">Performance and Tuning Options</h2>
-<p>Some of these options increase the risk of DDC/CI communication failures, requiring retries.</p>
 <h3 id="sleep-management">Sleep Management</h3>
 <p>The DDC/CI specification dictates that the host computer wait 40-200 ms (depending on operation) between sending a command to the monitor and reading the response.
-When <strong>ddcutil</strong> adheres to the spec, it typically spends approximately 90% of its elapsed time sleeping.  Many monitors respond properly with much shorter waits.  On the other hand, there are monitors that require longer waits to avoid DDC/CI errors.</p>
-<h3 id="option-sleep-multipliera-nameoption_sleep_multiplier">Option: <strong><em>--sleep-multiplier</em></strong>&lt;a name="option_sleep_multiplier"</a></h3>
+When <strong>ddcutil</strong> adheres to the spec, it typically spends approximately 90% of its elapsed time sleeping.  Many monitors respond properly with much shorter waits.  On the other hand, there are monitors that require longer waits to avoid DDC/CI errors. </p>
+<p>There are two ways to adjust wait times: explicitly using option <strong><em>--sleep-multiplier</em></strong>, and automatically using dynamic sleep adjustment.</p>
+<!--
+option ***--enable-dynamic-sleep***. 
+-->
+
+<h3 id="option-sleep-multiplier">Option: <strong><em>--sleep-multiplier</em></strong><a name="option_sleep_multiplier"></a></h3>
 <p>Option <strong><em>--sleep-multiplier</em></strong> applies a multiplication factor to the DDC/CI specified sleep times.
 The multiplication factor is a floating point number. 
 For example,  </p>
@@ -323,9 +327,25 @@ For example,  </p>
 <p>causes 40 ms waits to beome 160 ms. </p>
 <p>Note that <strong><em>ddcutil</em></strong> may automatically increase wait times when peforming retries.  Option <strong><em>--sleep-multiplier</em></strong> applies to the inital wait time.</p>
 <p>Option <strong><em>--sleep-multiplier</em></strong> can significantly speed up <strong>ddcutil</strong> execution - some monitors have been seen to operate properly with a sleep-multiplier as low as .1, </p>
-<h3 id="options-enable-dynamic-sleep-disable_dynamic_sleep">Options: <strong><em>--enable-dynamic-sleep</em></strong>, <strong><em>--disable_dynamic_sleep</em></strong><a name="options_enable_disable_dynamic_sleep"></a></h3>
+<p>Decreasing the sleep multiplier increases the chance of DDC/CI communication failures, requiring retries.
+Option <strong><em>---stats tries</em></strong> can help in picking an optimal value.</p>
+<h3 id="options-enable-dynamic-sleep-disable-dynamic-sleep">Options: <strong><em>--enable-dynamic-sleep</em></strong>, <strong><em>--disable-dynamic-sleep</em></strong><a name="options_enable_disable_dynamic_sleep"></a></h3>
 <p>The default is <strong><em>--enable-dynamic-sleep</em></strong>. </p>
-<p>This is a newer way to control sleep time and largely replaces the need to use option <strong><em>==sleep-multiplier</em></strong>.</p>
+<!--
+This is a newer way to control sleep time and largely replaces the need to use option ***==sleep-multiplier***.
+-->
+
+<p>The dynamic sleep algorithm automatically increases
+the sleep-multiplier factor (as needed) and decrease the sleep multiplier factor 
+(insofar as possible).  Data is maintained across program executions in file 
+$HOME/.cache/ddcutil/stats.</p>
+<p>Option <strong><em>--enable-dynamic-sleep</em></strong> or one of its variants such as <strong><em>--dsa</em></strong> turn it on (the default).
+Option <strong><em>--disable-dynamic-sleep</em></strong> turns it off.</p>
+<p>If both <strong><em>--sleep-multiplier</em></strong> and <strong><em>--dsa</em></strong> are specified, existing statistics are
+discarded and the sleep algorithm restarts calculation with the specified sleep-multiplier value.
+Therefore <strong><em>--sleep-multiplier</em></strong> should generally not be used along with <strong><em>--dsa</em></strong>.</p>
+<p>By default, existing statistics are retained even when dynamic sleep is disabled.
+To discard cached sleep statistics at the start of program execution, use option <strong><em>--discard-cache dsa</em></strong> (alt. <strong><em>--discard-cache sleep</em></strong>). </p>
 <h3 id="retry-management">Retry Management</h3>
 <h3 id="option-maxtries">Option: <strong><em>--maxtries</em></strong><a name="option_maxtries"></a></h3>
 <p><strong>I2C</strong> is an inherently unreliable protocol, requiring retry management.  </p>
@@ -357,7 +377,11 @@ example changes only the maximum write-read try count:</p>
 <pre><code>--maxtries(0,7,.) 
 </code></pre>
 <p>The higest value to which a maximum try count can be set, is 15.</p>
-<h3 id="options-enable-capabilities-cache-disable-capabilities-cache">Options: <strong><em>--enable-capabilities-cache</em></strong>, <strong><em>--disable-capabilities-cache</em></strong><a name="option_enable_capabilities_cache"></a><a name="option_disable_capabilities_cache"></a></h3>
+<h3 id="capabilities-caching">Capabilities Caching</h3>
+<!--
+### Options: ***--enable-capabilities-cache***, ***--disable-capabilities-cache***<a name="option_enable_capabilities_cache"></a><a name="option_disable_capabilities_cache"></a> 
+-->
+
 <p><strong>capabilities</strong> is the most expensive <strong>ddcutil</strong> command in elapsed time.
 It is also the most prone to failure on marginal I2C host/monitor 
 connections, due the large number of I2C request/response operations involved.</p>
@@ -367,15 +391,20 @@ Therefore it makes sense to cache the value.</p>
 The default is  <strong><em>--enable-capabilities-cache</em></strong>.  Option <strong><em>--disable-capabilities-cache</em></strong> may be needed for certain edge cases.</p>
 <p>The strings are saved in file <strong>ddcutil/capabilities</strong> within the XDG_CACHE_HOME directory.
 Normally this is <strong>$HOME/.cache/ddcutil/capabilities</strong>.
-This file can safely be erased if the stored capabilities string should become corrupted in some way. </p>
+This file can safely be erased if a stored capabilities string should become corrupted in some way.</p>
+<p>Option <strong><em>--discard-cache capabilities</em></strong>  erases the stored capabilities strings at the start of program execution.</p>
 <h3 id="additional-peformance-related-options">Additional Peformance Related Options</h3>
-<h3 id="option-discard-caches-capabilitiesdsaall">Option: ***--discard-cache[s] [capabilities|dsa|all]</h3>
+<h3 id="option-discard-caches-capabilitiesdsaall">Option: <strong><em>--discard-cache[s] [capabilities|dsa|all]</em></strong><a name="option_discard_cache"></a></h3>
+<p>Discards the specified cache, or all caches, at the start of program execution.</p>
 <h3 id="option-async">Option: <strong><em>--async</em></strong></h3>
-<p>Enable parallel inspection if 3 or more monitors.  See <a href="../command_detect/#option_async">detect command</a>.</p>
+<p>Enable parallel display inspection if 3 or more monitors are detected.  See <a href="../command_detect/#option_async">detect command</a>.</p>
+<p>The benefit of this option has proven marginal at best.  It may be eliminated in future releases.</p>
 <h4 id="option-noverify">Option: <strong><em>--noverify</em></strong><a name="setvcp_noverify"></a></h4>
 <p>Skip checking that a monitor has properly processed a DDC <strong><em>Set VCP Feature</em></strong> request packet.
 For details, see <a href="../command_setvcp/#setup_noverify">setvcp command</a>.</p>
-<p>Additional performance related options exist but are experimental.  See the <a href="../release_notes/">Release Notes</a>.</p>
+<!--
+Additional performance related options exist but are experimental.  See the [Release Notes](release_notes.md).
+-->
               
             </div>
           </div><footer>

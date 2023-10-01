@@ -311,10 +311,12 @@ $ ddcutil setvcp 10 - 5
 </code></pre>
 <h4 id="option-noverify">Option: <strong><em>--noverify</em></strong><a name="option_noverify"></a></h4>
 <p>When <strong>ddcutil</strong> sends a <strong>Set VCP Feature</strong> packet to a display, it receives an acknowlegement at the I2C level that the request packet was received.
+The is no acknowledgement that the display has successfully executed the command.
 There have been occasional reports that the <strong>setvcp</strong> command appeared to succeed, but the new value was not set.</p>
 <p>Therefore <strong>setvcp</strong> (and <strong>loadvcp</strong>) by default perform a <strong>getvcp</strong> operation
 to verify that the new value has actually been set.
-(Obviously, this verification does not occur for write-only features.) </p>
+(Obviously, this verification does not occur for write-only features.  It also does not occur for features such as x60 (Input Source) for which
+verification can be expected to fail.) </p>
 <p>For most monitors, this verification is unnecessary.  To improve performance it is possible to skip value verification using the <strong><em>--noverify</em></strong> option. </p>
 <h3 id="option-verbose">Option: <strong><em>--verbose</em></strong></h3>
 <p>Display informational messages regarding verification.</p>
