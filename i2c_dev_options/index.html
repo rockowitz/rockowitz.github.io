@@ -109,23 +109,21 @@
     <ul class="current">
     <li class="toctree-l3"><a class="reference internal" href="#option-use-file-io">Option: --use-file-io</a>
     </li>
-    <li class="toctree-l3"><a class="reference internal" href="#option-use-ioctl-io">Option: --use-ioctl-io</a>
-    </li>
     <li class="toctree-l3"><a class="reference internal" href="#option-force-slave-address">Option: --force-slave-address</a>
     </li>
-    <li class="toctree-l3"><a class="reference internal" href="#option-edid-reads-size">Option: --edid-reads-size</a>
+    <li class="toctree-l3"><a class="reference internal" href="#option-edid-read-size-128256">Option: --edid-read-size 128|256</a>
     </li>
-    <li class="toctree-l3"><a class="reference internal" href="#option-i2c-source-address">Option: --i2c-source-address</a>
+    <li class="toctree-l3"><a class="reference internal" href="#option-i2c-source-address-hex-address">Option: --i2c-source-address &lt;hex address&gt;</a>
     </li>
     </ul>
                 </li>
                 <li class="toctree-l2"><a class="reference internal" href="../debug_options/">Debugging Options</a>
                 </li>
-                <li class="toctree-l2"><a class="reference internal" href="../libddcutil_options/">libddcutil Options</a>
-                </li>
                 <li class="toctree-l2"><a class="reference internal" href="../deprecated_options/">Deprecated Options</a>
                 </li>
     </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../libddcutil_options/">Shared Library Options</a>
                   </li>
               </ul>
               <p class="caption"><span class="caption-text">Specific Facilities</span></p>
@@ -298,12 +296,45 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
             <div class="section" itemprop="articleBody">
               
-                <h3 id="options-controlling-use-of-driver-i2c-dev-is-used">Options controlling use of driver i2c-dev is used</h3>
-<h4 id="option-use-file-io">Option: --use-file-io</h4>
-<h4 id="option-use-ioctl-io">Option: --use-ioctl-io</h4>
-<h4 id="option-force-slave-address">Option: --force-slave-address</h4>
-<h4 id="option-edid-reads-size">Option: --edid-reads-size</h4>
-<h4 id="option-i2c-source-address">Option: --i2c-source-address</h4>
+                <h3 id="options-for-driver-i2c-dev">Options For Driver i2c-dev</h3>
+<h4 id="option-use-file-io">Option: <strong><em>--use-file-io</em></strong><a name="option_use_file_io"></a></h4>
+<p>Driver <strong>i2c-dev</strong> provides two interfaces for applications.  The first uses ioctl().  The second, simpler, interface hides the ioctl() calls behind a traditional file io based interface, using functions write() and read().</p>
+<p>Normally, <strong>ddcutil</strong> uses the ioctl() interface. Unfortunately, when the ioctl() interface is used with older versions of the Nvidia proprietary video driver, the Nvidia driver rejects calls from i2c-dev. When this error is detected, <strong>ddcutil</strong> switches to using the file io interface.</p>
+<p>This option forces use of the file io interface, avoiding the need for recovery.</p>
+<p>For details about how this problem was diagnosed, see <a href="https://github.com/rockowitz/ddcutil/issues/341">ddcutil issue #341</a>.</p>
+<!--
+#### Option: --use-ioctl-io
+-->
+
+<h4 id="option-force-slave-address">Option: <strong><em>--force-slave-address</em></strong><a name="force_slave"></a></h4>
+<!--
+Per the DDC specification, ***ddcutil*** reads the EDID over an I<sup>2</sup>C bus using slave address x50, and performs DDC communication
+using slave address x37.  
+-->
+
+<p>When the i2c-dev file io interface is used, occasionally communication cannot be established because driver i2c-dev has marked the I<sup>2</sup>C bus   as being in use by another program (error <strong>EBUSY</strong>).
+This option allows <strong>ddcutil</strong> to take control of the bus, potentially impacting the other program.
+(Internally, <strong>ddcutil</strong> uses ioctl(I2C_SLAVE_FORCE) instead of ioctl(I2C_SLAVE).)</p>
+<p>This option has no effect in the normal case where the i2c-dev ioctl() interface is used.</p>
+<h4 id="option-edid-read-size-128256">Option: <strong><em>--edid-read-size 128|256</em></strong><a name="option_edid_read_size"></a></h4>
+<p>Sometimes a display's EDID cannot be read on I<sup>2</sup>C slave address x50.  As a result, 
+ddcutil does not report the existence of a display connected to the /dev/i2c device.
+<strong><em>ddcutil</em></strong> attempts to work around this by trying to read the EDID multiple times with both 128 and 256 block
+sizes. Depending on the monitor, usually one or the other will work, but sometimes neither do.
+Option <strong><em>--edid-read-size</em></strong>, introduced in release 1.0.1, can force the block size
+to 128 or 256.</p>
+<h4 id="option-i2c-source-address-hex-address">Option: <strong><em>--i2c-source-address &lt;hex address&gt;</em></strong><a name="option_source_address"></a></h4>
+<p>Recent LG monitors allow for splitting the display screen between multiple input sources.
+Instead of the (relatively) simple VCP feature x60 (Input Source),
+they use an undocumented protocol,
+to control how the screen is split and which input source is shown where.  Thanks to a community 
+effort, particularly by user Max Thomas (Github handle <a href="https://github.com/shinyquagsire23">shinyquagmire23</a>),
+some of this protocol has been reverse engineered. 
+It entails using an alternative I<sup>2</sup>C source address, x50 instead of x51, in the I<sup>2</sup>C packet. 
+Option <strong><em>--i2c-source-addr</em></strong> provides a way to use this alternative address in DDC communication.
+For further details, see this <a href="https://github.com/rockowitz/ddcutil/wiki/Switching-input-source-on-LG-monitors">wiki page</a>.
+The extended discussion summarized on the wiki page occurred on
+<a href="https://github.com/rockowitz/ddcutil/issues/100">ddcutil issue 100: LG 29UM69G fails switching input</a>.</p>
               
             </div>
           </div><footer>
