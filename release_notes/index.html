@@ -233,6 +233,8 @@
                   </li>
                   <li class="toctree-l1 current"><a class="reference internal current" href="./">Release Notes</a>
     <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#145">1.4.5</a>
+    </li>
     <li class="toctree-l2"><a class="reference internal" href="#200">2.0.0</a>
         <ul>
     <li class="toctree-l3"><a class="reference internal" href="#installation">Installation</a>
@@ -675,6 +677,9 @@
               
                 <h2 id="release-notes">Release Notes</h2>
 <p>For <strong>ddcui</strong> changes, see <a href="../ddcui_release_notes/"><strong>ddcui</strong> Release Notes</a></p>
+<h3 id="145">1.4.5</h3>
+<p>23 October 2023</p>
+<p>Release 1.4.5 extends release 1.4.1 by backporting a <strong>configure</strong> command option, <strong><em>--enable-install-lib-only</em></strong>, from release 2.0.0.  If this option is used, <strong>make</strong> will build and install only shared library <strong>libddcutil.so.4</strong>.  This option may be useful for Linux distributions that must install this legacy library along with the newer <strong>libddcutil.so.5</strong> from <strong>ddcutil</strong> 2.x.x, in order to support existing applications that require that earlier library.</p>
 <h3 id="200">2.0.0</h3>
 <p>27 September 2023</p>
 <!-- 
