@@ -53,9 +53,9 @@
     </li>
     <li class="toctree-l2"><a class="reference internal" href="#packaging-status-in-distribution-repositories">Packaging Status In Distribution Repositories</a>
         <ul>
-    <li class="toctree-l3"><a class="reference internal" href="#ddcutil-status">ddcutil Status</a>
+    <li class="toctree-l3"><a class="reference internal" href="#ddcutil-packaging-status">ddcutil Packaging Status</a>
     </li>
-    <li class="toctree-l3"><a class="reference internal" href="#ddcui-status">ddcui Status</a>
+    <li class="toctree-l3"><a class="reference internal" href="#ddcui-packaging-status">ddcui Packaging Status</a>
     </li>
         </ul>
     </li>
@@ -317,7 +317,7 @@ Highlights include: </p>
 <ul>
 <li>
 <p>Most users will find that command <strong>ddcutil</strong> just works "out of the box", without the need for manual configuation. 
-Driver <strong>i2c_dev</strong> is loaded automatically in case it was not already built into the kernel.
+Driver <strong>i2c-dev</strong> is loaded automatically in case it was not already built into the kernel.
 When executing on a system running systemd (i.e. on almost every current Linux distribution) the logged on user automatically has read-write
 access to the /dev/i2c devices associated with monitors, making excution as root or set up of group I2C
 unnecessary. </p>
@@ -347,7 +347,6 @@ Changes are also summarized in the CHANGELOG.md files in the respective source t
 provided invaluable assistance in diagnosing many "edge cases", particularly when
 monitors are turned off and on or go into and out of a DPMS sleep state. It's been a pleasure
 to work with him.
-st
 I also want to acknowledge the several people who have been reverse engineering the
 undocumented ways in which input switching is controlled on recent LG monitors.
 Their work is summarized on this <a href="https://github.com/rockowitz/ddcutil/wiki/Switching-input-source-on-LG-monitors">wiki page</a>.
@@ -424,7 +423,7 @@ The source is hosted on <a href="http://www.github.com/rockowitz/ddcui">Github</
 <p>For packages maintained by <strong>ddcutil</strong>, see <a href="install">Installing ddcutil and ddcui from Prebuilt Packages</a></p>
 <p>Those responsible for maintaining <strong>ddcutil</strong> related packages in Linux distributions should see
 <a href="mult_shared_libs">Notes for Linux Distribution Maintainers</a>.</p>
-<h3 id="ddcutil-status">ddcutil Status</h3>
+<h3 id="ddcutil-packaging-status">ddcutil Packaging Status</h3>
 <!--
 [![Packaging status](https://repology.org/badge/vertical-allrepos/ddcutil.svg)](https://repology.org/project/ddcutil/versions)
 -->
@@ -432,7 +431,7 @@ The source is hosted on <a href="http://www.github.com/rockowitz/ddcui">Github</
 <p><a href="https://repology.org/project/ddcutil/versions">
     <img src="https://repology.org/badge/vertical-allrepos/ddcutil.svg" alt="ddcutil packaging status" columns=4 header="ddcutil packaging status">
 </a></p>
-<h3 id="ddcui-status">ddcui Status</h3>
+<h3 id="ddcui-packaging-status">ddcui Packaging Status</h3>
 <p><a href="https://repology.org/project/ddcui/versions">
     <img src="https://repology.org/badge/vertical-allrepos/ddcui.svg" alt="ddcui packaging status" columns=4 header="ddcui packaging status">
 </a></p>
@@ -489,5 +488,5 @@ The source is hosted on <a href="http://www.github.com/rockowitz/ddcui">Github</
 
 <!--
 MkDocs version : 1.4.2
-Build Date UTC : 2023-10-25 16:09:41.832571+00:00
+Build Date UTC : 2023-10-26 00:23:07.773508+00:00
 -->
