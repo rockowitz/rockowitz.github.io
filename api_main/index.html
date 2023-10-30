@@ -176,9 +176,7 @@
     </li>
     <li class="toctree-l2"><a class="reference internal" href="#installation">Installation</a>
     </li>
-    <li class="toctree-l2"><a class="reference internal" href="#documentation">Documentation</a>
-    </li>
-    <li class="toctree-l2"><a class="reference internal" href="#miscellaneous">Miscellaneous</a>
+    <li class="toctree-l2"><a class="reference internal" href="#api-documentation">API Documentation</a>
     </li>
     </ul>
                   </li>
@@ -337,11 +335,12 @@ does not itself use the shared library, but instead links all services staticall
 <p>Installation also saves a cmake file (FindDDCUtil.cmake) in directory /usr/share/ddcutil/data 
 (or /usr/local/share/ddcutil/data if appropriate).  To use this file, copy it to 
 /usr/share/cmake/Modules.</p>
-<h3 id="documentation">Documentation</h3>
-<p>C API documentation:<br />
-- The header files contain extensive documentation. <br />
-- Doxygen documentation can be generated (if Doxygen is installed) using scripts in the doxydoc directory.
- However, you'll likely find  the comments in the header files and sample code easier to use.</p>
+<h3 id="api-documentation">API Documentation</h3>
+<ul>
+<li>The header files contain extensive documentation.   </li>
+<li>Doxygen documentation can be generated (if Doxygen is installed) using scripts in the doxydoc directory.
+ However, you'll likely find  the comments in the header files and sample code easier to use.</li>
+</ul>
 <p>Sample programs are found in directory src/sample_clients:</p>
 <table>
 <thead>
@@ -385,10 +384,15 @@ does not itself use the shared library, but instead links all services staticall
 </tr>
 </tbody>
 </table>
-<p>To build the sample client programs, issue the command <strong><em>make check</em></strong>.</p>
-<h3 id="miscellaneous">Miscellaneous</h3>
-<p>Site <a href="https://abi-laboratory.pro/index.php?view=timeline&amp;l=libddcutil">ABI Laboratory</a> tests for binary compatility between shared library releases.
-Note that there have been some </p>
+<p><br>
+To build the sample client programs, issue the command <strong><em>make check</em></strong>.</p>
+<!-- 
+### Miscellaneous
+
+Site [ABI Laboratory](https://abi-laboratory.pro/index.php?view=timeline&l=libddcutil) tests for binary compatility between shared library releases.
+Note that there have been some 
+
+-->
               
             </div>
           </div><footer>
