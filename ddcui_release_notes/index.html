@@ -8,7 +8,7 @@
     <title>ddcui Release Notes - ddcutil Documentation</title>
     <link rel="stylesheet" href="../css/theme.css" />
     <link rel="stylesheet" href="../css/theme_extra.css" />
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
     
       <script>
         // Current page data
@@ -17,12 +17,11 @@
         var mkdocs_page_url = "/ddcui_release_notes/";
       </script>
     
-    <script src="../js/jquery-3.6.0.min.js" defer></script>
     <!--[if lt IE 9]>
       <script src="../js/html5shiv.min.js"></script>
     <![endif]-->
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
-      <script>hljs.initHighlightingOnLoad();</script> 
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
 </head>
 
 <body class="wy-body-for-nav" role="document">
@@ -34,7 +33,7 @@
           <a href=".." class="icon icon-home"> ddcutil Documentation
         </a><div role="search">
   <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
-      <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
   </form>
 </div>
       </div>
@@ -198,6 +197,8 @@
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../c_api_200/">Shared Library Changes for Release 2.0.0</a>
                   </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../c_api_210/">Shared Library Changes for Release 2.1.0</a>
+                  </li>
               </ul>
               <p class="caption"><span class="caption-text">Background</span></p>
               <ul>
@@ -248,13 +249,23 @@
                   </li>
                   <li class="toctree-l1 current"><a class="reference internal current" href="./">ddcui Release Notes</a>
     <ul class="current">
-    <li class="toctree-l2"><a class="reference internal" href="#release-040">Release 0.4.0</a>
+    <li class="toctree-l2"><a class="reference internal" href="#release-050">Release 0.5.0</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#display-status-detection">Display Status Detection</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#miscellaneous-changes">Miscellaneous Changes</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#building-ddcui">Building ddcui</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#release-042">Release 0.4.2</a>
         <ul>
     <li class="toctree-l3"><a class="reference internal" href="#passing-options-to-ddcui-and-libddcutil">Passing options to ddcui and libddcutil</a>
     </li>
     <li class="toctree-l3"><a class="reference internal" href="#logging">Logging</a>
     </li>
-    <li class="toctree-l3"><a class="reference internal" href="#building-ddcui">Building ddcui:</a>
+    <li class="toctree-l3"><a class="reference internal" href="#building-ddcui_1">Building ddcui:</a>
     </li>
         </ul>
     </li>
@@ -302,7 +313,7 @@
     </li>
     <li class="toctree-l2"><a class="reference internal" href="#invocation">Invocation</a>
     </li>
-    <li class="toctree-l2"><a class="reference internal" href="#building-ddcui_1">Building ddcui</a>
+    <li class="toctree-l2"><a class="reference internal" href="#building-ddcui_2">Building ddcui</a>
     </li>
     <li class="toctree-l2"><a class="reference internal" href="#release-012">Release 0.1.2</a>
     </li>
@@ -343,9 +354,9 @@
       <div class="wy-nav-content">
         <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
   <ul class="wy-breadcrumbs">
-    <li><a href=".." class="icon icon-home" alt="Docs"></a> &raquo;</li>
-          <li>ddcui &raquo;</li>
-      <li>ddcui Release Notes</li>
+    <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
+          <li class="breadcrumb-item">ddcui</li>
+      <li class="breadcrumb-item active">ddcui Release Notes</li>
     <li class="wy-breadcrumbs-aside">
           <a href="https://github.com/rockowitz/ddcutil/edit/master/docs/ddcui_release_notes.md" ></a>
     </li>
@@ -356,7 +367,27 @@
             <div class="section" itemprop="articleBody">
               
                 <h2 id="ddcui-release-notes">ddcui Release Notes</h2>
-<h3 id="release-040">Release 0.4.0</h3>
+<h3 id="release-050">Release 0.5.0</h3>
+<p>16 January 2024</p>
+<p><strong>ddcui</strong> release 0.5.0 requires libddcutil.so.5.1 from ddcutil 2.1.0 or later.
+Versions of ddcui prior to 0.4.0 will not build with libddcutil.so.5 from ddcutil-2.0.0 or later.</p>
+<h4 id="display-status-detection">Display Status Detection</h4>
+<ul>
+<li>When libddcutil detects connection or disconnection of a display, ddcui 
+ puts up a dialog box reporting the change and indicating that the user
+ needs to redetect displays using Action-&gt;Redetect Displays.</li>
+</ul>
+<h4 id="miscellaneous-changes">Miscellaneous Changes</h4>
+<ul>
+<li>If multiple "options" lines are found in a segment of configuration file ddcuirc, their contents
+  are combined into a single value.</li>
+</ul>
+<h4 id="building-ddcui">Building <strong>ddcui</strong></h4>
+<ul>
+<li>If CMakeLists.txt option ASAN is specified, cmake compiles ddcui 
+using options needed for ASAN and links the executable with libasan.</li>
+</ul>
+<h3 id="release-042">Release 0.4.2</h3>
 <p>27 September 2023</p>
 <p><strong>ddcui</strong> release 0.4.0 requires libddcutil.so.5 from ddcutil 2.0.0 or later.
 Versions of ddcui prior to 0.4.0 will not build with libddcutil.so.5 from ddcutil-2.0.0 or later.</p>
@@ -383,6 +414,7 @@ option <strong><em>--libopts</em></strong> or the configuration file and have be
 <li><strong><em>--trcfunc</em></strong></li>
 <li><strong><em>--trcfile</em></strong></li>
 </ul>
+<p>Menu item Actions-&gt;Debug Locks reports locking the <strong>libddcutil</strong> as a debugging aid.</p>
 <h4 id="logging">Logging</h4>
 <ul>
 <li><strong><em>--syslog &lt;log level&gt;</em></strong> controls what messages are written to the system log 
@@ -390,9 +422,11 @@ by <strong>ddcui</strong> and <strong>libddcutil</strong>.
 Valid levels are <strong>NEVER</strong>, <strong>ERROR</strong>, <strong>WARNING</strong>, <strong>NOTICE</strong>, <strong>INFO</strong>, and <strong>DEBUG</strong>.
 The default is <strong>NOTICE</strong>.</li>
 </ul>
-<h4 id="building-ddcui">Building <strong>ddcui</strong>:</h4>
-<p>cmake option DDCUTIL_PROJECT_DIR specifies the root directory of project <strong>ddcutil</strong>.  This allows for 
-building <strong>ddcui</strong> using the latest development version of <strong>libddcutil</strong> without having to install it. </p>
+<h4 id="building-ddcui_1">Building <strong>ddcui</strong>:</h4>
+<p>CMakeLists.txt recognizes option DDCUTIL_PROJECT_DIR, which specifies the
+<strong>ddcutil</strong> project directory in which <strong>libddcutil</strong> is built. Using this
+option avoids having to install <strong>libddcutil.so</strong> in a system directory in 
+order for <strong>ddcui</strong> to use it.</p>
 <p>e.g. </p>
 <pre><code>cmake -D DDCUTIL_PROJECT_DIR=/my/ddcutil/project/dir
 </code></pre>
@@ -532,7 +566,7 @@ The code base has been extensively reworked. This section summarizes user visibl
 <li>Command line option <strong><em>--help</em></strong> does not report development related options.
   Use <strong><em>--help-development</em></strong> or <strong><em>--help-all</em></strong> to see them.</li>
 </ul>
-<h3 id="building-ddcui_1">Building <strong>ddcui</strong></h3>
+<h3 id="building-ddcui_2">Building <strong>ddcui</strong></h3>
 <ul>
 <li>qmake is no longer supported. Use cmake.</li>
 </ul>
@@ -596,14 +630,15 @@ For example: </p>
     
   </span>
 </div>
-    <script>var base_url = '..';</script>
-    <script src="../js/theme_extra.js" defer></script>
-    <script src="../js/theme.js" defer></script>
-      <script src="../search/main.js" defer></script>
-    <script defer>
-        window.onload = function () {
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "..";</script>
+    <script src="../js/theme_extra.js"></script>
+    <script src="../js/theme.js"></script>
+      <script src="../search/main.js"></script>
+    <script>
+        jQuery(function () {
             SphinxRtdTheme.Navigation.enable(false);
-        };
+        });
     </script>
 
 </body>

@@ -8,7 +8,7 @@
     <title>ddcutil Documentation</title>
     <link rel="stylesheet" href="css/theme.css" />
     <link rel="stylesheet" href="css/theme_extra.css" />
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
     
       <script>
         // Current page data
@@ -17,12 +17,11 @@
         var mkdocs_page_url = "/";
       </script>
     
-    <script src="js/jquery-3.6.0.min.js" defer></script>
     <!--[if lt IE 9]>
       <script src="js/html5shiv.min.js"></script>
     <![endif]-->
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
-      <script>hljs.initHighlightingOnLoad();</script> 
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
 </head>
 
 <body class="wy-body-for-nav" role="document">
@@ -34,7 +33,7 @@
           <a href="." class="icon icon-home"> ddcutil Documentation
         </a><div role="search">
   <form id ="rtd-search-form" class="wy-form" action="./search.html" method="get">
-      <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
   </form>
 </div>
       </div>
@@ -218,6 +217,8 @@
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="c_api_200/">Shared Library Changes for Release 2.0.0</a>
                   </li>
+                  <li class="toctree-l1"><a class="reference internal" href="c_api_210/">Shared Library Changes for Release 2.1.0</a>
+                  </li>
               </ul>
               <p class="caption"><span class="caption-text">Background</span></p>
               <ul>
@@ -295,8 +296,8 @@
       <div class="wy-nav-content">
         <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
   <ul class="wy-breadcrumbs">
-    <li><a href="." class="icon icon-home" alt="Docs"></a> &raquo;</li>
-      <li>Introduction</li>
+    <li><a href="." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">Introduction</li>
     <li class="wy-breadcrumbs-aside">
           <a href="https://github.com/rockowitz/ddcutil/edit/master/docs/index.md" ></a>
     </li>
@@ -308,6 +309,25 @@
               
                 <h1 id="ddcutil-and-ddcui">ddcutil and ddcui</h1>
 <h2 id="announcements">Announcements</h2>
+<p>17 January 2024</p>
+<p><strong>ddcutil</strong> 2.1.0 incudes enhancements to further speed up initialization, and addresses some bugs in dynamic sleep adjustment.
+The new cross-instance locking feature coordinates access to /dev/i2c devices by multiple ddcutil and libddcutil instances.
+Several vaguely named options have been renamed to more clearly indicate their purpose.</p>
+<p><strong>libddcutil5</strong> can now watch for changes in connected monitors and for changes in DPMS state.  Clients register a callback
+function that informs them of detected changes.</p>
+<p><strong>ddcui</strong> 0.5.0 makes use of the display change detection in <strong>libddcutil</strong> to remind the user to execute Action-&gt;Redetect Displays
+when a change occurs.</p>
+<p>For details about the changes and bug fixes, see <a href="release_notes/">Release Notes</a>,
+<a href="c_api_210/">Shared Library Changes for Release 2.1</a>, 
+and <a href="http://www.ddcutil.com/ddcui_release_notes/">ddcui Release Notes</a>.
+Changes are also summarized in the CHANGELOG.md files in the respective source trees.</p>
+<p>Michael Hamilton, developer of <a href="https://github.com/digitaltrails/vdu_controls">VDU Controls</a>, has once again
+provided invaluable assistance in the development of this release, particularly in the design 
+and implementation of display status change detection.  His project <a href="https://github.com/digitaltrails/ddcutil-service">ddcutil-service</a>
+packages <strong>libddcutil</strong> as a D-Bus service. </p>
+<p>Prebuilt packages for several Linux distributions and machine architectures can be found in 
+the <a href="install/">usual locations</a>.</p>
+<p>Prior announcements can be found <a href="prior_announcements/">here</a>.</p>
 <p>23 October 2023</p>
 <p>Release 1.4.5 extends release 1.4.1 with an additional <strong>configure</strong> command option, <strong><em>--enable-install-lib-only</em></strong>.  If set, <strong>make</strong> builds and installs only shared library <strong>libddcutil.so.4</strong>.  This option may be useful for Linux distributions that must install this legacy library along with the newer <strong>libddcutil.so.5</strong> from <strong>ddcutil</strong> 2.0, in order to support existing applications that require that earlier library.
 See <a href="mult_shared_libs/">Notes for Linux Distribution Maintainers</a>.</p>
@@ -341,7 +361,7 @@ available as a separate package.</p>
 </ul>
 <p>For details about the changes and bug fixes, see <a href="release_notes/">Release Notes</a>,
 <a href="c_api_200">Shared Library Changes for Release 2.0</a>, 
-and <a href="http://www.ddcutil.com/ddcui_next_release_notes/">ddcui Release Notes</a>.
+and <a href="http://www.ddcutil.com/ddcui_release_notes/">ddcui Release Notes</a>.
 Changes are also summarized in the CHANGELOG.md files in the respective source trees.</p>
 <p>Michael Hamilton, developer of <a href="https://github.com/digitaltrails/vdu_controls">VDU Controls</a>, 
 provided invaluable assistance in diagnosing many "edge cases", particularly when
@@ -473,20 +493,21 @@ The source is hosted on <a href="http://www.github.com/rockowitz/ddcui">Github</
     
   </span>
 </div>
-    <script>var base_url = '.';</script>
-    <script src="js/theme_extra.js" defer></script>
-    <script src="js/theme.js" defer></script>
-      <script src="search/main.js" defer></script>
-    <script defer>
-        window.onload = function () {
+    <script src="js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = ".";</script>
+    <script src="js/theme_extra.js"></script>
+    <script src="js/theme.js"></script>
+      <script src="search/main.js"></script>
+    <script>
+        jQuery(function () {
             SphinxRtdTheme.Navigation.enable(false);
-        };
+        });
     </script>
 
 </body>
 </html>
 
 <!--
-MkDocs version : 1.4.2
-Build Date UTC : 2023-10-30 02:14:05.141106+00:00
+MkDocs version : 1.5.3
+Build Date UTC : 2024-01-18 12:27:39.609781+00:00
 -->

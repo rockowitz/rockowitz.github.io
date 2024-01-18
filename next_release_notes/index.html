@@ -8,7 +8,7 @@
     <title>Next release notes - ddcutil Documentation</title>
     <link rel="stylesheet" href="../css/theme.css" />
     <link rel="stylesheet" href="../css/theme_extra.css" />
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
     
       <script>
         // Current page data
@@ -17,12 +17,11 @@
         var mkdocs_page_url = "/next_release_notes/";
       </script>
     
-    <script src="../js/jquery-3.6.0.min.js" defer></script>
     <!--[if lt IE 9]>
       <script src="../js/html5shiv.min.js"></script>
     <![endif]-->
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
-      <script>hljs.initHighlightingOnLoad();</script> 
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
 </head>
 
 <body class="wy-body-for-nav" role="document">
@@ -34,7 +33,7 @@
           <a href=".." class="icon icon-home"> ddcutil Documentation
         </a><div role="search">
   <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
-      <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
   </form>
 </div>
       </div>
@@ -198,6 +197,8 @@
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../c_api_200/">Shared Library Changes for Release 2.0.0</a>
                   </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../c_api_210/">Shared Library Changes for Release 2.1.0</a>
+                  </li>
               </ul>
               <p class="caption"><span class="caption-text">Background</span></p>
               <ul>
@@ -275,8 +276,8 @@
       <div class="wy-nav-content">
         <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
   <ul class="wy-breadcrumbs">
-    <li><a href=".." class="icon icon-home" alt="Docs"></a> &raquo;</li>
-      <li>Next release notes</li>
+    <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">Next release notes</li>
     <li class="wy-breadcrumbs-aside">
           <a href="https://github.com/rockowitz/ddcutil/edit/master/docs/next_release_notes.md" ></a>
     </li>
@@ -287,137 +288,72 @@
             <div class="section" itemprop="articleBody">
               
                 <h2 id="notes-for-the-next-ddcutil-release-draft">Notes for the Next <strong>ddcutil</strong> Release (Draft)</h2>
-<!-- 
-add options --enable/disable-watch-dsplays
-
--->
-
-<p>Release 2.0.0 is a major update to <strong>ddcutil</strong>, containing significant performance improvements.
-The version of the shared library is not backwards compatible.</p>
-<p>For notes on changes to the shared library, see <a href="../c_api_200/">Shared Library Changes for the Next Release (Draft)</a></p>
-<h4 id="installation">Installation</h4>
-<p><strong>ddcutil</strong> installation creates file /usr/lib/modules-load.d/ddcutil.conf
-to ensure that kernel module i2c-dev is loaded at boot time (should it not be built into the kernel).</p>
-<p>As of Release 1.4.1, <strong>ddcutil</strong> installation created file /usr/lib/udev/rules.d/60-ddcutil.rules, 
-granting the logged on user read/write access to I<sup>2</sup>C devices associated with video 
-monitors.  This file has been renamed to 60-ddcutil-i2c.rules.  New file 60-ddcutil-usb.rules
-performs a similar task for USB Human Interface Devices that may provide an interface to
-the monitor's Virtual Control Panel.   For unusual situations, sample files /usr/share/data/ddcutil/60-ddcutil-i2c.rules 
-and  60-ddcutil-usb.rules provide alternative ways to grant permissions.</p>
-<p>Taken together, these changes mean that <strong>ddcutil</strong> should just 
-work "out of the box" with no special system configuration. The most signficiant exception is 
-the special settings that may still be needed for the proprietary Nvidia driver.</p>
-<h4 id="performance-improvement">Performance Improvement</h4>
+<h3 id="initialization-performance-tuning">Initialization Performance Tuning</h3>
+<p><strong>ddcutil</strong> initialization typically consumes most of the elapsed time of command execution.
+For devices using DDC/CI (i.e. all but the few that communicate the with the monitor's Virtual Control Panel using USB), there are roughly speaking two phases to this process.  First, every /dev/i2c device
+associated with a video display adapter is examined to determine if it has an EDID, i.e. if it is associated with a connected monitor.  After that, each of the /dev/i2c devices associated with monitors are tested to see if DDC/CI communication works for the /dev/i2c device.  This includes a check that the monitor adheres to the DDC/CI specification for reporting unsupported features; if not, <strong>ddcutil</strong> attempts to figure out if there is some other way the monitor reports unsupported features.</p>
+<p>To speed up this process, the following changes have been made.</p>
+<pre><code>- Option ***--ddc-check-async-min*** specifies a threshold number for performing the DDC
+  related checks in parallel.  The optimal value is a tradeoff between the time savings from parellel execution and
+  the overhead of splitting execution into multiple threads.  This tradeoff will vary by processor speed and the number 
+  of threads available.  The default value is 3, i.e. parallelize execution if 3 or more monitors are present.
+- The ambiguously named ***--async*** option has been is deprecated and now has no effect. Previously, it turned on
+  parallel execution of DDC related checks in a multi-monitor situation, no matter the number of monitors.
+- As a practical matter, once you know that your display adheres to the DDC/CI spec, there's no need to perform the DDC level
+  check every time **ddcutil** is invoked.  Option ***--skip-ddc-checks*** disables the DDC level checks completely.
+</code></pre>
 <!--
-The following options dramatically improve **ddcutil** startup time.  They are enabled by default.
-The effect of ***--enable-displays-cache*** will be most noticable on monitors for which 
-***--enable-dsa*** cannot achieve a low sleep-multiplier.
+      - Option ***--i2c-bus-check-async-min*** specifies a threshold value for performing the 
+      the initial checks on each /dev/i2c device.  Individually, each I<sup>2</sup>C check is much faster than the DDC level check, 
+      but there are many more of them to perform.  The default value for this option is 4, i.e. parallelize execution if four or 
+      more /dev/i2c devices are to be examined.
 -->
 
-<p><strong>Dynamic Sleep Adjustment</strong> </p>
-<p>The dynamic sleep algorithm has been completely rewritten to both dynamically increase
-the sleep-multiplier factor (as needed) and decrease the sleep multiplier factor 
-(insofar as possible).  Data is maintained across program executions in file 
-$HOME/.cache/ddcutil/stats.
-Option <strong><em>-dsa</em></strong>, or one of its variants such as <strong><em>--enable-dsa</em></strong> turn it on.</p>
-<p>If both <strong><em>--sleep-multiplier</em></strong> and <strong><em>--dsa</em></strong> are specified, existing statistics are
-discarded and the sleep algorithm restarts calculation with the specified sleep-multiplier value.
-Therefore <strong><em>--sleep-multiplier</em></strong> should generally not be used along with <strong><em>--dsa</em></strong>.</p>
-<!--
-**Cached Display Information**
-
-DISABLED --f9 can enable display caching
-
-Program startup can be slow because of the many sleeps required by the display detection process.  
-This information rarely changes.  Information about the detected system configuration is optionally 
-saved in file $HOME/.cache/ddcutil/displays.
-
-Options ***--enable-displays-cache*** and ***--disable-displays-cache*** control whether
-this feature is enabled.
--->
-
-<h4 id="performance-cache-management">Performance Cache Management</h4>
-<p>There are two ways to explicitly delete the capabilities and/or dynamic sleep caches.
-- Command <strong>discard capabilities | dsa | all cache[s]</strong>
-- Option <strong><em>--dicard-cache[s] capabilities|dsa|all</em></strong> erases caches at the start of a command.</p>
-<h4 id="system-logs">System Logs</h4>
-<p>Writing to the system log has been generalized and in the process simplified.</p>
-<p>Option <strong><em>--syslog &lt;level&gt;</em></strong> controls what is written to the system log.
-Recognized levels, in order of increasing verbosity, are NEVER, ERROR, WARN, NOTICE, INFO, VERBOSE, and DEBUG.
-This option replaces <strong><em>--enable-syslog</em></strong>, <strong><em>--disable-syslog</em></strong>, and <strong><em>--trace-to-syslog</em></strong>. 
-The default for <strong>ddcutil</strong> is WARN, and for <strong>libddcutil</strong> is NOTICE.</p>
-<h4 id="environment-verbose-changes"><strong>environment --verbose</strong> Changes</h4>
+<h3 id="dynamic-sleep">Dynamic Sleep</h3>
 <ul>
-<li>Option <strong><em>--quickenv</em></strong> skips some slow tests such as
-  use of program i2cdetect.</li>
-<li>Extended sysfs scan for ARM SOC devices to explore how those devices use /sys</li>
-<li>Report contents of cached files</li>
+<li>Always set sleep multiplier to at least 1.0 for commands <strong>setvcp</strong> and <strong>scs</strong>. Addresses reports
+    that aggressive optimization caused setvcp to fail.</li>
 </ul>
+<h3 id="cross-instance-locking">Cross-Instance Locking</h3>
+<p>The cross-instance locking feature uses system call flock() to
+ensure that operations on /dev/i2c devices by multiple instances of <strong>ddcutil</strong> or <strong>libddcutil</strong> do not interfere.
+All instances must use option <strong><em>--enable-cross-instance-locks</em></strong>. </p>
 <h4 id="switching-input-source-on-recent-lg-monitors">Switching input source on recent LG monitors</h4>
-<p>Recent LG monitors allow for splitting the display screen between multiple input sources.
-They use an undocumented protocol instead of the (relatively) simple VCP feature X60 (Input Source) 
-to control how the screen is split and which input source is shown where.  Thanks to a community 
-effort, particularly by user Max Thomas (Github handle <a href="https://github.com/shinyquagsire23">shinyquagmire23</a>),
-some of this protocol has been reverse engineered. It entails using an alternative I<sup>2</sup>C source address, 
-x50 instead of x51. Option <strong><em>--i2c-source-addr</em></strong> provides a way to use this alternative address in DDC communication.
-For further details, 
-the extended discussion summarized on the wiki page occurred on <a href="https://github.com/rockowitz/ddcutil/issues/100">ddcutil issue 100: LG 29UM69G fails switching input</a></p>
-<h4 id="ddcutil-detect-changes"><strong>ddcutil detect</strong> Changes</h4>
+<p>Option <strong><em>--i2c-source-addr</em></strong> causes <strong>setvcp</strong> to use the specified address instead 
+of the value x51 given in DDC/CI specification.  User experimentation has found that 
+using an alternate source address accesses additional features on some LG monitors. 
+See <a href="https://github.com/rockowitz/ddcutil/wiki/Switching-input-source-on-LG-monitors">Switching Input Source on LG Monitors</a>.</p>
+<h3 id="miscellaneous-changes">Miscellaneous Changes</h3>
 <ul>
-<li>Option <strong><em>--verbose</em></strong> reports the current dynamic sleep muliplier. </li>
-<li>Improve determination of non-standard ways that unsupported VCP features are reported.</li>
-<li>Improved phantom display deterimnation in DisplayPort Multi-Stream Transport situation. </li>
-</ul>
-<h4 id="miscellanous-changes">Miscellanous Changes</h4>
-<ul>
-<li>Option <strong><em>--sleep-multiplier 0</em></strong> is now allowed. Some DisplayPort monitors
-  have been observed to work with this value.</li>
-<li>The tests durng display detection to check for misuse of the DDC Null Message
-  or an all zero getvcp response to indicate unsupported features have been made more robust.</li>
-<li>Option <strong><em>--noconfig</em></strong>: Do not process the configuration file.</li>
-<li>Option <strong><em>--trcfrom &lt;function name&gt;</em></strong>: Trace the specified function and its called functions.
-  (This option reports only functions for which tracing has been enabled.)</li>
-<li>Option <strong><em>--hh</em></strong>. The number of command line options has become huge. Many 
-  are development related.  Options not of interest to general users are now
-  hidden.  Option <strong><em>--hh</em></strong> exposes them, and implies option <strong><em>--help</em></strong>.</li>
-<li>Option <strong><em>--verbose</em></strong>.  If specified on the command line, the options obtained
-  from the configuration file are reported.</li>
-<li>Detailed statistics are now maintained on a per-display instead of per-thread basis.
-  Option <strong><em>--vstats</em></strong> reports detailed statistics, in particular per-display 
-  statistics.  <strong><em>--vstats</em></strong> takes the same arguments as <strong><em>--stats</em></strong>. </li>
-<li>Option <strong><em>--help</em></strong>. Document <strong>ELAPSED</strong> as a recognized statistics class</li>
-<li>Option <strong><em>--help</em></strong> reports option <strong><em>--force</em></strong> as deprecated.</li>
-<li>Reading the EDID when using USB to communicate with a monitor's virtual control
-  panel can fail.  Try using a fallback mechanisms to read the EDID for any Eizo displays, 
-  not just those with a specific product id.</li>
-<li>Existing cached capabilities are not erased when ddcutil is called with capabilities
-  caching disabled.</li>
-<li>Options <strong><em>--ignore-hiddev</em></strong> and <strong><em>--ignore-usb-pid-vid</em></strong> cause <strong>ddcutil</strong> initialization
-  to ignore USB Human Interface devices that could possibly provide standards-conformant USB access to the 
-  monitor's Video Control Panel. <strong>ddcutil</strong> already ignores HID devices that are declared as 
-  keyboards or mice, as probing such devices can cause system lockups.  The options are provided because 
-  it is conceivable that other such devices exist.  </li>
-<li>Improve reporting of /dev/hiddev open failures, to avoid confusion resulting from this 
-  typically benign error.</li>
-<li>Fix segfaults in cacheing due to $HOME not set.</li>
-<li>Fix segfault in shared library termination.</li>
-<li><strong>ddcui</strong> now uses a separate configuration file, $HOME/.config/ddcutil/ddcuirc.</li>
+<li>Better handling of DDC Null Message recognition and adjustments</li>
+<li>Dynamic sleep: make it easier to reduce time - once high didn't come down</li>
+<li>Command detect: ensure output of model name, serial number, and extra display descriptor 
+  use only ASCII character in the range 0..127.</li>
+<li>Some USB-only code was not iftested out when <strong>configure</strong> option <strong><em>--disable-usb</em></strong> was set. (Issue 355)</li>
+<li>Cross-thread locking handles situtations where a display ref does not yet exist, e.g. reading EDID</li>
+<li>Deprecate vaguely named option <strong><em>--force</em></strong>.  Replace its single use with<br />
+  option <strong><em>--permit-unknown-feature</em></strong>, which applies only to command <strong>setvcp</strong>.</li>
+<li>Deprecate vaguely named option <strong><em>--ddc</em></strong>. Instead use <strong><em>--ddcdata</em></strong>, which more
+  clearly indicates that it causes DDC data errors to be reported. </li>
+<li>Option <strong><em>--version</em></strong>: The amount of detail shown is now modified by options <strong><em>--brief</em></strong> and <strong><em>--vebose</em></strong>.
+  If <strong><em>--brief</em></strong> is specified, just the version string is shown.  If <strong><em>--verbose</em></strong> is specified, detailed 
+  build information is reported.</li>
+<li>Option <strong><em>--help</em></strong>: Show extended help on argument values only if <strong><em>--verbose</em></strong> is also specified.</li>
+<li>Command <strong>detect</strong>. EDID text fields FF (Display serial number), FC (Display Name) and FE (Unspecified Use) are 
+  supposed to contain only ASCII characters, i.e. single byte characters in the range 0..127.  There have been reports
+  of "garbage" output from <strong>detect</strong> because of characters in the range 128..255.  Any characters in the range 128..255, 
+  along with control characters in the range 1..31.</li>
+<li>Command <strong>detect</strong>: Clearer messages for laptop displays. </li>
+<li>do not report "DDC communication failed"</li>
+<li>Report "Is laptop display" instead of "Is eDP device" or "Is LVDS device"</li>
 </ul>
 <h3 id="building">Building</h3>
 <ul>
-<li><strong>configure</strong> options <strong>-enable-syslog</strong>/<strong>--disable-syslog</strong> have been removed.
-  Instead, use command line option <strong>--syslog never</strong> at runtime to disable all writes to the system log.</li>
-<li>Shared library libkmod is no longer required.</li>
-<li>Shared library libjansson is now required. Its development package (libjansson-dev on Debian based systems) must be installed.</li>
-<li>If <strong>congfigure</strong> option <strong><em>--enable-install-lib-only</em></strong> is specified, command <strong>make install</strong> installs
-  the shared library</li>
-</ul>
-<h3 id="development-facilities">Development Facilities</h3>
-<ul>
-<li>Added termporary use options --f7, --f8, --i2, --s1, --s2, --s3, --s4, --fl1, --fl2.
-  The current meaning of these options is reported by option <strong><em>--settings</em></strong>. </li>
-<li>Added utility command C1 for temporary use during development.</li>
-<li>Added option <strong><em>--enable-mock-data</em></strong></li>
+<li><strong>configure</strong> option <strong><em>--enable-asan</em></strong> added. Turns on ASAN related compiler options and 
+  links libasan into binaries.</li>
+<li><strong>configure</strong> option <strong><em>--enable-x11</em></strong> is deprecated and has no effect.  The X11 API is no longer used.
+  Distribution packagers should eliminate requirements for X11 related libraries.  The option will
+  be completely removed in a future release.</li>
 </ul>
               
             </div>
@@ -450,14 +386,15 @@ the extended discussion summarized on the wiki page occurred on <a href="https:/
     
   </span>
 </div>
-    <script>var base_url = '..';</script>
-    <script src="../js/theme_extra.js" defer></script>
-    <script src="../js/theme.js" defer></script>
-      <script src="../search/main.js" defer></script>
-    <script defer>
-        window.onload = function () {
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "..";</script>
+    <script src="../js/theme_extra.js"></script>
+    <script src="../js/theme.js"></script>
+      <script src="../search/main.js"></script>
+    <script>
+        jQuery(function () {
             SphinxRtdTheme.Navigation.enable(false);
-        };
+        });
     </script>
 
 </body>

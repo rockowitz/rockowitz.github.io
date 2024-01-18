@@ -8,7 +8,7 @@
     <title>Technical Notes - ddcutil Documentation</title>
     <link rel="stylesheet" href="../css/theme.css" />
     <link rel="stylesheet" href="../css/theme_extra.css" />
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
     
       <script>
         // Current page data
@@ -17,12 +17,11 @@
         var mkdocs_page_url = "/technotes/";
       </script>
     
-    <script src="../js/jquery-3.6.0.min.js" defer></script>
     <!--[if lt IE 9]>
       <script src="../js/html5shiv.min.js"></script>
     <![endif]-->
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
-      <script>hljs.initHighlightingOnLoad();</script> 
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
 </head>
 
 <body class="wy-body-for-nav" role="document">
@@ -34,7 +33,7 @@
           <a href=".." class="icon icon-home"> ddcutil Documentation
         </a><div role="search">
   <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
-      <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
   </form>
 </div>
       </div>
@@ -198,6 +197,8 @@
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../c_api_200/">Shared Library Changes for Release 2.0.0</a>
                   </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../c_api_210/">Shared Library Changes for Release 2.1.0</a>
+                  </li>
               </ul>
               <p class="caption"><span class="caption-text">Background</span></p>
               <ul>
@@ -277,9 +278,9 @@
       <div class="wy-nav-content">
         <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
   <ul class="wy-breadcrumbs">
-    <li><a href=".." class="icon icon-home" alt="Docs"></a> &raquo;</li>
-          <li>Additional Topics &raquo;</li>
-      <li>Technical Notes</li>
+    <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
+          <li class="breadcrumb-item">Additional Topics</li>
+      <li class="breadcrumb-item active">Technical Notes</li>
     <li class="wy-breadcrumbs-aside">
           <a href="https://github.com/rockowitz/ddcutil/edit/master/docs/technotes.md" ></a>
     </li>
@@ -293,6 +294,65 @@
 <p>A collection of notes related to development and debugging.</p>
 <p>To build with debugging symbols in libddcutil: <strong>./configure CFLAGS=-g</strong></p>
 <p><a href="https://michlstechblog.info/blog/linux-enable-i2c-kernel-tracing/">Enable I2C kernel tracing</a></p>
+<p>From the i2c-dev mailing list: </p>
+<p>I have spent quite a while searching in places such as stackoverflow
+and in the docmentation at linux.kernel.org but I haven't found a very
+conclusive answer (no to me anyway).</p>
+<p>I have a single I2C bus connected to a single board computer
+(Beaglebone Black) running Debian 11, Kernel: 5.10.168.</p>
+<p>Is it safe to allow multiple processes to read and write various
+devices on the I2C bus?  This may be either different processes
+accessing the same device or different processes accessing different
+devices on the I2C bus.</p>
+<p>I.e. is there a mutex (or equivalent code) in the Linux Kernel I2C
+drivers that guarantees completion of one process's I2C transaction
+before another one starts?</p>
+<p>The information I have managed to find suggests that there is such a
+mutex and that I don't need to make sure my processes don't try to
+read/write the I2C bus simultaneously but I can't find a definitive
+statement to this effect.</p>
+<p>So, I'm sorry to ask such a 'user' question here but I would really
+like a definite answer please.</p>
+<p>-- 
+Chris Green</p>
+<p>Hi Chris,</p>
+<p>On Sun, Nov 05, 2023 at 12:57:31PM +0000, Chris Green wrote:</p>
+<blockquote>
+<p>Is it safe to allow multiple processes to read and write various
+devices on the I2C bus?  This may be either different processes
+accessing the same device or different processes accessing different
+devices on the I2C bus.</p>
+</blockquote>
+<p>Yes, it's safe. Different processes and different in kernel users like
+drivers can access the I2C bus at the same time. The I2C transfers will
+not interfere with each other. They are serialized by the kernel and
+execute one after another.</p>
+<blockquote>
+<p>I.e. is there a mutex (or equivalent code) in the Linux Kernel I2C
+drivers that guarantees completion of one process's I2C transaction
+before another one starts?</p>
+</blockquote>
+<p>Yes, exactly. The mutex is called 'bus_lock' and can be found here:</p>
+<pre><code>https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/tree/include/linux/i2c.h?h=v6.6&amp;id=ffc253263a1375a65fa6c9f62a893e9767fbebfa#n727
+</code></pre>
+<p>And here the adapter/bus is locked before a transfer starts:</p>
+<pre><code>https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/tree/drivers/i2c/i2c-core-base.c?h=v6.6&amp;id=ffc253263a1375a65fa6c9f62a893e9767fbebfa#n2279
+</code></pre>
+<blockquote>
+<p>The information I have managed to find suggests that there is such a
+mutex and that I don't need to make sure my processes don't try to
+read/write the I2C bus simultaneously but I can't find a definitive
+statement to this effect.</p>
+</blockquote>
+<p>So as the I2C bus is concerned, everything is safe. The I2C read/writes
+are serialized. But logically there maybe issues. E.g. if two processes
+or driver writes to the same I2C register of the same device at the same
+time. You will not know which transfer was the last one. So you don't
+know which write has won.</p>
+<p>So you can have race conditions on a logical level.</p>
+<p>Kind regards,
+Stefan</p>
+<p>n. code cited is in include/linux/i2c.h, drivers/i2c/i2c-core-base.c</p>
               
             </div>
           </div><footer>
@@ -332,14 +392,15 @@
     
   </span>
 </div>
-    <script>var base_url = '..';</script>
-    <script src="../js/theme_extra.js" defer></script>
-    <script src="../js/theme.js" defer></script>
-      <script src="../search/main.js" defer></script>
-    <script defer>
-        window.onload = function () {
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "..";</script>
+    <script src="../js/theme_extra.js"></script>
+    <script src="../js/theme.js"></script>
+      <script src="../search/main.js"></script>
+    <script>
+        jQuery(function () {
             SphinxRtdTheme.Navigation.enable(false);
-        };
+        });
     </script>
 
 </body>

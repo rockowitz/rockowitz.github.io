@@ -8,7 +8,7 @@
     <title>Release Notes - ddcutil Documentation</title>
     <link rel="stylesheet" href="../css/theme.css" />
     <link rel="stylesheet" href="../css/theme_extra.css" />
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
     
       <script>
         // Current page data
@@ -17,12 +17,11 @@
         var mkdocs_page_url = "/release_notes/";
       </script>
     
-    <script src="../js/jquery-3.6.0.min.js" defer></script>
     <!--[if lt IE 9]>
       <script src="../js/html5shiv.min.js"></script>
     <![endif]-->
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
-      <script>hljs.initHighlightingOnLoad();</script> 
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
 </head>
 
 <body class="wy-body-for-nav" role="document">
@@ -34,7 +33,7 @@
           <a href=".." class="icon icon-home"> ddcutil Documentation
         </a><div role="search">
   <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
-      <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
   </form>
 </div>
       </div>
@@ -198,6 +197,8 @@
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../c_api_200/">Shared Library Changes for Release 2.0.0</a>
                   </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../c_api_210/">Shared Library Changes for Release 2.1.0</a>
+                  </li>
               </ul>
               <p class="caption"><span class="caption-text">Background</span></p>
               <ul>
@@ -235,6 +236,22 @@
                   </li>
                   <li class="toctree-l1 current"><a class="reference internal current" href="./">Release Notes</a>
     <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#210">2.1.0</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#tuning-initialization">Tuning Initialization</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#dynamic-sleep">Dynamic Sleep</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#cross-instance-locking">Cross-Instance Locking</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#switching-input-source-on-recent-lg-monitors">Switching input source on recent LG monitors</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#miscellaneous-changes">Miscellaneous Changes</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#building">Building</a>
+    </li>
+        </ul>
+    </li>
     <li class="toctree-l2"><a class="reference internal" href="#145">1.4.5</a>
     </li>
     <li class="toctree-l2"><a class="reference internal" href="#200">2.0.0</a>
@@ -249,7 +266,7 @@
     </li>
     <li class="toctree-l3"><a class="reference internal" href="#environment-verbose-changes">environment --verbose Changes</a>
     </li>
-    <li class="toctree-l3"><a class="reference internal" href="#switching-input-source-on-recent-lg-monitors">Switching input source on recent LG monitors</a>
+    <li class="toctree-l3"><a class="reference internal" href="#switching-input-source-on-recent-lg-monitors_1">Switching input source on recent LG monitors</a>
     </li>
     <li class="toctree-l3"><a class="reference internal" href="#ddcutil-detect-changes">ddcutil detect Changes</a>
     </li>
@@ -257,7 +274,7 @@
     </li>
         </ul>
     </li>
-    <li class="toctree-l2"><a class="reference internal" href="#building">Building</a>
+    <li class="toctree-l2"><a class="reference internal" href="#building_1">Building</a>
     </li>
     <li class="toctree-l2"><a class="reference internal" href="#development-facilities">Development Facilities</a>
     </li>
@@ -311,7 +328,7 @@
     </li>
     <li class="toctree-l2"><a class="reference internal" href="#building-and-porting">Building and Porting</a>
     </li>
-    <li class="toctree-l2"><a class="reference internal" href="#miscellaneous-changes">Miscellaneous Changes</a>
+    <li class="toctree-l2"><a class="reference internal" href="#miscellaneous-changes_1">Miscellaneous Changes</a>
     </li>
     <li class="toctree-l2"><a class="reference internal" href="#fixes">Fixes</a>
     </li>
@@ -665,9 +682,9 @@
       <div class="wy-nav-content">
         <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
   <ul class="wy-breadcrumbs">
-    <li><a href=".." class="icon icon-home" alt="Docs"></a> &raquo;</li>
-          <li>Release History &raquo;</li>
-      <li>Release Notes</li>
+    <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
+          <li class="breadcrumb-item">Release History</li>
+      <li class="breadcrumb-item active">Release Notes</li>
     <li class="wy-breadcrumbs-aside">
           <a href="https://github.com/rockowitz/ddcutil/edit/master/docs/release_notes.md" ></a>
     </li>
@@ -679,6 +696,78 @@
               
                 <h2 id="release-notes">Release Notes</h2>
 <p>For <strong>ddcui</strong> changes, see <a href="../ddcui_release_notes/"><strong>ddcui</strong> Release Notes</a></p>
+<h3 id="210">2.1.0</h3>
+<p>16 Jan 2024</p>
+<h4 id="tuning-initialization">Tuning Initialization</h4>
+<p><strong>ddcutil</strong> initialization typically consumes most of the elapsed time of command execution.
+For devices using DDC/CI (i.e. all but the few that communicate the with the monitor's Virtual Control Panel using USB), there are roughly speaking two phases to this process.  First, every /dev/i2c device
+associated with a video display adapter is examined to determine if it has an EDID, i.e. if it is associated with a connected monitor.  After that, each of the /dev/i2c devices associated with monitors are tested to see if DDC/CI communication works for the /dev/i2c device.  This includes a check that the monitor adheres to the DDC/CI specification for reporting unsupported features; if not, <strong>ddcutil</strong> attempts to figure out if there is some other way the monitor reports unsupported features.</p>
+<p>To speed up this process, the following changes have been made.</p>
+<pre><code>- Option ***--ddc-check-async-min*** specifies a threshold number for performing the DDC
+  related checks in parallel.  The optimal value is a tradeoff between the time savings from parellel execution and
+  the overhead of splitting execution into multiple threads.  This tradeoff will vary by processor speed and the number 
+  of threads available.  The default value is 3, i.e. parallelize execution if 3 or more monitors are present.
+- The ambiguously named ***--async*** option has been is deprecated and now has no effect. Previously, it turned on
+  parallel execution of DDC related checks in a multi-monitor situation, no matter the number of monitors.
+- As a practical matter, once you know that your display adheres to the DDC/CI spec, there's no need to perform the DDC level
+  check every time **ddcutil** is invoked.  Option ***--skip-ddc-checks*** disables the DDC level checks completely.
+</code></pre>
+<!--
+      - Option ***--i2c-bus-check-async-min*** specifies a threshold value for performing the 
+      the initial checks on each /dev/i2c device.  Individually, each I<sup>2</sup>C check is much faster than the DDC level check, 
+      but there are many more of them to perform.  The default value for this option is 4, i.e. parallelize execution if four or 
+      more /dev/i2c devices are to be examined.
+-->
+
+<h4 id="dynamic-sleep">Dynamic Sleep</h4>
+<ul>
+<li>Always set sleep multiplier to at least 1.0 for commands <strong>setvcp</strong> and <strong>scs</strong>. Addresses reports
+    that aggressive optimization caused setvcp to fail.</li>
+</ul>
+<h4 id="cross-instance-locking">Cross-Instance Locking</h4>
+<p>The cross-instance locking feature uses system call flock() to
+ensure that operations on /dev/i2c devices by multiple instances of <strong>ddcutil</strong> or <strong>libddcutil</strong> do not interfere.
+All instances must use option <strong><em>--enable-cross-instance-locks</em></strong>.  If a conflict is encoutered, information 
+is reported to the terminal.</p>
+<h4 id="switching-input-source-on-recent-lg-monitors">Switching input source on recent LG monitors</h4>
+<p>Option <strong><em>--i2c-source-addr</em></strong> causes <strong>setvcp</strong> to use the specified address instead 
+of the value x51 given in DDC/CI specification.  User experimentation has found that 
+using an alternate source address accesses additional features on some LG monitors. 
+See <a href="https://github.com/rockowitz/ddcutil/wiki/Switching-input-source-on-LG-monitors">Switching Input Source on LG Monitors</a>.</p>
+<h4 id="miscellaneous-changes">Miscellaneous Changes</h4>
+<ul>
+<li>Better handling of DDC Null Message recognition and adjustments</li>
+<li>Dynamic sleep: make it easier to reduce time - once high didn't come down</li>
+<li>Command detect: ensure output of model name, serial number, and extra display descriptor 
+  use only ASCII character in the range 0..127.</li>
+<li>Some USB-only code was not iftested out when <strong>configure</strong> option <strong><em>--disable-usb</em></strong> was set. (Issue 355)</li>
+<li>Cross-thread locking handles situtations where a display ref does not yet exist, e.g. reading EDID</li>
+<li>Deprecate vaguely named option <strong><em>--force</em></strong>.  Replace its single use with<br />
+  option <strong><em>--permit-unknown-feature</em></strong>, which applies only to command <strong>setvcp</strong>.</li>
+<li>Deprecate vaguely named option <strong><em>--ddc</em></strong>. Instead use <strong><em>--ddcdata</em></strong>, which more
+  clearly indicates that it causes DDC data errors to be reported. </li>
+<li>Option <strong><em>--version</em></strong>: The amount of detail shown is now modified by options <strong><em>--brief</em></strong> and <strong><em>--vebose</em></strong>.
+  If <strong><em>--brief</em></strong> is specified, just the version string is shown.  If <strong><em>--verbose</em></strong> is specified, detailed 
+  build information is reported.</li>
+<li>Option <strong><em>--help</em></strong>: Show extended help on argument values only if <strong><em>--verbose</em></strong> is also specified.</li>
+<li>Command <strong>detect</strong>. EDID text fields FF (Display serial number), FC (Display Name) and FE (Unspecified Use) are 
+  supposed to contain only ASCII characters, i.e. single byte characters in the range 0..127.  There have been reports
+  of "garbage" output from <strong>detect</strong> because of characters in the range 128..255.  Any characters in the range 128..255, 
+  along with control characters in the range 1..31.</li>
+<li>Command <strong>detect</strong>: Clearer messages for laptop displays. </li>
+<li>do not report "DDC communication failed"</li>
+<li>Report "Is laptop display" instead of "Is eDP device" or "Is LVDS device"</li>
+<li>If multiple "options:" lines are found in a segment of ini file ddcutilrc, their contents are 
+  combined into a single value</li>
+</ul>
+<h4 id="building">Building</h4>
+<ul>
+<li><strong>configure</strong> option <strong><em>--enable-asan</em></strong> added. Turns on ASAN related compiler options and 
+  links libasan into binaries.</li>
+<li><strong>configure</strong> option <strong><em>--enable-x11</em></strong> is deprecated and has no effect.  The X11 API is no longer used.
+  Distribution packagers should eliminate requirements for X11 related libraries.  The option will
+  be completely removed in a future release.</li>
+</ul>
 <h3 id="145">1.4.5</h3>
 <p>23 October 2023</p>
 <p>Release 1.4.5 extends release 1.4.1 by backporting a <strong>configure</strong> command option, <strong><em>--enable-install-lib-only</em></strong>, from release 2.0.0.  If this option is used, <strong>make</strong> will build and install only shared library <strong>libddcutil.so.4</strong>.  This option may be useful for Linux distributions that must install this legacy library along with the newer <strong>libddcutil.so.5</strong> from <strong>ddcutil</strong> 2.x.x, in order to support existing applications that require that earlier library.</p>
@@ -753,7 +842,7 @@ The default for <strong>ddcutil</strong> is WARN, and for <strong>libddcutil</st
 <li>Extended sysfs scan for ARM SOC devices to explore how those devices use /sys</li>
 <li>Report contents of cached files</li>
 </ul>
-<h4 id="switching-input-source-on-recent-lg-monitors">Switching input source on recent LG monitors</h4>
+<h4 id="switching-input-source-on-recent-lg-monitors_1">Switching input source on recent LG monitors</h4>
 <p>Recent LG monitors allow for splitting the display screen between multiple input sources.
 They use an undocumented protocol, instead of the (relatively) simple VCP feature X60 (Input Source),
 to control how the screen is split and which input source is shown where.  Thanks to a community 
@@ -808,7 +897,7 @@ ane report that output may be incorrect if detection of invalid features is unre
   For Wayland, the best that can be done at present is to detect if an individual monitor is in a DPMS sleep mode.
   In that case, or the case of no display manager, DPMS status is determined during display detection.</li>
 </ul>
-<h3 id="building">Building</h3>
+<h3 id="building_1">Building</h3>
 <ul>
 <li><strong>configure</strong> options <strong>-enable-syslog</strong>/<strong>--disable-syslog</strong> have been removed.
   Instead, use command line option <strong>--syslog never</strong> at runtime to disable all writes to the system log.</li>
@@ -992,7 +1081,7 @@ This change simplifies porting of <strong>ddcutil</strong> to environments lacki
 that watches for display changes.
 -->
 
-<h3 id="miscellaneous-changes">Miscellaneous Changes</h3>
+<h3 id="miscellaneous-changes_1">Miscellaneous Changes</h3>
 <ul>
 <li>Command <strong>detect</strong> reports additional EDID detail for option <strong><em>verbose</em></strong>.
   This information, including EDID version and color related detail, has no effect on <strong>ddcutil</strong> execution but may be of general interest to some users.</li>
@@ -2557,14 +2646,15 @@ be addressed in a subsequent release. openSUSE users can build ddcutil from its 
     
   </span>
 </div>
-    <script>var base_url = '..';</script>
-    <script src="../js/theme_extra.js" defer></script>
-    <script src="../js/theme.js" defer></script>
-      <script src="../search/main.js" defer></script>
-    <script defer>
-        window.onload = function () {
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "..";</script>
+    <script src="../js/theme_extra.js"></script>
+    <script src="../js/theme.js"></script>
+      <script src="../search/main.js"></script>
+    <script>
+        jQuery(function () {
             SphinxRtdTheme.Navigation.enable(false);
-        };
+        });
     </script>
 
 </body>
