@@ -3,18 +3,18 @@
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="author" content="Sanford Rockowitz" /><link rel="canonical" href="https://www.ddcutil.com/windows_programs/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="author" content="Sanford Rockowitz" /><link rel="canonical" href="https://www.ddcutil.com/driver_bug_reports/" />
       <link rel="shortcut icon" href="../img/favicon.ico" />
-    <title>Windows Utilities for Monitor Control - ddcutil Documentation</title>
+    <title>Driver Bug Reports of Interest - ddcutil Documentation</title>
     <link rel="stylesheet" href="../css/theme.css" />
     <link rel="stylesheet" href="../css/theme_extra.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
     
       <script>
         // Current page data
-        var mkdocs_page_name = "Windows Utilities for Monitor Control";
-        var mkdocs_page_input_path = "windows_programs.md";
-        var mkdocs_page_url = "/windows_programs/";
+        var mkdocs_page_name = "Driver Bug Reports of Interest";
+        var mkdocs_page_input_path = "driver_bug_reports.md";
+        var mkdocs_page_url = "/driver_bug_reports/";
       </script>
     
     <script src="../js/jquery-3.6.0.min.js" defer></script>
@@ -213,7 +213,7 @@
                   </li>
               </ul>
               <p class="caption"><span class="caption-text">Additional Topics</span></p>
-              <ul>
+              <ul class="current">
                   <li class="toctree-l1"><a class="reference internal" href="../articles/">Articles about ddcutil</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../faq/">Frequently Asked Questions</a>
@@ -230,7 +230,9 @@
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../technotes/">Technical Notes</a>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../driver_bug_reports/">Driver Bug Reports of Interest</a>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="./">Driver Bug Reports of Interest</a>
+    <ul class="current">
+    </ul>
                   </li>
               </ul>
               <p class="caption"><span class="caption-text">Release History</span></p>
@@ -256,12 +258,10 @@
                   </li>
               </ul>
               <p class="caption"><span class="caption-text">Related Resources</span></p>
-              <ul class="current">
+              <ul>
                   <li class="toctree-l1"><a class="reference internal" href="../monitor_resources/">Monitor Specifications</a>
                   </li>
-                  <li class="toctree-l1 current"><a class="reference internal current" href="./">Windows Utilities for Monitor Control</a>
-    <ul class="current">
-    </ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../windows_programs/">Windows Utilities for Monitor Control</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../mac_programs/">Macintosh Utlities for Monitor Control</a>
                   </li>
@@ -282,10 +282,10 @@
         <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
   <ul class="wy-breadcrumbs">
     <li><a href=".." class="icon icon-home" alt="Docs"></a> &raquo;</li>
-          <li>Related Resources &raquo;</li>
-      <li>Windows Utilities for Monitor Control</li>
+          <li>Additional Topics &raquo;</li>
+      <li>Driver Bug Reports of Interest</li>
     <li class="wy-breadcrumbs-aside">
-          <a href="https://github.com/rockowitz/ddcutil/edit/master/docs/windows_programs.md" ></a>
+          <a href="https://github.com/rockowitz/ddcutil/edit/master/docs/driver_bug_reports.md" ></a>
     </li>
   </ul>
   <hr/>
@@ -293,22 +293,20 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
             <div class="section" itemprop="articleBody">
               
-                <h2 id="windows-utilities-for-monitor-control">Windows Utilities for Monitor Control</h2>
+                <h2 id="driver-bug-reports">Driver Bug Reports</h2>
+<p>This is a partial list of driver bug reports relevant to DDC communication.</p>
 <ul>
-<li>ClickmonDDC</li>
-<li><a href="https://www.nirsoft.net/utils/control_my_monitor.html">Nirsoft Control My Monitor</a></li>
-<li><a href="https://entechtaiwan.com/lib/softmccs.shtm">EnTech softMCCS</a></li>
-<li><a href="https://github.com/emoacht/Monitorian">Monitorian</a></li>
-<li><a href="https://twinkletray.com/">Twinkle Tray</a></li>
-<li><a href="https://github.com/newAM/monitorcontrol">monitorcontrol</a></li>
-<li><a href="https://github.com/scottaxcell/winddcutil">winddcutil</a></li>
+<li><a href="https://bugs.freedesktop.org/show_bug.cgi?id=100954">freedesktop.org bug 100954 - i915 i2c-dev failures with recent chips and docking stations</a> Initial bug report</li>
+<li><a href="https://gitlab.freedesktop.org/drm/intel/-/issues/37">freedesktop.org issue 37 - i915 i2c-dev failures with recent chips and docking stations</a> Migrated bug report</li>
+<li><a href="https://gitlab.freedesktop.org/drm/intel/-/issues/3605#note_1317298">freedesktop.org i915 issue 3605 - Same MST display appears as 2 /dev/i2c devices</a> Contains an explanation of the complexity of MST topology</li>
+<li><a href="https://gitlab.freedesktop.org/drm/amd/-/issues/1622">freedesktop.org amd issue 1622 - Same MST display appears as 2 dev/i2c devices</a> amdgpu thread for the same issue, nothing of interest, listed for completeness</li>
 </ul>
               
             </div>
           </div><footer>
     <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
-        <a href="../monitor_resources/" class="btn btn-neutral float-left" title="Monitor Specifications"><span class="icon icon-circle-arrow-left"></span> Previous</a>
-        <a href="../mac_programs/" class="btn btn-neutral float-right" title="Macintosh Utlities for Monitor Control">Next <span class="icon icon-circle-arrow-right"></span></a>
+        <a href="../technotes/" class="btn btn-neutral float-left" title="Technical Notes"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../releases/" class="btn btn-neutral float-right" title="Releases">Next <span class="icon icon-circle-arrow-right"></span></a>
     </div>
 
   <hr/>
@@ -335,10 +333,10 @@
         </span>
     
     
-      <span><a href="../monitor_resources/" style="color: #fcfcfc">&laquo; Previous</a></span>
+      <span><a href="../technotes/" style="color: #fcfcfc">&laquo; Previous</a></span>
     
     
-      <span><a href="../mac_programs/" style="color: #fcfcfc">Next &raquo;</a></span>
+      <span><a href="../releases/" style="color: #fcfcfc">Next &raquo;</a></span>
     
   </span>
 </div>
