@@ -705,12 +705,14 @@
 <h3 id="212">2.1.2</h3>
 <p>27 Jan 2024</p>
 <p>Release 2.1.2 fixes a critical bug in libddcutil that caused older versions of PowerDevil to repeatedly crash and restart.</p>
-<p>In additon:
-- It fixes some low-impact bugs, and has change to better accomodate the proprietary Nvidia video driver.
-- Option <strong><em>--min0dynamic-multiplier</em></strong> is no longer marked hidden (i.e. not report by the normal <strong><em>--help</em></strong> option).<br />
-  It sets a floor to the speed multiplier caclulated by the dynamic sleep algorithm,
-  which may improve performance in some situations by reducing "jitter".
-- Option <strong><em>--vstats</em></strong> additionaly reports the minumum, maximum, and average successful sleep multiplier.</p>
+<p>In additon:</p>
+<ul>
+<li>It fixes some low-impact bugs, and has change to better accomodate the proprietary Nvidia video driver.</li>
+<li>Option <strong><em>--min0dynamic-multiplier</em></strong> is no longer marked hidden (i.e. not report by the normal <strong><em>--help</em></strong> option).  </li>
+<li>It sets a floor to the speed multiplier caclulated by the dynamic sleep algorithm,
+  which may improve performance in some situations by reducing "jitter".</li>
+<li>Option <strong><em>--vstats</em></strong> additionaly reports the minumum, maximum, and average successful sleep multiplier.</li>
+</ul>
 <h3 id="210">2.1.0</h3>
 <p>16 Jan 2024</p>
 <h4 id="tuning-initialization">Tuning Initialization</h4>

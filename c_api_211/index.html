@@ -295,16 +295,33 @@
             <div class="section" itemprop="articleBody">
               
                 <h2 id="shared-library-changes-for-release-211">Shared Library Changes for Release 2.1.1</h2>
-<p>Shared library <strong>libddcutil</strong> is backwardly compatible with the one in 
+<p>Shared library libddcutil is backwardly compatible with the one in 
 ddcutil 2.0.0. The SONAME is unchanged as libddcutil.so.5. The released library
 file is libddcutil.so.5.1.0. </p>
 <p>It also fixes several minor bugs and has internal changes to better 
 accomodate the proprietary Nvidia diver</p>
-<p>Changed Functions                         |
-------------------------------------------|---
-ddca_start_watch_displays()               | &nbsb;Requires that all video drivers implement DRM
-ddca_get_sleep_multiplier()               | &nbsp;Revert to release 2.0.0 semantics
-ddca_set_sleep_multiplier()               | &nbsp;Revert to release 2.0.0 semantics</p>
+<table>
+<thead>
+<tr>
+<th>Changed Functions</th>
+<th>Comments</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ddca_start_watch_displays</td>
+<td>&nbsp;Requires that all video drivers implement DRM</td>
+</tr>
+<tr>
+<td>ddca_get_sleep_multiplier</td>
+<td>&nbsp;Revert to release 2.0.0 semantics</td>
+</tr>
+<tr>
+<td>ddca_set_sleep_multiplier</td>
+<td>&nbsp;Revert to release 2.0.0 semantics</td>
+</tr>
+</tbody>
+</table>
               
             </div>
           </div><footer>

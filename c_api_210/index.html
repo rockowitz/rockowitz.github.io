@@ -389,9 +389,20 @@ the informational msgs for display by the client.</p>
 <p>For API functions that require libddcutil initialization, if ddca_init2() has not already been called, the function prolog automatically calls ddca_init2() with options such that it 
 can never fail.  If an explicit call to ddca_init2() has failed, then any subsequent call to a function requiring initialization fails with 
 status DDCRC_UNINITIALIZED</p>
-<p>Changed Functions                         |
-------------------------------------------|
-ddca_init                               | &nbsp;Deprecated. Use ddca_init2() </p>
+<table>
+<thead>
+<tr>
+<th>Changed Functions</th>
+<th>Comments</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ddca_init</td>
+<td>&nbsp;Deprecated. Use ddca_init2()</td>
+</tr>
+</tbody>
+</table>
 <h3 id="fixed">Fixed</h3>
 <ul>
 <li>segfault on freeing Parsed_Edid when command parsing failed</li>
