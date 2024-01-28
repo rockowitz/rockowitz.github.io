@@ -8,7 +8,7 @@
     <title>Shared Library Changes for Release 2.1.0 - ddcutil Documentation</title>
     <link rel="stylesheet" href="../css/theme.css" />
     <link rel="stylesheet" href="../css/theme_extra.css" />
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
     
       <script>
         // Current page data
@@ -17,11 +17,12 @@
         var mkdocs_page_url = "/c_api_210/";
       </script>
     
+    <script src="../js/jquery-3.6.0.min.js" defer></script>
     <!--[if lt IE 9]>
       <script src="../js/html5shiv.min.js"></script>
     <![endif]-->
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
-      <script>hljs.highlightAll();</script> 
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
+      <script>hljs.initHighlightingOnLoad();</script> 
 </head>
 
 <body class="wy-body-for-nav" role="document">
@@ -33,7 +34,7 @@
           <a href=".." class="icon icon-home"> ddcutil Documentation
         </a><div role="search">
   <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
-      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+      <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
   </form>
 </div>
       </div>
@@ -205,8 +206,6 @@
     </li>
     <li class="toctree-l2"><a class="reference internal" href="#sleep-multiplier-control">Sleep multiplier control</a>
     </li>
-    <li class="toctree-l2"><a class="reference internal" href="#display-status">Display status</a>
-    </li>
     <li class="toctree-l2"><a class="reference internal" href="#display-hotplug-detection">Display Hotplug Detection</a>
     </li>
     <li class="toctree-l2"><a class="reference internal" href="#miscellaneous">Miscellaneous</a>
@@ -294,9 +293,9 @@
       <div class="wy-nav-content">
         <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
   <ul class="wy-breadcrumbs">
-    <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
-          <li class="breadcrumb-item">Shared Library</li>
-      <li class="breadcrumb-item active">Shared Library Changes for Release 2.1.0</li>
+    <li><a href=".." class="icon icon-home" alt="Docs"></a> &raquo;</li>
+          <li>Shared Library &raquo;</li>
+      <li>Shared Library Changes for Release 2.1.0</li>
     <li class="wy-breadcrumbs-aside">
           <a href="https://github.com/rockowitz/ddcutil/edit/master/docs/c_api_210.md" ></a>
     </li>
@@ -350,16 +349,17 @@ file is libddcutil.so.5.1.0. </p>
 <thead>
 <tr>
 <th>Changed</th>
-<th>&nbsp;Comments</th>
+<th>Comments</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td>enum DDCA_Init_Options</td>
-<td>added DDCA_INIT_OPTIONS_ENABLE_INIT_MSGS</td>
+<td>&nbsp; added value DDCA_INIT_OPTIONS_ENABLE_INIT_MSGS</td>
 </tr>
 </tbody>
 </table>
+<p><br></p>
 <table>
 <thead>
 <tr>
@@ -370,10 +370,11 @@ file is libddcutil.so.5.1.0. </p>
 <tbody>
 <tr>
 <td>ddca_init2</td>
-<td>&nbsp;Replaces ddca_init()</td>
+<td>&nbsp;Replaces ddca_init</td>
 </tr>
 </tbody>
 </table>
+<p><br></p>
 <p>API function <strong>ddca_init2()</strong> replaces <strong>ddca_init()</strong>.  It has an an additiona parameter, <strong>infomsg_loc</strong>, 
 for collecting informational msgs</p>
 <p>This change givea the client control over what is done with informational 
@@ -403,6 +404,7 @@ status DDCRC_UNINITIALIZED</p>
 </tr>
 </tbody>
 </table>
+<p><br></p>
 <h3 id="fixed">Fixed</h3>
 <ul>
 <li>segfault on freeing Parsed_Edid when command parsing failed</li>
@@ -418,10 +420,11 @@ status DDCRC_UNINITIALIZED</p>
 <tbody>
 <tr>
 <td>DDCS_Sleep_Multiplier</td>
-<td>&nbsp;standardizes type of sleep-multiplier values</td>
+<td>&nbsp;standardizes the type for sleep-multiplier values</td>
 </tr>
 </tbody>
 </table>
+<p><br></p>
 <table>
 <thead>
 <tr>
@@ -440,12 +443,12 @@ status DDCRC_UNINITIALIZED</p>
 </tr>
 </tbody>
 </table>
-<p>logic: interaction dynamic sleep,set sleep multiplier</p>
+<p><br></p>
 <table>
 <thead>
 <tr>
 <th>New Functions</th>
-<th>&nbsp;</th>
+<th>Comments</th>
 </tr>
 </thead>
 <tbody>
@@ -467,11 +470,29 @@ status DDCRC_UNINITIALIZED</p>
 </tr>
 </tbody>
 </table>
-<h3 id="display-status">Display status</h3>
-<p>for reporting display status changes to client: </p>
-<p>Added status codes: 
-DDCRC_DISCONNECTED
-DDCRC_DPMS_ASLEEP</p>
+<p><br></p>
+<table>
+<thead>
+<tr>
+<th>New Status Codes</th>
+<th>Comments</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>DDCRC_DISCONNECTED</td>
+<td>&nbsp;</td>
+</tr>
+<tr>
+<td>DDCRC_DPMS_ASLEEP</td>
+<td>&nbsp;</td>
+</tr>
+<tr>
+<td><br></td>
+<td></td>
+</tr>
+</tbody>
+</table>
 <h3 id="display-hotplug-detection">Display Hotplug Detection</h3>
 <p>libddcutil watches for display connection and disconnection, and for 
 changes to DPMS state, and reports them to the client using callback functions.</p>
@@ -495,6 +516,7 @@ The type of event being reported is specified by enum <strong>DDCA_Event_Type</s
 </tr>
 </tbody>
 </table>
+<p><br></p>
 <table>
 <thead>
 <tr>
@@ -506,6 +528,10 @@ The type of event being reported is specified by enum <strong>DDCA_Event_Type</s
 <tr>
 <td>DDCA_Display_Event_Type</td>
 <td>&nbsp;type of display status event</td>
+</tr>
+<tr>
+<td><br></td>
+<td></td>
 </tr>
 </tbody>
 </table>
@@ -523,24 +549,7 @@ The type of event being reported is specified by enum <strong>DDCA_Event_Type</s
 </tr>
 </tbody>
 </table>
-<table>
-<thead>
-<tr>
-<th>New Functions</th>
-<th>Comments</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>ddca_register_display_status_callback</td>
-<td></td>
-</tr>
-<tr>
-<td>ddca_unregister_display_status_callback</td>
-<td></td>
-</tr>
-</tbody>
-</table>
+<p><br></p>
 <table>
 <thead>
 <tr>
@@ -575,14 +584,17 @@ The type of event being reported is specified by enum <strong>DDCA_Event_Type</s
 </tr>
 </tbody>
 </table>
+<p><br></p>
 <p>Key points:
 - When a event of type DDCA_EVENT_DISPLAY_DISCONNECTED is reported, 
 the DDCA_Display_Reference specified in struct DDCA_Display_Status_Event
 is no longer valid. 
 - When an event of type DDCA_EVENT_DISPLAY_CONNECTED occurs, the client
-must call <strong>ddca_redetect_displays()</strong> / <strong>ddca_redetect_monitors()</strong> ?? to reinitialize <strong>libddcutil</strong>
-and the call <strong>ddca_get_display_refs()</strong> to get a new set of valid displays.
-  - Requires DRM video drivers (e.g. amdgpu, i915)</p>
+must call <strong>ddca_redetect_displays()</strong> to reinitialize <strong>libddcutil</strong>
+and the call <strong>ddca_get_display_refs()</strong> to get a new set of valid display references.
+- Requires DRM video drivers (e.g. amdgpu, i915)
+- A future release may provide a new valid display reference when a monitor is connected, 
+making che call to <strong>ddca_redetect_displays()</strong> unnecessary.</p>
 <pre><code>- new status codes possible for many current API functions: 
   DDCRC_DISCONNECTED, DDCRC_DPMS_ASLEEP
 </code></pre>
@@ -648,15 +660,14 @@ and the call <strong>ddca_get_display_refs()</strong> to get a new set of valid 
     
   </span>
 </div>
-    <script src="../js/jquery-3.6.0.min.js"></script>
-    <script>var base_url = "..";</script>
-    <script src="../js/theme_extra.js"></script>
-    <script src="../js/theme.js"></script>
-      <script src="../search/main.js"></script>
-    <script>
-        jQuery(function () {
+    <script>var base_url = '..';</script>
+    <script src="../js/theme_extra.js" defer></script>
+    <script src="../js/theme.js" defer></script>
+      <script src="../search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
             SphinxRtdTheme.Navigation.enable(false);
-        });
+        };
     </script>
 
 </body>

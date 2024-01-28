@@ -8,7 +8,7 @@
     <title>ddcutil Documentation</title>
     <link rel="stylesheet" href="css/theme.css" />
     <link rel="stylesheet" href="css/theme_extra.css" />
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
     
       <script>
         // Current page data
@@ -17,11 +17,12 @@
         var mkdocs_page_url = "/";
       </script>
     
+    <script src="js/jquery-3.6.0.min.js" defer></script>
     <!--[if lt IE 9]>
       <script src="js/html5shiv.min.js"></script>
     <![endif]-->
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
-      <script>hljs.highlightAll();</script> 
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
+      <script>hljs.initHighlightingOnLoad();</script> 
 </head>
 
 <body class="wy-body-for-nav" role="document">
@@ -33,7 +34,7 @@
           <a href="." class="icon icon-home"> ddcutil Documentation
         </a><div role="search">
   <form id ="rtd-search-form" class="wy-form" action="./search.html" method="get">
-      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+      <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
   </form>
 </div>
       </div>
@@ -300,8 +301,8 @@
       <div class="wy-nav-content">
         <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
   <ul class="wy-breadcrumbs">
-    <li><a href="." class="icon icon-home" aria-label="Docs"></a></li>
-      <li class="breadcrumb-item active">Introduction</li>
+    <li><a href="." class="icon icon-home" alt="Docs"></a> &raquo;</li>
+      <li>Introduction</li>
     <li class="wy-breadcrumbs-aside">
           <a href="https://github.com/rockowitz/ddcutil/edit/master/docs/index.md" ></a>
     </li>
@@ -316,13 +317,11 @@
 <p>27 January 2024</p>
 <p><strong>ddcutil</strong> 2.1.2 fixes a critical bug in libddcutil that caused older versions of PowerDevil to repeatedly crash and restart.
 In addition, there are several minor fixes and changes to accoommodate the proprietary Nvidia video driver.</p>
-<p>For details about the changes and bug fixes, see <a href="release_notes/">Release Notes</a> and
-<a href="c_api_211.md">Shared Library Changes for Release 2.1</a>.
+<p><strong>ddcui</strong> 0.5.2 contains minor cleanup for release 0.5.2</p>
+<p>For details about the changes and bug fixes, see <a href="release_notes/">Release Notes</a>,
+<a href="c_api_212/">Shared Library Changes for Release 2.1.2</a>, 
+and <a href="http://www.ddcutil.com/ddcui_release_notes/">ddcui Release Notes</a>.
 Changes are also summarized in the CHANGELOG.md files in the respective source trees.</p>
-<!--
-and [ddcui Release Notes](http://www.ddcutil.com/ddcui_release_notes/).
--->
-
 <p>17 January 2024</p>
 <p><strong>ddcutil</strong> 2.1.0 incudes enhancements to further speed up initialization, and addresses some bugs in dynamic sleep adjustment.
 The new cross-instance locking feature coordinates access to /dev/i2c devices by multiple ddcutil and libddcutil instances.
@@ -332,7 +331,7 @@ function that informs them of detected changes.</p>
 <p><strong>ddcui</strong> 0.5.0 makes use of the display change detection in <strong>libddcutil</strong> to remind the user to execute Action-&gt;Redetect Displays
 when a change occurs.</p>
 <p>For details about the changes and bug fixes, see <a href="release_notes/">Release Notes</a>,
-<a href="c_api_210/">Shared Library Changes for Release 2.1</a>, 
+<a href="c_api_210/">Shared Library Changes for Release 2.1.0</a>, 
 and <a href="http://www.ddcutil.com/ddcui_release_notes/">ddcui Release Notes</a>.
 Changes are also summarized in the CHANGELOG.md files in the respective source trees.</p>
 <p>Michael Hamilton, developer of <a href="https://github.com/digitaltrails/vdu_controls">VDU Controls</a>, has once again
@@ -507,21 +506,20 @@ The source is hosted on <a href="http://www.github.com/rockowitz/ddcui">Github</
     
   </span>
 </div>
-    <script src="js/jquery-3.6.0.min.js"></script>
-    <script>var base_url = ".";</script>
-    <script src="js/theme_extra.js"></script>
-    <script src="js/theme.js"></script>
-      <script src="search/main.js"></script>
-    <script>
-        jQuery(function () {
+    <script>var base_url = '.';</script>
+    <script src="js/theme_extra.js" defer></script>
+    <script src="js/theme.js" defer></script>
+      <script src="search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
             SphinxRtdTheme.Navigation.enable(false);
-        });
+        };
     </script>
 
 </body>
 </html>
 
 <!--
-MkDocs version : 1.5.3
-Build Date UTC : 2024-01-27 20:59:30.829794+00:00
+MkDocs version : 1.4.2
+Build Date UTC : 2024-01-28 11:32:53.673979+00:00
 -->
