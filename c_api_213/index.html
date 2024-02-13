@@ -3,18 +3,18 @@
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="author" content="Sanford Rockowitz" /><link rel="canonical" href="https://www.ddcutil.com/secondary_commands/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="author" content="Sanford Rockowitz" /><link rel="canonical" href="https://www.ddcutil.com/c_api_213/" />
       <link rel="shortcut icon" href="../img/favicon.ico" />
-    <title>Secondary Commands - ddcutil Documentation</title>
+    <title>Shared Library Changes for Release 2.1.3 - ddcutil Documentation</title>
     <link rel="stylesheet" href="../css/theme.css" />
     <link rel="stylesheet" href="../css/theme_extra.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
     
       <script>
         // Current page data
-        var mkdocs_page_name = "Secondary Commands";
-        var mkdocs_page_input_path = "secondary_commands.md";
-        var mkdocs_page_url = "/secondary_commands/";
+        var mkdocs_page_name = "Shared Library Changes for Release 2.1.3";
+        var mkdocs_page_input_path = "c_api_213.md";
+        var mkdocs_page_url = "/c_api_213/";
       </script>
     
     <script src="../js/jquery-3.6.0.min.js" defer></script>
@@ -62,7 +62,7 @@
                   </li>
               </ul>
               <p class="caption"><span class="caption-text">Command Detail</span></p>
-              <ul class="current">
+              <ul>
                   <li class="toctree-l1"><a class="reference internal" href="../command_detail/">Command Detail</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../primary_commands/">Primary Commands</a>
@@ -85,23 +85,7 @@
                 </li>
     </ul>
                   </li>
-                  <li class="toctree-l1 current"><a class="reference internal current" href="./">Secondary Commands</a>
-    <ul class="current">
-    <li class="toctree-l2"><a class="reference internal" href="#command-environment">Command: environment</a>
-    </li>
-    <li class="toctree-l2"><a class="reference internal" href="#command-usbenvironment">Command: usbenvironment</a>
-    </li>
-    <li class="toctree-l2"><a class="reference internal" href="#command-probe">Command: probe</a>
-    </li>
-    <li class="toctree-l2"><a class="reference internal" href="#command-interrogate">Command: interrogate</a>
-    </li>
-    <li class="toctree-l2"><a class="reference internal" href="#command-chkusbmon">Command: chkusbmon</a>
-    </li>
-    <li class="toctree-l2"><a class="reference internal" href="#command-discard-capabilitesdsaall-caches">Command: discard [capabilites|dsa|all] caches</a>
-    </li>
-    <li class="toctree-l2"><a class="reference internal" href="#command-traceable-functions">Command: traceable-functions</a>
-    </li>
-    </ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../secondary_commands/">Secondary Commands</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../options_main/">Command Options</a>
                   </li>
@@ -185,7 +169,7 @@
                   </li>
               </ul>
               <p class="caption"><span class="caption-text">Shared Library</span></p>
-              <ul>
+              <ul class="current">
                   <li class="toctree-l1"><a class="reference internal" href="../api_main/">C API</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../libddcutil_release_notes/">Shared Library Release Notes</a>
@@ -218,7 +202,9 @@
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../c_api_212/">Shared Library Changes for Release 2.1.2</a>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../c_api_213/">Shared Library Changes for Release 2.1.3</a>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="./">Shared Library Changes for Release 2.1.3</a>
+    <ul class="current">
+    </ul>
                   </li>
               </ul>
               <p class="caption"><span class="caption-text">Background</span></p>
@@ -300,10 +286,10 @@
         <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
   <ul class="wy-breadcrumbs">
     <li><a href=".." class="icon icon-home" alt="Docs"></a> &raquo;</li>
-          <li>Command Detail &raquo;</li>
-      <li>Secondary Commands</li>
+          <li>Shared Library &raquo;</li>
+      <li>Shared Library Changes for Release 2.1.3</li>
     <li class="wy-breadcrumbs-aside">
-          <a href="https://github.com/rockowitz/ddcutil/edit/master/docs/secondary_commands.md" ></a>
+          <a href="https://github.com/rockowitz/ddcutil/edit/master/docs/c_api_213.md" ></a>
     </li>
   </ul>
   <hr/>
@@ -311,34 +297,19 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
             <div class="section" itemprop="articleBody">
               
-                <h2 id="secondary-commands">Secondary Commands</h2>
-<p>Secondary commands explore the <strong>ddcutil</strong> environment for diagnostic purposes, or perform other specialized functions.</p>
-<h3 id="command-environment">Command: environment<a name="environment"></a></h3>
-<p>Explores aspects of the system relevant to DDC communication (other than USB).  Normal output provides information that may be helpful to the user
-in diagnosing things that need to be changed to enable <strong><em>ddcutil</em></strong> to execute.  Option <strong><em>--verbose</em></strong> adds additional information
-that is helpful for remotely diagnosing <strong>ddcutil</strong> problems.</p>
-<h3 id="command-usbenvironment">Command: usbenvironment<a name="usbenvironment"></a></h3>
-<p>Explores USB related aspects of the <strong>ddcutil</strong> execution environment.  See <a href="../usb/">USB Connected Monitors</a>.</p>
-<h3 id="command-probe">Command: probe<a name="probe"></a></h3>
-<p>Gathers monitor specific infomration, including the EDID and the VCP feature codes supported by the monitor.  If there are multiple
-monitors, the monitor to be probed is specified in the usual way (option <strong><em>--display</em></strong>, etc.) 
-Option <strong><em>--verbose</em></strong> increases the amount of information.</p>
-<h3 id="command-interrogate">Command: interrogate<a name="interrogate"></a></h3>
-<p>The granddaddy of all diagnostic functions.  Includes vebose output from <strong>detect</strong>, <strong>environment</strong>, and for each monitor <strong>probe</strong>.
-For remote problem diagnosis, <strong>ddcutil environment --verbose</strong> is usually sufficient. </p>
-<h3 id="command-chkusbmon">Command: chkusbmon<a name="chkusbmon"></a></h3>
-<p>This command is used by UDEV rules.  It checks if a USB device is a monitor.  See <a href="../usb/#command_chkusbmon">Command ddcutil chkusbmon</a></p>
-<h3 id="command-discard-capabilitesdsaall-caches">Command: discard [capabilites|dsa|all] caches<a name="command_discard_caches"></a></h3>
-<p>Discard cached capabilities strings, cached dynamic sleep data, or both.  If no cache type is specified, <strong>all</strong> is assumed.</p>
-<h3 id="command-traceable-functions">Command: traceable-functions<a name="command_traceable_functions"></a></h3>
-<p>List all functions that can be specified as an argument to option <strong><em>--trcfunc</em></strong>, <strong><em>--trcfrom</em></strong>, or <strong><em>--trcapi</em></strong>. </p>
-<p>Not all functions are enabled for tracing, and of those not all have been registered as valid arguments for these options.</p>
+                <h2 id="shared-library-changes-for-release-213">Shared Library Changes for Release 2.1.3</h2>
+<p>Shared library libddcutil is backwardly compatible with the one in 
+ddcutil 2.0.0. The SONAME is unchanged as libddcutil.so.5. The released library
+file is libddcutil.so.5.1.2. </p>
+<p>There is one change of significance.  Release 2.1.3 fixes a bug in <strong>libddcutil</strong> that caused API calls to fail with status code
+DDCRC_ARG (invalid argument) when passed an otherwise valid display reference for a display that doesn't support DDC/CI.
+In particular, this caused <strong>ddcui</strong> to crash when querying information about such a display.</p>
               
             </div>
           </div><footer>
     <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
-        <a href="../command_scs/" class="btn btn-neutral float-left" title="scs"><span class="icon icon-circle-arrow-left"></span> Previous</a>
-        <a href="../options_main/" class="btn btn-neutral float-right" title="Command Options">Next <span class="icon icon-circle-arrow-right"></span></a>
+        <a href="../c_api_212/" class="btn btn-neutral float-left" title="Shared Library Changes for Release 2.1.2"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../mccs_background/" class="btn btn-neutral float-right" title="Monitor Control Command Set">Next <span class="icon icon-circle-arrow-right"></span></a>
     </div>
 
   <hr/>
@@ -365,10 +336,10 @@ For remote problem diagnosis, <strong>ddcutil environment --verbose</strong> is 
         </span>
     
     
-      <span><a href="../command_scs/" style="color: #fcfcfc">&laquo; Previous</a></span>
+      <span><a href="../c_api_212/" style="color: #fcfcfc">&laquo; Previous</a></span>
     
     
-      <span><a href="../options_main/" style="color: #fcfcfc">Next &raquo;</a></span>
+      <span><a href="../mccs_background/" style="color: #fcfcfc">Next &raquo;</a></span>
     
   </span>
 </div>

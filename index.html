@@ -222,6 +222,8 @@
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="c_api_212/">Shared Library Changes for Release 2.1.2</a>
                   </li>
+                  <li class="toctree-l1"><a class="reference internal" href="c_api_213/">Shared Library Changes for Release 2.1.3</a>
+                  </li>
               </ul>
               <p class="caption"><span class="caption-text">Background</span></p>
               <ul>
@@ -314,9 +316,17 @@
               
                 <h1 id="ddcutil-and-ddcui">ddcutil and ddcui</h1>
 <h2 id="announcements">Announcements</h2>
+<p>07 February 2024</p>
+<p><strong>ddcutil</strong> 2.1.3 fixes a significant bug in <strong>libddcutil</strong> that caused API calls to fail with status code
+DDCRC_ARG (invalid argument) when passed an otherwise valid display reference for a display that doesn't support DDC/CI.</p>
+<p><strong>ddcui</strong> 0.5.3 checks to see that the <strong>libddcutil</strong> version is at least 2.1.3</p>
+<p>For details about the changes and bug fixes, see <a href="release_notes/">Release Notes</a>,
+<a href="c_api_213/">Shared Library Changes for Release 2.1.3</a>, 
+and <a href="ddcui_release_notes/">ddcui Release Notes</a>.
+Changes are also summarized in the CHANGELOG.md files in the respective source trees.</p>
 <p>27 January 2024</p>
-<p><strong>ddcutil</strong> 2.1.2 fixes a critical bug in libddcutil that caused older versions of PowerDevil to repeatedly crash and restart.
-In addition, there are several minor fixes and changes to accoommodate the proprietary Nvidia video driver.</p>
+<p><strong>ddcutil</strong> 2.1.2 fixes a critical bug in <strong>libddcutil</strong> that caused older versions of PowerDevil to repeatedly crash and restart.
+In addition, there are several minor fixes and changes to accommodate the proprietary Nvidia video driver.</p>
 <p><strong>ddcui</strong> 0.5.2 contains minor cleanup for release 0.5.2</p>
 <p>For details about the changes and bug fixes, see <a href="release_notes/">Release Notes</a>,
 <a href="c_api_212/">Shared Library Changes for Release 2.1.2</a>, 
@@ -521,5 +531,5 @@ The source is hosted on <a href="http://www.github.com/rockowitz/ddcui">Github</
 
 <!--
 MkDocs version : 1.4.2
-Build Date UTC : 2024-02-07 17:57:29.105257+00:00
+Build Date UTC : 2024-02-13 22:31:50.879723+00:00
 -->
