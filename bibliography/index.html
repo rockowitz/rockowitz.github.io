@@ -477,11 +477,20 @@ Type C Connectors</p>
 <ul>
 <li><a href="https://github.com/RedBalloonShenanigans/MonitorDarkly">MonitorDarkly</a></li>
 </ul>
+<p>DisplayPort Multi-Stream Transport (MST) Issues</p>
+<ul>
+<li><a href="https://www.mail-archive.com/dri-devel@lists.freedesktop.org/msg370838.html">DRM path: Update MST First Slot Information Based on Encoding Format</a></li>
+</ul>
+<p>More generally, search www.mail-archive.com, particularly dri-devel</p>
+<ul>
+<li><a href="https://gitlab.freedesktop.org/drm/intel/-/issues/3605#note_1409446">Same MST display appears as 2 /dev/i2c devices</a> A long thread on freedesktop.org
+regarding MST I<sup>2</sup>C MST implementation that I initiated.  Includes comments from i915 developers regarding the complexity of the problem.</li>
+</ul>
 <p>Miscellaneous</p>
 <ul>
 <li>
 <p><a href="https://www.reddit.com/r/Monitors/comments/k18mbf/comment/gdms313/?context=3">EDID and Monitor Connection</a> A good explanation
-the EDID readability for connected monitors that are powered off.  In this case, is always readable if a monitor is connected using DVI and HDMI, but may or may not be readable when connected using DisplayPort.</p>
+the EDID readability for connected monitors that are powered off.  In this case, the EDID is always readable if a monitor is connected using DVI and HDMI, but may or may not be readable when connected using DisplayPort.</p>
 </li>
 <li>
 <p><a href="https://www.kernel.org/doc/html/latest/index.html">Linux Kernel Documentation</a> This is the top level of the kernel's documentation tree.
@@ -492,7 +501,13 @@ Some pages of particular interest: </p>
 </li>
 <li><a href="https://www.kernel.org/doc/html/latest/gpu/index.html">Linux GPU Driver Developer's Guide</a></li>
 <li><a href="https://www.kernel.org/doc/html/latest/gpu/drivers.html">GPU Driver Documentation</a></li>
-<li><a href="https://www.kernel.org/doc/html/latest/gpu/amdgpu/module-parameters.html">amdgpu Module Parameters</a></li>
+<li>
+<p><a href="https://www.kernel.org/doc/html/latest/gpu/amdgpu/module-parameters.html">amdgpu Module Parameters</a></p>
+</li>
+<li>
+<p><a href="https://wiki.archlinux.org/title/Backlight#External_monitors">Arch web page on controlling display brigtness</a> Covers both laptop displays and DDC/CI enabled external monitors</p>
+</li>
+<li><a href="https://www.kernel.org/doc/html/latest/admin-guide/sysfs-rules.html">Rules on how to access information in sysfs</a> From the Linux kernel documentation</li>
 </ul>
 <p>Wayland</p>
 <ul>
@@ -502,6 +517,8 @@ window manager sway, and the person who started wlroots.</li>
 <p>Development Tools</p>
 <ul>
 <li><a href="https://opensource.com/article/19/10/strace">Understanding system calls on Linux with strace</a> Article on opensource.com</li>
+<li><a href="https://developers.redhat.com/blog/2021/04/30/the-gdb-developers-gnu-debugger-tutorial-part-1-getting-started-with-the-debugger#">The GDB developer's GNU Debugger tutorial, Part 1: Getting Started with the debugger</a> A deep dive into using the debugger.  This page links to others in the series.</li>
+<li><a href="https://fedoraproject.org/wiki/How_to_check_for_ABI_changes_in_a_package">How to check for ABI changes in a package</a> Fedora Project wiki page, describe abidiff, abi-compliance-checker</li>
 </ul>
               
             </div>

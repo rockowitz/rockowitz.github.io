@@ -254,6 +254,10 @@
     </li>
     <li class="toctree-l2"><a class="reference internal" href="#ddcutil-hangs-on-radeon-rx-5xxx-and-6xxx-cards-navi-and-navi2-gpu">ddcutil hangs on Radeon RX 5xxx and 6xxx cards (Navi and Navi2 GPU)</a>
     </li>
+    <li class="toctree-l2"><a class="reference internal" href="#kde-plasma-6">KDE Plasma 6</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#powerdevil-crashes-repeatedly-with-ddcutil-210">Powerdevil crashes repeatedly with ddcutil 2.1.0</a>
+    </li>
     <li class="toctree-l2"><a class="reference internal" href="#does-ddcutil-work-in-containers">Does ddcutil work in containers?</a>
     </li>
     </ul>
@@ -529,6 +533,16 @@ The SMU related hang should have been fixed as of kernel 5.14.4.  <strong>ddcuti
 <pre><code>$ sudo ps -aux | grep ddcutil
 $ sudo awk ' {print FILENAME &quot;: &quot; $0 } '  /sys/bus/i2c/devices/*/name
 </code></pre>
+<p><a name="plasma_6"></a></p>
+<h3 id="kde-plasma-6">KDE Plasma 6</h3>
+<p>ddcutil commands fail after upgrade to version 2.0 and KDE Plasma 6</p>
+<p>ddcutil 2.0 added a cross-instance locking facility. The problem addressed was random failures when multiple ddcutil or libddcutil instances clobber each other's DDC transactions. Internally, ddcutil uses what are called display handles to represent /dev/i2c devices that have been opened at the OS level. Proper use of the API is, for each DDC transaction, to open a display, creating a display handle, perform the transaction, and then close it. This sounds expensive, but in fact the time spent opening and closing is negligible compared to the time spent performing the I2C operations of a DDC transaction.</p>
+<p>When the cross-instance locking facility is enabled, and a display is opened creating display handle, ddcutil calls flock() on the underlying /dev/i2c device and holds the flock until the handle is closed. Unfortunately, at startup PowerDevil creates a display handle for each /dev/i2c device and never closes it. So the flock's are never released, blocking other ddcutil instances.</p>
+<p>Cross-instance locking can be disabled using option --disable-cross-instance-locks. This option can be specified on the ddcutil command line, or in configuration file $HOME/.config/ddcutil/ddcutilrc. The latter is the only way to control libddcutil, which is used by PowerDevil. For a description of configuration files, see https://www.ddcutil.com/config_file.</p>
+<h3 id="powerdevil-crashes-repeatedly-with-ddcutil-210">Powerdevil crashes repeatedly with <strong>ddcutil</strong> 2.1.0</h3>
+<p>ddcutil 2.1.0 API introduced an initialization function, <strong><em>ddca2_init()</em></strong>, into the libddcutil API
+to give the client, e.g. PowerDevil, finer control of libddcutil's initialization. 
+If the initialization function is not called, then default settings are used. There was a bug in default initialization that caused PowerDevil to crash repeatedly. This was fixed in ddcutil 2.1.2. Also, PowerDevil was changed to explicitly call the initialization function, thereby avoiding the bug. With two different fixes for same problem, it may not be obvious what change made PowerDevil work again. </p>
 <p><a name="docker_container"></a></p>
 <h3 id="does-ddcutil-work-in-containers">Does <strong>ddcutil</strong> work in containers?</h3>
 <p>User Nikolay Dandanov has reported success running ddcutil in a Docker container: </p>

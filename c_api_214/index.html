@@ -3,18 +3,18 @@
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="author" content="Sanford Rockowitz" /><link rel="canonical" href="https://www.ddcutil.com/libddcutil_release_notes/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="author" content="Sanford Rockowitz" /><link rel="canonical" href="https://www.ddcutil.com/c_api_214/" />
       <link rel="shortcut icon" href="../img/favicon.ico" />
-    <title>Shared Library Release Notes - ddcutil Documentation</title>
+    <title>C api 214 - ddcutil Documentation</title>
     <link rel="stylesheet" href="../css/theme.css" />
     <link rel="stylesheet" href="../css/theme_extra.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
     
       <script>
         // Current page data
-        var mkdocs_page_name = "Shared Library Release Notes";
-        var mkdocs_page_input_path = "libddcutil_release_notes.md";
-        var mkdocs_page_url = "/libddcutil_release_notes/";
+        var mkdocs_page_name = "C api 214";
+        var mkdocs_page_input_path = "c_api_214.md";
+        var mkdocs_page_url = "/c_api_214/";
       </script>
     
     <script src="../js/jquery-3.6.0.min.js" defer></script>
@@ -169,12 +169,10 @@
                   </li>
               </ul>
               <p class="caption"><span class="caption-text">Shared Library</span></p>
-              <ul class="current">
+              <ul>
                   <li class="toctree-l1"><a class="reference internal" href="../api_main/">C API</a>
                   </li>
-                  <li class="toctree-l1 current"><a class="reference internal current" href="./">Shared Library Release Notes</a>
-    <ul class="current">
-    </ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../libddcutil_release_notes/">Shared Library Release Notes</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../c_api_90/">Shared Library Changes for Release 0.9.0</a>
                   </li>
@@ -286,10 +284,9 @@
         <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
   <ul class="wy-breadcrumbs">
     <li><a href=".." class="icon icon-home" alt="Docs"></a> &raquo;</li>
-          <li>Shared Library &raquo;</li>
-      <li>Shared Library Release Notes</li>
+      <li>C api 214</li>
     <li class="wy-breadcrumbs-aside">
-          <a href="https://github.com/rockowitz/ddcutil/edit/master/docs/libddcutil_release_notes.md" ></a>
+          <a href="https://github.com/rockowitz/ddcutil/edit/master/docs/c_api_214.md" ></a>
     </li>
   </ul>
   <hr/>
@@ -297,37 +294,14 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
             <div class="section" itemprop="articleBody">
               
-                <h1 id="shared-library-release-notes">Shared Library Release Notes</h1>
-<p>For detailed release notes regarding shared library <strong>libddcutil</strong>, including API changes, see:</p>
-<ul>
-<li><a href="../c_api_90/">Shared Library Changes for Release 0.9.0</a>  </li>
-<li><a href="../c_api_93/">Shared Library Changes for Release 0.9.3</a>  </li>
-<li><a href="../c_api_95/">Shared Library Changes for Release 0.9.5</a>   </li>
-<li><a href="../c_api_98/">Shared Library Changes for Release 0.9.8</a></li>
-<li><a href="../c_api_99/">Shared Library Changes for Release 0.9.9</a></li>
-<li><a href="../c_api_100/">Shared Library Changes for Release 1.0.0</a></li>
-<li><a href="../c_api_110/">Shared Library Changes for Release 1.1.0</a></li>
-<li><a href="../c_api_120/">Shared Library Changes for Release 1.2.0</a></li>
-<li><a href="../c_api_130/">Shared Library Changes for Release 1.3.0</a></li>
-<li><a href="../c_api_140/">Shared Library Changes for Release 1.4.0</a></li>
-<li><a href="../c_api_200/">Shared Library Changes for Release 2.0.0</a></li>
-<li><a href="../c_api_210/">Shared Library Changes for Release 2.0.0</a></li>
-<li><a href="../c_api_212/">Shared Library Changes for Release 2.1.2</a></li>
-<li><a href="../c_api_213/">Shared Library Changes for Release 2.1.3</a></li>
-<li><a href="../c_api_214/">Shared Library Changes for Release 2.1.4</a></li>
-</ul>
-<!--
-For draft notes on the next shared library release, see: 
-
-- [Shared Library Changes for the Current Development Version](c_api_200.md)
--->
+                <h2 id="shared-library-changes-for-release-214">Shared Library Changes for Release 2.1.4</h2>
+<p>Shared library libddcutil is backwardly compatible with the one in 
+ddcutil 2.0.0. The SONAME is unchanged as libddcutil.so.5. The released library
+file is libddcutil.so.5.1.2. </p>
+<p>Previously deprecated API function <strong>ddca_create_display_ref</strong> (an alternative name for <strong>ddca_get_display_ref()</strong>) was removed in release 2.0.0. It has been restored, allowing some existing programs in Debian to use libddutil unchanged.</p>
               
             </div>
           </div><footer>
-    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
-        <a href="../api_main/" class="btn btn-neutral float-left" title="C API"><span class="icon icon-circle-arrow-left"></span> Previous</a>
-        <a href="../c_api_90/" class="btn btn-neutral float-right" title="Shared Library Changes for Release 0.9.0">Next <span class="icon icon-circle-arrow-right"></span></a>
-    </div>
 
   <hr/>
 
@@ -353,10 +327,6 @@ For draft notes on the next shared library release, see:
         </span>
     
     
-      <span><a href="../api_main/" style="color: #fcfcfc">&laquo; Previous</a></span>
-    
-    
-      <span><a href="../c_api_90/" style="color: #fcfcfc">Next &raquo;</a></span>
     
   </span>
 </div>
