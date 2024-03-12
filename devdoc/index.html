@@ -3,18 +3,18 @@
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="author" content="Sanford Rockowitz" /><link rel="canonical" href="https://www.ddcutil.com/command_dumpvcp_loadvcp/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="author" content="Sanford Rockowitz" /><link rel="canonical" href="https://www.ddcutil.com/devdoc/" />
       <link rel="shortcut icon" href="../img/favicon.ico" />
-    <title>dumpvcp &amp; loadvcp - ddcutil Documentation</title>
+    <title>Developer Documentation - ddcutil Documentation</title>
     <link rel="stylesheet" href="../css/theme.css" />
     <link rel="stylesheet" href="../css/theme_extra.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
     
       <script>
         // Current page data
-        var mkdocs_page_name = "dumpvcp \u0026amp; loadvcp";
-        var mkdocs_page_input_path = "command_dumpvcp_loadvcp.md";
-        var mkdocs_page_url = "/command_dumpvcp_loadvcp/";
+        var mkdocs_page_name = "Developer Documentation";
+        var mkdocs_page_input_path = "devdoc.md";
+        var mkdocs_page_url = "/devdoc/";
       </script>
     
     <script src="../js/jquery-3.6.0.min.js" defer></script>
@@ -62,13 +62,13 @@
                   </li>
               </ul>
               <p class="caption"><span class="caption-text">Command Detail</span></p>
-              <ul class="current">
+              <ul>
                   <li class="toctree-l1"><a class="reference internal" href="../command_detail/">Command Detail</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../primary_commands/">Primary Commands</a>
                   </li>
-                  <li class="toctree-l1 current"><a class="reference internal current" href="#">Primary Commands</a>
-    <ul class="current">
+                  <li class="toctree-l1"><a class="reference internal" href="#">Primary Commands</a>
+    <ul>
                 <li class="toctree-l2"><a class="reference internal" href="../command_detect/">detect</a>
                 </li>
                 <li class="toctree-l2"><a class="reference internal" href="../command_capabilities/">capabilities</a>
@@ -79,9 +79,7 @@
                 </li>
                 <li class="toctree-l2"><a class="reference internal" href="../command_vcpinfo/">vcpinfo</a>
                 </li>
-                <li class="toctree-l2 current"><a class="reference internal current" href="./">dumpvcp &amp; loadvcp</a>
-    <ul class="current">
-    </ul>
+                <li class="toctree-l2"><a class="reference internal" href="../command_dumpvcp_loadvcp/">dumpvcp &amp; loadvcp</a>
                 </li>
                 <li class="toctree-l2"><a class="reference internal" href="../command_scs/">scs</a>
                 </li>
@@ -210,7 +208,7 @@
                   </li>
               </ul>
               <p class="caption"><span class="caption-text">Background</span></p>
-              <ul>
+              <ul class="current">
                   <li class="toctree-l1"><a class="reference internal" href="../mccs_background/">Monitor Control Command Set</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../ddc_vs_i2c/">DDC vs I2C</a>
@@ -219,7 +217,9 @@
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../bibliography/">References</a>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../devdoc/">Developer Documentation</a>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="./">Developer Documentation</a>
+    <ul class="current">
+    </ul>
                   </li>
               </ul>
               <p class="caption"><span class="caption-text">Additional Topics</span></p>
@@ -290,11 +290,10 @@
         <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
   <ul class="wy-breadcrumbs">
     <li><a href=".." class="icon icon-home" alt="Docs"></a> &raquo;</li>
-          <li>Command Detail &raquo;</li>
-          <li>Primary Commands &raquo;</li>
-      <li>dumpvcp &amp; loadvcp</li>
+          <li>Background &raquo;</li>
+      <li>Developer Documentation</li>
     <li class="wy-breadcrumbs-aside">
-          <a href="https://github.com/rockowitz/ddcutil/edit/master/docs/command_dumpvcp_loadvcp.md" ></a>
+          <a href="https://github.com/rockowitz/ddcutil/edit/master/docs/devdoc.md" ></a>
     </li>
   </ul>
   <hr/>
@@ -302,27 +301,46 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
             <div class="section" itemprop="articleBody">
               
-                <h3 id="commands-dumpvcp-and-loadvcp">Commands <strong><em>dumpvcp</em></strong> and <strong><em>loadvcp</em></strong></h3>
-<p>These commands save and restore the current settings of color management related VCP features, i.e. those in group PROFILE.</p>
-<p>Syntax: <strong>dumpvcp</strong> &lt;display-selection-options&gt; dumpvcp [&lt;file name&gt;]</p>
-<p>If no file name is specified on <strong>dumpvcp</strong>, output is written to directory $HOME/.local/share/ddcutil.
-VCP Feature values are written in the format described for the <strong><em>getvcp</em></strong> (--terse)[command_getvcp.md#getvcp_terse] option.</p>
-<p>Syntax: <strong>loadvcp</strong> &lt;display-selection-options&gt; &lt;file-name&gt;</p>
-<p>Normally, the display to which the settings are to be applied is taken from the VCP file. In rare cases, this will be insufficient to identify the display, in which the the display selection options are required.  If specified, the display selected must be consistent with the identifiers stored
-in the VCP file.</p>
-<h3 id="option-noverify">Option: <strong>--noverify</strong></h3>
-<p>See <a href="../command_setvcp/#setvcp_noverify"><strong>setvcp</strong> option --noverify</a></p>
-<h3 id="option-mccs-vcp-version">Option: <strong>--mccs &lt;vcp version&gt;</strong><a name="option_dumpload_mccs"></a></h3>
-<p>When executing <strong>dumpvcp</strong>, emit output as per the specified MCCS (aka VCP) version, instead of the VCP version obtained from feature xDF (VCP Version).
-This can affect whether a feature value is output as type TABLE.</p>
-<h3 id="option-verbose">Option: <strong>--verbose</strong></h3>
-<p>Display informational messages regarding verification.</p>
+                <h2 id="developer-documentation">Developer Documentation</h2>
+<p>A collection of links to documentation and tools related to <strong>ddcutil</strong>.</p>
+<ul>
+<li>
+<p><a href="https://www.kernel.org/doc/html/latest/index.html">Linux Kernel Documentation</a> This is the top level of the kernel's documentation tree.
+Some pages of particular interest: </p>
+</li>
+<li>
+<p><a href="https://www.kernel.org/doc/html/latest/i2c/index.html">Linux I<sup>2</sup>C Subsystem</a> </p>
+</li>
+<li><a href="https://www.kernel.org/doc/html/latest/gpu/index.html">Linux GPU Driver Developer's Guide</a></li>
+<li><a href="https://www.kernel.org/doc/html/latest/gpu/drivers.html">GPU Driver Documentation</a></li>
+<li>
+<p><a href="https://www.kernel.org/doc/html/latest/gpu/amdgpu/module-parameters.html">amdgpu Module Parameters</a></p>
+</li>
+<li>
+<p><a href="https://wiki.archlinux.org/title/Backlight#External_monitors">Arch web page on controlling display brigtness</a> Covers both laptop displays and DDC/CI enabled external monitors</p>
+</li>
+<li><a href="https://www.kernel.org/doc/html/latest/admin-guide/sysfs-rules.html">Rules on how to access information in sysfs</a> From the Linux kernel documentation</li>
+<li><a href="https://drm.pages.freedesktop.org/intel-docs/">Intel Graphics for Linux</a> Developer documentation for the drm/i915 kernel driver, including bug filing and debugging instructions.</li>
+</ul>
+<p>Wayland</p>
+<ul>
+<li><a href="https://wayland-book.com/">The Wayland Protocol</a> Detailed documentation of the Wayland protocol by Drew DeVault, developer of the tiling
+window manager sway, and the person who started wlroots.</li>
+</ul>
+<p>Development Tools</p>
+<ul>
+<li><a href="https://opensource.com/article/19/10/strace">Understanding system calls on Linux with strace</a> Article on opensource.com</li>
+<li><a href="https://developers.redhat.com/blog/2021/04/30/the-gdb-developers-gnu-debugger-tutorial-part-1-getting-started-with-the-debugger#">The GDB developer's GNU Debugger tutorial, Part 1: Getting Started with the debugger</a> A deep dive into using the debugger.  This page links to others in the series.</li>
+<li><a href="https://fedoraproject.org/wiki/How_to_check_for_ABI_changes_in_a_package">How to check for ABI changes in a package</a> Fedora Project wiki page, describe abidiff, abi-compliance-checker</li>
+<li><a href="https://landley.net/kdocs/htmldocs/drm.html">Linux DRM Developers Guide</a> Lauren Pinchart, 2008-2012</li>
+<li><a href="https://dri.freedesktop.org/docs/drm/gpu/drm-uapi.html">DRM Userland Interfaces</a> Part of <a href="https://dri.freedesktop.org/docs/drm/gpu">GPU Driver Developer's Guide</a> </li>
+</ul>
               
             </div>
           </div><footer>
     <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
-        <a href="../command_vcpinfo/" class="btn btn-neutral float-left" title="vcpinfo"><span class="icon icon-circle-arrow-left"></span> Previous</a>
-        <a href="../command_scs/" class="btn btn-neutral float-right" title="scs">Next <span class="icon icon-circle-arrow-right"></span></a>
+        <a href="../bibliography/" class="btn btn-neutral float-left" title="References"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../articles/" class="btn btn-neutral float-right" title="Articles about ddcutil">Next <span class="icon icon-circle-arrow-right"></span></a>
     </div>
 
   <hr/>
@@ -349,10 +367,10 @@ This can affect whether a feature value is output as type TABLE.</p>
         </span>
     
     
-      <span><a href="../command_vcpinfo/" style="color: #fcfcfc">&laquo; Previous</a></span>
+      <span><a href="../bibliography/" style="color: #fcfcfc">&laquo; Previous</a></span>
     
     
-      <span><a href="../command_scs/" style="color: #fcfcfc">Next &raquo;</a></span>
+      <span><a href="../articles/" style="color: #fcfcfc">Next &raquo;</a></span>
     
   </span>
 </div>
