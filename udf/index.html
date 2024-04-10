@@ -130,7 +130,7 @@
     </li>
     <li class="toctree-l2"><a class="reference internal" href="#examples">Examples</a>
     </li>
-    <li class="toctree-l2"><a class="reference internal" href="#feature-definition-search-path">Feature Definition Search Path</a>
+    <li class="toctree-l2"><a class="reference internal" href="#feature-definition-file-name-and-search-path">Feature Definition File Name and Search Path</a>
     </li>
     </ul>
                   </li>
@@ -334,14 +334,11 @@ FEATURE_CODE 0xfa a feature with code staring with 0x
     ATTRS C RO 
 </code></pre>
 <p>The first 3 lines identify the monitor model, using a 3 character manufacturer id, the model name, 
-and the product number, as given in the EDID.
+and the integer product number, as given in the EDID, and reported by the <strong>detect</strong> command.
 The feature definition applies to any monitor that matches those identifiers. 
 Model name and product number are both required because some manufacturers use generic model names, 
 and many set the product number to 0. 
 For example, Samsung commonly uses the name "SyncMaster", and LG commonly uses the name "LG ULTRAWIDE".</p>
-<p>These three fields are also are used to create the file name of the feature description, 
-which has the form <strong><em>&lt;mfg_id&gt;-&lt;model name&gt;-&lt;product code&gt;.mccs</em></strong>. The values in the
-file name must match those in the file. </p>
 <p>The optional <strong><em>MCCS_VERSION</em></strong> line specifies the version of the MCCS Specification used to describe the monitor.
 If specified, it is used instead of the value returned by querying VCP feature xDF (VCP Version). 
 If the MCCS version is also specified using the <strong><em>--mccs</em></strong> command  line option, the command line option takes precedence.</p>
@@ -370,9 +367,16 @@ FEATURE_CODE 60 Input Source
   VALUE x06 HDMI-2
   VALUE x0f DisplayPort
 </code></pre>
-<h3 id="feature-definition-search-path">Feature Definition Search Path</h3>
+<h3 id="feature-definition-file-name-and-search-path">Feature Definition File Name and Search Path</h3>
+<p>The manufacturer code, model name, and product code are used to create the file name of the feature definition file, 
+which has the form  <strong><em>&lt;mfg_id&gt;-&lt;model name&gt;-&lt;product code&gt;.mccs</em></strong>.
+For manufacturer id and product code, the values are exactly as obtained from the EDID and given on the MFG_ID and PRODUCT_CODE lines 
+of the feature definition file.
+For the model name (as given on the MODEL line, any non-alpanumeric character in the name, such as a blank, is replaced by "_" (an underscore) in the file name.</p>
 <p>Feature definition files are saved in the user's <strong><em>ddcutil</em></strong> data directory, $HOME/.local/share/ddcutil. 
 More generally, <strong><em>ddcutil</em></strong> searches for feature definition files using environment variables <strong><em>$XDG_DATA_HOME</em></strong> and <strong><em>$XDG_DATA_DIRS</em></strong>, per the <a href="https://specifications.freedesktop.org/basedir-spec/basedir-spec-latest.html">XDG Base Directory Specification</a>.</p>
+<p>If dynamic features are enabled and option <strong><em>--verbose</em></strong> is specified, commands <strong>capabilities</strong>, <strong>getvcp</strong>, <strong>setvcp</strong>, <strong>dumpvcp</strong>, and <strong>probe</strong> report the fully qualified name
+of the feature definition file (if it was found), or the simple file name (if it was not found).  As of release 2.1.5, command <strong>detect</strong> also reports the name.</p>
               
             </div>
           </div><footer>
