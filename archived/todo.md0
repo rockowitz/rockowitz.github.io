@@ -1,8 +1,0 @@
-## Future Tasks
-
-Features:   
-- User defined feature sets  
-- Python API  
-
-Miscellaneous tasks:  
-- Document the format of .VCP files (i.e. files read by `ddcutil loadvcp`)  
