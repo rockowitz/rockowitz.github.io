@@ -1,0 +1,671 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="author" content="Sanford Rockowitz" /><link rel="canonical" href="https://www.ddcutil.com/ddcui_release_notes/" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>ddcui Release Notes - ddcutil Documentation</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "ddcui Release Notes";
+        var mkdocs_page_input_path = "ddcui_release_notes.md";
+        var mkdocs_page_url = "/ddcui_release_notes/";
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href=".." class="icon icon-home"> ddcutil Documentation
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="..">Introduction</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../commands/">Command Overview</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Command Examples</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../cmd_output/">Command Examples</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../detect_verbose_output/">ddcutil detect example</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../getvcp_known_u3011_output/">ddcutil getvcp example</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../vcpinfo_output/">ddcutil vcpinfo example</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../cap_u3011_verbose_output/">ddcutil capabilities example</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Command Detail</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../command_detail/">Command Detail</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../primary_commands/">Primary Commands</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="#">Primary Commands</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../command_detect/">detect</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../command_capabilities/">capabilities</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../command_getvcp/">getvcp</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../command_setvcp/">setvcp</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../command_vcpinfo/">vcpinfo</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../command_dumpvcp_loadvcp/">dumpvcp &amp; loadvcp</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../command_scs/">scs</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../secondary_commands/">Secondary Commands</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../options_main/">Command Options</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="#">Command Options</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../display_detection/">Display Detection</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../display_selection/">Display Selection</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../feature_selection/">Feature Selection</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../performance_options/">Performance and Tuning Options</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../instrumentation_options/">Instrumentation Options</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../output_control_options/">Output Level Options</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../other_options/">Miscellaneous Options</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../i2c_dev_options/">i2c-dev Driver Options</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../debug_options/">Debugging Options</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../deprecated_options/">Deprecated Options</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../libddcutil_options/">Shared Library Options</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Specific Facilities</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../table_features/">Table Type Features</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../usb/">USB Connected Monitors</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../colormgt/">Color Management</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../udf/">User Defined Features</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../config_file/">Configuration File</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Installation and Configuration</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../install_config_main/">Installation and Configuration</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../config_steps/">Post-Installation Checklist</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../install/">Install ddcutil From Prebuilt Packages</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../building/">Building From Source</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../shared_lib_config/">Shared Library Configuration</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../mult_shared_libs/">Notes for Linux Distribution Maintainers</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../config/">Configuration and Installation Diagnostics</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../i2c_permissions/">I2C Device Permissions</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../usb_permissions/">USB Device Permissions</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../kernel_module/">Kernel Module Configuration</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../nvidia/">Special Nvidia Driver Settings</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../nvidia_old/">Setting Nvidia Driver Options Using X11</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../amdgpu/">Notes on driver amdgpu</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../virtual_machines/">Virtual Machines</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../raspberry/">Raspberry Pi</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../monitor_notes/">Notes on Specific Monitors</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../quirks/">Notes on Particular Configurations</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../typec/">USB-C DisplayPort Alt Mode</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Shared Library</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../api_main/">C API</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../libddcutil_release_notes/">Shared Library Release Notes</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../c_api_90/">Shared Library Changes for Release 0.9.0</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../c_api_93/">Shared Library Changes for Release 0.9.3</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../c_api_95/">Shared Library Changes for Release 0.9.5</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../c_api_96/">Shared Library Changes for Release 0.9.6</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../c_api_98/">Shared Library Changes for Release 0.9.8</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../c_api_99/">Shared Library Changes for Release 0.9.9</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../c_api_100/">Shared Library Changes for Release 1.0.0</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../c_api_110/">Shared Library Changes for Release 1.1.0</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../c_api_120/">Shared Library Changes for Release 1.2.0</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../c_api_130/">Shared Library Changes for Release 1.3.0</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../c_api_140/">Shared Library Changes for Release 1.4.0</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../c_api_200/">Shared Library Changes for Release 2.0.0</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../c_api_210/">Shared Library Changes for Release 2.1.0</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../c_api_212/">Shared Library Changes for Release 2.1.2</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../c_api_213/">Shared Library Changes for Release 2.1.3</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../c_api_214/">Shared Library Changes for Release 2.1.4</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Background</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../mccs_background/">Monitor Control Command Set</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../ddc_vs_i2c/">DDC vs I2C</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../displayport/">DDC and DisplayPort</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../bibliography/">References</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../devdoc/">Developer Documentation</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Additional Topics</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../articles/">Articles about ddcutil</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../faq/">Frequently Asked Questions</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../tech_support/">Technical Support</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../ddccontrol/">Comparison with ddccontrol</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../ddc_null_response/">DDC Null Message</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../sniffing/">Reverse Engineering Proprietary DDC Extensions</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../acknowledgements/">Acknowledgements</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../technotes/">Technical Notes</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../driver_bug_reports/">Driver Bug Reports of Interest</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Release History</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../releases/">Releases</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../release_notes/">Release Notes</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../prior_announcements/">Announcement History</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">ddcui</span></p>
+              <ul class="current">
+                  <li class="toctree-l1"><a class="reference internal" href="../ddcui_main/">Overview</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../ddcui_options/">Command Line Options</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../building_ddcui/">Building ddcui</a>
+                  </li>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="./">ddcui Release Notes</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#release-054">Release 0.5.4</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#release-053">Release 0.5.3</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#release-052">Release 0.5.2</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#release-050">Release 0.5.0</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#display-status-detection">Display Status Detection</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#miscellaneous-changes">Miscellaneous Changes</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#building-ddcui">Building ddcui</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#release-042">Release 0.4.2</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#passing-options-to-ddcui-and-libddcutil">Passing options to ddcui and libddcutil</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#logging">Logging</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#building-ddcui_1">Building ddcui:</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#release-030">Release 0.3.0</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#general-user-interface-changes">General User Interface Changes</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#feature-value-handling">Feature Value Handling</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#ebusy-errors">EBUSY Errors</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#release-022">Release 0.2.2</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#critical-bug-fix">Critical Bug Fix</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#release-021">Release 0.2.1</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#handling-ebusy-errors">Handling EBUSY Errors</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#cmakeliststxt-cleanup">CMakeLists.txt Cleanup</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#option-removed-use-latest-feature-values">Option Removed: Use Latest Feature Values</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#miscellaneous">Miscellaneous</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#release-020">Release 0.2.0</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#enhanced-feature-representation">Enhanced Feature Representation</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#non-continuous-feature-values">Non-Continuous Feature Values</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#redetect-monitors">Redetect Monitors</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#miscellaneous-user-interface-changes">Miscellaneous User Interface Changes</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#desktop-integration">Desktop Integration</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#configuration-file">Configuration File</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#invocation">Invocation</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#building-ddcui_2">Building ddcui</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#release-012">Release 0.1.2</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#release-011">Release 0.1.1</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#command-line-options">Command Line Options</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#user-defined-aka-custom-feature-set">User Defined (aka Custom) Feature Set</a>
+    </li>
+        </ul>
+    </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../ddcui_faq/">ddcui Frequently Asked Questions</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Related Resources</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../monitor_resources/">Monitor Specifications</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../windows_programs/">Windows Utilities for Monitor Control</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../mac_programs/">Macintosh Utlities for Monitor Control</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../ddcutil_usage/">Applications using ddcutil</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">ddcutil Documentation</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
+          <li class="breadcrumb-item">ddcui</li>
+      <li class="breadcrumb-item active">ddcui Release Notes</li>
+    <li class="wy-breadcrumbs-aside">
+          <a href="https://github.com/rockowitz/ddcutil/edit/master/docs/ddcui_release_notes.md" ></a>
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h2 id="ddcui-release-notes">ddcui Release Notes</h2>
+<h3 id="release-054">Release 0.5.4</h3>
+<p>13 February 2024</p>
+<p>As part of <strong>ddcui</strong> installation, file ddcui.conf is saved in directory /usr/lib/modules-load.d
+to ensure that driver i2d-dev is loaded.</p>
+<h3 id="release-053">Release 0.5.3</h3>
+<p>07 February 2024</p>
+<p>Release 0.5.3 requires libddcutil from ddcutil 2.1.3 or later.</p>
+<h3 id="release-052">Release 0.5.2</h3>
+<p>27 January 2024</p>
+<p>Release 0.5.2 contains some minor cleanup. There are no significant changes.</p>
+<h3 id="release-050">Release 0.5.0</h3>
+<p>16 January 2024</p>
+<p><strong>ddcui</strong> release 0.5.0 requires libddcutil.so.5.1 from ddcutil 2.1.0 or later.
+Versions of ddcui prior to 0.4.0 will not build with libddcutil.so.5 from ddcutil-2.0.0 or later.</p>
+<h4 id="display-status-detection">Display Status Detection</h4>
+<ul>
+<li>When libddcutil detects connection or disconnection of a display, ddcui 
+ puts up a dialog box reporting the change and indicating that the user
+ needs to redetect displays using Action-&gt;Redetect Displays.</li>
+</ul>
+<h4 id="miscellaneous-changes">Miscellaneous Changes</h4>
+<ul>
+<li>If multiple "options" lines are found in a segment of configuration file ddcuirc, their contents
+  are combined into a single value.</li>
+</ul>
+<h4 id="building-ddcui">Building <strong>ddcui</strong></h4>
+<ul>
+<li>If CMakeLists.txt option ASAN is specified, cmake compiles ddcui 
+using options needed for ASAN and links the executable with libasan.</li>
+</ul>
+<h3 id="release-042">Release 0.4.2</h3>
+<p>27 September 2023</p>
+<p><strong>ddcui</strong> release 0.4.0 requires libddcutil.so.5 from ddcutil 2.0.0 or later.
+Versions of ddcui prior to 0.4.0 will not build with libddcutil.so.5 from ddcutil-2.0.0 or later.</p>
+<h4 id="passing-options-to-ddcui-and-libddcutil">Passing options to ddcui and libddcutil</h4>
+<p><strong>ddcui</strong> now uses a separate configuration file, $HOME/.config/ddcutil/ddcuirc, 
+instead of combining the [global] and [ddcui] sections of <strong>ddcutil</strong> configuration
+file $HOME/.config/ddcutil/ddcutilrc. </p>
+<p>Added options:</p>
+<ul>
+<li>
+<p><strong><em>--noconfig</em></strong>, <strong><em>--disable-config-file</em></strong>. Do not obtain options from 
+configuration file $HOME/.config/ddcutil/ddcuirc.</p>
+</li>
+<li>
+<p><strong><em>--libopts "options"</em></strong>. Passes an option string to the shared library.  This string is appended to 
+the <strong>libddcutil</strong> option string obtained from the <strong>ddcui</strong> configuration file.</p>
+</li>
+</ul>
+<p>Several <strong>ddcui</strong> command line options existed solely to pass options to the shared library.  These can now be passed using 
+option <strong><em>--libopts</em></strong> or the configuration file and have been eliminated: </p>
+<ul>
+<li><strong><em>--nousb</em></strong></li>
+<li><strong><em>--trace</em></strong></li>
+<li><strong><em>--trcfunc</em></strong></li>
+<li><strong><em>--trcfile</em></strong></li>
+</ul>
+<p>Menu item Actions-&gt;Debug Locks reports locking the <strong>libddcutil</strong> as a debugging aid.</p>
+<h4 id="logging">Logging</h4>
+<ul>
+<li><strong><em>--syslog &lt;log level&gt;</em></strong> controls what messages are written to the system log 
+by <strong>ddcui</strong> and <strong>libddcutil</strong>.
+Valid levels are <strong>NEVER</strong>, <strong>ERROR</strong>, <strong>WARNING</strong>, <strong>NOTICE</strong>, <strong>INFO</strong>, and <strong>DEBUG</strong>.
+The default is <strong>NOTICE</strong>.</li>
+</ul>
+<h4 id="building-ddcui_1">Building <strong>ddcui</strong>:</h4>
+<p>CMakeLists.txt recognizes option DDCUTIL_PROJECT_DIR, which specifies the
+<strong>ddcutil</strong> project directory in which <strong>libddcutil</strong> is built. Using this
+option avoids having to install <strong>libddcutil.so</strong> in a system directory in 
+order for <strong>ddcui</strong> to use it.</p>
+<p>e.g. </p>
+<pre><code>cmake -D DDCUTIL_PROJECT_DIR=/my/ddcutil/project/dir
+</code></pre>
+<!--  options --i1, --i2 -->
+
+<h3 id="release-030">Release 0.3.0</h3>
+<p>05 August 2022</p>
+<h4 id="general-user-interface-changes">General User Interface Changes</h4>
+<ul>
+<li>CTL-Q terminates <strong>ddcui</strong> (does not apply within dialog boxes)</li>
+<li>Errors opening /dev/i2c and /dev/usb/hiddev devices are reported using a message box
+  instead of being written to the terminal. These errors typically  reflect lack of permissions (Linux error EACCESS).</li>
+<li>Optionally requiring the control key to be pressed when changing feature values now applies
+  to all changes, not just those made using sliders. (The option is set using command line
+  option <strong><em>--require-control-key</em></strong> or the UI Options dialog box.).</li>
+<li>The tab key was not jumping to the OK and Cancel buttons in option dialogs.</li>
+</ul>
+<h4 id="feature-value-handling">Feature Value Handling</h4>
+<ul>
+<li>For simple NC values, do not include the SH field in validation when changing a value.
+  It has been observed that there exist monitors (e.g. Dell U4320) for which the high 
+  order byte of feature x60 (Input Source) can be non-zero.</li>
+</ul>
+<h4 id="ebusy-errors">EBUSY Errors</h4>
+<ul>
+<li>As of <strong>libddcutil</strong> release 1.3.0, the shared library has been modified to avoid the code path in driver i2c-dev that can produce EBUSY errors.
+  Options <strong><em>--force-slave-address</em></strong> and <strong><em>--disable-force-slave-address</em></strong>, introduced in Release 0.2.1, are deprecated and no longer have any effect. 
+  For details see <a href="../release_notes/#release_1.3.0_ebusy">Device Busy (EBUSY) Errors</a> in the release notes for <strong>ddcutil</strong> 1.3.0.</li>
+</ul>
+<h3 id="release-022">Release 0.2.2</h3>
+<p>22 February 2022</p>
+<h4 id="critical-bug-fix">Critical Bug Fix</h4>
+<p>Fix an erroneous assert() statement that could cause a compilation failure or segfault in
+the handling of features X62 (Speaker Volume). </p>
+<h3 id="release-021">Release 0.2.1</h3>
+<p>02 February 2022</p>
+<h4 id="handling-ebusy-errors">Handling EBUSY Errors</h4>
+<p>New command line option <strong><em>--force-slave-address</em></strong> enables <strong>ddcui</strong> to take control of DDC communication with a display
+from a conflicting program, notably display driver ddcci.
+For details, see <a href="../other_options/#option-force-slave-address">Option: --force-slave-address</a>
+and <a href="../release_notes/">Device Busy Errors</a> in the main <strong>ddcutil</strong> documentation.</p>
+<h4 id="cmakeliststxt-cleanup">CMakeLists.txt Cleanup</h4>
+<ul>
+<li>The minimum required version of CMake is set to 3.10.
+The CMakeLists.txt script is known to work in Ubuntu 18.04, which has CMake 13.10. 
+It may work for earlier CMake versions; the cmake_minimum_required() statement 
+can be edited to allow execution,</li>
+<li>Most messages from the script, issued using the message() statement. are defined to have message level VERBOSE.
+By default, these are not shown, reducing output clutter. 
+Using cmake command line option <strong><em>--log-level=verbose</em></strong> will cause them to be shown.
+However, message level <strong><em>verbose</em></strong> did not exist prior to release 3.15. In that case
+the messages are unconditionally issued.</li>
+<li>If ccache is installed, cmake command line option <strong><em>--use-cache</em></strong> controls whether
+ccache is used to reduce build time.  The default is <strong><em>--use-cache=yes</em></strong>.</li>
+<li>Better support for CMAKE_BUILD_TYPE. The default is <strong><em>-DCMAKE_BUILD_TYPE=DEBUG</em></strong>.</li>
+</ul>
+<h4 id="option-removed-use-latest-feature-values">Option Removed: Use Latest Feature Values</h4>
+<p>Option "Use Latest Feature Values" in the NC Feature Values dialog, and corresponding
+command line option <strong><em>--use-latest-nc-values</em></strong> have been removed. This option 
+told <strong>ddcui</strong> to use the NC values for the most recent MCCS specification, as 
+opposed to the MCCS version that the monitor reports. This option was hard to 
+explain and convoluted to implement.  The <a href="../udf/">User Defined Features</a> facility makes it
+unnecessary, since that facility can be used to define the NC values for a monitor feature.</p>
+<h4 id="miscellaneous">Miscellaneous</h4>
+<ul>
+<li>Disable selecting the Capabilities and Feature views for a monitor if it doesn't support DDC/CI,
+  or the capabilities string cannot be read.</li>
+<li>Disable all view selection if no monitor is detected.</li>
+</ul>
+<h3 id="release-020">Release 0.2.0</h3>
+<p>25 November 2021</p>
+<p>While far from complete, this release should be suitable for general use.
+The code base has been extensively reworked. This section summarizes user visible changes since release 0.1.2. </p>
+<p>ddcui 0.2.0 requires at least libddcutil.so.4.1.0 from ddcutil package 1.2.0 or later.</p>
+<h3 id="enhanced-feature-representation">Enhanced Feature Representation</h3>
+<ul>
+<li>In MCCS 2.2 and 3.0, some features have both a set of special values and a continuous range.
+  These include x62 (Audio Volume), x63 (Audio Balance) , x87 (Audio Tebble), X91 (Audio Bass), and x93 (Audio Balance).
+  The widget for these features has both a slider/spinbox for the continuous range and a combo-box for the special values.</li>
+</ul>
+<h3 id="non-continuous-feature-values">Non-Continuous Feature Values</h3>
+<p>There are three interrelated mechanisms for addressing unexpected values for a simple Non-Continuous feature.</p>
+<ul>
+<li>
+<p>The monitor may report a feature value that is not listed in the capabilities 
+  string or the Monitor Control Command Set. In this situation the value is still listed in the 
+  combo box even if another value is subsequently selected. </p>
+</li>
+<li>
+<p>When presenting simple Non-Continuous feature, <strong>ddcui</strong> uses the 
+  values/name table specified for the monitor's MCCS version.  Sometimes monitors 
+  use feature values defined in a later version. The <strong><em>Use latest MCCS values</em></strong> 
+  checkbox in the <strong>NC Feature Values</strong> dialog specifies that the NC value table 
+  for the highest possible MCCS version be used.  This can also be specified by 
+  command line option <strong><em>--force-latest-nc-value-names</em></strong>.</p>
+</li>
+<li>
+<p>Supply a User Defined Feature definition.  See <a href="../udf/">User Defined Features</a>.</p>
+</li>
+</ul>
+<h3 id="redetect-monitors">Redetect Monitors</h3>
+<ul>
+<li>For situations where a display is attached or detached, 
+  Menubar option <strong><em>Actions-&gt;Redetect Monitors</em></strong> can be used to redetect displays.
+  The plan is for this to happen automatically in a future release.</li>
+</ul>
+<h3 id="miscellaneous-user-interface-changes">Miscellaneous User Interface Changes</h3>
+<ul>
+<li>The <strong><em>Other Options</em></strong> dialog has been renamed to <strong><em>NC Feature Values</em></strong>.</li>
+<li>Help screen content has been revised and extended.</li>
+<li>General user interface cleanup</li>
+</ul>
+<h3 id="desktop-integration">Desktop Integration</h3>
+<ul>
+<li>Install ddcui.desktop in /usr/share/applications.</li>
+<li>Install icons in /usr/share/icons/hicolor. An icon is also installed in /usr/share/pixmaps
+  as Gnome Classic only looks in the latter directory.</li>
+<li>Install ddcui.appdata.xml in /usr/share/metainfo.</li>
+<li>Use icon "video-display" from Oxygen theme as it already 
+  exists under an open source license.</li>
+</ul>
+<h3 id="configuration-file">Configuration File</h3>
+<ul>
+<li>Configuration file, typically $HOME/.config/ddcutil/ddcutilrc, is shared
+  with <strong>ddcutil</strong> and <strong>libddcutil</strong>.  Options can specified for the <strong>ddcui</strong> 
+  command line, and also for passing directly to the shared library. 
+  See page <a href="../config_file/">Configuration File</a>. </li>
+</ul>
+<h3 id="invocation">Invocation</h3>
+<ul>
+<li>Several command line options that were simply passed to <strong>libddcutil</strong>
+  have been removed from the command line, as they can now be be specified instead
+  in the <strong><em>[libddcutil</em></strong> section of configuration file <strong>ddcutilrc</strong>.
+  These include <strong><em>--udf</em></strong>, <strong><em>--no-udf</em></strong>, <strong><em>--nousb</em></strong>, <strong><em>--maxtries</em></strong>, 
+  --<strong><em>sleep-multiplier</em></strong>, <strong><em>--sleep-less</em></strong>, <strong><em>--less-sleep</em></strong>, <strong><em>--no-less-sleep</em></strong>, 
+  <strong><em>--dynamic-sleep-adjustment</em></strong>. </li>
+<li>Command line option <strong><em>--help</em></strong> does not report development related options.
+  Use <strong><em>--help-development</em></strong> or <strong><em>--help-all</em></strong> to see them.</li>
+</ul>
+<h3 id="building-ddcui_2">Building <strong>ddcui</strong></h3>
+<ul>
+<li>qmake is no longer supported. Use cmake.</li>
+</ul>
+<h3 id="release-012">Release 0.1.2</h3>
+<p>29 June 2020</p>
+<p>Bug fixes: </p>
+<ul>
+<li>The combo boxes for simple <strong><em>Non-Continuous</em></strong> values appeared empty instead of showing the current value and list of allowed values.</li>
+</ul>
+<h3 id="release-011">Release 0.1.1</h3>
+<p>24 June 2020</p>
+<h4 id="command-line-options">Command Line Options</h4>
+<p>Several command line options have been added. See <a href="../ddcui_options/">Command Line Options</a></p>
+<h4 id="user-defined-aka-custom-feature-set">User Defined (aka Custom) Feature Set</h4>
+<p>Custom feature sets enable the user to specify exactly which features are to be shown in the <strong><em>Features</em></strong> view.</p>
+<p>Feature Slection Dialog changes: </p>
+<ul>
+<li>Radio button <strong><em>Custom</em></strong> has been added as an alternative to <strong><em>MCCS</em></strong>, <strong><em>Capabilities</em></strong>, etc. for feature set selection.</li>
+<li>When <strong><em>Custom</em></strong> is clicked, an edit box enables entry of the feature codes to be included.  These are entered as two character hex values, with or without a leading "x' or trailing "h".  The values are separated by commas and/or blanks.</li>
+</ul>
+<p>Command line option <strong><em>--custom-feature-set</em></strong> specifies the custom feature set from the command line.
+For example: </p>
+<pre><code>$ddcutil --custom-feature-set &quot;10 x12, 01h&quot;
+</code></pre>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../building_ddcui/" class="btn btn-neutral float-left" title="Building ddcui"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../ddcui_faq/" class="btn btn-neutral float-right" title="ddcui Frequently Asked Questions">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+        <span>
+          <a href="https://github.com/rockowitz/ddcutil" class="fa fa-github" style="color: #fcfcfc"> GitHub</a>
+        </span>
+    
+    
+      <span><a href="../building_ddcui/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../ddcui_faq/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "..";</script>
+    <script src="../js/theme_extra.js"></script>
+    <script src="../js/theme.js"></script>
+      <script src="../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(false);
+        });
+    </script>
+
+</body>
+</html>

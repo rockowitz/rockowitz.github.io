@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="author" content="Sanford Rockowitz" /><link rel="canonical" href="https://www.ddcutil.com/getvcp_known_u3011_output/" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>ddcutil getvcp example - ddcutil Documentation</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "ddcutil getvcp example";
+        var mkdocs_page_input_path = "getvcp_known_u3011_output.md";
+        var mkdocs_page_url = "/getvcp_known_u3011_output/";
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href=".." class="icon icon-home"> ddcutil Documentation
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="..">Introduction</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../commands/">Command Overview</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Command Examples</span></p>
+              <ul class="current">
+                  <li class="toctree-l1"><a class="reference internal" href="../cmd_output/">Command Examples</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../detect_verbose_output/">ddcutil detect example</a>
+                  </li>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="./">ddcutil getvcp example</a>
+    <ul class="current">
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../vcpinfo_output/">ddcutil vcpinfo example</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../cap_u3011_verbose_output/">ddcutil capabilities example</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Command Detail</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../command_detail/">Command Detail</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../primary_commands/">Primary Commands</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="#">Primary Commands</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../command_detect/">detect</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../command_capabilities/">capabilities</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../command_getvcp/">getvcp</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../command_setvcp/">setvcp</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../command_vcpinfo/">vcpinfo</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../command_dumpvcp_loadvcp/">dumpvcp &amp; loadvcp</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../command_scs/">scs</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../secondary_commands/">Secondary Commands</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../options_main/">Command Options</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="#">Command Options</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../display_detection/">Display Detection</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../display_selection/">Display Selection</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../feature_selection/">Feature Selection</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../performance_options/">Performance and Tuning Options</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../instrumentation_options/">Instrumentation Options</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../output_control_options/">Output Level Options</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../other_options/">Miscellaneous Options</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../i2c_dev_options/">i2c-dev Driver Options</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../debug_options/">Debugging Options</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../deprecated_options/">Deprecated Options</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../libddcutil_options/">Shared Library Options</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Specific Facilities</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../table_features/">Table Type Features</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../usb/">USB Connected Monitors</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../colormgt/">Color Management</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../udf/">User Defined Features</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../config_file/">Configuration File</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Installation and Configuration</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../install_config_main/">Installation and Configuration</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../config_steps/">Post-Installation Checklist</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../install/">Install ddcutil From Prebuilt Packages</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../building/">Building From Source</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../shared_lib_config/">Shared Library Configuration</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../mult_shared_libs/">Notes for Linux Distribution Maintainers</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../config/">Configuration and Installation Diagnostics</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../i2c_permissions/">I2C Device Permissions</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../usb_permissions/">USB Device Permissions</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../kernel_module/">Kernel Module Configuration</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../nvidia/">Special Nvidia Driver Settings</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../nvidia_old/">Setting Nvidia Driver Options Using X11</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../amdgpu/">Notes on driver amdgpu</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../virtual_machines/">Virtual Machines</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../raspberry/">Raspberry Pi</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../monitor_notes/">Notes on Specific Monitors</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../quirks/">Notes on Particular Configurations</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../typec/">USB-C DisplayPort Alt Mode</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Shared Library</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../api_main/">C API</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../libddcutil_release_notes/">Shared Library Release Notes</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../c_api_90/">Shared Library Changes for Release 0.9.0</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../c_api_93/">Shared Library Changes for Release 0.9.3</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../c_api_95/">Shared Library Changes for Release 0.9.5</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../c_api_96/">Shared Library Changes for Release 0.9.6</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../c_api_98/">Shared Library Changes for Release 0.9.8</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../c_api_99/">Shared Library Changes for Release 0.9.9</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../c_api_100/">Shared Library Changes for Release 1.0.0</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../c_api_110/">Shared Library Changes for Release 1.1.0</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../c_api_120/">Shared Library Changes for Release 1.2.0</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../c_api_130/">Shared Library Changes for Release 1.3.0</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../c_api_140/">Shared Library Changes for Release 1.4.0</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../c_api_200/">Shared Library Changes for Release 2.0.0</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../c_api_210/">Shared Library Changes for Release 2.1.0</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../c_api_212/">Shared Library Changes for Release 2.1.2</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../c_api_213/">Shared Library Changes for Release 2.1.3</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../c_api_214/">Shared Library Changes for Release 2.1.4</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Background</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../mccs_background/">Monitor Control Command Set</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../ddc_vs_i2c/">DDC vs I2C</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../displayport/">DDC and DisplayPort</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../bibliography/">References</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../devdoc/">Developer Documentation</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Additional Topics</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../articles/">Articles about ddcutil</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../faq/">Frequently Asked Questions</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../tech_support/">Technical Support</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../ddccontrol/">Comparison with ddccontrol</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../ddc_null_response/">DDC Null Message</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../sniffing/">Reverse Engineering Proprietary DDC Extensions</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../acknowledgements/">Acknowledgements</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../technotes/">Technical Notes</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../driver_bug_reports/">Driver Bug Reports of Interest</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Release History</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../releases/">Releases</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../release_notes/">Release Notes</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../prior_announcements/">Announcement History</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">ddcui</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../ddcui_main/">Overview</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../ddcui_options/">Command Line Options</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../building_ddcui/">Building ddcui</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../ddcui_release_notes/">ddcui Release Notes</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../ddcui_faq/">ddcui Frequently Asked Questions</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Related Resources</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../monitor_resources/">Monitor Specifications</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../windows_programs/">Windows Utilities for Monitor Control</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../mac_programs/">Macintosh Utlities for Monitor Control</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../ddcutil_usage/">Applications using ddcutil</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">ddcutil Documentation</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
+          <li class="breadcrumb-item">Command Examples</li>
+      <li class="breadcrumb-item active">ddcutil getvcp example</li>
+    <li class="wy-breadcrumbs-aside">
+          <a href="https://github.com/rockowitz/ddcutil/edit/master/docs/getvcp_known_u3011_output.md" ></a>
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h2 id="ddcutil-getvcp">ddcutil getvcp</h2>
+<p>The following example shows the values of all VCP Feature Codes that <strong>ddcutil</strong> understands for a Dell U3011 monitor attached at bus /dev/i2c-6.</p>
+<pre><code class="language-text">$ ddcutil getvcp known --bus 6
+
+VCP code 0x02 (New control value             ): One or more new control values have been saved (0x02)
+VCP code 0x0b (Color temperature increment   ): Invalid value: 0
+VCP code 0x0c (Color temperature request     ): 3000 + 2 * (feature 0B color temp increment) degree(s) Kelvin
+VCP code 0x0e (Clock                         ): current value =    50, max value =   100
+VCP code 0x10 (Brightness                    ): current value =    57, max value =   100
+VCP code 0x12 (Contrast                      ): current value =    56, max value =   100
+VCP code 0x14 (Select color preset           ): sRGB (sl=0x01)
+VCP code 0x16 (Video gain: Red               ): current value =   100, max value =   100
+VCP code 0x18 (Video gain: Green             ): current value =   100, max value =   100
+VCP code 0x1a (Video gain: Blue              ): current value =   100, max value =   100
+VCP code 0x1e (Auto setup                    ): Auto setup not active (sl=0x00)
+VCP code 0x20 (Horizontal Position (Phase)   ): current value =    50, max value =   100
+VCP code 0x30 (Vertical Position (Phase)     ): current value =    50, max value =   100
+VCP code 0x3e (Clock phase                   ): current value =    31, max value =   100
+VCP code 0x52 (Active control                ): Value: 0x14
+VCP code 0x59 (6 axis saturation: Red        ): current value =    50, max value =   100
+VCP code 0x5a (6 axis saturation: Yellow     ): current value =    50, max value =   100
+VCP code 0x5b (6 axis saturation: Green      ): current value =    50, max value =   100
+VCP code 0x5c (6 axis saturation: Cyan       ): current value =    50, max value =   100
+VCP code 0x5d (6 axis saturation: Blue       ): current value =    50, max value =   100
+VCP code 0x5e (6 axis saturation: Magenta    ): current value =    50, max value =   100
+VCP code 0x60 (Input Source                  ): DisplayPort-1 (sl=0x0f)
+VCP code 0x6c (Video black level: Red        ): current value =    50, max value =   100
+VCP code 0x6e (Video black level: Green      ): current value =    50, max value =   100
+VCP code 0x70 (Video black level: Blue       ): current value =    50, max value =   100
+VCP code 0x87 (Sharpness                     ): current value =     8, max value =   100
+VCP code 0x8a (Color Saturation              ): current value =    50, max value =   100
+VCP code 0x90 (Hue                           ): current value =    50, max value =   100
+VCP code 0x9b (6 axis hue control: Red       ): current value =    50, max value =   100
+VCP code 0x9c (6 axis hue control: Yellow    ): current value =    50, max value =   100
+VCP code 0x9d (6 axis hue control: Green     ): current value =    50, max value =   100
+VCP code 0x9e (6 axis hue control: Cyan      ): current value =    50, max value =   100
+VCP code 0x9f (6 axis hue control: Blue      ): current value =    50, max value =   100
+VCP code 0xa0 (6 axis hue control: Magenta   ): current value =    50, max value =   100
+VCP code 0xac (Horizontal frequency          ): 32864 hz
+VCP code 0xae (Vertical frequency            ): 59.80 hz
+VCP code 0xb2 (Flat panel sub-pixel layout   ): Red/Green/Blue vertical stripe (sl=0x01)
+VCP code 0xb4 (Source Timing Mode            ): mh=0x00, ml=0x02, sh=0x00, sl=0x01
+VCP code 0xb6 (Display technology type       ): LCD (active matrix) (sl=0x03)
+VCP code 0xc0 (Display usage time            ): Usage time (hours) = 5199 (0x00144f) mh=0x00, ml=0x00, sh=0x14, sl=0x4f
+VCP code 0xc6 (Application enable key        ): 0x45cc
+VCP code 0xc8 (Display controller type       ): Mfg: Mstar (sl=0x05), controller number: mh=0x00, ml=0x94, sh=0x85
+VCP code 0xc9 (Display firmware level        ): 1.5
+VCP code 0xca (OSD                           ): OSD Enabled (sl=0x02)
+VCP code 0xcc (OSD Language                  ): English (sl=0x02)
+VCP code 0xd6 (Power mode                    ): DPM: On,  DPMS: Off (sl=0x01)
+VCP code 0xdc (Display Mode                  ): Standard/Default mode (sl=0x00)
+VCP code 0xdf (VCP Version                   ): 2.1
+</code></pre>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../detect_verbose_output/" class="btn btn-neutral float-left" title="ddcutil detect example"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../vcpinfo_output/" class="btn btn-neutral float-right" title="ddcutil vcpinfo example">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+        <span>
+          <a href="https://github.com/rockowitz/ddcutil" class="fa fa-github" style="color: #fcfcfc"> GitHub</a>
+        </span>
+    
+    
+      <span><a href="../detect_verbose_output/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../vcpinfo_output/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "..";</script>
+    <script src="../js/theme_extra.js"></script>
+    <script src="../js/theme.js"></script>
+      <script src="../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(false);
+        });
+    </script>
+
+</body>
+</html>

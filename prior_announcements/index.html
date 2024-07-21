@@ -1,0 +1,755 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="author" content="Sanford Rockowitz" /><link rel="canonical" href="https://www.ddcutil.com/prior_announcements/" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>Announcement History - ddcutil Documentation</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Announcement History";
+        var mkdocs_page_input_path = "prior_announcements.md";
+        var mkdocs_page_url = "/prior_announcements/";
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href=".." class="icon icon-home"> ddcutil Documentation
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="..">Introduction</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../commands/">Command Overview</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Command Examples</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../cmd_output/">Command Examples</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../detect_verbose_output/">ddcutil detect example</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../getvcp_known_u3011_output/">ddcutil getvcp example</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../vcpinfo_output/">ddcutil vcpinfo example</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../cap_u3011_verbose_output/">ddcutil capabilities example</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Command Detail</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../command_detail/">Command Detail</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../primary_commands/">Primary Commands</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="#">Primary Commands</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../command_detect/">detect</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../command_capabilities/">capabilities</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../command_getvcp/">getvcp</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../command_setvcp/">setvcp</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../command_vcpinfo/">vcpinfo</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../command_dumpvcp_loadvcp/">dumpvcp &amp; loadvcp</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../command_scs/">scs</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../secondary_commands/">Secondary Commands</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../options_main/">Command Options</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="#">Command Options</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../display_detection/">Display Detection</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../display_selection/">Display Selection</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../feature_selection/">Feature Selection</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../performance_options/">Performance and Tuning Options</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../instrumentation_options/">Instrumentation Options</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../output_control_options/">Output Level Options</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../other_options/">Miscellaneous Options</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../i2c_dev_options/">i2c-dev Driver Options</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../debug_options/">Debugging Options</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../deprecated_options/">Deprecated Options</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../libddcutil_options/">Shared Library Options</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Specific Facilities</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../table_features/">Table Type Features</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../usb/">USB Connected Monitors</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../colormgt/">Color Management</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../udf/">User Defined Features</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../config_file/">Configuration File</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Installation and Configuration</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../install_config_main/">Installation and Configuration</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../config_steps/">Post-Installation Checklist</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../install/">Install ddcutil From Prebuilt Packages</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../building/">Building From Source</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../shared_lib_config/">Shared Library Configuration</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../mult_shared_libs/">Notes for Linux Distribution Maintainers</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../config/">Configuration and Installation Diagnostics</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../i2c_permissions/">I2C Device Permissions</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../usb_permissions/">USB Device Permissions</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../kernel_module/">Kernel Module Configuration</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../nvidia/">Special Nvidia Driver Settings</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../nvidia_old/">Setting Nvidia Driver Options Using X11</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../amdgpu/">Notes on driver amdgpu</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../virtual_machines/">Virtual Machines</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../raspberry/">Raspberry Pi</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../monitor_notes/">Notes on Specific Monitors</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../quirks/">Notes on Particular Configurations</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../typec/">USB-C DisplayPort Alt Mode</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Shared Library</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../api_main/">C API</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../libddcutil_release_notes/">Shared Library Release Notes</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../c_api_90/">Shared Library Changes for Release 0.9.0</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../c_api_93/">Shared Library Changes for Release 0.9.3</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../c_api_95/">Shared Library Changes for Release 0.9.5</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../c_api_96/">Shared Library Changes for Release 0.9.6</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../c_api_98/">Shared Library Changes for Release 0.9.8</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../c_api_99/">Shared Library Changes for Release 0.9.9</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../c_api_100/">Shared Library Changes for Release 1.0.0</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../c_api_110/">Shared Library Changes for Release 1.1.0</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../c_api_120/">Shared Library Changes for Release 1.2.0</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../c_api_130/">Shared Library Changes for Release 1.3.0</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../c_api_140/">Shared Library Changes for Release 1.4.0</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../c_api_200/">Shared Library Changes for Release 2.0.0</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../c_api_210/">Shared Library Changes for Release 2.1.0</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../c_api_212/">Shared Library Changes for Release 2.1.2</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../c_api_213/">Shared Library Changes for Release 2.1.3</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../c_api_214/">Shared Library Changes for Release 2.1.4</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Background</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../mccs_background/">Monitor Control Command Set</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../ddc_vs_i2c/">DDC vs I2C</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../displayport/">DDC and DisplayPort</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../bibliography/">References</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../devdoc/">Developer Documentation</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Additional Topics</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../articles/">Articles about ddcutil</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../faq/">Frequently Asked Questions</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../tech_support/">Technical Support</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../ddccontrol/">Comparison with ddccontrol</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../ddc_null_response/">DDC Null Message</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../sniffing/">Reverse Engineering Proprietary DDC Extensions</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../acknowledgements/">Acknowledgements</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../technotes/">Technical Notes</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../driver_bug_reports/">Driver Bug Reports of Interest</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Release History</span></p>
+              <ul class="current">
+                  <li class="toctree-l1"><a class="reference internal" href="../releases/">Releases</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../release_notes/">Release Notes</a>
+                  </li>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="./">Announcement History</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#obs">OBS</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#073">0.7.3</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#072">0.7.2</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#071">0.7.1</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#070">0.7.0</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#061">0.6.1</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#060">0.6.0</a>
+    </li>
+    </ul>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">ddcui</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../ddcui_main/">Overview</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../ddcui_options/">Command Line Options</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../building_ddcui/">Building ddcui</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../ddcui_release_notes/">ddcui Release Notes</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../ddcui_faq/">ddcui Frequently Asked Questions</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Related Resources</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../monitor_resources/">Monitor Specifications</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../windows_programs/">Windows Utilities for Monitor Control</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../mac_programs/">Macintosh Utlities for Monitor Control</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../ddcutil_usage/">Applications using ddcutil</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">ddcutil Documentation</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
+          <li class="breadcrumb-item">Release History</li>
+      <li class="breadcrumb-item active">Announcement History</li>
+    <li class="wy-breadcrumbs-aside">
+          <a href="https://github.com/rockowitz/ddcutil/edit/master/docs/prior_announcements.md" ></a>
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h2 id="prior-announcements">Prior Announcements</h2>
+<p>15 June 2023</p>
+<p>Release candidates <strong>ddcutil 2.0.0-rc1</strong> and <strong>ddcui 0.4.0-rc1</strong> are now available for testing 
+as branches with those names on the github <a href="https://github.com/rockowitz/ddcutil">ddcutil</a> 
+and <a href="https://github.com/rockowitz/ddcui">ddcui</a> repositories.</p>
+<p><strong>ddcutil</strong> 2.0.0 is a major release.  It provides significant performance improvements
+by caching information queried from displays across program invocations, and by dynamically
+adjusting the sleep-multiplier time. It also should work "out of the box",
+without the need for post-installation configuration.</p>
+<p>The <strong>libddcutil</strong> API has been both extended and simplified. Because certain important
+changes broke backward compatibility, I took the opportunity for a major API cleanup.
+Unneeded functions were removed, including many that were previously deprecated. Most
+client programs should build with minimal changes.  The new SONAME is <strong>libddcutil.so.5</strong>.
+For backwards compatibility, <strong>libddcutil.so.4</strong> from <strong>ddcutil</strong> 1.4.1 will continue to be 
+available as a separate package.</p>
+<p><strong>ddcui 0.4.0-rc1</strong> is built to work with the updated API in ddcutil 2.0.0-rc1.</p>
+<p>Preliminary release notes are available at <a href="http://www.ddcutil.com/next_release_notes/">Notes for the Next ddcutil Release (Draft)</a>,
+<a href="../c_api_200/">Shared Library Changes for the Next Release (Draft)</a>,
+and <a href="http://www.ddcutil.com/ddcui_next_release_notes/">Notes for the Next ddcui Release (Draft)</a>.
+Changes are also summarized in the CHANGELOG.md files in the respective source trees.</p>
+<p>17 January 2023</p>
+<p><strong>ddcutil</strong> release 1.4.1 fixes a critical bug in release 1.4.0.  The default sleep-multiplier value was 0 instead of 1.  As a result,
+commands that did not have an explcit <strong><em>--sleep-multiplier</em></strong> option would fail.  All users of release 1.4.0 should upgrade.
+Thanks to github users copysiper (Oleg Tsvetkov) and fionnb for their help in quickly identifying and resolving this bug.</p>
+<p>13 January 2023</p>
+<p><strong>ddcutil</strong> release 1.4.0 contains the following changes of general interest:</p>
+<ul>
+<li><strong>ddcutil</strong> installation now creates a udev rule file that gives the logged on user read/write access to I<sup>2</sup>C 
+  devices associated with video monitors. Use of group <strong>i2c</strong> for granting permission to non-root users is,
+  in general, no longer needed.</li>
+<li>Use of driver i2c-dev's file io interface (read()/write()), removed in release 1.3.0, has been restored. 
+  When i2c-dev's ioctl() interface is used the the Nvidia proprietary driver, depending on how the 
+  driver was built, it is possible for display detection to fail. If the Nvidia failure is detected, <strong>ddcutil</strong> switches
+  to using the read()/write() interface for the Nvidia driver.
+  In this case option <strong><em>--force-slave-address</em></strong> may be needed to handle EBUSY errors.
+  For all other video drivers, the ioctl() interface is used and <strong><em>--force-slave-address</em></strong> has no effect.</li>
+</ul>
+<p>For a detailed description of <strong>ddcutil</strong> changes and bug fixes, see <a href="../release_notes/">Release Notes</a>.</p>
+<p>27 September 2022</p>
+<p>Depending on how it was built, the proprietary nvidia driver can be incompatible with <strong>ddcutil</strong> 1.3.0 and 1.3.2.
+The effect is that no monitors are detected. Users encountering this problem should revert to using release 1.2.2, 
+or can use the latest development branch on github.  For details, see this github <a href="https://github.com/rockowitz/ddcutil/issues/282">issue</a>.
+Thank you to github user <a href="https://github.com/KeyofBlueS">KeyOfBlueS</a> for extensive and expert help in reporting and diagnosing this problem.</p>
+<p>04 September 2022</p>
+<p><strong>ddcutil</strong> release 1.3.2 modifies tarball creation to eliminate garbage and otherwise unneeded files.
+Users of release 1.3.0 need not upgrade.</p>
+<p>05 August 2022</p>
+<p><strong>ddcui</strong> release 0.3.0 contains the following changes of interest to general users;</p>
+<ul>
+<li>CTL-Q terminates <strong>ddcui</strong> (does not apply within dialog boxes)</li>
+<li>Errors opening /dev/i2c and /dev/usb/hiddev devices are reported using a message box
+  instead of being written to the terminal. These errors typically  reflect lack of permissions (Linux error EACCESS).</li>
+<li>Optionally requiring the control key to be pressed when changing feature values now applies
+  to all changes, not just those made using sliders. (The option is set using command line
+  option <strong><em>--require-control-key</em></strong> or the UI Options dialog box.).</li>
+<li>Options <strong><em>--force-slave-address</em></strong> and <strong><em>--disable-force-slave-address</em></strong>, introduced in Release 0.2.1, are deprecated and no longer have any effect.</li>
+</ul>
+<p>For a detailed description of <strong>ddcui</strong> changes and bug fixes in this release, see <a href="../ddcui_release_notes/">ddcui Release Notes</a>.</p>
+<p>Prebuilt packages for several Linux distributions and mmachine architectures can be found in 
+the <a href="../install/">ususal locations</a>.</p>
+<p>Prior announcements can be found <a href="./">here</a>.</p>
+<p>23 July 2022</p>
+<p><strong>ddcutil</strong> release 1.3.0 contains the following changes of interest to general users: </p>
+<ul>
+<li>Option <strong><em>--force-slave-address</em></strong> no longer has any effect.
+Driver i2c-dev provides both a low level ioctl() interface and a higher level read()/write() 
+interface for I<sup>2</sup> communication.  <strong>ddcutil</strong> now uses the ioctl() interface (almost) exclusively. 
+This eliminates the possbility of EBUSY errors from driver i2c-dev, which occur only when the read()/write() interface is used.</li>
+<li>Better reporting of user configuration issues at startup.</li>
+<li>Commands <strong>getvcp</strong> and <strong>vcpinfo</strong> can now take multiple features as arguments, for example <strong>ddcutil getvcp 10 12</strong>.</li>
+<li>The sleep-suppression related options, <strong><em>--sleep-less</em></strong>, <strong><em>--less-sleep</em></strong>, <strong><em>--enable-sleep-suppression</em></strong>,
+  and <strong><em>--disable-sleep-suppression</em></strong> no longer have any effect.</li>
+</ul>
+<p>For a detailed description of <strong>ddcutil</strong> changes and bug fixes, see <a href="../release_notes/">Release Notes</a>.</p>
+<p>Prebuilt packages for several Linux distributions and mmachine architectures can be found in 
+the <a href="../install/">ususal locations</a>.</p>
+<p>14 June 2022</p>
+<p><strong>ddcui</strong> 0.2.1 (along with <strong>ddcutil</strong> 1.2.2) is now available in the Debain Testing distribution (Bookworm). </p>
+<p>02 February 2022</p>
+<p><strong>ddcui</strong> release 0.2.1 better handles DDC communication failures resulting from conflict with other programs.
+Like <strong>dddcutil</strong> 1.2.2, <strong>ddcui</strong> command line option <strong><em>-force-slave-address</em></strong> allows <strong>ddcui</strong> to override the other program's
+claim to the display.</p>
+<p>For a detailed description of <strong>ddcui</strong> changes and bug fixes in this release, see <a href="../ddcui_release_notes/">ddcui Release Notes</a>.</p>
+<p>28 January 2022</p>
+<p><strong>ddcutil</strong> release 1.2.2 contains one set of changes of interest to general users: </p>
+<ul>
+<li>Handling of DDC communication failures due to conflict with other programs is improved.
+In particular, conflict occurs when device driver ddcci is loaded. Among the changes:</li>
+<li>If <strong>ddcutil detect</strong> fails to communicate with a monitor and Linux errno EBUSY is reported, 
+  it reports the monitor as "Busy" instead of "Invalid" and suggests the use of option <strong><em>--force-slave-address</em></strong>. </li>
+<li>Messages regarding EBUSY errors are always written to the system log.</li>
+<li>API functions <strong>ddca_enable_force_slave_address()</strong> and <strong>ddca_is_force_slave_address_enabled()</strong> have been added.</li>
+</ul>
+<p>For a detailed description of <strong>ddcutil</strong> changes and bug fixes, see <a href="../release_notes/">Release Notes</a>.</p>
+<p>02 December 2021</p>
+<p><strong>ddcutil</strong> release 1.2.1 contains one change of interest to general users: </p>
+<ul>
+<li>Option <strong><em>--settings</em></strong>. Details of current settings are no longer reported by every command invocation when option <strong><em>--verbose</em></strong> is specified.  Use option <strong><em>--settings</em></strong> to control option reporting.</li>
+</ul>
+<p>For a detailed description of changes and bug fixes, see <a href="../release_notes/">Release Notes</a>.</p>
+<p>25 November 2021</p>
+<p><strong>ddcui</strong> release 0.2.0 is is now available on <a href="https://github.com/rockowitz/ddcui">Github</a>, and also from this site as a <a href="../tarballs/ddcui-0.2.0.tar.gz">tarball</a>.
+While not feature complete, this 
+version should be useful to and usable by most people. For details, see <a href="../ddcui_release_notes/"><strong>ddcui</strong> Release Notes</a>.</p>
+<p>24 November 2021</p>
+<p><strong>ddcutil</strong> release candidate 1.2.1-rc2 is available as <a href="https://github.com/rockowitz/ddcutil/tree/1.2.1-rc2">branch 1.2.1-rc2</a> on Github.
+For details, see <a href="https://github.com/rockowitz/ddcutil/issues/235">the announcement</a> on Github, file CHANGELOG.md, or the draft
+<a href="../release_notes/">release notes</a>.</p>
+<p>05 October 2021</p>
+<p><strong>ddcutil</strong> release 1.2.0 contains the following changes of general interest: </p>
+<ul>
+<li>Command <strong>ddcutil --verbose</strong> now reports the raw EDID.</li>
+<li>Command <strong>ddcutil environment --verbose</strong> has been enhanced, primarily for remote /sys analysis.</li>
+<li>Major events are written to the system log.</li>
+</ul>
+<p>Most visible changes apply to the shared library.  In particular:</p>
+<ul>
+<li>The shared library name is now libddcutil.so.4.1.0.</li>
+<li>Improved tracing.</li>
+</ul>
+<p>For a complete list of changes and bug fixes, see <a href="../release_notes/">Release Notes</a>.</p>
+<p>Prior announcements can be found <a href="./">here</a>.</p>
+<p>05 April 2021</p>
+<p><strong>ddcutil</strong> release 1.1.0 contains the following changes of general interest:</p>
+<ul>
+<li>Configuration file <strong>ddcutilrc</strong>, located on the XDG config path (normally $HOME/.config/ddcutil/ddcutilrc)  is processed by both <strong>ddcutil</strong> and <strong>libddcutil</strong>. </li>
+<li>Monitor capabilities strings are cached to improve performance of the <strong>capabilities</strong> command.</li>
+<li>Partial workarounds for problems in DRM video drivers (e.g. i915, AMDGPU) when monitors are connected to a docking station. The monitor may not be detected (because no EDID is reported), or the monitor may appear as two different /dev/i2c devices. </li>
+<li>When probing /dev/i2c devices for monitors, <strong>ddcutil</strong> could put AMD Navi2 devices (e.g.  RX6000 series) into an inconsistent state. This is because the driver exposes an I<sup>2</sup> device for the SMU.  Display detection is modified to avoid probing these devices. </li>
+</ul>
+<p>The interface exposed by shared library <strong>libddcutil</strong> is unchanged. Its SONAME remains "libddcutil.so.4", and the package name is <strong>libddcutil4</strong>.</p>
+<p>For a complete list of <strong>ddcutil</strong> changes and bug fixes, see <a href="../release_notes/">Release Notes</a>.</p>
+<!--
+For **ddcui** changes and bug fixes, see [ddcui Release Notes](ddcui_release_notes.md).
+-->
+<p>Prior announcements can be found <a href="./">here</a>.</p>
+<p>08 February 2021</p>
+<p><strong>ddcutil</strong> release 1.0.1 addresses the situation wherein a display connected through a docking station is not detected 
+when the i915 video driver is used.  (I<sup>2</sup> support for docking station connected displays, and more generally displays using 
+DisplayPort Multi Stream Transport. was recently implemented for i915 and amdgpu drivers in Kernel 5.10. Initial <strong>ddcutil</strong>
+code for this situation did not adequately work around problems in the driver implementation.</p>
+<p>03 February 2021</p>
+<p><strong>ddcutil</strong> release 1.0.0 marks a milestone.  It is time to regard <strong>ddcutil</strong> as having reached production status.  There of course remain features to add, and the codebase warrants cleanup, but the feature set has been stable for some time. Bug reports are infrequent, and reflect unusual situations. </p>
+<p>There are two enhancements of general interest:</p>
+<ul>
+<li><a href="../udf/">User Defined Features</a>, which have existed for some time, are now formally available.  </li>
+<li>Option <strong><em>--mccs</em></strong> now applies to <strong>getvcp</strong>, <strong>setvcp</strong>, and <strong>dumpvcp</strong> as well as <strong>vcpinfo</strong>. </li>
+</ul>
+<p>The remaining changes in this release, while extensive, are likely of little interest to most users.  The most notable changes are:</p>
+<ul>
+<li><strong><em>ddcutil</em></strong> no longer by default checks for monitors exposing the Virtual Control Panel over USB.  Such monitors have proven rare, and messages about lack of permission to read /dev/usb/hiddev devices can be be needless confusing.  Command option <strong><em>--enable-usb</em></strong> will activate handling of USB connected monitors.  </li>
+<li>The <strong>detect</strong> commands provides additional information about the monitors found.  </li>
+<li>The <strong>capabilities</strong> command better handles malformed capabilities strings.  </li>
+<li><strong>getvcp</strong> has special handling for features x62 (audio volume), x87 (audio treble), x91 (audio bass), and x93 (audio balance). In MCCS 2.2 and 3.0, these otherwise continuous VCP 
+features have special reserved values.  </li>
+<li>Parsing <strong>setvcp</strong> command arguments was incorrect when multiple features are changed on a single <strong>setvcp</strong> command.  </li>
+</ul>
+<p>The shared library API has minor, but not upwardly compatible, changes.  The current library SONAME is libddcutil.so.4, and the library package is libddcutil4. </p>
+<p>Prior announcements can be found <a href="./">here</a>.</p>
+<p>09 July 2020</p>
+<p>Branch master on github was out of sync with the <a href="../tarballs/ddcutil-0.9.9.tar.gz">reference tarball</a> and prebuilt packages on <a href="https://launchpad.net/~rockowitz/+archive/ubuntu/ddcutil">launchpad</a>,
+<a href="https://copr.fedorainfracloud.org/coprs/rockowitz/ddcutil/">COPR</a>, and the <a href="http://download.opensuse.org/repositories/home:/rockowitz/">openSUSE Build Service</a>. The missing changes have been pushed to the master branch. If you have already built release 0.9.9 from the github master branch, pull the changes and rebuild.</p>
+<p>28 June 2020</p>
+<p><strong>ddcui</strong> release 0.1.2 is an emergency bug fix release.</p>
+<ul>
+<li>Combo boxes for simple Non-Continous features were empty instead of showing the currently selected value and list of allowed values.</li>
+</ul>
+<p>24 June 2020 </p>
+<p><strong>ddcutil</strong> release 0.9.9 contains two changes of general interest: </p>
+<ul>
+<li>A new command line option, <strong><em>--less-sleep</em></strong> eliminates many of the delays between the time that <strong>ddcutil</strong> receives a DDC response from a display
+and sends the next request, improving performance.</li>
+</ul>
+<!-- - User Defined Features are now supported. -->
+<ul>
+<li>Support for AMD's old proprietary <strong>fglrx</strong> driver has been dropped.</li>
+</ul>
+<p>The <strong>libddcutil</strong> shared libray has non-upwardly compatible changes.  For details, see <a href="../c_api_99/">Shared Library Changes for Release 0.9.9</a>.</p>
+<p><strong>ddcui</strong> release 0.1.1 adds additional features and has numerous changes in the "fit and finish" category.  In particular:</p>
+<ul>
+<li>Command line options for starting <strong><em>ddcui</em></strong>, corresponding to settings in the <strong><em>Option</em></strong> dialogs, and (if multiple monitors) 
+  the initlal monitor selected.</li>
+<li>The <strong><em>Feature Selection Dialog</em></strong>, along with command line option <strong><em>--custom-feature-set</em></strong>, 
+enable the user to specify the VCP features to be shown.</li>
+<li>Better handling of error conditions</li>
+<li>Better <strong>Help</strong> text</li>
+</ul>
+<p><strong>ddcui</strong> release 0.1.1 requires ddcutil 0.9.9.</p>
+<p>For general information about the graphical user interface, see <a href="../ddcui_main/">ddcui</a>.</p>
+<p>For a complete list of <strong>ddcutil</strong> changes and bug fixes, see <a href="../release_notes/">Release Notes</a>.<br />
+For <strong>ddcui</strong> changes and bug fixes, see <a href="../ddcui_release_notes/">ddcui Release Notes</a>.<br />
+Prior announcements can be found <a href="./">here</a>.</p>
+<p>Lastly, this website has been extensively revised to reflect the current state of <strong>ddcutil</strong> and <strong>ddcui</strong>.</p>
+<p><strong>Note:</strong> Prebuilt packages are now available for <strong>ddcutil</strong> 0.9.9.  </p>
+<p>06 December 2019</p>
+<p><strong><em>ddcutil</em></strong> release 0.9.8 contains two changes of general interest:<br />
+- A new command line option, <strong><em>--sleep-multiplier</em></strong>, adjusts the time <strong>ddcutil</strong> pauses between sending a request to the monitor
+and reading from the monitor. <br />
+- A fix for the bug that certain mice would lock up during display detection. </p>
+<p>The <strong>libddcutil</strong> shared library API has some minor extensions.  For details, see <a href="../c_api_98/">Library Changes for Release 0.9.8</a>.</p>
+<p>Graphical user interface <strong>ddcui</strong> has reached beta status.  Release 0.1.0 contains numermous improvements in the handling of particular VCP feature codes and
+the user interface generally.  Prebuilt packages now exist for many platforms. See <a href="../ddcui_main/">ddcui Overview</a>.</p>
+<p>For a complete list of changes and bug fixes, see <a href="../release_notes/">Release Notes</a>.
+Prior announcements can be found <a href="./">here</a>.</p>
+<p>08 October 2019</p>
+<p><strong>ddcui</strong> alpha release 0.0.6 is now available on <a href="https://github.com/rockowitz/ddcui">github</a>.  It requires the version of <strong>libddcutil</strong> provided by <strong>ddcutil</strong> release 0.9.7.</p>
+<p>04 September 2019</p>
+<p><strong>ddcutil</strong> release 0.9.7 fixes the cause of a segfault during display detection if a monitor appearing to support 
+the <strong>USB Monitor Control Class Specification</strong>, i.e. one that uses USB to communicate monitor settings, is connected to the system.
+If also contains some minor code cleanup. </p>
+<p>For a complete list of changes and bug fixes, see <a href="../release_notes/">Release Notes</a>.
+Prior announcements can be found <a href="./">here</a>.</p>
+<p>25 August 2019</p>
+<p><strong>ddcutil</strong> release 0.9.6 contains minor enhancements, bug fixes, and API changes.</p>
+<p>SONAME versioning is now enabled for <strong>libddcutil</strong>.  </p>
+<p>For a complete list of changes and bug fixes, see <a href="../release_notes/">Release Notes</a>.
+Prior announcements can be found <a href="./">here</a>.</p>
+<p>24 February 2019</p>
+<p><strong>ddcutil</strong> release 0.9.5 contains minor enhancements, bug fixes, and API changes.</p>
+<p>Of particular note:<br />
+- Support for feature x72 (gamma) has been added.<br />
+- Command <strong><em>setvcp</em></strong> can now take 2 byte values (0..65535) as an argument.</p>
+<p>For a complete list of changes and bug fixes, see <a href="../release_notes/">Release Notes</a>.
+Prior announcements can be found <a href="./">here</a>.</p>
+<p><strong>ddcui</strong> release 0.0.4 reflects changes to the <strong>ddcutil</strong> API. </p>
+<p>25 December 2018</p>
+<p><strong>ddcutil</strong> release 0.9.4 fixes a bug that caused the <strong><em>capabilities</em></strong> command to fail, and addresses the
+failure to build from source for the <a href="https://en.wikipedia.org/wiki/x32_ABI">x32 ABI</a>.</p>
+<p>For a complete list of changes and bug fixes, see <a href="../release_notes/">Release Notes</a>.
+Prior announcements can be found <a href="./">here</a>.</p>
+<p>26 November 2018</p>
+<p><strong>ddcutil</strong> release 0.9.3 reworks display detection to avoid problems encountered with certain recent displays and laptops.
+There have been extensive internal changes to allow for future support of user supplied definitions for manufacturer-specific
+features.  The API has also been revised to support user supplied feature definitions (see <a href="../c_api_93/">API Changes in Release 0.9.3</a>).</p>
+<p>For a complete list of changes and bug fixes, see <a href="../release_notes/">Release Notes</a>.
+Prior announcements can be found <a href="./">here</a>.</p>
+<p><strong>ddcui</strong> release 0.0.3 reflects changes to the <strong>ddcutil</strong> API. </p>
+<p>15 September 2018</p>
+<p><strong>ddcui</strong> is a Qt-based graphical user interface for <strong>ddcutil</strong>.  An initial alpha release is now available
+on <a href="https://github.com/rockowitz/ddcui">github</a>.  <strong>ddcui</strong> must currently be built from source - there are no
+pre-built (e.g. dpkg or rpm) packages.  For addtional information and rudimentary build instructions,
+see files <a href="https://github.com/rockowitz/ddcui/blob/master/README.md">README.md</a> and
+<a href="https://github.com/rockowitz/ddcui/blob/master/BUILDING.md">BUILDING.md</a>.</p>
+<p>01 September 2018</p>
+<p>Release 0.9.2 contains minor enhancements and bug fixes.</p>
+<p>For a complete list of changes and bug fixes, see <a href="../release_notes/">Release Notes</a>.
+Prior announcements can be found <a href="./">here</a>.</p>
+<p>27 May 2018</p>
+<p>Release 0.9.1 fixes the cause of a failure that may occur on command <strong><em>environment --verbose</em></strong> when examining an extremely large log file.</p>
+<p>For a complete list of changes and bug fixes, see <a href="../release_notes/">Release Notes</a>.
+Prior announcements can be found <a href="./">here</a>.</p>
+<p>13 May 2018</p>
+<p>Release 0.9.0 contains minor enhancements and a few very minor bug fixes.  However. the C API is extensively revised
+(see <a href="../c_api_90/">API Changes in Release 0.9.0</a>).</p>
+<p>Two enhancements will be of interest to general users:<br />
+- The <strong>setvcp</strong> command now allows new values for Continuous type features to be specified as relative values,
+e.g. the following commands increase or decrease the value of the brightness feature by 5. </p>
+<pre><code>$ ddcutil setvcp 10 + 5
+$ ddcutil setvcp 10 - 5
+</code></pre>
+<p>Note that parsing requires that "+" and "-" be surrounded by spaces.</p>
+<ul>
+<li>Table type features are by default not included in most feature groups specified on <strong>getvcp</strong>, e.g. <strong><em>getvcp known</em></strong>.
+Features of type Table are rare.  The DDC/CI spec does not provide a clean way for <strong>getvcp</strong> to determine that a table 
+feature does not exist.  As a result, <strong>getvcp</strong> typically has to exceed its retry count before giving up.
+(Exclusion of table features does not occur if a feature is explicitly specified by its hex code, or for feature group <strong><em>TABLE</em></strong>.)<br />
+The <strong><em>--no-table</em></strong> (formerly <strong><em>--notable</em></strong>) and <strong><em>-show-table</em></strong> options explicitly control this behavior.</li>
+</ul>
+<p>For a complete list of changes and bug fixes, see <a href="../release_notes/">Release Notes</a>.
+Prior announcements can be found <a href="./">here</a>.</p>
+<p>20 January 2018</p>
+<p>Release 0.8.6 contains a few minor externally visible enhancements and bug fixes, along with non-upwardly
+compatible changes to the C API.  Most current users will see no need to upgrade.</p>
+<p>For a complete list of changes and bug fixes, see <a href="../release_notes/">Release Notes</a>.
+Prior announcements can be found <a href="./">here</a>.</p>
+<p><strong>ddcutil</strong> is now in the repositories for the upcoming Ubuntu 18.04 release and the openSUSE Tumbleweed rolling release. </p>
+<p>16 November 2017</p>
+<p>Release 0.8.5 contains a large number of minor enhancements and bug fixes.  Users of <strong>ddcutil</strong> on 32 bit platforms and
+those on the Raspberry Pi should upgrade.  </p>
+<p>For a complete list of changes and bug fixes, see <a href="../release_notes/">Release Notes</a>.
+Prior announcements can be found <a href="./">here</a>.</p>
+<p>15 October 2017</p>
+<p>Package <strong>ddcutil</strong> has been sponsored into Debian and is now included in <a href="https://wiki.debian.org/DebianTesting">Debian Testing</a>.
+It is on track to be part of the next Debian release, which means it should eventually appear in downstream distributions such as Ubuntu. 
+Note that only package <strong>ddcutil</strong>, containing the command line version of <strong>ddcutil</strong>, is currently in the Debian repositories.
+The shared library packages, including the C and Python APIs, are not yet part of Debian.</p>
+<p>22 July 2017</p>
+<p>Release 0.8.4 primarily contains packaging changes to meet Fedora distribution standards.</p>
+<p>For a complete list of changes and bug fixes, see <a href="../release_notes/">Release Notes</a>.
+Prior annoucnements can be found <a href="./">here</a>.</p>
+<p>17 May 2017</p>
+<p>Release 0.8.2 contains minor enhancements, primarily to diagnostics in the <strong>environment</strong> and <strong>interrogate</strong> commands. </p>
+<p>For a complete list of changes and bug fixes, see <a href="../release_notes/">Release Notes</a>.
+Prior annoucnements can be found <a href="./">here</a>.</p>
+<p>05 May 2017</p>
+<p>Release 0.8.1 is a bugfix release that addresses a segfault that can occur when scanning for 
+USB connected monitors.</p>
+<p>For a complete list of changes and bug fixes, see <a href="../release_notes/">Release Notes</a>.
+Prior annoucnements can be found <a href="./">here</a>.</p>
+<p>01 May 2017</p>
+<p>Release 0.8.0 contains new features intended to address issues with particular monitors and user environments,
+and to improve performance</p>
+<p>The most significant changes visible to users are:  </p>
+<ul>
+<li>If there are multiple monitors and option <strong>--async</strong> is specified, initial monitor checks are performed in separate threads.
+Users with multiple monitors should see significantly better startup time.  </li>
+<li>If a display is specified by its I2C bus number (option <strong>--bus</strong>) and option <strong>--nodetect</strong> is specified,
+global display detection is skipped, improving performance.</li>
+<li>By default, <strong>setvcp</strong> and <strong>loadvcp</strong> now read the VCP value after it has been set, 
+to confirm that the monitor has made the change requested.  </li>
+<li>Command <strong>getvcp --terse</strong> now reports VCP settings in a form that is easily machine readable.</li>
+<li>The C API has been extensively revised.  Many names have changed for consistency and clarity.<br />
+(Apologies to those of you who have written applications.)</li>
+</ul>
+<p>For a complete list of changes and bug fixes, see <a href="../release_notes/">Release Notes</a>.
+Prior annoucnements can be found <a href="./">here</a>.</p>
+<h3 id="obs">OBS</h3>
+<p>29 April 2017</p>
+<p>At some time in the recent past, the files for release 0.7.3 in the OpenSUSE Build Service were corrupted 
+with files from the test system.  Symptoms of this corruption include</p>
+<ul>
+<li>Prefixing a VCP feature code number with "0x" causes a segfault, e.g. "ddcutil setvcp 0x10 50"  </li>
+<li>Command line option "--verify" is recognized</li>
+</ul>
+<p>As of this morning, the production ddcutil project on OBS was restored to release 0.7.3.</p>
+<h3 id="073">0.7.3</h3>
+<p>05 March 2017</p>
+<p>Release 0.7.3 is a maintenance release.  There is no need to install it unless you are experiencing problems.</p>
+<p>This release introduces the following features:</p>
+<ul>
+<li>Command <strong>ddcutil detect --verbose</strong> shows additional information.</li>
+<li>Command <strong>ddcutil environment --verbose</strong> implements additional diagnostic tests.</li>
+<li><strong>configure</strong> option <strong><em>--enable-drm</em></strong> controls whether DRM is used to enhance the diagnostics of command <strong>ddcutil environment --verbose</strong>.
+If <strong><em>enable-drm=yes</em></strong>, package libdrm-dev or libdrm-devel (depending on Linux distribution) must be installed to build <strong>ddcutil</strong>.
+Setting <strong><em>--enable-drm=no</em></strong> affects only diagnostic output, not normal execution.</li>
+</ul>
+<p>For a complete list of changes and bug fixes, see <a href="../release_notes/">Release Notes</a>.
+Prior annoucnements can be found <a href="./">here</a>.</p>
+<h3 id="072">0.7.2</h3>
+<p>01 February 2017</p>
+<p>Maintenance release.</p>
+<ul>
+<li>Fixes a critical bug in release 0.7.1 where insufficient privileges on a /dev/i2c-n device causes program termination.</li>
+<li><strong>ddcutil interrogate</strong> always executes with <strong><em>--set-slave-address</em></strong> in effect</li>
+<li>Minor improvements to <strong>ddcutil environment</strong> and <strong>ddcutil interrogate</strong> output</li>
+<li>Minor improvements to <strong>ddcutil detect --verbose</strong></li>
+<li>Add explanations for additional <strong><em>errno</em></strong> values</li>
+</ul>
+<p>For a complete list of changes and bug fixes, see <a href="../release_notes/">Release Notes</a>.
+Prior annoucnements can be found <a href="./">here</a>.</p>
+<h3 id="071">0.7.1</h3>
+<p>27 January 2017</p>
+<p>Release 0.7.1 is a maintenance release.  There is no need to install it unless you are experiencing problems.</p>
+<p>This release introduces the following features:</p>
+<ul>
+<li>Command option <strong><em>--force-slave-address</em></strong> causes <strong>ddcutil</strong> to attempt to take control of slave addresses
+on the I<sup>2</sup> bus even if they are in use by another driver.  This may aid in certain situations where monitors on 
+an I<sup>2</sup> bus are not properly detected. See <a href="../other_options/#force_slave">Instrumentation and Tuning</a>)</li>
+</ul>
+<p>For a complete list of changes and bug fixes, see <a href="../release_notes/">Release Notes</a>.
+Prior annoucnements can be found <a href="./">here</a>.</p>
+<h3 id="070">0.7.0</h3>
+<p>03 January 2017</p>
+<p>Release 0.7 introduces the following features: </p>
+<ul>
+<li>C API, exposed by shared library <strong>libddcutil</strong>.  See <a href="../api_main/">API</a>.  </li>
+<li>A new command line option <strong><em>--mfg</em></strong>, allows for the 3 character manufaturer id found in the EDID to used as part of monitor selection.</li>
+<li>The monitor feature and capabilities portion of <strong><em>interrogate</em></strong> is also exposed by the  new <strong><em>probe</em></strong> command which explores the capabilities string and features found on a single monitor.</li>
+</ul>
+<p>For details, see <a href="../release_notes/">Release Notes</a>.
+Prior annoucnements can be found <a href="./">here</a>.</p>
+<p>openSUSE Build Service packaging of release 0.7.0 is complete.  Owing to Launchpad constraints, the PPA will not be correct until <strong>ddcutil</strong>'s release is incremented, i.e. until release 0.7.1</p>
+<h3 id="061">0.6.1</h3>
+<p>21 November 2016</p>
+<p>The most recent release of <strong>ddcutil</strong> is 0.6.1.  This is a maintenance release and need not be installed
+unless you are experiencing problems.  For details, see <a href="../release_notes/">Release Notes</a>.</p>
+<h3 id="060">0.6.0</h3>
+<p>01 October 2016</p>
+<p>As of release 0.6, the name of this program changed from <strong>ddctool</strong> to <strong>ddcutil</strong> 
+to avoid confusion with a commerical datacenter program also named <strong>ddctool.</strong></p>
+<p>The following are affected:</p>
+<p>|Object            |Old name                             | New Name                             | Comments|
+|-------------------|--------------------------------------|--------------------------------------|
+|Repository URL     |https://github.com/rockowitz/ddctool.git | https://github.com/rockowitz/ddcutil.git | Old name still works |
+|Web site URL       | http://www.ddctool.com               | http://www.ddcutil.com |  Old name still works |
+|Primary executable | ddctool                              | ddcutil |
+|Shared library     | libddctool.so                        | libddcutil.so |</p>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../release_notes/" class="btn btn-neutral float-left" title="Release Notes"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../ddcui_main/" class="btn btn-neutral float-right" title="Overview">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+        <span>
+          <a href="https://github.com/rockowitz/ddcutil" class="fa fa-github" style="color: #fcfcfc"> GitHub</a>
+        </span>
+    
+    
+      <span><a href="../release_notes/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../ddcui_main/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "..";</script>
+    <script src="../js/theme_extra.js"></script>
+    <script src="../js/theme.js"></script>
+      <script src="../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(false);
+        });
+    </script>
+
+</body>
+</html>
