@@ -349,9 +349,11 @@ the feature is continuous or non-continuous, and "RW", "RO", or "WO" indicating 
 the feature is read-write, read-only, or write-only. </p>
 <p>For non-continuous features, there are one or more <strong><em>VALUE</em></strong> lines describing the possible values. 
 Each line has the form: <strong><em>VALUE &lt;value&gt; &lt;description&gt;</em></strong>.  Feature values can be written either 
-as decimal or hexadecimal. </p>
+as decimal or hexadecimal.  By default, the value is interpreted as decimal.  If the value is explicitly hex, 
+e.g. with a leading "x", it is interpreted as a hex value.  So value string "x11" represents decimal 17, while "11" represents decimal 11.
+This can be a source of confusion, as command <strong>capabilities</strong> reports hex values without a leading "x".</p>
 <p>The MCCS specification has evolved to include features that don't neatly conform the original Continuous/Non-Continuous classification.  For example, continous features can have special reserved values, and non-continuous features exist that do not have simple tables of feature values, but instead have unique interpretations.  The <strong><em>User Defined Feature</em></strong> facility
-cannont define such features.</p>
+cannot define such features.</p>
 <p>Blank lines and lines beginning with "*" or "#" are ignored.</p>
 <h3 id="examples">Examples</h3>
 <p>An actual feature definition file for a monitor whose values for feature x60 (Input Source) do not conform to the MCCS specification. </p>
