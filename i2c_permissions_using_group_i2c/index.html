@@ -3,18 +3,18 @@
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="author" content="Sanford Rockowitz" /><link rel="canonical" href="https://www.ddcutil.com/cap_u3011_verbose_output/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="author" content="Sanford Rockowitz" /><link rel="canonical" href="https://www.ddcutil.com/i2c_permissions_using_group_i2c/" />
       <link rel="shortcut icon" href="../img/favicon.ico" />
-    <title>ddcutil capabilities example - ddcutil Documentation</title>
+    <title>I2C Device Permissions Using Group i2c - ddcutil Documentation</title>
     <link rel="stylesheet" href="../css/theme.css" />
     <link rel="stylesheet" href="../css/theme_extra.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
     
       <script>
         // Current page data
-        var mkdocs_page_name = "ddcutil capabilities example";
-        var mkdocs_page_input_path = "cap_u3011_verbose_output.md";
-        var mkdocs_page_url = "/cap_u3011_verbose_output/";
+        var mkdocs_page_name = "I2C Device Permissions Using Group i2c";
+        var mkdocs_page_input_path = "i2c_permissions_using_group_i2c.md";
+        var mkdocs_page_url = "/i2c_permissions_using_group_i2c/";
       </script>
     
     <!--[if lt IE 9]>
@@ -48,7 +48,7 @@
                 </li>
               </ul>
               <p class="caption"><span class="caption-text">Command Examples</span></p>
-              <ul class="current">
+              <ul>
                   <li class="toctree-l1"><a class="reference internal" href="../cmd_output/">Command Examples</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../detect_verbose_output/">ddcutil detect example</a>
@@ -57,9 +57,7 @@
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../vcpinfo_output/">ddcutil vcpinfo example</a>
                   </li>
-                  <li class="toctree-l1 current"><a class="reference internal current" href="./">ddcutil capabilities example</a>
-    <ul class="current">
-    </ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../cap_u3011_verbose_output/">ddcutil capabilities example</a>
                   </li>
               </ul>
               <p class="caption"><span class="caption-text">Command Detail</span></p>
@@ -131,7 +129,7 @@
                   </li>
               </ul>
               <p class="caption"><span class="caption-text">Installation and Configuration</span></p>
-              <ul>
+              <ul class="current">
                   <li class="toctree-l1"><a class="reference internal" href="../install_config_main/">Installation and Configuration</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../config_steps/">Post-Installation Checklist</a>
@@ -148,7 +146,9 @@
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../i2c_permissions/">I2C Device Permissions</a>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../i2c_permissions_using_group_i2c/">I2C Device Permissions Using Group i2c</a>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="./">I2C Device Permissions Using Group i2c</a>
+    <ul class="current">
+    </ul>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../usb_permissions/">USB Device Permissions</a>
                   </li>
@@ -291,10 +291,10 @@
         <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
   <ul class="wy-breadcrumbs">
     <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
-          <li class="breadcrumb-item">Command Examples</li>
-      <li class="breadcrumb-item active">ddcutil capabilities example</li>
+          <li class="breadcrumb-item">Installation and Configuration</li>
+      <li class="breadcrumb-item active">I2C Device Permissions Using Group i2c</li>
     <li class="wy-breadcrumbs-aside">
-          <a href="https://github.com/rockowitz/ddcutil/edit/master/docs/cap_u3011_verbose_output.md" ></a>
+          <a href="https://github.com/rockowitz/ddcutil/edit/master/docs/i2c_permissions_using_group_i2c.md" ></a>
     </li>
   </ul>
   <hr/>
@@ -302,70 +302,36 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
             <div class="section" itemprop="articleBody">
               
-                <h2 id="ddcutil-capabilities">ddcutil capabilities</h2>
-<p>Command <strong>ddcutil capabilities --brief</strong> shows the capabilities string reported by the monitor that ddcutil has identified as display number 4:</p>
-<pre><code class="language-text">$ ddcutil capabilities --brief --display 4
-Unparsed capabilities string: (prot(monitor)type(lcd)model(U3011)cmds(01 02 03 07 0C E3 F3)vcp(02 04 05 06 08 10 12 14(01 05 08 0B 0C) 16 18 1A 52 60(01 03 04 0C 0F 11 12) AC AE B2 B6 C6 C8 C9 D6(01 04 05) DC(00 02 03 04 05) DF FD)mccs_ver(2.1)mswhql(1))
+                <h4 id="granting-i2c-device-permissions-using-group-i2c">Granting I2C Device Permissions Using Group i2c</h4>
+<p>The original method for graning I2C device permissions relied on group i2c. The instructions for using group i2c are
+retained for reference.</p>
+<p>On Debian, Ubuntu, and likely other Debian derived distributions, most of the work has already been done.
+Package ddcutil requires package i2c-tools. Installation of package i2c-tools creates group <strong><em>i2c</em></strong> (if it does not alreay exist), and assigns that group to the
+/dev/i2c devices using a udev rule. </p>
+<p>All that is necessary is to add users who will use <strong>ddcutil</strong> to group <strong><em>i2c</em></strong>: </p>
+<pre><code>$ sudo usermod &lt;user-name&gt; -aG i2c
 </code></pre>
-<p>WIth the <strong><em>--verbose</em></strong> option, <strong>capaibilities</strong> includes details for each feature, as specified in the Monitor Control Command Set and modified by a feature definition file:</p>
-<pre><code class="language-text">$ src/ddcutil --dis 4 cap --verbose
-Processed feature definition file: /home/rock/.local/share/ddcutil/DEL-DELL_U3011-16485.mccs
-Unparsed capabilities string: (prot(monitor)type(lcd)model(U3011)cmds(01 02 03 07 0C E3 F3)vcp(02 04 05 06 08 10 12 14(01 05 08 0B 0C) 16 18 1A 52 60(01 03 04 0C 0F 11 12) AC AE B2 B6 C6 C8 C9 D6(01 0
-4 05) DC(00 02 03 04 05) DF FD)mccs_ver(2.1)mswhql(1))
-Model: U3011
-MCCS version: 2.1
-Commands:
-   Op Code: 01 (VCP Request)
-   Op Code: 02 (VCP Response)
-   Op Code: 03 (VCP Set)
-   Op Code: 07 (Timing Request)
-   Op Code: 0C (Save Settings)
-   Op Code: E3 (Capabilities Reply)
-   Op Code: F3 (Capabilities Request)
-VCP Features:
-   Feature: 02 (New control value)
-   Feature: 04 (Restore factory defaults)
-   Feature: 05 (Restore factory brightness/contrast defaults)
-   Feature: 06 (Restore factory geometry defaults)
-   Feature: 08 (Restore color defaults)
-   Feature: 10 (Brightness)
-   Feature: 12 (Contrast)
-   Feature: 14 (Select color preset)
-      Values (unparsed): 01 05 08 0B 0C
-      Values (  parsed):
-         01: sRGB
-         05: 6500 K
-         08: 9300 K
-         0b: User 1
-         0c: User 2
-   Feature: 16 (Video gain: Red)
-   Feature: 18 (Video gain: Green)
-   Feature: 1A (Video gain: Blue)
-   Feature: 52 (Active control)
-   Feature: 60 (Input Source)
-      Values (unparsed): 01 03 04 0C 0F 11 12
-      Values (  parsed):
-         01: VGA-1
-         03: DVI-1
-         04: DVI-2
-         0c: Component video (YPrPb/YCrCb) 1
-         0f: DisplayPort-1
-         11: HDMI-1
-         12: HDMI-2
-   Feature: AC (Horizontal frequency)
-   Feature: AE (Vertical frequency)
-   Feature: B2 (Flat panel sub-pixel layout)
-   Feature: B6 (Display technology type)
-   Feature: C6 (Application enable key)
-   Feature: C8 (Display controller type)
-rock@banner:/shared/playproj/i2c$ 
+<p>On other than Debian derived distributions, additional steps may be necessary. </p>
+<p>If group <strong><em>i2c</em></strong> does not already exist, the following command will create it: </p>
+<pre><code>$ sudo groupadd --system i2c
+</code></pre>
+<p>Then add your userid to group <strong><em>i2c</em></strong> as above.</p>
+<p>A sample udev rule for giving group <strong><em>i2c</em></strong> RW permission on the /dev/i2c devices 
+can be found in distributed file <strong>45-ddcutil-i2c.rules</strong>.  Its exact location varies by distribution, but 
+commonly the file is found in directory /usr/share/ddcutil/data.  The file can be copied to 
+/etc/udev/rules.d, but do check that this rule does not conflict with others in that directory.</p>
+<pre><code>$ sudo cp /usr/share/ddcutil/data/45-ddcutil-i2c.rules /etc/udev/rules.d
+</code></pre>
+<p>For testing, it may be simpler to give everyone permission to write to 
+/dev/i2c-* for the current boot:</p>
+<pre><code>$ sudo chmod a+rw /dev/i2c-*
 </code></pre>
               
             </div>
           </div><footer>
     <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
-        <a href="../vcpinfo_output/" class="btn btn-neutral float-left" title="ddcutil vcpinfo example"><span class="icon icon-circle-arrow-left"></span> Previous</a>
-        <a href="../command_detail/" class="btn btn-neutral float-right" title="Command Detail">Next <span class="icon icon-circle-arrow-right"></span></a>
+        <a href="../i2c_permissions/" class="btn btn-neutral float-left" title="I2C Device Permissions"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../usb_permissions/" class="btn btn-neutral float-right" title="USB Device Permissions">Next <span class="icon icon-circle-arrow-right"></span></a>
     </div>
 
   <hr/>
@@ -392,10 +358,10 @@ rock@banner:/shared/playproj/i2c$
         </span>
     
     
-      <span><a href="../vcpinfo_output/" style="color: #fcfcfc">&laquo; Previous</a></span>
+      <span><a href="../i2c_permissions/" style="color: #fcfcfc">&laquo; Previous</a></span>
     
     
-      <span><a href="../command_detail/" style="color: #fcfcfc">Next &raquo;</a></span>
+      <span><a href="../usb_permissions/" style="color: #fcfcfc">Next &raquo;</a></span>
     
   </span>
 </div>

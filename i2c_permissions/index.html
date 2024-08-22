@@ -147,8 +147,14 @@
                   <li class="toctree-l1 current"><a class="reference internal current" href="./">I2C Device Permissions</a>
     <ul class="current">
     <li class="toctree-l2"><a class="reference internal" href="#granting-i2c-device-permissions-on-versions-prior-to-140">Granting I2C Device Permissions on Versions Prior to 1.4.0</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#granting-i2c-device-permissions-using-group-i2c">Granting I2C Device Permissions using group i2c.</a>
+    </li>
+        </ul>
     </li>
     </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../i2c_permissions_using_group_i2c/">I2C Device Permissions Using Group i2c</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../usb_permissions/">USB Device Permissions</a>
                   </li>
@@ -308,33 +314,19 @@
 <p>Starting with release 1.4.0, <strong>ddcutil</strong> installed udev rule 60-ddcutil.rules that grants read/write access to the logged on user.</p>
 <p>As of release <strong>ddcutil</strong> 2.0, this has changed to files 60-ddcutil-i2c.rules and  60-ddcutil-usb.rules. </p>
 <h3 id="granting-i2c-device-permissions-on-versions-prior-to-140">Granting I2C Device Permissions on Versions Prior to 1.4.0</h3>
-<p>On Debian, Ubuntu, and likely other Debian derived distributions, most of the work has already been done.
-Package ddcutil requires package i2c-tools. Installation of package i2c-tools creates group <strong><em>i2c</em></strong> (if it does not alreay exist), and assigns that group to the
-/dev/i2c devices using a udev rule. </p>
-<p>All that is necessary is to add users who will use <strong>ddcutil</strong> to group <strong><em>i2c</em></strong>: </p>
-<pre><code>$ sudo usermod &lt;user-name&gt; -aG i2c
+<p>The simplest way to grant I2C device permissions on versions prior to 1.4.0 is to manually install file /etc/udev/rules.d/60-ddcutil-i2c.rules:</p>
+<pre><code>SUBSYSTEM==&quot;i2c-dev&quot;, KERNEL==&quot;i2c-[0-9]*&quot;, ATTRS{class}==&quot;0x030000&quot;, TAG+=&quot;uaccess&quot;
+SUBSYSTEM==&quot;dri&quot;, KERNEL==&quot;card[0-9]*&quot;, TAG+=&quot;uaccess&quot;
 </code></pre>
-<p>On other than Debian derived distributions, additional steps may be necessary. </p>
-<p>If group <strong><em>i2c</em></strong> does not already exist, the following command will create it: </p>
-<pre><code>$ sudo groupadd --system i2c
-</code></pre>
-<p>Then add your userid to group <strong><em>i2c</em></strong> as above.</p>
-<p>A sample udev rule for giving group <strong><em>i2c</em></strong> RW permission on the /dev/i2c devices 
-can be found in distributed file <strong>45-ddcutil-i2c.rules</strong>.  Its exact location varies by distribution, but 
-commonly the file is found in directory /usr/share/ddcutil/data.  The file can be copied to 
-/etc/udev/rules.d, but do check that this rule does not conflict with others in that directory.</p>
-<pre><code>$ sudo cp /usr/share/ddcutil/data/45-ddcutil-i2c.rules /etc/udev/rules.d
-</code></pre>
-<p>For testing, it may be simpler to give everyone permission to write to 
-/dev/i2c-* for the current boot:</p>
-<pre><code>$ sudo chmod a+rw /dev/i2c-*
-</code></pre>
+<h4 id="granting-i2c-device-permissions-using-group-i2c">Granting I2C Device Permissions using group i2c.</h4>
+<p>The original method for granting /dev/i2c device permissions relied on group i2c.
+These <a href="../i2c_permissions_using_group_i2c/">instructions</a> are retained for reference, in case they are useful for some corner cases.</p>
               
             </div>
           </div><footer>
     <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
         <a href="../config/" class="btn btn-neutral float-left" title="Configuration and Installation Diagnostics"><span class="icon icon-circle-arrow-left"></span> Previous</a>
-        <a href="../usb_permissions/" class="btn btn-neutral float-right" title="USB Device Permissions">Next <span class="icon icon-circle-arrow-right"></span></a>
+        <a href="../i2c_permissions_using_group_i2c/" class="btn btn-neutral float-right" title="I2C Device Permissions Using Group i2c">Next <span class="icon icon-circle-arrow-right"></span></a>
     </div>
 
   <hr/>
@@ -364,7 +356,7 @@ commonly the file is found in directory /usr/share/ddcutil/data.  The file can b
       <span><a href="../config/" style="color: #fcfcfc">&laquo; Previous</a></span>
     
     
-      <span><a href="../usb_permissions/" style="color: #fcfcfc">Next &raquo;</a></span>
+      <span><a href="../i2c_permissions_using_group_i2c/" style="color: #fcfcfc">Next &raquo;</a></span>
     
   </span>
 </div>
