@@ -487,6 +487,8 @@ For details, see page [Raspberry Pi](/raspberry).
 <h3 id="setvcp-does-not-change-the-feature-value"><strong>setvcp</strong> does not change the feature value</h3>
 <p>Several Iilyama monitor models require that command <strong><em>scs</em></strong> (Save Current Settings) be issued immediately after a feature
 value is set.  <strong><em>setvcp</em></strong> must be invoked with the <strong><em>--noverify</em></strong> option, followed immediately by <strong><em>scs</em></strong>.</p>
+<p>Some monitors disable changing features such as brightness, contrast, and color when in Cinema or other special mode.
+Changing to a custom mode may enable these features.</p>
 <h3 id="the-monitor-supports-dynamic-contrast-range-dcr-setvcp-for-feature-x10-brightness-does-not-change-the-value">The monitor supports Dynamic Contrast Range (DCR). <strong>setvcp</strong> for feature x10 (brightness) does not change the value</h3>
 <p>At least some monitors with Dynamic Contrast Range (DCR) disable feature x10 (brightness) and possibly other features 
 when DCR is enabled. This has been reported with both Lenovo and Benq monitors.</p>
