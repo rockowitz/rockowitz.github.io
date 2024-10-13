@@ -512,6 +512,15 @@ The SMU related hang should have been fixed as of kernel 5.14.4.  <strong>ddcuti
 <pre><code>$ sudo ps -aux | grep ddcutil
 $ sudo awk ' {print FILENAME &quot;: &quot; $0 } '  /sys/bus/i2c/devices/*/name
 </code></pre>
+<!--
+<a name="nvram"> </a>
+### Can ddcutil wear out the monitor's nvram?
+
+Solid date memory wears out after some number of cycles.  
+
+See []
+-->
+
 <p><a name="plasma_6"></a></p>
 <h3 id="kde-plasma-6">KDE Plasma 6</h3>
 <p>ddcutil commands fail after upgrade to version 2.0 and KDE Plasma 6</p>
@@ -537,6 +546,7 @@ RUN pacman --noconfirm -Syu &amp;&amp; \
 <p>I then ran the container and also mapped all <code>i2c</code> devices (otherwise, these were not available in the container):</p>
 <pre><code class="language-bash">docker run $(for dev in `ls /dev/i2c*`; do echo &quot;--device $dev &quot;; done) -it --name ddcutil ddcutil:v0.0.1
 </code></pre>
+<p>See also this stackoverflow post: <a href="https://stackoverflow.com/questions/73857667/how-to-fix-ddcutil-for-a-docker-container">How to fix ddcutil for a docker container</a></p>
 <!--
 ### setvcp of feature x60 (Input Source) fails with the message "Feature x60 does not support verifiation"
 
