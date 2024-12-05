@@ -454,7 +454,7 @@
 <li>Compile using option <strong><em>-Wformat-security</em></strong>. Issue <a href="https://github.com/rockowitz/ddcutil/issues/458">458</a>.</li>
 </ul>
 <h3 id="shared-library">Shared Library</h3>
-<p>Shared library <strong>libddcutil</strong> is backwardly compatible with the one in 
+<p>Shared library <strong>libddcutil</strong> is backwardly compatible with the one in
 ddcutil 2.1.0. The SONAME is unchanged as libddcutil.so.5. The released library
 file is libddcutil.so.5.2.0.</p>
 <h4 id="display-change-reporting">Display Change Reporting</h4>
@@ -485,7 +485,8 @@ file is libddcutil.so.5.2.0.</p>
 <li>There is an alternate, much less efficient algorithm that does not 
     rely on UDEV and /sys that can be used for nvidia. It instead attempts to
     read an EDID from every (plausible) /dev/i2c device in a polling loop.
-    Users with all but the most powerful machines will likely find it much too resource consumptive.
+    Users with all but the most powerful machines will likely find it much too
+    resource consumptive.
     It is enabled by option <strong><em>--watch-mode poll</em></strong>. 
     <br></li>
 <li>The following named options affect display change detection.  </li>
@@ -493,7 +494,7 @@ file is libddcutil.so.5.2.0.</p>
 <li><strong><em>--enable/disable-try-get-edid-from-sysfs</em></strong> (default <strong><em>--enable-try-get-edid-from-sysfs</em></strong>)
      This may or may not improve performance at the expense of reliability. </li>
 <li>Some monitors behave in ways that make KDE PowerDevil unstable.
-   See, for example, ddcutil github issue (466)(https://github.com/rockowitz/ddcutil/issues/466), github issue (470)(https://github.com/rockowitz/ddcutil/issues/470) and <a href="https://bugs.kde.org/show_bug.cgi?id=495746">KDE bug 495746</a>. 
+   See, for example, ddcutil github issue <a href="https://github.com/rockowitz/ddcutil/issues/466">466</a>, github issue <a href="https://github.com/rockowitz/ddcutil/issues/470">470</a> and <a href="https://bugs.kde.org/show_bug.cgi?id=495746">KDE bug 495746</a>. 
    Specific monitor models can be excluded from display change detection using
    option <strong><em>--disable-ddc</em></strong>, which takes a Monitor Model Id, 
    e.g. SAM-U32H75x-3587, as an argument.  The monitor model id can be found in the output of 
