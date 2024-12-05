@@ -485,23 +485,23 @@ file is libddcutil.so.5.2.0.</p>
 <li>There is an alternate, much less efficient algorithm that does not 
   rely on UDEV and /sys that can be used for nvidia. It instead attempts to
   read an EDID from every (plausible) /dev/i2c device in a polling loop.
-  Users with all but the most powerful machines will likely find it much too
-  resource consumptive.
+  Users with all but the most powerful machines will likely find it much too resource consumptive.
   It is enabled by option <strong><em>--watch-mode poll</em></strong>. 
 <br></li>
 </ul>
 </li>
-<li>The following named options affect display change detection.  </li>
+<li>The following named options affect display change detection.  <ul>
 <li><strong><em>---watch-mode udev|poll</em></strong>. the default is <strong>UDEV</strong>.</li>
 <li><strong><em>--enable/disable-try-get-edid-from-sysfs</em></strong> (default <strong><em>--enable-try-get-edid-from-sysfs</em></strong>)
-     This may or may not improve performance at the expense of reliability. </li>
+   This may or may not improve performance at the expense of reliability. </li>
+</ul>
+</li>
 <li>Some monitors behave in ways that make KDE PowerDevil unstable.
    See, for example, ddcutil github issue <a href="https://github.com/rockowitz/ddcutil/issues/466">466</a>, github issue <a href="https://github.com/rockowitz/ddcutil/issues/470">470</a> and <a href="https://bugs.kde.org/show_bug.cgi?id=495746">KDE bug 495746</a>. 
    Specific monitor models can be excluded from display change detection using
    option <strong><em>--disable-ddc</em></strong>, which takes a Monitor Model Id, 
    e.g. SAM-U32H75x-3587, as an argument.  The monitor model id can be found in the output of 
-   command <strong>ddcutil detect --verbose</strong>, and is the same monitor model id that
-   is used in the name of a user defined features file.<br />
+   command <strong>ddcutil detect --verbose</strong>, and is the same monitor model id that is used in the name of a user defined features file.<br />
    -- Typically, this option will be added to the
       <strong>[libddcutil]</strong> section of configuration file ddcutilrc. It can also be included 
       in the options string passed in the opts argument to <strong>ddca_init2()</strong>.</li>
@@ -512,17 +512,19 @@ file is libddcutil.so.5.2.0.</p>
    while leaving other <strong>libddcutil</strong> services available.
 <br></li>
 <li>In addition to the named option, several utility options currently affect display change detection.
-  Some of these will become named options when <strong>ddcutil</strong> version 2.2.0 is released, others will be removed once testing is finished.</li>
+  Some of these will become named options when <strong>ddcutil</strong> version 2.2.0 is released, others will be removed once testing is finished.<ul>
 <li><strong><em>--f17</em></strong>  do not use sysfs connector_id  (default is to use it)</li>
 <li><strong><em>--f18</em></strong>  always report UDEV events</li>
 <li><strong><em>--f20</em></strong>  do not try to avoid rechecking DDC responsiveness when a display is
-           reconnected (default is to remember prior checks)</li>
+         reconnected (default is to remember prior checks)</li>
 <li><strong><em>--f21</em></strong>  always treat sysfs as unreliable for reporting display changes</li>
 <li><strong><em>--f22</em></strong>  never treat sysfs as unreliable for reporting display changes</li>
 <li><strong><em>--i6</em></strong>   watch loop sleep multiplier (multiply default watch loop settings)</li>
 <li><strong><em>--i7</em></strong>   extra stabilization milliseconds after apparent disconnection</li>
 <li><strong><em>--i8</em></strong>   explicit udev poll loop milliseconds (takes precedence over --i6)</li>
 <li><strong><em>--i9</em></strong>   explicit non-udev poll loop milllisec (takes precedence over --i6)</li>
+</ul>
+</li>
 <li>As the requirements become clearer, it is expected that the API will add functionality
   currently specified only as <strong>libddcutil</strong> options.</li>
 </ul>
