@@ -5,14 +5,14 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="author" content="Sanford Rockowitz" /><link rel="canonical" href="https://www.ddcutil.com/next_release_notes/" />
       <link rel="shortcut icon" href="../img/favicon.ico" />
-    <title>Next release notes - ddcutil Documentation</title>
+    <title>Preliminary Notes for Release 2.2.0 - ddcutil Documentation</title>
     <link rel="stylesheet" href="../css/theme.css" />
     <link rel="stylesheet" href="../css/theme_extra.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
     
       <script>
         // Current page data
-        var mkdocs_page_name = "Next release notes";
+        var mkdocs_page_name = "Preliminary Notes for Release 2.2.0";
         var mkdocs_page_input_path = "next_release_notes.md";
         var mkdocs_page_url = "/next_release_notes/";
       </script>
@@ -243,10 +243,44 @@
                   </li>
               </ul>
               <p class="caption"><span class="caption-text">Release History</span></p>
-              <ul>
+              <ul class="current">
                   <li class="toctree-l1"><a class="reference internal" href="../releases/">Releases</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../release_notes/">Release Notes</a>
+                  </li>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="./">Preliminary Notes for Release 2.2.0</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#220">2.2.0</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#displaylink">DisplayLink</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#raspberry-pi">Raspberry Pi</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#user-defined-features">User Defined Features</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#command-detect">Command detect</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#command-setvcp">Command setvcp</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#commands-interrogate-and-environment-verbose">Commands interrogate and environment --verbose</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#udev-rules">Udev rules</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#parser-changes">Parser changes</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#minor-bug-fixes-and-changes">Minor Bug Fixes and Changes</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#building-ddcutil">Building ddcutil</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#shared-library">Shared Library</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#display-change-reporting">Display Change Reporting</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#other-shared-library-changes">Other Shared Library Changes</a>
+    </li>
+        </ul>
+    </li>
+    </ul>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../prior_announcements/">Announcement History</a>
                   </li>
@@ -289,7 +323,8 @@
         <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
   <ul class="wy-breadcrumbs">
     <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
-      <li class="breadcrumb-item active">Next release notes</li>
+          <li class="breadcrumb-item">Release History</li>
+      <li class="breadcrumb-item active">Preliminary Notes for Release 2.2.0</li>
     <li class="wy-breadcrumbs-aside">
           <a href="https://github.com/rockowitz/ddcutil/edit/master/docs/next_release_notes.md" ></a>
     </li>
@@ -299,77 +334,249 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
             <div class="section" itemprop="articleBody">
               
-                <h2 id="notes-for-the-next-ddcutil-release-draft">Notes for the Next <strong>ddcutil</strong> Release (Draft)</h2>
-<h3 id="initialization-performance-tuning">Initialization Performance Tuning</h3>
-<p><strong>ddcutil</strong> initialization typically consumes most of the elapsed time of command execution.
-For devices using DDC/CI (i.e. all but the few that communicate the with the monitor's Virtual Control Panel using USB), there are roughly speaking two phases to this process.  First, every /dev/i2c device
-associated with a video display adapter is examined to determine if it has an EDID, i.e. if it is associated with a connected monitor.  After that, each of the /dev/i2c devices associated with monitors are tested to see if DDC/CI communication works for the /dev/i2c device.  This includes a check that the monitor adheres to the DDC/CI specification for reporting unsupported features; if not, <strong>ddcutil</strong> attempts to figure out if there is some other way the monitor reports unsupported features.</p>
-<p>To speed up this process, the following changes have been made.</p>
-<pre><code>- Option ***--ddc-check-async-min*** specifies a threshold number for performing the DDC
-  related checks in parallel.  The optimal value is a tradeoff between the time savings from parellel execution and
-  the overhead of splitting execution into multiple threads.  This tradeoff will vary by processor speed and the number 
-  of threads available.  The default value is 3, i.e. parallelize execution if 3 or more monitors are present.
-- The ambiguously named ***--async*** option has been is deprecated and now has no effect. Previously, it turned on
-  parallel execution of DDC related checks in a multi-monitor situation, no matter the number of monitors.
-- As a practical matter, once you know that your display adheres to the DDC/CI spec, there's no need to perform the DDC level
-  check every time **ddcutil** is invoked.  Option ***--skip-ddc-checks*** disables the DDC level checks completely.
-</code></pre>
+                <h2 id="notes-for-upcoming-ddcutil-release-220-draft">Notes for Upcoming <strong>ddcutil</strong> Release 2.2.0 (Draft)</h2>
+<p>Note: Reflecting the extensive changes, the next <strong>ddcutil</strong> release will be numbered 2.2.0, not 2.1.5.</p>
+<p>For <strong>ddcui</strong> changes, see <a href="../ddcui_release_notes/"><strong>ddcui</strong> Release Notes</a></p>
+<h3 id="220">2.2.0</h3>
+<p>dd Dec 2024</p>
+<p>Release 2.2.0 contains some major enhancements, particularly for display change detection, numerous small changes, and a large number of bug fixes.</p>
+<h3 id="displaylink">DisplayLink</h3>
+<p>DisplayLink devices, using the evince driver, are supported.</p>
+<h3 id="raspberry-pi">Raspberry Pi</h3>
+<ul>
+<li>Fix display not found and DDC communication failure on Raspberry Pi.
+  Do not rely on sysfs attributes that do not exist for ARM devices. 
+  Resolves github issues <a href="https://github.com/rockowitz/ddcutil/issues/403">403</a>,
+  <a href="https://github.com/rockowitz/ddcutil/issues/413">413</a>.</li>
+<li>Miscellaneous changes to allow for building on raspbian.</li>
+</ul>
+<h3 id="user-defined-features">User Defined Features</h3>
+<ul>
+<li>Add feature type <strong>XNC</strong> (Extended Non-Continous). This is like simple <strong>NC</strong>, but the SH byte is
+    also reported. Provides a solution to the primary problem raised in 
+    github issue <a href="https://github.com/rockowitz/ddcutil/issues/403">403</a>.
+    Note that this feature type was created for use in user defined feature definitions;
+    there are no features of this type defined in the Monitor Control Command Set specification.</li>
+<li>Allow <strong>SNC</strong> (Simple Non-Continuous) as alternative name for <strong>NC</strong>.</li>
+<li>Report user defined features as part of parsed capabilities.</li>
+<li>Commands recognizing user defined features now fail if there's an error
+    loading a user defined feature file.  These are <strong>capabilities</strong>, 
+    <strong>setvcp</strong>, <strong>dumpvcp</strong>, and <strong>probe</strong>.</li>
+<li>Fix error msg when nothing follows <strong>VALUE</strong> in user defined feature file.</li>
+<li>When processing a user defined feature file, recognize any whitespace character
+  (e.g. tab), not just space.</li>
+</ul>
+<h3 id="command-detect">Command <strong>detect</strong></h3>
+<ul>
+<li>Only show details about DDC communication errors if option <strong><em>--verbose</em></strong> is in effect.</li>
+<li>Provide a clearer message if slave address x37 is inactive: <ul>
+<li>"Monitor does not support DDC" instead of generic "DDC_commnication failed"</li>
+<li>If option <strong><em>--verbose</em></strong> is in effect, emit an additional message to
+   check the monitor's OSD.</li>
+</ul>
+</li>
+<li>Report the Monitor Model Id in the <strong><em>--verbose</em></strong> output. </li>
+</ul>
+<h3 id="command-setvcp">Command <strong>setvcp</strong></h3>
+<ul>
+<li>Do not report "Interpretation may not be accurate." when the VCP version cannot be determined.
+    This message is irrelevant for <strong>setvcp</strong>, which does not interpret feature values.
+    Partially addresses github issue <a href="https://github.com/rockowitz/ddcutil/issues/454">454</a>.</li>
+</ul>
+<h3 id="commands-interrogate-and-environment-verbose">Commands <strong>interrogate</strong> and <strong>environment --verbose</strong></h3>
+<ul>
+<li>Force settings <strong><em>--disable-cross-instance-locking</em></strong>, <strong><em>--disable-dynamic-sleep</em></strong>.</li>
+<li>Forced settings apply to <strong>environment --verbose</strong> as well as <strong>interrogate</strong></li>
+<li>When probing DRM, recognize bus types DRM_BUS_PLATFORM, DRM_BUS_HOST1X, 
+    report as "platform", "host1x".</li>
+<li>Simple getvcp test was not reporting the bytes of the response packet.</li>
+<li>If no device with class x03 was found, the user's home directory
+   was dumped. Addresses github issue <a href="https://github.com/rockowitz/ddcutil/issues/413">413</a>.</li>
+<li>Remove "-i" option on get-edid command. Does not exist on some versions.</li>
+</ul>
+<h3 id="udev-rules">Udev rules</h3>
+<ul>
+<li>/usr/lib/udev/rules.d/60-ddcutil-i2c-rules:</li>
+<li>Also give logged on user r/w access to /dev/dri/cardN, needed
+    to allow logged on user to probe connectors using DRM.</li>
+<li>Do not install /usr/lib/udev/rules.d/60-ddcutil-usb.rules, delete it
+  if previously installed. Addresses github issues <a href="https://github.com/rockowitz/ddcutil/issues/405">405</a>, 
+  <a href="https://github.com/rockowitz/ddcutil/issues/428">428</a>, <a href="https://github.com/rockowitz/ddcutil/issues/437">437</a>.</li>
+</ul>
+<h3 id="parser-changes">Parser changes</h3>
+<ul>
+<li>Add alternative option names for symmetry with other options: <ul>
+<li><strong><em>--discard-capabilities-cache</em></strong> is an alias for <strong><em>--discard-cache capabilities</em></strong></li>
+<li><strong><em>--discard-sleep-cache</em></strong> is an alias for <strong><em>--discard cache dsa</em></strong></li>
+<li><strong><em>--discard-dsa-cache</em></strong> is an alias for <strong><em>--discard cache dsa</em></strong></li>
+</ul>
+</li>
+<li>Eliminate <strong><em>--enable-dsa-cache</em></strong> as alias for <strong><em>--enable-dynamic-sleep-cache</em></strong>.</li>
+<li>Improve handling of <strong><em>--verify</em></strong>/<strong><em>--noverify</em></strong>, error if both specified</li>
+<li>Add <strong><em>--enable-flock</em></strong> and <strong><em>--disable-flock</em></strong> as aliases for 
+  <strong><em>--enable-cross-instance-locks</em></strong> and <strong><em>--disable-cross-instance-locks</em></strong>.</li>
+</ul>
+<h3 id="minor-bug-fixes-and-changes">Minor Bug Fixes and Changes</h3>
+<ul>
+<li>Configuration file ddcutilrc: If there is a pound sign "#" on a line, 
+  the remainder of the line is treated as a comment.</li>
+<li>If option <strong><em>--bus</em></strong> is specified, only check accessability for that bus, avoiding
+  irrelevant warning messages regarding other buses.  Addresses github issue <a href="https://github.com/rockowitz/ddcutil/issues/461">461</a>.</li>
+<li>Add command <strong>noop</strong>, which allows for executing options such as 
+  <strong><em>--settings</em></strong> without having to execute a real command.</li>
+<li>Change the system log message level when sleep time is adjusted from WARNING
+  to VERBOSE. Addresses github issue <a href="https://github.com/rockowitz/ddcutil/issues/427">427: Adjusting multiplier message fills system
+  log when libddcutil used by clightd</a>.</li>
+<li>When processing environment variable user $XDG_DATA_DIRS, or $XDG_CONFIG_DIRS,
+  the final directory in the list was ignored. See github issue <a href="https://github.com/rockowitz/ddcutil/issues/438">438</a>.</li>
+<li>Fix core dump on ddcutil getvcp. Fixes github issue <a href="https://github.com/rockowitz/ddcutil/issues/407">407</a>.</li>
+<li>Convert CRLF line endings in source to LF.</li>
+<li>Rework laptop detection. A non-laptop display can have an eDP connector.
+  This is an i915 video driver bug that will not be fixed. See freedesktop.org 
+  issue [DRM connector for external monitor has name card1-eDP-1]
+  (https://gitlab.freedesktop.org/drm/i915/kernel/-/issues/10389)</li>
+</ul>
+<h3 id="building-ddcutil">Building ddcutil</h3>
+<ul>
+<li>As an aid to development, the build date and time are normally embedded in
+  the ddcutil and libddcutil executables.  This is reported using command
+  <strong>ddcutil --version --verbose".  </strong>libddcutil<strong> reports this to the system
+  log. If reproducible builds are required, use </strong>configure<strong> option 
+  </strong><em>--disable-build-timestamp</em>**. </li>
+<li><strong>configure</strong> options <strong><em>--enable-x11</em></strong>/<strong><em>--disable-x11</em></strong> are restored.
+  The default is <strong><em>--enable-x11</em></strong>. 
+  The X11 API continues to be used to test for DPMS sleep mode.</li>
+<li>Changes for portability:</li>
+<li>Use printf() formats %jd and %zd to portably print variables of type ssize_t, 
+  and time_t, so as to build  unchanged on architectures such as armel, armhf.</li>
+<li>Avoid compiler warning possible depending on compiler configuration when
+  a switch() construct is used. Replaced with if/else if/else. Resolves issue #458.</li>
+<li>Compile using option <strong><em>-Wformat-security</em></strong>. Issue <a href="https://github.com/rockowitz/ddcutil/issues/458">458</a>.</li>
+</ul>
+<h3 id="shared-library">Shared Library</h3>
+<p>Shared library <strong>libddcutil</strong> is backwardly compatible with the one in 
+ddcutil 2.1.0. The SONAME is unchanged as libddcutil.so.5. The released library
+file is libddcutil.so.5.2.0.</p>
+<h4 id="display-change-reporting">Display Change Reporting</h4>
+<p>Detection of display connection and disconnection has been extensively reworked.  </p>
+<ul>
+<li>Detecting and reporting sleep mode has proven very problematic. <strong>libddcutil</strong> no longer watches 
+  for and reports changes to DPMS state.  However, if an API function is called to perform an operation that requires communiation with a display 
+  that is asleep, status DDCRC_DPMS_ASLEEP is returned.   </li>
+<li><strong>ddca_start_watch_displays()</strong> has been modifed accordingly in a backwards compatible way.  <ul>
+<li>The only event class that can be enabled is DDCA_EVENT_CLASS_DISPLAY_DETECTION.
+.   - DDCA_EVENT_CLASS_ALL is effectively the same as DDCA_EVENT_CLASS_DISPLAY_CONNECTION.</li>
+<li>It is an error if either DDCA_EVENT_CLASS_DPMS or DDCA_EVENT_CLASS_NONE are specified.  </li>
+</ul>
+</li>
+<li>Performance is improved using UDEV and /sys to watch for changes and to get the EDID if possible.  </li>
+<li>
+<p>Connection of Multi-Stream Transport (MSG) hub devices is detected if the driver/device combination
+  supports it.  Not all drivers do.  </p>
+</li>
+<li>
+<p>Display change detection is unreliable with the nvidia proprietary driver.</p>
+</li>
+<li>The nvidia driver does not use /sys in the same way as amdgpu, i915, 
+    nouveau and other drm enabled drivers that are part of the Linux kernel.  </li>
+<li>Depending on driver version the phase of the moon, the /sys file system does not
+    reflect display changes and UDEV events are not generated. In that case 
+    no display changes are reported.</li>
+<li>There is an alternate, much less efficient algorithm that does not 
+    rely on UDEV and /sys that can be used for nvidia. It instead attempts to
+    read an EDID from every (plausible) /dev/i2c device in a polling loop.
+    Users with all but the most powerful machines will likely find it much too resource consumptive.
+    It is enabled by option <strong><em>--watch-mode poll</em></strong>. 
+    <br></li>
+<li>The following named options affect display change detection.  </li>
+<li><strong><em>---watch-mode udev|poll</em></strong>. the default is <strong>UDEV</strong>.</li>
+<li><strong><em>--enable/disable-try-get-edid-from-sysfs</em></strong> (default <strong><em>--enable-try-get-edid-from-sysfs</em></strong>)
+     This may or may not improve performance at the expense of reliability. </li>
+<li>Some monitors behave in ways that make KDE PowerDevil unstable.
+   See, for example, ddcutil github issue (466)(https://github.com/rockowitz/ddcutil/issues/466), github issue (470)(https://github.com/rockowitz/ddcutil/issues/470) and <a href="https://bugs.kde.org/show_bug.cgi?id=495746">KDE bug 495746</a>. 
+   Specific monitor models can be excluded from display change detection using
+   option <strong><em>--disable-ddc</em></strong>, which takes a Monitor Model Id, 
+   e.g. SAM-U32H75x-3587, as an argument.  The monitor model id can be found in the output of 
+   command <strong>ddcutil detect --verbose</strong>, and is the same monitor model id that
+   is used in the name of a user defined features file.<br />
+   -- Typically, this option will be added to the
+      <strong>[libddcutil]</strong> section of configuration file ddcutilrc. It can also be included 
+      in the options string passed in the opts argument to <strong>ddca_init2()</strong>.</li>
+<li>Display change detection can be completely disabled using <strong>libddcutil</strong> only 
+  option <strong><em>--disable-watch-displays</em></strong>.  This blocks <strong>ddca_start_watch_displays()</strong> from starting the thread that watches
+  for display changes.  Workaround for issue <a href="https://github.com/rockowitz/ddcutil/issues/470">470</a>.
+   Unlike the use of KDE Plasma environment variable POWERDEVIL_NO_DDCUTIL=1, this disables display change detection
+   while leaving other <strong>libddcutil</strong> services available.
+<br></li>
+<li>In addition to the named option, several utility options currently affect display change detection.
+  Some of these will become named options when <strong>ddcutil</strong> version 2.2.0 is released, others will be removed once testing is finished.</li>
+<li><strong><em>--f17</em></strong>  do not use sysfs connector_id  (default is to use it)</li>
+<li><strong><em>--f18</em></strong>  always report UDEV events</li>
+<li><strong><em>--f20</em></strong>  do not try to avoid rechecking DDC responsiveness when a display is
+           reconnected (default is to remember prior checks)</li>
+<li><strong><em>--f21</em></strong>  always treat sysfs as unreliable for reporting display changes</li>
+<li><strong><em>--f22</em></strong>  never treat sysfs as unreliable for reporting display changes</li>
+<li><strong><em>--i6</em></strong>   watch loop sleep multiplier (multiply default watch loop settings)</li>
+<li><strong><em>--i7</em></strong>   extra stabilization milliseconds after apparent disconnection</li>
+<li><strong><em>--i8</em></strong>   explicit udev poll loop milliseconds (takes precedence over --i6)</li>
+<li><strong><em>--i9</em></strong>   explicit non-udev poll loop milllisec (takes precedence over --i6)</li>
+<li>As the requirements become clearer, it is expected that the API will add functionality
+  currently specified only as <strong>libddcutil</strong> options.</li>
+</ul>
 <!--
-      - Option ***--i2c-bus-check-async-min*** specifies a threshold value for performing the 
-      the initial checks on each /dev/i2c device.  Individually, each I<sup>2</sup>C check is much faster than the DDC level check, 
-      but there are many more of them to perform.  The default value for this option is 4, i.e. parallelize execution if four or 
-      more /dev/i2c devices are to be examined.
+- Named options affecting display change detection:
+
+  - --watch-mode UDEV, POLL, DYNAMIC (default DYNAMIC)  <=== TO CHANGE
+      DYNAMIC resolves to UDEV or POLL depending on whether any display uses the
+      nvidia driver, and for the nvidia driver depending on the driver appears to 
+      change the connector edid and status value when displays are connected
+      or disconnected
 -->
 
-<h3 id="dynamic-sleep">Dynamic Sleep</h3>
-<ul>
-<li>Always set sleep multiplier to at least 1.0 for commands <strong>setvcp</strong> and <strong>scs</strong>. Addresses reports
-    that aggressive optimization caused setvcp to fail.</li>
-</ul>
-<h3 id="cross-instance-locking">Cross-Instance Locking</h3>
-<p>The cross-instance locking feature uses system call flock() to
-ensure that operations on /dev/i2c devices by multiple instances of <strong>ddcutil</strong> or <strong>libddcutil</strong> do not interfere.
-All instances must use option <strong><em>--enable-cross-instance-locks</em></strong>. </p>
-<h4 id="switching-input-source-on-recent-lg-monitors">Switching input source on recent LG monitors</h4>
-<p>Option <strong><em>--i2c-source-addr</em></strong> causes <strong>setvcp</strong> to use the specified address instead 
-of the value x51 given in DDC/CI specification.  User experimentation has found that 
-using an alternate source address accesses additional features on some LG monitors. 
-See <a href="https://github.com/rockowitz/ddcutil/wiki/Switching-input-source-on-LG-monitors">Switching Input Source on LG Monitors</a>.</p>
-<h3 id="miscellaneous-changes">Miscellaneous Changes</h3>
-<ul>
-<li>Better handling of DDC Null Message recognition and adjustments</li>
-<li>Dynamic sleep: make it easier to reduce time - once high didn't come down</li>
-<li>Command detect: ensure output of model name, serial number, and extra display descriptor 
-  use only ASCII character in the range 0..127.</li>
-<li>Some USB-only code was not iftested out when <strong>configure</strong> option <strong><em>--disable-usb</em></strong> was set. (Issue 355)</li>
-<li>Cross-thread locking handles situtations where a display ref does not yet exist, e.g. reading EDID</li>
-<li>Deprecate vaguely named option <strong><em>--force</em></strong>.  Replace its single use with<br />
-  option <strong><em>--permit-unknown-feature</em></strong>, which applies only to command <strong>setvcp</strong>.</li>
-<li>Deprecate vaguely named option <strong><em>--ddc</em></strong>. Instead use <strong><em>--ddcdata</em></strong>, which more
-  clearly indicates that it causes DDC data errors to be reported. </li>
-<li>Option <strong><em>--version</em></strong>: The amount of detail shown is now modified by options <strong><em>--brief</em></strong> and <strong><em>--vebose</em></strong>.
-  If <strong><em>--brief</em></strong> is specified, just the version string is shown.  If <strong><em>--verbose</em></strong> is specified, detailed 
-  build information is reported.</li>
-<li>Option <strong><em>--help</em></strong>: Show extended help on argument values only if <strong><em>--verbose</em></strong> is also specified.</li>
-<li>Command <strong>detect</strong>. EDID text fields FF (Display serial number), FC (Display Name) and FE (Unspecified Use) are 
-  supposed to contain only ASCII characters, i.e. single byte characters in the range 0..127.  There have been reports
-  of "garbage" output from <strong>detect</strong> because of characters in the range 128..255.  Any characters in the range 128..255, 
-  along with control characters in the range 1..31.</li>
-<li>Command <strong>detect</strong>: Clearer messages for laptop displays. </li>
-<li>do not report "DDC communication failed"</li>
-<li>Report "Is laptop display" instead of "Is eDP device" or "Is LVDS device"</li>
-</ul>
-<h3 id="building">Building</h3>
-<ul>
-<li><strong>configure</strong> option <strong><em>--enable-asan</em></strong> added. Turns on ASAN related compiler options and 
-  links libasan into binaries.</li>
-<li><strong>configure</strong> option <strong><em>--enable-x11</em></strong> is deprecated and has no effect.  The X11 API is no longer used.
-  Distribution packagers should eliminate requirements for X11 related libraries.  The option will
-  be completely removed in a future release.</li>
-</ul>
+<h4 id="other-shared-library-changes">Other Shared Library Changes</h4>
+<p>Quiesce operation:<br />
+- Quiesce the API during <strong>ddca_redetect_displays()</strong>.  Operations that access
+  display state are not permitted, and return <strong>DDCRC_QUIESCED</strong>.</p>
+<p>Status codes:<br />
+  - Most functions that specify a <strong>DDCA_Display_Ref</strong> now return status code 
+  DDCRC_DISCONNECTED if the display reference is no longer valid.<br />
+  - Status code DDCRC_INVALID_CONFIG_FILE has been renamed to more general DDCRC_CONFIG_ERROR, 
+  and is used instead of DDCRC_BAD_DATA for User Defined Feature File errors.
+  DDCRC_INVALID_CONFIG_FILE is a valid alias.</p>
+<p>System log:<br />
+- Write build date and time to system log when starting <strong>libddcutil</strong>.<br />
+- Rework <strong>libdccutil</strong> output to avoid duplicate msgs in the system log when all terminal 
+  output is directed to the log, as with KDE Plasma.<br />
+- Include thread id in messages written to syslog.</p>
+<p>Miscellaneous:<br />
+- Use mutexes to control access to corruptable data structures, such as the table of open monitors.
+- Recover instead of abort when more than one non-removed display refs exist 
+  for the same display.<br />
+- Enum value DDCA_STATS_API is added to enum DDCA_Stats_Type, for reporting API specific stats.<br />
+- <strong>ddca_start_watch_displays()</strong>: 
+  Fixed segfault that occured with driver nvidia when checking if all video
+  adapters implement drm. <a href="https://github.com/rockowitz/ddcutil/issues/390">github issue 390</a>.<br />
+- During initial display reference validation, an otherwise valid display reference may be
+  for a removed display.  Avoid a segfault in this case. 
+  Addresses github issue <a href="https://github.com/rockowitz/ddcutil/issues/418">418</a>.<br />
+- Ignore phantom displays when searching for a display reference.
+  Addresses github issue <a href="https://github.com/rockowitz/ddcutil/issues/412">412</a>.<br />
+- <strong>ddca_get_display_refs()</strong> and <strong>ddca_get_display_info_list2()</strong> always
+  return 0, even if an error occured when examining a particular monitor. 
+  Addresses <a href="https://github.com/rockowitz/ddcutil/issues/417">github issue 417</a><br />
+  - Errors that occur opening individual displays or reading their EDIDs are
+    are still reported using <strong>ddca_get_error_detail()</strong>. In addition, error
+    messages are written to the terminal and, depending on the current
+    syslog level, to the system log.<br />
+  - It is useful to create a string representation of a display reference even
+  if it is no longer valid. Addresses github ddcui issue <a href="https://github.com/rockowitz/ddcui/issues/55">55</a>.</p>
               
             </div>
           </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../release_notes/" class="btn btn-neutral float-left" title="Release Notes"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../prior_announcements/" class="btn btn-neutral float-right" title="Announcement History">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
 
   <hr/>
 
@@ -395,6 +602,10 @@ See <a href="https://github.com/rockowitz/ddcutil/wiki/Switching-input-source-on
         </span>
     
     
+      <span><a href="../release_notes/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../prior_announcements/" style="color: #fcfcfc">Next &raquo;</a></span>
     
   </span>
 </div>
