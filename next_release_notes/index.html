@@ -476,19 +476,21 @@ file is libddcutil.so.5.2.0.</p>
 </li>
 <li>
 <p>Display change detection is unreliable with the nvidia proprietary driver.</p>
-</li>
+<ul>
 <li>The nvidia driver does not use /sys in the same way as amdgpu, i915, 
-    nouveau and other drm enabled drivers that are part of the Linux kernel.  </li>
+  nouveau and other drm enabled drivers that are part of the Linux kernel.  </li>
 <li>Depending on driver version the phase of the moon, the /sys file system does not
-    reflect display changes and UDEV events are not generated. In that case 
-    no display changes are reported.</li>
+  reflect display changes and UDEV events are not generated. In that case 
+  no display changes are reported.</li>
 <li>There is an alternate, much less efficient algorithm that does not 
-    rely on UDEV and /sys that can be used for nvidia. It instead attempts to
-    read an EDID from every (plausible) /dev/i2c device in a polling loop.
-    Users with all but the most powerful machines will likely find it much too
-    resource consumptive.
-    It is enabled by option <strong><em>--watch-mode poll</em></strong>. 
-    <br></li>
+  rely on UDEV and /sys that can be used for nvidia. It instead attempts to
+  read an EDID from every (plausible) /dev/i2c device in a polling loop.
+  Users with all but the most powerful machines will likely find it much too
+  resource consumptive.
+  It is enabled by option <strong><em>--watch-mode poll</em></strong>. 
+<br></li>
+</ul>
+</li>
 <li>The following named options affect display change detection.  </li>
 <li><strong><em>---watch-mode udev|poll</em></strong>. the default is <strong>UDEV</strong>.</li>
 <li><strong><em>--enable/disable-try-get-edid-from-sysfs</em></strong> (default <strong><em>--enable-try-get-edid-from-sysfs</em></strong>)
