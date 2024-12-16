@@ -66,7 +66,7 @@
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../primary_commands/">Primary Commands</a>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="#">Primary Commands</a>
+                  <li class="toctree-l1"><a class="reference internal" >Primary Commands</a>
     <ul>
                 <li class="toctree-l2"><a class="reference internal" href="../command_detect/">detect</a>
                 </li>
@@ -88,7 +88,7 @@
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../options_main/">Command Options</a>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="#">Command Options</a>
+                  <li class="toctree-l1"><a class="reference internal" >Command Options</a>
     <ul>
                 <li class="toctree-l2"><a class="reference internal" href="../display_detection/">Display Detection</a>
                 </li>
@@ -225,7 +225,7 @@
               <ul class="current">
                   <li class="toctree-l1"><a class="reference internal" href="../articles/">Articles about ddcutil</a>
                   </li>
-                  <li class="toctree-l1 current"><a class="reference internal current" href="./">Frequently Asked Questions</a>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="#">Frequently Asked Questions</a>
     <ul class="current">
     </ul>
                   </li>
@@ -468,8 +468,10 @@ FEATURE_CODE 60 Input Source
 <p><a name="duplicate_displayport"></a></p>
 <h3 id="the-same-displayport-connected-monitor-appears-twice-in-the-output-of-ddcutil-detect">The same DisplayPort connected monitor appears twice in the output of <strong><em>ddcutil detect</em></strong>.</h3>
 <p>Sometimes the same DisplayPort connected monitor is detected at 2 different I2C bus numbers.  <strong><em>ddcutil detect</em></strong> reads the
-EDID at on both buses, but typically DDC communication succeeds on only 1 bus.  <strong>ddcutil</strong> attempts to filter out the invalid bus.
-The invalid bus appears to be related to the DisplayPort multistream facility.  You can ignore the invalid entry.</p>
+EDID at on both buses, but typically DDC communication succeeds on only 1 bus.  <strong>ddcutil</strong> attempts to filter out the invalid bus,
+and refers to it as a "phantom" display.
+The invalid bus is a result of the implementation of the DisplayPort multistream facility.  You can ignore the invalid entry.
+For more information, <a href="https://gitlab.freedesktop.org/drm/intel/-/issues/3605#note_1317298">freedesktop.org i915 issue 3605 - Same MST display appears as 2 /dev/i2c devices</a> contains an explanation of the complexity of MST topology</p>
 <h3 id="the-detect-command-reports-different-edids-depending-on-how-the-monitor-is-connected-to-the-video-card">The <strong><em>detect</em></strong> command reports different EDIDs depending on how the monitor is connected to the video card.</h3>
 <p>Strange as it may seem at first, a monitor can have more than one EDID.
 The EDID for a VGA connection will have a different video input definition (byte x14) than that for a  digital connection.
@@ -486,6 +488,7 @@ The HDMI related chip has been changed on the Raspberry Pi 4, and drivers have n
 For details, see page [Raspberry Pi](/raspberry). 
 -->
 
+<p><a name="setvcp_does_not_change_feature_value"></a></p>
 <h3 id="setvcp-does-not-change-the-feature-value"><strong>setvcp</strong> does not change the feature value</h3>
 <p>Several Iilyama monitor models require that command <strong><em>scs</em></strong> (Save Current Settings) be issued immediately after a feature
 value is set.  <strong><em>setvcp</em></strong> must be invoked with the <strong><em>--noverify</em></strong> option, followed immediately by <strong><em>scs</em></strong>.</p>
