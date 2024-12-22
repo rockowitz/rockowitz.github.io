@@ -66,7 +66,7 @@
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../primary_commands/">Primary Commands</a>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" >Primary Commands</a>
+                  <li class="toctree-l1"><a class="reference internal" href="#">Primary Commands</a>
     <ul>
                 <li class="toctree-l2"><a class="reference internal" href="../command_detect/">detect</a>
                 </li>
@@ -88,7 +88,7 @@
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../options_main/">Command Options</a>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" >Command Options</a>
+                  <li class="toctree-l1"><a class="reference internal" href="#">Command Options</a>
     <ul>
                 <li class="toctree-l2"><a class="reference internal" href="../display_detection/">Display Detection</a>
                 </li>
@@ -225,7 +225,7 @@
               <ul class="current">
                   <li class="toctree-l1"><a class="reference internal" href="../articles/">Articles about ddcutil</a>
                   </li>
-                  <li class="toctree-l1 current"><a class="reference internal current" href="#">Frequently Asked Questions</a>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="./">Frequently Asked Questions</a>
     <ul class="current">
     </ul>
                   </li>
@@ -379,6 +379,7 @@ DP 1.1 vs 1.2
 <p>Symptoms include "DDC communication failed" on <strong>ddcutil detect</strong>, and lots of "Maximum retries exceeded" errors
 on command <strong>ddcutil getvcp known</strong>.  </p>
 <p>You may need the Nvidia secret handshake.  See <a href="../nvidia/">Special Nvidia Driver Settings</a>.</p>
+<p><a name="vcp_version"></a></p>
 <h3 id="the-capabilities-command-reports-the-mccs-aka-vcp-version-but-elsewhere-ddcutil-says-the-version-is-unknown">The <strong><em>capabilities</em></strong> command reports the MCCS (aka VCP) version, but elsewhere <strong>ddcutil</strong> says the version is unknown.</h3>
 <p>DDC/CI has two ways to get the the MCCS version:</p>
 <ul>
@@ -389,6 +390,7 @@ on command <strong>ddcutil getvcp known</strong>.  </p>
 <p>Command <strong><em>ddcutil capabilities</em></strong> reports the response to the DDC Capabilities Request.  However, <strong>ddcutil</strong> regards this 
 output as purely informational.  (See <a href="../command_capabilities/">capabilities command</a>) </p>
 <p><strong>ddcutil</strong> therefore relies on VCP feature code xDF to determine the VCP version.  (For USB connected monitors, it queries HID usage x00800004.)  It is possible that feature code xDF is unsupported, even though the capabilities response specifies a version.</p>
+<p><a name="capabilities_incorrect"></a></p>
 <h3 id="the-output-of-the-capabilities-command-is-incorrect">The output of the <strong><em>capabilities</em></strong> command is incorrect.</h3>
 <p>For example, a Dell P2210 monitor has VGA, DVI, and DisplayPort inputs, but capabilities only reports: </p>
 <pre><code> Feature: 60 (Input Source)
