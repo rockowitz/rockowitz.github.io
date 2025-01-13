@@ -250,7 +250,9 @@
                   </li>
                   <li class="toctree-l1 current"><a class="reference internal current" href="./">Preliminary Notes for Release 2.2.0</a>
     <ul class="current">
-    <li class="toctree-l2"><a class="reference internal" href="#220">2.2.0</a>
+    <li class="toctree-l2"><a class="reference internal" href="#changes-since-220-rc1">Changes since 2.2.0-rc1</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#220-rc1">2.2.0-rc1</a>
     </li>
     <li class="toctree-l2"><a class="reference internal" href="#displaylink">DisplayLink</a>
     </li>
@@ -337,7 +339,50 @@
                 <h2 id="notes-for-upcoming-ddcutil-release-220-draft">Notes for Upcoming <strong>ddcutil</strong> Release 2.2.0 (Draft)</h2>
 <p>Note: Reflecting the extensive changes, the next <strong>ddcutil</strong> release will be numbered 2.2.0, not 2.1.5.</p>
 <p>For <strong>ddcui</strong> changes, see <a href="../ddcui_release_notes/"><strong>ddcui</strong> Release Notes</a></p>
-<h3 id="220">2.2.0</h3>
+<h3 id="changes-since-220-rc1">Changes since 2.2.0-rc1</h3>
+<p>Branch 2.2.0-rc2 contains extensive changes, particularly for handling corner cases in display detection, such as displays that disconnect immediately after connection.</p>
+<p>It's possible that there is a delay between the time a monitor is turned on (and X11/Wayland generate a display change event) and the time that DDC becomes enabled. 
+To address this situation, there's a newly added flags field in the unused section of DDCA_Display_Status_Event, with bit DDCA_DISPLAY_EVENT_DDC_WORKING.
+If a monitor is detected but DDC is not working, a display connection event is reported to the client with flag DDCA_DISPLAY_EVENT_DDC_NOT_WORKING set, and the display reference goes onto a recheck queue processed by a separate thread.  There will be a subsequent event of type DDCA_EVENT_DDC_ENABLED if and when the recheck thread determines that DDC is working.</p>
+<p>There's a tension in display change detection between minimizing the time between when X11/Wayland detects a monitor having been turned on and libddcutil issuing an event of type DDCA_DISPLAY_EVENT_CONNECTED versus checking and rechecking failed states (e.g. DDC not working).  In many cases, the frequency and wait intervals are controlled by settings in file src/base/parms.h.  If you do experiment with these settings, please report the results.</p>
+<p>Miscellaneous changes: </p>
+<ul>
+<li>The opaque value of <strong>DDCA_Display_Ref</strong> is now an integer display reference id number instead of an actual pointer to the internal display reference, making it slightly more opaque.  The published type remains (void*), so no client changes should be needed.</li>
+<li><strong>libddcutil</strong> maintains a table of <strong>DDCA_Display_Ref</strong>s that have been passed to the client by the API.  This table is used to further validate display references the client passes as arguments.  </li>
+<li>Newly added option <strong><em>--disable-api</em></strong> causes API calls to fail. This can be useful for excluding libddcutil as a source of system errors, particularly when a client such as KDE PowerDevil, cannot be built without libddcutil.</li>
+<li>API calls <strong>ddca_get_display_refs()</strong> and <strong>ddca_get_display_info_list2()</strong> do not include displays that have been marked removed. Addresses <strong>ddcutil</strong> issue #417.</li>
+<li>The default for option <strong><em>--watch-mode</em></strong>  is now DYNAMIC.  This resolves to XEVENT if possible, otherwise to POLL.  Watch mode UDEV continues to exist, but will likely be removed in the future.</li>
+<li>Option <strong><em>--ignore-mmid</em></strong> replaces the ambiguously named <strong><em>--ignore-ddc</em></strong>.</li>
+<li>Disable the check, in the prolog to API functions, that a monitor is not asleep.  It is possible that a display is still responsive to DDC requests in this case.  If it is not, the error will be detected when actually performing the requested operation. </li>
+<li>Ensure that all syslog messages are prefixed similarly with thread and timestamp.</li>
+<li><strong>ddca_get_display_info()</strong> succeeds even if DDC communication is not working.  Addresses issue <strong>ddcui</strong> issue #55.</li>
+<li>Option <strong><em>--skip-ddc-checks</em></strong> sets the detected VCP version to "Unknown".  Addresses a 
+  possible segfault when this option is used with display change detection.</li>
+<li>Write syslog messages for sleeps incurred by display change detection. </li>
+<li>Maintain thread-specific traced function stacks for debugging.</li>
+<li>Additional compiler warnings to tighten code, specified in automake variable AM_CFLAGS.</li>
+<li>
+<p>Plug memory leaks.</p>
+</li>
+<li>
+<p>Utility options:</p>
+<ul>
+<li>Option <strong><em>--f8</em></strong> directs all report output to syslog</li>
+<li>Option <strong><em>--f19</em></strong> optionally check buses with edid stable on add as well as remove</li>
+<li>Option <strong><em>--i6</em></strong> has been eliminated.  This option adjusted the display watch
+  sleep time by a multiplier. </li>
+<li>Option <strong><em>--f24</em></strong> causes "detect" be written to sysfs drm attribute status before reading   connector attributes.  Applies only for the proprietary nvidia driver.
+Note that this requires write access to the status attribute.</li>
+</ul>
+</li>
+</ul>
+<!--
+
+12/5: rc1
+
+-->
+
+<h3 id="220-rc1">2.2.0-rc1</h3>
 <p>05 Dec 2024</p>
 <p>Release 2.2.0 contains some major enhancements, particularly for display change detection, numerous small changes, and a large number of bug fixes.</p>
 <h3 id="displaylink">DisplayLink</h3>
