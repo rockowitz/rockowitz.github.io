@@ -466,37 +466,38 @@ Note that this requires write access to the status attribute.</li>
 <li>Configuration file ddcutilrc: If there is a pound sign "#" on a line, 
   the remainder of the line is treated as a comment.</li>
 <li>If option <strong><em>--bus</em></strong> is specified, only check accessability for that bus, avoiding
-  irrelevant warning messages regarding other buses.  Addresses github issue <a href="https://github.com/rockowitz/ddcutil/issues/461">461</a>.</li>
+  irrelevant warning messages regarding other buses.  Addresses github issue <a href="https://github.com/rockowitz/ddcutil/issues/461">461:ddcutil tries to access other i2c devices even if --bus is used to specify the bus number</a>.</li>
 <li>Add command <strong>noop</strong>, which allows for executing options such as 
   <strong><em>--settings</em></strong> without having to execute a real command.</li>
-<li>Change the system log message level when sleep time is adjusted from WARNING
-  to VERBOSE. Addresses github issue <a href="https://github.com/rockowitz/ddcutil/issues/427">427: Adjusting multiplier message fills system
+<li>Change the system log message level from WARNING to VERBOSE when sleep time is adjusted.
+  Addresses github issue <a href="https://github.com/rockowitz/ddcutil/issues/427">427: Adjusting multiplier message fills system
   log when libddcutil used by clightd</a>.</li>
 <li>When processing environment variable user $XDG_DATA_DIRS, or $XDG_CONFIG_DIRS,
-  the final directory in the list was ignored. See github issue <a href="https://github.com/rockowitz/ddcutil/issues/438">438</a>.</li>
-<li>Fix core dump on ddcutil getvcp. Fixes github issue <a href="https://github.com/rockowitz/ddcutil/issues/407">407</a>.</li>
+  the final directory in the list was ignored. See github issue <a href="https://github.com/rockowitz/ddcutil/issues/438">438:ddcutil ignores the final entry in XDG_DATA_DIRS when looking for an mccs file</a>.</li>
+<li>Fix core dump on ddcutil getvcp. Fixes github issue <a href="https://github.com/rockowitz/ddcutil/issues/407">407:Core dump on ddcutil getvcp</a>.</li>
 <li>Convert CRLF line endings in source to LF.</li>
 <li>Rework laptop detection. A non-laptop display can have an eDP connector.
   This is an i915 video driver bug that will not be fixed. See freedesktop.org 
   issue [DRM connector for external monitor has name card1-eDP-1]
-  (https://gitlab.freedesktop.org/drm/i915/kernel/-/issues/10389)</li>
+  (https://gitlab.freedesktop.org/drm/i915/kernel/-/issues/10389).</li>
 </ul>
 <h3 id="building-ddcutil">Building ddcutil</h3>
 <ul>
 <li>As an aid to development, the build date and time are normally embedded in
   the ddcutil and libddcutil executables.  This is reported using command
-  <strong>ddcutil --version --verbose".  </strong>libddcutil<strong> reports this to the system
-  log. If reproducible builds are required, use </strong>configure<strong> option 
-  </strong><em>--disable-build-timestamp</em>**. </li>
+  <strong>ddcutil --version --verbose</strong>.  <strong>libddcutil</strong> reports this to the system
+  log. If reproducible builds are required, use <strong>configure</strong> option 
+  <strong><em>--disable-build-timestamp</em></strong>. </li>
 <li><strong>configure</strong> options <strong><em>--enable-x11</em></strong>/<strong><em>--disable-x11</em></strong> are restored.
-  The default is <strong><em>--enable-x11</em></strong>. 
-  The X11 API continues to be used to test for DPMS sleep mode.</li>
+  The default is <strong><em>--enable-x11</em></strong>. The X11 RandR API works on Wayland as well as 
+  X11, and is used for display change detection.
+  In addition, the X11 API continues to be used to test for DPMS sleep mode.</li>
 <li>Changes for portability:</li>
 <li>Use printf() formats %jd and %zd to portably print variables of type ssize_t, 
   and time_t, so as to build  unchanged on architectures such as armel, armhf.</li>
 <li>Avoid compiler warning possible depending on compiler configuration when
-  a switch() construct is used. Replaced with if/else if/else. Resolves issue #458.</li>
-<li>Compile using option <strong><em>-Wformat-security</em></strong>. Issue <a href="https://github.com/rockowitz/ddcutil/issues/458">458</a>.</li>
+  a switch() construct is used. Replaced with if/else if/else. Resolves github issue <a href="">458:Fix build with -Werror=format-security and GCC 14.2.1</a></li>
+<li>Compile using option <strong><em>-Wformat-security</em></strong>. Addresses issue <a href="https://github.com/rockowitz/ddcutil/issues/458">458:https://github.com/rockowitz/ddcutil/pull/458</a>.</li>
 </ul>
 <h3 id="shared-library">Shared Library</h3>
 <p>Shared library <strong>libddcutil</strong> is backwardly compatible with the one in
@@ -528,9 +529,9 @@ file is libddcutil.so.5.2.0.</p>
   reflect display changes and UDEV events are not generated. In that case 
   no display changes are reported.</li>
 <li>There is an alternate, much less efficient algorithm that does not 
-  rely on UDEV and /sys that can be used for nvidia. It instead attempts to
-  read an EDID from every (plausible) /dev/i2c device in a polling loop.
-  Users with all but the most powerful machines will likely find it much too resource consumptive.
+  rely on UDEV and /sys that can be used for nvidia.
+  It instead attempts to read an EDID from every (plausible) 
+  /dev/i2c device in a polling loop. Users with all but the most powerful machines will likely find it much too resource consumptive.
   It is enabled by option <strong><em>--watch-mode poll</em></strong>. 
 <br></li>
 </ul>
@@ -542,7 +543,7 @@ file is libddcutil.so.5.2.0.</p>
 </ul>
 </li>
 <li>Some monitors behave in ways that make KDE PowerDevil unstable.
-   See, for example, ddcutil github issue <a href="https://github.com/rockowitz/ddcutil/issues/466">466</a>, github issue <a href="https://github.com/rockowitz/ddcutil/issues/470">470</a> and <a href="https://bugs.kde.org/show_bug.cgi?id=495746">KDE bug 495746</a>. 
+   See, for example, ddcutil github issue <a href="https://github.com/rockowitz/ddcutil/issues/466">466:Samsung Odyssey G5 S27DG50: Setting brightness causes monitor to crash</a>, github issue <a href="https://github.com/rockowitz/ddcutil/issues/470">470:DDCA_EVENT_DPMS_AWAKE sent shortly after DDCA_EVENT_DPMS_ASLEEP</a> and <a href="https://bugs.kde.org/show_bug.cgi?id=495746">KDE bug 495746:https://bugs.kde.org/show_bug.cgi?id=495746</a>. 
    Specific monitor models can be excluded from display change detection using
    option <strong><em>--disable-ddc</em></strong>, which takes a Monitor Model Id, 
    e.g. SAM-U32H75x-3587, as an argument.  The monitor model id can be found in the output of 
@@ -607,21 +608,22 @@ file is libddcutil.so.5.2.0.</p>
 - Enum value DDCA_STATS_API is added to enum DDCA_Stats_Type, for reporting API specific stats.<br />
 - <strong>ddca_start_watch_displays()</strong>: 
   Fixed segfault that occured with driver nvidia when checking if all video
-  adapters implement drm. <a href="https://github.com/rockowitz/ddcutil/issues/390">github issue 390</a>.<br />
+  adapters implement drm. <a href="https://github.com/rockowitz/ddcutil/issues/390">github issue 390:libddcutil -3021 "DDCRC_INTERNAL_ERROR"</a>.<br />
 - During initial display reference validation, an otherwise valid display reference may be
   for a removed display.  Avoid a segfault in this case. 
-  Addresses github issue <a href="https://github.com/rockowitz/ddcutil/issues/418">418</a>.<br />
+  Addresses github issue <a href="https://github.com/rockowitz/ddcutil/issues/418">418:libddcutil behaves differently/fails after a hotplug compared to ddcutil</a>.<br />
 - Ignore phantom displays when searching for a display reference.
-  Addresses github issue <a href="https://github.com/rockowitz/ddcutil/issues/412">412</a>.<br />
+  Addresses github issue <a href="https://github.com/rockowitz/ddcutil/issues/412">412:"Display not found" when using model / sn / mfg flags on ddcutil 2.1.4</a>.<br />
 - <strong>ddca_get_display_refs()</strong> and <strong>ddca_get_display_info_list2()</strong> always
   return 0, even if an error occured when examining a particular monitor. 
-  Addresses <a href="https://github.com/rockowitz/ddcutil/issues/417">github issue 417</a><br />
+  Addresses <a href="https://github.com/rockowitz/ddcutil/issues/417">github issue 417:libddcutil ddca_get_display_info_list2 returns DDCRC_OTHER (-3022)</a><br />
   - Errors that occur opening individual displays or reading their EDIDs are
     are still reported using <strong>ddca_get_error_detail()</strong>. In addition, error
     messages are written to the terminal and, depending on the current
     syslog level, to the system log.<br />
   - It is useful to create a string representation of a display reference even
-  if it is no longer valid. Addresses github ddcui issue <a href="https://github.com/rockowitz/ddcui/issues/55">55</a>.</p>
+  if it is no longer valid. Addresses github <a href="https://github.com/rockowitz/ddcui/issues/55">ddcui issue 55:
+ddcui-0.5.x: IOT instruction (core dumped</a>.</p>
               
             </div>
           </div><footer>
