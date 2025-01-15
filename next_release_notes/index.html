@@ -497,7 +497,7 @@ Note that this requires write access to the status attribute.</li>
   and time_t, so as to build  unchanged on architectures such as armel, armhf.</li>
 <li>Avoid compiler warning possible depending on compiler configuration when
   a switch() construct is used. Replaced with if/else if/else. Resolves github issue <a href="">458:Fix build with -Werror=format-security and GCC 14.2.1</a></li>
-<li>Compile using option <strong><em>-Wformat-security</em></strong>. Addresses issue <a href="https://github.com/rockowitz/ddcutil/issues/458">458:https://github.com/rockowitz/ddcutil/pull/458</a>.</li>
+<li>Compile using option <strong><em>-Wformat-security</em></strong>. Addresses github issue <a href="https://github.com/rockowitz/ddcutil/issues/458">458:https://github.com/rockowitz/ddcutil/pull/458</a>.</li>
 </ul>
 <h3 id="shared-library">Shared Library</h3>
 <p>Shared library <strong>libddcutil</strong> is backwardly compatible with the one in
@@ -543,7 +543,7 @@ file is libddcutil.so.5.2.0.</p>
 </ul>
 </li>
 <li>Some monitors behave in ways that make KDE PowerDevil unstable.
-   See, for example, ddcutil github issue <a href="https://github.com/rockowitz/ddcutil/issues/466">466:Samsung Odyssey G5 S27DG50: Setting brightness causes monitor to crash</a>, github issue <a href="https://github.com/rockowitz/ddcutil/issues/470">470:DDCA_EVENT_DPMS_AWAKE sent shortly after DDCA_EVENT_DPMS_ASLEEP</a> and <a href="https://bugs.kde.org/show_bug.cgi?id=495746">KDE bug 495746:https://bugs.kde.org/show_bug.cgi?id=495746</a>. 
+   See, for example, ddcutil github issue <a href="https://github.com/rockowitz/ddcutil/issues/466">466:Samsung Odyssey G5 S27DG50: Setting brightness causes monitor to crash</a>, github issue <a href="https://github.com/rockowitz/ddcutil/issues/470">470:DDCA_EVENT_DPMS_AWAKE sent shortly after DDCA_EVENT_DPMS_ASLEEP</a> and KDE bug <a href="https://bugs.kde.org/show_bug.cgi?id=495746">495746:https://bugs.kde.org/show_bug.cgi?id=495746</a>. 
    Specific monitor models can be excluded from display change detection using
    option <strong><em>--disable-ddc</em></strong>, which takes a Monitor Model Id, 
    e.g. SAM-U32H75x-3587, as an argument.  The monitor model id can be found in the output of 
@@ -553,7 +553,7 @@ file is libddcutil.so.5.2.0.</p>
       in the options string passed in the opts argument to <strong>ddca_init2()</strong>.</li>
 <li>Display change detection can be completely disabled using <strong>libddcutil</strong> only 
   option <strong><em>--disable-watch-displays</em></strong>.  This blocks <strong>ddca_start_watch_displays()</strong> from starting the thread that watches
-  for display changes.  Workaround for issue <a href="https://github.com/rockowitz/ddcutil/issues/470">470</a>.
+  for display changes.  Workaround for github issue <a href="https://github.com/rockowitz/ddcutil/issues/470">470</a>.
    Unlike the use of KDE Plasma environment variable POWERDEVIL_NO_DDCUTIL=1, this disables display change detection
    while leaving other <strong>libddcutil</strong> services available.
 <br></li>
@@ -608,7 +608,7 @@ file is libddcutil.so.5.2.0.</p>
 - Enum value DDCA_STATS_API is added to enum DDCA_Stats_Type, for reporting API specific stats.<br />
 - <strong>ddca_start_watch_displays()</strong>: 
   Fixed segfault that occured with driver nvidia when checking if all video
-  adapters implement drm. <a href="https://github.com/rockowitz/ddcutil/issues/390">github issue 390:libddcutil -3021 "DDCRC_INTERNAL_ERROR"</a>.<br />
+  adapters implement drm. github issue<a href="https://github.com/rockowitz/ddcutil/issues/390">390:libddcutil -3021 "DDCRC_INTERNAL_ERROR"</a>.<br />
 - During initial display reference validation, an otherwise valid display reference may be
   for a removed display.  Avoid a segfault in this case. 
   Addresses github issue <a href="https://github.com/rockowitz/ddcutil/issues/418">418:libddcutil behaves differently/fails after a hotplug compared to ddcutil</a>.<br />
@@ -616,7 +616,7 @@ file is libddcutil.so.5.2.0.</p>
   Addresses github issue <a href="https://github.com/rockowitz/ddcutil/issues/412">412:"Display not found" when using model / sn / mfg flags on ddcutil 2.1.4</a>.<br />
 - <strong>ddca_get_display_refs()</strong> and <strong>ddca_get_display_info_list2()</strong> always
   return 0, even if an error occured when examining a particular monitor. 
-  Addresses <a href="https://github.com/rockowitz/ddcutil/issues/417">github issue 417:libddcutil ddca_get_display_info_list2 returns DDCRC_OTHER (-3022)</a><br />
+  Addresses github issue <a href="https://github.com/rockowitz/ddcutil/issues/417">417:libddcutil ddca_get_display_info_list2 returns DDCRC_OTHER (-3022)</a><br />
   - Errors that occur opening individual displays or reading their EDIDs are
     are still reported using <strong>ddca_get_error_detail()</strong>. In addition, error
     messages are written to the terminal and, depending on the current
