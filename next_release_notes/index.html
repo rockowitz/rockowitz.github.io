@@ -342,7 +342,7 @@
 <h3 id="changes-since-220-rc1">Changes since 2.2.0-rc1</h3>
 <p>Branch 2.2.0-rc2 contains extensive changes, particularly for handling corner cases in display detection, such as displays that disconnect immediately after connection.</p>
 <p>It's possible that there is a delay between the time a monitor is turned on (and X11/Wayland generate a display change event) and the time that DDC becomes enabled. 
-To address this situation, there's a newly added flags field in the unused section of DDCA_Display_Status_Event, with bit DDCA_DISPLAY_EVENT_DDC_WORKING.
+To address this situation, there's a newly added <strong>flags</strong> field in the unused section of DDCA_Display_Status_Event, with bit DDCA_DISPLAY_EVENT_DDC_WORKING.
 If a monitor is detected but DDC is not working, a display connection event is reported to the client with flag DDCA_DISPLAY_EVENT_DDC_NOT_WORKING set, and the display reference goes onto a recheck queue processed by a separate thread.  There will be a subsequent event of type DDCA_EVENT_DDC_ENABLED if and when the recheck thread determines that DDC is working.</p>
 <p>There's a tension in display change detection between minimizing the time between when X11/Wayland detects a monitor having been turned on and libddcutil issuing an event of type DDCA_DISPLAY_EVENT_CONNECTED versus checking and rechecking failed states (e.g. DDC not working).  In many cases, the frequency and wait intervals are controlled by settings in file src/base/parms.h.  If you do experiment with these settings, please report the results.</p>
 <p>Miscellaneous changes: </p>
@@ -608,7 +608,7 @@ file is libddcutil.so.5.2.0.</p>
 - Enum value DDCA_STATS_API is added to enum DDCA_Stats_Type, for reporting API specific stats.<br />
 - <strong>ddca_start_watch_displays()</strong>: 
   Fixed segfault that occured with driver nvidia when checking if all video
-  adapters implement drm. github issue<a href="https://github.com/rockowitz/ddcutil/issues/390">390:libddcutil -3021 "DDCRC_INTERNAL_ERROR"</a>.<br />
+  adapters implement drm. Addresses github issue <a href="https://github.com/rockowitz/ddcutil/issues/390">390:libddcutil -3021 "DDCRC_INTERNAL_ERROR"</a>.<br />
 - During initial display reference validation, an otherwise valid display reference may be
   for a removed display.  Avoid a segfault in this case. 
   Addresses github issue <a href="https://github.com/rockowitz/ddcutil/issues/418">418:libddcutil behaves differently/fails after a hotplug compared to ddcutil</a>.<br />
