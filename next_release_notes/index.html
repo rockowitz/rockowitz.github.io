@@ -250,6 +250,8 @@
                   </li>
                   <li class="toctree-l1 current"><a class="reference internal current" href="./">Preliminary Notes for Release 2.2.0</a>
     <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#changes-since-220-rc2">Changes since 2.2.0-rc2</a>
+    </li>
     <li class="toctree-l2"><a class="reference internal" href="#changes-since-220-rc1">Changes since 2.2.0-rc1</a>
     </li>
     <li class="toctree-l2"><a class="reference internal" href="#220-rc1">2.2.0-rc1</a>
@@ -339,6 +341,14 @@
                 <h2 id="notes-for-upcoming-ddcutil-release-220-draft">Notes for Upcoming <strong>ddcutil</strong> Release 2.2.0 (Draft)</h2>
 <p>Note: Reflecting the extensive changes, the next <strong>ddcutil</strong> release will be numbered 2.2.0, not 2.1.5.</p>
 <p>For <strong>ddcui</strong> changes, see <a href="../ddcui_release_notes/"><strong>ddcui</strong> Release Notes</a></p>
+<h3 id="changes-since-220-rc2">Changes since 2.2.0-rc2</h3>
+<ul>
+<li>General code clean up and refactoring</li>
+<li>Improve use of syslog. Prepend messages with thread id.</li>
+<li>Additional trace groups CONN, SYSFS</li>
+<li>Add <strong>ddca_get_display_watch_settings()</strong>, <strong>ddca_set_display_watch_settings()</strong></li>
+<li>Avoid hang waiting for watch thread to stop when client terminated using ctl-c.</li>
+</ul>
 <h3 id="changes-since-220-rc1">Changes since 2.2.0-rc1</h3>
 <p>Branch 2.2.0-rc2 contains extensive changes, particularly for handling corner cases in display detection, such as displays that disconnect immediately after connection.</p>
 <p>It's possible that there is a delay between the time a monitor is turned on (and X11/Wayland generate a display change event) and the time that DDC becomes enabled. 
