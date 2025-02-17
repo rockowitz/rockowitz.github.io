@@ -66,7 +66,7 @@
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../primary_commands/">Primary Commands</a>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="#">Primary Commands</a>
+                  <li class="toctree-l1"><a class="reference internal" >Primary Commands</a>
     <ul>
                 <li class="toctree-l2"><a class="reference internal" href="../command_detect/">detect</a>
                 </li>
@@ -88,7 +88,7 @@
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../options_main/">Command Options</a>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="#">Command Options</a>
+                  <li class="toctree-l1"><a class="reference internal" >Command Options</a>
     <ul>
                 <li class="toctree-l2"><a class="reference internal" href="../display_detection/">Display Detection</a>
                 </li>
@@ -207,6 +207,8 @@
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../c_api_214/">Shared Library Changes for Release 2.1.4</a>
                   </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../c_api_220/">Shared Library Changes for Release 2.2.0</a>
+                  </li>
               </ul>
               <p class="caption"><span class="caption-text">Background</span></p>
               <ul>
@@ -246,11 +248,11 @@
               <ul class="current">
                   <li class="toctree-l1"><a class="reference internal" href="../releases/">Releases</a>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../release_notes/">Release Notes</a>
+                  <li class="toctree-l1"><a class="reference internal" href="../release_notes_220/">Release Notes</a>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../next_release_notes/">Preliminary Notes for Release 2.2.0</a>
+                  <li class="toctree-l1"><a class="reference internal" href="../release_notes/">Prior_Release Notes</a>
                   </li>
-                  <li class="toctree-l1 current"><a class="reference internal current" href="./">Announcement History</a>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="#">Announcement History</a>
     <ul class="current">
     <li class="toctree-l2"><a class="reference internal" href="#obs">OBS</a>
     </li>
@@ -319,6 +321,92 @@
             <div class="section" itemprop="articleBody">
               
                 <h2 id="prior-announcements">Prior Announcements</h2>
+<p>17 February 2024</p>
+<p><strong>ddcutil</strong> 2.1.4 restores deprecated API function <strong>ddca_create_display_ref()</strong> (an alternative name for <strong>ddca_get_display_ref()</strong>),
+allowing some existing programs in Debian to use <strong>libddutil</strong> without changes.</p>
+<p>13 February 2024</p>
+<p><strong>ddcui</strong> 0.5.4 contains a single change to ensure that required driver i2c-dev is loaded.</p>
+<p>07 February 2024</p>
+<p><strong>ddcutil</strong> 2.1.3 fixes a significant bug in <strong>libddcutil</strong> that caused API calls to fail with status code
+DDCRC_ARG (invalid argument) when passed an otherwise valid display reference for a display that doesn't support DDC/CI.</p>
+<p><strong>ddcui</strong> 0.5.3 checks to see that the <strong>libddcutil</strong> version is at least 2.1.3</p>
+<p>For details about the changes and bug fixes, see <a href="../release_notes/">Release Notes</a>,
+<a href="../c_api_213/">Shared Library Changes for Release 2.1.3</a>, 
+and <a href="../ddcui_release_notes/">ddcui Release Notes</a>.
+Changes are also summarized in the CHANGELOG.md files in the respective source trees.</p>
+<p>27 January 2024</p>
+<p><strong>ddcutil</strong> 2.1.2 fixes a critical bug in <strong>libddcutil</strong> that caused older versions of PowerDevil to repeatedly crash and restart.
+In addition, there are several minor fixes and changes to accommodate the proprietary Nvidia video driver.</p>
+<p><strong>ddcui</strong> 0.5.2 contains minor cleanup for release 0.5.2</p>
+<p>For details about the changes and bug fixes, see <a href="../release_notes/">Release Notes</a>,
+<a href="../c_api_212/">Shared Library Changes for Release 2.1.2</a>, 
+and <a href="http://www.ddcutil.com/ddcui_release_notes/">ddcui Release Notes</a>.
+Changes are also summarized in the CHANGELOG.md files in the respective source trees.</p>
+<p>17 January 2024</p>
+<p><strong>ddcutil</strong> 2.1.0 incudes enhancements to further speed up initialization, and addresses some bugs in dynamic sleep adjustment.
+The new cross-instance locking feature coordinates access to /dev/i2c devices by multiple ddcutil and libddcutil instances.
+Several vaguely named options have been renamed to more clearly indicate their purpose.</p>
+<p><strong>libddcutil5</strong> can now watch for changes in connected monitors and for changes in DPMS state.  Clients register a callback
+function that informs them of detected changes.</p>
+<p><strong>ddcui</strong> 0.5.0 makes use of the display change detection in <strong>libddcutil</strong> to remind the user to execute Action-&gt;Redetect Displays
+when a change occurs.</p>
+<p>For details about the changes and bug fixes, see <a href="../release_notes/">Release Notes</a>,
+<a href="../c_api_210/">Shared Library Changes for Release 2.1.0</a>, 
+and <a href="http://www.ddcutil.com/ddcui_release_notes/">ddcui Release Notes</a>.
+Changes are also summarized in the CHANGELOG.md files in the respective source trees.</p>
+<p>Michael Hamilton, developer of <a href="https://github.com/digitaltrails/vdu_controls">VDU Controls</a>, has once again
+provided invaluable assistance in the development of this release, particularly in the design 
+and implementation of display status change detection.  His project <a href="https://github.com/digitaltrails/ddcutil-service">ddcutil-service</a>
+packages <strong>libddcutil</strong> as a D-Bus service. </p>
+<p>Prebuilt packages for several Linux distributions and machine architectures can be found in 
+the <a href="../install/">usual locations</a>.</p>
+<p>Prior announcements can be found <a href="./">here</a>.</p>
+<p>23 October 2023</p>
+<p>Release 1.4.5 extends release 1.4.1 with an additional <strong>configure</strong> command option, <strong><em>--enable-install-lib-only</em></strong>.  If set, <strong>make</strong> builds and installs only shared library <strong>libddcutil.so.4</strong>.  This option may be useful for Linux distributions that must install this legacy library along with the newer <strong>libddcutil.so.5</strong> from <strong>ddcutil</strong> 2.0, in order to support existing applications that require that earlier library.
+See <a href="../mult_shared_libs/">Notes for Linux Distribution Maintainers</a>.</p>
+<p>27 September 2023</p>
+<p><strong>ddcutil</strong> 2.0.0 includes major changes in the areas of performance, usability, and reliability.
+Highlights include: </p>
+<ul>
+<li>
+<p>Most users will find that command <strong>ddcutil</strong> just works "out of the box", without the need for manual configuation. 
+Driver <strong>i2c-dev</strong> is loaded automatically in case it was not already built into the kernel.
+When executing on a system running systemd (i.e. on almost every current Linux distribution) the logged on user automatically has read-write
+access to the /dev/i2c devices associated with monitors, making excution as root or set up of group I2C
+unnecessary. </p>
+</li>
+<li>
+<p>The dynamic sleep algorithm was completely rewritten to use the minimal reliable sleep-multiplier
+value.  Explicitly using option <strong><em>--sleep-multiplier</em></strong> to optimize performance should generally 
+be unnecessary.</p>
+</li>
+<li>
+<p>The <strong>libddcutil</strong> API has been both extended and simplified. Because necessary changes
+broke backward compatibility, the opportunity was taken for a major API cleanup.
+Unneeded functions were removed, including many that had previously been deprecated. Most
+client programs should build with minimal changes.  The new SONAME is <strong>libddcutil.so.5</strong>.
+For backwards compatibility, <strong>libddcutil.so.4</strong> from <strong>ddcutil</strong> 1.4.1 should continue to be 
+available as a separate package.</p>
+</li>
+<li>
+<p><strong>ddcui 0.4.0</strong> uses the new features of the updated API. It requires <strong>libddcutil.so.5</strong>. </p>
+</li>
+</ul>
+<p>For details about the changes and bug fixes, see <a href="../release_notes/">Release Notes</a>,
+<a href="../c_api_200/">Shared Library Changes for Release 2.0</a>, 
+and <a href="http://www.ddcutil.com/ddcui_release_notes/">ddcui Release Notes</a>.
+Changes are also summarized in the CHANGELOG.md files in the respective source trees.</p>
+<p>Michael Hamilton, developer of <a href="https://github.com/digitaltrails/vdu_controls">VDU Controls</a>, 
+provided invaluable assistance in diagnosing many "edge cases", particularly when
+monitors are turned off and on or go into and out of a DPMS sleep state. It's been a pleasure
+to work with him.
+I also want to acknowledge the several people who have been reverse engineering the
+undocumented ways in which input switching is controlled on recent LG monitors.
+Their work is summarized on this <a href="https://github.com/rockowitz/ddcutil/wiki/Switching-input-source-on-LG-monitors">wiki page</a>.
+To facilitate sending commands to these monitors, option <strong><em>--i2c-source-addr</em></strong> was added.</p>
+<p>Prebuilt packages for several Linux distributions and machine architectures can be found in 
+the <a href="../install/">usual locations</a>.</p>
+<p>Prior announcements can be found <a href="./">here</a>.</p>
 <p>15 June 2023</p>
 <p>Release candidates <strong>ddcutil 2.0.0-rc1</strong> and <strong>ddcui 0.4.0-rc1</strong> are now available for testing 
 as branches with those names on the github <a href="https://github.com/rockowitz/ddcutil">ddcutil</a> 
@@ -709,7 +797,7 @@ to avoid confusion with a commerical datacenter program also named <strong>ddcto
             </div>
           </div><footer>
     <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
-        <a href="../next_release_notes/" class="btn btn-neutral float-left" title="Preliminary Notes for Release 2.2.0"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../release_notes/" class="btn btn-neutral float-left" title="Prior_Release Notes"><span class="icon icon-circle-arrow-left"></span> Previous</a>
         <a href="../ddcui_main/" class="btn btn-neutral float-right" title="Overview">Next <span class="icon icon-circle-arrow-right"></span></a>
     </div>
 
@@ -737,7 +825,7 @@ to avoid confusion with a commerical datacenter program also named <strong>ddcto
         </span>
     
     
-      <span><a href="../next_release_notes/" style="color: #fcfcfc">&laquo; Previous</a></span>
+      <span><a href="../release_notes/" style="color: #fcfcfc">&laquo; Previous</a></span>
     
     
       <span><a href="../ddcui_main/" style="color: #fcfcfc">Next &raquo;</a></span>

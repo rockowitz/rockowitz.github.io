@@ -66,7 +66,7 @@
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../primary_commands/">Primary Commands</a>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="#">Primary Commands</a>
+                  <li class="toctree-l1"><a class="reference internal" >Primary Commands</a>
     <ul>
                 <li class="toctree-l2"><a class="reference internal" href="../command_detect/">detect</a>
                 </li>
@@ -88,7 +88,7 @@
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../options_main/">Command Options</a>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="#">Command Options</a>
+                  <li class="toctree-l1"><a class="reference internal" >Command Options</a>
     <ul>
                 <li class="toctree-l2"><a class="reference internal" href="../display_detection/">Display Detection</a>
                 </li>
@@ -136,7 +136,7 @@
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../install/">Install ddcutil From Prebuilt Packages</a>
                   </li>
-                  <li class="toctree-l1 current"><a class="reference internal current" href="./">Building From Source</a>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="#">Building From Source</a>
     <ul class="current">
     <li class="toctree-l2"><a class="reference internal" href="#building-from-tarball">Building from tarball</a>
     </li>
@@ -225,6 +225,8 @@
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../c_api_214/">Shared Library Changes for Release 2.1.4</a>
                   </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../c_api_220/">Shared Library Changes for Release 2.2.0</a>
+                  </li>
               </ul>
               <p class="caption"><span class="caption-text">Background</span></p>
               <ul>
@@ -264,9 +266,9 @@
               <ul>
                   <li class="toctree-l1"><a class="reference internal" href="../releases/">Releases</a>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../release_notes/">Release Notes</a>
+                  <li class="toctree-l1"><a class="reference internal" href="../release_notes_220/">Release Notes</a>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../next_release_notes/">Preliminary Notes for Release 2.2.0</a>
+                  <li class="toctree-l1"><a class="reference internal" href="../release_notes/">Prior_Release Notes</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../prior_announcements/">Announcement History</a>
                   </li>
@@ -381,52 +383,88 @@ The publicly supported options are:</p>
 <td>no</td>
 <td>Build and install only the shared library.  Simplifies installation of an earlier version of libddcutil.</td>
 </tr>
+<tr>
+<td><strong><em>--enable-static-functions-visible</em></strong></td>
+<td>no</td>
+<td>Remove static qualifier from functions for backtrace visibility</td>
+</tr>
+<tr>
+<td><strong><em>--enable-x11</em></strong></td>
+<td>yes</td>
+<td>Build using X11 services, used for display hotplug detection and enhanced diagnostics.  Setting --disable-x11 allows for use on systems lacking X11.  (Default is --enable-x11.)</td>
+</tr>
 </tbody>
 </table>
 <!--
-   | ***--enable-x11***     | yes     | Build using X11 services, used for enhanced diagnostics.  Setting --disable-x11 allows for use on systems lacking X11.  (Default is --enable-x11.)
--->
-<!--
 Notes:  
-- Option ***--disable-envcmds*** forces ***--disable-drm*** and ***--disable-x11***   
 - Option ***--enable-targetbsd*** forces ***--disable-envcmds***, ***--disable-udev***, and ***--disable-usb***
 -->
 
-<p>Notes:<br />
-- Option <strong><em>--disable-envcmds</em></strong> forces <strong><em>--disable-drm</em></strong> and <strong><em>--disable-x11</em></strong>   </p>
+<p><br></p>
 <h3 id="required-packages">Required packages</h3>
 <p>Because of the variation among distributions, only general guidelines can be 
 given for ddcutil prerequisites.  Ultimately, you'll have to try to build ddcutil and see what breaks.</p>
 <p>ddcutil requires the following packages for both building and execution (TO BE UPDATED):</p>
-<ul>
-<li>i2c-tools</li>
-<li>glib-2.0  (Note: glib-2.0 can be packaged with different names, e.g. libglib2.0-0, and may entail installing multiple packages.)
-  Minimum version: 2.32</li>
-<li>libgudev  (e.g. libgudev1)</li>
-<li>libusb-1.0 (e.g. libusb-1.0-0) Minimum version 1.0.15 </li>
-<li>libudev (e.g. libudev1)</li>
-<li>libdrm2  Minimum version: 2.4.16</li>
-<li>libjansson Minimum version 2.0.0</li>
-<li>libxrandr2</li>
-<li>hwdata</li>
-</ul>
-<p>On most platforms, development related files (e.g. headers files) are in separate packages having a 
-"-dev" or similar suffix in their names.   ddcutil needs development packages for:</p>
-<ul>
-<li>libc6 (e.g. libc6-dev)</li>
-<li>glib2.0 (e.g. libglib2.0-0)</li>
-<li>libusb (e.g. libusb-1_0-devel, libusb-1.0-0-dev)</li>
-<li>udev or systemd  (udev may be part of systemd, e.g. libudev-devel, libudev-dev)</li>
-<li>xrandr (e.g. libxrandr-dev)</li>
-<li>libdrm2 (e.g. libdrm-devel)</li>
-<li>libjansson (e.g. libjansson-dev)</li>
-</ul>
-<p>On older versions of Ubuntu, the i2c.h header file is found in a separate package. <br />
-If the following package exists, it is required to build ddcutil.</p>
-<ul>
-<li>libi2c-dev </li>
-</ul>
-<p>However, as of libi2c 4.0, i2c.h is no longer part of this package.</p>
+<table>
+<thead>
+<tr>
+<th>Package</th>
+<th>Minimum Version</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>glib-2.0</td>
+<td>&nbsp; 2.64</td>
+<td>glib-2.0 can be packaged with different names, e.g. libglib2.0-0, and may entail installing multiple packages.)</td>
+</tr>
+<tr>
+<td>hwdata</td>
+<td>&nbsp;</td>
+<td></td>
+</tr>
+<tr>
+<td>i2c-tools</td>
+<td>&nbsp;4.0</td>
+<td></td>
+</tr>
+<tr>
+<td>libdrm2</td>
+<td>&nbsp; 2.4.67</td>
+<td></td>
+</tr>
+<tr>
+<td>libjansson</td>
+<td>&nbsp; 2.0.0</td>
+<td></td>
+</tr>
+<tr>
+<td>libudev1</td>
+<td>&nbsp;</td>
+<td></td>
+</tr>
+<tr>
+<td>libusb-1.0</td>
+<td>&nbsp;1.0.15</td>
+<td></td>
+</tr>
+<tr>
+<td>libx11</td>
+<td>&nbsp;</td>
+<td></td>
+</tr>
+<tr>
+<td>libxrandr2</td>
+<td>&nbsp;</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><br>
+Also needed are the correspnding development packages for most of the above packages.
+On most platforms, development related files (e.g. headers files) are in separate packages having a 
+"-dev" or similar suffix in their names.  </p>
 <p>Error messages from <strong><em>configure</em></strong> regarding missing packages can be misleading.  If <strong><em>configure</em></strong> complains that a package 
 is not found but it seems to be installed, it's likely that the associated development package 
 (with a suffix like "-dev") needs to be installed.</p>

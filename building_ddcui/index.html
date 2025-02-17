@@ -66,7 +66,7 @@
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../primary_commands/">Primary Commands</a>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="#">Primary Commands</a>
+                  <li class="toctree-l1"><a class="reference internal" >Primary Commands</a>
     <ul>
                 <li class="toctree-l2"><a class="reference internal" href="../command_detect/">detect</a>
                 </li>
@@ -88,7 +88,7 @@
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../options_main/">Command Options</a>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="#">Command Options</a>
+                  <li class="toctree-l1"><a class="reference internal" >Command Options</a>
     <ul>
                 <li class="toctree-l2"><a class="reference internal" href="../display_detection/">Display Detection</a>
                 </li>
@@ -207,6 +207,8 @@
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../c_api_214/">Shared Library Changes for Release 2.1.4</a>
                   </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../c_api_220/">Shared Library Changes for Release 2.2.0</a>
+                  </li>
               </ul>
               <p class="caption"><span class="caption-text">Background</span></p>
               <ul>
@@ -246,9 +248,9 @@
               <ul>
                   <li class="toctree-l1"><a class="reference internal" href="../releases/">Releases</a>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../release_notes/">Release Notes</a>
+                  <li class="toctree-l1"><a class="reference internal" href="../release_notes_220/">Release Notes</a>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../next_release_notes/">Preliminary Notes for Release 2.2.0</a>
+                  <li class="toctree-l1"><a class="reference internal" href="../release_notes/">Prior_Release Notes</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../prior_announcements/">Announcement History</a>
                   </li>
@@ -259,7 +261,7 @@
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../ddcui_options/">Command Line Options</a>
                   </li>
-                  <li class="toctree-l1 current"><a class="reference internal current" href="./">Building ddcui</a>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="#">Building ddcui</a>
     <ul class="current">
     </ul>
                   </li>
@@ -307,11 +309,12 @@
                 <h2 id="bulding-ddcui">Bulding <strong>ddcui</strong></h2>
 <h2 id="requirements">Requirements</h2>
 <ul>
-<li><strong>ddcui</strong> 0.4.0 requires version 2.0.0 of ddcutil or later.  Conversely, versions of <strong>ddcui</strong> prior to 0.4.0 will fail to
-build with <strong>ddcutil</strong> version 2.0.0 or later. If <strong>ddcutil</strong> is installed from pre-built packages, 
+<li><strong>ddcui</strong> 0.6.0 requires libddcutil from ddcutil version 2.2.0 or later.<br />
+If <strong>ddcutil</strong> is installed from pre-built packages, 
 the shared library and development packages must be installed as well as the main ddcutil package. </li>
-<li>A recent version of QT 5.  <strong>ddcui</strong> will not build with versions of Qt older than 5.5. 
-Unless you want to modify the the dialog boxes, or prefer the Qt Creator IDE, Qt Creator is not required. </li>
+<li>cmake 3.15 or later</li>
+<li>A recent version of Qt 5, or Qt 6.  Qt 5.5 or later, or Qt 6.1 or later. </li>
+<li>Unless you want to modify the the dialog boxes, or prefer the Qt Creator IDE, Qt Creator is not required. </li>
 </ul>
 <h2 id="building-using-cmake">Building Using CMake</h2>
 <p><strong>ddcui</strong> can be built using CMake.  </p>
@@ -326,7 +329,41 @@ Unless you want to modify the the dialog boxes, or prefer the Qt Creator IDE, Qt
 <li>Using the -S and -B options can ensure that the proper directory is used for the build tree. 
 See the cmake man page for detais.</li>
 </ul>
-<p>Erasing file CMakeCache.txt and directory CMakeFiles from the build directory befure running cmake can avoid perplexing errors
+<table>
+<thead>
+<tr>
+<th>Options</th>
+<th>&nbsp;Default</th>
+<th>&nbsp;Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>USE_QT6</td>
+<td>&nbsp; OFF</td>
+<td>&nbsp; Build with Qt6 instead of Qt5</td>
+</tr>
+<tr>
+<td>USE_CCACHE</td>
+<td>&nbsp; ON</td>
+<td>&nbsp; Use ccache to speed up builds</td>
+</tr>
+<tr>
+<td>ASAN</td>
+<td>&nbsp; OFF</td>
+<td>&nbsp;Build to run with ASAN.  n. libddcutil must also be built with ASAN</td>
+</tr>
+<tr>
+<td>DDCUTIL_PROJECT_DIR</td>
+<td>&nbsp; OFF</td>
+<td>&nbsp; Root directory of ddcutil project, enables ddcui to use libddcutil from that directory</td>
+</tr>
+</tbody>
+</table>
+<p><br>
+If DDUTIL_PROJECT_DIR is specified, libddcutil library and header files are taken from that directory, and do not need to be installed in /usr or /usr/local.<br />
+<br>
+Erasing file CMakeCache.txt and directory CMakeFiles from the build directory befure running cmake can avoid perplexing errors
 due to saved state.  This has a negligable effect on cmake performance.</p>
 <h2 id="building-using-qmake">Building Using qmake</h2>
 <p>qmake is no longer supported.</p>

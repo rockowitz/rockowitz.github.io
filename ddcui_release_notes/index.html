@@ -66,7 +66,7 @@
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../primary_commands/">Primary Commands</a>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="#">Primary Commands</a>
+                  <li class="toctree-l1"><a class="reference internal" >Primary Commands</a>
     <ul>
                 <li class="toctree-l2"><a class="reference internal" href="../command_detect/">detect</a>
                 </li>
@@ -88,7 +88,7 @@
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../options_main/">Command Options</a>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="#">Command Options</a>
+                  <li class="toctree-l1"><a class="reference internal" >Command Options</a>
     <ul>
                 <li class="toctree-l2"><a class="reference internal" href="../display_detection/">Display Detection</a>
                 </li>
@@ -207,6 +207,8 @@
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../c_api_214/">Shared Library Changes for Release 2.1.4</a>
                   </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../c_api_220/">Shared Library Changes for Release 2.2.0</a>
+                  </li>
               </ul>
               <p class="caption"><span class="caption-text">Background</span></p>
               <ul>
@@ -246,9 +248,9 @@
               <ul>
                   <li class="toctree-l1"><a class="reference internal" href="../releases/">Releases</a>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../release_notes/">Release Notes</a>
+                  <li class="toctree-l1"><a class="reference internal" href="../release_notes_220/">Release Notes</a>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../next_release_notes/">Preliminary Notes for Release 2.2.0</a>
+                  <li class="toctree-l1"><a class="reference internal" href="../release_notes/">Prior_Release Notes</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../prior_announcements/">Announcement History</a>
                   </li>
@@ -261,8 +263,10 @@
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../building_ddcui/">Building ddcui</a>
                   </li>
-                  <li class="toctree-l1 current"><a class="reference internal current" href="./">ddcui Release Notes</a>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="#">ddcui Release Notes</a>
     <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#release-060">Release 0.6.0</a>
+    </li>
     <li class="toctree-l2"><a class="reference internal" href="#release-054">Release 0.5.4</a>
     </li>
     <li class="toctree-l2"><a class="reference internal" href="#release-053">Release 0.5.3</a>
@@ -387,6 +391,11 @@
             <div class="section" itemprop="articleBody">
               
                 <h2 id="ddcui-release-notes">ddcui Release Notes</h2>
+<h3 id="release-060">Release 0.6.0</h3>
+<p><strong>ddcui</strong> release 0.6.0 requires libddcutil.so.5.2 from ddcutil 2.2.0 or later.</p>
+<p>It dynamically adds and removes displays from its user interface, as reported by libddcutil.</p>
+<p>Additional changes: 
+- Add API button to stats dialog</p>
 <h3 id="release-054">Release 0.5.4</h3>
 <p>13 February 2024</p>
 <p>As part of <strong>ddcui</strong> installation, file ddcui.conf is saved in directory /usr/lib/modules-load.d
@@ -496,7 +505,7 @@ the handling of features X62 (Speaker Volume). </p>
 <h4 id="handling-ebusy-errors">Handling EBUSY Errors</h4>
 <p>New command line option <strong><em>--force-slave-address</em></strong> enables <strong>ddcui</strong> to take control of DDC communication with a display
 from a conflicting program, notably display driver ddcci.
-For details, see <a href="../other_options/#option-force-slave-address">Option: --force-slave-address</a>
+For details, see <a href="../other_options/#option_force_slave_address">Option: --force-slave-address</a>
 and <a href="../release_notes/">Device Busy Errors</a> in the main <strong>ddcutil</strong> documentation.</p>
 <h4 id="cmakeliststxt-cleanup">CMakeLists.txt Cleanup</h4>
 <ul>
