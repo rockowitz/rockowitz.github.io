@@ -327,23 +327,20 @@ file is libddcutil.so.5.2.0.</p>
 <h3 id="display-change-reporting">Display Change Reporting</h3>
 <h4 id="general-comments">General Comments</h4>
 <p>Detection of display connection and disconnection has been extensively reworked.
-Unfortunately, there are several issues that lead to tradeoffs in the implementation.</p>
+Unfortunately, multiple issues cause tradeoffs in the implementation.</p>
 <ul>
 <li>
 <p>First, there's a tension in display change detection between minimizing the time between
-  when X11/Wayland detects a monitor having change and libddcutil issues 
-  an event versus checking and rechecking 
-  failed states (e.g. DDC not working). In particlar:</p>
+  when a monitor connection/disconnection occurs, libddcutil becomes aware of the change, 
+  checking and rechecinging failed states (e.g. DDC not working), and invoking the 
+  client callback function to inform the client of the change.</p>
 <ul>
+<li>Performance impact of how aggressively <strong>libddcutil</strong> watches for changes.</li>
 <li>It is possible for a monitor to briefly disappear as disconnected and then immediately 
 reconnect.</li>
-<li>
-<p>Conversely, it's also possible for a monitor to appear, then immediately disappear
-before the detection process is complete</p>
-</li>
-<li>
-<p>There can be a delay between time the EDID can be read and DDC becomes functional. </p>
-</li>
+<li>Conversely, it's also possible for a monitor to appear, then immediately disappear
+before the detection process is complete</li>
+<li>There can be a delay between time the EDID can be read and DDC becomes functional. </li>
 </ul>
 </li>
 <li>
@@ -357,6 +354,18 @@ before the detection process is complete</p>
 </ul>
 </li>
 <li>
+<p>Whether a display appears to be connected depends on whether the EDID can be read.
+  For DVI/HDMI devices, power to the EDID EEPROM is provided over the cable. As a result, 
+  the EDID is readable so long as a cable is connected, even if the display is powered off.
+  For DisplayPort devices, the EDID is readable only if the monitor is supplying it power.
+  Even here, there is a difference between plugging/unplugging a monitor power cord and
+  pressing the power button on the display itself.  In the latter case, whether power is 
+  supplied to the EEPROM and the EDID is readable depends on the monitor implementation.</p>
+</li>
+<li>
+<p>Depending on driver, changes in monitor state may or may not be immediately relected in /sys. </p>
+</li>
+<li>
 <p>Connection of Multi-Stream Transport (MST) hub devices may or may not be detected depending on the driver/device combination.</p>
 </li>
 </ul>
@@ -365,15 +374,18 @@ before the detection process is complete</p>
 <li>
 <p>watch mode XEVENT.</p>
 <p>-Scans for changes using the X11 API extension RANDR (which also works on Wayland), 
- and if possible reads the EDID from /sys.</p>
+ and if possible reads the EDID from /sys. </p>
 </li>
 <li>
 <p>watch mode POLL</p>
 <ul>
 <li>Attempts to read an EDID from every (plausible) /dev/i2c device in polling loop. </li>
 <li>Doesn't use X11 or rely on /sys</li>
-<li>Can consume a significant amount of CPU time on older machines.
-      Users with all but the most powerful machines will likely find it much too resource consumptive.</li>
+<li>Can consume a significant amount of CPU time on older machines.<ul>
+<li>Users with all but the most powerful machines may find it much too resource consumptive.</li>
+<li>Impact can be adjusted by reducing the polling frequency (see option <strong><em>--poll-watch-loop-millisec</em></strong>) at the expense of responsiveness.</li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
