@@ -150,6 +150,8 @@
     </li>
     </ul>
                   </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../copr_transaction_test_error/">How to fix copr transaction test error</a>
+                  </li>
                   <li class="toctree-l1"><a class="reference internal" href="../building/">Building From Source</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../shared_lib_config/">Shared Library Configuration</a>
@@ -349,12 +351,13 @@ $ sudo apt-get update
 deb-src http://ppa.launchpad.net/rockowitz/ddcutil/ubuntu cosmic main 
 </code></pre>
 <h4 id="fedora-copr">Fedora COPR</h4>
-<p>Fedora COPR contains <strong>ddcutil</strong> builds for recent Fedora and openSuse releases. It also contains <strong>ddcuti</strong> builds for Fedora.  Builds for both <strong>ddcutil</strong> and <strong>ddcui</strong> are found in repository <a href="https://copr.fedorainfracloud.org/coprs/rockowitz/ddcutil/">rockowitz/ddcutil</a>. </p>
+<p>Fedora COPR contains <strong>ddcutil</strong> builds for recent Fedora and openSuse releases. It also contains <strong>ddcui</strong> builds for Fedora.  Builds for both <strong>ddcutil</strong> and <strong>ddcui</strong> are found in repository <a href="https://copr.fedorainfracloud.org/coprs/rockowitz/ddcutil/">rockowitz/ddcutil</a>. </p>
 <p>To use this COPR repository, issue the following command:</p>
 <pre><code>$ sudo dnf copr enable rockowitz/ddcutil
 </code></pre>
 <p>Note: <strong><em>dnf-plugins-core</em></strong> must be installed. </p>
 <p>Alternatively, you can download a repository file found on the <a href="https://copr.fedorainfracloud.org/coprs/rockowitz/ddcutil/">ddcutil copr page</a> and save it in /etc/yum.repos.d. </p>
+<p>If you encournter a tranaction test error regarding an invalid key, the repository key  needs to be updated.  See <a href="../copr_transaction_test_error/">How to fix copr transaction test error - package does not verify</a>.</p>
 <h3 id="prebuilt-packages-maintained-by-linux-distributions">Prebuilt Packages Maintained by Linux Distributions</h3>
 <p><strong>ddcutil</strong> is included in many Linux distribution.  In particular, it is included in Arch, Debian (and hence its derivatives such as Ubuntu), Fedora, Gentoo, Manjaro, openSUSE, and Rapbian.
 For an up to date list of Linux distributions that include <strong>ddcutil</strong>, see the <a href="https://repology.org/metapackage/ddcutil/versions">Repology</a> web site. </p>
@@ -365,7 +368,7 @@ command-line version. </p>
           </div><footer>
     <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
         <a href="../config_steps/" class="btn btn-neutral float-left" title="Post-Installation Checklist"><span class="icon icon-circle-arrow-left"></span> Previous</a>
-        <a href="../building/" class="btn btn-neutral float-right" title="Building From Source">Next <span class="icon icon-circle-arrow-right"></span></a>
+        <a href="../copr_transaction_test_error/" class="btn btn-neutral float-right" title="How to fix copr transaction test error">Next <span class="icon icon-circle-arrow-right"></span></a>
     </div>
 
   <hr/>
@@ -395,7 +398,7 @@ command-line version. </p>
       <span><a href="../config_steps/" style="color: #fcfcfc">&laquo; Previous</a></span>
     
     
-      <span><a href="../building/" style="color: #fcfcfc">Next &raquo;</a></span>
+      <span><a href="../copr_transaction_test_error/" style="color: #fcfcfc">Next &raquo;</a></span>
     
   </span>
 </div>

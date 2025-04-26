@@ -136,6 +136,8 @@
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../install/">Install ddcutil From Prebuilt Packages</a>
                   </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../copr_transaction_test_error/">How to fix copr transaction test error</a>
+                  </li>
                   <li class="toctree-l1"><a class="reference internal" href="../building/">Building From Source</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../shared_lib_config/">Shared Library Configuration</a>
@@ -418,7 +420,7 @@ the bit-banging to the video device drivers, e.g. amdgpu, nouveau. </p>
 <p>The following specifications and articles provide backgroud information about the I<sup>2</sup>C bus. </p>
 <ul>
 <li><a href="http://www.ti.com/lit/an/slva704/slva704.pdf">Understanding the I<sup>2</sup>C Bus, Texas Instruments Application Report, SLVA702, June 2015</a></li>
-<li><a href="https://luxielectronics.com/attachments/File/HDCP_and_EDID_Demystified.pdf">HDCP and EDID Demystified</a></li>
+<li><a href="https://luxielectronics.com/wp-content/uploads/2022/10/HDCP_and_EDID_Demystified.pdf">HDCP and EDID Demystified</a></li>
 <li><a href="https://www.pololu.com/file/0J435/UM10204.pdf">I<sup>2</sup>C-bus specification and user manual, Rev 6 - 4 April 2014</a></li>
 <li><a href="https://i2c.info">I<sup>2</sup>C Info -I<sup>2</sup>C Bus, Interface and Protocol</a></li>
 <li><a href="https://i2c.info/i2c-bus-specification">I<sup>2</sup>C Bus Specification</a></li>
@@ -460,6 +462,7 @@ Users sometimes encounter problems with I<sup>2</sup>C communication over Displa
 <li><a href="https://dancharblog.wordpress.com/2014/10/07/displayport-hdmi-dongles-active-vs-passive-re-visited/">DisplayPort-&gt;HDMI dongles/adapters - active vs passive revisited</a></li>
 <li><a href="https://blog.tripplite.com/whats-the-difference-between-passive-and-active-displayport-adapters">Tripp-Lite What's the Difference Between Passive and Active DisplayPort Adapters</a></li>
 <li><a href="https://glenwing.github.io/docs/VESA-DP-Dual-Mode-1.1.pdf">VESA DisplayPort Interoperatility Guideline Version 1.1, January 28, 2008</a></li>
+<li><a href="https://www.unigraf.fi/resource/what-do-you-need-to-test-in-displayport-interface/">What do you need to test in DisplayPort interface?</a> An overview of the low level process of negotiaing a DisplayPort connection</li>
 </ul>
 <p><a name="biblio_type_c"></a>
 Type C Connectors</p>
@@ -505,17 +508,20 @@ Type C Connectors</p>
 <li><a href="https://gitlab.freedesktop.org/drm/intel/-/issues/3605#note_1409446">Same MST display appears as 2 /dev/i2c devices</a> A long thread on freedesktop.org
 regarding MST I<sup>2</sup>C MST implementation that I initiated.  Includes comments from i915 developers regarding the complexity of the problem.</li>
 </ul>
-<p>Miscellaneous</p>
+<p>EDID</p>
 <ul>
 <li>
 <p><a href="https://www.reddit.com/r/Monitors/comments/k18mbf/comment/gdms313/?context=3">EDID and Monitor Connection</a> A good explanation
-the EDID readability for connected monitors that are powered off.  In this case, the EDID is always readable if a monitor is connected using DVI and HDMI, but may or may not be readable when connected using DisplayPort.</p>
+of EDID readability for connected monitors that are powered off.  In this case, the EDID is always readable if a monitor is connected using DVI and HDMI, but may or may not be readable when connected using DisplayPort.</p>
 </li>
 <li>
 <p><a href="https://www.youtube.com/watch?v=IQlCGC_zSCE">Extended Display Identification Data (EDID): Problems, Pitfalls and Complications</a>
 A deep dive into the gory details of EDID. YouTube video of a conference talk by the Hans Verkuil, the creator of edid-decode.</p>
 </li>
 </ul>
+<!--
+Miscellaneous
+-->
               
             </div>
           </div><footer>

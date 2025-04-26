@@ -3,18 +3,18 @@
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="author" content="Sanford Rockowitz" /><link rel="canonical" href="https://www.ddcutil.com/i2c_permissions_using_group_i2c/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="author" content="Sanford Rockowitz" /><link rel="canonical" href="https://www.ddcutil.com/copr_transaction_test_error/" />
       <link rel="shortcut icon" href="../img/favicon.ico" />
-    <title>I2C Device Permissions Using Group i2c - ddcutil Documentation</title>
+    <title>How to fix copr transaction test error - ddcutil Documentation</title>
     <link rel="stylesheet" href="../css/theme.css" />
     <link rel="stylesheet" href="../css/theme_extra.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
     
       <script>
         // Current page data
-        var mkdocs_page_name = "I2C Device Permissions Using Group i2c";
-        var mkdocs_page_input_path = "i2c_permissions_using_group_i2c.md";
-        var mkdocs_page_url = "/i2c_permissions_using_group_i2c/";
+        var mkdocs_page_name = "How to fix copr transaction test error";
+        var mkdocs_page_input_path = "copr_transaction_test_error.md";
+        var mkdocs_page_url = "/copr_transaction_test_error/";
       </script>
     
     <!--[if lt IE 9]>
@@ -136,7 +136,9 @@
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../install/">Install ddcutil From Prebuilt Packages</a>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../copr_transaction_test_error/">How to fix copr transaction test error</a>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="#">How to fix copr transaction test error</a>
+    <ul class="current">
+    </ul>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../building/">Building From Source</a>
                   </li>
@@ -148,9 +150,7 @@
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../i2c_permissions/">I2C Device Permissions</a>
                   </li>
-                  <li class="toctree-l1 current"><a class="reference internal current" href="#">I2C Device Permissions Using Group i2c</a>
-    <ul class="current">
-    </ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../i2c_permissions_using_group_i2c/">I2C Device Permissions Using Group i2c</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../usb_permissions/">USB Device Permissions</a>
                   </li>
@@ -298,9 +298,9 @@
   <ul class="wy-breadcrumbs">
     <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
           <li class="breadcrumb-item">Installation and Configuration</li>
-      <li class="breadcrumb-item active">I2C Device Permissions Using Group i2c</li>
+      <li class="breadcrumb-item active">How to fix copr transaction test error</li>
     <li class="wy-breadcrumbs-aside">
-          <a href="https://github.com/rockowitz/ddcutil/edit/master/docs/i2c_permissions_using_group_i2c.md" ></a>
+          <a href="https://github.com/rockowitz/ddcutil/edit/master/docs/copr_transaction_test_error.md" ></a>
     </li>
   </ul>
   <hr/>
@@ -308,36 +308,31 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
             <div class="section" itemprop="articleBody">
               
-                <h4 id="granting-i2c-device-permissions-using-group-i2c">Granting I2C Device Permissions Using Group i2c</h4>
-<p>The original method for graning I2C device permissions relied on group i2c. The instructions for using group i2c are
-retained for reference.</p>
-<p>On Debian, Ubuntu, and likely other Debian derived distributions, most of the work has already been done.
-Package ddcutil requires package i2c-tools. Installation of package i2c-tools creates group <strong><em>i2c</em></strong> (if it does not alreay exist), and assigns that group to the
-/dev/i2c devices using a udev rule. </p>
-<p>All that is necessary is to add users who will use <strong>ddcutil</strong> to group <strong><em>i2c</em></strong>: </p>
-<pre><code>$ sudo usermod &lt;user-name&gt; -aG i2c
+                <h3 id="how-to-fix-copr-transaction-test-error-package-does-not-verify">How to fix copr transaction test error - package does not verify</h3>
+<p>Not all these steps will be needed</p>
+<p>Check RPM database integrity: </p>
+<pre><code>sudo rpm --rebuilddb
 </code></pre>
-<p>On other than Debian derived distributions, additional steps may be necessary. </p>
-<p>If group <strong><em>i2c</em></strong> does not already exist, the following command will create it: </p>
-<pre><code>$ sudo groupadd --system i2c
+<p>Ensure that the correct key for repo is present</p>
+<p>Remove old keyss</p>
+<pre><code>sudo rpm -q --qf &quot;%{NAME}-%{VERSION}-%{RELEASE}\t%{SUMMARY}\n&quot; gpg-pubkey | grep &quot;rockowitz#ddc.*@copr | cut -f 1 |xargs rpm -e
 </code></pre>
-<p>Then add your userid to group <strong><em>i2c</em></strong> as above.</p>
-<p>A sample udev rule for giving group <strong><em>i2c</em></strong> RW permission on the /dev/i2c devices 
-can be found in distributed file <strong>45-ddcutil-i2c.rules</strong>.  Its exact location varies by distribution, but 
-commonly the file is found in directory /usr/share/ddcutil/data.  The file can be copied to 
-/etc/udev/rules.d, but do check that this rule does not conflict with others in that directory.</p>
-<pre><code>$ sudo cp /usr/share/ddcutil/data/45-ddcutil-i2c.rules /etc/udev/rules.d
-</code></pre>
-<p>For testing, it may be simpler to give everyone permission to write to 
-/dev/i2c-* for the current boot:</p>
-<pre><code>$ sudo chmod a+rw /dev/i2c-*
-</code></pre>
+<p>Import latest keys:</p>
+<p>sudo rpm --import https://download.copr.fedorainfracloud.org/results/rockowitz/ddcutil/pubkey.gpg</p>
+<p>sudo rpm --import https://download.copr.fedorainfracloud.org/results/rockowitz/ddcui/pubkey.gpg</p>
+<p>Clean DNF cache: </p>
+<p>sudo dnf clean all</p>
+<p>As of Fedora 41, dnf5 replaces dnf4 as default package manager. Command dnf is an alias for dnf5</p>
+<p>If issues persist, consider disabling and re-enabling the COPR repository:</p>
+<p>bash
+sudo dnf copr disable <username>/<repo-name>
+sudo dnf copr enable <username>/<repo-name></p>
               
             </div>
           </div><footer>
     <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
-        <a href="../i2c_permissions/" class="btn btn-neutral float-left" title="I2C Device Permissions"><span class="icon icon-circle-arrow-left"></span> Previous</a>
-        <a href="../usb_permissions/" class="btn btn-neutral float-right" title="USB Device Permissions">Next <span class="icon icon-circle-arrow-right"></span></a>
+        <a href="../install/" class="btn btn-neutral float-left" title="Install ddcutil From Prebuilt Packages"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../building/" class="btn btn-neutral float-right" title="Building From Source">Next <span class="icon icon-circle-arrow-right"></span></a>
     </div>
 
   <hr/>
@@ -364,10 +359,10 @@ commonly the file is found in directory /usr/share/ddcutil/data.  The file can b
         </span>
     
     
-      <span><a href="../i2c_permissions/" style="color: #fcfcfc">&laquo; Previous</a></span>
+      <span><a href="../install/" style="color: #fcfcfc">&laquo; Previous</a></span>
     
     
-      <span><a href="../usb_permissions/" style="color: #fcfcfc">Next &raquo;</a></span>
+      <span><a href="../building/" style="color: #fcfcfc">Next &raquo;</a></span>
     
   </span>
 </div>

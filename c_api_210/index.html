@@ -136,6 +136,8 @@
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../install/">Install ddcutil From Prebuilt Packages</a>
                   </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../copr_transaction_test_error/">How to fix copr transaction test error</a>
+                  </li>
                   <li class="toctree-l1"><a class="reference internal" href="../building/">Building From Source</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../shared_lib_config/">Shared Library Configuration</a>
@@ -595,28 +597,21 @@ The type of event being reported is specified by enum <strong>DDCA_Event_Type</s
 </tr>
 </tbody>
 </table>
-<p><br></p>
-<p>Key points:
-- When a event of type DDCA_EVENT_DISPLAY_DISCONNECTED is reported, 
-the DDCA_Display_Reference specified in struct DDCA_Display_Status_Event
-is no longer valid. 
-- When an event of type DDCA_EVENT_DISPLAY_CONNECTED occurs, the client
-must call <strong>ddca_redetect_displays()</strong> to reinitialize <strong>libddcutil</strong>
-and the call <strong>ddca_get_display_refs()</strong> to get a new set of valid display references.
-- Requires DRM video drivers (e.g. amdgpu, i915)
-- A future release may provide a new valid display reference when a monitor is connected, 
-making che call to <strong>ddca_redetect_displays()</strong> unnecessary.</p>
-<pre><code>- new status codes possible for many current API functions: 
-  DDCRC_DISCONNECTED, DDCRC_DPMS_ASLEEP
-</code></pre>
+<p><br>
+Key points:</p>
 <ul>
+<li>When a event of type DDCA_EVENT_DISPLAY_DISCONNECTED is reported, 
+the DDCA_Display_Reference specified in struct DDCA_Display_Status_Event
+is no longer valid. </li>
+<li>When an event of type DDCA_EVENT_DISPLAY_CONNECTED occurs, the client
+must call <strong>ddca_redetect_displays()</strong> to reinitialize <strong>libddcutil</strong>
+and the call <strong>ddca_get_display_refs()</strong> to get a new set of valid display references.</li>
+<li>Requires DRM video drivers (e.g. amdgpu, i915)</li>
+<li>A future release may provide a new valid display reference when a monitor is connected, 
+making che call to <strong>ddca_redetect_displays()</strong> unnecessary.</li>
+<li>New status codes are possible for many current API functions: DDCRC_DISCONNECTED, DDCRC_DPMS_ASLEEP</li>
 <li>ddca_dref_state(): reports whether monitor asleep, disconnected, etc.</li>
-<li>Sleep multiplier control:</li>
 </ul>
-<p>Can report display connection/disconnection and dpms sleep status</p>
-<p><br></p>
-<p><br></p>
-<p><br></p>
 <h3 id="miscellaneous">Miscellaneous</h3>
 <table>
 <thead>
