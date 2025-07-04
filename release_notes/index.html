@@ -5,14 +5,14 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="author" content="Sanford Rockowitz" /><link rel="canonical" href="https://www.ddcutil.com/release_notes/" />
       <link rel="shortcut icon" href="../img/favicon.ico" />
-    <title>Prior_Release Notes - ddcutil Documentation</title>
+    <title>Prior Release Notes - ddcutil Documentation</title>
     <link rel="stylesheet" href="../css/theme.css" />
     <link rel="stylesheet" href="../css/theme_extra.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
     
       <script>
         // Current page data
-        var mkdocs_page_name = "Prior_Release Notes";
+        var mkdocs_page_name = "Prior Release Notes";
         var mkdocs_page_input_path = "release_notes.md";
         var mkdocs_page_url = "/release_notes/";
       </script>
@@ -211,6 +211,8 @@
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../c_api_220/">Shared Library Changes for Release 2.2.0</a>
                   </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../c_api_221/">Shared Library Changes for Release 2.2.1</a>
+                  </li>
               </ul>
               <p class="caption"><span class="caption-text">Background</span></p>
               <ul>
@@ -252,7 +254,7 @@
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../release_notes_220/">Release Notes</a>
                   </li>
-                  <li class="toctree-l1 current"><a class="reference internal current" href="#">Prior_Release Notes</a>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="#">Prior Release Notes</a>
     <ul class="current">
     <li class="toctree-l2"><a class="reference internal" href="#214">2.1.4</a>
     </li>
@@ -708,7 +710,7 @@
   <ul class="wy-breadcrumbs">
     <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
           <li class="breadcrumb-item">Release History</li>
-      <li class="breadcrumb-item active">Prior_Release Notes</li>
+      <li class="breadcrumb-item active">Prior Release Notes</li>
     <li class="wy-breadcrumbs-aside">
           <a href="https://github.com/rockowitz/ddcutil/edit/master/docs/release_notes.md" ></a>
     </li>
@@ -750,15 +752,16 @@ This caused <strong>ddcui</strong> to crash when querying information about such
 For devices using DDC/CI (i.e. all but the few that communicate the with the monitor's Virtual Control Panel using USB), there are roughly speaking two phases to this process.  First, every /dev/i2c device
 associated with a video display adapter is examined to determine if it has an EDID, i.e. if it is associated with a connected monitor.  After that, each of the /dev/i2c devices associated with monitors are tested to see if DDC/CI communication works for the /dev/i2c device.  This includes a check that the monitor adheres to the DDC/CI specification for reporting unsupported features; if not, <strong>ddcutil</strong> attempts to figure out if there is some other way the monitor reports unsupported features.</p>
 <p>To speed up this process, the following changes have been made.</p>
-<pre><code>- Option ***--ddc-check-async-min*** specifies a threshold number for performing the DDC
+<ul>
+<li>Option <strong><em>--ddc-check-async-min</em></strong> specifies a threshold number for performing the DDC
   related checks in parallel.  The optimal value is a tradeoff between the time savings from parellel execution and
   the overhead of splitting execution into multiple threads.  This tradeoff will vary by processor speed and the number 
-  of threads available.  The default value is 3, i.e. parallelize execution if 3 or more monitors are present.
-- The ambiguously named ***--async*** option has been is deprecated and now has no effect. Previously, it turned on
-  parallel execution of DDC related checks in a multi-monitor situation, no matter the number of monitors.
-- As a practical matter, once you know that your display adheres to the DDC/CI spec, there's no need to perform the DDC level
-  check every time **ddcutil** is invoked.  Option ***--skip-ddc-checks*** disables the DDC level checks completely.
-</code></pre>
+  of threads available.  The default value is 3, i.e. parallelize execution if 3 or more monitors are present.</li>
+<li>The ambiguously named <strong><em>--async</em></strong> option has been deprecated and now has no effect. Previously, it turned on
+  parallel execution of DDC related checks in a multi-monitor situation, no matter the number of monitors.</li>
+<li>As a practical matter, once you know that your display adheres to the DDC/CI spec, there's no need to perform the
+  DDC communication checks every time <strong>ddcutil</strong> is invoked.  Option <strong><em>--skip-ddc-checks</em></strong> disables the DDC checks completely. </li>
+</ul>
 <!--
       - Option ***--i2c-bus-check-async-min*** specifies a threshold value for performing the 
       the initial checks on each /dev/i2c device.  Individually, each I<sup>2</sup>C check is much faster than the DDC level check, 
@@ -2571,9 +2574,9 @@ installed when building <strong>ddcutil</strong>.  If a sufficently recent versi
 <ul>
 <li>Add option <strong><em>--force-slave-address</em></strong> which causes ddcutil to take control of slave addresses on the 
 I2C bus even if they are in use.  Internally, <strong><em>ioctl(I2C_FORCE_SLAVE)</em></strong> is called instead of <strong><em>ioctl(I2C_SLAVE)</em></strong>.
-This is intended as a possible workaround for situations where monitors on an I2C bus are not detected. See <a href="../other_options/#force_slave">Option --force-slave-address</a></li>
+This is intended as a possible workaround for situations where monitors on an I2C bus are not detected. See <a href="../other_options/#option_force_slave_address">Option --force-slave-address</a></li>
 <li>Option <strong><em>--force</em></strong> disables various checking.  It's use is likely to result in command failure, but may 
-provide useful information as to the source of problems.  See <a href="../debug_options/#slave">Option --force</a></li>
+provide useful information as to the source of problems.</li>
 <li>Fix the cause of a segfault when displaying  statistics for option <strong><em>--stats errors</em></strong> or simply <strong><em>--stats</em></strong>, or on 
 the <strong>interrogate</strong> command.</li>
 <li><strong>make install</strong> will not install C header files unless configuration option <strong><em>--enable-lib</em></strong> is set.</li>

@@ -217,6 +217,8 @@
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../c_api_220/">Shared Library Changes for Release 2.2.0</a>
                   </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../c_api_221/">Shared Library Changes for Release 2.2.1</a>
+                  </li>
               </ul>
               <p class="caption"><span class="caption-text">Background</span></p>
               <ul>
@@ -258,7 +260,7 @@
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../release_notes_220/">Release Notes</a>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../release_notes/">Prior_Release Notes</a>
+                  <li class="toctree-l1"><a class="reference internal" href="../release_notes/">Prior Release Notes</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../prior_announcements/">Announcement History</a>
                   </li>
@@ -338,10 +340,10 @@ $ ddcutil setvcp 10 - 5
 </code></pre>
 <h4 id="option-permit-unknown-feature">Option: <strong><em>--permit-unknown-feature</em></strong><a name="option_permit_unknown_feature"></a></h4>
 <p>Normally, <strong>setvcp</strong> does not allow setting the value of an unrecognized feature.  Use this option to allow <strong>setvcp</strong> to set the value of any feature.</p>
-<h4 id="option-noverify">Option: <strong><em>--noverify</em></strong><a name="option_noverify"></a></h4>
+<h4 id="option-noverify">Option: <strong><em>--noverify</em></strong><a name="option_setvcp_noverify"></a></h4>
 <p>When <strong>ddcutil</strong> sends a <strong>Set VCP Feature</strong> packet to a display, it receives an acknowlegement at the I2C level that the request packet was received.
 There is no acknowledgement that the display has successfully executed the command.
-There have been occasional reports that the <strong>setvcp</strong> command appeared to succeed, but the new value was not set.</p>
+Occasionaly the <strong>setvcp</strong> command appeared to succeed, but the new value was not set.</p>
 <p>Therefore <strong>setvcp</strong> (and <strong>loadvcp</strong>) by default perform a <strong>getvcp</strong> operation
 to verify that the new value has actually been set.
 (Obviously, this verification does not occur for write-only features.  It also does not occur for features such as x60 (Input Source) for which

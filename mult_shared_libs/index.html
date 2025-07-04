@@ -144,6 +144,10 @@
                   </li>
                   <li class="toctree-l1 current"><a class="reference internal current" href="#">Notes for Linux Distribution Maintainers</a>
     <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#multiple-shared-libraries">Multiple Shared Libraries</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#miscellanous">Miscellanous</a>
+    </li>
     </ul>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../config/">Configuration and Installation Diagnostics</a>
@@ -213,6 +217,8 @@
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../c_api_220/">Shared Library Changes for Release 2.2.0</a>
                   </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../c_api_221/">Shared Library Changes for Release 2.2.1</a>
+                  </li>
               </ul>
               <p class="caption"><span class="caption-text">Background</span></p>
               <ul>
@@ -254,7 +260,7 @@
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../release_notes_220/">Release Notes</a>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../release_notes/">Prior_Release Notes</a>
+                  <li class="toctree-l1"><a class="reference internal" href="../release_notes/">Prior Release Notes</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../prior_announcements/">Announcement History</a>
                   </li>
@@ -309,9 +315,10 @@
             <div class="section" itemprop="articleBody">
               
                 <h2 id="notes-for-linux-distribution-maintainers">Notes for Linux Distribution Maintainers</h2>
+<h3 id="multiple-shared-libraries">Multiple Shared Libraries</h3>
 <p>As of <strong>ddcutil</strong> release 2.0.0, those who maintain <strong>ddcutil</strong> packages for Linux distributions need 
 to consider that libddcutil.5 in release 2.0.0 is not backwardly compatible with libddcutil.4
-from earlier releases.  Therefore, at least for some time, both versions of the shared library should
+from earlier releases.  Therefore, at least for some time, and depending on distribution packaging policy, both versions of the shared library may need to
 be packaged, and application packages should indicate which is required.</p>
 <p>The details of how packaging is done varies from one distribution to another.
 As of <strong>ddcutil</strong> source 1.4.5, the build system has one
@@ -319,6 +326,10 @@ new option that may, depending on distribution, help in this regard.
 If <strong>configure</strong> option <strong><em>--enable-install-lib-only</em></strong> is specified, only the shared library 
 is built and installed.  Command line program <strong>ddcutil</strong> and the files that go in 
 a development package (e.g. C header files) are not.</p>
+<h3 id="miscellanous">Miscellanous</h3>
+<ul>
+<li>If reproducible builds are required, use <strong>configure</strong> option <strong><em>--disable-build-timestamp</em></strong>. </li>
+</ul>
               
             </div>
           </div><footer>

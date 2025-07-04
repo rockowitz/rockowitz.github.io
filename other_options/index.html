@@ -112,6 +112,8 @@
     </li>
     <li class="toctree-l3"><a class="reference internal" href="#option-mccs-vcp-version">Option --mccs &lt;vcp version&gt;</a>
     </li>
+    <li class="toctree-l3"><a class="reference internal" href="#option-force-slave-address">Option --force-slave-address</a>
+    </li>
     <li class="toctree-l3"><a class="reference internal" href="#option-version">Option: --version</a>
     </li>
     <li class="toctree-l3"><a class="reference internal" href="#option-settings">Option: --settings</a>
@@ -225,6 +227,8 @@
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../c_api_220/">Shared Library Changes for Release 2.2.0</a>
                   </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../c_api_221/">Shared Library Changes for Release 2.2.1</a>
+                  </li>
               </ul>
               <p class="caption"><span class="caption-text">Background</span></p>
               <ul>
@@ -266,7 +270,7 @@
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../release_notes_220/">Release Notes</a>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../release_notes/">Prior_Release Notes</a>
+                  <li class="toctree-l1"><a class="reference internal" href="../release_notes/">Prior Release Notes</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../prior_announcements/">Announcement History</a>
                   </li>
@@ -342,6 +346,11 @@ This has been implemented as a POSSIBLE way to address occasional reports of **d
 <p><a name="faq_slow"></a>
 Option <strong><em>--mccs</em></strong> forces the MCCS version number.  It applies to commands <strong>vcpinfo</strong>, <strong>getvcp</strong>, <strong>setvcp</strong>, and <strong>dumpvcp</strong>.
 See documentation of the individual commands for details.</p>
+<h4 id="option-force-slave-address">Option <strong><em>--force-slave-address</em></strong></h4>
+<p><a name="option_force_slave_address"></a>
+Causes <strong>ddcutil</strong> to attempt to take control of slave addresses
+on the I<sup>2</sup> bus even if they are in use by another driver.  This may aid in certain situations where monitors on 
+an I<sup>2</sup> bus are not properly detected.</p>
 <h4 id="option-version">Option: <strong><em>--version</em></strong></h4>
 <p>Displays <strong>ddcutil</strong> version information, then terminates execution.</p>
 <h4 id="option-settings">Option: <strong><em>--settings</em></strong></h4>

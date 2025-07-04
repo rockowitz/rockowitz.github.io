@@ -76,7 +76,7 @@
     </li>
     <li class="toctree-l3"><a class="reference internal" href="#options-enable-usb-disable-usb">Options: --enable-usb, --disable-usb</a>
     </li>
-    <li class="toctree-l3"><a class="reference internal" href="#option-async">Option --async</a>
+    <li class="toctree-l3"><a class="reference internal" href="#option-ddc-checks-async-min-n">Option --ddc-checks-async-min &lt;N&gt;</a>
     </li>
     </ul>
                 </li>
@@ -221,6 +221,8 @@
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../c_api_220/">Shared Library Changes for Release 2.2.0</a>
                   </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../c_api_221/">Shared Library Changes for Release 2.2.1</a>
+                  </li>
               </ul>
               <p class="caption"><span class="caption-text">Background</span></p>
               <ul>
@@ -262,7 +264,7 @@
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../release_notes_220/">Release Notes</a>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../release_notes/">Prior_Release Notes</a>
+                  <li class="toctree-l1"><a class="reference internal" href="../release_notes/">Prior Release Notes</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../prior_announcements/">Announcement History</a>
                   </li>
@@ -558,9 +560,10 @@ Display 4
 <p>This pair of options controls whether <strong>ddcutil</strong> searches for displays that use USB for communication.  The default is <strong><em>--disable-usb</em></strong>. </p>
 <p>Although the overhead of searching for USB displays has a negligable effect on <strong>ddcutil</strong> performance, the benign error messages it can produce regarding permissions have proven distracting.
 USB display support is rarely required, as most monitors use DDC/CI, not USB, for MCCS communication.</p>
-<h4 id="option-async">Option <strong><em>--async</em></strong><a name="option_async"></a></h4>
-<p>If there are 3 or more monitors and option <strong><em>--async</em></strong> is specified, initial monitor DDC checks are performed in separate threads.
-marginally improving startup time. (This option may be removed in a future release.)</p>
+<h4 id="option-ddc-checks-async-min-n">Option <strong><em>--ddc-checks-async-min &lt;N&gt;</em></strong></h4>
+<p><a name="option_async"></a></p>
+<p>If there are at least the specified number of monitors, initial DDC checks are performed in separate threads.
+marginally improving startup time. The default is 3.</p>
               
             </div>
           </div><footer>

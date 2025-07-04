@@ -3,18 +3,18 @@
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="author" content="Sanford Rockowitz" /><link rel="canonical" href="https://www.ddcutil.com/mccs_background/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="author" content="Sanford Rockowitz" /><link rel="canonical" href="https://www.ddcutil.com/release_notes_221/" />
       <link rel="shortcut icon" href="../img/favicon.ico" />
-    <title>Monitor Control Command Set - ddcutil Documentation</title>
+    <title>Release notes 221 - ddcutil Documentation</title>
     <link rel="stylesheet" href="../css/theme.css" />
     <link rel="stylesheet" href="../css/theme_extra.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
     
       <script>
         // Current page data
-        var mkdocs_page_name = "Monitor Control Command Set";
-        var mkdocs_page_input_path = "mccs_background.md";
-        var mkdocs_page_url = "/mccs_background/";
+        var mkdocs_page_name = "Release notes 221";
+        var mkdocs_page_input_path = "release_notes_221.md";
+        var mkdocs_page_url = "/release_notes_221/";
       </script>
     
     <!--[if lt IE 9]>
@@ -215,14 +215,8 @@
                   </li>
               </ul>
               <p class="caption"><span class="caption-text">Background</span></p>
-              <ul class="current">
-                  <li class="toctree-l1 current"><a class="reference internal current" href="#">Monitor Control Command Set</a>
-    <ul class="current">
-    <li class="toctree-l2"><a class="reference internal" href="#mccs-terminology">MCCS Terminology</a>
-    </li>
-    <li class="toctree-l2"><a class="reference internal" href="#mccs-versions">MCCS Versions</a>
-    </li>
-    </ul>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../mccs_background/">Monitor Control Command Set</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../ddc_vs_i2c/">DDC vs I2C</a>
                   </li>
@@ -303,10 +297,9 @@
         <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
   <ul class="wy-breadcrumbs">
     <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
-          <li class="breadcrumb-item">Background</li>
-      <li class="breadcrumb-item active">Monitor Control Command Set</li>
+      <li class="breadcrumb-item active">Release notes 221</li>
     <li class="wy-breadcrumbs-aside">
-          <a href="https://github.com/rockowitz/ddcutil/edit/master/docs/mccs_background.md" ></a>
+          <a href="https://github.com/rockowitz/ddcutil/edit/master/docs/release_notes_221.md" ></a>
     </li>
   </ul>
   <hr/>
@@ -314,61 +307,47 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
             <div class="section" itemprop="articleBody">
               
-                <h2 id="monitor-control-command-set">Monitor Control Command Set</h2>
-<h3 id="mccs-terminology">MCCS Terminology</h3>
-<p>Monitor settings are referred to as Virtual Control Panel (VCP) features.
-Features are numbered from 0..255, and by convention are referred to using the hex
-representation, e.g. 1A for blue level.   </p>
-<p>MCCS designates features as being one of three types:</p>
+                <h2 id="ddcutil-221-release-notes-preliminary"><strong>ddcutil</strong> 2.2.1 Release Notes (Preliminary)</h2>
+<p>12 June 2025</p>
+<p>Release 2.2.1 contains some enhancements, particularly for display change detection, numerous small changes, and a large number of bug fixes.</p>
+<p>For <strong>libddcutil</strong> related changes, see <a href="../c_api_221/">Shared Library Changes for Release 2.2.1</a>.</p>
+<p>For <strong>ddcui</strong> changes, see <a href="../ddcui_release_notes/"><strong>ddcui</strong> Release Notes</a></p>
+<p>For notes on release 2.2.0, see <a href="../release_notes_220/">ddcutil 2.2.0 Release Notes</a>.
+For notes on releases prior to 2.2.0, see <a href="../release_notes/">Notes for Releases 2.1.4 and Earlier</a>.</p>
+<h3 id="general-changes">General Changes</h3>
 <ul>
-<li>Continuous (C): Able to take any value up to some maximum</li>
-<li>Non-continuous (NC): Able to take only a designated set of values</li>
-<li>Table (T): Used for "raw" data such as a video LUT</li>
+<li>Do not perform permission checks if running with effective user root, i.e. when
+  running with setuid bit set. Partially addresses issue #509</li>
+<li>Add option <strong><em>--disable-traced-function-stack</em></strong>.  (This is the default, but may change
+  in future releases.) </li>
+<li>Command <strong>environment</strong>: <ul>
+<li>Report if running as root, with sudo, or setuid bit set</li>
+<li>With option <strong><em>--verbose</em></strong>: eliminate some unneeded edid read tests</li>
 </ul>
-<p>This clean distinction broke down as the MCCS specification evolved.
-Some features have changed category.  ddcutil distinguishes
-between "simple" NC fields, which are encoded using only a single byte (in field SL) and for which there is a simple list of possible values,
-and "complex" NC fields, where an algorithm must be applied to 
-interpret the bytes of a feature value.  This is a ddcutil distinction and 
-not part of the MCCS specification.</p>
-<p>Most features are both readable and writable (RW).  Some, such as 
-VCP Version (DF), are read-only (RO), while others, such as Restore
-Factory Defaults (02) are write-only.</p>
-<h3 id="mccs-versions">MCCS Versions</h3>
+</li>
+<li>Command <strong>setvcp</strong>: Emit more more useful messages when the cause of a
+  DDCRC_RETRIES error is itself a DDCRC_RETRIES error.</li>
+</ul>
+<h4 id="fixes">Fixes</h4>
 <ul>
-<li>
-<p>Version 1, September 1998<br />
-Initial version. Seen only on very old monitors.</p>
-</li>
-<li>
-<p>Version 2.0, October 2003<br />
-A major update to the standard.  It introduced "complex" NC features, in particular VCP Version (feature DF).</p>
-</li>
-<li>
-<p>Version 2.1, May 2005<br />
-A minor update to the standard, including clarifications.   </p>
-</li>
-<li>
-<p>Version 3.0, July 2006<br />
-Not upwardly compatible with Version 2.1.  Did not achieve industry acceptance.  I know of no monitors implementing MCCS 3.0. </p>
-</li>
-<li>
-<p>Version 2.2, July 2009<br />
-Extends version 2.1, incorporating most of the new features from Version 3.0 in a manner upwardly compatible with 2.1. </p>
-</li>
-<li>
-<p>Version 2.2a, July 2011 <br />
-Minor revision to Version 2.2. </p>
-</li>
+<li>Avoid segfault if invalid feature code specified</li>
+<li>Fix --verify/--noverify parsing.  Addresses issue #512.</li>
+<li>Command <strong>getvcp --terse</strong>: Eliminate irrelevant messages regarding VCP version not set.</li>
+<li>DDC communication not detected with old (340 series) Nvidia proprietary driver. Issue #507</li>
 </ul>
-<p>Note that Version 2.2 was issued after Version 3.0,  Therefore, when <strong>ddcutil</strong> reports MCCS versions it orders them 1.0, 2.0, 2.1, 3.0, 2.2. </p>
+<h3 id="building">Building</h3>
+<ul>
+<li><strong>configure</strong> option <strong><em>--enable-watch-displays</em></strong>/<strong><em>--disable-watch-displays</em></strong>
+  controls whether display watch functionaliity is built.  The default is
+  <strong><em>--enable-watch-displays</em></strong>.</li>
+<li>If built with <strong><em>--disable-watch-displays</em></strong>, API functions related
+    to display change detection return DDCRC_UNIMPLEMENTED</li>
+<li>If <strong>configure</strong> option <strong><em>--disable-x11</em></strong> is specified, the only watch-mode
+  is POLL. watch-mode XEVENT does not exist.</li>
+</ul>
               
             </div>
           </div><footer>
-    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
-        <a href="../c_api_221/" class="btn btn-neutral float-left" title="Shared Library Changes for Release 2.2.1"><span class="icon icon-circle-arrow-left"></span> Previous</a>
-        <a href="../ddc_vs_i2c/" class="btn btn-neutral float-right" title="DDC vs I2C">Next <span class="icon icon-circle-arrow-right"></span></a>
-    </div>
 
   <hr/>
 
@@ -394,10 +373,6 @@ Minor revision to Version 2.2. </p>
         </span>
     
     
-      <span><a href="../c_api_221/" style="color: #fcfcfc">&laquo; Previous</a></span>
-    
-    
-      <span><a href="../ddc_vs_i2c/" style="color: #fcfcfc">Next &raquo;</a></span>
     
   </span>
 </div>

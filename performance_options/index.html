@@ -114,7 +114,7 @@
     </li>
     <li class="toctree-l3"><a class="reference internal" href="#option-discard-caches-capabilitiesdsaall">Option: --discard-cache[s] [capabilities|dsa|all]</a>
     </li>
-    <li class="toctree-l3"><a class="reference internal" href="#option-async">Option: --async</a>
+    <li class="toctree-l3"><a class="reference internal" href="#option-ddc-init-async-min">Option: --ddc-init-async-min</a>
         <ul>
     <li class="toctree-l4"><a class="reference internal" href="#option-noverify">Option: --noverify</a>
     </li>
@@ -235,6 +235,8 @@
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../c_api_220/">Shared Library Changes for Release 2.2.0</a>
                   </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../c_api_221/">Shared Library Changes for Release 2.2.1</a>
+                  </li>
               </ul>
               <p class="caption"><span class="caption-text">Background</span></p>
               <ul>
@@ -276,7 +278,7 @@
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../release_notes_220/">Release Notes</a>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../release_notes/">Prior_Release Notes</a>
+                  <li class="toctree-l1"><a class="reference internal" href="../release_notes/">Prior Release Notes</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../prior_announcements/">Announcement History</a>
                   </li>
@@ -422,12 +424,16 @@ This file can safely be erased if a stored capabilities string should become cor
 <h3 id="option-discard-caches-capabilitiesdsaall">Option: <strong><em>--discard-cache[s] [capabilities|dsa|all]</em></strong><a name="option_discard_cache"></a></h3>
 <p>Discards the specified cache, or all caches, at the start of program execution.</p>
 <p>Alternatively, command <a href="../secondary_commands/#command_discard_caches"><strong>discard caches</strong></a> can be used to delete cache files.</p>
-<h3 id="option-async">Option: <strong><em>--async</em></strong></h3>
-<p>Enable parallel display inspection if 3 or more monitors are detected.  See <a href="../command_detect/#option_async">detect command</a>.</p>
+<h3 id="option-ddc-init-async-min">Option: <strong><em>--ddc-init-async-min</em></strong></h3>
+<p>During initialization, <strong>ddcutil</strong> checks whether DDC communication is successful.
+This option enables
+parallel display inspection if at least the specified number of monitors are detected.<br />
+The default is 3.
+See <a href="../command_detect/#option_async">detect command</a>.</p>
 <p>The benefit of this option has proven marginal at best.  It may be eliminated in future releases.</p>
 <h4 id="option-noverify">Option: <strong><em>--noverify</em></strong><a name="option_setvcp_noverify"></a></h4>
 <p>Skip checking that a monitor has properly processed a DDC <strong><em>Set VCP Feature</em></strong> request packet.
-For details, see <a href="../command_setvcp/#setup_noverify">setvcp command</a>.</p>
+For details, see <a href="../command_setvcp/#option_setvcp_noverify">setvcp command</a>.</p>
 <!--
 Additional performance related options exist but are experimental.  See the [Release Notes](release_notes.md).
 -->
