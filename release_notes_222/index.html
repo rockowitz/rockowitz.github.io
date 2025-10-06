@@ -3,18 +3,18 @@
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="author" content="Sanford Rockowitz" /><link rel="canonical" href="https://www.ddcutil.com/c_api_110/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="author" content="Sanford Rockowitz" /><link rel="canonical" href="https://www.ddcutil.com/release_notes_222/" />
       <link rel="shortcut icon" href="../img/favicon.ico" />
-    <title>Shared Library Changes for Release 1.1.0 - ddcutil Documentation</title>
+    <title>Preliminary Notes for Upcoming Release 2.2.2 - ddcutil Documentation</title>
     <link rel="stylesheet" href="../css/theme.css" />
     <link rel="stylesheet" href="../css/theme_extra.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
     
       <script>
         // Current page data
-        var mkdocs_page_name = "Shared Library Changes for Release 1.1.0";
-        var mkdocs_page_input_path = "c_api_110.md";
-        var mkdocs_page_url = "/c_api_110/";
+        var mkdocs_page_name = "Preliminary Notes for Upcoming Release 2.2.2";
+        var mkdocs_page_input_path = "release_notes_222.md";
+        var mkdocs_page_url = "/release_notes_222/";
       </script>
     
     <!--[if lt IE 9]>
@@ -172,7 +172,7 @@
                   </li>
               </ul>
               <p class="caption"><span class="caption-text">Shared Library</span></p>
-              <ul class="current">
+              <ul>
                   <li class="toctree-l1"><a class="reference internal" href="../api_main/">C API</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../libddcutil_release_notes/">Shared Library Release Notes</a>
@@ -191,11 +191,7 @@
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../c_api_100/">Shared Library Changes for Release 1.0.0</a>
                   </li>
-                  <li class="toctree-l1 current"><a class="reference internal current" href="#">Shared Library Changes for Release 1.1.0</a>
-    <ul class="current">
-    <li class="toctree-l2"><a class="reference internal" href="#overview">Overview</a>
-    </li>
-    </ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../c_api_110/">Shared Library Changes for Release 1.1.0</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../c_api_120/">Shared Library Changes for Release 1.2.0</a>
                   </li>
@@ -255,10 +251,12 @@
                   </li>
               </ul>
               <p class="caption"><span class="caption-text">Release History</span></p>
-              <ul>
+              <ul class="current">
                   <li class="toctree-l1"><a class="reference internal" href="../releases/">Releases</a>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../release_notes_222/">Preliminary Notes for Upcoming Release 2.2.2</a>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="#">Preliminary Notes for Upcoming Release 2.2.2</a>
+    <ul class="current">
+    </ul>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../release_notes_220/">Release Notes</a>
                   </li>
@@ -305,10 +303,10 @@
         <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
   <ul class="wy-breadcrumbs">
     <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
-          <li class="breadcrumb-item">Shared Library</li>
-      <li class="breadcrumb-item active">Shared Library Changes for Release 1.1.0</li>
+          <li class="breadcrumb-item">Release History</li>
+      <li class="breadcrumb-item active">Preliminary Notes for Upcoming Release 2.2.2</li>
     <li class="wy-breadcrumbs-aside">
-          <a href="https://github.com/rockowitz/ddcutil/edit/master/docs/c_api_110.md" ></a>
+          <a href="https://github.com/rockowitz/ddcutil/edit/master/docs/release_notes_222.md" ></a>
     </li>
   </ul>
   <hr/>
@@ -316,16 +314,45 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
             <div class="section" itemprop="articleBody">
               
-                <h2 id="shared-library-changes-for-release-110">Shared Library Changes for Release 1.1.0</h2>
-<h3 id="overview">Overview</h3>
-<p>This release contains no API changes. </p>
-<p>At startup, <strong>libddcutil</strong> reads and processes the <strong>ddcutil</strong> configuration file, typically $HOME/.config/ddcutil/ddcutilrc</p>
+                <h2 id="ddcutil-222-release-notes-preliminary"><strong>ddcutil</strong> 2.2.2 Release Notes (Preliminary)</h2>
+<p>05 October 2025</p>
+<p>Release 2.2.2 contains one significant bug fix of interest to general users:</p>
+<ul>
+<li>Starting with release 2.2.0, verification on 
+command <strong>setvcp</strong> did not occur, even if option <strong><em>--verify</em></strong> was explicitly given.</li>
+</ul>
+<p>Miscellanous changes: </p>
+<ul>
+<li>Relax the check of the device class when determining if a device is a video
+  controller.   Look only at the first byte in sysfs device attribute class.
+  An AMD Ryzen AI 9 365 based system was seen to report 0x038000, not 0x030000.
+  Addresses issue #530.</li>
+<li>Additional messages reporting configuration file errors. In particular,
+  section names and the names of keys within each section are validated.</li>
+<li>If possible, obtain the list of PNP ids from /usr/share/hwdata/pnp.ids instead
+  of using a hardcoded list.  Affects output of command <strong>detect</strong>. </li>
+<li>Reword the parser explanation of options <strong><em>--verify</em></strong> and <strong><em>--noverify</em></strong>
+  for clarity.</li>
+<li>Added option <strong><em>--trace-to_syslog</em></strong>: Direct trace output to the system log, without
+  disabling other destinations.</li>
+<li><strong>configure</strong> option <strong><em>--disable-drm</em></strong> forces <strong><em>--disable-watch-displays</em></strong> </li>
+</ul>
+<p>Build Fixes:</p>
+<ul>
+<li>Fix out-of-tree build reference to generated file /src/base/build_details.h. Pull request #544</li>
+<li>Build failed with an undefined reference error when <strong>configure</strong> option <strong><em>--disable-drm</em></strong>
+   was specified. </li>
+</ul>
+<p>For <strong>libddcutil</strong> related changes, see <a href="../c_api_222/">Shared Library Changes for Release 2.2.2</a>.</p>
+<p>For <strong>ddcui</strong> changes, see <a href="../ddcui_release_notes/"><strong>ddcui</strong> Release Notes</a></p>
+<p>For notes on release 2.2.0 and 2.2.1, see <a href="../release_notes_220/">ddcutil 2.2.0 Release Notes</a>.
+For notes on releases prior to 2.2.0, see <a href="../release_notes/">Notes for Releases 2.1.4 and Earlier</a>.</p>
               
             </div>
           </div><footer>
     <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
-        <a href="../c_api_100/" class="btn btn-neutral float-left" title="Shared Library Changes for Release 1.0.0"><span class="icon icon-circle-arrow-left"></span> Previous</a>
-        <a href="../c_api_120/" class="btn btn-neutral float-right" title="Shared Library Changes for Release 1.2.0">Next <span class="icon icon-circle-arrow-right"></span></a>
+        <a href="../releases/" class="btn btn-neutral float-left" title="Releases"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../release_notes_220/" class="btn btn-neutral float-right" title="Release Notes">Next <span class="icon icon-circle-arrow-right"></span></a>
     </div>
 
   <hr/>
@@ -352,10 +379,10 @@
         </span>
     
     
-      <span><a href="../c_api_100/" style="color: #fcfcfc">&laquo; Previous</a></span>
+      <span><a href="../releases/" style="color: #fcfcfc">&laquo; Previous</a></span>
     
     
-      <span><a href="../c_api_120/" style="color: #fcfcfc">Next &raquo;</a></span>
+      <span><a href="../release_notes_220/" style="color: #fcfcfc">Next &raquo;</a></span>
     
   </span>
 </div>

@@ -3,18 +3,18 @@
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="author" content="Sanford Rockowitz" /><link rel="canonical" href="https://www.ddcutil.com/c_api_110/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="author" content="Sanford Rockowitz" /><link rel="canonical" href="https://www.ddcutil.com/c_api_222/" />
       <link rel="shortcut icon" href="../img/favicon.ico" />
-    <title>Shared Library Changes for Release 1.1.0 - ddcutil Documentation</title>
+    <title>Shared Library Changes for Release 2.2.2 - ddcutil Documentation</title>
     <link rel="stylesheet" href="../css/theme.css" />
     <link rel="stylesheet" href="../css/theme_extra.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
     
       <script>
         // Current page data
-        var mkdocs_page_name = "Shared Library Changes for Release 1.1.0";
-        var mkdocs_page_input_path = "c_api_110.md";
-        var mkdocs_page_url = "/c_api_110/";
+        var mkdocs_page_name = "Shared Library Changes for Release 2.2.2";
+        var mkdocs_page_input_path = "c_api_222.md";
+        var mkdocs_page_url = "/c_api_222/";
       </script>
     
     <!--[if lt IE 9]>
@@ -191,11 +191,7 @@
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../c_api_100/">Shared Library Changes for Release 1.0.0</a>
                   </li>
-                  <li class="toctree-l1 current"><a class="reference internal current" href="#">Shared Library Changes for Release 1.1.0</a>
-    <ul class="current">
-    <li class="toctree-l2"><a class="reference internal" href="#overview">Overview</a>
-    </li>
-    </ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../c_api_110/">Shared Library Changes for Release 1.1.0</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../c_api_120/">Shared Library Changes for Release 1.2.0</a>
                   </li>
@@ -217,7 +213,13 @@
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../c_api_221/">Shared Library Changes for Release 2.2.1</a>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../c_api_222/">Shared Library Changes for Release 2.2.2</a>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="#">Shared Library Changes for Release 2.2.2</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#watch-mode-udev">Watch mode udev</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#fixed">Fixed</a>
+    </li>
+    </ul>
                   </li>
               </ul>
               <p class="caption"><span class="caption-text">Background</span></p>
@@ -306,9 +308,9 @@
   <ul class="wy-breadcrumbs">
     <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
           <li class="breadcrumb-item">Shared Library</li>
-      <li class="breadcrumb-item active">Shared Library Changes for Release 1.1.0</li>
+      <li class="breadcrumb-item active">Shared Library Changes for Release 2.2.2</li>
     <li class="wy-breadcrumbs-aside">
-          <a href="https://github.com/rockowitz/ddcutil/edit/master/docs/c_api_110.md" ></a>
+          <a href="https://github.com/rockowitz/ddcutil/edit/master/docs/c_api_222.md" ></a>
     </li>
   </ul>
   <hr/>
@@ -316,16 +318,32 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
             <div class="section" itemprop="articleBody">
               
-                <h2 id="shared-library-changes-for-release-110">Shared Library Changes for Release 1.1.0</h2>
-<h3 id="overview">Overview</h3>
-<p>This release contains no API changes. </p>
-<p>At startup, <strong>libddcutil</strong> reads and processes the <strong>ddcutil</strong> configuration file, typically $HOME/.config/ddcutil/ddcutilrc</p>
+                <h2 id="shared-library-changes-for-release-222">Shared Library Changes for Release 2.2.2</h2>
+<p>Shared library <strong>libddcutil</strong> is backwardly compatible with the ones in
+<strong>ddcutil</strong> 2.2.1 and 2.2.0. The SONAME is unchanged as libddcutil.so.5. The released library
+file is libddcutil.so.5.4.0.</p>
+<h3 id="watch-mode-udev">Watch mode udev</h3>
+<p>Use libudev to watch for display connection and disconnection. This is now
+the default watch mode if <strong>ddcutil</strong> was built to use libudev, which is normally
+the case (<strong>configure</strong> option <strong><em>--enable-udev</em></strong>). A specific watch mode
+can be forced using <strong><em>--watch-mode udev</em></strong>, <strong><em>--watch-mode xevent</em></strong>, or
+<strong><em>--watch-mode poll</em></strong>.  Addresses issues raised in 
+<a href="https://invent.kde.org/plasma/powerdevil/-/merge_requests/542">KDE-Plasma PowerDevil merge request 542</a>. </p>
+<p>Note there is presently no API function for selecting watch-mode. A client program can specify 
+a watch-mode other than UDEV by including a <strong><em>--watch-mode</em></strong> option in
+the libopts parameter string passed to <strong>ddca_init2()</strong>.</p>
+<h3 id="fixed">Fixed</h3>
+<ul>
+<li><strong>ddca_set_non_table_vcp_value()</strong> was not performing verification, </li>
+<li><strong>ddca_display_ref_from_handle()</strong>: was not converting internal to external display
+  reference, causing a segfault. Issue #528.</li>
+</ul>
               
             </div>
           </div><footer>
     <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
-        <a href="../c_api_100/" class="btn btn-neutral float-left" title="Shared Library Changes for Release 1.0.0"><span class="icon icon-circle-arrow-left"></span> Previous</a>
-        <a href="../c_api_120/" class="btn btn-neutral float-right" title="Shared Library Changes for Release 1.2.0">Next <span class="icon icon-circle-arrow-right"></span></a>
+        <a href="../c_api_221/" class="btn btn-neutral float-left" title="Shared Library Changes for Release 2.2.1"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../mccs_background/" class="btn btn-neutral float-right" title="Monitor Control Command Set">Next <span class="icon icon-circle-arrow-right"></span></a>
     </div>
 
   <hr/>
@@ -352,10 +370,10 @@
         </span>
     
     
-      <span><a href="../c_api_100/" style="color: #fcfcfc">&laquo; Previous</a></span>
+      <span><a href="../c_api_221/" style="color: #fcfcfc">&laquo; Previous</a></span>
     
     
-      <span><a href="../c_api_120/" style="color: #fcfcfc">Next &raquo;</a></span>
+      <span><a href="../mccs_background/" style="color: #fcfcfc">Next &raquo;</a></span>
     
   </span>
 </div>

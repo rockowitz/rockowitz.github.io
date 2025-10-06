@@ -213,6 +213,8 @@
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../c_api_221/">Shared Library Changes for Release 2.2.1</a>
                   </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../c_api_222/">Shared Library Changes for Release 2.2.2</a>
+                  </li>
               </ul>
               <p class="caption"><span class="caption-text">Background</span></p>
               <ul>
@@ -251,6 +253,8 @@
               <p class="caption"><span class="caption-text">Release History</span></p>
               <ul class="current">
                   <li class="toctree-l1"><a class="reference internal" href="../releases/">Releases</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../release_notes_222/">Preliminary Notes for Upcoming Release 2.2.2</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../release_notes_220/">Release Notes</a>
                   </li>
@@ -325,6 +329,14 @@
             <div class="section" itemprop="articleBody">
               
                 <h2 id="prior-announcements">Prior Announcements</h2>
+<p>17 February 2025</p>
+<p>ddcutil 2.2.0 is a major new release,</p>
+<p>Most significantly, detecting and reporting display connection and disconnection has been reworked and enhanced, making libddcutil more useful to applications such as KDE PowerDevil, vdu_controls, and ddcutil-service.</p>
+<p>Other enhancements include support for DisplayLink devices using driver evince. more consistent and extensive use of the system log, additional facilities for remote problem diagnosis, and changes in building, installation, and packaging. And, of course, there are many bug fixes.</p>
+<p>The libddcutil API is backwardly compatible with that in release 2.1.4. It contains some minor changes and additional APIs, particularly for display change detection</p>
+<p>ddcui 0.6.0 has been modified use the enhanced libddcutil API for display change detection, automatically reflecting display connection and disconnection. It also contains a handful of bug fixes.</p>
+<p>For details about the changes and bug fixes, see ddccutil 2.2.0 Release Notes, Shared Library Changes for Release 2.2.0, and ddcui Release Notes. Changes are also summarized in the CHANGELOG.md files in the respective source trees.</p>
+<p>Michael Hamilton, developer of VDU Controls, has once again provided invaluable assistance in the development of this release, particularly in the design and implementation of display status change detection. His project ddcutil-service packages libddcutil as a D-Bus service.</p>
 <p>17 February 2024</p>
 <p><strong>ddcutil</strong> 2.1.4 restores deprecated API function <strong>ddca_create_display_ref()</strong> (an alternative name for <strong>ddca_get_display_ref()</strong>),
 allowing some existing programs in Debian to use <strong>libddutil</strong> without changes.</p>

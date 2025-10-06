@@ -229,6 +229,8 @@
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../c_api_221/">Shared Library Changes for Release 2.2.1</a>
                   </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../c_api_222/">Shared Library Changes for Release 2.2.2</a>
+                  </li>
               </ul>
               <p class="caption"><span class="caption-text">Background</span></p>
               <ul>
@@ -267,6 +269,8 @@
               <p class="caption"><span class="caption-text">Release History</span></p>
               <ul>
                   <li class="toctree-l1"><a class="reference internal" href="../releases/">Releases</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../release_notes_222/">Preliminary Notes for Upcoming Release 2.2.2</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../release_notes_220/">Release Notes</a>
                   </li>
@@ -447,40 +451,30 @@ file ddcutilrc. They can also be included in the opts argument string passed to 
 </ul>
 <h4 id="api-changes">API Changes</h4>
 <ul>
-<li><strong>ddca_start_watch_displays()</strong> has been modifed (in a backwards compatible way) to reflect the fact that sleep state changes 
-   are no longer reported. .  <ul>
-<li>The only event class that can be enabled is DDCA_EVENT_CLASS_DISPLAY_DETECTION.  </li>
-<li>DDCA_EVENT_CLASS_ALL is effectively the same as DDCA_EVENT_CLASS_DISPLAY_CONNECTION.  </li>
-<li>It is an error if either DDCA_EVENT_CLASS_DPMS or DDCA_EVENT_CLASS_NONE are specified.    </li>
-</ul>
-</li>
-<li>Struct DDCA_Display_Status_Event<ul>
-<li>Add field <strong>flags</strong> in the unused secton of <strong>DDCA_Display_Status Event</strong>.  It has one bit defined, <strong>DDCA_DISPLAY_EVENT_DDC_WORKING</strong>.
-Normally, this bit is set on display connection events.  In case DDC is not immediately available after 
- EDID detection, this bit is not set.  If DDC subsequently becomes enabled, an event of type DDCA_EVENT_DDC_ENABLED is emitted.</li>
-</ul>
-</li>
 <li>
-<p>Add value <strong>DDCA_EVENT_DDC_ENABLED</strong> in enum <strong>DDCA_Display_Event_Type</strong> as a possible value of field <strong>event_type</strong>.</p>
+<p><strong>ddca_start_watch_displays()</strong> has been modifed (in a backwards compatible way) to reflect the fact that sleep state changes 
+   are no longer reported. .  </p>
+<ul>
+<li>The only event class that can be enabled is <strong>DDCA_EVENT_CLASS_DISPLAY_DETECTION</strong>.</li>
+<li><strong>DDCA_EVENT_CLASS_ALL</strong> is effectively the same as <strong>DDCA_EVENT_CLASS_DISPLAY_CONNECTION</strong>.  </li>
+<li>It is an error if either <strong>DDCA_EVENT_CLASS_DPMS</strong> or <strong>DDCA_EVENT_CLASS_NONE</strong> is specified.</li>
+</ul>
 </li>
 <li>
 <p>Handle possible delay between time that EDID can be read and DDC becomes functional</p>
+<ul>
+<li>Enum <strong>DDCA_Display_Event_Type</strong>: Add value <strong>DDCA_EVENT_DDC_ENABLED</strong>.  Used to report that 
+  DDC communication was detected as working some time after a display was connected.</li>
+<li>Struct <strong>DDCA_Display_Status_Event</strong>: Added field <strong>flags</strong> in the unused secton of <strong>DDCA_Display_Status Event</strong>.  It has one bit defined, <strong>DDCA_DISPLAY_EVENT_DDC_WORKING</strong>.
+Normally, this bit is set on display connection events.  In case DDC is not immediately available after 
+ EDID detection, this bit is not set.  If DDC subsequently becomes enabled, an event of type <strong>DDCA_EVENT_DDC_ENABLED</strong> is emitted.</li>
+</ul>
 </li>
 <li>
-<p><strong>ddca_get_display_watch_settings()</strong>, <strong>ddca_set_display_watch_settings()</strong></p>
-</li>
-<li>
-<p>Added value <strong>DDC_EVENT_DDC_ENABLED</strong> to enum <strong>DDCA_Event_Type</strong></p>
-</li>
-<li>Modified struct <strong>DDCA_Display_Status_Event</strong></li>
-<li>Field <strong>event_type</strong> can take the value <strong>DDC_EVENT_DDC_ENABLED</strong>, which indicates that
-    DDC communication has become enabled some time after the display was detected</li>
-<li>Added field <strong>flags</strong>, with bit <strong>DDCA_DISPLAY_EVENT_DDC_WORKING</strong>. This bit is 
-    normally set when <strong>event_type</strong> is <strong>DDC_EVENT_DISPLAY_CONNECTED</strong>.  If it is not
-    set, it indicaets that DDC communication is not working.</li>
-<li>Added <strong>ddca_get_display_watch_settings()</strong>, <strong>ddca_set_display_watch_settings()</strong>, 
+<p>Added <strong>ddca_get_display_watch_settings()</strong>, <strong>ddca_set_display_watch_settings()</strong>, 
   and struct <strong>DDCA_DW_Settings</strong>, enabling the client program to modify display watch
-  configuration settings. </li>
+  configuration settings. </p>
+</li>
 </ul>
 <h4 id="other-shared-library-changes">Other Shared Library Changes</h4>
 <p>Quiesce operation:  </p>
@@ -506,17 +500,13 @@ Normally, this bit is set on display connection events.  In case DDC is not imme
 </ul>
 <p>Miscellaneous:  </p>
 <ul>
-<li>
-<p>Option <strong><em>--disable-api</em></strong> completely disables the API, causing most API calls, including
+<li>Option <strong><em>--disable-api</em></strong> completely disables the API, causing most API calls, including
   those performing DDC communication, to fail. This can be useful for testing 
   whether <strong>libddcutil</strong> is the source of a system error in the case of client
-  applications, e.g. KDE PowerDevil, that will not build without the shared library.</p>
-</li>
+  applications, e.g. KDE PowerDevil, that will not build without the shared library.</li>
+<li>Use mutexes to control access to corruptable data structures, such as the table of open monitors.</li>
 <li>
-<p>Use mutexes to control access to corruptable data structures, such as the table of open monitors.</p>
-</li>
-<li>
-<p>Enum value <strong>DDCA_STATS_API</strong> is added to enum <strong>DDCA_Stats_Type</strong>, for reporting API specific statistics.</p>
+<p>Enum <strong>DDCA_Stats_Type</strong>: Add value <strong>DDCA_STATS_API</strong>, for reporting API specific statistics.</p>
 </li>
 <li>
 <p>In some situations, it is meaningful to specify a display reference for a display that has been removed.                      </p>
