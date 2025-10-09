@@ -318,8 +318,8 @@
 <p>05 October 2025</p>
 <p>Release 2.2.2 contains one significant bug fix of interest to general users:</p>
 <ul>
-<li>Starting with release 2.2.0, verification on 
-command <strong>setvcp</strong> did not occur, even if option <strong><em>--verify</em></strong> was explicitly given.</li>
+<li>Starting with release 2.2.0, verification on command <strong>setvcp</strong> did not
+  not occur, even if option <strong><em>--verify</em></strong> was explicitly given.</li>
 </ul>
 <p>Miscellanous changes: </p>
 <ul>
@@ -328,7 +328,9 @@ command <strong>setvcp</strong> did not occur, even if option <strong><em>--veri
   An AMD Ryzen AI 9 365 based system was seen to report 0x038000, not 0x030000.
   Addresses issue #530.</li>
 <li>Additional messages reporting configuration file errors. In particular,
-  section names and the names of keys within each section are validated.</li>
+  section names and the names of keys within each section are validated.
+  Section names other than <strong>[global]</strong>, <strong>[ddcutil]</strong>, or <strong>[libddcutil]</strong>
+  are flagged as errors.</li>
 <li>If possible, obtain the list of PNP ids from /usr/share/hwdata/pnp.ids instead
   of using a hardcoded list.  Affects output of command <strong>detect</strong>. </li>
 <li>Reword the parser explanation of options <strong><em>--verify</em></strong> and <strong><em>--noverify</em></strong>
