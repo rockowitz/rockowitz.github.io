@@ -370,10 +370,12 @@
 <p>Additional bug fixes:</p>
 <ul>
 <li>Command <strong>getvcp --verbose</strong>: output was partially in a format intended for syslog.</li>
-<li>Command <strong>environment --verbose</strong>: </li>
+<li>Command <strong>environment --verbose</strong>: <ul>
 <li>Permission denied errors corrupted output of the find command used to scan for 
-    DisplayLink devices.</li>
+  DisplayLink devices.</li>
 <li>Incorrectly formed path name for examining /sys/class/drm.</li>
+</ul>
+</li>
 <li>Fix out-of-tree build reference to generated file /src/base/build_details.h. Pull request #544</li>
 <li>Build failed with an undefined reference error when <strong>configure</strong> option <strong><em>--disable-drm</em></strong>
    was specified. </li>
@@ -407,7 +409,7 @@
   disabling other destinations</li>
 <li>Added option <strong><em>--trcback <function name></em></strong>: Reports the caller stack (within <strong>ddcutil</strong>)
   of that function. This option requires that traced function stacks are enabled, 
-  which is the default.</li>
+  which is now the default.</li>
 </ul>
 <h3 id="build-fixes">Build Fixes:</h3>
 <h3 id="ddcutil-221"><strong>ddcutil</strong> 2.2.1</h3>
