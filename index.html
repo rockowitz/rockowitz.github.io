@@ -334,7 +334,7 @@
                 <h1 id="ddcutil-and-ddcui">ddcutil and ddcui</h1>
 <h2 id="announcements">Announcements</h2>
 <p>14 November 2025</p>
-<p>Release 2.2.2 contains one important bug fix of general interest.  Command <strong>setvcp --verify</strong> and API function <strong>ddca_set_non_table_vcp_value()</strong> were not performing verification.  As a result of this fix, scripts and applications that hitherto always appeared to succeed when setting a feature value many now fail the operation.</p>
+<p>Release 2.2.2 contains one important bug fix of general interest.  Command <strong>setvcp --verify</strong> and API function <strong>ddca_set_non_table_vcp_value()</strong> were not performing verification.  As a result of this fix, scripts and applications that hitherto always appeared to succeed when setting a feature value many now fail the operation because of verification.</p>
 <p>The bulk of changes relate to bugs revealed by, and features needed by, KDE PowerDevil.  In particular, a new watch-mode, <strong>udev</strong>, uses UDEV notifications to detect display connection and disconnection.  This is now the default watch mode when executing on Wayland.  <strong>xevent</strong> remains the default watch mode when executing on X11. </p>
 <p>The <strong>libddcutil</strong> API is backwardly compatible with that in releases 2.1.4, 2.2.0 and 2.2.1. </p>
 <p>For details about the changes, see <a href="release_notes_220/">Notes for Recent ddcutil Releases</a>,
@@ -513,5 +513,5 @@ The source is hosted on <a href="http://www.github.com/rockowitz/ddcui">Github</
 
 <!--
 MkDocs version : 1.6.1
-Build Date UTC : 2025-11-14 16:44:09.328046+00:00
+Build Date UTC : 2025-11-14 17:30:15.931320+00:00
 -->
