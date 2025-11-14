@@ -256,6 +256,8 @@
                   </li>
                   <li class="toctree-l1 current"><a class="reference internal current" href="#">Preliminary Notes for Upcoming Release 2.2.2</a>
     <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#bug-fixes">Bug Fixes</a>
+    </li>
     </ul>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../release_notes_220/">Release Notes</a>
@@ -316,10 +318,19 @@
               
                 <h2 id="ddcutil-222-release-notes-preliminary"><strong>ddcutil</strong> 2.2.2 Release Notes (Preliminary)</h2>
 <p>05 October 2025</p>
+<h3 id="bug-fixes">Bug Fixes</h3>
 <p>Release 2.2.2 contains one significant bug fix of interest to general users:</p>
 <ul>
-<li>Starting with release 2.2.0, verification on command <strong>setvcp</strong> did not
+<li>Starting with release 2.2.0, verification on command <strong>setvcp</strong> and API functions that set a feature value did not
   not occur, even if option <strong><em>--verify</em></strong> was explicitly given.</li>
+</ul>
+<p>Additional bug fixes:</p>
+<ul>
+<li>Command <strong>getvcp --verbose</strong>: output was partially in a format intended for syslog.</li>
+<li>Command <strong>environment --verbose</strong>: </li>
+<li>Permission denied errors corrupted output of the find command used to scan for 
+    DisplayLink devices.</li>
+<li>Incorrectly formed path name for examining /sys/class/drm.</li>
 </ul>
 <p>Miscellanous changes: </p>
 <ul>
@@ -334,16 +345,29 @@
 <li>If possible, obtain the list of PNP ids from /usr/share/hwdata/pnp.ids instead
   of using a hardcoded list.  Affects output of command <strong>detect</strong>. </li>
 <li>Reword the parser explanation of options <strong><em>--verify</em></strong> and <strong><em>--noverify</em></strong>
-  for clarity.</li>
+  for clarity..</li>
+<li>Attribute <strong>VERIFY</strong> can be specified on the <strong>ATTRS</strong> line in a feature 
+  definition file.  If included, <strong>setvcp</strong> verification will never be performed
+  for that feature, without affecting other features. Addresses monitors such as
+  Samsung LS34A650U, which always returns 0 as the value of feature x10 (Brightness)
+  and monitors such as Dell 2407WFP where <strong>setvcp x10</strong> values in the range 0..50 
+  are mapped to the range 30..50. In particular, it allows client programs such
+  as KDE PowerDevil succeed in setting a value.</li>
+</ul>
+<p>Debug related changes: </p>
+<ul>
 <li>Added option <strong><em>--trace-to_syslog</em></strong>: Direct trace output to the system log, without
-  disabling other destinations.</li>
-<li><strong>configure</strong> option <strong><em>--disable-drm</em></strong> forces <strong><em>--disable-watch-displays</em></strong> </li>
+  disabling other destinations</li>
+<li>Added option <strong><em>--trcback <function name></em></strong>: Reports the caller stack (within <strong>ddcutil</strong>)
+  of that function. This option requires that traced function stacks are enabled, 
+  which is the default.</li>
 </ul>
 <p>Build Fixes:</p>
 <ul>
 <li>Fix out-of-tree build reference to generated file /src/base/build_details.h. Pull request #544</li>
 <li>Build failed with an undefined reference error when <strong>configure</strong> option <strong><em>--disable-drm</em></strong>
    was specified. </li>
+<li><strong>configure</strong> option <strong><em>--disable-drm</em></strong> forces <strong><em>--disable-watch-displays</em></strong> </li>
 </ul>
 <p>For <strong>libddcutil</strong> related changes, see <a href="../c_api_222/">Shared Library Changes for Release 2.2.2</a>.</p>
 <p>For <strong>ddcui</strong> changes, see <a href="../ddcui_release_notes/"><strong>ddcui</strong> Release Notes</a></p>
