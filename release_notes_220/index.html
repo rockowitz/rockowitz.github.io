@@ -258,7 +258,7 @@
                   </li>
                   <li class="toctree-l1 current"><a class="reference internal current" href="#">Release Notes</a>
     <ul class="current">
-    <li class="toctree-l2"><a class="reference internal" href="#ddcutil-222">ddcutil 2.2.2</a>
+    <li class="toctree-l2"><a class="reference internal" href="#ddcutil-223">ddcutil 2.2.3</a>
     </li>
     <li class="toctree-l2"><a class="reference internal" href="#bug-fixes">Bug Fixes</a>
     </li>
@@ -359,10 +359,10 @@
                 <h2 id="notes-for-recent-ddcutil-releases">Notes for Recent <strong>ddcutil</strong> Releases</h2>
 <p>For <strong>ddcui</strong> changes, see <a href="../ddcui_release_notes/"><strong>ddcui</strong> Release Notes</a></p>
 <p>For notes on releases prior to 2.2.0, see <a href="../release_notes/">Notes for Releases 2.1.4 and Earlier</a>.</p>
-<h3 id="ddcutil-222"><strong>ddcutil</strong> 2.2.2</h3>
+<h3 id="ddcutil-223"><strong>ddcutil</strong> 2.2.3</h3>
 <p>13 October 2025</p>
 <h3 id="bug-fixes">Bug Fixes</h3>
-<p>Release 2.2.2 contains one significant bug fix of interest to general users:</p>
+<p>Release 2.2.3 contains one significant bug fix of interest to general users:</p>
 <ul>
 <li>Starting with release 2.2.0, verification on command <strong>setvcp</strong> and API functions that set a feature value did not
   not occur, even if option <strong><em>--verify</em></strong> was explicitly given.  As a result of this fix, scripts and applications that hitherto appeared to succeed when setting a feature value many now fail the operation because of verification.</li>
@@ -394,14 +394,17 @@
 <li>If possible, obtain the list of PNP ids from /usr/share/hwdata/pnp.ids instead
   of using a hardcoded list.  Affects output of command <strong>detect</strong>. </li>
 <li>Reword the parser explanation of options <strong><em>--verify</em></strong> and <strong><em>--noverify</em></strong>
-  for clarity..</li>
-<li>Attribute <strong>VERIFY</strong> can be specified on the <strong>ATTRS</strong> line in a feature 
-  definition file.  If included, <strong>setvcp</strong> verification will never be performed
+  for clarity.
+  <!--
+- Attribute **VERIFY** can be specified on the **ATTRS** line in a feature 
+  definition file.  If included, **setvcp** verification will never be performed
   for that feature, without affecting other features. Addresses monitors such as
   Samsung LS34A650U, which always returns 0 as the value of feature x10 (Brightness)
-  and monitors such as Dell 2407WFP where <strong>setvcp x10</strong> values in the range 0..50 
+  and monitors such as Dell 2407WFP where **setvcp x10** values in the range 0..50 
   are mapped to the range 30..50. In particular, it allows client programs such
-  as KDE PowerDevil succeed in setting a value.</li>
+  as KDE PowerDevil succeed in setting a value.
+-->
+</li>
 </ul>
 <h3 id="debug-related-changes">Debug related changes:</h3>
 <ul>
