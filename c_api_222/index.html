@@ -217,8 +217,6 @@
     <ul class="current">
     <li class="toctree-l2"><a class="reference internal" href="#watch-mode-udev">Watch mode udev</a>
     </li>
-    <li class="toctree-l2"><a class="reference internal" href="#api-changes">API Changes</a>
-    </li>
     <li class="toctree-l2"><a class="reference internal" href="#fixed">Fixed</a>
     </li>
     </ul>
@@ -337,13 +335,17 @@ to use the X11 API, which is normall the case (<strong>configure</strong> option
 <p>There is presently no API function for selecting watch-mode. A client program can specify 
 a watch-mode other than the default by including a <strong><em>--watch-mode</em></strong> option in
 the libopts parameter string passed to <strong>ddca_init2()</strong>.</p>
-<h3 id="api-changes">API Changes</h3>
-<p>Define bit DDCA_NOVERIFY in DDCA_Version_Feature_Flags to
+<!--
+### API Changes
+
+Define bit DDCA_NOVERIFY in DDCA_Version_Feature_Flags to
 indicates that verification should never be performed for the feature.
 There exist monitors for which the reported feature value is not the 
-value set on a <strong>setvcp</strong> operation. A user can cuuse this bit to be 
-set by specifying feature attribute <strong>NOVERIY</strong> in a user defined
-feature file for the monitor.</p>
+value set on a **setvcp** operation. A user can cause this bit to be 
+set by specifying feature attribute **NOVERIY** in a user defined
+feature file for the monitor.
+-->
+
 <h3 id="fixed">Fixed</h3>
 <ul>
 <li><strong>ddca_set_non_table_vcp_value()</strong> was not performing verification, </li>
