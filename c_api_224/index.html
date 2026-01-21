@@ -3,18 +3,18 @@
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="author" content="Sanford Rockowitz" /><link rel="canonical" href="https://www.ddcutil.com/c_api_93/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="author" content="Sanford Rockowitz" /><link rel="canonical" href="https://www.ddcutil.com/c_api_224/" />
       <link rel="shortcut icon" href="../img/favicon.ico" />
-    <title>Shared Library Changes for Release 0.9.3 - ddcutil Documentation</title>
+    <title>Shared Library Changes for Release 2.2.4 - ddcutil Documentation</title>
     <link rel="stylesheet" href="../css/theme.css" />
     <link rel="stylesheet" href="../css/theme_extra.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
     
       <script>
         // Current page data
-        var mkdocs_page_name = "Shared Library Changes for Release 0.9.3";
-        var mkdocs_page_input_path = "c_api_93.md";
-        var mkdocs_page_url = "/c_api_93/";
+        var mkdocs_page_name = "Shared Library Changes for Release 2.2.4";
+        var mkdocs_page_input_path = "c_api_224.md";
+        var mkdocs_page_url = "/c_api_224/";
       </script>
     
     <!--[if lt IE 9]>
@@ -179,15 +179,7 @@
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../c_api_90/">Shared Library Changes for Release 0.9.0</a>
                   </li>
-                  <li class="toctree-l1 current"><a class="reference internal current" href="#">Shared Library Changes for Release 0.9.3</a>
-    <ul class="current">
-    <li class="toctree-l2"><a class="reference internal" href="#trace-control">Trace Control</a>
-    </li>
-    <li class="toctree-l2"><a class="reference internal" href="#feature-metadata">Feature Metadata</a>
-    </li>
-    <li class="toctree-l2"><a class="reference internal" href="#miscellaneous">Miscellaneous</a>
-    </li>
-    </ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../c_api_93/">Shared Library Changes for Release 0.9.3</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../c_api_95/">Shared Library Changes for Release 0.9.5</a>
                   </li>
@@ -223,7 +215,11 @@
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../c_api_222/">Shared Library Changes for Release 2.2.2</a>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../c_api_224/">Shared Library Changes for Release 2.2.4</a>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="#">Shared Library Changes for Release 2.2.4</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#fixed">Fixed</a>
+    </li>
+    </ul>
                   </li>
               </ul>
               <p class="caption"><span class="caption-text">Background</span></p>
@@ -312,9 +308,9 @@
   <ul class="wy-breadcrumbs">
     <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
           <li class="breadcrumb-item">Shared Library</li>
-      <li class="breadcrumb-item active">Shared Library Changes for Release 0.9.3</li>
+      <li class="breadcrumb-item active">Shared Library Changes for Release 2.2.4</li>
     <li class="wy-breadcrumbs-aside">
-          <a href="https://github.com/rockowitz/ddcutil/edit/master/docs/c_api_93.md" ></a>
+          <a href="https://github.com/rockowitz/ddcutil/edit/master/docs/c_api_224.md" ></a>
     </li>
   </ul>
   <hr/>
@@ -322,353 +318,37 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
             <div class="section" itemprop="articleBody">
               
-                <h2 id="c-api-changes-for-release-093">C API Changes for Release 0.9.3</h2>
-<h3 id="trace-control">Trace Control</h3>
-<p>API functions to control tracing have been added.  This API corresponds to
-ddcutil command line options <strong><em>--trace</em></strong>, <strong><em>--trcfunc</em></strong>, and <strong><em>--trcfile.</em></strong></p>
-<p>Added enum DDCA_Trace_Group, whose values can be ORed together, to specify 
-the classes to be traced.</p>
-<table>
-<thead>
-<tr>
-<th>Flag</th>
-<th>Meaning</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>DDCA_TRC_BASE</td>
-<td>Base functions</td>
-</tr>
-<tr>
-<td>DDCA_TRC_I2C</td>
-<td>I2C layer</td>
-</tr>
-<tr>
-<td>DDCA_TRC_ADL</td>
-<td>ADL layer</td>
-</tr>
-<tr>
-<td>DDCA_TRC_DDC</td>
-<td>Higher level functions in the DDC layer</td>
-</tr>
-<tr>
-<td>DDCA_TRC_USB</td>
-<td>USB connecte didplay</td>
-</tr>
-<tr>
-<td>DDCA_TRC_TOP</td>
-<td><strong>ddcutil</strong> mailine **</td>
-</tr>
-<tr>
-<td>DDCA_TRC_ENV</td>
-<td><strong><em>environment</em></strong> command</td>
-</tr>
-<tr>
-<td>DDCA_TRC_API</td>
-<td>top level API functions</td>
-</tr>
-<tr>
-<td>DDCA_TRC_UDF</td>
-<td>user-defined functions</td>
-</tr>
-<tr>
-<td>DDCA_TRC_VCP</td>
-<td>VCP layer, feature definitions</td>
-</tr>
-<tr>
-<td>DDCA_TRC_DDCIO</td>
-<td>Low level functions in the DDC layer</td>
-</tr>
-<tr>
-<td>DDCA_TRC_NONE</td>
-<td>all tracing disabled</td>
-</tr>
-<tr>
-<td>DDCA_TRC_ALL</td>
-<td>all tracing enabled</td>
-</tr>
-</tbody>
-</table>
-<table>
-<thead>
-<tr>
-<th>New Function</th>
-<th>Comments</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>ddca_add_traced_function()</td>
-<td>turn on tracing for a specific function</td>
-</tr>
-<tr>
-<td>ddca_add_traced_file()</td>
-<td>turn on tracing for a specific source file</td>
-</tr>
-<tr>
-<td>ddca_set_trace_groups()</td>
-<td>turn on tracing for one or more trace groups</td>
-</tr>
-</tbody>
-</table>
-<h3 id="feature-metadata">Feature Metadata</h3>
-<p>To allow for user supplied feature definitions, metadata requests are now generally tied to the display, by
-specifying a <strong><em>DDCA_Display_Ref</em></strong> or <strong><em>DDCA_Display_Handle</em></strong> instead of the VCP version.  That is, when metadata
-is requested for a feature, we first look to see if there is a user supplied feature definition for the display. Absent that,
-the VCP version of the display is used to retrieve the appropriate feature definition. </p>
-<p>Eliminate typedef <strong><em>DDCA_Feature_Value_Table</em></strong>, which is defined as <strong><em>DDCA_Feature_Value_Entry</em></strong> <em>, and is used to reference a feature value lookup table.  Use </em><strong>DDCA_Feature_Value_Entry</strong>* * instead.  </p>
-<p>Functions whose signatures are affected: </p>
-<table>
-<thead>
-<tr>
-<th>Function</th>
-<th>Comments</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>ddca_get_simple_nc_feature_value_name_by_table()</td>
-<td></td>
-</tr>
-</tbody>
-</table>
-<table>
-<thead>
-<tr>
-<th>Deleted Structs and Functions</th>
-<th>Comments</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>struct DDCA_Version_Feature_Info</td>
-<td>used by feature_info functions</td>
-</tr>
-<tr>
-<td>ddca_get_feature_info_by_vcp_version()</td>
-<td>deprecated in 0.9.0, returned DDCA_Version_Feature_Info</td>
-</tr>
-<tr>
-<td>ddca_get_feature_info_by_display()</td>
-<td>deprecated in 0.9.0, returned DDCA_Version_Feature_Info</td>
-</tr>
-<tr>
-<td>ddca_free_feature_info()</td>
-<td>deprecated in 0.9.0</td>
-</tr>
-<tr>
-<td>ddca_get_mccs_version_id()</td>
-<td>deprecated in 0.9.0</td>
-</tr>
-<tr>
-<td>ddca_get_simple_sl_value_table()</td>
-<td>deprecated in 0.9.0, use ddca_get_feature_metadata...() variant</td>
-</tr>
-<tr>
-<td>ddca_get_simple_nc_feature_value_name_by_display()</td>
-<td>deprecated in 0.9.0</td>
-</tr>
-</tbody>
-</table>
-<table>
-<thead>
-<tr>
-<th>Deprecated</th>
-<th>Comments</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>ddca_get_feature_name_by_dref()</td>
-<td>use ddca_get_feature_metadata()</td>
-</tr>
-<tr>
-<td>ddca_free_metadata_contents()</td>
-<td>use ddca_free_feature_metadata()</td>
-</tr>
-</tbody>
-</table>
-<table>
-<thead>
-<tr>
-<th>Renamed Function</th>
-<th>Comments</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>ddca_get_feature_name_by_dref()</td>
-<td>was ddca_feature_name_by_dref()</td>
-</tr>
-</tbody>
-</table>
-<table>
-<thead>
-<tr>
-<th>Modified Functions</th>
-<th>Comments</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>ddca_get_feature_metadata_by_vspec()</td>
-<td>returns pointer to new <strong><em>DDCA_Feature_Metadata</em></strong></td>
-</tr>
-<tr>
-<td>ddca_get_feature_metadata_by_dref()</td>
-<td>returns pointer to new <strong><em>DDCA_Feature_Metadata</em></strong></td>
-</tr>
-<tr>
-<td>ddca_get_feature_metadata_by_dh()</td>
-<td>returns pointer to new <strong><em>DDCA_Feature_Metadata</em></strong></td>
-</tr>
-</tbody>
-</table>
-<p>The above functions now take a <strong><em>DDCA_Metadata**</em></strong> instead of a <strong><em>DDCA_Metadata*</em></strong> parm, 
-i.e. they allocate a new DDCA_Metadata instance instance instead of filling in an 
-exisitng instance.</p>
-<table>
-<thead>
-<tr>
-<th>Funcations Added</th>
-<th>Comments</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>ddca_free_feature_metadata()</td>
-<td>replaces ddca_free_metadata_contents()</td>
-</tr>
-<tr>
-<td>ddca_enable_udf()</td>
-<td>controls whether user supplied feature definitions are enabled</td>
-</tr>
-<tr>
-<td>ddca_is_udf_enabled()</td>
-<td>reports whether usr supplied feature definitions are enabled</td>
-</tr>
-<tr>
-<td>ddca_report_capabilities_by_dref()</td>
-<td>handles display-specific user supplied feature definitions</td>
-</tr>
-<tr>
-<td>ddca_report_capabilities_by_dh()</td>
-<td>handles display-specific user supplied feature definitions</td>
-</tr>
-<tr>
-<td>ddca_check_by_dref()</td>
-<td>ensures user supplied feature defintions are loaded</td>
-</tr>
-<tr>
-<td>ddca_check_by_dh()</td>
-<td>ensures user supplied feature defintions are loaded</td>
-</tr>
-<tr>
-<td>ddca_free_feature_metadata()</td>
-<td></td>
-</tr>
-<tr>
-<td>ddca_report_parsed_capabilities_by_dref()</td>
-<td>uses user supplied feature definitions</td>
-</tr>
-<tr>
-<td>ddca_report_parsed_capabilities_by_dh()</td>
-<td>uses user supplied feature definitions</td>
-</tr>
-</tbody>
-</table>
-<p>The following flags have been added to field <strong>feature_flags</strong> in struct <strong>DDCA_Feature_Metadata</strong> 
-or therir meaning may have been modified, and they may be visible when an instance is returned by the API: </p>
-<table>
-<thead>
-<tr>
-<th>Bit flag</th>
-<th></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>DDCA_SYNTHETIC</td>
-<td>metadata was dynamically created for undefined feature</td>
-</tr>
-<tr>
-<td>DDCA_USER_DEFINED</td>
-<td>added, metadata is from user supplied feature definition</td>
-</tr>
-</tbody>
-</table>
-<p>Sample files reflect signature changes of ddca_get_feature_metadata_by_vspec() etc</p>
-<table>
-<thead>
-<tr>
-<th>File name</th>
-<th>Comments</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>demo_capabilities.c</td>
-<td></td>
-</tr>
-<tr>
-<td>demo_get_set_vcp.c</td>
-<td></td>
-</tr>
-<tr>
-<td>demo_vcpinfo.c</td>
-<td></td>
-</tr>
-</tbody>
-</table>
-<h3 id="miscellaneous">Miscellaneous</h3>
-<table>
-<thead>
-<tr>
-<th>Functions Added</th>
-<th>Comments</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>ddca_report_error_detail()</td>
-<td>Convenience function that formats <strong>DDCA_Error_Detail</strong></td>
-</tr>
-</tbody>
-</table>
-<p>Removed structs and typedefs related to experimental async support</p>
-<table>
-<thead>
-<tr>
-<th>Removed</th>
-<th>Comments</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>enum DDCA_Queue_Request_Type</td>
-<td></td>
-</tr>
-<tr>
-<td>struct DDCA_Queued_Request</td>
-<td></td>
-</tr>
-<tr>
-<td>function prototype DDCA_Notification_Func</td>
-<td></td>
-</tr>
-<tr>
-<td>function prototype Simple_Callback_Func</td>
-<td></td>
-</tr>
-</tbody>
-</table>
+                <h2 id="shared-library-changes-for-release-224">Shared Library Changes for Release 2.2.4</h2>
+<p>Shared library <strong>libddcutil</strong> is backwardly compatible with the ones in
+<strong>ddcutil</strong> 2.2.1 and later. The SONAME is unchanged as libddcutil.so.5. The released library
+file is libddcutil.so.5.4.1.</p>
+<!--
+### API Changes
+
+Define bit DDCA_NOVERIFY in DDCA_Version_Feature_Flags to
+indicates that verification should never be performed for the feature.
+There exist monitors for which the reported feature value is not the 
+value set on a **setvcp** operation. A user can cause this bit to be 
+set by specifying feature attribute **NOVERIY** in a user defined
+feature file for the monitor.
+-->
+
+<h3 id="fixed">Fixed</h3>
+<ul>
+<li>Segfault in dw_start_watch_displays() when Wayland-X11 bridge is not running.
+  Change based on pull request #563. </li>
+<li>Race condition failure in ddca_open_display2() triggered by disconnecting and 
+  connecting display in KDE PowerDevil.  Make setting Display_Ref flag 
+  DREF_DISCONNECTED and Display_Ref variable detail=NULL an atomic operation. 
+  Fixes the problem identified in issue #556.</li>
+<li>Option <strong><em>--ignore-hiddev</em></strong> was not being processed for libdcutil.</li>
+</ul>
               
             </div>
           </div><footer>
     <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
-        <a href="../c_api_90/" class="btn btn-neutral float-left" title="Shared Library Changes for Release 0.9.0"><span class="icon icon-circle-arrow-left"></span> Previous</a>
-        <a href="../c_api_95/" class="btn btn-neutral float-right" title="Shared Library Changes for Release 0.9.5">Next <span class="icon icon-circle-arrow-right"></span></a>
+        <a href="../c_api_222/" class="btn btn-neutral float-left" title="Shared Library Changes for Release 2.2.2"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../mccs_background/" class="btn btn-neutral float-right" title="Monitor Control Command Set">Next <span class="icon icon-circle-arrow-right"></span></a>
     </div>
 
   <hr/>
@@ -695,10 +375,10 @@ or therir meaning may have been modified, and they may be visible when an instan
         </span>
     
     
-      <span><a href="../c_api_90/" style="color: #fcfcfc">&laquo; Previous</a></span>
+      <span><a href="../c_api_222/" style="color: #fcfcfc">&laquo; Previous</a></span>
     
     
-      <span><a href="../c_api_95/" style="color: #fcfcfc">Next &raquo;</a></span>
+      <span><a href="../mccs_background/" style="color: #fcfcfc">Next &raquo;</a></span>
     
   </span>
 </div>

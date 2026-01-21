@@ -215,6 +215,8 @@
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../c_api_222/">Shared Library Changes for Release 2.2.2</a>
                   </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../c_api_224/">Shared Library Changes for Release 2.2.4</a>
+                  </li>
               </ul>
               <p class="caption"><span class="caption-text">Background</span></p>
               <ul>
@@ -258,6 +260,16 @@
                   </li>
                   <li class="toctree-l1 current"><a class="reference internal current" href="#">Release Notes</a>
     <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#ddcutil-224">ddcutil 2.2.4</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#display-selection">Display Selection</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#laptop-display-detection">Laptop Display Detection</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#miscellaneous-changes">Miscellaneous Changes</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#miscellaneous-fixes">Miscellaneous Fixes</a>
+    </li>
     <li class="toctree-l2"><a class="reference internal" href="#ddcutil-223">ddcutil 2.2.3</a>
     </li>
     <li class="toctree-l2"><a class="reference internal" href="#bug-fixes">Bug Fixes</a>
@@ -265,8 +277,6 @@
     <li class="toctree-l2"><a class="reference internal" href="#miscellanous-changes">Miscellanous changes:</a>
     </li>
     <li class="toctree-l2"><a class="reference internal" href="#debug-related-changes">Debug related changes:</a>
-    </li>
-    <li class="toctree-l2"><a class="reference internal" href="#build-fixes">Build Fixes:</a>
     </li>
     <li class="toctree-l2"><a class="reference internal" href="#ddcutil-221">ddcutil 2.2.1</a>
     </li>
@@ -359,6 +369,54 @@
                 <h2 id="notes-for-recent-ddcutil-releases">Notes for Recent <strong>ddcutil</strong> Releases</h2>
 <p>For <strong>ddcui</strong> changes, see <a href="../ddcui_release_notes/"><strong>ddcui</strong> Release Notes</a></p>
 <p>For notes on releases prior to 2.2.0, see <a href="../release_notes/">Notes for Releases 2.1.4 and Earlier</a>.</p>
+<h3 id="ddcutil-224"><strong>ddcutil</strong> 2.2.4</h3>
+<p>Release 2.2.4 contains several significant bug fixes for unusual situations, and yet
+more command line options.</p>
+<h3 id="display-selection">Display Selection</h3>
+<p>Display selection has been reworked to be more flexible while also simpler internally. 
+Previously, options <strong><em>--display</em></strong>, <strong><em>--bus</em></strong>, <strong><em>--edid</em></strong>, etc. were regarded as 
+identifiers that uniquely picked a display.  Generally speaking, only one identifier
+could be given, with special handling for the combination of <strong><em>--mfg</em></strong>, <strong><em>--model</em></strong>,
+and <strong><em>-sn</em></strong>.  </p>
+<p>With this change identifiers are now treated as selection criteria. More than one
+can be specified.  To be chosen, the display must satisfy all the criteria given.<br />
+As before if no selection options are given, <strong><em>--display 1</em></strong> is assumed.</p>
+<h3 id="laptop-display-detection">Laptop Display Detection</h3>
+<p>Normally, if the DRM connector name contains the string "eDP", it reliably indicates 
+that the connected display, typically a laptop display, does not implement DDC/CI, 
+and no further checking should be needed.
+Owing to a bug in the 
+amdgpu driver, there have been instances where "eDP" is in the DRM connector name for 
+an external display that does support DDC/CI. There will be no fix for this bug, which
+occurs only when the BIOS is operating in CSM mode, not EFI mode.
+As a workaround, starting with release 2.2.1, when "eDP" is in the DRM connector name,
+the EDID is also examined to confirm that the display is a laptop display.</p>
+<p>Unfortunately, the algorithm for examining the EDID is only heuristic, and there are 
+laptop displays where examining the EDID does not indicate a laptop display. 
+Consequently, this workaround caused some laptop displays to not be detected,
+contributing to subsequent errors and slow response time because of retries. </p>
+<p>With release 2.2.4, "eDP" is once again an (almost) absolute indicator or a laptop
+display which can be excluded from further processing.  To handle the error case
+where "eDP" is in the name for an external display, option <strong><em>--edp-ambiguous</em></strong>
+has been added, If specified, the EDID is examined as in relese 2.2.1. </p>
+<h3 id="miscellaneous-changes">Miscellaneous Changes</h3>
+<ul>
+<li>Option <strong><em>--edid</em></strong>. If the value given starts with "...", the remainder of the value 
+  is some number of hex digits.  For example <strong><em>--edid ...040108</em></strong>. These hex
+  digits are compared against the final bytes of the EDID
+  for display selection.</li>
+<li>Added option <strong><em>--ignore-bus</em></strong>.  Specifies the number of a /dev/i2c bus
+  that should be completely ignored, providing a workaround for obscure bugs.
+  For example, <strong><em>--ignore-bus 3</em></strong> causes
+  /dev/i2c-3 to be ignored.  This option can be given more than once.</li>
+</ul>
+<h3 id="miscellaneous-fixes">Miscellaneous Fixes</h3>
+<ul>
+<li>Segfault in the <strong>capabilities</strong> command when parsing a malformed
+  capabilities string returned by a monitor.</li>
+<li>Very slow response when the EDID is obtained from /sys but is not 
+  readable using I<sup>2</sup>C. </li>
+</ul>
 <h3 id="ddcutil-223"><strong>ddcutil</strong> 2.2.3</h3>
 <p>13 October 2025</p>
 <h3 id="bug-fixes">Bug Fixes</h3>
@@ -414,7 +472,6 @@
   of that function. This option requires that traced function stacks are enabled, 
   which is now the default.</li>
 </ul>
-<h3 id="build-fixes">Build Fixes:</h3>
 <h3 id="ddcutil-221"><strong>ddcutil</strong> 2.2.1</h3>
 <p>10 July 2025</p>
 <p>Release 2.2.1 contains some enhancements, particularly for display change detection, numerous small changes, and a large number of bug fixes.</p>
