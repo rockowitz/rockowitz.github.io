@@ -217,6 +217,8 @@
                   </li>
                   <li class="toctree-l1 current"><a class="reference internal current" href="#">Shared Library Changes for Release 2.2.4</a>
     <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#changes">Changes</a>
+    </li>
     <li class="toctree-l2"><a class="reference internal" href="#fixed">Fixed</a>
     </li>
     </ul>
@@ -318,10 +320,14 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
             <div class="section" itemprop="articleBody">
               
-                <h2 id="shared-library-changes-for-release-224">Shared Library Changes for Release 2.2.4</h2>
+                <h2 id="shared-library-changes-for-releases-224-and-225">Shared Library Changes for Releases 2.2.4 and 2.2.5</h2>
 <p>Shared library <strong>libddcutil</strong> is backwardly compatible with the ones in
 <strong>ddcutil</strong> 2.2.1 and later. The SONAME is unchanged as libddcutil.so.5. The released library
 file is libddcutil.so.5.4.1.</p>
+<h3 id="changes">Changes</h3>
+<p>In some cases, UDEV notification display disconnection is delayed,
+or does not occur.  In this situation, an API function that performs
+a DDC operation will fail with status code DDCRC_DISCONNECTED. </p>
 <!--
 ### API Changes
 
