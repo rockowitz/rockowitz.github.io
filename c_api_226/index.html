@@ -3,18 +3,18 @@
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="author" content="Sanford Rockowitz" /><link rel="canonical" href="https://www.ddcutil.com/debug_options/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="author" content="Sanford Rockowitz" /><link rel="canonical" href="https://www.ddcutil.com/c_api_226/" />
       <link rel="shortcut icon" href="../img/favicon.ico" />
-    <title>Debugging Options - ddcutil Documentation</title>
+    <title>Shared Library Changes for Release 2.2.6 - ddcutil Documentation</title>
     <link rel="stylesheet" href="../css/theme.css" />
     <link rel="stylesheet" href="../css/theme_extra.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
     
       <script>
         // Current page data
-        var mkdocs_page_name = "Debugging Options";
-        var mkdocs_page_input_path = "debug_options.md";
-        var mkdocs_page_url = "/debug_options/";
+        var mkdocs_page_name = "Shared Library Changes for Release 2.2.6";
+        var mkdocs_page_input_path = "c_api_226.md";
+        var mkdocs_page_url = "/c_api_226/";
       </script>
     
     <!--[if lt IE 9]>
@@ -61,7 +61,7 @@
                   </li>
               </ul>
               <p class="caption"><span class="caption-text">Command Detail</span></p>
-              <ul class="current">
+              <ul>
                   <li class="toctree-l1"><a class="reference internal" href="../command_detail/">Command Detail</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../primary_commands/">Primary Commands</a>
@@ -88,8 +88,8 @@
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../options_main/">Command Options</a>
                   </li>
-                  <li class="toctree-l1 current"><a class="reference internal current" >Command Options</a>
-    <ul class="current">
+                  <li class="toctree-l1"><a class="reference internal" >Command Options</a>
+    <ul>
                 <li class="toctree-l2"><a class="reference internal" href="../display_detection/">Display Detection</a>
                 </li>
                 <li class="toctree-l2"><a class="reference internal" href="../display_selection/">Display Selection</a>
@@ -106,25 +106,7 @@
                 </li>
                 <li class="toctree-l2"><a class="reference internal" href="../i2c_dev_options/">i2c-dev Driver Options</a>
                 </li>
-                <li class="toctree-l2 current"><a class="reference internal current" href="#">Debugging Options</a>
-    <ul class="current">
-    <li class="toctree-l3"><a class="reference internal" href="#option-trace-trace-group">Option: --trace &lt;trace-group&gt;</a>
-    </li>
-    <li class="toctree-l3"><a class="reference internal" href="#option-trcfile-file-name">Option: --trcfile &lt;file name&gt;</a>
-    </li>
-    <li class="toctree-l3"><a class="reference internal" href="#option-trcfunc-function-name">Option: --trcfunc &lt;function name&gt;</a>
-    </li>
-    <li class="toctree-l3"><a class="reference internal" href="#option-trcfrom-function-name">Option: --trcfrom &lt;function name&gt;</a>
-    </li>
-    <li class="toctree-l3"><a class="reference internal" href="#option-timestamp-ts">Option: --timestamp, --ts</a>
-    </li>
-    <li class="toctree-l3"><a class="reference internal" href="#option-wall-timestamp-wts">Option: --wall-timestamp, --wts</a>
-    </li>
-    <li class="toctree-l3"><a class="reference internal" href="#option-thread_id-tid">Option: --thread_id, --tid</a>
-    </li>
-    <li class="toctree-l3"><a class="reference internal" href="#option-thread_id-tid_1">Option: --thread_id, --tid</a>
-    </li>
-    </ul>
+                <li class="toctree-l2"><a class="reference internal" href="../debug_options/">Debugging Options</a>
                 </li>
                 <li class="toctree-l2"><a class="reference internal" href="../deprecated_options/">Deprecated Options</a>
                 </li>
@@ -190,7 +172,7 @@
                   </li>
               </ul>
               <p class="caption"><span class="caption-text">Shared Library</span></p>
-              <ul>
+              <ul class="current">
                   <li class="toctree-l1"><a class="reference internal" href="../api_main/">C API</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../libddcutil_release_notes/">Shared Library Release Notes</a>
@@ -235,7 +217,15 @@
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../c_api_224/">Shared Library Changes for Releases 2.2.4 and 2.2.5</a>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../c_api_226/">Shared Library Changes for Release 2.2.6</a>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="#">Shared Library Changes for Release 2.2.6</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#added">Added</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#changed">Changed</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#fixed">Fixed</a>
+    </li>
+    </ul>
                   </li>
               </ul>
               <p class="caption"><span class="caption-text">Background</span></p>
@@ -321,11 +311,10 @@
         <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
   <ul class="wy-breadcrumbs">
     <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
-          <li class="breadcrumb-item">Command Detail</li>
-          <li class="breadcrumb-item">Command Options</li>
-      <li class="breadcrumb-item active">Debugging Options</li>
+          <li class="breadcrumb-item">Shared Library</li>
+      <li class="breadcrumb-item active">Shared Library Changes for Release 2.2.6</li>
     <li class="wy-breadcrumbs-aside">
-          <a href="https://github.com/rockowitz/ddcutil/edit/master/docs/debug_options.md" ></a>
+          <a href="https://github.com/rockowitz/ddcutil/edit/master/docs/c_api_226.md" ></a>
     </li>
   </ul>
   <hr/>
@@ -333,53 +322,78 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
             <div class="section" itemprop="articleBody">
               
-                <h3 id="tracing">Tracing</h3>
-<h4 id="option-trace-trace-group">Option: <strong><em>--trace &lt;trace-group&gt;</em></strong></h4>
-<p>Each function in the code base, other than utility functions, is assigned to a trace group. 
-This option enables trace messages for a group.</p>
-<p>Can be specified more than once to trace multiple groups.</p>
-<h4 id="option-trcfile-file-name">Option: <strong><em>--trcfile  &lt;file name&gt;</em></strong></h4>
-<p>Enable trace messages in a single file.  The argument is a simple file name, e.g. "ddc_services.c".</p>
-<p>Can be specified more than once to trace multiple files.</p>
-<h4 id="option-trcfunc-function-name">Option: <strong><em>--trcfunc &lt;function name&gt;</em></strong></h4>
-<p>Enable trace messages in a particular function.  </p>
-<p>Can be specified more than once to trace multiple functions.</p>
-<h4 id="option-trcfrom-function-name">Option: <strong><em>--trcfrom &lt;function name&gt;</em></strong></h4>
-<p>Enable trace messages in a particular function and in all functinons called by that function.</p>
-<p>Can be specified more than once to trace multiple files.</p>
-<h4 id="option-timestamp-ts">Option: <strong><em>--timestamp</em></strong>, <strong><em>--ts</em></strong></h4>
-<p>Prefix trace messages with the number of seconds since <strong>ddcutil</strong> startup </p>
-<h4 id="option-wall-timestamp-wts">Option: <strong><em>--wall-timestamp</em></strong>, <strong><em>--wts</em></strong></h4>
-<p>Prefix trace messages with the current clock time. </p>
-<h4 id="option-thread_id-tid">Option: <strong><em>--thread_id</em></strong>, <strong><em>--tid</em></strong></h4>
-<p>Prefix trace messages with the the thread number.  This is the Linux thread id.</p>
-<h4 id="option-thread_id-tid_1">Option: <strong><em>--thread_id</em></strong>, <strong><em>--tid</em></strong></h4>
-<p>Prefix trace messages with the the process number.  This is the Linux process id.</p>
+                <h2 id="shared-library-changes-for-release-226">Shared Library Changes for Release 2.2.6</h2>
+<p>Shared library <strong>libddcutil</strong> is backwardly compatible with the ones in
+<strong>ddcutil</strong> 2.2.1 and later. The SONAME is unchanged as libddcutil.so.5. The released library
+file is libddcutil.so.5.5.0.</p>
+<p>Release 2.2.6 replaces release 2.2.5, which was reported to hang KDE Plasma
+at login.</p>
+<h4 id="added">Added</h4>
+<ul>
+<li>Added API function <strong>ddca_get_non_table_vcp_value2()</strong>. Unlike 
+  <strong>ddca_get_non_table_vcp_value()</strong>, which is now deprecated, the new function
+  never performs verification. </li>
+</ul>
 <!--
-#### Option: ***--syslog***
+### API Changes
 
-Write trace messages to the system log as well as the currently active trace message destination (typically the terminal). 
+Define bit DDCA_NOVERIFY in DDCA_Version_Feature_Flags to
+indicates that verification should never be performed for the feature.
+There exist monitors for which the reported feature value is not the 
+value set on a **setvcp** operation. A user can cause this bit to be 
+set by specifying feature attribute **NOVERIY** in a user defined
+feature file for the monitor.
 -->
 
-<h3 id="other-debug-options">Other Debug Options</h3>
-<h4 id="option-excp">Option: <strong><em>-excp</em></strong></h4>
-<p>Portions of the <strong>ddcutil</strong> code base use an exception-like mechanism that can record the individual errors that
-contribute to a master error.  If this option is specified, the exceptions are displayed before conversion
-to a single status code.</p>
-<h4 id="option-trace-to_syslog-only">Option: <strong><em>--trace-to_syslog-only</em></strong><a name="option_trace_to_syslog_only"></a></h4>
-<h4 id="option-stats-to-syslog">Option: <strong><em>--stats-to-syslog</em></strong><a name="option_stats_to_syslog"></a></h4>
-<h4 id="option-debug-parse">Option: <strong><em>--debug-parse</em></strong><a name="option_debug_parse"></a></h4>
-<h4 id="option-parse-only">Option: <strong><em>--parse-only</em></strong><a name="option_parse_only"></a></h4>
-<h4 id="option-failsim">Option: <strong><em>--failsim</em></strong><a name="option_failsim"></a></h4>
-<h4 id="option-quickenv">Option: <strong><em>--quickenv</em></strong><a name="option_quickenv"></a></h4>
-<h4 id="option-enable-mock-data">Option: <strong><em>--enable-mock-data</em></strong><a name=option_enable_mock_data></a></h4>
-<h4 id="option-force-null-msg-for-unsupported">Option: <strong><em>--force-null-msg-for-unsupported</em></strong><a name="option_force_null_msg_for_unsupported"></a></h4>
+<h4 id="changed">Changed</h4>
+<ul>
+<li>Ignore laptop displays when processing display connection and disconneciton.</li>
+<li>
+<p>Add "AMDGPU DM i2c OEM bus" to list of names of I2C buses to be 
+  ignored. Theses buses are used to control display controller 
+  features like RGB lighting.  </p>
+</li>
+<li>
+<p>Eliminate use in <strong>libddcutil</strong> of linux api function <strong>access()</strong> to check
+  if the user has RW access to a /dev/i2c device. Bug reports suggest this
+  function may not always respect UDEV token UACCESS.</p>
+</li>
+<li>More extensive syslog trace messages to aid in remote debugging, 
+  particularly for KDE PowerDevil.</li>
+<li>Functions in the call trees from <strong>ddca_get_...vcp_value()</strong> and 
+  <strong>ddca_set_...vcp_value()</strong> consistenty return Error_Info structs instead of
+  status codes to improve diagnostic messages written to the system log and 
+  information returned by <strong>ddca_get_error_detail()</strong>. </li>
+</ul>
+<h4 id="fixed">Fixed</h4>
+<ul>
+<li>Issue #581 "ddcutil 2.2.5 causes KDE Plasma freeze due to excessive 
+  permission checks".  For some undetermined reason, despite the logged on user
+  having RW access to /dev/i2c-devices, attempting to open these devices sometimes 
+  fails with Linux error EACCES. Functions <strong>ddca_init2()</strong> and <strong>ddca_init</strong>()
+  now fail with status code EACCESS if the logged on user does not have RW 
+  permission for all /dev/i2c devices that might possibly be used for DDC 
+  communication.  As the cause of the permission loss is unclear, function 
+  <strong>ddca_start_watch_displays()</strong> similarly checks if the logged on user has 
+  RW access, and returns DDCRC_INVALID_OPERATION in case of failure.  Callers
+  should check for failure of these functions and not repeatedly call them to
+  avoid a flood of permission failures. </li>
+<li>Issue #585, "Displays with I2C bus name DPMST not detected". It was possible
+  that the video adapter for a /dev/i2c device was not located, causing MST
+  connected displays to not be detected.(Fix based on diagnosis by Diego Nunes.) </li>
+<li>Issue #587, "Assert failure in ddc_packet_io.c", due to an inconsistent
+  data structure in ddc_open_display(). The inconsistency was apparently caused 
+  by a race condition in display change detection. Added mutex. Also addresses 
+  issue #586.</li>
+<li>Clear the display locks table during ddca_redetect_displays(), to recover from
+stale entries.</li>
+</ul>
               
             </div>
           </div><footer>
     <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
-        <a href="../i2c_dev_options/" class="btn btn-neutral float-left" title="i2c-dev Driver Options"><span class="icon icon-circle-arrow-left"></span> Previous</a>
-        <a href="../deprecated_options/" class="btn btn-neutral float-right" title="Deprecated Options">Next <span class="icon icon-circle-arrow-right"></span></a>
+        <a href="../c_api_224/" class="btn btn-neutral float-left" title="Shared Library Changes for Releases 2.2.4 and 2.2.5"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../mccs_background/" class="btn btn-neutral float-right" title="Monitor Control Command Set">Next <span class="icon icon-circle-arrow-right"></span></a>
     </div>
 
   <hr/>
@@ -406,10 +420,10 @@ to a single status code.</p>
         </span>
     
     
-      <span><a href="../i2c_dev_options/" style="color: #fcfcfc">&laquo; Previous</a></span>
+      <span><a href="../c_api_224/" style="color: #fcfcfc">&laquo; Previous</a></span>
     
     
-      <span><a href="../deprecated_options/" style="color: #fcfcfc">Next &raquo;</a></span>
+      <span><a href="../mccs_background/" style="color: #fcfcfc">Next &raquo;</a></span>
     
   </span>
 </div>

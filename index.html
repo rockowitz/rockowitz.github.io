@@ -235,7 +235,9 @@
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="c_api_222/">Shared Library Changes for Release 2.2.2</a>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="c_api_224/">Shared Library Changes for Release 2.2.4</a>
+                  <li class="toctree-l1"><a class="reference internal" href="c_api_224/">Shared Library Changes for Releases 2.2.4 and 2.2.5</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="c_api_226/">Shared Library Changes for Release 2.2.6</a>
                   </li>
               </ul>
               <p class="caption"><span class="caption-text">Background</span></p>
@@ -275,8 +277,6 @@
               <p class="caption"><span class="caption-text">Release History</span></p>
               <ul>
                   <li class="toctree-l1"><a class="reference internal" href="releases/">Releases</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="release_notes_222/">Preliminary Notes for Upcoming Release 2.2.2</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="release_notes_220/">Release Notes</a>
                   </li>
@@ -335,6 +335,14 @@
               
                 <h1 id="ddcutil-and-ddcui">ddcutil and ddcui</h1>
 <h2 id="announcements">Announcements</h2>
+<p>11 March 2026</p>
+<p><strong>ddcutil</strong> 2.2.6 contains significant changes for <strong>libddcutil</strong>, but only minor enhancements for command line <strong>ddcutil</strong>.
+The changes are mostly in the area of detecting and notifying client programs of display connection and disconnection. 
+Most importantly, they address 
+the situation where, for some ill-defined reason, <strong>libddcutil</strong> is denied permission to access /dev/i2c devices, causing  KDE PowerDevil, and thus KDE Plasma, to become unresponsive.</p>
+<p>For details, see <a href="release_notes_220/">Notes for Recent ddcutil Releases</a>,
+and <a href="c_api_226/">Shared Library Changes for Release 2.2.6</a>.
+Changes are also summarized in file CHANGELOG.md in the source tree.</p>
 <p>26 January 2026</p>
 <p><strong>ddcutil</strong> 2.2.5 replaces release 2.2.4, which failed to build on aarch64. It also contains some changes related to detecting and reporting display connection and disconnection.</p>
 <p>For details, see <a href="release_notes_220/">Notes for Recent ddcutil Releases</a>,
@@ -530,5 +538,5 @@ The source is hosted on <a href="http://www.github.com/rockowitz/ddcui">Github</
 
 <!--
 MkDocs version : 1.6.1
-Build Date UTC : 2026-01-27 06:24:38.955215+00:00
+Build Date UTC : 2026-03-12 22:52:57.203426+00:00
 -->

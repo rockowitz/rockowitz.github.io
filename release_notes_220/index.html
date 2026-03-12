@@ -215,7 +215,9 @@
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../c_api_222/">Shared Library Changes for Release 2.2.2</a>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../c_api_224/">Shared Library Changes for Release 2.2.4</a>
+                  <li class="toctree-l1"><a class="reference internal" href="../c_api_224/">Shared Library Changes for Releases 2.2.4 and 2.2.5</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../c_api_226/">Shared Library Changes for Release 2.2.6</a>
                   </li>
               </ul>
               <p class="caption"><span class="caption-text">Background</span></p>
@@ -256,10 +258,10 @@
               <ul class="current">
                   <li class="toctree-l1"><a class="reference internal" href="../releases/">Releases</a>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../release_notes_222/">Preliminary Notes for Upcoming Release 2.2.2</a>
-                  </li>
                   <li class="toctree-l1 current"><a class="reference internal current" href="#">Release Notes</a>
     <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#ddcutil-226">ddcutil 2.2.6</a>
+    </li>
     <li class="toctree-l2"><a class="reference internal" href="#ddcutil-225">ddcutil 2.2.5</a>
     </li>
     <li class="toctree-l2"><a class="reference internal" href="#ddcutil-224">ddcutil 2.2.4</a>
@@ -279,38 +281,6 @@
     <li class="toctree-l2"><a class="reference internal" href="#miscellanous-changes">Miscellanous changes:</a>
     </li>
     <li class="toctree-l2"><a class="reference internal" href="#debug-related-changes">Debug related changes:</a>
-    </li>
-    <li class="toctree-l2"><a class="reference internal" href="#ddcutil-221">ddcutil 2.2.1</a>
-    </li>
-    <li class="toctree-l2"><a class="reference internal" href="#general-changes">General Changes</a>
-    </li>
-    <li class="toctree-l2"><a class="reference internal" href="#fixes">Fixes</a>
-    </li>
-    <li class="toctree-l2"><a class="reference internal" href="#building">Building</a>
-    </li>
-    <li class="toctree-l2"><a class="reference internal" href="#ddcutil-220">ddcutil 2.2.0</a>
-    </li>
-    <li class="toctree-l2"><a class="reference internal" href="#displaylink">DisplayLink</a>
-    </li>
-    <li class="toctree-l2"><a class="reference internal" href="#raspberry-pi">Raspberry Pi</a>
-    </li>
-    <li class="toctree-l2"><a class="reference internal" href="#user-defined-features">User Defined Features</a>
-    </li>
-    <li class="toctree-l2"><a class="reference internal" href="#command-detect">Command detect</a>
-    </li>
-    <li class="toctree-l2"><a class="reference internal" href="#command-setvcp">Command setvcp</a>
-    </li>
-    <li class="toctree-l2"><a class="reference internal" href="#commands-interrogate-and-environment-verbose">Commands interrogate and environment --verbose</a>
-    </li>
-    <li class="toctree-l2"><a class="reference internal" href="#udev-rules">Udev rules</a>
-    </li>
-    <li class="toctree-l2"><a class="reference internal" href="#parser-changes">Parser changes</a>
-    </li>
-    <li class="toctree-l2"><a class="reference internal" href="#minor-bug-fixes-and-changes">Minor Bug Fixes and Changes</a>
-    </li>
-    <li class="toctree-l2"><a class="reference internal" href="#debugging-and-tracing">Debugging and Tracing</a>
-    </li>
-    <li class="toctree-l2"><a class="reference internal" href="#building-ddcutil">Building ddcutil</a>
     </li>
     </ul>
                   </li>
@@ -371,6 +341,22 @@
                 <h2 id="notes-for-recent-ddcutil-releases">Notes for Recent <strong>ddcutil</strong> Releases</h2>
 <p>For <strong>ddcui</strong> changes, see <a href="../ddcui_release_notes/"><strong>ddcui</strong> Release Notes</a></p>
 <p>For notes on releases prior to 2.2.0, see <a href="../release_notes/">Notes for Releases 2.1.4 and Earlier</a>.</p>
+<h3 id="ddcutil-226"><strong>ddcutil</strong> 2.2.6</h3>
+<p>Most changes in this release are in shared library <strong>libddcutil</strong>. 
+For notes on those changes, see <a href="../c_api_226/">Shared Library Changes for Release 2.2.6</a>.</p>
+<p>Changes to command line <strong>ddcutil</strong>:  </p>
+<ul>
+<li>Ignore case when processing options <strong><em>--mfg</em></strong>, <strong><em>--model</em></strong>, and <strong><em>--sn</em></strong>.</li>
+<li>Command <strong>traceable-functions</strong> failed if a non-traceable function was 
+  specified on the command line or in the ddcutil configuration file.</li>
+</ul>
+<p>General changes:</p>
+<ul>
+<li>Changes for glib 2.43, which is stricter about preserving const-ness of 
+  function string arguments.</li>
+<li>Use up to date macros in Autotools configuration file configure.ac: 
+  AC_SYSTEM_EXTENSIONS, and AC_PROG_CC conditionally replaces AC_PROG_C99.</li>
+</ul>
 <h3 id="ddcutil-225"><strong>ddcutil</strong> 2.2.5</h3>
 <p>Release 2.2.5 replaces release 2.2.4, which failed to build on aarch.
 It also contains some libddcutil changes related to detecting and reporting display connection and disconnection.</p>
@@ -477,6 +463,65 @@ has been added, If specified, the EDID is examined as in relese 2.2.1. </p>
   of that function. This option requires that traced function stacks are enabled, 
   which is now the default.</li>
 </ul>
+<h2 id="ddcutil-222"><strong>ddcutil</strong> 2.2.2</h2>
+<p>05 October 2025</p>
+<h3 id="bug-fixes_1">Bug Fixes</h3>
+<p>Release 2.2.2 contains one significant bug fix of interest to general users:</p>
+<ul>
+<li>Starting with release 2.2.0, verification on command <strong>setvcp</strong> and API functions that set a feature value did not
+  not occur, even if option <strong><em>--verify</em></strong> was explicitly given.</li>
+</ul>
+<p>Additional bug fixes:</p>
+<ul>
+<li>Command <strong>getvcp --verbose</strong>: output was partially in a format intended for syslog.</li>
+<li>Command <strong>environment --verbose</strong>:  <ul>
+<li>Permission denied errors corrupted output of the find command used to scan for 
+  DisplayLink devices.</li>
+<li>Incorrectly formed path name for examining /sys/class/drm.</li>
+</ul>
+</li>
+</ul>
+<p>Miscellanous changes: </p>
+<ul>
+<li>Relax the check of the device class when determining if a device is a video
+  controller.   Look only at the first byte in sysfs device attribute class.
+  An AMD Ryzen AI 9 365 based system was seen to report 0x038000, not 0x030000.
+  Addresses issue #530.</li>
+<li>Additional messages reporting configuration file errors. In particular,
+  section names and the names of keys within each section are validated.
+  Section names other than <strong>[global]</strong>, <strong>[ddcutil]</strong>, or <strong>[libddcutil]</strong>
+  are flagged as errors.</li>
+<li>If possible, obtain the list of PNP ids from /usr/share/hwdata/pnp.ids instead
+  of using a hardcoded list.  Affects output of command <strong>detect</strong>. </li>
+<li>Reword the parser explanation of options <strong><em>--verify</em></strong> and <strong><em>--noverify</em></strong>
+  for clarity.</li>
+</ul>
+<!--
+- Attribute **VERIFY** can be specified on the **ATTRS** line in a feature 
+  definition file.  If included, **setvcp** verification will never be performed
+  for that feature, without affecting other features. Addresses monitors such as
+  Samsung LS34A650U, which always returns 0 as the value of feature x10 (Brightness)
+  and monitors such as Dell 2407WFP where **setvcp x10** values in the range 0..50 
+  are mapped to the range 30..50. In particular, it allows client programs such
+  as KDE PowerDevil to succeed in setting a value.
+-->
+
+<p>Debug related changes: </p>
+<ul>
+<li>Added option <strong><em>--trace-to-syslog</em></strong>: Direct trace output to the system log, without
+  disabling other destinations</li>
+<li>Added option <strong><em>--trcback <function name></em></strong>: Reports the caller stack (within <strong>ddcutil</strong> and <strong>libddcutil</strong>)
+  for the specified function.
+  This option requires that traced function stacks be enabled, which is the default.</li>
+</ul>
+<p>Build Fixes:</p>
+<ul>
+<li>Fix out-of-tree build reference to generated file /src/base/build_details.h. Pull request #544</li>
+<li>Build failed with an undefined reference error when <strong>configure</strong> option <strong><em>--disable-drm</em></strong>
+   was specified. </li>
+<li><strong>configure</strong> option <strong><em>--disable-drm</em></strong> forces <strong><em>--disable-watch-displays</em></strong> </li>
+</ul>
+<p>For <strong>libddcutil</strong> related changes, see <a href="../c_api_222/">Shared Library Changes for Release 2.2.2</a>.</p>
 <h3 id="ddcutil-221"><strong>ddcutil</strong> 2.2.1</h3>
 <p>10 July 2025</p>
 <p>Release 2.2.1 contains some enhancements, particularly for display change detection, numerous small changes, and a large number of bug fixes.</p>
@@ -651,7 +696,7 @@ a switch() construct is used. Replaced with if/else if/else. Resolves github iss
             </div>
           </div><footer>
     <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
-        <a href="../release_notes_222/" class="btn btn-neutral float-left" title="Preliminary Notes for Upcoming Release 2.2.2"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../releases/" class="btn btn-neutral float-left" title="Releases"><span class="icon icon-circle-arrow-left"></span> Previous</a>
         <a href="../release_notes/" class="btn btn-neutral float-right" title="Prior Release Notes">Next <span class="icon icon-circle-arrow-right"></span></a>
     </div>
 
@@ -679,7 +724,7 @@ a switch() construct is used. Replaced with if/else if/else. Resolves github iss
         </span>
     
     
-      <span><a href="../release_notes_222/" style="color: #fcfcfc">&laquo; Previous</a></span>
+      <span><a href="../releases/" style="color: #fcfcfc">&laquo; Previous</a></span>
     
     
       <span><a href="../release_notes/" style="color: #fcfcfc">Next &raquo;</a></span>
