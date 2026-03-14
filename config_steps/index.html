@@ -326,12 +326,22 @@
 <p>This page outlines steps that may be required to configure <strong>ddcutil</strong> after it has been installed.</p>
 <h3 id="kernel-module-i2c-dev">Kernel Module i2c-dev</h3>
 <p><strong>ddcutil</strong> requires kernel module i2c-dev.  If it is not built into your kernel, it must be loaded explicly.
-To do so, add a file into directory /etc/modules-load.d with the single line: </p>
+Normally (as of ddcutil 1.4) this will be configured by installation of ddcutil or some other program that requires the kernel module. Otherwise, you will 
+need to configure it yourself.  For details, see  <a href="../kernel_module/">Kernel Module Configuration</a>. </p>
+<p>Note: <strong>i2c-dev</strong> can also be written <strong>i2c_dev</strong>.  The two are interchangable.  </p>
+<!--
+To do so, add a file into directory /etc/modules-load.d with the single line: 
+
+
 <pre><code>i2c-dev
 </code></pre>
-<p>Note: <strong>i2c-dev</strong> can also be written <strong>i2c_dev</strong>.  The two are interchangable.  </p>
-<p>As of release 1.4, <strong>ddcutil</strong> installation should automatically install this file, making manual configuration unnecessary.</p>
-<p>For details, see <a href="../kernel_module/">Kernel Module Configuration</a>. </p>
+
+
+As of release 1.4, by default **ddcutil** installation should automatically ensure  this file, making manual configuration unnecessary.
+
+For details, see [Kernel Module Configuration](kernel_module.md). 
+-->
+
 <h3 id="i2c-device-permissions">I2C Device Permissions</h3>
 <p>Permissions must be granted in order for users other than root to run <strong>ddcutil</strong>.</p>
 <p>As of release 2.0, <strong>ddcutil</strong> installation automatically installs files /usr/lib/udev/rules.d/60-ddcutil-i2c.rules and /usr/lib/udev/rules.d/60-usb.rules.<br />

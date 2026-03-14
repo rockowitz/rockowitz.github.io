@@ -319,11 +319,12 @@
                 <h2 id="kernel-module-configuration">Kernel Module Configuration</h2>
 <p>Kernel module i2c-dev must be loaded.
 On some distributions, it is built into the Linux kernel.  If not, it must be loaded explicitly. </p>
-<p>Note that in modules i2c-dev can also be referrec to as i2c_dev.  The two are interchangable.</p>
+<p>Note that module "i2c-dev" can also be referred to as "i2c_dev".  The two are interchangable.</p>
 <p>To see if i2c-dev is built into the kernel, issue the following command: </p>
 <pre><code>grep i2c[-_]dev.ko  /lib/modules/`uname -r`/modules.builtin
 </code></pre>
-<p>If i2c-dev is not built in, check to see if it is already loaded:</p>
+<p>If i2c-dev is not built in, it may already have been configured to load automatically. 
+To check to see if it is already loaded:</p>
 <pre><code>lsmod | grep i2c[-_]dev
 </code></pre>
 <p>If it is not built-in and not already loaded add a file containing the single line</p>
