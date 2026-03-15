@@ -317,25 +317,23 @@
             <div class="section" itemprop="articleBody">
               
                 <h4 id="granting-i2c-device-permissions-using-group-i2c">Granting I2C Device Permissions Using Group i2c</h4>
-<p>The original method for graning I2C device permissions relied on group i2c. The instructions for using group i2c are
-retained for reference.</p>
-<p>On Debian, Ubuntu, and likely other Debian derived distributions, most of the work has already been done.
-Package ddcutil requires package i2c-tools. Installation of package i2c-tools creates group <strong><em>i2c</em></strong> (if it does not alreay exist), and assigns that group to the
+<p>The original method for graning I2C device permissions relied on group i2c.
+This method may still be required in unusual situations such as a system that use eudev instead of udev.</p>
+<p>Depenging on your distribution, package ddcutil should depend on package i2c-tools, in which case
+most of the work has already been done.
+As normally packaged, installing package i2c-tools creates group <strong><em>i2c</em></strong> (if it does not alreay exist), and assigns that group to the
 /dev/i2c devices using a udev rule. </p>
-<p>All that is necessary is to add users who will use <strong>ddcutil</strong> to group <strong><em>i2c</em></strong>: </p>
+<p>All that is necessary is to add <strong>ddcutil</strong> users to group <strong><em>i2c</em></strong>: </p>
 <pre><code>$ sudo usermod &lt;user-name&gt; -aG i2c
 </code></pre>
-<p>On other than Debian derived distributions, additional steps may be necessary. </p>
 <p>If group <strong><em>i2c</em></strong> does not already exist, the following command will create it: </p>
 <pre><code>$ sudo groupadd --system i2c
 </code></pre>
-<p>Then add your userid to group <strong><em>i2c</em></strong> as above.</p>
-<p>A sample udev rule for giving group <strong><em>i2c</em></strong> RW permission on the /dev/i2c devices 
-can be found in distributed file <strong>45-ddcutil-i2c.rules</strong>.  Its exact location varies by distribution, but 
-commonly the file is found in directory /usr/share/ddcutil/data.  The file can be copied to 
-/etc/udev/rules.d, but do check that this rule does not conflict with others in that directory.</p>
-<pre><code>$ sudo cp /usr/share/ddcutil/data/45-ddcutil-i2c.rules /etc/udev/rules.d
+<p>If not already done by another rules file, you need a udev rules file that assigns the /dev/i2c devices to group i2c.
+Create file /etc/udev/rules.d/45-myi2c.rules with the following contents: </p>
+<pre><code>SUBSYSTEM==&quot;i2c-dev&quot;, KERNEL==&quot;i2c-[0-9]*&quot;, GROUP=&quot;i2c&quot;
 </code></pre>
+<p>Then add userids to group <strong><em>i2c</em></strong> as above.</p>
 <p>For testing, it may be simpler to give everyone permission to write to 
 /dev/i2c-* for the current boot:</p>
 <pre><code>$ sudo chmod a+rw /dev/i2c-*

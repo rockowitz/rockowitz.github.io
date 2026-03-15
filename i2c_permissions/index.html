@@ -148,12 +148,6 @@
                   </li>
                   <li class="toctree-l1 current"><a class="reference internal current" href="#">I2C Device Permissions</a>
     <ul class="current">
-    <li class="toctree-l2"><a class="reference internal" href="#granting-i2c-device-permissions-on-versions-prior-to-140">Granting I2C Device Permissions on Versions Prior to 1.4.0</a>
-        <ul>
-    <li class="toctree-l3"><a class="reference internal" href="#granting-i2c-device-permissions-using-group-i2c">Granting I2C Device Permissions using group i2c.</a>
-    </li>
-        </ul>
-    </li>
     </ul>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../i2c_permissions_using_group_i2c/">I2C Device Permissions Using Group i2c</a>
@@ -323,18 +317,24 @@
             <div class="section" itemprop="articleBody">
               
                 <h2 id="i2c-device-permissions">I2C Device Permissions<a name="i2c_permissions"></a></h2>
-<p><strong>ddcutil</strong> requires read/write access to /dev/i2c devices, or more precisely all /dev/i2c devices associated with video cards. It can, of course, be run as root.</p>
+<p><strong>ddcutil</strong> requires read/write access to /dev/i2c devices, or more precisely those /dev/i2c devices associated with video controllers. It can, of course, be run as root.</p>
 <p>(For USB devices, see <a href="../usb_permissions/">USB Device Permissions</a>).</p>
-<p>Starting with release 1.4.0, <strong>ddcutil</strong> installed udev rule 60-ddcutil.rules that grants read/write access to the logged on user.</p>
-<p>As of release <strong>ddcutil</strong> 2.0, this has changed to files 60-ddcutil-i2c.rules and  60-ddcutil-usb.rules. </p>
-<h3 id="granting-i2c-device-permissions-on-versions-prior-to-140">Granting I2C Device Permissions on Versions Prior to 1.4.0</h3>
-<p>The simplest way to grant I2C device permissions on versions prior to 1.4.0 is to manually install file /etc/udev/rules.d/60-ddcutil-i2c.rules:</p>
+<p>Normally, <strong>ddcutil</strong> installs udev rules file 60-ddcutil-i2c.rules which uses tag <strong>uaccess</strong> to grant read/write permissions to /dev/i2c devices associated with a video controller. The  file is installed in the system rules directory,
+/usr/lib/udev/rules.d/.</p>
+<p>In some circumstances, such as running on a system that uses eudev instead of udev, manual configuration may be required.
+For details, see
+<a href="../i2c_permissions_using_group_i2c/">Granting I2C Device Permissions Using Group I2C</a></p>
+<!--
+
+
 <pre><code>SUBSYSTEM==&quot;i2c-dev&quot;, KERNEL==&quot;i2c-[0-9]*&quot;, ATTRS{class}==&quot;0x030000&quot;, TAG+=&quot;uaccess&quot;
 SUBSYSTEM==&quot;dri&quot;, KERNEL==&quot;card[0-9]*&quot;, TAG+=&quot;uaccess&quot;
 </code></pre>
-<h4 id="granting-i2c-device-permissions-using-group-i2c">Granting I2C Device Permissions using group i2c.</h4>
-<p>The original method for granting /dev/i2c device permissions relied on group i2c.
-These <a href="../i2c_permissions_using_group_i2c/">instructions</a> are retained for reference, in case they are useful for some corner cases.</p>
+
+
+
+
+-->
               
             </div>
           </div><footer>
