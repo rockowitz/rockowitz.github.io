@@ -138,6 +138,8 @@
     </li>
     <li class="toctree-l2"><a class="reference internal" href="#i2c-device-permissions">I2C Device Permissions</a>
     </li>
+    <li class="toctree-l2"><a class="reference internal" href="#usb-device-permissions">USB Device Permissions</a>
+    </li>
     <li class="toctree-l2"><a class="reference internal" href="#proprietary-nvidia-driver">Proprietary Nvidia Driver</a>
     </li>
     </ul>
@@ -344,9 +346,9 @@ For details, see [Kernel Module Configuration](kernel_module.md).
 
 <h3 id="i2c-device-permissions">I2C Device Permissions</h3>
 <p>Permissions must be granted in order for users other than root to run <strong>ddcutil</strong>.</p>
-<p>As of release 2.0, <strong>ddcutil</strong> installation automatically installs files /usr/lib/udev/rules.d/60-ddcutil-i2c.rules and /usr/lib/udev/rules.d/60-usb.rules.<br />
-Using tag <strong>uaccess</strong>, these rules grant the logged on user read/write access to /dev/i2c devices associated with monitors.</p>
-<p>For releases prior to 2.0, or if installing on a system that does not support udev (i.e. does not run systemd), manual configuration may be required.
+<p>Normally, <strong>ddcutil</strong> installs udev rules file 60-ddcutil-i2c.rules which uses tag <strong>uaccess</strong> to grant read/write permissions to /dev/i2c devices associated with a video controller. The  file is installed in the systme rules directory,
+/usr/lib/udev/rules.d/.</p>
+<p>In some circumstances, such as running on a system that runs eudev instead of udev, manual configuration may be required.
 For details, see <a href="../i2c_permissions/">I2C Device Permissions</a>.</p>
 <!--
 On some distributions, including Debian and Ubuntu, all /dev/i2c devices are assigned to group **i2c** by installation of required package **i2c-tools**.  All that is necessary is to add **ddcutil** users to group **i2c**: 
@@ -359,6 +361,13 @@ On some distributions, including Debian and Ubuntu, all /dev/i2c devices are ass
 If installing from some other distribution or from source, additional configuration may be required.  See [I2C Device Permissions](i2c_permissions.md).
 -->
 
+<h3 id="usb-device-permissions">USB Device Permissions</h3>
+<p>For situations where <strong>ddcutil</strong> needs to communication with a monitor 
+that uses USB for communication with its virtual control panel, and wish
+to run <strong>ddcutil</strong> as a non-root user. you need to manually install a suitable rules file in directory
+/etc/udev/rules.d. A udev file for this purpose, 60-ddcutil-usb.rules can be found, after normal ddcutil installation, in 
+directory /usr/share/ddcutil/data/60-ddcutil-usb.rules.  It can also be found in the source tree in directory
+data/usr/lib/udev/rules.d. </p>
 <h3 id="proprietary-nvidia-driver">Proprietary Nvidia Driver</h3>
 <p>The proprietary Nvidia video driver sometimes requires special settings for I2C communication.  See <a href="../nvidia/">Special Nvidia Driver Settings</a>.</p>
 <h2 id="configuration-diagnostics">Configuration Diagnostics</h2>
