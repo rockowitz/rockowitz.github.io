@@ -260,6 +260,8 @@
                   </li>
                   <li class="toctree-l1 current"><a class="reference internal current" href="#">Release Notes</a>
     <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#ddcutil-227">ddcutil 2.2.7</a>
+    </li>
     <li class="toctree-l2"><a class="reference internal" href="#ddcutil-226">ddcutil 2.2.6</a>
     </li>
     <li class="toctree-l2"><a class="reference internal" href="#ddcutil-225">ddcutil 2.2.5</a>
@@ -341,166 +343,8 @@
                 <h2 id="notes-for-recent-ddcutil-releases">Notes for Recent <strong>ddcutil</strong> Releases</h2>
 <p>For <strong>ddcui</strong> changes, see <a href="../ddcui_release_notes/"><strong>ddcui</strong> Release Notes</a></p>
 <p>For notes on releases prior to 2.2.0, see <a href="../release_notes/">Notes for Releases 2.1.4 and Earlier</a>.</p>
-<!--
-### **ddcutil** 2.2.7
-
-
-
-
-## [2.2.7] 2025-05-08
-
-#### EACCES Errors
-
-Calling open() on a /dev/i2c device for which the user has RW permission
-sometimes (rarely) fails with Linux error EACCES. This elusive problem has most
-frequently been reported on Framework computers and Arch based distributions.
-
-Reverting to using group i2c instead of udev token uaccess to grant permission
-appears to resolve the problem, but this is not certain.
-
-The problem commonly occurs after a resume from sleep. The best (but not certain)
-explanation for these events is as follows. The userid, group id, and mode bits are
-permanent attributes of the device inode.  They survive suspend/resume intact. 
-On the other hand, udev rule TAG+="uaccess" works by having systemd-logind set a 
-POSIX ACL on the device node for the current seat user. After resume, the kernel 
-driver re-registers the device, which can trigger a new add uevent. Logind needs
-to process that event, creating a window during with an EACCES error is possible. 
-In short, it is a race condition.
-
-To address this problem, pauses are inserted at several points, including before 
-opening a /dev/i2c device, if the call occurs immediately after a resume from sleep.  
-
-In addition, if an open() call fails with errno EACCES, the ACL API is used to 
-recheck device permissions. If the API reports that the /dev/i2c device does have
-the proper permissions, the open() call is retried for an extended period of time 
-on the presumption that it will eventually succeed.  If the ACL API does not
-report that the /dev/i2c device has proper permissions, the open() is nonetheless 
-retried once. 
-
-The behavior of open() calls and watching for display connection/disconnection has
-been parameterized in several ways. For many parameters, there is a tension: if 
-the delay time is too large, true EACCES errors can flood the system, making the 
-UI unresponsive; if the delay time is too small not enough time may be given for 
-the permissions to resolve.
-
-File src/base/parms.h contains the default values of several of these parameters.
-The following options have been added for those most likely to be adjusted: 
-
-- ***~~pause-after-resume-ms***  The number of milliseconds libddcutil may pause 
-  after dbus reports a resume from sleep.  The default is 500, set by 
-  DEFAULT_AFTER_RESUME_MS in parms.h.
-- ***-max-eacces_retry-ms*** Limits the number of milliseconds for retrying open() 
-  calls when it appears likely, having checked the ACL, that the open() call will 
-  succeed eventually. The default is 3000, set by DEFAULT_EACCES_RETRY_MS in parms.h. 
-- ***--enable/disable-early-permission-checks***  Perform basic permission checks
-  before performing operations that might generate a flurry of EACCES errors.  
-  The drawback of this option is that the basic permission might be performed too
-  soon, generating permission failures that might otherwise resolve by the time
-  the open() calls are actually needed.  The default is enable, set by 
-  ENABLE_EARLY_PERMISSION_CHECKS in parms.h
-
-In addition, many parameters can be adjusted using utility options (***--fN***,
-***--iN***, etc.). The current definitions of the utility options are reported by
-command **ddcutil noop --settings**. These options exist to simplify testing; 
-there is no guarantee that their effect will be the same from one release to the next.
-
-#### Added 
-
-- Extensive diagnostics are written to the system log if opening a /dev/i2c
-  device fails with errno EACCES.
-- Implemented a basic segfault handler.  It writes the traced function stack
-  of the current thread to the system log, then invokes the prior handler. 
-- Option ***max-eacces-retry-ms***. (See above.)  
-
-#### Changed
-
-- Re-enable reporting of laptop display connection/disconnection. 
-  Do not check DDC operation for the laptop /dev/i2c bus or for any
-  bus unresponsive on slave address x37.
-- When watching for display connection/disconnection using watch-mode UDEV: 
-  - watch for UDEV notifications for subsystem i2c-dev as well as drm.
-  - write udev event detail to the system log
-- **dw_hotplug_change_handler()**: write additonal messages to the system log
-  when a /dev/i2c device unexpectedly no longer exists
-- Option ***--skip-ddc-checks***: valid only for command line **ddcutil**, not 
-  shared library **libddcutil**. If specified in config file ddcutilrc, it must
-  now be in the [ddcutil] section, not the [global] section.
-- The installed udev rules file, 60-ddcutil-i2c.rules now sets group i2c and 
-  mode 0660 as well as using token uaccess to assign /dev/i2c permissions. 
-  Users encountering the transient EACCES errors may need to use the old group
-  permissions method. 
-
-#### Fixed
-
-- **ddca_redetect_displays()**: Recover from an unexpected system state that
-  previously triggered assert() failures. Diagnostics are written to the system
-  log. If display watch is not running on entry to the function, it is not 
-  restarted at the end. 
-  Addresses issue #595, (powerdevil crashes with assertion failure in libddcutil
-  after resume from sleep/hibernate) and KDE bug 517571 (KDE Power Management 
-  Crash in DDCutilPrivateSingleton::redetect after letting laptop sleep).
-- In **dw_create_display_status_event()**, the test for event type
-  DDCA_EVENT_DDC_DISABLED incorrectly used flag DDCA_DISPLAY_EVENT_DDC_WORKING.
-- man page ddcutil: Replace example "getvcp supported" by "getvcp all". 
-  Group "supported" was replaced long ago by "all". Issue #579.
-- segfault in diagnose_open_failure_to_syslog(). Issue #596
-- Error parsing option ***--maxtries***.
-- Attempting to run command line programs lsof, getfacl (which can occur whan 
-  analyzing unexpected behaviour or as part command **environment**) 
-  caused a segfault when those programs are not found on the user's system.
-  Addresses segfault reported in issue #590.
-- In syslog messages, the reported thread id might actually be the process id. 
-- Change the sample rules file in data/etc/udev/rules.d/60-ddcutil-i2c.rules, 
-  which is normally installed in /usr/share/ddcutil/data/60-ddcutil.rules, to
-  conform to the file normally installed in 
-  /usr/lib/udev/rules.d/60-ddcutil-i2c.rules. Both files now Loosen the video
-  display adapter test to look at only the first byte of the adapter class, 
-  which must be x03. Pull request #597.
-- Fix incorrect ioctl call in **hiddev_get_report()**, used for monitors using
-  USB rather that I2C for communication with their Virtual Control Panel.
-- When reading the EDID bytewise using **get_edid_bytes_directly_using_fileio()**
-  (currently done only for test purposes), only every other byte was saved.
-- Incorrect call to i2c-dev set address ioctl.
-- General source cleanup using Claude Code
-  - Fix a large number of typos and other errors in messages, mostly trace and 
-    syslog messages.
-  - Update Doxygen documentaion.
-  - Consistenly make **#include "config.h"** the first include.
-  - Consistenly set AM_CFLAGS = $(AM_CLAGS_STD) in the Makefile.am in each of
-    the subdirectories of src
-- Avoid a possible buffer overflow when printing an EDID field such as 
-  serial number that contains invalid ASCII characters
-- Write error message during **getvcp --brief*** regarding sysfs drm connector 
-  not found to stderr, not stdout.  Issue #598.   
-- More consistent formatting of syslog output.
-- Use atomic variables to fix time of use to time of check (TOCTOU) race 
-  conditions identified by Claude Code.
-
-### Building
-
-- Add autoconf **config** option ***--enable-dbus***/***--disable-dbus***. 
-  The default is enabled.  Needed to watch for sleep events.
-- ddcutil now depends on packages libacl1  and libdbus-1. The corresponding
-  development packages must be installed.
-
-### Shared Library
-
-The shared library **libddcutil** is backwardly compatible with the one in 
-ddcutil 2.2.1. The SONAME is unchanged as libddcutil.so.5. The released library
-file is libddcutil.so.5.5.1.
-
-#### Added
-
-- Added a thread that watches for dbus PrepareForSleep messages, in order to 
-  calculate the time since the most recent return from sleep.  If opening a 
-  /dev/i2c device fails with errno EACCES shortly after returning from sleep, 
-  the open is retried.
-- Option ***~~pause-after-resume-ms*** (See above.)
-- Option ***--enable/disable-early-permission-checks*** (See above.)
-
-
- -->
-
+<h3 id="ddcutil-227"><strong>ddcutil</strong> 2.2.7</h3>
+<p>In progress.</p>
 <h3 id="ddcutil-226"><strong>ddcutil</strong> 2.2.6</h3>
 <p>Most changes in this release are in shared library <strong>libddcutil</strong>. 
 For notes on those changes, see <a href="../c_api_226/">Shared Library Changes for Release 2.2.6</a>.</p>
