@@ -5,14 +5,14 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="author" content="Sanford Rockowitz" /><link rel="canonical" href="https://www.ddcutil.com/c_api_227/" />
       <link rel="shortcut icon" href="../img/favicon.ico" />
-    <title>C api 227 - ddcutil Documentation</title>
+    <title>Shared Library Changes for Release 2.2.7 - ddcutil Documentation</title>
     <link rel="stylesheet" href="../css/theme.css" />
     <link rel="stylesheet" href="../css/theme_extra.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
     
       <script>
         // Current page data
-        var mkdocs_page_name = "C api 227";
+        var mkdocs_page_name = "Shared Library Changes for Release 2.2.7";
         var mkdocs_page_input_path = "c_api_227.md";
         var mkdocs_page_url = "/c_api_227/";
       </script>
@@ -172,7 +172,7 @@
                   </li>
               </ul>
               <p class="caption"><span class="caption-text">Shared Library</span></p>
-              <ul>
+              <ul class="current">
                   <li class="toctree-l1"><a class="reference internal" href="../api_main/">C API</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../libddcutil_release_notes/">Shared Library Release Notes</a>
@@ -218,6 +218,14 @@
                   <li class="toctree-l1"><a class="reference internal" href="../c_api_224/">Shared Library Changes for Releases 2.2.4 and 2.2.5</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../c_api_226/">Shared Library Changes for Release 2.2.6</a>
+                  </li>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="#">Shared Library Changes for Release 2.2.7</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#permission-denied-errors-on-devi2c-devices">Permission denied errors on /dev/i2c devices</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#other-changes">Other Changes</a>
+    </li>
+    </ul>
                   </li>
               </ul>
               <p class="caption"><span class="caption-text">Background</span></p>
@@ -303,7 +311,8 @@
         <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
   <ul class="wy-breadcrumbs">
     <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
-      <li class="breadcrumb-item active">C api 227</li>
+          <li class="breadcrumb-item">Shared Library</li>
+      <li class="breadcrumb-item active">Shared Library Changes for Release 2.2.7</li>
     <li class="wy-breadcrumbs-aside">
           <a href="https://github.com/rockowitz/ddcutil/edit/master/docs/c_api_227.md" ></a>
     </li>
@@ -313,75 +322,68 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
             <div class="section" itemprop="articleBody">
               
-                <h2 id="shared-library-changes-for-release-226">Shared Library Changes for Release 2.2.6</h2>
+                <h2 id="shared-library-changes-for-release-227">Shared Library Changes for Release 2.2.7</h2>
 <p>Shared library <strong>libddcutil</strong> is backwardly compatible with the ones in
 <strong>ddcutil</strong> 2.2.1 and later. The SONAME is unchanged as libddcutil.so.5. The released library
-file is libddcutil.so.5.5.0.</p>
-<p>Release 2.2.6 replaces release 2.2.5, which was reported to hang KDE Plasma
-at login.</p>
-<h4 id="added">Added</h4>
+file is libddcutil.so.5.5.1.</p>
+<h4 id="permission-denied-errors-on-devi2c-devices">Permission denied errors on /dev/i2c devices</h4>
+<p>Calling open() on a /dev/i2c device for which the user has RW permission
+sometimes (rarely) fails with Linux error EACCES.
+It tends to happen immediately after a return from sleep.
+This elusive problem has most
+frequently been reported by KDE PowerDevil users, on Framework computers and Arch based distributions.</p>
+<p>The cause, apparently, is a race condition: the tiny window of time between
+when a /dev/i2c device becomes visible and time that permissions granted 
+by udev rules using the uaccess token are applied. </p>
+<p><strong>libddcutil</strong> attempts to solve this problem by pausing before certain operations and after a return from sleep
+is detected. It also retries open() operations that fail with error EACCES if it appears 
+that the failure may have been caused by the race condition.</p>
+<p>Retries and delays are a trade-off: operations that initially fail may in fact
+eventually succeed, but retrying makes ddcutil slower with no benefit for operations 
+that don't. The optimal settings are not obvious. 
+The following options (which can be put in configuration file ddcutilrc) have been added to tune behaviour. </p>
 <ul>
-<li>Added API function <strong>ddca_get_non_table_vcp_value2()</strong>. Unlike 
-  <strong>ddca_get_non_table_vcp_value()</strong>, which is now deprecated, the new function
-  never performs verification. </li>
+<li><strong><em>~~pause-after-resume-ms</em></strong>  The number of milliseconds libddcutil may pause 
+  after dbus reports a resume from sleep.  The default is 500 ms.</li>
+<li><strong><em>-max-eacces_retry-ms</em></strong> Limits the number of milliseconds for retrying open() 
+  calls on /dev/i2c devices when it appears likely, having checked the ACL, that the open() call will 
+  eventually succeed. The default is 3000 ms.</li>
+<li><strong><em>--enable/disable-early-permission-checks</em></strong>  Perform basic permission checks
+  before performing operations that might generate a flurry of EACCES errors.<br />
+  The drawback of this option is that the basic permission might be performed too
+  soon, generating permission failures that might otherwise resolve by the time
+  the open() calls are actually needed.  The default is enable.</li>
 </ul>
-<!--
-### API Changes
-
-Define bit DDCA_NOVERIFY in DDCA_Version_Feature_Flags to
-indicates that verification should never be performed for the feature.
-There exist monitors for which the reported feature value is not the 
-value set on a **setvcp** operation. A user can cause this bit to be 
-set by specifying feature attribute **NOVERIY** in a user defined
-feature file for the monitor.
--->
-
-<h4 id="changed">Changed</h4>
+<p>Alternatively, tor those encountering the problem, the simpler solution may be to grant
+permission to the /dev/i2c devices
+by assigning users to group i2c.</p>
+<h4 id="other-changes">Other Changes</h4>
 <ul>
-<li>Ignore laptop displays when processing display connection and disconneciton.</li>
-<li>
-<p>Add "AMDGPU DM i2c OEM bus" to list of names of I2C buses to be 
-  ignored. Theses buses are used to control display controller 
-  features like RGB lighting.  </p>
-</li>
-<li>
-<p>Eliminate use in <strong>libddcutil</strong> of linux api function <strong>access()</strong> to check
-  if the user has RW access to a /dev/i2c device. Bug reports suggest this
-  function may not always respect UDEV token UACCESS.</p>
-</li>
-<li>More extensive syslog trace messages to aid in remote debugging, 
-  particularly for KDE PowerDevil.</li>
-<li>Functions in the call trees from <strong>ddca_get_...vcp_value()</strong> and 
-  <strong>ddca_set_...vcp_value()</strong> consistenty return Error_Info structs instead of
-  status codes to improve diagnostic messages written to the system log and 
-  information returned by <strong>ddca_get_error_detail()</strong>. </li>
-</ul>
-<h4 id="fixed">Fixed</h4>
-<ul>
-<li>Issue #581 "ddcutil 2.2.5 causes KDE Plasma freeze due to excessive 
-  permission checks".  For some undetermined reason, despite the logged on user
-  having RW access to /dev/i2c-devices, attempting to open these devices sometimes 
-  fails with Linux error EACCES. Functions <strong>ddca_init2()</strong> and <strong>ddca_init</strong>()
-  now fail with status code EACCESS if the logged on user does not have RW 
-  permission for all /dev/i2c devices that might possibly be used for DDC 
-  communication.  As the cause of the permission loss is unclear, function 
-  <strong>ddca_start_watch_displays()</strong> similarly checks if the logged on user has 
-  RW access, and returns DDCRC_INVALID_OPERATION in case of failure.  Callers
-  should check for failure of these functions and not repeatedly call them to
-  avoid a flood of permission failures. </li>
-<li>Issue #585, "Displays with I2C bus name DPMST not detected". It was possible
-  that the video adapter for a /dev/i2c device was not located, causing MST
-  connected displays to not be detected.(Fix based on diagnosis by Diego Nunes.) </li>
-<li>Issue #587, "Assert failure in ddc_packet_io.c", due to an inconsistent
-  data structure in ddc_open_display(). The inconsistency was apparently caused 
-  by a race condition in display change detection. Added mutex. Also addresses 
-  issue #586.</li>
-<li>Clear the display locks table during ddca_redetect_displays(), to recover from
-stale entries.</li>
+<li>Implemented a basic segfault handler.  It writes the traced function stack
+  of the current thread to the system log, then invokes the prior handler. </li>
+<li>Added a thread that watches for dbus PrepareForSleep messages, in order to 
+  calculate the time since the most recent return from sleep.  If opening a 
+  /dev/i2c device fails with errno EACCES shortly after returning from sleep, 
+  the open is retried.</li>
+<li>Re-enable reporting of laptop display connection/disconnection. </li>
+<li>Segfault in function <strong>diagnose_open_failure_to_syslog()</strong>. Issue #596</li>
+<li><strong>ddca_redetect_displays()</strong>: Recover from an unexpected system state that
+  previously triggered assert() failures. Diagnostics are written to the system
+  log. If display watch is not running on entry to the function, it is not 
+  restarted at the end. 
+  Addresses issue #595, (powerdevil crashes with assertion failure in libddcutil
+  after resume from sleep/hibernate) and KDE bug 517571 (KDE Power Management 
+  Crash in DDCutilPrivateSingleton::redetect after letting laptop sleep).</li>
+<li>In <strong>dw_create_display_status_event()</strong>, the test for event type
+  DDCA_EVENT_DDC_DISABLED incorrectly used flag DDCA_DISPLAY_EVENT_DDC_WORKING.</li>
 </ul>
               
             </div>
           </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../c_api_226/" class="btn btn-neutral float-left" title="Shared Library Changes for Release 2.2.6"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../mccs_background/" class="btn btn-neutral float-right" title="Monitor Control Command Set">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
 
   <hr/>
 
@@ -407,6 +409,10 @@ stale entries.</li>
         </span>
     
     
+      <span><a href="../c_api_226/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../mccs_background/" style="color: #fcfcfc">Next &raquo;</a></span>
     
   </span>
 </div>

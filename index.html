@@ -239,6 +239,8 @@
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="c_api_226/">Shared Library Changes for Release 2.2.6</a>
                   </li>
+                  <li class="toctree-l1"><a class="reference internal" href="c_api_227/">Shared Library Changes for Release 2.2.7</a>
+                  </li>
               </ul>
               <p class="caption"><span class="caption-text">Background</span></p>
               <ul>
@@ -335,15 +337,21 @@
               
                 <h1 id="ddcutil-and-ddcui">ddcutil and ddcui</h1>
 <h2 id="announcements">Announcements</h2>
-<p>10 May 2026</p>
-<p><strong>ddcutil</strong> 2.2.7 is now available.  Website documentation for this release is in progress.  Detailed documentation
-can be found in file CHANGELOG.md in the source tree.</p>
-<p>20 April 2026</p>
-<p><strong>ddcutil</strong> Release Candidate 2.2.7-rc1 is now available for testing. 
-It contains several important bug fixes for KDE PowerDevil in the handling of display connection 
-and disconnection and transient loss of access permissions for /dev/i2c devices. 
-It can be downloaded from the githut ddcutil repository For details, see the 
-<a href="https://github.com/rockowitz/ddcutil/issues/599">announcement on github</a>.</p>
+<p>12 May 2026</p>
+<p><strong>ddcutil</strong> 2.2.7 contains important bug fixes and changes in shared library <strong>libddcutil</strong>, 
+relating to its handling of display connection 
+and disconnection and the transient loss of access permissions for /dev/i2c devices. 
+These changes are important for its use by KDE PowerDevil.</p>
+<p>For details, see <a href="release_notes_220/">Notes for Recent ddcutil Releases</a>,
+and <a href="c_api_227/">Shared Library Changes for Release 2.2.7</a>.
+Further detail can be found in file 
+<a href="https://github.com/rockowitz/ddcutil/blob/2.2.7-release/CHANGELOG.md">CHANGELOG.md</a>
+in the source tree.</p>
+<p>Gihub users 
+<a href="https://github.com/mybday123">Dirga Yuza (mbday123)</a>, 
+<a href="https://github.com/kerneltoast">Sultan Alsawaf (kerneltoast)</a>, and
+<a href="https://github.com/hkskoglund">Henning Skoglunc (hkskoglund)</a> 
+were of great help analyzing errors encountered by <strong>libddcutil</strong>.</p>
 <p>11 March 2026</p>
 <p><strong>ddcutil</strong> 2.2.6 contains significant changes for <strong>libddcutil</strong>, but only minor enhancements for command line <strong>ddcutil</strong>.
 The changes are mostly in the area of detecting and notifying client programs of display connection and disconnection. 
@@ -547,5 +555,5 @@ The source is hosted on <a href="http://www.github.com/rockowitz/ddcui">Github</
 
 <!--
 MkDocs version : 1.6.1
-Build Date UTC : 2026-05-11 16:19:54.239792+00:00
+Build Date UTC : 2026-05-12 23:26:01.524406+00:00
 -->

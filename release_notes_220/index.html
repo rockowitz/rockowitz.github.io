@@ -219,6 +219,8 @@
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../c_api_226/">Shared Library Changes for Release 2.2.6</a>
                   </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../c_api_227/">Shared Library Changes for Release 2.2.7</a>
+                  </li>
               </ul>
               <p class="caption"><span class="caption-text">Background</span></p>
               <ul>
@@ -344,7 +346,37 @@
 <p>For <strong>ddcui</strong> changes, see <a href="../ddcui_release_notes/"><strong>ddcui</strong> Release Notes</a></p>
 <p>For notes on releases prior to 2.2.0, see <a href="../release_notes/">Notes for Releases 2.1.4 and Earlier</a>.</p>
 <h3 id="ddcutil-227"><strong>ddcutil</strong> 2.2.7</h3>
-<p>In progress.</p>
+<p>This section highlights changes likely to be of interest to general users.
+For greater detail, see file 
+<a href="https://github.com/rockowitz/ddcutil/blob/2.2.7-release/CHANGELOG.md">CHANGELOG.md</a>
+in the source tree.</p>
+<p>Most changes in this release are in shared library <strong>libddcutil</strong>, and relate to its use 
+by KDE PowerDevil. 
+For notes on those changes, see <a href="../c_api_227/">Shared Library Changes for Release 2.2.7</a>.</p>
+<p>General Changes:</p>
+<ul>
+<li>Implemented a basic segfault handler.  It writes the traced function stack
+  of the current thread to the system log, then invokes the prior handler. </li>
+<li>The installed udev rules file, 60-ddcutil-i2c.rules now sets group i2c and 
+  mode 0660 as well as using token uaccess to assign /dev/i2c permissions. 
+  Users encountering transient EACCES errors may need to use the old group
+  permissions method for granting access.</li>
+<li>Option <strong><em>--skip-ddc-checks</em></strong> is now valid only for command line <strong>ddcutil</strong>, 
+  not shared library <strong>libddcutil</strong>. If specified in config file ddcutilrc, it 
+  must be in the [ddcutil] section, not the [global] section.</li>
+<li>Extensive diagnostics are written to the system log if opening a /dev/i2c
+  device fails with errno EACCES.</li>
+<li>man page ddcutil: Replace example "getvcp supported" by "getvcp all". 
+  Group "supported" was replaced long ago by "all". Issue #579.</li>
+<li>Error parsing option <strong><em>--maxtries</em></strong>.</li>
+<li>Attempting to run command line programs lsof, getfacl (which can occur whan 
+  analyzing unexpected behaviour or as part command <strong>environment</strong>) 
+  caused a segfault when those programs were not found on the user's system.</li>
+<li>Relax the video display adapter test in file 60-ddcutil-i2c.rules to 
+  look only at the first byte of the adapter class, which must be x03.</li>
+<li>Write error message during <strong>getvcp --brief</strong>* regarding sysfs drm connector 
+  not found to stderr, not stdout.  Issue #598.</li>
+</ul>
 <h3 id="ddcutil-226"><strong>ddcutil</strong> 2.2.6</h3>
 <p>Most changes in this release are in shared library <strong>libddcutil</strong>. 
 For notes on those changes, see <a href="../c_api_226/">Shared Library Changes for Release 2.2.6</a>.</p>
