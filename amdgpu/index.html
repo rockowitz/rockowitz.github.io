@@ -324,6 +324,10 @@
 <p>Based on <a href="https://www.kernel.org/doc/html/v4.20/gpu/amdgpu.html">Linux GPU driver documentation for amdgpu</a></p>
 <h3 id="kernel-option-amdgpudc-display-core">Kernel option amdgpu.dc (Display Core)</h3>
 <p>Disable/Enable Display Core driver for debugging (1 = enable, 0 = disable). The default is -1 (automatic for each asic).</p>
+<p>Though this option still exists (as of Linux 7.0), the non-DisplayCore code had been
+deprecated and actually removed in Linux 6.18.  There is a 
+<a href="https://gitlab.freedesktop.org/drm/amd/-/work_items/5269#note_3466579">bug report</a>
+that setting amdgpu.dc=0 on 6.18 and later kernels turns off the screen. </p>
 <table>
 <thead>
 <tr>
