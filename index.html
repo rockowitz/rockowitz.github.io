@@ -352,73 +352,13 @@ in the source tree.</p>
 <a href="https://github.com/kerneltoast">Sultan Alsawaf (kerneltoast)</a>, and
 <a href="https://github.com/hkskoglund">Henning Skoglunc (hkskoglund)</a> 
 were of great help analyzing errors encountered by <strong>libddcutil</strong>.</p>
-<p>11 March 2026</p>
-<p><strong>ddcutil</strong> 2.2.6 contains significant changes for <strong>libddcutil</strong>, but only minor enhancements for command line <strong>ddcutil</strong>.
-The changes are mostly in the area of detecting and notifying client programs of display connection and disconnection. 
-Most importantly, they address 
-the situation where, for some ill-defined reason, <strong>libddcutil</strong> is denied permission to access /dev/i2c devices, causing  KDE PowerDevil, and thus KDE Plasma, to become unresponsive.</p>
-<p>For details, see <a href="release_notes_220/">Notes for Recent ddcutil Releases</a>,
-and <a href="c_api_226/">Shared Library Changes for Release 2.2.6</a>.
-Changes are also summarized in file CHANGELOG.md in the source tree.</p>
-<p>26 January 2026</p>
-<p><strong>ddcutil</strong> 2.2.5 replaces release 2.2.4, which failed to build on aarch64. It also contains some changes related to detecting and reporting display connection and disconnection.</p>
-<p>For details, see <a href="release_notes_220/">Notes for Recent ddcutil Releases</a>,
-and <a href="c_api_224/">Shared Library Changes for Releases 2.2.4 and 2.2.5</a>.
-Changes are also summarized in file CHANGELOG.md in the source tree.</p>
-<p>20 January 2026</p>
-<p><strong>ddcutil</strong> 2.2.4 contains several enhancements and bug fixes to deal with unusual situations.
-In particular, it addresses a race condition that could cause KDE PowerDevil to crash (and restart) 
-when a monitor is disconnected and then reconnected.</p>
-<p>The <strong>libddcutil</strong> API is backwardly compatible with that in releases 2.2.0 and later.</p>
-<p>For details about the changes, see <a href="release_notes_220/">Notes for Recent ddcutil Releases</a>,
-and <a href="c_api_224/">Shared Library Changes for Release 2.2.4</a>.
-Changes are also summarized in file CHANGELOG.md in the source tree.</p>
-<p>19 November 2025</p>
-<p>There's now a <a href="https://buymeacoffee.com/ddcutil">Buy Me A Coffee</a> page for Sanford Rockowitz, the developer and maintainer of <strong>ddcutil</strong>.  If you find <strong>ddcutil</strong> useful, please consider making a small contribution to its ongoing development and maintenance. </p>
-<p>14 November 2025</p>
-<p>Release 2.2.3 contains one important bug fix of general interest.  Command <strong>setvcp --verify</strong> and API function <strong>ddca_set_non_table_vcp_value()</strong> were not performing verification.  As a result of this fix, scripts and applications that hitherto always appeared to succeed when setting a feature value many now fail the operation because of verification.</p>
-<p>The bulk of changes relate to bugs revealed by, and features needed by, KDE PowerDevil.  In particular, a new watch-mode, <strong>udev</strong>, uses UDEV notifications to detect display connection and disconnection.  This is now the default watch mode when executing on Wayland.  <strong>xevent</strong> remains the default watch mode when executing on X11. </p>
-<p>The <strong>libddcutil</strong> API is backwardly compatible with that in releases 2.1.4, 2.2.0 and 2.2.1. </p>
-<p>For details about the changes, see <a href="release_notes_220/">Notes for Recent ddcutil Releases</a>,
-and <a href="c_api_222/">Shared Library Changes for Release 2.2.3</a>.
-Changes are also summarized in file CHANGELOG.md in the source tree.</p>
-<p>10 July 2025</p>
-<p><strong>ddcutil</strong> 2.2.1 contains several small changes, a few enhancements, 
-and a large number of bug fixes.
-The changes regarding display connection and disconnection are important for KDE Plasma operation.</p>
-<p>The <strong>libddcutil</strong> API is backwardly compatible with that in releases 2.2.0 and 2.1.4. </p>
-<p>For details about the changes, see <a href="release_notes_220/">Notes for Recent ddcutil Releases</a>,
-and
-<a href="c_api_221/">Shared Library Changes for Release 2.2.1</a>.
-Changes are also summarized in file CHANGELOG.md in the source tree.</p>
-<p>17 February 2025</p>
-<p><strong>ddcutil</strong> 2.2.0 is a major new release, </p>
-<p>Most significantly, detecting and reporting display connection and disconnection has been reworked and enhanced, making <strong>libddcutil</strong> more useful to applications such as <a href="https://github.com/KDE/powerdevil">KDE PowerDevil</a>, 
-<a href="https://github.com/digitaltrails/vdu_controls">vdu_controls</a>, and <a href="https://github.com/digitaltrails/ddcutil-service">ddcutil-service</a>.</p>
-<!--
- However,  detecting and reporting sleep mode proved very problematic and has 
-been removed.
--->
-
-<p>Other enhancements include support for DisplayLink devices using driver evince. more consistent and extensive use of the system log, 
-additional facilities for remote problem diagnosis, and changes in building, installation, and packaging.
-And, of course, there are many bug fixes.</p>
-<p>The <strong>libddcutil</strong> API is backwardly compatible with that in release 2.1.4. It contains some minor changes and additional APIs, 
-particularly for display change detection</p>
-<p><strong>ddcui</strong> 0.6.0 has been modified to use the enhanced <strong>libddcutil</strong> API for display change detection, automatically reflecting display connection and disconnection. It also contains a handful of bug fixes.</p>
-<p>For details about the changes and bug fixes, see <a href="release_notes_220/">ddccutil 2.2.0 Release Notes</a>,
-<a href="c_api_220/">Shared Library Changes for Release 2.2.0</a>, 
-and <a href="http://www.ddcutil.com/ddcui_release_notes/">ddcui Release Notes</a>.
-Changes are also summarized in the CHANGELOG.md files in the respective source trees.</p>
-<p>Michael Hamilton, developer of <a href="https://github.com/digitaltrails/vdu_controls">VDU Controls</a>, has once again
-provided invaluable assistance in the development of this release, particularly in the design 
-and implementation of display status change detection.  His project <a href="https://github.com/digitaltrails/ddcutil-service">ddcutil-service</a>
-packages <strong>libddcutil</strong> as a D-Bus service. </p>
 <!--
 Prebuilt packages for several Linux distributions and machine architectures can be found in 
 the [usual locations](install.md).
 -->
 
+<p>19 November 2025</p>
+<p>There's now a <a href="https://buymeacoffee.com/ddcutil">Buy Me A Coffee</a> page for Sanford Rockowitz, the developer and maintainer of <strong>ddcutil</strong>.  If you find <strong>ddcutil</strong> useful, please consider making a small contribution to its ongoing development and maintenance. </p>
 <p>Prior announcements can be found <a href="prior_announcements/">here</a>.</p>
 <h2 id="introduction">Introduction</h2>
 <p><strong>ddcutil</strong> is a Linux program for managing monitor settings, such as brightness, color levels, and input source.
@@ -555,5 +495,5 @@ The source is hosted on <a href="http://www.github.com/rockowitz/ddcui">Github</
 
 <!--
 MkDocs version : 1.6.1
-Build Date UTC : 2026-05-15 19:05:56.346004+00:00
+Build Date UTC : 2026-05-16 15:37:41.692048+00:00
 -->
