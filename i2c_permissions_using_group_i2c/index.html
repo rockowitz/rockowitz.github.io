@@ -326,7 +326,7 @@ most of the work has already been done.
 As normally packaged, installing package i2c-tools creates group <strong><em>i2c</em></strong> (if it does not alreay exist), and assigns that group to all
 /dev/i2c devices using a udev rule. </p>
 <p>All that is necessary is to add <strong>ddcutil</strong> users to group <strong><em>i2c</em></strong>: </p>
-<pre><code>$ sudo usermod &lt;user-name&gt; -aG i2c
+<pre><code>$ sudo usermod $USER -aG i2c
 </code></pre>
 <p>If group <strong><em>i2c</em></strong> does not already exist, the following command will create it: </p>
 <pre><code>$ sudo groupadd --system i2c
