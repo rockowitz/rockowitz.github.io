@@ -221,6 +221,8 @@
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../c_api_227/">Shared Library Changes for Release 2.2.7</a>
                   </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../c_api_300/">Shared Library Changes for Release 3.0.1</a>
+                  </li>
               </ul>
               <p class="caption"><span class="caption-text">Background</span></p>
               <ul>
@@ -262,6 +264,8 @@
                   </li>
                   <li class="toctree-l1 current"><a class="reference internal current" href="#">Release Notes</a>
     <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#ddcutil-301">ddcutil 3.0.1</a>
+    </li>
     <li class="toctree-l2"><a class="reference internal" href="#ddcutil-227">ddcutil 2.2.7</a>
     </li>
     <li class="toctree-l2"><a class="reference internal" href="#ddcutil-226">ddcutil 2.2.6</a>
@@ -345,6 +349,42 @@
                 <h2 id="notes-for-recent-ddcutil-releases">Notes for Recent <strong>ddcutil</strong> Releases</h2>
 <p>For <strong>ddcui</strong> changes, see <a href="../ddcui_release_notes/"><strong>ddcui</strong> Release Notes</a></p>
 <p>For notes on releases prior to 2.2.0, see <a href="../release_notes/">Notes for Releases 2.1.4 and Earlier</a>.</p>
+<h3 id="ddcutil-301"><strong>ddcutil</strong> 3.0.1</h3>
+<p>This section highlights changes likely to be of interest to general users.
+For greater detail, see file 
+<a href="https://github.com/rockowitz/ddcutil/blob/2.2.7-release/CHANGELOG.md">CHANGELOG.md</a>
+in the source tree.</p>
+<p>Most changes in release 3.0.1 are in shared library <strong>libddcutil</strong>, and relate to its use 
+by KDE PowerDevil. 
+For notes on those changes, see <a href="../c_api_300/">Shared Library Changes for Release 3.0.1</a>.</p>
+<p>The following changes may be of interest to users of command line <strong>ddcutil</strong>.</p>
+<ul>
+<li>Added option <strong><em>--bus-drm-connector</em></strong>: lets the user explicitly specify the I2C bus
+  number/DRM connector name pairing for a display, for cases where the sysfs 
+  card-connector directory does not record the bus number and ddcutil's alternative
+  EDID-based association fails. Addresses issue #608:modified/non-unique EDIDs.</li>
+<li>Command <strong><em>setvcp</em></strong>: Relative value changes can now also be specified as
+  PLUS/MINUS (case-insensitive), in addition to +/-. e.g. <strong>ddcutil setvcp 10 plus 5</strong>.</li>
+<li>The algorithm for reading the EDID </li>
+<li>EDID reads now first attempt to use a single combined <strong>I2C_RDWR</strong> ioctl
+  transaction (write the EDID block-read command and read the response as
+  one multi-message transaction), as is done in kernel DRM processing,
+  before falling back to the previous separate write-then-read calls, thus
+  (a) enable reading the EDID on certain monitors that are not otherwise
+      readable. based on pull request #621: Try a single combined I2C_RDWR
+      transaction when reading the EDID
+  (b) reducing I2C bus round trips,</li>
+<li>Do not ignore /dev/i2c devices on SOC systems whose adapter class cannot be
+  read because the display adapter is not found.
+  Addresses pull request #619: Do not ignore sysfs class being zero</li>
+<li>Revert the change made in release 2.2.7 to udev rules file 60-ddcutil-i2c.rules
+  that set group i2c and mode 0660 as well as using token uacces to assign
+  permissions to /dev/i2c devices. While use of group i2c to set /dev/i2c 
+  permissions is normal, this setting, and creation of group i2c reflect 
+  distribution packaging policies. 
+  Users encountering transient EACCES errors may need to use the old group
+  permissions method for granting access</li>
+</ul>
 <h3 id="ddcutil-227"><strong>ddcutil</strong> 2.2.7</h3>
 <p>This section highlights changes likely to be of interest to general users.
 For greater detail, see file 

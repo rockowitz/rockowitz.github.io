@@ -3,18 +3,18 @@
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="author" content="Sanford Rockowitz" /><link rel="canonical" href="https://www.ddcutil.com/c_api_220/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="author" content="Sanford Rockowitz" /><link rel="canonical" href="https://www.ddcutil.com/c_api_300/" />
       <link rel="shortcut icon" href="../img/favicon.ico" />
-    <title>Shared Library Changes for Release 2.2.0 - ddcutil Documentation</title>
+    <title>Shared Library Changes for Release 3.0.1 - ddcutil Documentation</title>
     <link rel="stylesheet" href="../css/theme.css" />
     <link rel="stylesheet" href="../css/theme_extra.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
     
       <script>
         // Current page data
-        var mkdocs_page_name = "Shared Library Changes for Release 2.2.0";
-        var mkdocs_page_input_path = "c_api_220.md";
-        var mkdocs_page_url = "/c_api_220/";
+        var mkdocs_page_name = "Shared Library Changes for Release 3.0.1";
+        var mkdocs_page_input_path = "c_api_300.md";
+        var mkdocs_page_url = "/c_api_300/";
       </script>
     
     <!--[if lt IE 9]>
@@ -209,23 +209,7 @@
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../c_api_214/">Shared Library Changes for Release 2.1.4</a>
                   </li>
-                  <li class="toctree-l1 current"><a class="reference internal current" href="#">Shared Library Changes for Release 2.2.0</a>
-    <ul class="current">
-    <li class="toctree-l2"><a class="reference internal" href="#display-change-reporting">Display Change Reporting</a>
-        <ul>
-    <li class="toctree-l3"><a class="reference internal" href="#general-comments">General Comments</a>
-    </li>
-    <li class="toctree-l3"><a class="reference internal" href="#sleep-state-detection">Sleep State Detection</a>
-    </li>
-    <li class="toctree-l3"><a class="reference internal" href="#options-affecting-display-change-detection">Options Affecting Display Change Detection.</a>
-    </li>
-    <li class="toctree-l3"><a class="reference internal" href="#api-changes">API Changes</a>
-    </li>
-    <li class="toctree-l3"><a class="reference internal" href="#other-shared-library-changes">Other Shared Library Changes</a>
-    </li>
-        </ul>
-    </li>
-    </ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../c_api_220/">Shared Library Changes for Release 2.2.0</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../c_api_221/">Shared Library Changes for Release 2.2.1</a>
                   </li>
@@ -237,7 +221,17 @@
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../c_api_227/">Shared Library Changes for Release 2.2.7</a>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../c_api_300/">Shared Library Changes for Release 3.0.1</a>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="#">Shared Library Changes for Release 3.0.1</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#performance">Performance</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#eacces-errors">EACCES Errors</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#api-changes">API Changes</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#bug-fixes">Bug Fixes</a>
+    </li>
+    </ul>
                   </li>
               </ul>
               <p class="caption"><span class="caption-text">Background</span></p>
@@ -324,9 +318,9 @@
   <ul class="wy-breadcrumbs">
     <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
           <li class="breadcrumb-item">Shared Library</li>
-      <li class="breadcrumb-item active">Shared Library Changes for Release 2.2.0</li>
+      <li class="breadcrumb-item active">Shared Library Changes for Release 3.0.1</li>
     <li class="wy-breadcrumbs-aside">
-          <a href="https://github.com/rockowitz/ddcutil/edit/master/docs/c_api_220.md" ></a>
+          <a href="https://github.com/rockowitz/ddcutil/edit/master/docs/c_api_300.md" ></a>
     </li>
   </ul>
   <hr/>
@@ -334,263 +328,88 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
             <div class="section" itemprop="articleBody">
               
-                <h2 id="shared-library-changes-for-release-220">Shared Library Changes for Release 2.2.0</h2>
-<p>Shared library <strong>libddcutil</strong> is backwardly compatible with the one in
-ddcutil 2.1.4. The SONAME is unchanged as libddcutil.so.5. The released library
-file is libddcutil.so.5.2.0.</p>
-<h3 id="display-change-reporting">Display Change Reporting</h3>
-<h4 id="general-comments">General Comments</h4>
-<p>Detection of display connection and disconnection has been extensively reworked.
-Unfortunately, multiple issues cause tradeoffs in the implementation.</p>
+                <h2 id="shared-library-changes-for-release-301">Shared Library Changes for Release 3.0.1</h2>
+<p>Shared library <strong>libddcutil</strong> is backwardly compatible with the ones in
+<strong>ddcutil</strong> 2.2.1 and later. The SONAME is unchanged as libddcutil.so.5. The released library
+file is libddcutil.so.5.6.0.</p>
+<p>This is an overview of the changes in releases 3.0.0 and 3.0.1, which are extensive.
+More detailed information can be found in file CHANGELOG.md in the source tree.</p>
+<h3 id="performance">Performance</h3>
 <ul>
-<li>
-<p>First, there's a tension in display change detection between minimizing the time between
-  when a monitor connection/disconnection occurs, libddcutil becomes aware of the change, 
-  checking and rechecinging failed states (e.g. DDC not working), and invoking the 
-  client callback function to inform the client of the change.</p>
+<li>The display watch thread now blocks in poll() on the watched fd plus a
+  termination eventfd, instead of sleeping in timed polling loops</li>
+<li>Interruptible sleep execution is reimplemented using a termination event
+  instead of looping over multiple short sleep operations. Eliminates the watch
+  thread's periodic wakeups (up to 10 per second) which degrade idle power
+  residency when libddcutil is embedded in a long-running process such as
+  KDE PowerDevil. Addresses issue #617: ddcutil wakes up every
+  100ms to check for monitors even when nothing connected</li>
+<li>A burst of udev events, common following a resume, is coalesced to
+  avoid a storm of redundant bus rescans.</li>
+<li>Do not try to open a /dev/i2c device whose DRM connector has status "disconnected"</li>
+</ul>
+<h3 id="eacces-errors">EACCES Errors</h3>
 <ul>
-<li>Performance impact of how aggressively <strong>libddcutil</strong> watches for changes.</li>
-<li>It is possible for a monitor to briefly disappear as disconnected and then immediately 
-reconnect.</li>
-<li>Conversely, it's also possible for a monitor to appear, then immediately disappear
-before the detection process is complete</li>
-<li>There can be a delay between time the EDID can be read and DDC becomes functional. </li>
+<li>Further mitigations for transient access permission (EACCES) errors. There is 
+  a sliver of time between wehen /dev/i2c devices become visible and the time
+  that udev applies uacces permssions, resuling in open failures on /dev/i2c devices.
+  (KDE bug 522329, reported as 100% single-core CPU and desktop lag on wake)</li>
+<li>Reworked detection and handling of resume from sleep. Resume is detected using
+    a combinattion of the the D-Bus <strong>PrepareForSleep</strong> signal, and by 
+    comparing comparing CLOCK_BOOTTIME and CLOCK_MONOTONIC. Pauses are inserted before
+    opening a /dev/i2c device and in the display watch loop for a short interval
+    after a resume.</li>
+<li>Rate-limit the expensive EACCES diagnostics. Diagnostics are emitted at most
+    once per 10 seconds (set by parm <strong>DEFAULT_EACCES_DIAGNOSTIC_INTERVAL_SEC</strong>
+    in parms.h), instead of once per bus open.</li>
+<li>Defer display change processing until the EACESS window passes, to avoid
+  briefly treating every monitor as disconnected.</li>
 </ul>
-</li>
-<li>
-<p>Display change detection is unreliable with the nvidia proprietary driver.</p>
+<h3 id="api-changes">API Changes</h3>
 <ul>
-<li>The nvidia driver does not use /sys in the same way as amdgpu, i915, 
-  nouveau and other drm enabled drivers that are part of the Linux kernel.  </li>
-<li>Depending on driver version the phase of the moon, the /sys file system does not
-  reflect display changes and UDEV events or X11 events are not generated. In that case 
-  no display changes are reported.</li>
+<li>Watch mode <strong>xevent</strong> is unsupportedd. If no watch mode is specified, or
+  1<strong><em>--watch-mode dynamic</em></strong> is given, the watch mode resolves to <strong>udev</strong> if
+  udev is enabled, <strong>poll</strong> if not.  If <strong><em>--watch-mode xevent</em></strong> is explicitly
+  specified it will be respected, but execution  will not work properly; it is
+  recognized solely for testing purposes.</li>
+<li>Added API function <strong>ddca_elapsed_nanosec()</strong>, which returns the nummber of 
+  nanoseconds since the library was initialized. This enables client programs
+  to adjusting their timestamps to correlate with those reported by <strong>libddcutil</strong>.</li>
+<li><strong>dw_stop_watch_displays()</strong> now always waits for the watch thread to
+  terminate.</li>
+<li>API cleanup:</li>
+<li>const-qualify string input parameters (and some return values),</li>
+<li>added explicit <strong>void</strong> to empty parameter lists</li>
 </ul>
-</li>
-<li>
-<p>Whether a display appears to be connected depends on whether the EDID can be read.
-  For DVI/HDMI devices, power to the EDID EEPROM is provided over the cable. As a result, 
-  the EDID is readable so long as a cable is connected, even if the display is powered off.
-  For DisplayPort devices, the EDID is readable only if the monitor is supplying it power.
-  Even here, there is a difference between plugging/unplugging a monitor power cord and
-  pressing the power button on the display itself.  In the latter case, whether power is 
-  supplied to the EEPROM and the EDID is readable depends on the monitor implementation.</p>
-</li>
-<li>
-<p>Depending on driver, changes in monitor state may or may not be immediately relected in /sys. </p>
-</li>
-<li>
-<p>Connection of Multi-Stream Transport (MST) hub devices may or may not be detected depending on the driver/device combination.</p>
-</li>
-</ul>
-<p>Consequently two algorithms. aka watch modes, exist for detecting display changes. The first is more efficient, the second more reliable:</p>
+<h3 id="bug-fixes">Bug Fixes</h3>
 <ul>
-<li>
-<p>watch mode XEVENT.</p>
-<p>-Scans for changes using the X11 API extension RANDR (which also works on Wayland), 
- and if possible reads the EDID from /sys. </p>
-</li>
-<li>
-<p>watch mode POLL</p>
-<ul>
-<li>Attempts to read an EDID from every (plausible) /dev/i2c device in polling loop. </li>
-<li>Doesn't use X11 or rely on /sys</li>
-<li>Can consume a significant amount of CPU time on older machines.<ul>
-<li>Users with all but the most powerful machines may find it much too resource consumptive.</li>
-<li>Impact can be adjusted by reducing the polling frequency (see option <strong><em>--poll-watch-loop-millisec</em></strong>) at the expense of responsiveness.</li>
+<li>Release 3.0.1 fixed a critical bug in 3.0.0 that caused driver AMDGPU
+  crash on Navi based devices. This caused the system to crash on 
+  startup of KDE Plasma.  (Github issues 628, 629, 630)</li>
+<li>The default recheck thread declared DDC enabled, and emitted
+  <strong>DDCA_EVENT_DDC_ENABLED</strong>, whenever a recheck completed without error,
+  even if DDC communication was not yet working. In releases through 2.2.6,
+  combined with an incorrect constant in event construction (fixed in 2.2.7),
+  this produced DDCA_EVENT_DDC_ENABLED events reporting ddc working: false
+  (KDE bug 517290). The event is now emitted only when DDC communication is
+  confirmed working; otherwise the recheck is requeued.</li>
+<li><strong>ddca_unregister_display_status_callback()</strong>: Status codes for success
+  and not-found were swapped.</li>
+<li><strong>ddca_dbgrpt_display_ref()</strong>: The opaque <strong>DDCA_Display_Ref</strong> was being
+  cast directly to an internal <strong>Display_Ref</strong> instead of being resolved
+  by lookup.</li>
+<li><strong>ddca_report_displays()</strong> now respects API quiescing. </li>
+<li>Segfault if a display was dicsonnected while in use.</li>
+<li>Option <strong><em>--syslog</em></strong> passed in either the <strong>ddca_init2()</strong> libopts parmameter 
+  or in the ddcutilrc configuration file was not recognized.</li>
+<li>Fixed many race conditions uncovered by code analysis.</li>
 </ul>
-</li>
-</ul>
-</li>
-</ul>
-<p>The possibility of a delay between the time a monitor is connected and the time that DDC becomes enabled is addressed in the following way:  </p>
-<ul>
-<li>If a monitor is detected but DDC is not working, the display connection event is reported to the client 
-with bit <strong>DDCA_DISPLAY_EVENT_DDC_NOT_WORKING</strong> set in newly added <strong>flags</strong> field, and the display reference goes onto a recheck queue processed by a separate thread.  </li>
-<li>Later, there will be an event of type <strong>DDCA_EVENT_DDC_ENABLED</strong> if and when the recheck thread determines that DDC is working.</li>
-</ul>
-<h4 id="sleep-state-detection">Sleep State Detection</h4>
-<ul>
-<li>Detecting and reporting sleep mode proved very problematic. <strong>libddcutil</strong> no longer watches 
-  for and reports changes to DPMS state.  However, if an API function is called to perform an operation that requires communiation with a display 
-  that is asleep, status <strong>DDCRC_DPMS_ASLEEP</strong> is returned.   </li>
-</ul>
-<h4 id="options-affecting-display-change-detection">Options Affecting Display Change Detection.</h4>
-<p>Typically, these options are added to the <strong>[libddcutil]</strong> section of configuration
-file ddcutilrc. They can also be included in the opts argument string passed to <strong>ddca_init2()</strong>.</p>
-<ul>
-<li>
-<p><strong><em>--watch-mode XEVENT, POLL, DYNAMIC</em></strong> (default DYNAMIC) Specifies the watch 
-  algorithm to be used. DYNAMIC resolves to XEVENT if it appears that algorithm 
-  will work, otherwise it resolves to POLL.</p>
-</li>
-<li>
-<p><strong><em>--enable-try-get-edid-from-sysfs</em></strong> (default), <strong><em>--disable-try-get-edid-from-sysfs</em></strong>.
-  Get the EDID from /sys if possible instead of reading it from the display.
-  This can improve performance, but may affect of reliability.</p>
-</li>
-<li>
-<p><strong><em>--xevent-watch-loop-millisec</em></strong>.  Override the interval for watch-mode XEVENT at whcih libddcutil checks
-  for an X11 screen change notification. Default: 100 milliseconds</p>
-</li>
-<li>
-<p><strong><em>--poll-watch-loop-millisec</em></strong>.  Override the interval for watch-mode POLL at which libddcutil attempts to read 
-  an EDID from every /dev/i2c device.  Default: 2000 milliseconds.</p>
-</li>
-<li>
-<p><strong><em>--disable-watch-displays</em></strong>. Completely disables display change detection. 
-  This blocks <strong>ddca_start_watch_displays()</strong> from starting the threads that watch
-  for display changes.  Workaround for github issue <a href="https://github.com/rockowitz/ddcutil/issues/470">470</a>.
-  Unlike the use of KDE Plasma environment variable POWERDEVIL_NO_DDCUTIL=1, this disables display change detection
-  while leaving other <strong>libddcutil</strong> services available.</p>
-</li>
-<li>
-<p><strong><em>--ignore-mmid <monitor model id></em></strong>. Exclude a specific monitor model from display change detection.
-  The argument for this option is a monitor model id, e.g. e.g. SAM-U32H75x-3587. 
-  The monitor model id can be found in the output of   command <strong>ddcutil detect --verbose</strong>, and is the 
-  same monitor model id that is used in the name of a user defined features file. 
-  This option exists because some monitors behave in ways that make KDE PowerDevil unstable. 
-  See, for example, ddcutil github issue <a href="https://github.com/rockowitz/ddcutil/issues/466">466:Samsung Odyssey G5 S27DG50: Setting brightness causes monitor to crash</a>,
-  github issue <a href="https://github.com/rockowitz/ddcutil/issues/470">470:DDCA_EVENT_DPMS_AWAKE sent shortly after DDCA_EVENT_DPMS_ASLEEP</a>,
-  and KDE bug <a href="https://bugs.kde.org/show_bug.cgi?id=495746">495746:https://bugs.kde.org/show_bug.cgi?id=495746</a>. </p>
-</li>
-</ul>
-<h4 id="api-changes">API Changes</h4>
-<ul>
-<li>
-<p><strong>ddca_start_watch_displays()</strong> has been modifed (in a backwards compatible way) to reflect the fact that sleep state changes 
-   are no longer reported. .  </p>
-<ul>
-<li>The only event class that can be enabled is <strong>DDCA_EVENT_CLASS_DISPLAY_DETECTION</strong>.</li>
-<li><strong>DDCA_EVENT_CLASS_ALL</strong> is effectively the same as <strong>DDCA_EVENT_CLASS_DISPLAY_CONNECTION</strong>.  </li>
-<li>It is an error if either <strong>DDCA_EVENT_CLASS_DPMS</strong> or <strong>DDCA_EVENT_CLASS_NONE</strong> is specified.</li>
-</ul>
-</li>
-<li>
-<p>Handle possible delay between time that EDID can be read and DDC becomes functional</p>
-<ul>
-<li>Enum <strong>DDCA_Display_Event_Type</strong>: Add value <strong>DDCA_EVENT_DDC_ENABLED</strong>.  Used to report that 
-  DDC communication was detected as working some time after a display was connected.</li>
-<li>Struct <strong>DDCA_Display_Status_Event</strong>: Added field <strong>flags</strong> in the unused secton of <strong>DDCA_Display_Status Event</strong>.  It has one bit defined, <strong>DDCA_DISPLAY_EVENT_DDC_WORKING</strong>.
-Normally, this bit is set on display connection events.  In case DDC is not immediately available after 
- EDID detection, this bit is not set.  If DDC subsequently becomes enabled, an event of type <strong>DDCA_EVENT_DDC_ENABLED</strong> is emitted.</li>
-</ul>
-</li>
-<li>
-<p>Added <strong>ddca_get_display_watch_settings()</strong>, <strong>ddca_set_display_watch_settings()</strong>, 
-  and struct <strong>DDCA_DW_Settings</strong>, enabling the client program to modify display watch
-  configuration settings. </p>
-</li>
-</ul>
-<h4 id="other-shared-library-changes">Other Shared Library Changes</h4>
-<p>Quiesce operation:  </p>
-<ul>
-<li>Quiesce the API during <strong>ddca_redetect_displays()</strong>.  Operations that access
-  display state are not permitted, and return <strong>DDCRC_QUIESCED</strong>.</li>
-</ul>
-<p>Status codes:  </p>
-<ul>
-<li>Most functions that specify a <strong>DDCA_Display_Ref</strong> now return status code 
-      <strong>DDCRC_DISCONNECTED</strong> if the display reference is no longer valid.  </li>
-<li>Status code <strong>DDCRC_INVALID_CONFIG_FILE</strong> has been renamed to more general <strong>DDCRC_CONFIG_ERROR</strong>, 
-    and is used instead of <strong>DDCRC_BAD_DATA</strong> for User Defined Feature File errors.
-    <strong>DDCRC_INVALID_CONFIG_FILE</strong> is a valid alias.</li>
-</ul>
-<p>System log:  </p>
-<ul>
-<li>Write build date and time to system log when starting <strong>libddcutil</strong>.  </li>
-<li>Rework <strong>libdccutil</strong> output to avoid duplicate messages in the system log when all terminal 
-  output is directed to the log, as with KDE Plasma.  </li>
-<li>(Almost) all syslog messages are prefixed similarly with thread and timestamp.</li>
-<li>Write syslog messages for sleeps incurred by display change detection. </li>
-</ul>
-<p>Miscellaneous:  </p>
-<ul>
-<li>Option <strong><em>--disable-api</em></strong> completely disables the API, causing most API calls, including
-  those performing DDC communication, to fail. This can be useful for testing 
-  whether <strong>libddcutil</strong> is the source of a system error in the case of client
-  applications, e.g. KDE PowerDevil, that will not build without the shared library.</li>
-<li>Use mutexes to control access to corruptable data structures, such as the table of open monitors.</li>
-<li>
-<p>Enum <strong>DDCA_Stats_Type</strong>: Add value <strong>DDCA_STATS_API</strong>, for reporting API specific statistics.</p>
-</li>
-<li>
-<p>In some situations, it is meaningful to specify a display reference for a display that has been removed.                      </p>
-<ul>
-<li>During initial display reference validation, an otherwise valid display reference may be
-  for a removed display.  Avoid a segfault in this case. 
-  Addresses github issue <a href="https://github.com/rockowitz/ddcutil/issues/418">418:libddcutil behaves differently/fails after a hotplug compared to ddcutil</a>.</li>
-<li>It is useful to create a string representation of a display reference even
-  if it is no longer valid. API function <strong>ddca_dref_repr()</strong> works even if the 
-  display ref is no longer valid. Addresses github <a href="https://github.com/rockowitz/ddcui/issues/55">ddcui issue 55:
-ddcui-0.5.x: IOT instruction (core dumped</a>.</li>
-</ul>
-</li>
-<li>
-<p><strong>ddca_get_display_refs()</strong> and <strong>ddca_get_display_info_list2()</strong> always
-  return 0, even if an error occured when examining a particular monitor. 
-  Addresses github issue <a href="https://github.com/rockowitz/ddcutil/issues/417">417:libddcutil ddca_get_display_info_list2 returns DDCRC_OTHER (-3022)</a>  </p>
-<ul>
-<li>Errors that occur opening individual displays or reading their EDIDs are
-are still reported using <strong>ddca_get_error_detail()</strong>. In addition, error
-messages are written to the terminal and, depending on the current
-syslog level, to the system log.  </li>
-</ul>
-</li>
-<li>
-<p>API calls <strong>ddca_get_display_refs()</strong> and <strong>ddca_get_display_info_list2()</strong> do not include displays that have been marked removed. Addresses <strong>ddcutil</strong> issue #417.</p>
-</li>
-<li>
-<p>The opaque value of <strong>DDCA_Display_Ref</strong> is now an integer display reference id number instead of an actual pointer to the internal display reference, making it slightly more opaque.  The published type remains (void*), so no client changes should be needed.</p>
-</li>
-<li>
-<p><strong>libddcutil</strong> maintains a table of <strong>DDCA_Display_Ref</strong>s that have been passed to the client by the API.  This table is used to further validate display references the client passes as arguments.  </p>
-</li>
-<li>
-<p>Disable the check, in the prolog to API functions, that a monitor is not asleep.  It is possible that a display is still responsive to DDC requests in this case.  If it is not, the error will be detected when actually performing the requested operation. </p>
-</li>
-<li>
-<p><strong>ddca_get_display_info()</strong>, which does not itself perform any DDC operations, succeeds even if DDC communication is not working.  Addresses issue <strong>ddcui</strong> issue #55.</p>
-</li>
-<li>
-<p>Option <strong><em>--skip-ddc-checks</em></strong> sets the detected VCP version to "Unknown".  Addresses a 
-  possible segfault when this option is used with display change detection.</p>
-</li>
-<li>
-<p>Avoid hang waiting for watch thread to stop when client terminated using ctl-C.</p>
-</li>
-</ul>
-<!--
-
-Modified Enums      |&nbsp;
------------------------------|---------------------
-DDCA_Display_Event_Type |&nbsp;DDC_EVENT_DDC_ENABLED replaces DDCA_EVENT_UNUSED1
-
-<br>
-
-Modified Structs |&nbsp;Comments
--------------------------|--------------
-DDCA_Display_Status_Event |&nbsp;Added field flags with bit DDCA_DISPLAY_STATUS_EVENT_WORKING
-<br>
-
-Added Structs |&nbsp;Comments
------------------------|------------------
-DDCA_DW_Settings
-<br>
-
-New API &nbsp;           &nbsp;    |&nbsp;Comments
------------------------|-------------------
-ddca_get_display_watch_settings |&nbsp;
-ddca_set_display_watch_settings |&nbsp;
-
-<br>
--->
               
             </div>
           </div><footer>
     <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
-        <a href="../c_api_214/" class="btn btn-neutral float-left" title="Shared Library Changes for Release 2.1.4"><span class="icon icon-circle-arrow-left"></span> Previous</a>
-        <a href="../c_api_221/" class="btn btn-neutral float-right" title="Shared Library Changes for Release 2.2.1">Next <span class="icon icon-circle-arrow-right"></span></a>
+        <a href="../c_api_227/" class="btn btn-neutral float-left" title="Shared Library Changes for Release 2.2.7"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../mccs_background/" class="btn btn-neutral float-right" title="Monitor Control Command Set">Next <span class="icon icon-circle-arrow-right"></span></a>
     </div>
 
   <hr/>
@@ -617,10 +436,10 @@ ddca_set_display_watch_settings |&nbsp;
         </span>
     
     
-      <span><a href="../c_api_214/" style="color: #fcfcfc">&laquo; Previous</a></span>
+      <span><a href="../c_api_227/" style="color: #fcfcfc">&laquo; Previous</a></span>
     
     
-      <span><a href="../c_api_221/" style="color: #fcfcfc">Next &raquo;</a></span>
+      <span><a href="../mccs_background/" style="color: #fcfcfc">Next &raquo;</a></span>
     
   </span>
 </div>
