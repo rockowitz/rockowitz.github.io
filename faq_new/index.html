@@ -1,0 +1,1090 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="author" content="Sanford Rockowitz" /><link rel="canonical" href="https://www.ddcutil.com/faq_new/" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>Frequently Asked Questions - ddcutil Documentation</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Frequently Asked Questions";
+        var mkdocs_page_input_path = "faq_new.md";
+        var mkdocs_page_url = "/faq_new/";
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href=".." class="icon icon-home"> ddcutil Documentation
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="..">Introduction</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../commands/">Command Overview</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Command Examples</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../cmd_output/">Command Examples</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../detect_verbose_output/">ddcutil detect example</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../getvcp_known_u3011_output/">ddcutil getvcp example</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../vcpinfo_output/">ddcutil vcpinfo example</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../cap_u3011_verbose_output/">ddcutil capabilities example</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Command Detail</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../command_detail/">Command Detail</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../primary_commands/">Primary Commands</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" >Primary Commands</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../command_detect/">detect</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../command_capabilities/">capabilities</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../command_getvcp/">getvcp</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../command_setvcp/">setvcp</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../command_vcpinfo/">vcpinfo</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../command_dumpvcp_loadvcp/">dumpvcp &amp; loadvcp</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../command_scs/">scs</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../secondary_commands/">Secondary Commands</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../options_main/">Command Options</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" >Command Options</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../display_detection/">Display Detection</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../display_selection/">Display Selection</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../feature_selection/">Feature Selection</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../performance_options/">Performance and Tuning Options</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../instrumentation_options/">Instrumentation Options</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../output_control_options/">Output Level Options</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../other_options/">Miscellaneous Options</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../i2c_dev_options/">i2c-dev Driver Options</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../debug_options/">Debugging Options</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../deprecated_options/">Deprecated Options</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../libddcutil_options/">Shared Library Options</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Specific Facilities</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../table_features/">Table Type Features</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../usb/">USB Connected Monitors</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../colormgt/">Color Management</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../udf/">User Defined Features</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../config_file/">Configuration File</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Installation and Configuration</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../install_config_main/">Installation and Configuration</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../config_steps/">Post-Installation Checklist</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../install/">Install ddcutil From Prebuilt Packages</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../copr_transaction_test_error/">How to fix copr transaction test error</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../building/">Building From Source</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../shared_lib_config/">Shared Library Configuration</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../mult_shared_libs/">Notes for Linux Distribution Maintainers</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../config/">Configuration and Installation Diagnostics</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../i2c_permissions/">I2C Device Permissions</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../i2c_permissions_using_group_i2c/">I2C Device Permissions Using Group i2c</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../usb_permissions/">USB Device Permissions</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../kernel_module/">Kernel Module Configuration</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../nvidia/">Special Nvidia Driver Settings</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../nvidia_old/">Setting Nvidia Driver Options Using X11</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../amdgpu/">Notes on driver amdgpu</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../virtual_machines/">Virtual Machines</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../raspberry/">Raspberry Pi</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../monitor_notes/">Notes on Specific Monitors</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../quirks/">Notes on Particular Configurations</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../typec/">USB-C DisplayPort Alt Mode</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Shared Library</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../api_main/">C API</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../libddcutil_release_notes/">Shared Library Release Notes</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../c_api_90/">Shared Library Changes for Release 0.9.0</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../c_api_93/">Shared Library Changes for Release 0.9.3</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../c_api_95/">Shared Library Changes for Release 0.9.5</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../c_api_96/">Shared Library Changes for Release 0.9.6</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../c_api_98/">Shared Library Changes for Release 0.9.8</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../c_api_99/">Shared Library Changes for Release 0.9.9</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../c_api_100/">Shared Library Changes for Release 1.0.0</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../c_api_110/">Shared Library Changes for Release 1.1.0</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../c_api_120/">Shared Library Changes for Release 1.2.0</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../c_api_130/">Shared Library Changes for Release 1.3.0</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../c_api_140/">Shared Library Changes for Release 1.4.0</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../c_api_200/">Shared Library Changes for Release 2.0.0</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../c_api_210/">Shared Library Changes for Release 2.1.0</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../c_api_212/">Shared Library Changes for Release 2.1.2</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../c_api_213/">Shared Library Changes for Release 2.1.3</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../c_api_214/">Shared Library Changes for Release 2.1.4</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../c_api_220/">Shared Library Changes for Release 2.2.0</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../c_api_221/">Shared Library Changes for Release 2.2.1</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../c_api_222/">Shared Library Changes for Release 2.2.2</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../c_api_224/">Shared Library Changes for Releases 2.2.4 and 2.2.5</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../c_api_226/">Shared Library Changes for Release 2.2.6</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../c_api_227/">Shared Library Changes for Release 2.2.7</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../c_api_300/">Shared Library Changes for Release 3.0.1</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Background</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../mccs_background/">Monitor Control Command Set</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../ddc_vs_i2c/">DDC vs I2C</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../displayport/">DDC and DisplayPort</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../bibliography/">References</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../devdoc/">Developer Documentation</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Additional Topics</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../articles/">Articles about ddcutil</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../faq/">Frequently Asked Questions</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../tech_support/">Technical Support</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../ddccontrol/">Comparison with ddccontrol</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../ddc_null_response/">DDC Null Message</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../sniffing/">Reverse Engineering Proprietary DDC Extensions</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../acknowledgements/">Acknowledgements</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../technotes/">Technical Notes</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../driver_bug_reports/">Driver Bug Reports of Interest</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Release History</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../releases/">Releases</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../release_notes_220/">Release Notes</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../release_notes/">Prior Release Notes</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../prior_announcements/">Announcement History</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">ddcui</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../ddcui_main/">Overview</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../ddcui_options/">Command Line Options</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../building_ddcui/">Building ddcui</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../ddcui_release_notes/">ddcui Release Notes</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../ddcui_faq/">ddcui Frequently Asked Questions</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Related Resources</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../monitor_resources/">Monitor Specifications</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../windows_programs/">Windows Utilities for Monitor Control</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../mac_programs/">Macintosh Utlities for Monitor Control</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../ddcutil_usage/">Applications using ddcutil</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">ddcutil Documentation</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">Frequently Asked Questions</li>
+    <li class="wy-breadcrumbs-aside">
+          <a href="https://github.com/rockowitz/ddcutil/edit/master/docs/faq_new.md" ></a>
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="frequently-asked-questions">Frequently Asked Questions</h1>
+<p>If you are about to report a problem, start with
+<a href="#problem_report">What information should I include in a problem report?</a>.
+If something is not working and you do not know why, <strong><em>ddcutil environment</em></strong> analyses your
+system and makes suggestions.  See also <a href="../quirks/">Notes on Particular Configurations</a>.</p>
+<h2 id="before-reporting-a-problem">Before reporting a problem</h2>
+<p><a name="problem_report"></a></p>
+<h3 id="what-information-should-i-include-in-a-problem-report">What information should I include in a problem report?</h3>
+<p>Run</p>
+<pre><code>ddcutil interrogate &gt; ddcutil-interrogate.txt 2&gt;&amp;1
+</code></pre>
+<p>and attach the file.  <strong><em>interrogate</em></strong> runs <strong><em>environment</em></strong>, <strong><em>detect --verbose</em></strong>,
+<strong><em>capabilities</em></strong> and <strong><em>getvcp</em></strong> for every display, along with a survey of the relevant
+kernel modules, <code>/dev/i2c</code> devices and <code>/sys/class/drm</code> contents.  Nearly every question that
+would otherwise have to be asked is answered somewhere in that output.</p>
+<p>Also state, in the report itself:</p>
+<ul>
+<li>what you expected to happen and what happened instead</li>
+<li>the exact command you ran, and its output</li>
+<li>the monitor manufacturer and model, and how it is connected -- directly, through a hub,
+  through a dock, or daisy chained</li>
+<li>whether it ever worked, and if so with which <strong>ddcutil</strong> version</li>
+<li>for anything involving the desktop, the desktop environment and its version</li>
+</ul>
+<p>If the problem involves a crash, a backtrace is worth far more than a description of it.  On a
+systemd system:</p>
+<pre><code>coredumpctl info ddcutil
+coredumpctl gdb ddcutil        # then: bt full
+</code></pre>
+<p>Installing the debuginfo package for <strong>ddcutil</strong> and <strong>libddcutil</strong> first makes the backtrace
+usable; without it only function names appear.</p>
+<p><a name="monitor_specific"></a></p>
+<h3 id="is-this-a-ddcutil-bug-or-a-monitor-problem">Is this a <strong>ddcutil</strong> bug or a monitor problem?</h3>
+<p>Often the latter.  The largest single category of reported problems is monitor specific: the
+monitor's DDC/CI implementation is incomplete, or disagrees with the Monitor Control Command Set
+specification, or is simply wrong.</p>
+<p>DDC/CI gives <strong>ddcutil</strong> no way to discover what a monitor really implements.  The capabilities
+string is the monitor's own claim about itself, and is frequently inaccurate -- see
+<a href="#capabilities_incorrect">the capabilities entries below</a>.  A feature can be listed and not work,
+work and not be listed, or accept values that no version of the MCCS spec defines.</p>
+<p>What that means in practice:</p>
+<ul>
+<li><strong>ddcutil</strong> can be made to know about a monitor's quirks through a
+  <a href="../udf/">user defined feature file</a>, which is how undocumented feature values get
+  names.  That is a data fix, not a code fix, and you can write one yourself.</li>
+<li>Where the monitor ignores a value, returns the wrong one, or needs an extra command to make a
+  change stick, <strong>ddcutil</strong> can sometimes work around it, and several such workarounds exist.
+  But it cannot make a monitor implement something it does not.</li>
+<li>Reports are still worth filing even when nothing can be done in code.  They are how the
+  behavior of particular models becomes documented.</li>
+</ul>
+<h2 id="a-monitor-is-not-detected">A monitor is not detected</h2>
+<h3 id="ddcutil-does-not-identify-a-ddcci-capable-monitor"><strong>ddcutil</strong> does not identify a DDC/CI capable monitor.</h3>
+<p>Check the following:</p>
+<ul>
+<li>Is DDC/CI enabled in the monitor's On Screen Display?</li>
+<li>Is driver <strong>i2c-dev</strong> loaded?</li>
+<li>Does the current user have permission to access the I2C bus associated with the monitor?</li>
+</ul>
+<p>Command <strong>ddcutil environment</strong> will analyze your system environment and make suggestions.
+See <a href="../secondary_commands/#environment">enviroment Command</a></p>
+<p><a name="told_no_ddcci"></a></p>
+<h3 id="im-told-my-monitor-doesnt-support-ddcci-but-the-monitors-osd-says-it-is-enabled">I'm told my monitor doesn't support DDC/CI, but the monitor's OSD says it is enabled</h3>
+<p>Check permissions before anything else.  If <strong>ddcutil</strong> cannot open <code>/dev/i2c-N</code>, it cannot tell
+a monitor that does not answer from one it was never able to ask, and the message you get is the
+same either way.</p>
+<pre><code>ls -l /dev/i2c-*
+id
+</code></pre>
+<p>If the devices are owned by <code>root:root</code> with mode <code>crw-------</code>, or by group <code>i2c</code> and you are not
+in that group, that is the problem.  <strong><em>ddcutil environment</em></strong> diagnoses this and says what to do.
+See <a href="../i2c_permissions/">I2C Permissions</a> for the two approaches -- adding yourself to a group, or the
+<code>uaccess</code> udev rule that grants the logged-in user access without a group.</p>
+<p>Note that running under <code>sudo</code> is a valid test but not a solution: a desktop applet or
+<strong>libddcutil</strong> client runs as you, not as root.</p>
+<p><a name="eacces_after_resume"></a></p>
+<h3 id="detection-fails-right-after-login-or-after-resume-from-sleep-then-works-later">Detection fails right after login or after resume from sleep, then works later</h3>
+<p><code>/dev/i2c</code> devices are made accessible to the logged in user by a udev <code>uaccess</code> rule, which
+applies an ACL when the device appears and when the session becomes active.  There is a window at
+login, and again after resume from sleep, in which the devices exist but the ACL has not been
+reapplied yet.  An open in that window fails with <code>EACCES</code>, and a monitor that cannot be opened is
+indistinguishable from one that has been unplugged.</p>
+<p><strong>ddcutil</strong> retries an <code>EACCES</code> open for a bounded period rather than concluding immediately that
+the display is gone, and the display watch machinery deliberately does not emit a mass disconnect
+while <code>EACCES</code> is being seen across the board.  If you are running your own program against
+<strong>libddcutil</strong>, do not treat the first failed detection after resume as final.</p>
+<p><a name="udev_rule_resets"></a></p>
+<h3 id="my-monitor-blinks-or-resets-repeatedly-during-boot-after-installing-the-udev-rule">My monitor blinks or resets repeatedly during boot after installing the udev rule</h3>
+<p>Reported against the sample rules file shipped with <strong>ddcutil</strong> 2.0 through 2.1.4.  The rule
+matched more broadly than intended, so devices were probed during boot that should not have been,
+and the monitor renegotiated its mode each time.  Fixed in a later release of the sample rule.</p>
+<p>If you see this, compare your installed
+<code>/usr/lib/udev/rules.d/60-ddcutil-i2c.rules</code> (or <code>/etc/udev/rules.d/</code>, or the older
+<code>45-ddcutil-i2c.rules</code>) with the version in the <strong>ddcutil</strong> source tree under
+<code>data/usr/lib/udev/rules.d/</code>, and note that a distribution package may be shipping its own
+variant.  Removing the rule stops the symptom immediately, at the cost of needing group
+membership for access.</p>
+<h3 id="ddcutil-doesnt-work-on-my-laptop"><strong>ddcutil</strong> doesn't work on my laptop.</h3>
+<p>Laptop displays do not support DDC/CI.</p>
+<p><a name="faq_edp"></a></p>
+<h3 id="but-recent-laptops-use-embedded-display-port-edp-panels-which-have-an-i2c-interface-why-doesnt-ddcutil-work">But recent laptops use Embedded Display Port (eDP) panels which have an I2C interface.  Why doesn't <strong>ddcutil</strong> work?</h3>
+<p>The I2C connection on eDP panels implements slave address x50, which allows programs to read the EDID in the expected way.  However, it does not implement slave address x37, i.e. it does not support DDC/CI. </p>
+<p>If eDP panels did implement DDC/CI, <strong>ddcutil</strong>  would support it.  For each I2C bus that could possibly be associated with a monitor, as part of display detection ddcutil attempts to read the EDID at slave address x50.  If successful, it then attempts to communicate on slave address x37.  If that fails, and display detection is occurring in the context of <strong><em>ddcutil detect --verbose</em></strong>, ddcutil then looks for a possible reason, and checks to see if the display is a laptop.  If so, it then reports that laptops to not support DDC/CI.</p>
+<p><a name="docking"></a></p>
+<h3 id="ddcutil-cant-communicate-with-a-monitor-when-its-plugged-into-a-docking-station"><strong>ddcutil</strong> can't communicate with a monitor when it's plugged into a docking station.</h3>
+<p><strong>ddcutil</strong> does work when the monitor is plugged directly into the laptop.
+The problem affects DisplayPort, DVI, and HDMI connectors on the dock.</p>
+<p>This is a problem with newer docking stations that implement DisplayPort Multi Stream Transport.  Until kernel release 5.11, the drm driver layer
+did not implement I2C writes. </p>
+<p>For the gory details, see this <a href="https://lists.freedesktop.org/archives/intel-gfx/2017-May/127350.html">thread</a> on the Intel-gfx developers list. </p>
+<!--
+
+A [fix for this problem](https://cgit.freedesktop.org/drm-misc/commit/drivers/gpu/drm/drm_dp_mst_topology.c?id=adb48b26985686f93f20ca71c16c067d790e7af3) has been developed. It is merged into kernel release 5.11. 
+
+
+-->
+
+<!--
+<a name="faq_displayport"></a>
+### DisplayPort communcation fails, but DVI/HDMI work
+
+DP<->DP vs DP++ Dual mode DP<->DVI/HDMI
+
+DP<->DVI/HDMI using Active Converted
+
+DP 1.1 vs 1.2
+
+[MegaChips STDP2600 Advanced HDMI to DisplayPort converter Datasheet](https://media.digikey.com/pdf/Data%20Sheets/MegaChips%20PDFs/STDP2600_DS.pdf)
+04-March_2916
+
+- for use in active converter dongle
+- I2C to AUX bridge for EDID/MCCS patth through
+- Disp;ayPort DualMode
+  - AUX CH 1 MBPS
+  - HDMI/DVI operation with level transmitter
+- HDMI input -> DP++ output
+  - input: HDMI signal, CEC, DDC
+  - output DP Main Lanes, AUX CH
+    - SST format only, no MST format support
+
+
+-->
+
+<p><a name="daisy_chain"></a></p>
+<h3 id="the-second-monitor-in-a-displayport-daisy-chain-is-not-detected">The second monitor in a DisplayPort daisy chain is not detected</h3>
+<p>Monitors chained through DisplayPort MST are reached over the first monitor's link.  Whether each
+one gets a usable DDC channel depends on the driver and on the monitors: in some topologies every
+sink gets its own I2C bus, in others the whole chain shares one bus and only the first monitor
+answers.</p>
+<p>Check whether a bus exists for the second monitor at all:</p>
+<pre><code>ddcutil detect --verbose
+ls -l /sys/class/drm/card*-DP-*/ddc 2&gt;/dev/null
+</code></pre>
+<p>If the second monitor has a DRM connector with a valid EDID but no <code>ddc</code> symlink and no
+<code>/dev/i2c</code> device of its own, there is nothing for <strong>ddcutil</strong> to talk to -- the same situation
+described for <a href="#nvidia_mst">Nvidia and MST hubs</a>, and not something <strong>ddcutil</strong> can work around.
+Connecting the second monitor directly to the video card is the test that settles it.</p>
+<p><a name="usb_monitors"></a></p>
+<h3 id="my-monitor-connects-by-usb-will-ddcutil-work">My monitor connects by USB.  Will <strong>ddcutil</strong> work?</h3>
+<p>Some monitors implement MCCS over a USB HID interface instead of I2C, and <strong>ddcutil</strong> supports
+those -- see <a href="../usb/">USB Connected Monitors</a>.  They appear in <strong><em>detect</em></strong> output with a
+<code>/dev/usb/hiddev*</code> device rather than a <code>/dev/i2c</code> bus.  They are rare.</p>
+<p>Two things to check if a USB connected monitor is not found:</p>
+<ul>
+<li>whether your build has USB support at all -- <code>ddcutil --version --verbose</code> reports it</li>
+<li>permissions on <code>/dev/usb/hiddev*</code>, which are separate from the <code>/dev/i2c</code> permissions --
+  see <a href="../usb_permissions/">USB Permissions</a></li>
+</ul>
+<p>For diagnostics, the USB checks are not part of <strong><em>interrogate</em></strong>; run
+<strong><em>ddcutil usbenvironment --verbose</em></strong> separately.</p>
+<p>Note the distinction from a monitor connected by <strong>USB-C carrying DisplayPort</strong>, which is an
+ordinary DisplayPort monitor as far as <strong>ddcutil</strong> is concerned and uses I2C, not HID.  A
+monitor's USB hub being connected changes nothing either way.</p>
+<p><a name="usbc_dock"></a></p>
+<h3 id="it-works-when-connected-directly-but-not-through-a-usb-c-or-thunderbolt-dock">It works when connected directly but not through a USB-C or Thunderbolt dock</h3>
+<p>See <a href="../typec/">USB-C DisplayPort Alt Mode</a> for what the connector actually carries.  Docks that
+carry DisplayPort over USB-C put an MST hub in the path, so the
+<a href="#docking">docking station</a> and <a href="#duplicate_displayport">MST</a> entries both apply.  Worth checking,
+in this order:</p>
+<ol>
+<li>whether a <code>/dev/i2c</code> bus exists for the monitor at all while docked -- if not, see
+   <a href="#nvidia_mst">Nvidia and MST hubs</a></li>
+<li>whether <code>ddcutil detect</code> finds the monitor but DDC communication fails, which is the
+   kernel-and-hub problem described under <a href="#docking">docking stations</a></li>
+<li>whether the same monitor and cable work in the machine's direct DisplayPort or HDMI output</li>
+</ol>
+<p>Results vary between dock models with the same chipset, and between firmware revisions of one
+dock.  A dock firmware update is worth trying before concluding anything.</p>
+<p><a name="vm_passthrough"></a></p>
+<h3 id="does-ddcutil-work-with-a-gpu-passed-through-to-a-virtual-machine">Does <strong>ddcutil</strong> work with a GPU passed through to a virtual machine?</h3>
+<p>See <a href="../virtual_machines/">Virtual Machines</a> first: with a VM's built-in video driver there is no
+DDC/CI at all.</p>
+<p>With a real GPU passed through, the guest sees a real card and <strong>ddcutil</strong> has been reported
+working there.  On the host the card is bound to a stub driver such as <code>vfio-pci</code>, which creates
+no I2C adapters, so the monitor is not reachable from the host while the guest holds it.</p>
+<p>The awkward case is switching: a monitor whose input is being switched between a host output and a
+guest output is being told to change input by whichever side currently has DDC access.  Once the
+input moves away, that side can no longer reach the monitor to move it back.  See
+<a href="#input_switch_risk">switching inputs</a>.</p>
+<p><a name="soc_systems"></a></p>
+<h3 id="raspberry-pi-and-other-soc-systems">Raspberry Pi and other SoC systems</h3>
+<p><strong>ddcutil</strong> works on several SoC boards, with two differences from a PC worth knowing.</p>
+<p>The I2C controllers on these boards are platform devices, not PCI devices.  <strong>ddcutil</strong> identifies
+video-related I2C buses partly by looking for a display controller class code on a PCI ancestor,
+which platform devices do not have, so bus identification relies on the adapter name instead.  If
+<strong>ddcutil</strong> does not see a bus that you know carries a monitor, say so in a report and include
+<code>ddcutil interrogate</code>; the name based recognition is a list that gets extended.</p>
+<p>DDC/CI timing is less forgiving on these boards.  Failures that look like a broken monitor often
+turn out to be a too-short wait -- try <strong><em>--sleep-multiplier 2</em></strong> before anything else.</p>
+<p>On the Raspberry Pi specifically, see <a href="../raspberry/">Raspberry Pi</a>.  Which bus carries HDMI DDC
+has changed across models and kernel versions; <strong><em>ddcutil detect</em></strong> with no options is the
+reliable way to find it, and a bus number from an older guide should not be assumed.</p>
+<p><a name="detect_wakes_display"></a></p>
+<h3 id="running-ddcutil-detect-wakes-a-sleeping-monitor">Running <strong>ddcutil detect</strong> wakes a sleeping monitor</h3>
+<p>Reported for some models.  Reading the EDID and probing for DDC requires talking to the monitor,
+and some monitors treat any I2C activity as a reason to wake.</p>
+<p><strong>ddcutil</strong> avoids the probe where it can: when the DRM connector attributes for a bus are
+trustworthy, the EDID is read from <code>/sys/class/drm</code> rather than over I2C, and a display the DRM
+state reports asleep is not probed.  Neither shortcut is available for every driver -- see
+<a href="#nvidia_sysfs">the Nvidia sysfs entry</a> -- and what remains is a genuine I2C read.</p>
+<p>If a periodic detection is waking your monitor, the thing to look for is what is running
+<strong><em>detect</em></strong> on a timer.  A desktop brightness applet polling through <strong>libddcutil</strong> is the usual
+answer.</p>
+<!--
+### **ddcutil** does not work on a Raspberry Pi 4
+
+The HDMI related chip has been changed on the Raspberry Pi 4, and drivers have not yet been revised to enable userspace access to /dev/i2c-2.
+For details, see page [Raspberry Pi](/raspberry). 
+
+-->
+
+<h2 id="nvidias-proprietary-driver">Nvidia's proprietary driver</h2>
+<h3 id="im-using-nvidias-proprietary-driver-ddcutil-doesnt-seem-to-be-be-working">I'm using Nvidia's proprietary driver.  <strong>ddcutil</strong> doesn't seem to be be working.</h3>
+<p>Symptoms include "DDC communication failed" on <strong>ddcutil detect</strong>, and lots of "Maximum retries exceeded" errors
+on command <strong>ddcutil getvcp known</strong>.  </p>
+<p>You may need the Nvidia secret handshake.  See <a href="../nvidia/">Special Nvidia Driver Settings</a>.</p>
+<p><a name="nvidia_mst"></a></p>
+<h3 id="im-using-nvidias-proprietary-driver-a-monitor-connected-through-an-mst-hub-or-docking-station-isnt-detected-at-all">I'm using Nvidia's proprietary driver.  A monitor connected through an MST hub or docking station isn't detected at all.</h3>
+<p>The monitor works normally as a display.  It simply does not appear in the output of <strong>ddcutil detect</strong>,
+and there is no I2C bus for <strong>ddcutil</strong> to try.</p>
+<p>The Nvidia driver creates its I2C adapters when the kernel module is initialized, one per physical output on
+the card, and does not create one for a connector that appears later.  A monitor attached through a
+DisplayPort MST hub does get a DRM connector of its own -- it appears under <code>/sys/class/drm</code> with a valid
+EDID, which the driver reads over the DisplayPort AUX channel -- but no I2C adapter is created to go with
+it.  There is no <code>/dev/i2c-*</code> device for the connector, no <code>ddc</code> symlink in its directory, and no
+<code>drm_dp_aux</code> device.  <strong>ddcutil</strong> communicates using <code>/dev/i2c-*</code>, so there is nothing for it to use.</p>
+<p>To check whether this is what you are seeing, compare the number of Nvidia I2C adapters with the number of
+DRM connectors while the hub is attached:</p>
+<pre><code>$ ls /sys/bus/i2c/devices/i2c-*/name | xargs cat | grep -c NVIDIA
+$ ls -d /sys/class/drm/card*-* | wc -l
+</code></pre>
+<p>Plug and unplug the hub and repeat.  If the connector count changes while the adapter count does not, the
+monitors behind the hub have no I2C bus.</p>
+<p>This is longstanding behavior, not a recent regression.  It was
+<a href="https://forums.developer.nvidia.com/t/i2c-adapter-not-working-to-read-edid-from-screens-attached-via-mst-hub-gt630-331-20/31541">reported on the Nvidia developer forum</a>
+in November 2013 against driver 331.20, and acknowledged by an Nvidia developer as internally tracked bug
+1417009.  It has been observed unchanged on driver 580.173.02.  Related <strong>ddcutil</strong> issues are
+<a href="https://github.com/rockowitz/ddcutil/issues/61">#61</a> and
+<a href="https://github.com/rockowitz/ddcutil/issues/88">#88</a>.</p>
+<p>There is nothing <strong>ddcutil</strong> can do about this.  Making the monitor reachable requires the driver to expose
+a DDC channel for the connector.</p>
+<p>Note that this is a different problem from the <a href="#docking">docking station failures</a> described above, which
+were a limitation of the kernel drm layer and were fixed in kernel 5.11.  It is also distinct from the case
+where an MST chain shares a single I2C bus and only the first monitor in the chain responds; there, at least
+one bus exists.</p>
+<p><a name="nvidia_sysfs"></a></p>
+<h3 id="how-much-can-the-sysclassdrm-connector-attributes-be-trusted-with-nvidias-driver">How much can the <code>/sys/class/drm</code> connector attributes be trusted with Nvidia's driver?</h3>
+<p><strong>ddcutil</strong> reads <code>edid</code>, <code>status</code> and <code>enabled</code> from the connector directories under <code>/sys/class/drm</code>, as
+a faster and less intrusive alternative to probing each I2C bus.  With Nvidia's driver there are reports of
+these attributes being wrong.  They are the exception rather than the rule -- the attributes ordinarily do
+track a hotplug -- but they are worth knowing about, because when they occur the data <strong>ddcutil</strong> relies on
+is wrong before <strong>ddcutil</strong> ever sees it.</p>
+<p><strong>edid</strong> and <strong>status</strong>.  There is a reported failure mode in which a connector directory is not populated
+after a hotplug.  On driver 550.54.14 a user found <code>edid</code> empty with no usable DRM connector entry for a
+monitor that had just been plugged in; the report identifies <strong>libddcutil</strong> 2.1.5 as the software it broke.
+Note that this is a directory that was never filled in, not stale values left over from before the
+hotplug.  Two workarounds were found: reboot, or as root</p>
+<pre><code># echo detect &gt; /sys/class/drm/card0-DP-2/status
+</code></pre>
+<p>which forces the entries to initialize.  See
+<a href="https://forums.developer.nvidia.com/t/driver-550-54-no-update-to-sys-class-drm-on-hotplug-of-monitor/285316">Driver 550.54 - no update to /sys/class/drm/... on hotplug of monitor</a>.
+Separately, <a href="https://github.com/NVIDIA/open-gpu-kernel-modules/issues/1084">issue 1084</a> reports that a
+force-enabled connector never sets <code>link-status</code> when the sink stops responding, so the DRM state can
+diverge from what is physically attached.</p>
+<p><strong>enabled</strong>.  This one fails differently from the two above.  Where <code>edid</code> and <code>status</code> are reported to go
+wrong after a hotplug, <code>enabled</code> can be wrong from the outset, because of a field the driver never sets.
+The kernel decides the value from <code>connector-&gt;encoder</code>; the Nvidia driver leaves that field unset and uses
+an internal one instead, so the attribute can report <code>disabled</code> for a monitor that is in use.  Reported on
+Nvidia's forum around
+<a href="https://forums.developer.nvidia.com/t/sys-class-drm-enabled-reports-disabled-for-enabled-monitors/51187">2016</a>,
+and again as
+<a href="https://github.com/NVIDIA/open-gpu-kernel-modules/issues/889">issue 889</a> in 2025, and still open.
+<code>systemd-logind</code>, which uses <code>enabled</code> together with <code>status</code> to decide whether a laptop is docked, is
+affected by the same defect.</p>
+<p>Switching between the proprietary driver and the open kernel modules is unlikely to change this.  Issue
+889 is filed against the open modules, but that says where it was reported, not where it occurs: the
+component that registers DRM connectors and populates these attributes is <code>nvidia-drm</code>, which is built
+from source at install time in both packages.  What the open modules replaced is the core beneath it.
+Both also register the driver under the same name, <code>nvidia</code>, so nothing distinguishes them from
+<strong>ddcutil</strong>'s point of view either -- the reliability determination is made from the driver name alone.</p>
+<p><strong>ddcutil</strong> does not rely on <code>enabled</code>.</p>
+<p><strong>dpms</strong>.  Not used by <strong>ddcutil</strong> for detection, and not to be relied on generally.  The kernel's own
+documentation states that userspace cannot rely on the DPMS value reflecting reality because many drivers
+fail to update it; it is a legacy property.  That is a general warning, not an Nvidia-specific one -- no
+report of the sysfs <code>dpms</code> value being wrong under Nvidia in particular was found.</p>
+<p>How much weight to put on the above: the hotplug reports are single-reporter, against one driver version,
+and were never acknowledged by Nvidia.  They establish that the failure happens, not how often.  The
+<code>enabled</code> defect is the better documented of the two, having been reported twice nine years apart with the
+cause identified.</p>
+<p>The practical consequence is that if <strong>ddcutil detect</strong> disagrees with what is on your desk after a
+hotplug, and you are using the Nvidia driver, it is worth checking whether the connector directory under
+<code>/sys/class/drm</code> describes what is actually attached, before concluding the problem lies with the monitor
+or with <strong>ddcutil</strong>.  If it does not, writing <code>detect</code> to the connector's <code>status</code> attribute, or rebooting,
+is worth trying.</p>
+<h2 id="what-detect-reports">What <strong>detect</strong> reports</h2>
+<p><a name="duplicate_displayport"></a></p>
+<h3 id="the-same-displayport-connected-monitor-appears-twice-in-the-output-of-ddcutil-detect">The same DisplayPort connected monitor appears twice in the output of <strong><em>ddcutil detect</em></strong>.</h3>
+<p>Sometimes the same DisplayPort connected monitor is detected at 2 different I2C bus numbers.  <strong><em>ddcutil detect</em></strong> reads the
+EDID at on both buses, but typically DDC communication succeeds on only 1 bus.  <strong>ddcutil</strong> attempts to filter out the invalid bus,
+and refers to it as a "phantom" display.
+The invalid bus is a result of the implementation of the DisplayPort multistream facility.  You can ignore the invalid entry.
+For more information, <a href="https://gitlab.freedesktop.org/drm/intel/-/issues/3605#note_1317298">freedesktop.org i915 issue 3605 - Same MST display appears as 2 /dev/i2c devices</a> contains an explanation of the complexity of MST topology</p>
+<h3 id="ddcutil-detect-verbose-reports-that-both-i2c-address-x50-edid-and-x37-ddc-are-responsive-but-ddc-communication-fails"><strong><em>ddcutil detect --verbose</em></strong> reports that both I2C address x50 (EDID) and x37 (DDC) are responsive, but DDC communication fails.</h3>
+<p>There can be any number of reasons for this situation.</p>
+<ul>
+<li>Check that DDC/CI communication is enabled in the monitor's on-screen display?</li>
+<li>It has been observed in the case of a Tegra video card using the nouveau driver.</li>
+<li>See also the discussions of <a href="#duplicate_displayport">duplicate entries for a DisplayPort monitor</a>, and of <a href="#docking">failures with newer docking stations</a>.</li>
+</ul>
+<h3 id="the-detect-command-reports-different-edids-depending-on-how-the-monitor-is-connected-to-the-video-card">The <strong><em>detect</em></strong> command reports different EDIDs depending on how the monitor is connected to the video card.</h3>
+<p>Strange as it may seem at first, a monitor can have more than one EDID.
+The EDID for a VGA connection will have a different video input definition (byte x14) than that for a  digital connection.
+The VGA version of the EDID will have timing information.</p>
+<h3 id="the-detect-command-reports-that-i2c-bus-address-x30-edid-block-number-is-inactive">The <strong><em>detect</em></strong> command reports that I2C bus address x30 (EDID block number) is inactive.</h3>
+<p>EDID version 1.4 allows for addtional 128 byte EDID blocks.  I2C bus address x30 specifies 
+which block to read.  These blocks generally contain extended timing information.
+<strong>ddcutil</strong> is interested only in the contents of the first EDID block.
+The check of bus address x30 is purely informational.</p>
+<h2 id="capabilities-features-and-values">Capabilities, features and values</h2>
+<p><a name="vcp_version"></a></p>
+<h3 id="the-capabilities-command-reports-the-mccs-aka-vcp-version-but-elsewhere-ddcutil-says-the-version-is-unknown">The <strong><em>capabilities</em></strong> command reports the MCCS (aka VCP) version, but elsewhere <strong>ddcutil</strong> says the version is unknown.</h3>
+<p>DDC/CI has two ways to get the the MCCS version:</p>
+<ul>
+<li>As part of the capabilities string returned in response to a DDC Capabilities Request.  </li>
+<li>As the response to a VCP Feature Request for feature xDF (VCP Version). </li>
+</ul>
+<p>Sometimes they disagree.</p>
+<p>Command <strong><em>ddcutil capabilities</em></strong> reports the response to the DDC Capabilities Request.  However, <strong>ddcutil</strong> regards this 
+output as purely informational.  (See <a href="../command_capabilities/">capabilities command</a>) </p>
+<p><strong>ddcutil</strong> therefore relies on VCP feature code xDF to determine the VCP version.  (For USB connected monitors, it queries HID usage x00800004.)  It is possible that feature code xDF is unsupported, even though the capabilities response specifies a version.</p>
+<p><a name="capabilities_incorrect"></a></p>
+<h3 id="the-output-of-the-capabilities-command-is-incorrect">The output of the <strong><em>capabilities</em></strong> command is incorrect.</h3>
+<p>For example, a Dell P2210 monitor has VGA, DVI, and DisplayPort inputs, but capabilities only reports: </p>
+<pre><code> Feature: 60 (Input Source)
+    Values (unparsed): 01 03
+    Values (  parsed):
+       01: VGA-1
+       03: DVI-1 
+</code></pre>
+<p>The capabilities string reported by a monitor is often incorrect. While the <strong><em>ddcutil capabilities</em></strong> command parses and
+reports the string, this is solely informational. </p>
+<p>The only way to know for sure if a monitor supports a VCP Feature Code is by testing using the <strong><em>getvcp</em></strong> and <strong><em>setvcp</em></strong> commands. </p>
+<p>The following command will attempt to read all VCP codes that <strong>ddcutil</strong> understands, other than those that are write-only: </p>
+<pre><code>ddcutil getvcp known
+</code></pre>
+<p>To attempt to read all possible VCP codes, whether understood by <strong>ddcutil</strong> or not, except for those that are known to be write-only: </p>
+<pre><code>ddcutil getvcp scan
+</code></pre>
+<p>To see all the values defined for a non-continuous (NC) feature code, i.e. one with discrete values, use the <strong><em>vcpinfo</em></strong> command with the 
+<strong><em>--verbose</em></strong> option.  For example, to see all the values defined in the <strong>Monitor Control Command Specification</strong> for VCP feature x60 (Input Source): </p>
+<pre><code># ddcutil vcpinfo 60 --verbose
+
+VCP code 60: Input Source
+   Selects active video source
+   MCCS versions: 2.0, 2.1, 3.0, 2.2
+   MCCS specification groups: Miscellaneous
+   ddcutil feature subsets: 
+   Attributes (v2.0): Read Write, Non-Continuous (simple)
+   Attributes (v2.1): Read Write, Non-Continuous (simple)
+   Attributes (v3.0): Read Write, Table (normal)
+   Attributes (v2.2): Read Write, Non-Continuous (simple)
+   Simple NC values:
+      0x01: VGA-1
+      0x02: VGA-2
+      0x03: DVI-1
+      0x04: DVI-2
+      0x05: Composite video 1
+      0x06: Composite video 2
+      0x07: S-Video-1
+      0x08: S-Video-2
+      0x09: Tuner-1
+      0x0a: Tuner-2
+      0x0b: Tuner-3
+      0x0c: Component video (YPrPb/YCrCb) 1
+      0x0d: Component video (YPrPb/YCrCb) 2
+      0x0e: Component video (YPrPb/YCrCb) 3
+      0x0f: DisplayPort-1
+      0x10: DisplayPort-2
+      0x11: HDMI-1
+      0x12: HDMI-2
+</code></pre>
+<p>In practice, any given monitor will implement only a few of the NC values, and some monitors will implement undocumented values. 
+The only way to know for sure is by testing.</p>
+<p><a name="capabilities_cache_generic_model"></a></p>
+<h3 id="two-different-monitors-show-the-same-capabilities-output">Two different monitors show the same <strong><em>capabilities</em></strong> output.</h3>
+<p><strong>ddcutil</strong> caches capabilities strings so they need not be re-read from the monitor on every
+invocation.  The cache is keyed by manufacturer, model name and product code, which is also the form
+used for user defined feature file names:</p>
+<pre><code>MFG-MODEL-PRODUCT_CODE
+
+DEL-DELL_U3011-16485
+SAM-LS34A650U-28996
+</code></pre>
+<p>That key identifies a monitor model only if the EDID actually fills in those fields.  Some
+manufacturers ship a generic model name, such as "LG UltraWide", across an entire product line, and
+leave the product code unset -- 0, or sometimes 0x0101, which is what an EDID field filled with the
+byte x01 reads as.  Two physically different monitors then produce the same key, and the capabilities
+string cached for the first is reported for the second.</p>
+<p><strong>ddcutil</strong> recognizes some of these.  A small list of known generic model names, currently
+LG IPS FULLHD, LG UltraFine, LG Ultrawide, LG UltraWide and Samsung Syncmaster, combined with a
+product code of 0 or 0x0101, marks the identification as non-unique and the capabilities string is
+not cached.  The test requires <strong>both</strong> conditions: a monitor whose name is not on that list is
+cached normally even when its product code is 0.</p>
+<p>If two monitors report the same capabilities and you suspect this, check whether they share a key:</p>
+<pre><code>ddcutil detect | grep -E &quot;Mfg id|Model|Product code&quot;
+</code></pre>
+<p>If the product code is 0 and both monitors report the same model name, discard the cache and disable
+it for the affected runs:</p>
+<pre><code>ddcutil --discard-capabilities-cache detect
+ddcutil --disable-capabilities-cache capabilities
+</code></pre>
+<p>Reading the capabilities string directly from the monitor each time is slower, but it is the value
+that monitor actually returned.  Please report the manufacturer and model name so the generic name
+list can be extended.</p>
+<p><a name="vcpinfo_vs_capabilities"></a></p>
+<h3 id="why-do-commands-capabilities-and-vcpinfo-report-different-information">Why do commands <strong>capabilities</strong> and <strong>vcpinfo</strong> report different information?</h3>
+<p><strong>vcpinfo</strong> and <strong>capabilities</strong> get their feature value lists from different places.</p>
+<p><strong>vcpinfo</strong> reports the values given in the Mointor Control Command Set spec (MCCS). Its information is not monitor-specific. Option <strong><em>--mccs</em></strong> allows for selection of a specific MCCS version; if not given the most recent MCCS version in which the feature is defined, typically 2.2, is used.</p>
+<p><strong>capabilities</strong> reports the values shown on the capabilities string returned by the monitor. Normally, the interpretation of the value is that listed in the MCCS spec (reflecting the MCCS version of the monitor, as given in the capabilities string or, if that is not given, by querying feature xDF). If the value is unknown to the MCCS spec, "Unrecognized value" is reported. However, if the feature is defined in a user defined feature file for the monitor, the values reported for that feature are those in the UDF file, not those in the capabilities string, and the interpretation is that in the UDF file. (The uninterpreted string reported by <strong>capabilities</strong> is not modified by the UDF file; it is exactly that returned by the monitor.)</p>
+<p>For example, many newer monitors have a USB-C input.  No USB-C value for feature x60 (Input Source) is defined in any version of the MCCS spec, which is rather dated. Some manufacturers use x0b for its value, other manufacturers use a different value, and there's even no guarantee that a given manufacturer uses the same value on all its monitors. The only way for ddcutil to know about a USB-C value is for it to be defined it in a monitor-specific user defined features file.</p>
+<p>As a further comment, the capabilities string can be unreliable. For example, the capabilities string reported by a Samsung U32H750 is "60( 11 12 0F)". The interpretation of those values, per the MCCS spec, is HDMI-1, HDMI-2, and DisplayPort-1. However those are not the actual values used by the monitor. The monitor recognizes x05 as HDMI-1 and x06 as HDMI-2. A user defined features file for the monitor, SAM_U32H75x-3586.mccs, could contain:</p>
+<pre><code>MFG_ID       SAM
+MODEL        U32H75x
+PRODUCT_CODE 3586
+MCCS_VERSION 2.1
+FEATURE_CODE 60 Input Source
+  ATTRS NC RW
+  VALUE x05 HDMI-1
+  VALUE x06 HDMI-2
+  VALUE x0f DisplayPort
+</code></pre>
+<p><a name="input_source_values"></a></p>
+<h3 id="setvcp-60-fails-or-selects-the-wrong-input"><strong>setvcp 60</strong> fails, or selects the wrong input</h3>
+<p>Feature x60 (Input Source) is the most frequently reported feature in <strong>ddcutil</strong>'s issue history,
+and almost all of it comes down to one thing: the values are monitor specific, and the MCCS
+specification's list is both incomplete and widely ignored.</p>
+<ul>
+<li>The spec defines no value for a USB-C input.  Manufacturers picked their own; x0b and x1b have
+  both been seen, and there is no guarantee a manufacturer is consistent across its own models.</li>
+<li>Monitors use documented values to mean something else.  A Samsung U32H750 answers to x05 and x06
+  for its two HDMI inputs, while its capabilities string advertises x11 and x12, which are the
+  spec's HDMI values.</li>
+<li>A value the monitor accepts may not appear in the capabilities string at all.</li>
+</ul>
+<p>So the capabilities string is a starting point, not an answer.  To find the real values:</p>
+<pre><code>ddcutil getvcp 60                 # what input is active now
+</code></pre>
+<p>Switch inputs using the monitor's own buttons, read x60 again after each, and record what you
+see.  That gives you the monitor's actual value for each physical input, with no guessing.  Write
+them into a <a href="../udf/">user defined feature file</a> so <strong>ddcutil</strong> reports them by name
+afterwards.</p>
+<p>If <strong><em>setvcp 60</em></strong> returns "Out of Range", the monitor rejected the value -- which is the good
+outcome, because it told you.</p>
+<p><a name="input_switch_risk"></a></p>
+<h3 id="switching-input-left-me-unable-to-switch-back">Switching input left me unable to switch back</h3>
+<p>Take this one seriously before experimenting with feature x60.</p>
+<p>Setting the input to a source with nothing attached leaves the monitor showing no picture.  If the
+monitor's OSD is also unavailable -- some models suppress it when there is no signal -- you cannot
+undo it from the monitor, and <strong>ddcutil</strong> cannot reach the monitor either, because the DDC channel
+belongs to the input that is no longer selected.  There are reports of monitors left power cycling
+in this state after being sent an untested value.</p>
+<p>Recovering, in increasing order of inconvenience: unplug the monitor's power for a minute, which
+resets some models; connect a signal to the input that is now selected and switch back with
+<strong>ddcutil</strong> from the machine driving it; or use the monitor's factory reset, if the OSD can be
+reached at all.</p>
+<p>Precautions worth taking:</p>
+<ul>
+<li>discover the valid values by reading x60 while switching with the monitor's buttons, as above,
+  rather than by trying values to see what happens</li>
+<li>have a second machine or cable on hand for the input you are switching to</li>
+<li>do not sweep a range of values</li>
+</ul>
+<p><a name="pip_pbp"></a></p>
+<h3 id="picture-in-picture-kvm-and-other-manufacturer-extensions">Picture-in-Picture, KVM and other manufacturer extensions</h3>
+<p>Features for PiP and PbP layout, KVM switching, preset picture modes and OLED panel refresh are
+not in the MCCS specification.  Manufacturers implement them as vendor-specific feature codes, and
+those are undocumented.</p>
+<p><strong>ddcutil</strong> can drive them once the codes are known, and it is often possible to find them:</p>
+<pre><code>ddcutil getvcp scan               # read every readable code, documented or not
+</code></pre>
+<p>Change the setting using the monitor's OSD, run the scan again, and compare.  A code whose value
+tracked the change is a candidate.  Record what you find in a
+<a href="../udf/">user defined feature file</a>, and please post it -- these are worth collecting,
+and other owners of the same model will find nothing else.</p>
+<p>Treat writing to an unknown feature code with the caution described under
+<a href="#input_switch_risk">switching inputs</a>.</p>
+<p><a name="two_byte_values"></a></p>
+<h3 id="a-features-value-looks-wrong-or-only-the-low-byte-changes">A feature's value looks wrong, or only the low byte changes</h3>
+<p>Continuous features carry a two byte value.  Some monitors return only the low byte correctly, or
+report a maximum that does not match the range they actually accept.  Where the two bytes matter,
+<strong><em>getvcp --verbose</em></strong> shows both, which is the way to tell a monitor returning a 16 bit value
+from one returning an 8 bit value in a 16 bit field.</p>
+<p>Table valued features are a separate case: the MCCS spec defines feature x60 as a table feature in
+version 3.0 and a simple non-continuous feature in every other version, and monitors do not always
+agree with their own declared version.</p>
+<!--
+### setvcp of feature x60 (Input Source) fails with the message "Feature x60 does not support verifiation"
+
+Use the ***--noverify*** option. The problem with trying to verify the changed value of feature x60 is that once the input device changes it's most likely that trying to read the current value from the original input device will fail. Therefore automatic verification does not take place for this feature.
+
+-->
+
+<p><a name="setvcp_does_not_change_feature_value"></a></p>
+<h3 id="setvcp-does-not-change-the-feature-value"><strong>setvcp</strong> does not change the feature value</h3>
+<p>Several Iilyama monitor models require that command <strong><em>scs</em></strong> (Save Current Settings) be issued immediately after a feature
+value is set.  <strong><em>setvcp</em></strong> must be invoked with the <strong><em>--noverify</em></strong> option, followed immediately by <strong><em>scs</em></strong>.</p>
+<p>Some monitors disable changing features such as brightness, contrast, and color when in Cinema or other special mode.
+Changing to a custom mode may enable these features.</p>
+<h3 id="the-monitor-supports-dynamic-contrast-range-dcr-setvcp-for-feature-x10-brightness-does-not-change-the-value">The monitor supports Dynamic Contrast Range (DCR). <strong>setvcp</strong> for feature x10 (brightness) does not change the value</h3>
+<p>At least some monitors with Dynamic Contrast Range (DCR) disable feature x10 (brightness) and possibly other features 
+when DCR is enabled. This has been reported with both Lenovo and Benq monitors.</p>
+<h3 id="the-new-value-for-feature-x10-is-different-from-the-value-specified-on-setvcp">The new value for feature x10 is different from the value specified on <strong>setvcp</strong></h3>
+<p>It is common for the new value of a Continuous feature to be off by 1 from the specified value.
+This appears to be the result of integer to floating point to integer conversion in the monitor.</p>
+<p>At least one monitor (Dell 2407wfp) does not allow setting brightness less than 30.  <strong>setvcp</strong> values
+in the range 0..50 are mapped to to 30..50.</p>
+<h2 id="performance">Performance</h2>
+<p><a name="faq_slow"></a></p>
+<h3 id="ddcutil-is-slow"><strong>ddcutil</strong> is slow.</h3>
+<p>Typically, <strong>ddcutil</strong> spends 90% of its elapsed time in waits mandated by the DDC/CI protocol.</p>
+<p>Two options can have a big impact on performance:</p>
+<ul>
+<li>
+<p>Option <strong><em>--bus</em></strong>.  If the /dev/i2c bus number of the monitor is given, <strong>ddcutil</strong> skips the
+initial phase of searching the /dev/i2c devices for monitors.  Note that if this option is 
+specified, no other monitor selection option such as <strong><em>--display</em></strong> should be specified.</p>
+</li>
+<li>
+<p>Option <strong><em>--sleep-multiplier</em></strong>.  This option adjusts the length of time <strong>ddcutil</strong> spends in 
+DDC/CI mandated waits.  For example, if the DDC/CI protocol specifies a 40 ms wait between the 
+time a command is sent to the monitor and the time a reply is read, and <strong><em>--sleep-multiplier .2</em></strong> is 
+given, <strong>ddcutil</strong> will only wait (.2 x 40 ms) = 8 ms.  Some monitors have been found to communicate
+successfully with <strong><em>--sleep-multiplier</em></strong> values as low as .1. On the other hand, some monitors 
+with poor DDC/CI implementations perform better if the sleep time is increased by using a value greater
+than 1.</p>
+</li>
+</ul>
+<p><a name="dynamic_sleep"></a></p>
+<h3 id="what-is-dynamic-sleep-and-should-i-turn-it-off">What is dynamic sleep, and should I turn it off?</h3>
+<p><strong>ddcutil</strong> must wait between DDC/CI operations.  The required waits are specified, but the
+specified values are conservative, and most monitors work with less.  Dynamic sleep observes how a
+monitor actually behaves and adjusts the multiplier as it goes, so a well behaved monitor gets
+faster over time without the user having to find a working <strong><em>--sleep-multiplier</em></strong> by hand.</p>
+<p>It is not always an improvement.  On a monitor whose failures are erratic rather than
+timing-related, the algorithm can chase noise, and one long-running report involved exactly that.
+The controls are:</p>
+<pre><code>ddcutil --disable-dynamic-sleep ...        # fixed multiplier
+ddcutil --sleep-multiplier 1.5 ...         # or whatever value works
+</code></pre>
+<p>Both can go in the <a href="../config_file/">configuration file</a>, which is the only way to apply them to
+<strong>libddcutil</strong> clients.</p>
+<p>If you are diagnosing intermittent failures, disable dynamic sleep first so that the timing is one
+fewer variable.</p>
+<p><a name="script_cpu"></a></p>
+<h3 id="my-brightness-script-causes-cpu-spikes-or-is-slow-to-respond">My brightness script causes CPU spikes, or is slow to respond</h3>
+<p>Each <strong>ddcutil</strong> invocation pays for display detection before it can do anything.  A script that
+runs <strong><em>ddcutil setvcp 10</em></strong> repeatedly -- say from a hotkey that steps brightness -- pays that
+cost every time.</p>
+<p>Reduce it:</p>
+<ul>
+<li>pass <strong><em>--bus N</em></strong> or <strong><em>--display N</em></strong> so detection is skipped.  <strong><em>--bus</em></strong> is the cheaper of
+  the two.  Get the number once from <strong><em>ddcutil detect</em></strong>.</li>
+<li>pass <strong><em>--noverify</em></strong> if you do not need the value read back after setting it</li>
+<li>avoid a loop of single-step invocations; compute the target value and set it once</li>
+</ul>
+<p>For a program rather than a script, <strong>libddcutil</strong> detects displays once and keeps them, which
+avoids the problem entirely.</p>
+<h2 id="libddcutil-kde-plasma-and-powerdevil"><strong>libddcutil</strong>, KDE Plasma and PowerDevil</h2>
+<p><a name="plasma_6"></a></p>
+<h3 id="kde-plasma-6">KDE Plasma 6</h3>
+<p>ddcutil commands fail after upgrade to version 2.0 and KDE Plasma 6</p>
+<p>ddcutil 2.0 added a cross-instance locking facility. The problem addressed was random failures when multiple ddcutil or libddcutil instances clobber each other's DDC transactions. Internally, ddcutil uses what are called display handles to represent /dev/i2c devices that have been opened at the OS level. Proper use of the API is, for each DDC transaction, to open a display, creating a display handle, perform the transaction, and then close it. This sounds expensive, but in fact the time spent opening and closing is negligible compared to the time spent performing the I2C operations of a DDC transaction.</p>
+<p>When the cross-instance locking facility is enabled, and a display is opened creating display handle, ddcutil calls flock() on the underlying /dev/i2c device and holds the flock until the handle is closed. Unfortunately, at startup PowerDevil creates a display handle for each /dev/i2c device and never closes it. So the flock's are never released, blocking other ddcutil instances.</p>
+<p>Cross-instance locking can be disabled using option --disable-cross-instance-locks. This option can be specified on the ddcutil command line, or in configuration file $HOME/.config/ddcutil/ddcutilrc. The latter is the only way to control libddcutil, which is used by PowerDevil. For a description of configuration files, see https://www.ddcutil.com/config_file.</p>
+<h3 id="powerdevil-crashes-repeatedly-with-ddcutil-210">Powerdevil crashes repeatedly with <strong>ddcutil</strong> 2.1.0</h3>
+<p>ddcutil 2.1.0 API introduced an initialization function, <strong><em>ddca2_init()</em></strong>, into the libddcutil API
+to give the client, e.g. PowerDevil, finer control of libddcutil's initialization. 
+If the initialization function is not called, then default settings are used. There was a bug in default initialization that caused PowerDevil to crash repeatedly. This was fixed in ddcutil 2.1.2. Also, PowerDevil was changed to explicitly call the initialization function, thereby avoiding the bug. With two different fixes for same problem, it may not be obvious what change made PowerDevil work again.</p>
+<p><a name="powerdevil_disable"></a></p>
+<h3 id="powerdevil-crashes-or-hangs-at-login-and-takes-the-desktops-power-management-with-it">PowerDevil crashes or hangs at login, and takes the desktop's power management with it</h3>
+<p>PowerDevil calls <strong>libddcutil</strong> during startup, unconditionally -- the "Control hardware
+brightness with DDC/CI" setting in Plasma's display settings governs whether an already detected
+DDC/CI display gets used, not whether PowerDevil scans for one.  So a <strong>libddcutil</strong> failure at
+initialization becomes a PowerDevil failure, and systemd gives up after a few restarts, leaving
+<code>plasma-powerdevil.service</code> failed and the session without brightness policy, idle timeouts or
+suspend-on-lid.</p>
+<p>To take <strong>libddcutil</strong> out of the path while diagnosing, PowerDevil honors an environment
+variable:</p>
+<pre><code>systemctl --user edit plasma-powerdevil.service
+# [Service]
+# Environment=POWERDEVIL_NO_DDCUTIL=1
+systemctl --user reset-failed plasma-powerdevil.service
+</code></pre>
+<p>That disables DDC/CI brightness control for all external monitors in the session; the internal
+laptop backlight and KWin's own brightness control are unaffected.  It is a diagnostic and a
+stopgap, not a fix -- if you need it, the underlying <strong>libddcutil</strong> problem is worth reporting,
+with the <code>coredumpctl</code> output described <a href="#problem_report">above</a>.</p>
+<p><a name="desktop_lag_resume"></a></p>
+<h3 id="the-desktop-lags-for-several-seconds-after-resume-from-sleep">The desktop lags for several seconds after resume from sleep</h3>
+<p>Display detection has to happen again after resume, and it costs real time: every candidate I2C
+bus is opened and probed.  When a desktop component does that synchronously on the resume path,
+the delay is visible.</p>
+<p>Two things make it worse than it needs to be, both of them addressed in recent releases and worth
+checking your version against:</p>
+<ul>
+<li>the <code>EACCES</code> window described <a href="#eacces_after_resume">above</a>, where the devices are not yet
+  accessible and the work is wasted</li>
+<li>buses that no DRM connector claims being probed at all.  On some drivers a read into silence
+  spends hundreds of milliseconds inside the driver before failing, and the bus lock is held for
+  the duration, so other <strong>ddcutil</strong> instances wait too</li>
+</ul>
+<p>If a resume is slow on a current release, a report with <strong><em>--syslog debug --trace-to-syslog</em></strong>
+spanning the resume is what shows where the time went.</p>
+<p><a name="libddcutil_config"></a></p>
+<h3 id="libddcutil-does-not-seem-to-read-my-configuration-file"><strong>libddcutil</strong> does not seem to read my configuration file</h3>
+<p><strong>libddcutil</strong> reads the same <code>$HOME/.config/ddcutil/ddcutilrc</code> as the command line program, but
+which section applies is not the same.  Options in the <code>[ddcutil]</code> section apply to the command
+line program.  A <strong>libddcutil</strong> client picks up the <code>[libddcutil]</code> section, and a client may also
+pass its own options, which take precedence.  See <a href="../config_file/">Configuration File</a>.</p>
+<p>Two further reasons a setting may appear to be ignored:</p>
+<ul>
+<li>the client called <code>ddca_init2()</code> with its own options, which is the supported way for a client
+  to configure the library and overrides the file</li>
+<li>the process is not running as you.  A system service reads the configuration of the user it runs
+  as, which for a system-wide daemon is not your home directory</li>
+</ul>
+<p>To confirm what the library actually resolved, a client can call <code>ddca_report_build_options()</code> and
+the settings reporting functions; the command line equivalent is <strong><em>ddcutil --settings</em></strong>.</p>
+<p><a name="libddcutil_vs_cli"></a></p>
+<h3 id="libddcutil-behaves-differently-from-the-ddcutil-command-after-a-monitor-is-plugged-in"><strong>libddcutil</strong> behaves differently from the <strong>ddcutil</strong> command after a monitor is plugged in</h3>
+<p>The command line program detects displays once per invocation and exits, so it always sees current
+hardware.  A <strong>libddcutil</strong> client is long lived and holds the display list it built at
+initialization.</p>
+<p>If the client has enabled display watching, <strong>libddcutil</strong> updates the list as monitors come and
+go and reports the change through a callback.  If it has not, the list is whatever was there at
+initialization until the client calls <code>ddca_redetect_displays()</code>.  A client that neither watches
+nor redetects will not see a newly connected monitor at all, and will learn that a removed one is
+gone only when an operation on it fails.</p>
+<h2 id="specific-hardware-and-environments">Specific hardware and environments</h2>
+<h3 id="ddcutil-hangs-on-radeon-rx-5xxx-and-6xxx-cards-navi-and-navi2-gpu">ddcutil hangs on Radeon RX 5xxx and 6xxx cards (Navi and Navi2 GPU)</h3>
+<p>There have been multiple reports of <strong>ddcutil</strong> command failures on Radeon cards with the Navi and Navi2 GPUs 
+(RX 5xxx and RX 6xxx cards).</p>
+<p>In some cases <strong>ddcutil</strong> hangs.  (See for example issues  <a href="ttps://github.com/rockowitz/ddcutil/issues/194">Stop poking AMDGPU SMU I2C #194</a>, 
+<a href="https://github.com/rockowitz/ddcutil/issues/223">Screen freeze when changing brightness #223</a>).. 
+The SMU related hang should have been fixed as of kernel 5.14.4.  <strong>ddcutil</strong> has had a workaround since release 1.1.0. </p>
+<p>In other cases, the monitor's EDID is simply not detected.</p>
+<p>If your kernel version is 5.14.4 or later, I suggest you file a bug report at the <a href="https://gitlab.freedesktop.org/drm/amd/-/issues">amd driver issue list</a>.  </p>
+<p>Include: 
+- drm output 
+- the kernel log file (/var/log/kernel on Ubuntu)
+- output of the following commands</p>
+<pre><code>$ sudo ps -aux | grep ddcutil
+$ sudo awk ' {print FILENAME &quot;: &quot; $0 } '  /sys/bus/i2c/devices/*/name
+</code></pre>
+<p><a name="docker_container"></a></p>
+<h3 id="does-ddcutil-work-in-containers">Does <strong>ddcutil</strong> work in containers?</h3>
+<p>User Nikolay Dandanov has reported success running ddcutil in a Docker container: </p>
+<p>I defined a new Arch Linux image for Docker using the following simple <code>Dockerfile</code>:</p>
+<pre><code class="language-Dockerfile">FROM archlinux:latest
+
+RUN pacman --noconfirm -Syu &amp;&amp; \
+    pacman --noconfirm -S ddcutil &amp;&amp; \
+    rm -rf ~/.cache/*
+</code></pre>
+<p>I saved this to a file named <code>Dockerfile</code> and built a Docker image using
+~~~docker build -t ddcutil:v0.0.1~~~.</p>
+<p>I then ran the container and also mapped all <code>i2c</code> devices (otherwise, these were not available in the container):</p>
+<pre><code class="language-bash">docker run $(for dev in `ls /dev/i2c*`; do echo &quot;--device $dev &quot;; done) -it --name ddcutil ddcutil:v0.0.1
+</code></pre>
+<p>See also this stackoverflow post: <a href="https://stackoverflow.com/questions/73857667/how-to-fix-ddcutil-for-a-docker-container">How to fix ddcutil for a docker container</a></p>
+<!--
+<a name="nvram"> </a>
+### Can ddcutil wear out the monitor's nvram?
+
+Solid date memory wears out after some number of cycles.  
+
+See []
+
+-->
+
+<h2 id="building-ddcutil">Building <strong>ddcutil</strong></h2>
+<p><a name="missing_package"></a></p>
+<h3 id="configure-complains-that-a-required-package-does-not-exist-but-it-is-installed-on-my-system"><strong><em>configure</em></strong> complains that a required package does not exist, but it is installed on my system.</h3>
+<p>When building <strong>ddcutil</strong>, error messages from pkg-config (which is called by configure) can be misleading.
+If configure complains that a package is not found but it seems to be installed, it's likely that what's 
+missing is the associated development package (with a suffix like "-dev").</p>
+<p><a name="build_nix_static"></a></p>
+<h3 id="building-on-nixos-or-building-statically">Building on NixOS, or building statically</h3>
+<p>Both are reported working, with the usual caveats.</p>
+<p><strong>ddcutil</strong> discovers its dependencies with <code>pkg-config</code>, so on NixOS the development inputs must
+be in the build environment rather than merely installed -- the
+<a href="#missing_package">missing package</a> entry above applies, and a <code>nix-shell</code> with the <code>-dev</code> outputs
+of glib, libusb, libdrm, jansson, libudev and the X libraries is the usual arrangement.</p>
+<p>For a static build, disable the optional subsystems you do not need so their libraries do not have
+to be resolved statically:</p>
+<pre><code>./configure --disable-usb --disable-x11 --disable-dbus
+</code></pre>
+<p><code>--disable-udev</code> is possible too, at the cost of falling back to a less reliable method of
+enumerating I2C devices.</p>
+<p><a name="build_destdir"></a></p>
+<h3 id="installing-into-a-staging-directory">Installing into a staging directory</h3>
+<pre><code>make DESTDIR=/path/to/stage install
+</code></pre>
+<p>is supported and is what packagers use.  If a file lands outside the staging tree, that is a bug
+worth reporting -- it has happened, and been fixed, more than once.  The CMake support file
+<code>FindDDCUtil.cmake</code> has also been installed to the wrong location in the past; check it if a
+CMake based consumer cannot find <strong>ddcutil</strong>.</p>
+              
+            </div>
+          </div><footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+        <span>
+          <a href="https://github.com/rockowitz/ddcutil" class="fa fa-github" style="color: #fcfcfc"> GitHub</a>
+        </span>
+    
+    
+    
+  </span>
+</div>
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "..";</script>
+    <script src="../js/theme_extra.js"></script>
+    <script src="../js/theme.js"></script>
+      <script src="../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(false);
+        });
+    </script>
+
+</body>
+</html>

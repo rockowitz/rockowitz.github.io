@@ -454,10 +454,13 @@ and again as
 <a href="https://github.com/NVIDIA/open-gpu-kernel-modules/issues/889">issue 889</a> in 2025, and still open.
 <code>systemd-logind</code>, which uses <code>enabled</code> together with <code>status</code> to decide whether a laptop is docked, is
 affected by the same defect.</p>
-<p>Whether it affects a particular system may depend on which kernel modules are installed.  Issue 889 is
-filed against the open modules, and a system can have a mixture: <code>modinfo nvidia_drm</code> may report license
-<code>MIT</code> while <code>nvidia</code> and <code>nvidia_modeset</code> report <code>NVIDIA</code>.  Since the value comes from a field in the DRM
-layer, which module provides <code>nvidia_drm</code> is what matters.  <strong>ddcutil</strong> does not rely on <code>enabled</code>.</p>
+<p>Switching between the proprietary driver and the open kernel modules is unlikely to change this.  Issue
+889 is filed against the open modules, but that says where it was reported, not where it occurs: the
+component that registers DRM connectors and populates these attributes is <code>nvidia-drm</code>, which is built
+from source at install time in both packages.  What the open modules replaced is the core beneath it.
+Both also register the driver under the same name, <code>nvidia</code>, so nothing distinguishes them from
+<strong>ddcutil</strong>'s point of view either -- the reliability determination is made from the driver name alone.</p>
+<p><strong>ddcutil</strong> does not rely on <code>enabled</code>.</p>
 <p><strong>dpms</strong>.  Not used by <strong>ddcutil</strong> for detection, and not to be relied on generally.  The kernel's own
 documentation states that userspace cannot rely on the DPMS value reflecting reality because many drivers
 fail to update it; it is a legacy property.  That is a general warning, not an Nvidia-specific one -- no
@@ -535,6 +538,37 @@ VCP code 60: Input Source
 </code></pre>
 <p>In practice, any given monitor will implement only a few of the NC values, and some monitors will implement undocumented values. 
 The only way to know for sure is by testing. </p>
+<p><a name="capabilities_cache_generic_model"></a></p>
+<h3 id="two-different-monitors-show-the-same-capabilities-output">Two different monitors show the same <strong><em>capabilities</em></strong> output.</h3>
+<p><strong>ddcutil</strong> caches capabilities strings so they need not be re-read from the monitor on every
+invocation.  The cache is keyed by manufacturer, model name and product code, which is also the form
+used for user defined feature file names:</p>
+<pre><code>MFG-MODEL-PRODUCT_CODE
+
+DEL-DELL_U3011-16485
+SAM-LS34A650U-28996
+</code></pre>
+<p>That key identifies a monitor model only if the EDID actually fills in those fields.  Some
+manufacturers ship a generic model name, such as "LG UltraWide", across an entire product line, and
+leave the product code unset -- 0, or sometimes 0x0101, which is what an EDID field filled with the
+byte x01 reads as.  Two physically different monitors then produce the same key, and the capabilities
+string cached for the first is reported for the second.</p>
+<p><strong>ddcutil</strong> recognizes some of these.  A small list of known generic model names, currently
+LG IPS FULLHD, LG UltraFine, LG Ultrawide, LG UltraWide and Samsung Syncmaster, combined with a
+product code of 0 or 0x0101, marks the identification as non-unique and the capabilities string is
+not cached.  The test requires <strong>both</strong> conditions: a monitor whose name is not on that list is
+cached normally even when its product code is 0.</p>
+<p>If two monitors report the same capabilities and you suspect this, check whether they share a key:</p>
+<pre><code>ddcutil detect | grep -E &quot;Mfg id|Model|Product code&quot;
+</code></pre>
+<p>If the product code is 0 and both monitors report the same model name, discard the cache and disable
+it for the affected runs:</p>
+<pre><code>ddcutil --discard-capabilities-cache detect
+ddcutil --disable-capabilities-cache capabilities
+</code></pre>
+<p>Reading the capabilities string directly from the monitor each time is slower, but it is the value
+that monitor actually returned.  Please report the manufacturer and model name so the generic name
+list can be extended.</p>
 <p><a name="vcpinfo_vs_capabilities"></a></p>
 <h3 id="why-do-commands-capabilities-and-vcpinfo-report-different-information">Why do commands <strong>capabilities</strong> and <strong>vcpinfo</strong> report different information?</h3>
 <p><strong>vcpinfo</strong> and <strong>capabilities</strong> get their feature value lists from different places.</p>
