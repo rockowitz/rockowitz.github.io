@@ -223,6 +223,8 @@
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../c_api_300/">Shared Library Changes for Release 3.0.1</a>
                   </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../c_api_302/">Shared Library Changes for Release 3.0.2</a>
+                  </li>
               </ul>
               <p class="caption"><span class="caption-text">Background</span></p>
               <ul>
@@ -264,32 +266,6 @@
                   </li>
                   <li class="toctree-l1 current"><a class="reference internal current" href="#">Release Notes</a>
     <ul class="current">
-    <li class="toctree-l2"><a class="reference internal" href="#ddcutil-301">ddcutil 3.0.1</a>
-    </li>
-    <li class="toctree-l2"><a class="reference internal" href="#ddcutil-227">ddcutil 2.2.7</a>
-    </li>
-    <li class="toctree-l2"><a class="reference internal" href="#ddcutil-226">ddcutil 2.2.6</a>
-    </li>
-    <li class="toctree-l2"><a class="reference internal" href="#ddcutil-225">ddcutil 2.2.5</a>
-    </li>
-    <li class="toctree-l2"><a class="reference internal" href="#ddcutil-224">ddcutil 2.2.4</a>
-    </li>
-    <li class="toctree-l2"><a class="reference internal" href="#display-selection">Display Selection</a>
-    </li>
-    <li class="toctree-l2"><a class="reference internal" href="#laptop-display-detection">Laptop Display Detection</a>
-    </li>
-    <li class="toctree-l2"><a class="reference internal" href="#miscellaneous-changes">Miscellaneous Changes</a>
-    </li>
-    <li class="toctree-l2"><a class="reference internal" href="#miscellaneous-fixes">Miscellaneous Fixes</a>
-    </li>
-    <li class="toctree-l2"><a class="reference internal" href="#ddcutil-223">ddcutil 2.2.3</a>
-    </li>
-    <li class="toctree-l2"><a class="reference internal" href="#bug-fixes">Bug Fixes</a>
-    </li>
-    <li class="toctree-l2"><a class="reference internal" href="#miscellanous-changes">Miscellanous changes:</a>
-    </li>
-    <li class="toctree-l2"><a class="reference internal" href="#debug-related-changes">Debug related changes:</a>
-    </li>
     </ul>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../release_notes/">Prior Release Notes</a>
@@ -346,13 +322,39 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
             <div class="section" itemprop="articleBody">
               
-                <h2 id="notes-for-recent-ddcutil-releases">Notes for Recent <strong>ddcutil</strong> Releases</h2>
+                <p>/ignoe## Notes for Recent <strong>ddcutil</strong> Releases</p>
 <p>For <strong>ddcui</strong> changes, see <a href="../ddcui_release_notes/"><strong>ddcui</strong> Release Notes</a></p>
 <p>For notes on releases prior to 2.2.0, see <a href="../release_notes/">Notes for Releases 2.1.4 and Earlier</a>.</p>
+<h3 id="ddcutil-302"><strong>ddcutil</strong> 3.0.2</h3>
+<p>This section highlights changes likely to be of interest to general users.
+For notes on changes specific to the shared library, see <a href="../c_api_302/">Shared Library Changes for Release 3.0.2</a>.
+For greater detail, see file 
+<a href="https://github.com/rockowitz/ddcutil/blob/3.0.2-release/CHANGELOG.md">CHANGELOG.md</a>
+in the source tree.</p>
+<p>This release contains one major change. </p>
+<ul>
+<li>Use of a single multi-message ioctl to read EDIDs has been disabled. This was introduced
+  in release 3.0.0 to handle displays whose EDID otherwise failed to read. Under
+  certain conditions, this had a severe performance impact if there was no 
+  EDID to be read. It may also have triggered an otherwise unexplained amdgpu
+  driver crash that was reported.</li>
+</ul>
+<p>Additional fixes:</p>
+<ul>
+<li>Dell P2725DE not detected: EDID read returns CEA extension block.  Issue #620.</li>
+<li>Slow performance executing setvcp 10 + 5.  Issue #634</li>
+</ul>
+<p>Also:</p>
+<ul>
+<li>The list of monitor models to be ignored is now seeded with the Valve Index HMD 
+  (mfg "VLV" / product 0x91a8, model "Index HMD"). DDC/CI reads on I2C slave address 0x37 cause the 
+  headset's firmware to stop responding to EDID reads.
+  The internal list makes option <strong><em>--ignore-mmid VLV-Index_HMD-37288</em></strong> unnecessary. </li>
+</ul>
 <h3 id="ddcutil-301"><strong>ddcutil</strong> 3.0.1</h3>
 <p>This section highlights changes likely to be of interest to general users.
 For greater detail, see file 
-<a href="https://github.com/rockowitz/ddcutil/blob/2.2.7-release/CHANGELOG.md">CHANGELOG.md</a>
+<a href="https://github.com/rockowitz/ddcutil/blob/3.0.1-release/CHANGELOG.md">CHANGELOG.md</a>
 in the source tree.</p>
 <p>Most changes in release 3.0.1 are in shared library <strong>libddcutil</strong>, and relate to its use 
 by KDE PowerDevil. 
